@@ -6,10 +6,14 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
-"""
+"""Footerlink
+==========
+
 Example:
 
-* high notes: ^1 ^2 ^3
+.. code-block:: none
+
+    high notes: ^1 ^2 ^3
 
 """
 
@@ -81,7 +85,7 @@ def extract_highnotes(loaded: words.feature.TextRequiredResources,
     result = []
     for page in loaded:
         parsed = []
-        for headline, content in words.text.sentence.visit_sections(page):
+        for headline, content in words.text.sentence.visit_sections(page):  # pylint:disable=W0612
             highnotes = texmex.highnotes(content)
             parsed.extend(highnotes)
         if not parsed:

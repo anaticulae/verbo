@@ -6,20 +6,24 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
-"""
-<document>
-<h1>Chapter 1</h1>
-<p>
-Hallo <b>bold</b>,
+"""Word
+====
 
-wie geht es ihnen?
+.. code-block::
 
-<i>Danke</i> sehr <u>gut</u>
-</p>
-<h1>Chapter 2</h1>
+    <document>
+    <h1>Chapter 1</h1>
+    <p>
+    Hallo <b>bold</b>,
 
-<h1>Chapter 3</h1>
-</document>
+    wie geht es ihnen?
+
+    <i>Danke</i> sehr <u>gut</u>
+    </p>
+    <h1>Chapter 2</h1>
+
+    <h1>Chapter 3</h1>
+    </document>
 
 """
 import contextlib
@@ -99,7 +103,7 @@ class ListLookUp:
                     self.data[page] = [(item, index)]
                 index += 1
 
-    def search(self, page, headline, undefined):
+    def search(self, page, headline, undefined):  # pylint:disable=W0613
         with contextlib.suppress(KeyError):
             current = self.data[page]
             for ((_, _, content), index) in current:
@@ -114,14 +118,14 @@ class BoxLookUp:
         self.data = {}
         self.load(boxes)
 
-    def load(self, boxes):
+    def load(self, boxes):  # pylint:disable=R0914
         for line in boxes:
             page, content = line
             for item in content:
-                boxid, _, items = item
+                __, _, items = item
                 chained = utila.flatten(items)  # support verschachtelte boxes
                 for real in chained:
-                    bounding, (bindex, bcontent) = real
+                    _, (bindex, bcontent) = real
                     uindexs = [uindex for (_, uindex, _) in bcontent]
                     self.append(page, bindex, uindexs)
 

@@ -33,7 +33,7 @@ def parses(
     return result
 
 
-def parse_page(
+def parse_page(  # pylint:disable=R0914
         content: words.abbreviation.loader.PageContentText,
         lookup: groupme.abbreviation.lists.AbbreviationListLookup,
 ) -> groupme.abbreviation.Abbreviations:

@@ -39,13 +39,8 @@ def work(
 ) -> str:
     """Combine `extracted_text` and check the `undefined` fields for lists
 
-    Args:
-        extracted_text(str): document with `undefined fields` from `text`
-                             module of `words`
-        text(str): extracted text from rawmaker
-        text_position(str): position of extracted text
-        headlines(str): extracted chapter/paragraph headlines of `words` module
-        border(str):
+    extracted_text(str): document with `undefined fields` from `text`
+                         module of `words`
     """
     extracted, _ = words.loader.input.load_resources(
         extracted_text,
@@ -72,7 +67,7 @@ def process_content(extracted, boxes: words.boxed.BoxedChecker):
     return result
 
 
-def extract_boxed_content(contentblock, boxed: words.boxed.BoxedChecker):
+def extract_boxed_content(contentblock, boxed: words.boxed.BoxedChecker):  # pylint:disable=R0914
     result = collections.defaultdict(list)
     for (page, headlinenumber, headlinecontent) in contentblock:
 
@@ -114,7 +109,7 @@ def extract_boxed_content(contentblock, boxed: words.boxed.BoxedChecker):
         return (key, value)
 
 
-def dump_boxedcontent(boxed) -> str:
+def dump_boxedcontent(boxed) -> str:  # pylint:disable=R0914
 
     # headlinenumber,
     # headlineblocknumber,
@@ -166,14 +161,10 @@ def dump_boxedcontent(boxed) -> str:
 
 
 @functools.lru_cache(hey.CACHE_SMALL)
-def load_boxedcontent(content: str, pages=None):
+def load_boxedcontent(content: str, pages=None):  # pylint:disable=R0914
 
-    def _parse_box_content(line: str):
-        """Returns:
-            bounding(BoundingBox):
-            undefined_index(int):
-            content(str):
-        """
+    def _parse_box_content(line: str) -> tuple:
+        """bounding(BoundingBox) undefined_index(int) content(str)"""
         splitted = line.split(maxsplit=5)
         bounding = iamraw.BoundingBox.from_str(' '.join(splitted[0:4]))
         return (bounding, int(splitted[4]), splitted[5])

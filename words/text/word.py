@@ -71,7 +71,7 @@ MATCH = {
 }
 
 
-def split_words(items: str, validate_sentences: bool = True):
+def split_words(items: str, validate_sentences: bool = True):  # pylint:disable=R1260,R0912
     if validate_sentences and not words.text.sentence.is_sentence(items):
         # Ensure to parse complete sentences.
         return None

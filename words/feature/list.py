@@ -42,13 +42,8 @@ def work(
 ) -> str:
     """Combine `extracted_text` and check the `undefined` fields for lists
 
-    Args:
-        extracted_text(str): document with `undefined fields` from `text`
-                             module of `words`
-        text(str): extracted text from rawmaker
-        text_position(str): position of extracted text
-        headlines(str): extracted chapter/paragraph headlines of `words` module
-        border(str):
+    extracted_text(str): document with `undefined fields` from `text`
+                         module of `words`
     """
     extracted, contentborder = words.loader.input.load_resources(
         extracted_text,
@@ -75,10 +70,7 @@ def process(extracted, contentborder):
 
 
 def process_page(pagecontent, contentborder: iamraw.Border):
-    """
-    Args:
-
-    Returns:
+    """Merges parameter  according due `pagecontent`
 
     Format:
         page 5
@@ -114,18 +106,14 @@ def process_page(pagecontent, contentborder: iamraw.Border):
     return (page, result)
 
 
-def extract_lists(
+def extract_lists(  # pylint:disable=R0914
         page: texmex.PageTextNavigator,
-        pagesize: iamraw.Border,
+        pagesize: iamraw.Border,  # pylint:disable=W0613
         uindex=None,
 ) -> typing.List[iamraw.PageList]:
     """Extract lists out of document page. There are different types of Lists.
 
     Numbered... 1.2.3, I. II. III., + + +, - - -, * * *.
-
-    Args:
-        page:
-        pagesize(Border): size of current page [left bottom right top]
     """
     # TODO: MAX_Y_MERGE IS VERY INSTABLE
     # assert hey.textnavigator.is_navigator(page), type(page)
@@ -139,8 +127,8 @@ def extract_lists(
 
     result = []
     enumerated = enumerate(zip(text_bounds, merged))
-    for paraindex, (paragraph, mergearea) in enumerated:
-        bounds, text = paragraph.bounds, paragraph.text
+    for paraindex, (paragraph, mergearea) in enumerated:  # pylint:disable=W0612
+        bounds, text = paragraph.bounds, paragraph.text  # pylint:disable=W0612
         # ptextsize = fontsize_from_textbounds(bounds)
         # if ptextsize != textsize:
         #     # TODO: Hier gibt es noch ein Problem mit der Berechnung der
@@ -194,11 +182,9 @@ def parse_minus_list(content: str) -> typing.List[str]:
     return parse_general_list(content, '-')
 
 
-def parse_numbered_list(content: str):
+def parse_numbered_list(content: str) -> list:
     """Parse 1.2.3. list
 
-    Args:
-        content(str):
     Returns:
         list with (text, level) of list items
         None if nothing no list is parsed
