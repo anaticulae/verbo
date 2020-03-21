@@ -35,9 +35,7 @@ def pytest_sessionstart(session):  # pylint:disable=W0613
         utila.log('extract resources')
         extract_examples()
 
-    check = REQURIED_RESOURCES
-
     advice = 'run `baw --test=generate` to generate test data'
-    for item in check:
+    for item in REQURIED_RESOURCES:
         msg = f'required test path does not exists: {item}, {advice}'
         assert os.path.exists(item), msg
