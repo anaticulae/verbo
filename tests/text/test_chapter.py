@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import tests.fixtures.seventytwo as fseventytwo
+import tests.fixtures.master72.seventytwo as fseventytwo
 import words.text.chapter
 
 

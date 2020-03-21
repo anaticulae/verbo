@@ -26,14 +26,3 @@ def headlines_frompath(path: str, pages=None):
 
 def master72_toc():
     return headlines_frompath(tests.resources.MASTER72, pages=(1, 2))
-
-
-def bachelor111_toc():
-    return headlines_frompath(
-        tests.resources.BACHELOR111,
-        pages=(1, 2, 3, 4),
-    )
-
-
-def technical24_toc():
-    return headlines_frompath(tests.resources.TECHNICAL24, pages=(1))

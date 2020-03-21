@@ -7,16 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import pytest
-import texmex
-import texmex.navigator
-import utila
-from hey.textnavigator.merger import merge_content
-from hey.textnavigator.merger import merge_content_join
-from iamraw import ListType
-from iamraw import PageList
-from serializeraw import dump_lists
-from serializeraw import load_lists
+import serializeraw
 
 #pylint:disable=W0611
 from tests.fixtures.restruct import restructured_headlines
@@ -28,86 +19,10 @@ from tests.fixtures.restruct import restructured_text
 from tests.fixtures.restruct import restructured_text_positions
 from tests.fixtures.restruct import restructured_textexample
 from tests.fixtures.restruct import restructured_textexample_dumped
-from tests.fixtures.simple import simple_contentborder
-from tests.fixtures.simple import simple_document
-from tests.fixtures.simple import simple_pagetextnavigators
-from tests.fixtures.simple import simple_second_page_navigator
-from tests.fixtures.simple import simple_second_page_size
 from words.feature.list import extract_lists
 from words.feature.list import parse_dotted_list
 from words.feature.list import parse_numbered_list
 from words.feature.list import work
-
-
-#pylint:disable=W0621
-@pytest.mark.xfail(reason='does not work after refactoring')
-def test_list_extract_page(
-        simple_pagetextnavigators,
-        simple_contentborder,
-):
-    page1 = utila.select_page(simple_pagetextnavigators, page=1)
-    contenborder = simple_contentborder[1]  # TODO: CHECK INDEXING
-
-    # TODO: DO WE TEST THE RIGHT FUNCTION HERE?
-    extracted = extract_lists(page1, contenborder)
-    assert len(extracted) == 1
-
-    pagelist: PageList = extracted[0]
-
-    assert len(pagelist) == 8
-    assert pagelist.ltype() == ListType.NUMBERED
-
-    for index, (_, level) in enumerate(pagelist, start=1):
-        assert level == '%d.' % index, index
-
-
-@pytest.fixture
-def simple_second_page_merged_content(
-        simple_second_page_navigator) -> texmex.TextBoundsInfos:
-    content = texmex.navigator_to_content(simple_second_page_navigator)
-    merged, _ = merge_content(content)
-    merged = merge_content_join(merged)
-    return merged
-
-
-@pytest.mark.xfail(reason='update pdf parser')
-def test_list_navigator_extract_lists(
-        simple_second_page_merged_content,
-        simple_second_page_size,
-):
-    expected = PageList(area=[0, 1, 2])
-    raw = [
-        "Only worry about supporting Python 2.7",
-        ("Make sure you have good test coverage (coverage.py can help; pip"
-         " install coverage)"),
-        "Learn the differences between Python 2 & 3",
-        ("Use Futurize (or Modernize) to update your code (e.g. pip install"
-         " future)"),
-        ("Use Pylint to help make sure you don’t regress on your Python 3"
-         " support (pip install pylint)"),
-        ("Use caniusepython3 to find out which of your dependencies are"
-         " blocking your use of Python 3 (pip\n"
-         "install caniusepython3)"),
-        ("Once your dependencies are no longer blocking you, use continuous"
-         " integration to make sure you stay\n"
-         "compatible with Python 2 & 3"
-         " (tox can help test against multiple versions of Python; pip install\n"
-         "tox)"),
-        ("Consider using optional static type checking to make sure your type"
-         " usage works in both Python 2 &\n"
-         "3 (e.g. use mypy to check your typing under both Python 2 & Python 3)."
-        ),
-    ]
-
-    for index, item in enumerate(raw, start=1):
-        expected.append(item, '%d.' % index)
-    expected = [expected]  # pylint:disable=R0204
-    extracted = extract_lists(
-        simple_second_page_merged_content,
-        simple_second_page_size,
-    )
-    assert extracted == expected
-
 
 NUMBERED_LIST_SAMPLE_SIZE = 9
 NUMBERED_LIST = """
@@ -245,11 +160,11 @@ def test_list_dotted_with_content_only():
     assert parsed == ['Index Page', 'Support', 'Changelog']
 
 
-def test_list_work(restructured_list_dumped):
+def test_list_work(restructured_list_dumped):  # pylint:disable=W0621
     dumped_list = restructured_list_dumped
     assert len(dumped_list) > 400, str(dumped_list)
 
-    result = load_lists(dumped_list)
+    result = serializeraw.load_lists(dumped_list)
     assert len(result) == 3, str(result)
 
     first_items = [item for (_, item) in result[0][1][0][2].data]
@@ -272,10 +187,10 @@ def test_list_work(restructured_list_dumped):
     assert last_items == ['genindex', 'modindex', 'search']
 
 
-def test_list_dump_and_load_lists(restructured_list_work):
+def test_list_dump_and_load_lists(restructured_list_work):  # pylint:disable=W0621
     result = restructured_list_work
 
-    dumped_list = dump_lists(result)
-    loaded = load_lists(dumped_list)
+    dumped_list = serializeraw.dump_lists(result)
+    loaded = serializeraw.load_lists(dumped_list)
 
     assert loaded == result

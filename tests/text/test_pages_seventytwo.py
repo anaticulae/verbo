@@ -10,7 +10,7 @@
 import pytest
 import utila
 
-import tests.fixtures.seventytwo as fseventytwo
+import tests.fixtures.master72.seventytwo as fseventytwo
 import words.text.chapter
 import words.text.sentence as wts
 

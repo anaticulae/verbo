@@ -19,7 +19,7 @@ import words.feature
 
 SEVENTYTWO_FIRSTPAGE = os.path.join(
     words.ROOT,
-    'tests/fixtures/seventytwo_firstpage.txt',
+    'tests/fixtures/master72/seventytwo_firstpage.txt',
 )
 
 
@@ -39,6 +39,3 @@ def firstpage_sentences():
 
     sentences = [item.replace(utila.NEWLINE, ' ').strip() for item in splitted]
     return sentences
-
-
-FIRST_PAGE_SENTENCES = []

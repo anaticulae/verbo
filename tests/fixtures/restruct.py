@@ -8,31 +8,18 @@
 # =============================================================================
 
 import groupme.path
+import hey.fonts.store
+import iamraw
 import iamraw.path
+import iamraw.sections
 import pytest
+import sections.creator
+import sections.feature.chapter
+import sections.feature.index
 import sections.feature.section
+import sections.feature.toc
+import sections.feature.whitepage
 import serializeraw
-from hey.fonts.store import FontStore
-from hey.fonts.store import create_fontstore
-from iamraw import Document
-from iamraw.sections import PERCENT_100
-from iamraw.sections import Sections
-from sections.creator import add_chapter
-from sections.creator import add_content
-from sections.creator import add_index
-from sections.creator import add_introduction
-from sections.creator import add_table
-from sections.creator import add_text
-from sections.creator import add_title
-from sections.creator import add_toc
-from sections.creator import add_whitepage
-from sections.feature.chapter import work as chapter_work
-from sections.feature.index import work as index_work
-from sections.feature.legal import work as legal_work
-from sections.feature.section import work as section_work
-from sections.feature.title import work as title_work
-from sections.feature.toc import work as toc_work
-from sections.feature.whitepage import work as whitepage_work
 
 import tests.fixtures
 import tests.resources
@@ -72,26 +59,32 @@ RESTRUCT_PAGENUMBERS = groupme.path.pagenumbers(tests.resources.RESTRUCT)
 
 @pytest.fixture
 def restructured_chapter():
-    result = chapter_work(RESTRUCT_TEXT, RESTRUCT_TEXT_POSITION, RESTRUCT_TOC)
+    result = sections.feature.chapter.work(
+        RESTRUCT_TEXT,
+        RESTRUCT_TEXT_POSITION,
+        RESTRUCT_TOC,
+    )
     return result
 
 
 @pytest.fixture
-def restructured_text() -> Document:
+def restructured_text() -> iamraw.Document:
     loaded = serializeraw.load_document(RESTRUCT_TEXT)
     return loaded
 
 
 @pytest.fixture
-def restructured_fontstore() -> FontStore:
-    lookup = create_fontstore(RESTRUCT_FONT_HEADER, RESTRUCT_FONT_CONTENT)
+def restructured_fontstore() -> hey.fonts.store.FontStore:
+    lookup = hey.fonts.store.create_fontstore(RESTRUCT_FONT_HEADER,
+                                              RESTRUCT_FONT_CONTENT)
     return lookup
 
 
-def restructured_fontstore_fixture() -> FontStore:
+def restructured_fontstore_fixture() -> hey.fonts.store.FontStore:
     # TODO: Remove with new pytest - this is required, because pytest carn't
     # use pytest.fixture in paramertized tests.
-    lookup = create_fontstore(RESTRUCT_FONT_HEADER, RESTRUCT_FONT_CONTENT)
+    lookup = hey.fonts.store.create_fontstore(RESTRUCT_FONT_HEADER,
+                                              RESTRUCT_FONT_CONTENT)
     return lookup
 
 
@@ -109,7 +102,7 @@ def restructured_horizontals():
 
 @pytest.fixture
 def restructured_index():
-    result = index_work(RESTRUCT_ONELINE_TEXT)
+    result = sections.feature.index.work(RESTRUCT_ONELINE_TEXT)
     return result
 
 
@@ -137,46 +130,46 @@ def restructured_headlines():
 
 
 @pytest.fixture
-def restructured_sections_manual() -> Sections:
-    result = Sections()
+def restructured_sections_manual() -> iamraw.sections.Sections:
+    result = iamraw.sections.Sections()
 
     def analyse(section, start, end):
-        return section(result, start, end, PERCENT_100)
+        return section(result, start, end, iamraw.sections.PERCENT_100)
         # TODO: reactivate [start, START] later
-        # return section(result, [start, START], [end, END], PERCENT_100)
+        # return section(result, [start, START], [end, END], iamraw.sections.PERCENT_100)
 
     def add_children(parent, ctor, start, end):
         # new = ctor(parent, [start, START], [end, END], PERCENT_100)
-        new = ctor(parent, start, end, PERCENT_100)
+        new = ctor(parent, start, end, iamraw.sections.PERCENT_100)
         return new
 
     # Page, Start
     # Intro
-    intro = analyse(add_introduction, 0, 1)
-    add_children(intro, add_title, 0, 0)
-    add_children(intro, add_whitepage, 1, 1)
+    intro = analyse(sections.creator.add_introduction, 0, 1)
+    add_children(intro, sections.creator.add_title, 0, 0)
+    add_children(intro, sections.creator.add_whitepage, 1, 1)
 
     # First pages with tables
-    table_first = analyse(add_table, 2, 5)
-    add_children(table_first, add_toc, 2, 2)
-    add_children(table_first, add_whitepage, 3, 3)
-    add_children(table_first, add_text, 4, 4)
-    add_children(table_first, add_whitepage, 5, 5)
+    table_first = analyse(sections.creator.add_table, 2, 5)
+    add_children(table_first, sections.creator.add_toc, 2, 2)
+    add_children(table_first, sections.creator.add_whitepage, 3, 3)
+    add_children(table_first, sections.creator.add_text, 4, 4)
+    add_children(table_first, sections.creator.add_whitepage, 5, 5)
 
     # Content starts here
-    content = analyse(add_content, 6, 25)
-    add_chapter(content, 6, 7, number=1)
-    add_chapter(content, 8, 9, number=2)
-    add_chapter(content, 10, 11, number=3)
-    add_chapter(content, 12, 17, number=4)
-    add_chapter(content, 18, 19, number=5)
-    add_chapter(content, 20, 21, number=6)
-    add_chapter(content, 22, 23, number=7)
-    add_chapter(content, 24, 25, number=8)
+    content = analyse(sections.creator.add_content, 6, 25)
+    sections.creator.add_chapter(content, 6, 7, number=1)
+    sections.creator.add_chapter(content, 8, 9, number=2)
+    sections.creator.add_chapter(content, 10, 11, number=3)
+    sections.creator.add_chapter(content, 12, 17, number=4)
+    sections.creator.add_chapter(content, 18, 19, number=5)
+    sections.creator.add_chapter(content, 20, 21, number=6)
+    sections.creator.add_chapter(content, 22, 23, number=7)
+    sections.creator.add_chapter(content, 24, 25, number=8)
 
     # Second pages with table
-    table_second = analyse(add_table, 26, 26)
-    add_children(table_second, add_index, 26, 26)
+    table_second = analyse(sections.creator.add_table, 26, 26)
+    add_children(table_second, sections.creator.add_index, 26, 26)
 
     return result
 
@@ -195,7 +188,7 @@ def restructured_text_positions():
 
 @pytest.fixture
 def restructured_title():
-    result = title_work(
+    result = sections.feature.title.work(
         RESTRUCT_ONELINE_TEXT,
         RESTRUCT_ONELINE_FONT_HEADER,
         RESTRUCT_ONELINE_FONT_CONTENT,
@@ -205,18 +198,18 @@ def restructured_title():
 
 @pytest.fixture
 def restructured_toc():
-    result = toc_work(RESTRUCT_ONELINE_TEXT)
+    result = sections.feature.toc.work(RESTRUCT_ONELINE_TEXT)
     return result
 
 
-def restructured_text_fixture() -> Document:
+def restructured_text_fixture() -> iamraw.Document:
     loaded = serializeraw.load_document(RESTRUCT_TEXT)
     return loaded
 
 
 @pytest.fixture
 def restructured_whitepage():
-    result = whitepage_work(
+    result = sections.feature.whitepage.work(
         RESTRUCT_TEXT,
         RESTRUCT_TEXT_POSITION,
         footers=RESTRUCT_FOOTERS,
