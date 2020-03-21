@@ -1,0 +1,15 @@
+.. _0_1_0:
+
+RP 0.1.0
+=========
+
+* [ ] move code from hey and enable tests
+
+code quality
+------------
+
+before
+~~~~~~
+
+* Total coverage: 100.0%
+* Your code has been rated: 10.0/10
