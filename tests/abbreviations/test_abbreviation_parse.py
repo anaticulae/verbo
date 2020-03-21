@@ -7,14 +7,22 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import pytest
+
+import tests
 import tests.resources
 import words.abbreviation.loader
 import words.feature.abbreviation
 import words.path
 
 
-def bachelor37():
-    source = tests.resources.BACHELOR37
+@pytest.fixture
+def bachelor37(testdir, monkeypatch):
+    source = testdir.tmpdir
+    tests.run_words_success(
+        f'-i {tests.resources.BACHELOR37}',
+        monkeypatch=monkeypatch,
+    )
     text = words.path.text(source)
     headlines = words.path.headlines(source)
     pages = tuple(range(6, 10))
@@ -22,13 +30,13 @@ def bachelor37():
     return result
 
 
-def test_abbreviation_parse_page():
-    result = bachelor37()
+def test_abbreviation_parse_page(bachelor37):  # pylint:disable=W0621
+    result = bachelor37
     assert len(result) > 100, str(result)
 
 
-def test_abbreviation_dump_load_parsed_abbreviation():
-    expected = bachelor37()
+def test_abbreviation_dump_load_parsed_abbreviation(bachelor37):  # pylint:disable=W0621
+    expected = bachelor37
     loaded = words.abbreviation.loader.load_text_abbreviations(expected)
     dumped = words.abbreviation.loader.dump_text_abbreviations(loaded)
     assert dumped == expected, dumped
