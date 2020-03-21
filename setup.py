@@ -56,13 +56,18 @@ if __name__ == "__main__":
         version=VERSION,
         zip_safe=False,  # create 'zip'-file if True. Don't do it!
         classifiers=[
-            'Programming Language :: Python :: 3.6',
             'Programming Language :: Python :: 3.7',
             'Programming Language :: Python :: 3.8',
         ],
         packages=[
             'words',
-            'words.cli',
+            'words.abbreviation',
+            'words.feature',
+            'words.headlines',
+            'words.links',
+            'words.loader',
+            'words.text',
+            'words.utils',
         ],
         entry_points={
             'console_scripts': ['words = words.cli:main'],

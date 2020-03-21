@@ -6,8 +6,18 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 #==============================================================================
+
 import os
 
 __version__ = '0.0.0'
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+
+PROCESS = 'words'
+PACKAGE = PROCESS
+
+HEADLINE_STEP = 'headlines'
+HEADLINE_STEP_RESULT = 'headlines'
+HEADLINES = f'{HEADLINE_STEP}_{HEADLINE_STEP_RESULT}'
+
+WORDS_HEADLINES = f'{PROCESS}__{HEADLINES}.yaml'

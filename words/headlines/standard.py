@@ -1,0 +1,113 @@
+# =============================================================================
+# C O P Y R I G H T
+# -----------------------------------------------------------------------------
+# Copyright (c) 2019-2020 by Helmut Konrad Fahrendholz. All rights reserved.
+# This file is property of Helmut Konrad Fahrendholz. Any unauthorized copy,
+# use or distribution is an offensive act against international law and may
+# be prosecuted under federal law. Its content is company confidential.
+# =============================================================================
+
+import collections
+import re
+
+import hey.fonts.store
+import hey.textnavigator.fonts
+import hey.utils
+import iamraw
+import utila
+
+import words.headlines
+
+MIN_DOTTED_COUNT = 0.1  # TODO: HOLY VALUE
+
+SMALLEST_HEADLINE_DISTANCE = 1.05  # TODO: HOLY VALUE
+SMALLEST_HEADLINE_TEXTSIZE = 1.0
+
+MAX_HEADLINE_TEXTFEED = 0.0  # TODO: HOLY VALUE
+
+
+class StandardHeadlineExtractor(words.headlines.HeadlineExtractorStrategy):
+
+    def smallest_headlinedistance(self):
+        return utila.roundme(self.textdistance * SMALLEST_HEADLINE_DISTANCE)
+
+    def smallest_textsize(self):
+        return utila.roundme(self.textsize * SMALLEST_HEADLINE_TEXTSIZE)
+
+    def should_skip(
+            self,
+            distance_tosmall,
+            headline_tosmall,
+            textfeed,
+            lastitem,
+    ):
+        if textfeed > MAX_HEADLINE_TEXTFEED:
+            # skip numbered lists
+            return True
+
+        if distance_tosmall:
+            return True
+
+        if headline_tosmall:
+            return True
+        return False
+
+    def filter(self, items):
+        items = super().filter(items)
+        items = filter_headlines(items)
+        return items
+
+
+def filter_headlines(items: iamraw.PagesHeadlineList):
+    if isinstance(items, list):
+        items = {index: value for index, value in enumerate(items)}
+    result = collections.defaultdict(list)
+    for chapter, content in items.items():
+        chapter_headlines = []
+        for headline in content:
+            parsed = is_headline(headline.text)
+            if parsed:
+                chapter_headlines.append(headline)
+                continue
+            if headline.text in words.headlines.WHITELIST:
+                chapter_headlines.append(headline)
+                continue
+        result[chapter].extend(chapter_headlines)
+    # require KeyError
+    result = dict(result)  # pylint:disable=R0204
+    return result
+
+
+def is_headline(line):
+    return parse_headline(line) is not None
+
+
+def parse_headline(line):
+    line = line.strip()
+    return re.match(HEADLINE, line)
+
+
+# TODO: CODE DUPLICATION, COLLECT DIFFERENT HEADLINE PARSING APPROACHES AND
+# CONVERT TO SINGLE ONE.
+USER_CONTENT = r'\w\d\.&:, \-' + hey.utils.SPECIAL_MINUS_SIGN
+# \W to ensure non-unicode character, like special - chars
+HEADLINE = re.compile(
+    (
+        r'^'
+        r'(?P<level>(\d{1,2}\.?)+\d{0,2})'
+        r'[ ]{1,5}'
+        r'(?P<text>\w'  # ensure that text does not start with whitespace
+        fr'[{USER_CONTENT}]+?)'
+        r'$'),
+    re.VERBOSE,
+)
+
+
+def isdotted(items):
+    assert items
+    flat = utila.flatten(items)
+
+    dotted = [item for item in flat if is_headline(item.text)]
+    percent = len(dotted) / len(flat)
+
+    return percent >= MIN_DOTTED_COUNT

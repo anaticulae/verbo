@@ -7,5 +7,16 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-utila==1.15.1
-hey==1.19.0
+import words.text.sentence
+import words.text.word
+
+
+def text_to_words(text: str) -> list:
+    result = []
+    for sentence_ in words.text.sentence.split_sentences(text):
+        for word_ in words.text.word.split_words(
+                sentence_,
+                validate_sentences=False,
+        ):
+            result.append(word_)
+    return result

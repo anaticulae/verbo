@@ -7,5 +7,17 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-utila==1.15.1
-hey==1.19.0
+import utila
+
+
+def headlines(path: str, prefix: str = '') -> str:
+    return utila.pathconnector(
+        path,
+        'words',
+        'headlines_headlines',
+        prefix,
+    )
+
+
+def text(path: str, prefix: str = '') -> str:
+    return utila.pathconnector(path, 'words', 'word_result', prefix)
