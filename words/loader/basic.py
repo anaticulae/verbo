@@ -15,8 +15,8 @@ import functools
 import configo
 import groupme.path
 import hey.fonts.store
-import hey.path
 import iamraw
+import iamraw.path
 import serializeraw
 import texmex
 
@@ -66,11 +66,11 @@ def load_basic(
 
 @functools.lru_cache(configo.CACHE_SMALL)
 def load_basic_frompath(path: str, pages: tuple = None):
-    text = hey.path.text(path)
-    textposition = hey.path.textposition(path)
-    fontheader = hey.path.fontheader(path)
-    fontcontent = hey.path.fontcontent(path)
-    pagesizes = hey.path.sizeandborder(path)
+    text = iamraw.path.text(path)
+    textposition = iamraw.path.textposition(path)
+    fontheader = iamraw.path.fontheader(path)
+    fontcontent = iamraw.path.fontcontent(path)
+    pagesizes = iamraw.path.sizeandborder(path)
     headerfooters = groupme.path.headerfooters(path)
 
     loaded = load_basic(
