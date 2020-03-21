@@ -45,14 +45,13 @@ PACKAGE = [
 
 
 def run_package(pdf, outpath, pages=None):
-    utila.log(f'run {pdf}')
+    relative = utila.make_relative(pdf, tests.resources.RESOURCES)
+    utila.log(f'run: {relative}')
     todo = []
     todo.extend(create_todo_rawmaker(pdf, outpath, pages=pages))
 
-    todo.append(('groupme', outpath, outpath, ''))
-    todo.append(('sections', outpath, outpath, '--all'))
-    # required by abbreviation test
-    todo.append(('words', outpath, outpath, '--all'))
+    todo.append(('groupme', outpath, outpath, '-j8'))
+    todo.append(('sections', outpath, outpath, '-j8'))
 
     todo = [
         f'{executable} -i {inpath} -o {outpath} {configuration}'
@@ -61,23 +60,13 @@ def run_package(pdf, outpath, pages=None):
     todo = ' && '.join(todo)  # pylint:disable=R0204
     completed = utila.run(todo)
     utila.assert_success(completed)
+    utila.log(f'completed: {relative}')
     return todo
 
-
-def run_single(pdf, dest, pages=None):
-    """Extract only rawmaker and linero and nothing more."""
-    todo = create_todo_rawmaker(pdf, dest, pages=pages)
-    todo = [
-        f'{executable} -i {inpath} -o {outpath} {configuration}'
-        for (executable, inpath, outpath, configuration) in todo
-    ]
-    todo = ' && '.join(todo)  # pylint:disable=R0204
-    completed = utila.run(todo)
-    utila.assert_success(completed)
-    return todo
 
 
 def extract():
+    utila.log(f'root: {tests.resources.RESOURCES}')
     for pdf, _, __ in PACKAGE:
         assert pdf.endswith('.pdf') and os.path.exists(pdf), pdf
 
@@ -92,12 +81,10 @@ def extract():
         futures.update(futures_standard)
         for future in concurrent.futures.as_completed(futures):
             try:
-                comment = future.result()
-                utila.log(comment)
+                future.result()
             except Exception:
                 utila.error(f'{future} failed.')
                 raise
-
 
 def create_todo_rawmaker(inpath, outpath, pages=None):
     # default config
