@@ -7,7 +7,6 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import hey.fonts.store
 import iamraw
 import texmex
 
@@ -21,7 +20,7 @@ def collect_paragraph(
         second: iamraw.Headline,
         page: int,
         pcn: texmex.PageTextContentNavigator,
-        fcs: hey.fonts.store.FontContentStore,  # pylint:disable=W0613
+        fcs: iamraw.FontContentStore,  # pylint:disable=W0613
         boxes: words.boxed.BoxedChecker,
 ) -> iamraw.ChapterText:
     """Extract paragraphs between defined headlines.

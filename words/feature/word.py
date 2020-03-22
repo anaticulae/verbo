@@ -35,8 +35,6 @@ import hey.undefined
 import serializeraw
 import utila
 
-import words.feature.boxed
-
 PATTERN = re.compile(r'^[0-9]+u$')
 
 
@@ -151,7 +149,7 @@ def load_resources(
 ):
     headlines = serializeraw.load_headlines(headlines, pages=pages)
     text = serializeraw.load_text(text, headlines=headlines, pages=pages)
-    boxed = words.feature.boxed.load_boxedcontent(boxed, pages=pages)
+    boxed = serializeraw.load_boxedcontent(boxed, pages=pages)
     lists = serializeraw.load_lists(lists, pages=pages)
     listlookup = ListLookUp(lists)
     boxlookup = BoxLookUp(boxed)

@@ -6,34 +6,21 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
+
 import hey.undefined
 import iamraw
-import pytest
 import serializeraw
 import texmex
-import utila
 
+import tests.fixtures.restruct
 import tests.resources
 import words.feature
 import words.feature.text
-import words.text.chapter as wtc
-# pylint:disable=W0611
-# pylint:disable=ungrouped-imports
-from tests.fixtures.restruct import restructured_contentborder
-from tests.fixtures.restruct import restructured_headerfooter
-from tests.fixtures.restruct import restructured_headlines
-from tests.fixtures.restruct import restructured_horizontals
-from tests.fixtures.restruct import restructured_pagenumbers
-from tests.fixtures.restruct import restructured_sizeandborder
-from tests.fixtures.restruct import restructured_text
-from tests.fixtures.restruct import restructured_text_positions
-from tests.fixtures.restruct import restructured_textexample
+import words.headlines
 
 
-def test_text_work(
-        restructured_headlines,  # pylint:disable=W0621
-):
-    headlines = restructured_headlines
+def test_text_work():
+    headlines = tests.fixtures.restruct.restructured_headlines()
     result = words.feature.text.work(
         boxes=iamraw.path.boxed(tests.resources.RESTRUCT),
         fontcontent=iamraw.path.fontcontent(tests.resources.RESTRUCT),
@@ -47,17 +34,14 @@ def test_text_work(
     assert len(result) > 6000, str(result)
 
 
-def test_text_dump_and_load_text(
-        restructured_headlines,  # pylint:disable=W0621
-        restructured_textexample,  # pylint:disable=W0621
-):
-    headlines = restructured_headlines
-    textexample = restructured_textexample
+def test_text_dump_and_load_text():
+    headlines = tests.fixtures.restruct.restructured_headlines()
+    textexample = tests.fixtures.restruct.restructured_textexample()
     assert textexample is not None
     assert headlines is not None
     headlines = serializeraw.load_headlines(headlines)
 
-    dumped = serializeraw.dump_text(restructured_textexample)
+    dumped = serializeraw.dump_text(textexample)
     loaded = serializeraw.load_text(dumped, headlines)
 
     for first, second in zip(loaded, textexample):
@@ -65,10 +49,8 @@ def test_text_dump_and_load_text(
     assert loaded == textexample
 
 
-def test_text_extractor_titles(
-        restructured_textexample,  # pylint:disable=W0621
-):
-    result = restructured_textexample
+def test_text_extractor_titles():
+    result = tests.fixtures.restruct.restructured_textexample()
     # page6
     assert result[0][1][0][0].text == 'CHAPTER 1'
     assert result[0][1][1][0].text == 'RestructuredText Tutorial'
@@ -114,130 +96,25 @@ def test_text_extractor_titles(
     assert result[10][1][1][0].text == 'Sphinx Guide'
 
 
-@pytest.mark.parametrize(
-    'current_page,current_headline,expected_start,expected_end',
-    [
-        pytest.param(
-            8,
-            2,
-            ([]),  # no content after headline
-            ('u19'),
-            id='page8',
-        ),
-        pytest.param(
-            13,
-            7,
-            ('Getting Started'),
-            ('make html is the main way you will '
-             'build HTML documentation locally. It is simply a wrapper '
-             'around a more complex call to Sphinx.'),
-            id='page13',
-            marks=pytest.mark.xfail(reason='dont know why'),
-        ),
-        pytest.param(
-            14,
-            8,
-            ('Now that we have our basic skeleton, let’s document the project. '
-             'As you might have guessed from the name, we’ll be documenting a'
-             ' basic web crawler.'),
-            ('Include the following in your install.rst:'),
-            id='page14',
-            marks=pytest.mark.xfail(reason='require selective approach'),
-        ),
-        pytest.param(
-            15,
-            9,
-            ('u0'),
-            (None),
-            id='page15',
-        ),
-        pytest.param(
-            16,
-            10,
-            ('Make a manpage'),
-            ('u21'),
-            id='page16',
-            marks=pytest.mark.xfail(reason='dont know why'),
-        ),
-    ])
-def test_extract_texts_page_x(  # pylint:disable=too-many-locals
-        current_page,
-        current_headline,
-        expected_start,
-        expected_end,
-        restructured_headlines,  # pylint:disable=W0621
-):
-    headlines = restructured_headlines
-    loaded = words.feature.load_resources(
-        boxes=iamraw.path.boxed(tests.resources.RESTRUCT),
-        fontcontent=iamraw.path.fontcontent(tests.resources.RESTRUCT),
-        fontheader=iamraw.path.fontheader(tests.resources.RESTRUCT),
-        headerfooters=iamraw.path.headerfooters(tests.resources.RESTRUCT),
-        headlines=headlines,
-        pagesizes=iamraw.path.sizeandborder(tests.resources.RESTRUCT),
-        text=iamraw.path.text(tests.resources.RESTRUCT),
-        textposition=iamraw.path.textposition(tests.resources.RESTRUCT),
-    )
+def test_text_convert_undefined_to_text():
+    headlines = tests.fixtures.restruct.restructured_headlines()
+    textexample = tests.fixtures.restruct.restructured_textexample()
+    text = serializeraw.load_document(
+        iamraw.path.text(tests.resources.RESTRUCT))
+    text_positions = serializeraw.load_textpositions(
+        iamraw.path.textposition(tests.resources.RESTRUCT))
 
-    def join_output(paragraph):
-        try:
-            joined = ''.join([item for (item, _) in paragraph.content])
-            return joined.replace(utila.NEWLINE, ' ')
-        except TypeError:
-            return 'u%d' % paragraph.container
+    border = serializeraw.load_pageborders(
+        iamraw.path.sizeandborder(tests.resources.RESTRUCT))
+    headerfooters = serializeraw.load_headerfooter(
+        iamraw.path.headerfooters(tests.resources.RESTRUCT))
 
-    # fill headlines
-    pages = [item.page for item in loaded.textnavigators]
-    headlines = wtc.insert_empty_pages(loaded.headlines, maxpage=max(pages))
-    # ensure that all collect headlines are from page `current_page`
-    current = headlines[current_headline]
-    assert all([item.page == current_page for item in current])
-
-    analyzed = wtc.analyze_page(
-        current,
-        loaded.fontstore,
-        loaded.textnavigators,
-        loaded.border,
-        loaded.boxes,
-    )
-    page, content = analyzed.page, analyzed.content
-    assert page == current_page, 'wrong extracted page: %d' % page
-
-    first_headline, first_output = content[0][0], content[0][1]  # pylint:disable=E1136
-    last_headline, last_output = content[-1][0], content[-1][1]  # pylint:disable=E1136
-    # msg = 'invalid returned value due `analyze_page`'
-    # assert headline.text == current[0].text, '%s\n%s' % (msg, output)
-    assert first_headline.page == current_page
-    assert last_headline.page == current_page
-
-    if expected_start == []:
-        # empty content on Headlines without content is possible
-        assert first_output == expected_start
-    else:
-        assert first_output, str(first_output)
-        first_line = join_output(first_output[0])
-        assert first_line == expected_start
-    last_line = join_output(last_output[-1]) if last_output else None
-    assert last_line == expected_end
-
-
-def test_text_convert_undefined_to_text(  # pylint:disable=R0914
-        restructured_headlines,  # pylint:disable=W0621
-        restructured_textexample,  # pylint:disable=W0621
-        restructured_text,  # pylint:disable=W0621
-        restructured_text_positions,  # pylint:disable=W0621
-        restructured_contentborder,  # pylint:disable=W0621
-):
-    headlines = restructured_headlines
-    textexample = restructured_textexample
-    text = restructured_text
-    text_positions = restructured_text_positions
-    contentborder = restructured_contentborder
+    contentborder = words.headlines.contentborder(border, headerfooters)
     assert textexample is not None
     assert headlines is not None
     headlines = serializeraw.load_headlines(headlines)
 
-    dumped = serializeraw.dump_text(restructured_textexample)
+    dumped = serializeraw.dump_text(textexample)
     loaded = serializeraw.load_text(dumped, headlines)
 
     undefined = hey.undefined.extract_undefined(

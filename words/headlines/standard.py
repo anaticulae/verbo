@@ -10,8 +10,6 @@
 import collections
 import re
 
-import hey.fonts.store
-import hey.textnavigator.fonts
 import hey.utils
 import iamraw
 import utila

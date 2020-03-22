@@ -12,26 +12,16 @@ import iamraw
 import pytest
 import sections.path
 import serializeraw
-import texmex
 import utila
 
 import tests.fixtures.headlines
+import tests.fixtures.restruct
 import tests.resources
 import words.feature
 import words.feature.headlines
 import words.headlines
 import words.headlines.nolevel
 import words.loader.basic
-# pylint:disable=ungrouped-imports
-# pylint:disable=unused-import
-from tests.fixtures.restruct import restructured_fontstore
-from tests.fixtures.restruct import restructured_headerfooter
-from tests.fixtures.restruct import restructured_horizontals
-from tests.fixtures.restruct import restructured_sections
-from tests.fixtures.restruct import restructured_sections_manual
-from tests.fixtures.restruct import restructured_sizeandborder
-from tests.fixtures.restruct import restructured_text
-from tests.fixtures.restruct import restructured_text_positions
 
 # NOTE: WHAT SHOULD WE DO WITH THE RAW_LEVEL?
 EXPECTED = [
@@ -91,36 +81,12 @@ EXPECTED = [
 ]
 
 
-def test_headlines_extract_headlines(
-        # pylint:disable=W0621
-        restructured_sections_manual,
-        restructured_text_positions,
-        restructured_text,
-        restructured_fontstore,
-        restructured_sizeandborder,
-        restructured_headerfooter,
-):
+def test_headlines_extract_headlines():
     # TODO: Require new approach, may look into table of content
-    sections = restructured_sections_manual
-    position = restructured_text_positions
-    document = restructured_text
-    sizeandborder = restructured_sizeandborder
-    headerfooters = restructured_headerfooter
-
-    navigator = texmex.create_pagetextnavigators(
-        text=document,
-        text_positions=position,
-    )
-
-    basic = words.loader.basic.BasicRequiredResources(
-        sizeandborder=sizeandborder,
-        fontstore=restructured_fontstore,
-        textnavigators=navigator,
-        headerfooters=headerfooters,
-    )
-
+    section = tests.fixtures.restruct.restructured_sections_manual()
+    basic = words.loader.basic.load_basic_frompath(tests.resources.RESTRUCT)
     extractor = words.headlines.nolevel.NoLevelHeadlineExtractor(
-        sectionlist=sections,
+        sectionlist=section,
         basic=basic,
         chapters=[0, 1],
     )
@@ -132,7 +98,7 @@ def test_headlines_extract_headlines(
 
 
 def test_headlines_work():
-    sections_ = restructured_sections()
+    sections_ = tests.fixtures.restruct.restructured_sections()
     dumped = words.feature.headlines.work(
         boxes=iamraw.path.boxed(tests.resources.RESTRUCT),
         font_content=iamraw.path.fontcontent(tests.resources.RESTRUCT),

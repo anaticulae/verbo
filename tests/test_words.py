@@ -7,32 +7,20 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import pytest
 import serializeraw
 
 import words.feature.word
-# pylint:disable=W0611
 from tests.fixtures.restruct import restructured_boxed
-from tests.fixtures.restruct import restructured_boxed_dumped
 from tests.fixtures.restruct import restructured_headlines
-from tests.fixtures.restruct import restructured_list_dumped
 from tests.fixtures.restruct import restructured_list_work
 from tests.fixtures.restruct import restructured_textexample
-from tests.fixtures.restruct import restructured_textexample_dumped
 
 
-@pytest.fixture
-def restructured_words(
-        # pylint:disable=W0621
-        restructured_boxed_dumped,
-        restructured_list_dumped,
-        restructured_headlines,
-        restructured_textexample_dumped,
-):
-    text = restructured_textexample_dumped
-    headlines = restructured_headlines
-    boxed = restructured_boxed_dumped
-    lists = restructured_list_dumped
+def restructured_words():
+    text = serializeraw.dump_text(restructured_textexample())
+    headlines = restructured_headlines()
+    boxed = serializeraw.dump_boxedcontent(restructured_boxed())
+    lists = serializeraw.dump_lists(restructured_list_work())
     # dumped data as input
     for item in [
             boxed,
@@ -55,14 +43,10 @@ def restructured_words(
     return result
 
 
-def test_dump_and_load_words_result(
-        # pylint:disable=W0621
-        restructured_words,
-        restructured_headlines,
-):
-    # TODO: check completness of this test
-    headlines = restructured_headlines
-    dumped = serializeraw.dump_text(restructured_words)
+def test_dump_and_load_words_result():
+    word_ = restructured_words()
+    headlines = restructured_headlines()
+    dumped = serializeraw.dump_text(word_)
     headlines = serializeraw.load_headlines(headlines)
     loaded = serializeraw.load_text(dumped, headlines)
-    assert loaded == restructured_words
+    assert loaded == word_

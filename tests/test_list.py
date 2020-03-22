@@ -9,20 +9,9 @@
 
 import serializeraw
 
-#pylint:disable=W0611
-from tests.fixtures.restruct import restructured_headlines
-from tests.fixtures.restruct import restructured_horizontals
-from tests.fixtures.restruct import restructured_list_dumped
 from tests.fixtures.restruct import restructured_list_work
-from tests.fixtures.restruct import restructured_sizeandborder
-from tests.fixtures.restruct import restructured_text
-from tests.fixtures.restruct import restructured_text_positions
-from tests.fixtures.restruct import restructured_textexample
-from tests.fixtures.restruct import restructured_textexample_dumped
-from words.feature.list import extract_lists
 from words.feature.list import parse_dotted_list
 from words.feature.list import parse_numbered_list
-from words.feature.list import work
 
 NUMBERED_LIST_SAMPLE_SIZE = 9
 NUMBERED_LIST = """
@@ -51,7 +40,6 @@ Text
 
 
 def test_list_numbered_regex():
-
     parsed = parse_numbered_list(NUMBERED_LIST)
 
     assert len(parsed) == NUMBERED_LIST_SAMPLE_SIZE, parsed
@@ -160,8 +148,8 @@ def test_list_dotted_with_content_only():
     assert parsed == ['Index Page', 'Support', 'Changelog']
 
 
-def test_list_work(restructured_list_dumped):  # pylint:disable=W0621
-    dumped_list = restructured_list_dumped
+def test_list_work():  # pylint:disable=W0621
+    dumped_list = serializeraw.dump_lists(restructured_list_work())
     assert len(dumped_list) > 400, str(dumped_list)
 
     result = serializeraw.load_lists(dumped_list)
@@ -187,10 +175,8 @@ def test_list_work(restructured_list_dumped):  # pylint:disable=W0621
     assert last_items == ['genindex', 'modindex', 'search']
 
 
-def test_list_dump_and_load_lists(restructured_list_work):  # pylint:disable=W0621
-    result = restructured_list_work
-
+def test_list_dump_and_load_lists():  # pylint:disable=W0621
+    result = restructured_list_work()
     dumped_list = serializeraw.dump_lists(result)
     loaded = serializeraw.load_lists(dumped_list)
-
     assert loaded == result
