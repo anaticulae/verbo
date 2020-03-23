@@ -26,6 +26,7 @@ import words.feature.headlines
 import words.feature.list
 import words.headlines
 import words.loader.input
+import words.text
 import words.text.chapter
 
 

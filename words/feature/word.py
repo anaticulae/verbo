@@ -31,9 +31,10 @@ import functools
 import re
 
 import configo
-import hey.undefined
 import serializeraw
 import utila
+
+import words.undefined
 
 PATTERN = re.compile(r'^[0-9]+u$')
 
@@ -69,7 +70,7 @@ def process_words(text, listlookup, boxlookup):
             for index, line in enumerate(headlinecontent):
                 if not PATTERN.match(line):
                     continue
-                undefined = hey.undefined.intindex(line)
+                undefined = words.undefined.intindex(line)
                 searched = listlookup.search(
                     page,
                     headline.container,

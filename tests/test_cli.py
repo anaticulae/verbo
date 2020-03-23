@@ -33,6 +33,7 @@ def test_run(command, monkeypatch, capsys):
     tests.run_words_success(command, monkeypatch=monkeypatch)
     tests.write_capsys(capsys)
 
+
 @utila.skip_longrun
 def test_feature_words_work_pages0_10(testdir, monkeypatch):
     root = str(testdir)

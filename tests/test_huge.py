@@ -184,7 +184,6 @@ def words_result(sections_result):  # pylint:disable=W0621
     return (tmpdir, tocpath, generalpath, sectionspath, wordspath)
 
 
-
 @utila.skip_nightly
 @pytest.mark.usefixtures('testdir')
 def test_huge_running_words(words_result, request):  # pylint:disable=W0621

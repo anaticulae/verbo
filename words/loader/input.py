@@ -12,12 +12,12 @@ import pprint
 import typing
 
 import configo
-import hey.undefined
 import iamraw
 import serializeraw
 import utila
 
 import words.headlines
+import words.undefined
 
 
 @functools.lru_cache(configo.CACHE_SMALL)
@@ -53,7 +53,7 @@ def load_resources(
         text_position,
         pages=pages,
     )
-    undefined = hey.undefined.extract_undefined(
+    undefined = words.undefined.extract_undefined(
         extracted_text,
         text,
         text_position,

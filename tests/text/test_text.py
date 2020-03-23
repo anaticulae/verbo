@@ -7,7 +7,6 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import hey.undefined
 import iamraw
 import serializeraw
 import texmex
@@ -17,6 +16,7 @@ import tests.resources
 import words.feature
 import words.feature.text
 import words.headlines
+import words.undefined
 
 
 def test_text_work():
@@ -117,7 +117,7 @@ def test_text_convert_undefined_to_text():
     dumped = serializeraw.dump_text(textexample)
     loaded = serializeraw.load_text(dumped, headlines)
 
-    undefined = hey.undefined.extract_undefined(
+    undefined = words.undefined.extract_undefined(
         loaded,
         text,
         text_positions,
