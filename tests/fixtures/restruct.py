@@ -96,7 +96,7 @@ def restructured_sections_manual() -> iamraw.sections.Sections:
     return result
 
 
-def restructured_textexample():
+def restruct_resources():
     headlines = restructured_headlines()
     loaded = words.feature.load_resources(
         text=iamraw.path.text(tests.resources.RESTRUCT),
@@ -108,6 +108,11 @@ def restructured_textexample():
         headerfooters=iamraw.path.headerfooters(tests.resources.RESTRUCT),
         boxes=iamraw.path.boxed(tests.resources.RESTRUCT),
     )
+    return loaded
+
+
+def restructured_textexample():
+    loaded = restruct_resources()
     extracted = words.text.chapter.extract_texts(loaded)
     assert extracted is not None
     return extracted
