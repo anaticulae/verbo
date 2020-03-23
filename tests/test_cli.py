@@ -8,6 +8,7 @@
 # =============================================================================
 
 import pytest
+import utila
 
 import tests
 import tests.fixtures
@@ -30,10 +31,9 @@ import tests.resources
 def test_run(command, monkeypatch, capsys):
     """Run help and version command to reach basic test coverage"""
     tests.run_words_success(command, monkeypatch=monkeypatch)
-
     tests.write_capsys(capsys)
 
-
+@utila.skip_longrun
 def test_feature_words_work_pages0_10(testdir, monkeypatch):
     root = str(testdir)
     cmd = f'-i {root} -o {root} --pages=0:10'
