@@ -184,12 +184,8 @@ def words_result(sections_result):  # pylint:disable=W0621
     return (tmpdir, tocpath, generalpath, sectionspath, wordspath)
 
 
-@utila.skip_longrun
-def test_huge_sections_extractor(testdir, sections_result):  # pylint:disable=W0621
-    assert sections_result
 
-
-@utila.skip_longrun
+@utila.skip_nightly
 @pytest.mark.usefixtures('testdir')
 def test_huge_running_words(words_result, request):  # pylint:disable=W0621
     """Run rawmaker -> sections -> words. Ensure that this chain works for
@@ -206,10 +202,3 @@ def test_huge_running_words(words_result, request):  # pylint:disable=W0621
 
     if expected_headlines:
         assert len(headlines) == expected_headlines, headlines
-
-
-@utila.skip_longrun
-@pytest.mark.usefixtures('groupme')
-@pytest.mark.usefixtures('testdir')
-def test_huge_running_groupme():
-    """Run rawmaker > groupme"""
