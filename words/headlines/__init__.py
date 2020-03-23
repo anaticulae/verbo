@@ -10,7 +10,6 @@ import abc
 import collections
 import typing
 
-import hey.textnavigator.fonts as htf
 import iamraw
 import iamraw.sections
 import sections.feature.section
@@ -106,10 +105,10 @@ class HeadlineExtractorStrategy(abc.ABC):  # pylint:disable=too-many-instance-at
 
     def setup(self):
         """Run before starting extraction."""
-        self.textsize = htf.document_textsize(
+        self.textsize = texmex.document_textsize(
             navigators=self.pagetextnavigators,)
 
-        self.textdistance = htf.document_textdistance(
+        self.textdistance = texmex.document_textdistance(
             navigators=self.pagetextnavigators,
             borders=self.sizeandborder,
         )
@@ -139,13 +138,13 @@ class HeadlineExtractorStrategy(abc.ABC):  # pylint:disable=too-many-instance-at
         result = []
         xoff, xend = pagecontent.offset
         xoff = xoff if xoff is not None else 0
-        bounds = htf.textbounds(
+        bounds = texmex.textbounds(
             pagecontent,
             utila.select_page(self.border, page=pagecontent.page),
         )
         without_content = [item.bounds for item in bounds]
         # PageContentNavigator, the header and footer is ignored
-        textdistances = htf.fontdistance_textbounds(without_content)
+        textdistances = texmex.fontdistance_textbounds(without_content)
 
         textfeeds = [item.bounds.xdist for item in bounds]
 

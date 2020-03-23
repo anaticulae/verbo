@@ -20,8 +20,6 @@ import functools
 import re
 import typing
 
-import hey.textnavigator
-import hey.textnavigator.merger
 import iamraw
 import serializeraw
 import texmex
@@ -118,12 +116,12 @@ def extract_lists(  # pylint:disable=R0914
     # TODO: MAX_Y_MERGE IS VERY INSTABLE
     # assert hey.textnavigator.is_navigator(page), type(page)
 
-    page, merged = hey.textnavigator.merger.merge_content(
+    page, merged = texmex.merge_content(
         page,
         max_y_merge=15,  # TODO: HOLY VALUE
         uindex=uindex,
     )
-    text_bounds = hey.textnavigator.merger.merge_content_join(page)
+    text_bounds = texmex.merge_content_join(page)
 
     result = []
     enumerated = enumerate(zip(text_bounds, merged))
