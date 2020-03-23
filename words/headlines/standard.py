@@ -10,7 +10,6 @@
 import collections
 import re
 
-import hey.utils
 import iamraw
 import utila
 
@@ -85,9 +84,12 @@ def parse_headline(line):
     return re.match(HEADLINE, line)
 
 
+# Unicode special minus sign
+SPECIAL_MINUS_SIGN = '–'
+
 # TODO: CODE DUPLICATION, COLLECT DIFFERENT HEADLINE PARSING APPROACHES AND
 # CONVERT TO SINGLE ONE.
-USER_CONTENT = r'\w\d\.&:, \-' + hey.utils.SPECIAL_MINUS_SIGN
+USER_CONTENT = r'\w\d\.&:, \-' + SPECIAL_MINUS_SIGN
 # \W to ensure non-unicode character, like special - chars
 HEADLINE = re.compile(
     (
