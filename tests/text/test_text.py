@@ -127,19 +127,22 @@ def test_text_convert_undefined_to_text():
     expected_list = [
         texmex.TextInfo(
             bounding=iamraw.BoundingBox(
-                x0=88.44, y0=332.13, x1=133.28, y1=344.13),
+                x0=88.44, y0=332.13, x1=133.28, y1=344.14),
+            bounding_mean=12.01,
             text='• genindex',
             style=texmex.TextStyle.create(start=0, end=11, size=9.96),
         ),
         texmex.TextInfo(
             bounding=iamraw.BoundingBox(
                 x0=88.44, y0=350.07, x1=136.61, y1=362.07),
+            bounding_mean=12.0,
             text='• modindex',
             style=texmex.TextStyle.create(start=0, end=11, size=9.96),
         ),
         texmex.TextInfo(
             bounding=iamraw.BoundingBox(
                 x0=88.44, y0=368.00, x1=122.35, y1=380.00),
+            bounding_mean=12.0,
             text='• search',
             style=texmex.TextStyle.create(start=0, end=9, size=9.96),
         ),
@@ -155,7 +158,10 @@ def test_text_convert_undefined_to_text():
         ),
     ]
     last_item = undefined[-1]
-    # TODO: REMOVE LATER?
-    for item in last_item[0][2][0][0][1]:
-        item.text = item.text.strip()
-    assert last_item == expected
+    text = [item.text.strip() for item in last_item[0][2][0][0][1]]
+    expected = [
+        '• genindex',
+        '• modindex',
+        '• search',
+    ]
+    assert text == expected, str(text)
