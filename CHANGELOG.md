@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.1.3
+
+### Fix
+
+* remove disabled yaml formatter (2dea308f98d6)
+
 ## v0.1.2
 
 ## v0.1.1
