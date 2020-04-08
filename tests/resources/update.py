@@ -42,6 +42,7 @@ PACKAGE = [
     (tests.resources.PYPORTING_PDF, tests.resources.PYPORTING, None),
     (tests.resources.RESTRUCT_PDF, tests.resources.RESTRUCT, None),
 ]
+# yapf:enable
 
 
 def run_package(pdf, outpath, pages=None):
@@ -64,7 +65,6 @@ def run_package(pdf, outpath, pages=None):
     return todo
 
 
-
 def extract():
     utila.log(f'root: {tests.resources.RESOURCES}')
     for pdf, _, __ in PACKAGE:
@@ -85,6 +85,7 @@ def extract():
             except Exception:
                 utila.error(f'{future} failed.')
                 raise
+
 
 def create_todo_rawmaker(inpath, outpath, pages=None):
     # default config
