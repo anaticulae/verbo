@@ -8,6 +8,7 @@
 # =============================================================================
 
 import pytest
+import serializeraw
 import utila
 
 import tests
@@ -40,6 +41,6 @@ def test_abbreviation_parse_page(bachelor37):  # pylint:disable=W0621
 @utila.skip_longrun
 def test_abbreviation_dump_load_parsed_abbreviation(bachelor37):  # pylint:disable=W0621
     expected = bachelor37
-    loaded = words.abbreviation.loader.load_text_abbreviations(expected)
-    dumped = words.abbreviation.loader.dump_text_abbreviations(loaded)
+    loaded = serializeraw.load_text_abbreviations(expected)
+    dumped = serializeraw.dump_text_abbreviations(loaded)
     assert dumped == expected, dumped

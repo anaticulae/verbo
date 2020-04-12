@@ -11,6 +11,7 @@ import contextlib
 
 import groupme.abbreviation
 import groupme.abbreviation.lists
+import iamraw
 import utila
 
 import words.abbreviation.loader
@@ -19,9 +20,9 @@ import words.text.word
 
 
 def parses(
-        content: words.abbreviation.loader.PageContentTexts,
+        content: iamraw.PageContentTexts,
         lookup: groupme.abbreviation.lists.AbbreviationListLookup = None,
-):
+) -> iamraw.ExtractedTextAbbreviations:
     if lookup is None:
         lookup = groupme.abbreviation.lists.AbbreviationListLookup()
     result = []
@@ -34,9 +35,9 @@ def parses(
 
 
 def parse_page(  # pylint:disable=R0914
-        content: words.abbreviation.loader.PageContentText,
+        content: iamraw.PageContentText,
         lookup: groupme.abbreviation.lists.AbbreviationListLookup,
-) -> groupme.abbreviation.Abbreviations:
+) -> iamraw.ExtractedTextAbbreviation:
     collected = []
     page = content.page
     page_sentence, page_word = 0, 0
@@ -50,19 +51,19 @@ def parse_page(  # pylint:disable=R0914
                     continue
                 for word in items:
                     if word in lookup or isabbreviation(word):
-                        position = groupme.abbreviation.AbbreviationPosition(
+                        position = iamraw.AbbreviationPosition(
                             page=page,
                             sentence=page_sentence,
                             word=page_word,
                         )
-                        parsed = groupme.abbreviation.Abbreviation(
+                        parsed = iamraw.Abbreviation(
                             short=word,
                             position=position,
                         )
                         collected.append(parsed)
                     page_word += 1
                 page_sentence += 1
-    result = words.abbreviation.loader.ExtractedTextAbbreviation(
+    result = iamraw.ExtractedTextAbbreviation(
         page=content.page,
         content=collected,
     )

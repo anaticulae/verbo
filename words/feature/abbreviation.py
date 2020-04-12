@@ -43,5 +43,5 @@ def work(text: str, headlines: str, pages: tuple = None) -> str:
 
     parsed = words.abbreviation.parser.parses(loaded, lookup)
 
-    dumped = words.abbreviation.loader.dump_text_abbreviations(parsed)
+    dumped = serializeraw.dump_text_abbreviations(parsed)
     return dumped
