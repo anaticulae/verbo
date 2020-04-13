@@ -87,7 +87,6 @@ class HeadlineExtractorStrategy(abc.ABC):  # pylint:disable=too-many-instance-at
         self.ready = True
         # run extraction
         for chapter in self.chapters:
-            # TODO: replace with utila code
             if utila.should_skip(self.content[chapter], pages):
                 continue
             self.extract_chapter(chapter)
