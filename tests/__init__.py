@@ -69,7 +69,7 @@ def relative_path(item):
     if start_with_slash:
         item = item[1:]
 
-    item = forward_slash(item, save_newline=False)
+    item = forward_slash(item)
     return item
 
 

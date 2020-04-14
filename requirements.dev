@@ -8,7 +8,7 @@
 # =============================================================================
 
 # reference to test data
-power==0.7.2
+power==0.7.4
 
 # ensure that test data is generated with the right version of rawmaker
-rawmaker==1.17.11
+rawmaker==1.17.13
