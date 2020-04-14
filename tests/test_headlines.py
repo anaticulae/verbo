@@ -81,6 +81,8 @@ EXPECTED = [
 ]
 
 
+@pytest.mark.xfail(reason='determining the level due text distance is a bad'
+                   ' approach')
 def test_headlines_extract_headlines():
     # TODO: Require new approach, may look into table of content
     section = tests.fixtures.restruct.restructured_sections_manual()

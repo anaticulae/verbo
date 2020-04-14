@@ -107,10 +107,15 @@ class HeadlineExtractorStrategy(abc.ABC):  # pylint:disable=too-many-instance-at
         self.textsize = texmex.document_textsize(
             navigators=self.pagetextnavigators,)
 
-        self.textdistance = texmex.document_textdistance(
+        # TODO: DECIDE WHAT TODO WITH TEXTDISTANCE
+        textdistance = texmex.document_textdistance(
             navigators=self.pagetextnavigators,
             borders=self.sizeandborder,
         )
+        try:
+            self.textdistance = textdistance[0]
+        except TypeError:
+            self.textdistance = textdistance
 
     def extract_chapter(self, chapter: int):
         assert 0 <= chapter < self.chaptercount, chapter
@@ -145,7 +150,7 @@ class HeadlineExtractorStrategy(abc.ABC):  # pylint:disable=too-many-instance-at
         # PageContentNavigator, the header and footer is ignored
         textdistances = texmex.fontdistance_textbounds(without_content)
 
-        textfeeds = [item.bounds.xdist for item in bounds]
+        textfeeds = [item.bounds.leftdist for item in bounds]
 
         for containerid, item in enumerate(
                 pagecontent,
