@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 #==============================================================================
 
+import collections
 import os
 import statistics
 
@@ -124,3 +125,29 @@ def modes(
 
 
 utila.modes = modes
+
+
+def document_textfeed(
+        navigators: texmex.PageTextNavigators,
+        count: int = 1,
+        left: bool = True,
+) -> 'utils.Ints':
+    assert count >= 1, f'require none negative count, got: {count}'
+    counter = collections.Counter()
+    for navigator in navigators:
+        for item in navigator:
+            if not item.text.strip():
+                continue
+            if left:
+                counter[item.bounding[0]] += 1
+            else:
+                right = utila.roundme(item.bounding[2])
+                counter[right] += 1
+    result = counter.most_common(count)
+    result = [item for item, _ in result]
+    if count == 1:
+        return result[0]
+    return result[0:count]
+
+
+texmex.document_textfeed = document_textfeed
