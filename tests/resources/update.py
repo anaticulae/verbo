@@ -41,6 +41,7 @@ PACKAGE = [
     (tests.resources.MASTER72_PDF, tests.resources.MASTER72, None),
     (tests.resources.PYPORTING_PDF, tests.resources.PYPORTING, None),
     (tests.resources.RESTRUCT_PDF, tests.resources.RESTRUCT, None),
+    (tests.resources.HOMEWORK40_PDF, tests.resources.HOMEWORK40, None),
 ]
 # yapf:enable
 
