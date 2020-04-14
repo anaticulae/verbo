@@ -55,3 +55,16 @@ def test_document_alignment(source, expected):
         source, prefix='oneline')
     alignment = words.lines.style.document_alignment(content_navigators)
     assert alignment == expected, alignment
+
+
+def test_page_linealignment():
+    navigators = serializeraw.create_pagetextnavigators_frompath(
+        tests.resources.HOMEWORK40,
+        prefix='oneline',
+    )
+    left, right = words.lines.style.document_textfeed(navigators)
+    page4 = navigators[4]
+    linealignments = words.lines.style.page_linealignments(page4, left, right)
+    assert linealignments[0] == words.lines.style.TextAlignment.CENTER
+    assert linealignments[1] == words.lines.style.TextAlignment.LEFT
+    assert linealignments[-1] == words.lines.style.TextAlignment.RIGHT
