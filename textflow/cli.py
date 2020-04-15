@@ -13,7 +13,8 @@ import utila
 
 import textflow
 
-DESCRIPTION = 'TODO'
+DESCRIPTION = ('Textflow extracts the text alignment, spaces between '
+               'words and line endings for every line.\n')
 
 WORKPLAN = [
     utila.create_step(
