@@ -9,6 +9,7 @@
 
 import pytest
 import serializeraw
+import utila
 
 import tests.resources
 import words.lines.style
@@ -50,6 +51,7 @@ def test_extract_linestyleinfo_master72():
         id='homework40',
     ),
 ])
+@utila.skip_longrun
 def test_document_alignment(source, expected):
     content_navigators = serializeraw.create_pagetextnavigators_frompath(
         source, prefix='oneline')

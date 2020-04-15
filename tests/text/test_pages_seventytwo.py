@@ -91,6 +91,7 @@ def test_text_seventytwo_visit_sentences_merge_page5_7():
     assert merged[-1][1] == lastsentence
 
 
+@utila.skip_longrun
 def test_text_seventytwo_visit_chapters():
     required = fseventytwo.textrequired(pages=tuple(range(0, 14)))
     pages = words.text.chapter.split(required)
@@ -116,6 +117,7 @@ def test_text_seventytwo_visit_chapters():
     assert sectionpages == [3, 4, 5, 6, 6, 10, 12, 13]
 
 
+@utila.skip_longrun
 def test_text_seventytwo_visit_chapters_page5_6_7():
     required = fseventytwo.textrequired(pages=(5, 6, 7))
     pages = words.text.chapter.split(required)
