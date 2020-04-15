@@ -1,0 +1,42 @@
+#==============================================================================
+# C O P Y R I G H T
+#------------------------------------------------------------------------------
+# Copyright (c) 2019-2020 by Helmut Konrad Fahrendholz. All rights reserved.
+# This file is property of Helmut Konrad Fahrendholz. Any unauthorized copy,
+# use or distribution is an offensive act against international law and may
+# be prosecuted under federal law. Its content is company confidential.
+#==============================================================================
+
+import functools
+
+import utila
+
+import textflow
+
+DESCRIPTION = 'TODO'
+
+WORKPLAN = [
+    utila.create_step(
+        'lineending',
+        inputs=[
+            utila.ResultFile('rawmaker', 'oneline_text_text'),
+            utila.ResultFile('rawmaker', 'oneline_text_positions'),
+        ],
+        output=('lastchar',),
+    ),
+]
+
+# pylint:disable=C0103
+main = functools.partial(
+    utila.featurepack,
+    root=textflow.ROOT,
+    workplan=WORKPLAN,
+    featurepackage='textflow.features',
+    config=utila.FeaturePackConfig(
+        description=DESCRIPTION,
+        multiprocessed=True,
+        name=textflow.PROCESS,
+        pages=True,
+        version=textflow.__version__,
+    ),
+)

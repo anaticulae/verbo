@@ -50,6 +50,8 @@ if __name__ == "__main__":
             'Programming Language :: Python :: 3.8',
         ],
         packages=[
+            'textflow',
+            'textflow.features',
             'words',
             'words.abbreviation',
             'words.feature',
@@ -60,6 +62,9 @@ if __name__ == "__main__":
             'words.utils',
         ],
         entry_points={
-            'console_scripts': ['words = words.cli:main'],
+            'console_scripts': [
+                'words = words.cli:main',
+                'textflow = textflow.cli:main',
+            ],
         },
     )
