@@ -35,12 +35,20 @@ import utila
 
 
 class TextAlignment(enum.Enum):
-    LEFT = enum.auto()
-    CENTER = enum.auto()
-    RIGHT = enum.auto()
-    BLOCK = enum.auto()
-    BLOCK_CENTER = enum.auto()
-    UNDEFINED = enum.auto()
+    # TODO: Think about smart sorting order
+    LEFT = 0
+    CENTER = 1
+    RIGHT = 2
+    BLOCK = 4
+    BLOCK_CENTER = 8
+    UNDEFINED = -1
+
+    def __lt__(self, item):
+        """Support sorting TextAlignment, this is required, causes
+        `modes` computation of used alignments requires to sort them to
+        solve ambigious results."""
+        # TODO: REPLACE pylint disable with correct one
+        return self.value < item.value  # pylint:disable=all
 
 
 TextAlignments = typing.List[TextAlignment]
