@@ -27,16 +27,37 @@ def work(
         pages=pages,
         mode=texmex.PageTextNavigatorMode.HORIZONTAL,
     )
+
+    expected = extract_expected(navigators)
+    expected_dumped = dump_alignment(expected)
+
+    current = extract_current(navigators)
+    current_dumped = dump_alignment(current)
+    return current_dumped, expected_dumped
+
+
+def extract_expected(navigators):
     expected = textflow.alignment.style.document_linealignments_expected(
         navigators)
-
     expected = [
         textflow.serialize.PageContent(page=page, content=content)
         for page, content in expected
     ]
+    return expected
 
-    dumped = dump_alignment(expected)
-    return dumped, ''
+
+def extract_current(navigators):
+    border = textflow.alignment.style.document_textfeed(navigators)
+    result = [
+        textflow.serialize.PageContent(
+            page=navigator.page,
+            content=textflow.alignment.style.page_linealignments(
+                navigator,
+                *border,
+            ),
+        ) for navigator in navigators
+    ]
+    return result
 
 
 @textflow.serialize.dumpme
