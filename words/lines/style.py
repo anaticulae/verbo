@@ -132,12 +132,18 @@ def leftright(navigator, left, right):
 def feed_left(navigator, left):
     diff = [item.bounding[0] - left for item in navigator]
     diff = utila.roundme(diff)
+    with utila.refactor(major=1, minor=21, description='use convert flag'):
+        if isinstance(diff, float):
+            diff = [diff]  # pylint:disable=R0204
     return diff
 
 
 def feed_right(navigator, right):
     diff = [right - item.bounding[2] for item in navigator]
     diff = utila.roundme(diff)
+    with utila.refactor(major=1, minor=21, description='use convert flag'):
+        if isinstance(diff, float):
+            diff = [diff]  # pylint:disable=R0204
     return diff
 
 
