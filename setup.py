@@ -51,6 +51,7 @@ if __name__ == "__main__":
         ],
         packages=[
             'textflow',
+            'textflow.alignment',
             'textflow.features',
             'words',
             'words.abbreviation',

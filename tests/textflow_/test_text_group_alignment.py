@@ -11,7 +11,7 @@ import pytest
 import serializeraw
 
 import tests.resources
-import words.lines.style
+import textflow.alignment.style
 
 
 def test_page_linealignments_expected_master72_page4():
@@ -23,12 +23,12 @@ def test_page_linealignments_expected_master72_page4():
     )
 
     page4 = navigators[0]
-    current = words.lines.style.page_linealignments_expected(page4)
+    current = textflow.alignment.style.page_linealignments_expected(page4)
     expected = [
-        words.lines.style.TextAlignment.BLOCK,
-        words.lines.style.TextAlignment.LEFT,
-        words.lines.style.TextAlignment.BLOCK,
-        words.lines.style.TextAlignment.RIGHT,
+        textflow.alignment.style.TextAlignment.BLOCK,
+        textflow.alignment.style.TextAlignment.LEFT,
+        textflow.alignment.style.TextAlignment.BLOCK,
+        textflow.alignment.style.TextAlignment.RIGHT,
     ]
     assert current == expected, expected
 
@@ -41,21 +41,21 @@ def test_page_linealignments_expected_master72_page6():
         pages=pages,
     )
     page6 = navigators[0]
-    current = words.lines.style.page_linealignments_expected(page6)
+    current = textflow.alignment.style.page_linealignments_expected(page6)
     expected = [
         [
-            words.lines.style.TextAlignment.LEFT,
-            words.lines.style.TextAlignment.CENTER,
-            words.lines.style.TextAlignment.BLOCK,
+            textflow.alignment.style.TextAlignment.LEFT,
+            textflow.alignment.style.TextAlignment.CENTER,
+            textflow.alignment.style.TextAlignment.BLOCK,
         ],
-        words.lines.style.TextAlignment.BLOCK,
+        textflow.alignment.style.TextAlignment.BLOCK,
         [
-            words.lines.style.TextAlignment.CENTER,
-            words.lines.style.TextAlignment.BLOCK,
+            textflow.alignment.style.TextAlignment.CENTER,
+            textflow.alignment.style.TextAlignment.BLOCK,
         ],
-        words.lines.style.TextAlignment.BLOCK,
-        words.lines.style.TextAlignment.BLOCK,
-        words.lines.style.TextAlignment.RIGHT,
+        textflow.alignment.style.TextAlignment.BLOCK,
+        textflow.alignment.style.TextAlignment.BLOCK,
+        textflow.alignment.style.TextAlignment.RIGHT,
     ]
     assert current == expected, expected
 
@@ -69,18 +69,18 @@ def test_page_linealignments_expected_homework40_page3():
         pages=pages,
     )
     page3 = navigators[0]
-    current = words.lines.style.page_linealignments_expected(page3)
+    current = textflow.alignment.style.page_linealignments_expected(page3)
 
     expected = [
-        words.lines.style.TextAlignment.CENTER,
-        words.lines.style.TextAlignment.LEFT,
-        words.lines.style.TextAlignment.LEFT,
-        words.lines.style.TextAlignment.LEFT,
-        words.lines.style.TextAlignment.LEFT,
-        words.lines.style.TextAlignment.LEFT,
-        words.lines.style.TextAlignment.LEFT,
-        words.lines.style.TextAlignment.LEFT,
-        words.lines.style.TextAlignment.RIGHT,
+        textflow.alignment.style.TextAlignment.CENTER,
+        textflow.alignment.style.TextAlignment.LEFT,
+        textflow.alignment.style.TextAlignment.LEFT,
+        textflow.alignment.style.TextAlignment.LEFT,
+        textflow.alignment.style.TextAlignment.LEFT,
+        textflow.alignment.style.TextAlignment.LEFT,
+        textflow.alignment.style.TextAlignment.LEFT,
+        textflow.alignment.style.TextAlignment.LEFT,
+        textflow.alignment.style.TextAlignment.RIGHT,
     ]
     assert current == expected, expected
 
@@ -94,14 +94,14 @@ def test_page_linealignments_expected_homework40_page4():
         pages=pages,
     )
     page4 = navigators[0]
-    current = words.lines.style.page_linealignments_expected(page4)
+    current = textflow.alignment.style.page_linealignments_expected(page4)
 
     expected = [
-        words.lines.style.TextAlignment.CENTER,
-        words.lines.style.TextAlignment.LEFT,
-        words.lines.style.TextAlignment.LEFT,
-        words.lines.style.TextAlignment.LEFT,
-        words.lines.style.TextAlignment.LEFT,
-        words.lines.style.TextAlignment.RIGHT,
+        textflow.alignment.style.TextAlignment.CENTER,
+        textflow.alignment.style.TextAlignment.LEFT,
+        textflow.alignment.style.TextAlignment.LEFT,
+        textflow.alignment.style.TextAlignment.LEFT,
+        textflow.alignment.style.TextAlignment.LEFT,
+        textflow.alignment.style.TextAlignment.RIGHT,
     ]
     assert current == expected, expected

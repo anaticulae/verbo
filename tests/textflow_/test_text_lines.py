@@ -12,7 +12,7 @@ import serializeraw
 import utila
 
 import tests.resources
-import words.lines.style
+import textflow.alignment.style
 
 
 def test_extract_linestyleinfo_master72():
@@ -20,34 +20,35 @@ def test_extract_linestyleinfo_master72():
         tests.resources.MASTER72, pages=(3,), prefix='oneline')
     left = 114.0
     right = 527.5
-    linestyles = words.lines.style.page_textalignment(
+    linestyles = textflow.alignment.style.page_textalignment(
         content_navigators[0],
         left=left,
         right=right,
     )
-    assert linestyles == words.lines.style.TextAlignment.BLOCK, str(linestyles)
+    assert linestyles == textflow.alignment.style.TextAlignment.BLOCK, str(
+        linestyles)
 
 
 @pytest.mark.parametrize('source, expected', [
     pytest.param(
         tests.resources.MASTER72,
-        words.lines.style.TextAlignment.BLOCK,
+        textflow.alignment.style.TextAlignment.BLOCK,
         id='master72',
     ),
     pytest.param(
         tests.resources.BACHELOR37,
-        words.lines.style.TextAlignment.BLOCK,
+        textflow.alignment.style.TextAlignment.BLOCK,
         id='bachelor37',
     ),
     pytest.param(
         tests.resources.HOWTO_PYPORTING,
-        words.lines.style.TextAlignment.BLOCK,
+        textflow.alignment.style.TextAlignment.BLOCK,
         id='pyporting',
         marks=pytest.mark.xfail(reason='require imporvement'),
     ),
     pytest.param(
         tests.resources.HOMEWORK40,
-        words.lines.style.TextAlignment.LEFT,
+        textflow.alignment.style.TextAlignment.LEFT,
         id='homework40',
     ),
 ])
@@ -55,7 +56,7 @@ def test_extract_linestyleinfo_master72():
 def test_document_alignment(source, expected):
     content_navigators = serializeraw.create_pagetextnavigators_frompath(
         source, prefix='oneline')
-    alignment = words.lines.style.document_alignment(content_navigators)
+    alignment = textflow.alignment.style.document_alignment(content_navigators)
     assert alignment == expected, alignment
 
 
@@ -65,12 +66,13 @@ def test_page_linealignment():
         tests.resources.HOMEWORK40,
         prefix='oneline',
     )
-    left, right = words.lines.style.document_textfeed(navigators)
+    left, right = textflow.alignment.style.document_textfeed(navigators)
     page4 = navigators[4]
-    linealignments = words.lines.style.page_linealignments(page4, left, right)
-    assert linealignments[0] == words.lines.style.TextAlignment.CENTER
-    assert linealignments[1] == words.lines.style.TextAlignment.LEFT
-    assert linealignments[-1] == words.lines.style.TextAlignment.RIGHT
+    linealignments = textflow.alignment.style.page_linealignments(
+        page4, left, right)
+    assert linealignments[0] == textflow.alignment.style.TextAlignment.CENTER
+    assert linealignments[1] == textflow.alignment.style.TextAlignment.LEFT
+    assert linealignments[-1] == textflow.alignment.style.TextAlignment.RIGHT
 
 
 def test_page_linealignment_master72_page4():
@@ -78,14 +80,15 @@ def test_page_linealignment_master72_page4():
         tests.resources.MASTER72,
         prefix='oneline',
     )
-    left, right = words.lines.style.document_textfeed(navigators)
+    left, right = textflow.alignment.style.document_textfeed(navigators)
     page4 = navigators[4]
-    linealignments = words.lines.style.page_linealignments(page4, left, right)
-    assert linealignments[0] == words.lines.style.TextAlignment.BLOCK
-    assert linealignments[2] == words.lines.style.TextAlignment.LEFT
-    assert linealignments[3] == words.lines.style.TextAlignment.LEFT
-    assert linealignments[4] == words.lines.style.TextAlignment.BLOCK
-    assert linealignments[-1] == words.lines.style.TextAlignment.RIGHT
+    linealignments = textflow.alignment.style.page_linealignments(
+        page4, left, right)
+    assert linealignments[0] == textflow.alignment.style.TextAlignment.BLOCK
+    assert linealignments[2] == textflow.alignment.style.TextAlignment.LEFT
+    assert linealignments[3] == textflow.alignment.style.TextAlignment.LEFT
+    assert linealignments[4] == textflow.alignment.style.TextAlignment.BLOCK
+    assert linealignments[-1] == textflow.alignment.style.TextAlignment.RIGHT
 
 
 @pytest.mark.xfail(reason='improve block parser')
@@ -94,13 +97,20 @@ def test_page_linealignment_master72_page15():
         tests.resources.MASTER72,
         prefix='oneline',
     )
-    left, right = words.lines.style.document_textfeed(navigators)
+    left, right = textflow.alignment.style.document_textfeed(navigators)
     page15 = navigators[15]
-    linealignments = words.lines.style.page_linealignments(page15, left, right)
-    assert linealignments[0] == words.lines.style.TextAlignment.BLOCK_CENTER
-    assert linealignments[1] == words.lines.style.TextAlignment.BLOCK_CENTER
-    assert linealignments[2] == words.lines.style.TextAlignment.BLOCK_CENTER
+    linealignments = textflow.alignment.style.page_linealignments(
+        page15, left, right)
+    assert linealignments[
+        0] == textflow.alignment.style.TextAlignment.BLOCK_CENTER
+    assert linealignments[
+        1] == textflow.alignment.style.TextAlignment.BLOCK_CENTER
+    assert linealignments[
+        2] == textflow.alignment.style.TextAlignment.BLOCK_CENTER
 
-    assert linealignments[7] == words.lines.style.TextAlignment.BLOCK_CENTER
-    assert linealignments[8] == words.lines.style.TextAlignment.BLOCK_CENTER
-    assert linealignments[9] == words.lines.style.TextAlignment.BLOCK_CENTER
+    assert linealignments[
+        7] == textflow.alignment.style.TextAlignment.BLOCK_CENTER
+    assert linealignments[
+        8] == textflow.alignment.style.TextAlignment.BLOCK_CENTER
+    assert linealignments[
+        9] == textflow.alignment.style.TextAlignment.BLOCK_CENTER
