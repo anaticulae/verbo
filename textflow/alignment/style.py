@@ -33,6 +33,8 @@ import typing
 import texmex
 import utila
 
+import textflow.serialize
+
 
 class TextAlignment(enum.Enum):
     # TODO: Think about smart sorting order
@@ -129,6 +131,13 @@ def page_linealignments(
             else:
                 # ?
                 result.append(TextAlignment.BLOCK)
+    return result
+
+
+def document_linealignments_expected(navigators):
+    border = document_textfeed(navigators)
+    result = [(navigator.page, page_linealignments_expected(navigator))
+              for navigator in navigators]
     return result
 
 

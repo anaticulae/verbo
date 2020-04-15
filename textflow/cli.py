@@ -25,6 +25,14 @@ WORKPLAN = [
         ],
         output=('lastchar',),
     ),
+    utila.create_step(
+        'alignment',
+        inputs=[
+            utila.ResultFile('rawmaker', 'oneline_text_text'),
+            utila.ResultFile('rawmaker', 'oneline_text_positions'),
+        ],
+        output=('current', 'expected'),
+    ),
 ]
 
 # pylint:disable=C0103

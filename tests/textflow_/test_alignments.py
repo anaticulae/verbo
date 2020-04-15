@@ -9,16 +9,18 @@
 
 import tests.resources
 import tests.textflow_
-import textflow.features.lineending
+import textflow.features.alignment
 import textflow.path
+import textflow.serialize
 
 
-def test_textflow_lineendings(testdir, monkeypatch):
+def test_textflow_alignment_expected(testdir, monkeypatch):
     tests.textflow_.run(
-        f'-i {tests.resources.MASTER72} --pages=0:10 --lineending',
+        f'-i {tests.resources.MASTER72} --pages=10:20 --alignment',
         monkeypatch=monkeypatch,
     )
-    source = textflow.path.lineending(testdir.tmpdir)
+    source = textflow.path.alignment(testdir.tmpdir)
+    current = textflow.features.alignment.load_alignment(source)
 
-    endings = textflow.features.lineending.load_lineendings(source)
-    assert len(endings) == 10
+    assert current
+    assert len(current) == 10, str(current)

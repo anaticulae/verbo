@@ -42,9 +42,6 @@ def loadme(func=None, ctor=PageContent):
             result = []
             for page in loaded:
                 pagenumber = int(page['page'])
-                print('hello')
-                print(pagenumber)
-                print(pages)
                 if utila.should_skip(pagenumber, pages):
                     continue
                 content = []
