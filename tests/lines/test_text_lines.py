@@ -57,6 +57,7 @@ def test_document_alignment(source, expected):
     assert alignment == expected, alignment
 
 
+@pytest.mark.xfail(reason='improve block parser')
 def test_page_linealignment():
     navigators = serializeraw.create_pagetextnavigators_frompath(
         tests.resources.HOMEWORK40,
@@ -68,3 +69,36 @@ def test_page_linealignment():
     assert linealignments[0] == words.lines.style.TextAlignment.CENTER
     assert linealignments[1] == words.lines.style.TextAlignment.LEFT
     assert linealignments[-1] == words.lines.style.TextAlignment.RIGHT
+
+
+def test_page_linealignment_master72_page4():
+    navigators = serializeraw.create_pagetextnavigators_frompath(
+        tests.resources.MASTER72,
+        prefix='oneline',
+    )
+    left, right = words.lines.style.document_textfeed(navigators)
+    page4 = navigators[4]
+    linealignments = words.lines.style.page_linealignments(page4, left, right)
+    assert linealignments[0] == words.lines.style.TextAlignment.BLOCK
+    assert linealignments[2] == words.lines.style.TextAlignment.LEFT
+    assert linealignments[3] == words.lines.style.TextAlignment.LEFT
+    assert linealignments[4] == words.lines.style.TextAlignment.BLOCK
+    assert linealignments[-1] == words.lines.style.TextAlignment.RIGHT
+
+
+@pytest.mark.xfail(reason='improve block parser')
+def test_page_linealignment_master72_page15():
+    navigators = serializeraw.create_pagetextnavigators_frompath(
+        tests.resources.MASTER72,
+        prefix='oneline',
+    )
+    left, right = words.lines.style.document_textfeed(navigators)
+    page15 = navigators[15]
+    linealignments = words.lines.style.page_linealignments(page15, left, right)
+    assert linealignments[0] == words.lines.style.TextAlignment.BLOCK_CENTER
+    assert linealignments[1] == words.lines.style.TextAlignment.BLOCK_CENTER
+    assert linealignments[2] == words.lines.style.TextAlignment.BLOCK_CENTER
+
+    assert linealignments[7] == words.lines.style.TextAlignment.BLOCK_CENTER
+    assert linealignments[8] == words.lines.style.TextAlignment.BLOCK_CENTER
+    assert linealignments[9] == words.lines.style.TextAlignment.BLOCK_CENTER
