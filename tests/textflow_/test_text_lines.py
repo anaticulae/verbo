@@ -14,6 +14,8 @@ import utila
 import tests.resources
 import textflow.alignment.style
 
+TextAlignment = textflow.alignment.style.TextAlignment
+
 
 def test_extract_linestyleinfo_master72():
     content_navigators = serializeraw.create_pagetextcontentnavigators_frompath(
@@ -25,37 +27,34 @@ def test_extract_linestyleinfo_master72():
         left=left,
         right=right,
     )
-    assert linestyles == textflow.alignment.style.TextAlignment.BLOCK, str(
-        linestyles)
+    assert linestyles == TextAlignment.BLOCK, str(linestyles)
 
 
 @pytest.mark.parametrize('source, expected', [
-    pytest.param(
-        tests.resources.MASTER72,
-        textflow.alignment.style.TextAlignment.BLOCK,
-        id='master72',
-    ),
+    pytest.param(tests.resources.MASTER72, TextAlignment.BLOCK, id='master72'),
     pytest.param(
         tests.resources.BACHELOR37,
-        textflow.alignment.style.TextAlignment.BLOCK,
+        TextAlignment.BLOCK,
         id='bachelor37',
     ),
     pytest.param(
         tests.resources.HOWTO_PYPORTING,
-        textflow.alignment.style.TextAlignment.BLOCK,
+        TextAlignment.BLOCK,
         id='pyporting',
         marks=pytest.mark.xfail(reason='require imporvement'),
     ),
     pytest.param(
         tests.resources.HOMEWORK40,
-        textflow.alignment.style.TextAlignment.LEFT,
+        TextAlignment.LEFT,
         id='homework40',
     ),
 ])
 @utila.skip_longrun
 def test_document_alignment(source, expected):
     content_navigators = serializeraw.create_pagetextnavigators_frompath(
-        source, prefix='oneline')
+        source,
+        prefix='oneline',
+    )
     alignment = textflow.alignment.style.document_alignment(content_navigators)
     assert alignment == expected, alignment
 
@@ -69,10 +68,13 @@ def test_page_linealignment():
     left, right = textflow.alignment.style.document_textfeed(navigators)
     page4 = navigators[4]
     linealignments = textflow.alignment.style.page_linealignments(
-        page4, left, right)
-    assert linealignments[0] == textflow.alignment.style.TextAlignment.CENTER
-    assert linealignments[1] == textflow.alignment.style.TextAlignment.LEFT
-    assert linealignments[-1] == textflow.alignment.style.TextAlignment.RIGHT
+        page4,
+        left,
+        right,
+    )
+    assert linealignments[0] == TextAlignment.CENTER
+    assert linealignments[1] == TextAlignment.LEFT
+    assert linealignments[-1] == TextAlignment.RIGHT
 
 
 def test_page_linealignment_master72_page4():
@@ -83,12 +85,15 @@ def test_page_linealignment_master72_page4():
     left, right = textflow.alignment.style.document_textfeed(navigators)
     page4 = navigators[4]
     linealignments = textflow.alignment.style.page_linealignments(
-        page4, left, right)
-    assert linealignments[0] == textflow.alignment.style.TextAlignment.BLOCK
-    assert linealignments[2] == textflow.alignment.style.TextAlignment.LEFT
-    assert linealignments[3] == textflow.alignment.style.TextAlignment.LEFT
-    assert linealignments[4] == textflow.alignment.style.TextAlignment.BLOCK
-    assert linealignments[-1] == textflow.alignment.style.TextAlignment.RIGHT
+        page4,
+        left,
+        right,
+    )
+    assert linealignments[0] == TextAlignment.BLOCK
+    assert linealignments[2] == TextAlignment.LEFT
+    assert linealignments[3] == TextAlignment.LEFT
+    assert linealignments[4] == TextAlignment.BLOCK
+    assert linealignments[-1] == TextAlignment.RIGHT
 
 
 @pytest.mark.xfail(reason='improve block parser')
@@ -100,17 +105,14 @@ def test_page_linealignment_master72_page15():
     left, right = textflow.alignment.style.document_textfeed(navigators)
     page15 = navigators[15]
     linealignments = textflow.alignment.style.page_linealignments(
-        page15, left, right)
-    assert linealignments[
-        0] == textflow.alignment.style.TextAlignment.BLOCK_CENTER
-    assert linealignments[
-        1] == textflow.alignment.style.TextAlignment.BLOCK_CENTER
-    assert linealignments[
-        2] == textflow.alignment.style.TextAlignment.BLOCK_CENTER
+        page15,
+        left,
+        right,
+    )
+    assert linealignments[0] == TextAlignment.BLOCK_CENTER
+    assert linealignments[1] == TextAlignment.BLOCK_CENTER
+    assert linealignments[2] == TextAlignment.BLOCK_CENTER
 
-    assert linealignments[
-        7] == textflow.alignment.style.TextAlignment.BLOCK_CENTER
-    assert linealignments[
-        8] == textflow.alignment.style.TextAlignment.BLOCK_CENTER
-    assert linealignments[
-        9] == textflow.alignment.style.TextAlignment.BLOCK_CENTER
+    assert linealignments[7] == TextAlignment.BLOCK_CENTER
+    assert linealignments[8] == TextAlignment.BLOCK_CENTER
+    assert linealignments[9] == TextAlignment.BLOCK_CENTER
