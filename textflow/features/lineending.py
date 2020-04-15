@@ -10,11 +10,11 @@
 import collections
 import typing
 
-import iamraw
 import serializeraw
 import texmex
 import utila
-import yaml
+
+import textflow.serialize
 
 PageContentLineEnding = collections.namedtuple(
     'PageContentLineEnding',
@@ -37,7 +37,7 @@ def work(text: str, textpositions: str, pages: tuple = None) -> str:
         endings = []
         for line in lines:
             char = line.text.strip()[-1]
-            lastchar_bounding = line.bounding
+            lastchar_bounding = tuple(line.bounding)
             endings.append((char, lastchar_bounding))
         result.append(
             PageContentLineEnding(
@@ -48,32 +48,15 @@ def work(text: str, textpositions: str, pages: tuple = None) -> str:
     return dumped
 
 
-def dump_lineendings(items) -> str:
-    result = []
-    for page in items:
-        rawpage = []
-        for line in page.content:
-            char, bounding = line
-            bounding = tuple(bounding)
-            raw = '%s %s %s %s %s' % (char, *bounding)
-            rawpage.append(raw)
-        result.append({'page': page.page, 'content': rawpage})
-    dumped = yaml.dump(result)
-    return dumped
+@textflow.serialize.dumpme
+def dump_lineendings(item) -> str:
+    char, bounding = item
+    raw = '%s %s %s %s %s' % (char, *bounding)
+    return raw
 
 
-def load_lineendings(raw: str, pages: tuple = None) -> PageContentLineEndings:
-    raw = utila.from_raw_or_path(raw, ftype='yaml')
-    loaded = yaml.load(raw, Loader=yaml.FullLoader)
-    result = []
-    for page in loaded:
-        pagenumber = int(page.page)
-        if utila.should_skip(pages, pagenumber):
-            continue
-        content = []
-        for line in page:
-            char, bounding = line.split(maxsplit=1)
-            bounding = iamraw.BoundingBox(utila.parse_tuple(bounding))
-            content.append((char, bounding))
-        result.append(PageContentLineEnding(page=pagenumber, content=content))
-    return result
+@textflow.serialize.loadme(ctor=PageContentLineEnding)
+def load_lineendings(item):
+    char, bounding = item.split(maxsplit=1)
+    parsed = utila.parse_tuple(bounding)
+    return (char, parsed)
