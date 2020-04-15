@@ -102,26 +102,29 @@ def page_linealignments(
         right_alignment,
 ) -> TextAlignments:
     result = []
-    left, right = leftright(navigator, left_alignment, right_alignment)
-    for first, second in zip(left, right):
+    border_left, border_right = leftright(
+        navigator,
+        left_alignment,
+        right_alignment,
+    )
+    for left, right in zip(border_left, border_right):
         # TODO: HOLY VALUES
-        print(first, second)
-        if second == 0.0:
-            if first > 100:
+        if right == 0.0:
+            if left > 100:
                 result.append(TextAlignment.RIGHT)
-            elif first <= 50:
+            elif left <= 50:
                 result.append(TextAlignment.BLOCK)
-        elif second >= 20:
-            if first >= 20:
+        elif right >= 20:
+            if left >= 20:
                 # left and right textfeed is equal
-                if math.fabs(second - first) <= 5.0:
+                if math.fabs(right - left) <= 5.0:
                     result.append(TextAlignment.BLOCK_CENTER)
                 else:
                     result.append(TextAlignment.CENTER)
             else:
                 result.append(TextAlignment.LEFT)
         else:
-            if first <= 50:
+            if left <= 50:
                 result.append(TextAlignment.LEFT)
             else:
                 # ?
