@@ -132,6 +132,24 @@ def page_linealignments(
     return result
 
 
+def page_linealignments_expected(navigator, border=None):
+    if border is None:
+        border = document_textfeed([navigator])
+    grouped = texmex.group_linedistances_complex(navigator)
+    content = groupby(navigator, grouped)
+    result = []
+    for group in content:
+        alignments = page_linealignments(group, *border)
+        alignment = utila.modes(alignments)
+        result.append(alignment)
+    return result
+
+
+def groupby(navigator, grouped):
+    result = [[navigator[item] for item in group] for group in grouped]
+    return result
+
+
 def leftright(navigator, left, right):
     left = feed_left(navigator, left)
     left = [threshold(item, diff=TEXT_BORDER_NOISE) for item in left]
