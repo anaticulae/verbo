@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v0.3.0
+
+### Feature
+
+* add adapter to convert oneline alignments to layout alignments (4d203a7573e3)
+* add method to extract alignment from path (0af1b36af1bc)
+
 ## v0.2.3
 
 ### Fix
