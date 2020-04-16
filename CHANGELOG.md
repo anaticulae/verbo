@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.3.1
+
+### Fix
+
+* do not fail on empty pages (6f13412a110f)
+
 ## v0.3.0
 
 ### Feature
