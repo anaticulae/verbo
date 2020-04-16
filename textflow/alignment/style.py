@@ -149,6 +149,8 @@ def page_linealignments_expected(navigator, border=None):
     result = []
     for group in content:
         alignments = page_linealignments(group, *border)
+        if not alignments:
+            continue
         alignment = utila.modes(alignments)
         result.append(alignment)
     return result
