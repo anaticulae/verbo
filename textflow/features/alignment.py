@@ -73,3 +73,13 @@ def dump_alignment(items) -> str:
 def load_alignment(items):
     loaded = [item for item in items]
     return loaded
+
+
+def extract_alignment_frompath(path, prefix, pages: tuple = None):
+    navigators = serializeraw.create_pagetextnavigators_frompath(
+        path,
+        prefix=prefix,
+        pages=pages,
+    )
+    current = extract_current(navigators)
+    return current
