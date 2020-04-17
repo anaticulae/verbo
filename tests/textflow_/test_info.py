@@ -37,6 +37,6 @@ def test_info_adapter():
     first_page = layout[0]
 
     item = first_page[5]
-    selected = adapter.alignment(first_page.page, item)
+    selected = adapter.alignment(first_page.page, item.bounding)
     assert selected, selected
     assert selected == [textflow.alignment.style.TextAlignment.BLOCK], selected

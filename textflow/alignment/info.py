@@ -16,8 +16,7 @@ class AlignmentInfo:
         self.oneline = PageTextAdapter(layout=oneline)
         self.data = alignment
 
-    def alignment(self, page, item):
-        bounding = item.bounding
+    def alignment(self, page, bounding):
         centered = center(bounding)
         inside = self.oneline.inside(page, centered)
         if not inside:
