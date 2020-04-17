@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.3.2
+
+### Fix
+
+* make interface more explicit (728e636818eb)
+
 ## v0.3.1
 
 ### Fix
