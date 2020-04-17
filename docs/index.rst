@@ -25,7 +25,7 @@ Developer
 .. toctree::
   :maxdepth: 1
 
-  todo
+  backlog
 
 Modules
 --------------------
@@ -40,4 +40,3 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-
