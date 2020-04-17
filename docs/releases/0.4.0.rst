@@ -1,0 +1,29 @@
+.. _0_4_0:
+
+RP 0.4.0
+=========
+
+citomas
+-------
+
+* [ ] write article
+
+* [ ] check sentence for valid citation
+
+* [ ] check paragraph for valid citation
+
+* [ ] check citation and footnote "...Hello"102.
+
+* [ ] check dot in citation
+
+* [ ] check citation marks. Double and single
+
+
+code quality
+------------
+
+before
+~~~~~~
+
+* Total coverage: 93.79%
+* Your code has been rated: 10.0/10
