@@ -13,18 +13,24 @@ import utila
 class AlignmentInfo:
 
     def __init__(self, oneline, alignment):
+        assert len(oneline) == len(alignment), f'{len(oneline)} == {len(alignment)}' # yapf:disable
         self.oneline = PageTextAdapter(layout=oneline)
         self.data = alignment
 
     def alignment(self, page, bounding):
         centered = center(bounding)
-        inside = self.oneline.inside(page, centered)
+        inside = self.oneline.inside(page=page, bounding=centered)
         if not inside:
             return None
         selected = utila.select_page(self.data, page=page)
         if not selected:
             return None
-        result = [selected.content[index] for index, _ in inside]
+        try:
+            result = [selected.content[index] for index, _ in inside]
+        except IndexError:
+            # TODO: INVESTIGATE HOW THIS CAN HAPPEN
+            utila.error(f'out of bounds: {page}; {inside}')
+            return []
         return result
 
 
@@ -45,7 +51,6 @@ class PageTextAdapter:
 
 
 def center(bounding):
-    print(bounding)
     x0, y0, x1, y1 = bounding
     result = (
         (x1 + x0) / 2,
