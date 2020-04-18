@@ -195,6 +195,11 @@ def split_sentences(text: str) -> typing.List[str]:
                     continue
             result.append(' '.join(current))
             current = []
+        if lastchar in '’”':
+            if token[-2] in SIGN:
+                # to observe.” Dennoch
+                result.append(' '.join(current))
+                current = []
     if current:
         result.append(' '.join(current))
     return result
