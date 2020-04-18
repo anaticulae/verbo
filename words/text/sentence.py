@@ -258,6 +258,7 @@ WHITELIST = {
     'usw.',
     'vgl.',
     'z.B.',
+    'u.a.',
 }
 WHITELIST = {item.lower() for item in WHITELIST}
 
