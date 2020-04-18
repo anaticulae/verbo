@@ -163,6 +163,7 @@ def split_sentences(text: str) -> typing.List[str]:
         list of splitted sentences"""
     # TODO: REPLACE WITH EXTERNAL SMART ALTERNATIVE, facebook, google or
     # something else.
+    # TODO: MAKE ROBUST AGAINST WHITE SPACE
     result = []
     current = []
     # support multi line text
@@ -187,6 +188,11 @@ def split_sentences(text: str) -> typing.List[str]:
                 # (z.B.), Phelps (2006).
                 continue
         if lastchar in SIGN:
+            if token.startswith('('):
+                # (2004b: 3) SKIP
+                # (2006).    NOSKIP
+                if token[-2] != ')':
+                    continue
             result.append(' '.join(current))
             current = []
     if current:
