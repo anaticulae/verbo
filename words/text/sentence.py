@@ -153,6 +153,8 @@ class AlreadyDone:
 
 
 def split_token(text: str):
+    # replace text division -
+    text = text.replace('-\n', '')
     # support multi line text
     text = text.replace('\n', ' ')
     tokens = text.split(' ')

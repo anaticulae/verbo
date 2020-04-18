@@ -51,3 +51,24 @@ def test_split():
 
     sixth = words.text.word.split_words(sentences[5])
     assert len(sixth) == 36, sixth
+
+
+MERGE_DIVISION = """\
+kollektive Handlungssysteme der gesellschaftlichen
+Interessenartikulation. […] Als „Heraus-
+forderer“ machen sie Anliegen geltend, die im Prozess der politischen
+Willensbildung systema-
+tisch ausgeblendet werden. Sie stehen daher in konflikthafter
+Interaktion mit etablierten Akteu-
+ren – Institutionen und Organisationen – aus dem
+politisch-administrativen System (Hervorhe-
+bung im Original).
+"""
+
+
+def test_sentence_merge_with_textbreak():
+    sentences = words.text.sentence.split_sentences(MERGE_DIVISION)
+    assert len(sentences) == 3
+    assert 'Herausforderer' in sentences[1]
+    assert 'systematisch' in sentences[1]
+    assert 'Hervorhebung' in sentences[2]
