@@ -41,7 +41,7 @@ def restructured_headlines():
     sections_ = restructured_sections()
 
     dumped = words.feature.headlines.work(
-        sections=sections_,
+        sectionlist=sections_,
         text=iamraw.path.text(tests.resources.RESTRUCT),
         text_position=iamraw.path.textposition(tests.resources.RESTRUCT),
         font_header=iamraw.path.fontheader(tests.resources.RESTRUCT),

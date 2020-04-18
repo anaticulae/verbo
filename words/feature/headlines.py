@@ -31,6 +31,8 @@ headline.
 
 import collections
 
+import iamraw.path
+import sections.path
 import serializeraw
 import utila
 
@@ -44,7 +46,7 @@ PageContentBoxed = collections.namedtuple('PageContentBoxed', 'page content')
 
 @utila.checkdatatype
 def work(
-        sections: str,
+        sectionlist: str,
         text: str,
         text_position: str,
         font_header: str,
@@ -52,10 +54,11 @@ def work(
         sizeandborder: str,
         boxes: str,  # pylint:disable=W0613
         headerfooters: str,
-        pages=None,
+        pages: tuple = None,
 ) -> str:
     """Extract headlines out of data."""
-    loaded = words.loader.basic.load_basic(
+    results = extract_headlines(
+        sectionlist,
         text,
         text_position,
         font_header,
@@ -64,7 +67,32 @@ def work(
         headerfooters,
         pages=pages,
     )
-    sections = serializeraw.load_sections(sections, pages=pages)
+    extracted = judge_result(results)
+    # dump
+    dumped = serializeraw.dump_headlines(extracted)
+    return dumped
+
+
+def extract_headlines(
+        sections_,
+        text,
+        textposition,
+        fontheader,
+        fontcontent,
+        sizeandborder,
+        headerfooters,
+        pages: tuple = None,
+):
+    loaded = words.loader.basic.load_basic(
+        text,
+        textposition,
+        fontheader,
+        fontcontent,
+        sizeandborder,
+        headerfooters,
+        pages=pages,
+    )
+    sectionlist = serializeraw.load_sections(sections_, pages=pages)
 
     strategies = [
         words.headlines.multiline.MultiLine,
@@ -74,14 +102,11 @@ def work(
     results = [
         strategy(
             basic=loaded,
-            sectionlist=sections,
+            sectionlist=sectionlist,
             chapters=None,
         ).result(pages=pages) for strategy in strategies
     ]
-    extracted = judge_result(results)
-    # save
-    dumped = serializeraw.dump_headlines(extracted)
-    return dumped
+    return results
 
 
 def judge_result(results):
@@ -90,3 +115,26 @@ def judge_result(results):
     if any([len(item) for item in results[0]]):
         extracted = results[0]
     return extracted
+
+
+def headlines_frompath(path: str, prefix: str = '', pages: tuple = None):
+    sections_ = sections.path.sections_(path, prefix=prefix)
+    text = iamraw.path.text(path, prefix=prefix)
+    textposition = iamraw.path.textposition(path, prefix=prefix)
+    fontheader = iamraw.path.fontheader(path, prefix=prefix)
+    fontcontent = iamraw.path.fontcontent(path, prefix=prefix)
+    sizeandborder = iamraw.path.sizeandborder(path, prefix=prefix)
+    headerfooters = iamraw.path.headerfooters(path, prefix=prefix)
+
+    extracted = extract_headlines(
+        sections_,
+        text,
+        textposition,
+        fontheader,
+        fontcontent,
+        sizeandborder,
+        headerfooters,
+        pages=pages,
+    )
+    result = judge_result(extracted)
+    return result

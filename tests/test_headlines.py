@@ -106,7 +106,7 @@ def test_headlines_work():
         font_content=iamraw.path.fontcontent(tests.resources.RESTRUCT),
         font_header=iamraw.path.fontheader(tests.resources.RESTRUCT),
         headerfooters=iamraw.path.headerfooters(tests.resources.RESTRUCT),
-        sections=sections_,
+        sectionlist=sections_,
         sizeandborder=iamraw.path.sizeandborder(tests.resources.RESTRUCT),
         text=iamraw.path.text(tests.resources.RESTRUCT),
         text_position=iamraw.path.textposition(tests.resources.RESTRUCT),

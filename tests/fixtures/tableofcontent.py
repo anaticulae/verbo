@@ -13,11 +13,11 @@ import serializeraw
 import tests.resources
 
 
-def headlines_frompath(path: str, pages=None):
+def headlines_frompath(path: str, pages=None, prefix='oneline'):
     loaded = serializeraw.create_pagetextcontentnavigators_frompath(
         path,
         pages=pages,
-        prefix='oneline',
+        prefix=prefix,
         validate_leftright=False,  # do not check writing text over border
     )
     result = groupme.toc.strategy.load(content=loaded)

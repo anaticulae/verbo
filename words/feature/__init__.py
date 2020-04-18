@@ -96,7 +96,7 @@ def load_resources_frompath(
     headerfooters = groupme.path.headerfooters(path)
 
     headlines = words.feature.headlines.work(
-        sections=section,
+        sectionlist=section,
         text=text,
         text_position=textposition,
         font_header=fontheader,
