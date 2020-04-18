@@ -50,6 +50,8 @@ if __name__ == "__main__":
             'Programming Language :: Python :: 3.8',
         ],
         packages=[
+            'decider_textrule',
+            'decider_textrule.features',
             'textflow',
             'textflow.alignment',
             'textflow.features',
@@ -64,8 +66,9 @@ if __name__ == "__main__":
         ],
         entry_points={
             'console_scripts': [
-                'words = words.cli:main',
+                'decider_textrule = decider_textrule.cli:main',
                 'textflow = textflow.cli:main',
+                'words = words.cli:main',
             ],
         },
     )
