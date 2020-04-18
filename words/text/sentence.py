@@ -7,8 +7,6 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import typing
-
 import iamraw
 import texmex
 import utila
@@ -164,7 +162,7 @@ def split_token(text: str):
         yield token
 
 
-def split_sentences(text: str) -> typing.List[str]:  # pylint:disable=R1260
+def split_sentences(text: str) -> utila.Strings:  # pylint:disable=R1260
     """Split a regular `text` into sentence chunks.
 
     Args:
