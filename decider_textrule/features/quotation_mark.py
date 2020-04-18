@@ -14,15 +14,3 @@ import words.text.word
 
 def work(text: str) -> typing.Tuple[str, str]:
     return '', ''
-
-
-DOUBLE_OPEN = words.text.word.Mark.QUOTATION_MARK_DOUBLE_OPEN
-DOUBLE_CLOSE = words.text.word.Mark.QUOTATION_MARK_DOUBLE_CLOSE
-
-
-def validate_double_marks(sentence: str):
-    marks = []
-    word = words.text.word.split_words(sentence)
-
-    double_open = [item for item in word if item == DOUBLE_OPEN]
-    double_close = [item for item in word if item == DOUBLE_CLOSE]

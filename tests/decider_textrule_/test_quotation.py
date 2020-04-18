@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import decider_textrule.quotation_mark as dq
 import words.text.sentence
 import words.text.word
 
@@ -38,6 +39,6 @@ def test_split_paragraph_with_quotation_mixed():
 
 def test_split_words_with_quotation():
     first = words.text.sentence.split_sentences(STANDARD)[0]
-    word = words.text.word.split_words(first)
-    print(word)
-    assert 0
+
+    assert dq.valid_double_marks_count(first)
+    assert dq.valid_single_marks_count(first)
