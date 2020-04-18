@@ -154,7 +154,17 @@ class AlreadyDone:
         return False
 
 
-def split_sentences(text: str) -> typing.List[str]:
+def split_token(text: str):
+    # support multi line text
+    text = text.replace('\n', ' ')
+    tokens = text.split(' ')
+    for token in tokens:
+        if not token:
+            continue
+        yield token
+
+
+def split_sentences(text: str) -> typing.List[str]:  # pylint:disable=R1260
     """Split a regular `text` into sentence chunks.
 
     Args:
@@ -166,12 +176,7 @@ def split_sentences(text: str) -> typing.List[str]:
     # TODO: MAKE ROBUST AGAINST WHITE SPACE
     result = []
     current = []
-    # support multi line text
-    text = text.replace('\n', ' ')
-    tokens = text.split(' ')
-    for token in tokens:
-        if not token:
-            continue
+    for token in split_token(text):
         current.append(token)
         token = token.lower()  # make approach more robust
         lastchar = token[-1]
