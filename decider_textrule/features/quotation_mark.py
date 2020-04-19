@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import collections
 import typing
 
 import german
@@ -15,12 +16,17 @@ import utila
 import decider_textrule.quotation_mark as dqm
 import words.text.word
 
+ValidatedSentences = collections.namedtuple(
+    'ValidatedSentences',
+    'double, single',
+)
+
 
 def work(text: str) -> typing.Tuple[str, str]:
     return '', ''
 
 
-def validate_sentences(pages):
+def validate_sentences(pages) -> ValidatedSentences:
     invalid_double = []
     invalid_single = []
     for page in pages:
@@ -37,4 +43,4 @@ def validate_sentences(pages):
                 if not dqm.valid_double_marks_count(token, lang=lang):
                     invalid_double.append((page.page, sentence_index))
                 sentence_index += 1
-    return invalid_double, invalid_single
+    return ValidatedSentences(invalid_double, invalid_single)
