@@ -8,9 +8,9 @@ citomas
 
 * [ ] write article
 
-* [ ] check sentence for valid citation
+* [x] check sentence for valid citation
 
-* [ ] check paragraph for valid citation
+* [x] check paragraph for valid citation
 
 * [ ] check citation and footnote "...Hello"102.
 

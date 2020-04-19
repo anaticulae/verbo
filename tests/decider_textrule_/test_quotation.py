@@ -79,3 +79,12 @@ def test_validate_count_of_double_quotation():
     fourth = words.text.word.split_words(splitted[3])
     double_inside_double = dq.valid_double_marks_count(fourth)
     assert double_inside_double is False
+
+
+def test_valid_english_quotation_marks():
+    required = fseventytwo.textrequired(pages=(17))
+    pages = words.text.chapter.split(required)
+
+    result = decider_textrule.features.quotation_mark.validate_sentences(pages)
+    expected = [(17, 6), (17, 12)]
+    assert result.double == expected, str(result)
