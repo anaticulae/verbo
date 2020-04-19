@@ -168,7 +168,8 @@ def split_sentences(text: str) -> utila.Strings:  # pylint:disable=R1260
     Args:
         text(str): text to split without any newlines
     Returns:
-        list of splitted sentences"""
+        list of splitted sentences
+    """
     # TODO: REPLACE WITH EXTERNAL SMART ALTERNATIVE, facebook, google or
     # something else.
     # TODO: MAKE ROBUST AGAINST WHITE SPACE
@@ -196,35 +197,72 @@ def split_sentences(text: str) -> utila.Strings:  # pylint:disable=R1260
                 # (2006).    NOSKIP
                 if token[-2] != ')':
                     continue
+            if open_quotation_mark(current):
+                continue
             result.append(' '.join(current))
             current = []
-        if lastchar in '’”':
+        if lastchar in '’”“':  # TODO: LOOK DEEPER
             if token[-2] in SIGN:
                 # to observe.” Dennoch
                 result.append(' '.join(current))
                 current = []
+
     if current:
         result.append(' '.join(current))
     return result
+
+
+def open_quotation_mark(tokens):
+    count = 0
+    # TODO: CHECK DIFFERENT DOUBLE QUOTATION MARK SIGNS
+    for token in tokens:
+        count += token.count('„')
+        count -= token.count('”')
+        count -= token.count('“')
+    return count > 0
+
+
+QUOTATION_CLOSE_SIGNS = '"”“'
 
 
 def is_sentence_closed(token: list) -> bool:
     """Check that the last character of the last token of a sentences contains
     a sentence close sign."""
     assert token, 'empty sentence'
+    assert isinstance(token, (list, tuple)), type(token)
     last = token[-1].strip()
     last_char = last[-1]
-    return last_char in SIGN
+    if last_char in SIGN:
+        # ... hello?
+        return True
+    if len(last) < 2:
+        return False
+    before_last_char = last[-2]
+    if last_char in QUOTATION_CLOSE_SIGNS:
+        # ... hello."
+        if before_last_char in SIGN:
+            return True
+    return False
 
 
-def is_sentence(sentence: str):
-    if len(sentence) <= 5:  # TODO: HOLY VALUE
+def is_sentence(sentence: str, min_length: int = 4):
+    if len(sentence) < min_length:  # TODO: HOLY VALUE
         # sentence is too short
         return False
-    if sentence.count('.') >= 5:  # TODO: HOLY VALUE
+    length = len(sentence)
+    dotcount = sentence.count('.')
+    percent_sentence = sentence.count('.') / length if length else 0.0
+
+    if dotcount >= 3 and percent_sentence > 0.04:  # TODO: HOLY VALUE
         # sentence contains too much dots, maybe a toc line
         return False
-    return len(split_sentences(sentence)) == 1 and (sentence[-1] in SIGN)
+    splitted = split_sentences(sentence)
+    if len(splitted) > 1:
+        return False
+    token = split_token(splitted[0])
+    if is_sentence_closed(token):
+        return True
+    return False
 
 
 SIGN = {
@@ -255,6 +293,7 @@ WHITELIST = {
     'bzw.',
     'ca.',
     'etc.',
+    'evtl.',
     'f.',
     'ff.'
     'ggf.',
@@ -263,10 +302,10 @@ WHITELIST = {
     'o.J.',
     'o.V.',
     'o.Ä',
+    'u.a.',
     'usw.',
     'vgl.',
     'z.B.',
-    'u.a.',
 }
 WHITELIST = {item.lower() for item in WHITELIST}
 
