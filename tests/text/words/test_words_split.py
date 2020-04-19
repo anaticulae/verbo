@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import tests.fixtures.master72.seventytwo as fseventytwo
 import words.feature.headlines
 import words.headlines
 import words.text.chapter
@@ -124,3 +125,24 @@ def test_sentence_split_multiple_quoted_sentence():
         MULTIPLE_SENTENCE_IN_QUOTATION)
     assert len(sentences) == 5
     assert sentences[-1] == 'In dem Artikel heißt es:', sentences[-1]
+
+
+MASTER72_EXPECTED = {
+    30: 18,
+    31: 6 + 12,
+    32: 20,
+    33: 9 + 5,
+    34: 18,
+}
+
+
+def test_validate_words_split_master72():
+    pages = tuple(MASTER72_EXPECTED.keys())
+    required = fseventytwo.textrequired(pages=pages)
+    extracted_pages = words.text.chapter.split(required)
+    for page in extracted_pages:
+        expected = MASTER72_EXPECTED[page.page]
+        current = 0
+        for _, sentences in words.text.sentence.find_sentences(page):
+            current += len(sentences)
+        assert current == expected, f'page: {page.page}'
