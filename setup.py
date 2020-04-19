@@ -52,6 +52,7 @@ if __name__ == "__main__":
         packages=[
             'decider_textrule',
             'decider_textrule.features',
+            'decider_textrule.quotation_mark',
             'textflow',
             'textflow.alignment',
             'textflow.features',
