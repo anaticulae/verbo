@@ -11,9 +11,12 @@ import contextlib
 import enum
 import typing
 
+import konrad
+
 import words.text.sentence
 
 
+# TODO: MOVE TO DUDEN/KONRAD?
 class Mark(enum.Enum):
     FULLSTOP = enum.auto()  # .
     COMMA = enum.auto()  # ,
@@ -110,7 +113,7 @@ def split_words(items: str, validate_sentences: bool = True):  # pylint:disable=
                     current = []
                 # append ), ], 3., etc.
                 result.append(special)
-    if current and items[-1] in words.text.sentence.SIGN:
+    if current and items[-1] in konrad.SIGN:
         result.append(''.join(current))
         current = []
     if validate_sentences:

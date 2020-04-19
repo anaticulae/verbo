@@ -8,6 +8,7 @@
 # =============================================================================
 
 import iamraw
+import konrad
 import texmex
 import utila
 
@@ -183,7 +184,7 @@ def split_sentences(text: str) -> utila.Strings:  # pylint:disable=R1260,R0912
             if len(token) == 2:
                 # W. G.
                 continue
-            if token in WHITELIST:
+            if token in konrad.ABBREVIATION_LOWER:
                 continue
             if token[:-1].isnumeric():
                 # 1.; 13.
@@ -191,7 +192,7 @@ def split_sentences(text: str) -> utila.Strings:  # pylint:disable=R1260,R0912
             if token.startswith('(') and not token.endswith(').'):
                 # (z.B.), Phelps (2006).
                 continue
-        if lastchar in SIGN:
+        if lastchar in konrad.SIGN:
             if token.startswith('('):
                 # (2004b: 3) SKIP
                 # (2006).    NOSKIP
@@ -202,7 +203,7 @@ def split_sentences(text: str) -> utila.Strings:  # pylint:disable=R1260,R0912
             result.append(' '.join(current))
             current = []
         if lastchar in '’”“':  # TODO: LOOK DEEPER
-            if token[-2] in SIGN:
+            if token[-2] in konrad.SIGN:
                 # to observe.” Dennoch
                 result.append(' '.join(current))
                 current = []
@@ -231,7 +232,7 @@ def is_sentence_closed(token: list) -> bool:
     assert isinstance(token, (list, tuple)), type(token)
     last = token[-1].strip()
     last_char = last[-1]
-    if last_char in SIGN:
+    if last_char in konrad.SIGN:
         # ... hello?
         return True
     if len(last) < 2:
@@ -239,7 +240,7 @@ def is_sentence_closed(token: list) -> bool:
     before_last_char = last[-2]
     if last_char in QUOTATION_CLOSE_SIGNS:
         # ... hello."
-        if before_last_char in SIGN:
+        if before_last_char in konrad.SIGN:
             return True
     return False
 
@@ -262,67 +263,3 @@ def is_sentence(sentence: str, min_length: int = 4):
     if is_sentence_closed(token):
         return True
     return False
-
-
-SIGN = {
-    '!',
-    '.',
-    ':',
-    '?',
-}
-
-# TODO: MOVE TO DUDEN PACKAGE
-WHITELIST = {
-    'Abb.',
-    'Aufl.',
-    'Bd.',
-    'Co.',
-    'Diss.',
-    'Dok.',
-    'Forts.',
-    'Hrsg.',
-    'Jg.',
-    'S.',
-    'Sp.',
-    'Verf.',
-    'Verl.',
-    'Vol.',
-    'a.a.O.',
-    'al.',
-    'bzw.',
-    'ca.',
-    'etc.',
-    'evtl.',
-    'f.',
-    'ff.'
-    'ggf.',
-    'lat.',
-    'mind.',
-    'o.J.',
-    'o.V.',
-    'o.Ä',
-    'u.a.',
-    'usw.',
-    'vgl.',
-    'z.B.',
-}
-WHITELIST = {item.lower() for item in WHITELIST}
-
-# a.a.O. = am angeführten Ort
-# Jg. = Jahrgang
-# Aufl. = Auflage
-# o.J. = ohne Jahresangabe
-# Bd. = Band
-# o.V. = ohne Verfasserangabe
-# Diss. = Dissertation
-# S. = Seite
-# Dok. = Dokument
-# s. = siehe
-# f. = (die) folgende
-# Sp. = Spalte
-# Verf. = Verfasser
-# Forts. = Fortsetzung
-# Verl. = Verlag
-# H. = Heft
-# Vol. = Volume (Band)
-# Hrsg. = Herausgeber
