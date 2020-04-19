@@ -162,7 +162,7 @@ def split_token(text: str):
     return result
 
 
-def split_sentences(text: str) -> utila.Strings:  # pylint:disable=R1260
+def split_sentences(text: str) -> utila.Strings:  # pylint:disable=R1260,R0912
     """Split a regular `text` into sentence chunks.
 
     Args:
@@ -206,7 +206,6 @@ def split_sentences(text: str) -> utila.Strings:  # pylint:disable=R1260
                 # to observe.” Dennoch
                 result.append(' '.join(current))
                 current = []
-
     if current:
         result.append(' '.join(current))
     return result

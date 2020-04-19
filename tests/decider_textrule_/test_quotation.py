@@ -7,7 +7,9 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import decider_textrule.features.quotation_mark
 import decider_textrule.quotation_mark as dq
+import tests.fixtures.master72.seventytwo as fseventytwo
 import words.text.sentence
 import words.text.word
 
@@ -38,7 +40,42 @@ def test_split_paragraph_with_quotation_mixed():
 
 
 def test_split_words_with_quotation():
-    first = words.text.sentence.split_sentences(STANDARD)[0]
+    first = words.text.word.split_words(
+        words.text.sentence.split_sentences(STANDARD)[0])
 
     assert dq.valid_double_marks_count(first)
     assert dq.valid_single_marks_count(first)
+
+
+def test_chapter_split_words():
+    required = fseventytwo.textrequired(pages=(13, 14))
+    pages = words.text.chapter.split(required)
+
+    result = decider_textrule.features.quotation_mark.validate_sentences(pages)
+    assert len(result[0]) == 1, str(result)
+    assert not result[1], str(result)
+
+
+REQUIRE_SINGLE_INSIDE = """\
+Bevor die Konzepte der Privatheit und Öffentlichkeit
+systemtheoretisch näher betrachtet werden, soll vorab kurz umrissen
+werden, was darunter verstanden wird. Rössler beschreibt etwas
+Privates folgendermaßen: „‚privat‘ nennen wir einerseits Handlungs-
+und Verhaltensweisen, zum Zweiten ein bestimmtes Wissen und drittens
+Räume“ und weiter: „als privat gilt etwas dann, wenn man selbst
+den Zugang zu diesem „etwas“ kontrollieren kann“. Privatheit
+beinhaltet also den Aspekt der Zugangskontrolle seitens des
+Individuums.
+"""
+
+
+def test_validate_count_of_double_quotation():
+    splitted = words.text.sentence.split_sentences(REQUIRE_SINGLE_INSIDE)
+    assert len(splitted) == 5
+
+    third = words.text.word.split_words(splitted[2])
+    assert dq.valid_double_marks_count(third)
+
+    fourth = words.text.word.split_words(splitted[3])
+    double_inside_double = dq.valid_double_marks_count(fourth)
+    assert double_inside_double is False
