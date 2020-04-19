@@ -54,7 +54,7 @@ MATCH = {
     '!': Mark.EXCLAMATION_MARK,
     "&": Mark.AND,
     "„": Mark.QUOTATION_MARK_DOUBLE_OPEN,
-    '“': Mark.QUOTATION_MARK_DOUBLE_CLOSE,
+    '“': Mark.QUOTATION_MARK_DOUBLE_CLOSE,  # english open
     '”': Mark.QUOTATION_MARK_DOUBLE_CLOSE,
     '‚': Mark.QUOTATION_MARK_SINGLE_OPEN,
     '‘': Mark.QUOTATION_MARK_SINGLE_CLOSE,

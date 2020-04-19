@@ -9,6 +9,7 @@
 
 import typing
 
+import german
 import utila
 
 import decider_textrule.quotation_mark as dqm
@@ -32,8 +33,8 @@ def validate_sentences(pages):
                     utila.error(f'invalid sentence: {sentence}')
                     sentence_index += 1
                     continue
-
-                if not dqm.valid_double_marks_count(token):
+                lang = german.lang(token).language
+                if not dqm.valid_double_marks_count(token, lang=lang):
                     invalid_double.append((page.page, sentence_index))
                 sentence_index += 1
     return invalid_double, invalid_single

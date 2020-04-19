@@ -7,6 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import german
+
 import words.text.word
 
 DOUBLE_OPEN = words.text.word.Mark.QUOTATION_MARK_DOUBLE_OPEN
@@ -15,8 +17,17 @@ SINGLE_OPEN = words.text.word.Mark.QUOTATION_MARK_SINGLE_OPEN
 SINGLE_CLOSE = words.text.word.Mark.QUOTATION_MARK_SINGLE_CLOSE
 
 
-def valid_double_marks_count(token: list) -> bool:
+def valid_double_marks_count(token: list, lang: german.Language = None) -> bool:
     assert isinstance(token, list), type(token)
+    if lang is None:
+        # default language
+        lang = german.Language.GERMAN
+    if lang == german.Language.ENGLISH:
+        return _valid_double_marks_count_english(token)
+    return _valid_double_marks_count_german(token)
+
+
+def _valid_double_marks_count_german(token: list):
     open_close = [item for item in token if item in (DOUBLE_OPEN, DOUBLE_CLOSE)]
     # ensure alernating
     if not open_close:
@@ -35,6 +46,14 @@ def valid_double_marks_count(token: list) -> bool:
 
     valid = len(double_open) == len(double_close)
     return valid
+
+
+def _valid_double_marks_count_english(token: list):
+    # TODO: DOUBLE_OPEN IS CURRENTLY GERMAN OPEN
+    german_open = [item for item in token if item == DOUBLE_OPEN]
+    if any(german_open):
+        return False
+    return True
 
 
 def valid_single_marks_count(token: list) -> bool:
