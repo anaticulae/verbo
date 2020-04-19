@@ -13,4 +13,6 @@ sections==0.2.11
 hey==2.0.14
 
 # split sentences and determine language of written sentence
-german==0.2.1
+german==0.2.2
+# some constants
+konrad==0.1.0
