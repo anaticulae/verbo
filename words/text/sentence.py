@@ -158,10 +158,8 @@ def split_token(text: str):
     # support multi line text
     text = text.replace('\n', ' ')
     tokens = text.split(' ')
-    for token in tokens:
-        if not token:
-            continue
-        yield token
+    result = [token for token in tokens if token]
+    return result
 
 
 def split_sentences(text: str) -> utila.Strings:  # pylint:disable=R1260
