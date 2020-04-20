@@ -93,18 +93,16 @@ def merge_sentences(
 
         for headline, sentence in current[0:-1]:
             yield headline, sentence
-        # TODO: DIRTY
-        last = current[-1]
         after = list(visit_sentences(after, skip_undefined=skip_undefined))
         first_headline, first_content = after[0]
-        last_headline, last_content = last
-        if not is_sentence_closed(last):
+        last_headline, last_content = current[-1]
+        if not is_sentence_closed(last_content.split()):
             # merge sentence
             assert last_content and first_content
             yield last_headline, last_content + ' ' + first_content
         else:
             # new page with headline start
-            yield last
+            yield last_headline, last_content
             if last_headline != first_headline:
                 last_headline = first_headline
             if first_headline.text is not None:
