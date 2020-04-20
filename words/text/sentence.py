@@ -90,11 +90,12 @@ def merge_sentences(
     assert len(pages) >= 2, 'require at least two `pages`'
     for current, after in zip(pages[0:-1], pages[1:]):
         current = list(visit_sentences(current, skip_undefined=skip_undefined))
-        after = list(visit_sentences(after, skip_undefined=skip_undefined))
+
         for headline, sentence in current[0:-1]:
             yield headline, sentence
         # TODO: DIRTY
         last = current[-1]
+        after = list(visit_sentences(after, skip_undefined=skip_undefined))
         first = after[0]
         current_headline = last[0]
         if not is_sentence_closed(last):
