@@ -97,7 +97,7 @@ def merge_sentences(
         last = current[-1]
         first = after[0]
         current_headline = last[0]
-        if not is_sentence_closed(current[-1]):
+        if not is_sentence_closed(last):
             # merge sentence
             assert last
             assert first
