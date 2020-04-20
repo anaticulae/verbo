@@ -96,33 +96,32 @@ def merge_sentences(
         # TODO: DIRTY
         last = current[-1]
         after = list(visit_sentences(after, skip_undefined=skip_undefined))
-        first = after[0]
-        current_headline = last[0]
+        first_headline, first_content = after[0]
+        last_headline, last_content = last
         if not is_sentence_closed(last):
             # merge sentence
-            assert last
-            assert first
-            yield current_headline, last[1] + ' ' + first[1]
+            assert last_content and first_content
+            yield last_headline, last_content + ' ' + first_content
         else:
             # new page with headline start
             yield last
-            if current_headline != first[0]:
-                current_headline = first[0]
-            if first[0].text is not None:
+            if last_headline != first_headline:
+                last_headline = first_headline
+            if first_headline.text is not None:
                 # after page does not starts with virtual headline
-                yield current_headline, first[1]
+                yield last_headline, first_content
         # use headline of the page before to first headline of after page
         afterstart = 1  # normal headline
-        if current_headline.text is None:
+        if last_headline.text is None:
             # virtual headline
             afterstart = 0
         for headline, sentence in after[afterstart:]:
-            if headline != current_headline:
+            if headline != last_headline:
                 if headline.text is not None:
                     # do not replace headlines from page before with
                     # virtual none-headlines after page break.
-                    current_headline = headline
-            yield current_headline, sentence
+                    last_headline = headline
+            yield last_headline, sentence
 
 
 def visit_chapters(pages):
