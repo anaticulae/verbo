@@ -7,6 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import typing
+
 import iamraw
 import konrad
 import texmex
@@ -61,7 +63,8 @@ def visit_sections(page: words.text.PageTextWithHeadlines):
 def visit_sentences(
         page: words.text.PageTextWithHeadlines,
         skip_undefined: bool = False,
-):
+) -> typing.Tuple[iamraw.Headline, str]:
+    """Yield tuple of Headline and extracted sentence."""
     for section in page.content:
         current = []
         for seq in section.content:
