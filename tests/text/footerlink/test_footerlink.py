@@ -12,7 +12,7 @@ import words.feature.footerlink
 
 
 def test_footerlink_extract_highnotes():
-    required = fseventytwo.textrequired(pages=(3))
+    required = fseventytwo.textrequired(pages=(3,))
     extracted = words.feature.footerlink.extract_highnotes(required)
 
     extracted = extracted[0].content

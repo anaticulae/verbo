@@ -16,7 +16,7 @@ import words.text.sentence as wts
 
 
 def test_text_seventytwo_extract_texts():
-    required = fseventytwo.textrequired(pages=(3))
+    required = fseventytwo.textrequired(pages=(3,))
     extracted = words.text.chapter.extract_texts(required)
     assert extracted
 
@@ -29,9 +29,9 @@ def test_text_seventytwo_extract_texts():
 
 @utila.skip_longrun
 def test_text_seventytwo_visit_sentences():
-    required = fseventytwo.textrequired(pages=(3))
+    required = fseventytwo.textrequired(pages=(3,))
     firstpage = words.text.chapter.split(required)[0]
-    required = fseventytwo.textrequired(pages=(4))
+    required = fseventytwo.textrequired(pages=(4,))
     secondpage = words.text.chapter.split(required)[0]
 
     sentences = list(wts.visit_sentences(firstpage))
