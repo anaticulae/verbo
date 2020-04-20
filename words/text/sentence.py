@@ -89,10 +89,20 @@ def merge_sentences(
 ):
     assert len(pages) >= 2, 'require at least two `pages`'
     for current, after in zip(pages[0:-1], pages[1:]):
+        # it is possible to have a None successor or there is a whitepage
+        # and no content after.
+        valid_successor = after and (current.page + 1) == (after.page)
+
         current = list(visit_sentences(current, skip_undefined=skip_undefined))
 
-        for headline, sentence in current[0:-1]:
-            yield headline, sentence
+        if valid_successor:
+            for headline, sentence in current[0:-1]:
+                yield headline, sentence
+        else:
+            for headline, sentence in current:
+                yield headline, sentence
+            continue
+
         last_headline, last_content = current[-1]  # page ending
 
         after = list(visit_sentences(after, skip_undefined=skip_undefined))
