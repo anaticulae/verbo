@@ -93,12 +93,14 @@ def merge_sentences(
 
         for headline, sentence in current[0:-1]:
             yield headline, sentence
+        last_headline, last_content = current[-1]  # page ending
+
         after = list(visit_sentences(after, skip_undefined=skip_undefined))
-        first_headline, first_content = after[0]
-        last_headline, last_content = current[-1]
+        first_headline, first_content = after[0]  # page start
         if not is_sentence_closed(last_content.split()):
             # merge sentence
             assert last_content and first_content
+            # TODO: CHECK FOR A VALID PAGE START
             yield last_headline, last_content + ' ' + first_content
         else:
             # new page with headline start
