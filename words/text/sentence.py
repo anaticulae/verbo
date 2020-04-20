@@ -67,6 +67,9 @@ def visit_sentences(
     """Yield tuple of Headline and extracted sentence."""
     for section in page.content:
         current = []
+        if not section.content:
+            yield section.headline, ''
+            continue
         for seq in section.content:
             if not isinstance(seq, iamraw.Paragraph):
                 if current:
@@ -87,6 +90,9 @@ def merge_sentences(
         pages: words.text.PageTextWithHeadlines,
         skip_undefined: bool = False,
 ):
+    if len(pages) == 1:
+        pages = list(pages)  # avoid side effects
+        pages.append(None)
     assert len(pages) >= 2, 'require at least two `pages`'
     for current, after in zip(pages[0:-1], pages[1:]):
         # it is possible to have a None successor or there is a whitepage
@@ -104,14 +110,19 @@ def merge_sentences(
             continue
 
         last_headline, last_content = current[-1]  # page ending
-
         after = list(visit_sentences(after, skip_undefined=skip_undefined))
         first_headline, first_content = after[0]  # page start
-        if not is_sentence_closed(last_content.split()):
+        if not last_content.strip():
+            yield last_headline, ''
+            continue
+        elif not is_sentence_closed(last_content.split()):
             # merge sentence
-            assert last_content and first_content
-            # TODO: CHECK FOR A VALID PAGE START
-            yield last_headline, last_content + ' ' + first_content
+            assert last_content
+            if first_content:
+                # TODO: CHECK FOR A VALID PAGE START
+                yield last_headline, last_content + ' ' + first_content
+            else:
+                yield last_headline, last_content
         else:
             # new page with headline start
             yield last_headline, last_content
