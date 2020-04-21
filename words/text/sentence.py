@@ -156,14 +156,14 @@ def visit_chapters(pages):
             # start
             current = headline
         if headline != current and headline.text is not None:
-            yield current, collected
+            yield words.text.TextSection(current, collected)
             collected = []
             current = headline
         if sentence:
             # do not store empty sentences?
             collected.append(sentence)
     if collected:
-        yield current, collected
+        yield words.text.TextSection(current, collected)
 
 
 class AlreadyDone:
