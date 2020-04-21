@@ -35,12 +35,14 @@ def extract_texts(loaded: words.feature.TextRequiredResources,
     """
     result = split(loaded)
 
-    # extract sentence out of paragraphs
+    chapters = list(words.text.sentence.visit_chapters(result))
+
     result = [
         words.text.PageContentPageTextDetected(
-            page=page.page,
-            content=words.text.sentence.find_sentences(page),
-        ) for page in result
+            page=page,
+            content=sorted(content, key=lambda x: x.headline.container))
+        for page, content in itertools.groupby(
+            chapters, key=lambda x: x.headline.page)
     ]
     return result
 
