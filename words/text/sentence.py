@@ -159,7 +159,9 @@ def visit_chapters(pages):
             yield current, collected
             collected = []
             current = headline
-        collected.append(sentence)
+        if sentence:
+            # do not store empty sentences?
+            collected.append(sentence)
     if collected:
         yield current, collected
 
