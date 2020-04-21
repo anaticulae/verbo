@@ -10,6 +10,7 @@
 import iamraw
 import serializeraw
 import texmex
+import utila
 
 import tests.fixtures.restruct
 import tests.resources
@@ -63,47 +64,56 @@ def test_text_dump_and_load_text():
 def test_text_extractor_titles():
     result = tests.fixtures.restruct.restructured_textexample()
     # page6
-    assert result[0][1][0][0].text == 'CHAPTER 1'
-    assert result[0][1][1][0].text == 'RestructuredText Tutorial'
+    page6 = utila.select_page(result, 6)
+    assert page6[1][0][0].text == 'CHAPTER 1'
+    assert page6[1][1][0].text == 'RestructuredText Tutorial'
 
     # page8
-    assert result[1][1][0][0].text == 'CHAPTER 2'
-    assert result[1][1][1][0].text == 'RestructuredText Guide'
-    assert result[1][1][2][0].text == 'Basics'
+    page8 = utila.select_page(result, 8)
+    assert page8[1][0][0].text == 'CHAPTER 2'
+    assert page8[1][1][0].text == 'RestructuredText Guide'
+    assert page8[1][2][0].text == 'Basics'
 
     # page9
-    assert result[2][1][0][0].text == 'Blockquotes'
-    assert result[2][1][1][0].text == 'Code: Block'
+    page9 = utila.select_page(result, 9)
+    assert page9[1][0][0].text == 'Blockquotes'
+    assert page9[1][1][0].text == 'Code: Block'
 
     # page10
-    assert result[3][1][0][0].text == 'CHAPTER 3'
-    assert result[3][1][1][0].text == 'RestructuredText Customizations'
+    page10 = utila.select_page(result, 10)
+    assert page10[1][0][0].text == 'CHAPTER 3'
+    assert page10[1][1][0].text == 'RestructuredText Customizations'
 
     # page12
-    assert result[4][1][0][0].text == 'CHAPTER 4'
-    assert result[4][1][1][0].text == 'Sphinx Tutorial'
-    assert result[4][1][2][0].text == 'Step 1'
+    page12 = utila.select_page(result, 12)
+    assert page12[1][0][0].text == 'CHAPTER 4'
+    assert page12[1][1][0].text == 'Sphinx Tutorial'
+    assert page12[1][2][0].text == 'Step 1'
 
     # page13
     # is merged to page12
 
     # page14
-    assert result[5][1][0][0].text == 'Documenting a Project'
+    page14 = utila.select_page(result, 14)
+    assert page14[1][0][0].text == 'Documenting a Project'
 
     # page15
-    assert result[6].content[0].headline.text == 'Aside: Other formats'
+    page15 = utila.select_page(result, 15)
+    assert page15.content[0].headline.text == 'Aside: Other formats'
 
     # page16
-    assert result[7].content[0].headline.text == 'Step 2'
-    assert not result[7].content[0].content  # headline only, no content
-    assert result[7].content[1].headline.text == 'Referencing Code'
+    page16 = utila.select_page(result, 16)
+    assert page16.content[0].headline.text == 'Step 2'
+    assert not page16.content[0].content  # headline only, no content
+    assert page16.content[1].headline.text == 'Referencing Code'
 
     # page17
     # is merged to page 16
 
     # page18
-    assert result[8].content[0].headline.text == 'CHAPTER 5'
-    assert result[8].content[1].headline.text == 'Sphinx Guide'
+    page18 = utila.select_page(result, 18)
+    assert page18.content[0].headline.text == 'CHAPTER 5'
+    assert page18.content[1].headline.text == 'Sphinx Guide'
 
 
 def test_text_convert_undefined_to_text():
