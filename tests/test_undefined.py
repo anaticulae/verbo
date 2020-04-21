@@ -27,15 +27,18 @@ def test_extract_undefined():
     """Text replacing the undefined items with content"""
     # TODO: Move to hey
     textexample = tests.fixtures.restruct.restructured_textexample()
-    text = serializeraw.load_document(
-        iamraw.path.text(tests.resources.RESTRUCT))
-    textposition = serializeraw.load_textpositions(
-        iamraw.path.textposition(tests.resources.RESTRUCT))
 
-    border = serializeraw.load_pageborders(
-        iamraw.path.sizeandborder(tests.resources.RESTRUCT))
-    headerfooters = serializeraw.load_headerfooter(
-        iamraw.path.headerfooters(tests.resources.RESTRUCT))
+    text = iamraw.path.text(tests.resources.RESTRUCT)
+    text = serializeraw.load_document(text)
+
+    textposition = iamraw.path.textposition(tests.resources.RESTRUCT)
+    textposition = serializeraw.load_textpositions(textposition)
+
+    border = iamraw.path.sizeandborder(tests.resources.RESTRUCT)
+    border = serializeraw.load_pageborders(border)
+
+    headerfooters = iamraw.path.headerfooters(tests.resources.RESTRUCT)
+    headerfooters = serializeraw.load_headerfooter(headerfooters)
 
     contentborder = words.headlines.contentborder(border, headerfooters)
     extracted = words.undefined.extract_undefined(
