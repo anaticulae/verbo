@@ -66,37 +66,37 @@ def test_text_extractor_titles():
     result = tests.fixtures.restruct.restructured_textexample()
     # page6
     page6 = utila.select_page(result, 6)
-    assert page6[1][0][0].text == 'CHAPTER 1'
-    assert page6[1][1][0].text == 'RestructuredText Tutorial'
+    assert page6.content[0].headline.text == 'CHAPTER 1'
+    assert page6.content[1].headline.text == 'RestructuredText Tutorial'
 
     # page8
     page8 = utila.select_page(result, 8)
-    assert page8[1][0][0].text == 'CHAPTER 2'
-    assert page8[1][1][0].text == 'RestructuredText Guide'
-    assert page8[1][2][0].text == 'Basics'
+    assert page8.content[0].headline.text == 'CHAPTER 2'
+    assert page8.content[1].headline.text == 'RestructuredText Guide'
+    assert page8.content[2].headline.text == 'Basics'
 
     # page9
     page9 = utila.select_page(result, 9)
-    assert page9[1][0][0].text == 'Blockquotes'
-    assert page9[1][1][0].text == 'Code: Block'
+    assert page9.content[0].headline.text == 'Blockquotes'
+    assert page9.content[1].headline.text == 'Code: Block'
 
     # page10
     page10 = utila.select_page(result, 10)
-    assert page10[1][0][0].text == 'CHAPTER 3'
-    assert page10[1][1][0].text == 'RestructuredText Customizations'
+    assert page10.content[0].headline.text == 'CHAPTER 3'
+    assert page10.content[1].headline.text == 'RestructuredText Customizations'
 
     # page12
     page12 = utila.select_page(result, 12)
-    assert page12[1][0][0].text == 'CHAPTER 4'
-    assert page12[1][1][0].text == 'Sphinx Tutorial'
-    assert page12[1][2][0].text == 'Step 1'
+    assert page12.content[0].headline.text == 'CHAPTER 4'
+    assert page12.content[1].headline.text == 'Sphinx Tutorial'
+    assert page12.content[2].headline.text == 'Step 1'
 
     # page13
     # is merged to page12
 
     # page14
     page14 = utila.select_page(result, 14)
-    assert page14[1][0][0].text == 'Documenting a Project'
+    assert page14.content[0].headline.text == 'Documenting a Project'
 
     # page15
     page15 = utila.select_page(result, 15)
