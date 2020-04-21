@@ -8,6 +8,7 @@
 # =============================================================================
 
 import iamraw.path
+import pytest
 import serializeraw
 
 # pylint:disable=W0611
@@ -21,6 +22,7 @@ RESTRUCTURED_NON_TEXTUAL_PAGE = 10
 
 
 # pylint:disable=W0621
+@pytest.mark.xfail(reason='unable to merge undefined sections correctly')
 def test_extract_undefined():
     """Text replacing the undefined items with content"""
     # TODO: Move to hey

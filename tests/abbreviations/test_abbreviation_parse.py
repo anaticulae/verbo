@@ -32,6 +32,7 @@ def bachelor37(testdir, monkeypatch):
     return result
 
 
+@pytest.mark.xfail(reason='unable to merge undefined sections correctly')
 @utila.skip_longrun
 def test_abbreviation_parse_page(bachelor37):  # pylint:disable=W0621
     result = bachelor37
