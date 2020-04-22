@@ -34,7 +34,7 @@ WORDS_HEADLINES = f'{PROCESS}__{HEADLINES}.yaml'
 @utila.todo(
     version=iamraw.__version__,
     major=1,
-    minor=23,
+    minor=24,
     description='replace with iamraw',
 )
 def fontdistance_textbounds(bounds: texmex.text.TextBoundsList) -> utila.Floats:
@@ -59,7 +59,7 @@ texmex.fontdistance_textbounds = fontdistance_textbounds
 @utila.todo(
     version=iamraw.__version__,
     major=1,
-    minor=23,
+    minor=24,
     description='replace with iamraw',
 )
 def document_textdistance(navigators, borders: iamraw.Borders) -> int:
