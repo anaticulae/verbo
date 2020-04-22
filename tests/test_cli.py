@@ -26,6 +26,8 @@ import tests.resources
         ['-i', tests.resources.RESTRUCT, '-o', '.', '--pages', '0:9'],
         id='pages',
     ),
+    pytest.param(['-i', tests.resources.MASTER72], id='master72'),
+    pytest.param(['-i', tests.resources.PYPORTING], id='master72pyporting'),
 ])
 @pytest.mark.usefixtures('testdir')
 def test_run(command, monkeypatch, capsys):
