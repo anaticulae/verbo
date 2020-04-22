@@ -21,7 +21,7 @@ import words.path
 @pytest.fixture
 def bachelor37(testdir, monkeypatch):
     source = testdir.tmpdir
-    tests.run_words_success(
+    tests.run(
         f'-i {tests.resources.BACHELOR37}',
         monkeypatch=monkeypatch,
     )

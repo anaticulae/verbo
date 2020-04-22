@@ -36,7 +36,7 @@ import tests.resources
 @pytest.mark.usefixtures('testdir')
 def test_run(command, monkeypatch, capsys):
     """Run help and version command to reach basic test coverage"""
-    tests.run_words_success(command, monkeypatch=monkeypatch)
+    tests.run(command, monkeypatch=monkeypatch)
     tests.write_capsys(capsys)
 
 
@@ -51,4 +51,4 @@ def test_feature_words_work_pages0_10(testdir, monkeypatch):
         accept=['rawmaker', 'sections', 'groupme'],
     )
 
-    tests.run_words_success(cmd, monkeypatch=monkeypatch)
+    tests.run(cmd, monkeypatch=monkeypatch)
