@@ -50,9 +50,6 @@ if __name__ == "__main__":
             'Programming Language :: Python :: 3.8',
         ],
         packages=[
-            'decider_textrule',
-            'decider_textrule.features',
-            'decider_textrule.quotation_mark',
             'textflow',
             'textflow.alignment',
             'textflow.features',
