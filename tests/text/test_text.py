@@ -119,17 +119,21 @@ def test_text_extractor_titles():
 
 @pytest.mark.xfail(reason='unable to merge undefined sections correctly')
 def test_text_convert_undefined_to_text():
+    """Test to replace undefined `uindex` on last page."""
     headlines = tests.fixtures.restruct.restructured_headlines()
     textexample = tests.fixtures.restruct.restructured_textexample()
-    text = serializeraw.load_document(
-        iamraw.path.text(tests.resources.RESTRUCT))
-    text_positions = serializeraw.load_textpositions(
-        iamraw.path.textposition(tests.resources.RESTRUCT))
 
-    border = serializeraw.load_pageborders(
-        iamraw.path.sizeandborder(tests.resources.RESTRUCT))
-    headerfooters = serializeraw.load_headerfooter(
-        iamraw.path.headerfooters(tests.resources.RESTRUCT))
+    text = iamraw.path.text(tests.resources.RESTRUCT)
+    text = serializeraw.load_document(text)
+
+    textpositions = iamraw.path.textposition(tests.resources.RESTRUCT)
+    textpositions = serializeraw.load_textpositions(textpositions)
+
+    border = iamraw.path.sizeandborder(tests.resources.RESTRUCT)
+    border = serializeraw.load_pageborders(border)
+
+    headerfooters = iamraw.path.headerfooters(tests.resources.RESTRUCT)
+    headerfooters = serializeraw.load_headerfooter(headerfooters)
 
     contentborder = words.headlines.contentborder(border, headerfooters)
     assert textexample is not None
@@ -142,43 +146,10 @@ def test_text_convert_undefined_to_text():
     undefined = words.undefined.extract_undefined(
         loaded,
         text,
-        text_positions,
+        textpositions,
         contentborder=contentborder,
     )
 
-    expected_list = [
-        texmex.TextInfo(
-            bounding=iamraw.BoundingBox(
-                x0=88.44, y0=332.13, x1=133.28, y1=344.14),
-            bounding_mean=12.01,
-            text='• genindex',
-            style=texmex.TextStyle.create(start=0, end=11, size=9.96),
-        ),
-        texmex.TextInfo(
-            bounding=iamraw.BoundingBox(
-                x0=88.44, y0=350.07, x1=136.61, y1=362.07),
-            bounding_mean=12.0,
-            text='• modindex',
-            style=texmex.TextStyle.create(start=0, end=11, size=9.96),
-        ),
-        texmex.TextInfo(
-            bounding=iamraw.BoundingBox(
-                x0=88.44, y0=368.00, x1=122.35, y1=380.00),
-            bounding_mean=12.0,
-            text='• search',
-            style=texmex.TextStyle.create(start=0, end=9, size=9.96),
-        ),
-    ]
-    expected = [
-        (
-            24,
-            1,
-            (
-                [(0, expected_list)],
-                [[2, 3, 4]],
-            ),
-        ),
-    ]
     last_item = undefined[-1]
     text = [item.text.strip() for item in last_item[0][2][0][0][1]]
     expected = [
