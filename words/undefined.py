@@ -7,6 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import contextlib
+
 import texmex
 import utila
 
@@ -67,8 +69,10 @@ def intindex(index: str) -> int:
     >>> intindex('31u')
     31
     """
-    assert index[-1] == 'u', str(index)
-    return int(index[:-1])
+    with contextlib.suppress(ValueError):
+        if index[-1] == 'u':
+            return int(index[:-1])
+    return None
 
 
 def splitter(items):

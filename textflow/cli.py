@@ -33,6 +33,13 @@ WORKPLAN = [
         ],
         output=('current', 'expected'),
     ),
+    utila.create_step(
+        'quotation',
+        inputs=[
+            utila.ResultFile('words', 'word_result'),
+        ],
+        output=('quotation',),
+    ),
 ]
 
 # pylint:disable=C0103
