@@ -38,7 +38,7 @@ def extract_undefined(pages, text, text_position, contentborder: dict):  # pylin
             ]) for (uindex, undefineds) in enumerate(splitted_paragraph)]
 
             paragraph_undefined = [[
-                int(intindex(item)) for item in undefineds
+                intindex(item) for item in undefineds
             ] for (uindex, undefineds) in enumerate(splitted_paragraph)]
 
             if paragraph_items:
@@ -54,7 +54,11 @@ def extract_undefined(pages, text, text_position, contentborder: dict):  # pylin
 
 
 def intindex(index: str) -> int:
-    """Convert undefined index `'31u'` to int index `31"""
+    """Convert undefined index `'31u'` to int index `31.
+
+    >>> intindex('31u')
+    31
+    """
     assert index[-1] == 'u', str(index)
     return int(index[:-1])
 
