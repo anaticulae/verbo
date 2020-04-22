@@ -45,7 +45,7 @@ def work(
         headlines: str,
         lists: str,
         boxed: str,
-        pages=None,
+        pages: tuple = None,
 ) -> str:
 
     text, listlookup, boxlookup = load_resources(

@@ -36,7 +36,7 @@ def work(
         border: str,
         headlines: str,
         headerfooters: str,
-        pages=None,
+        pages: tuple = None,
 ) -> str:
     """Combine `extracted_text` and check the `undefined` fields for lists
 
