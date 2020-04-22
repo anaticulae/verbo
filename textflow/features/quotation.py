@@ -13,21 +13,42 @@ import iamraw
 import utila
 import yaml
 
+import words.text.word
 import words.undefined
 
 
 def work(word: str, pages: tuple = None) -> str:
     word = load_text(word, headlines=None, pages=pages)
+
+    collected = collect_quotations(word)
+
+    dumped = dump_quotations(collected)
+    return dumped
+
+
+def dump_quotations(quotations) -> str:
+    result = []
+    for page, index, sentence in quotations:
+        result.append(f'{page} {index} {sentence}')
+    dumped = yaml.dump(result)
+    return dumped
+
+
+def collect_quotations(word):
+    result = []
     for page, pagecontent in word:
         sentence_index = 0
-        for headline, content in pagecontent:
+        for _, content in pagecontent:
             for sentence in content:
                 undefined = words.undefined.intindex(sentence)
                 if undefined is not None:
                     continue
+                splitted = words.text.word.split_words(sentence)
+                if splitted:
+                    if words.text.word.contain_quotation_marks(splitted):
+                        result.append((page, sentence_index, sentence))
                 sentence_index = sentence_index + 1
-    # assert 0
-    return ''
+    return result
 
 
 def load_text(

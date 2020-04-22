@@ -139,3 +139,16 @@ def isnumber(item):
         _ = int(item)
         return True
     return False
+
+
+def contain_quotation_marks(items) -> True:
+    for item in items:
+        if item in (
+                Mark.QUOTATION_MARK,
+                Mark.QUOTATION_MARK_DOUBLE_CLOSE,
+                Mark.QUOTATION_MARK_DOUBLE_OPEN,
+                Mark.QUOTATION_MARK_SINGLE_CLOSE,
+                Mark.QUOTATION_MARK_SINGLE_OPEN,
+        ):
+            return True
+    return False
