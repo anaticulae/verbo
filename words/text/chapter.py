@@ -40,9 +40,11 @@ def extract_texts(loaded: words.feature.TextRequiredResources,
     result = [
         words.text.PageContentPageTextDetected(
             page=page,
-            content=sorted(content, key=lambda x: x.headline.container))
-        for page, content in itertools.groupby(
-            chapters, key=lambda x: x.headline.page)
+            content=sorted(content, key=lambda x: x.headline.container),
+        ) for page, content in itertools.groupby(
+            chapters,
+            key=lambda x: x.headline.page,
+        )
     ]
     return result
 
