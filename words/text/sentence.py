@@ -65,31 +65,34 @@ def visit_sentences(
         skip_undefined: bool = False,
 ) -> typing.Tuple[iamraw.Headline, str]:
     """Yield tuple of Headline and extracted sentence."""
+    result = []
     for section in page.content:
         current = []
         if not section.content:
-            yield section.headline, ''
+            result.append((section.headline, ''))
             continue
         for seq in section.content:
             if not isinstance(seq, iamraw.Paragraph):
                 if current:
                     for sentence in split_sentences(' '.join(current)):
-                        yield section.headline, sentence
+                        result.append((section.headline, sentence))
                 if not skip_undefined:
-                    yield section.headline, f'{seq.container}u'
+                    result.append((section.headline, f'{seq.container}u'))
                 continue
             text = texmex.remove_highnotes(seq.content)
             text = text.replace(utila.NEWLINE, ' ').strip()
             current.append(text)
         if current:
             for sentence in split_sentences(' '.join(current)):
-                yield section.headline, sentence
+                result.append((section.headline, sentence))
+    return result
 
 
 def merge_sentences(
         pages: words.text.PageTextWithHeadlines,
         skip_undefined: bool = False,
 ):
+    result = []
     if len(pages) == 1:
         pages = list(pages)  # avoid side effects
         pages.append(None)
@@ -99,22 +102,22 @@ def merge_sentences(
         # and no content after.
         valid_successor = after and (current.page + 1) == (after.page)
 
-        current = list(visit_sentences(current, skip_undefined=skip_undefined))
+        current = visit_sentences(current, skip_undefined=skip_undefined)
 
         if valid_successor:
             for headline, sentence in current[0:-1]:
-                yield headline, sentence
+                result.append((headline, sentence))
         else:
             for headline, sentence in current:
-                yield headline, sentence
+                result.append((headline, sentence))
             continue
 
         last_headline, last_content = current[-1]  # page ending
-        after = list(visit_sentences(after, skip_undefined=skip_undefined))
+        after = visit_sentences(after, skip_undefined=skip_undefined)
         first_headline, first_content = after[0]  # page start
         if not last_content.strip():
             # Headline at the end of a page
-            yield last_headline, ''
+            result.append((last_headline, ''))
             continue
         last_sentence_closed = is_sentence_closed(last_content.split())
         if not last_sentence_closed:
@@ -122,22 +125,23 @@ def merge_sentences(
             assert last_content
             if first_content:
                 # TODO: CHECK FOR A VALID PAGE START
-                yield last_headline, last_content + ' ' + first_content
+                result.append((last_headline,
+                               last_content + ' ' + first_content))
             else:
                 # Content not closed but next page starts with Headline
-                yield last_headline, last_content
+                result.append((last_headline, last_content))
                 continue
 
         if last_sentence_closed:
             # new page with headline start
-            yield last_headline, last_content
+            result.append((last_headline, last_content))
 
         if last_sentence_closed:
             if last_headline != first_headline:
                 last_headline = first_headline
             if first_headline.text is not None:
                 # after page does not starts with virtual headline
-                yield last_headline, first_content
+                result.append((last_headline, first_content))
 
         # use headline of the page before to first headline of after page
         afterstart = 1  # normal headline
@@ -150,10 +154,12 @@ def merge_sentences(
                     # do not replace headlines from page before with
                     # virtual none-headlines after page break.
                     last_headline = headline
-            yield last_headline, sentence
+            result.append((last_headline, sentence))
+    return result
 
 
 def visit_chapters(pages, merge_headlines=True):
+    result = []
     current = None
     collected = []
     done = AlreadyDone()
@@ -165,14 +171,15 @@ def visit_chapters(pages, merge_headlines=True):
             current = headline
         merges = headline.text is not None if merge_headlines else True
         if headline != current and merges:  # and headline.text is not None:
-            yield words.text.TextSection(current, collected)
+            result.append(words.text.TextSection(current, collected))
             collected = []
             current = headline
         if sentence:
             # do not store empty sentences?
             collected.append(sentence)
     if collected:
-        yield words.text.TextSection(current, collected)
+        result.append(words.text.TextSection(current, collected))
+    return result
 
 
 class AlreadyDone:

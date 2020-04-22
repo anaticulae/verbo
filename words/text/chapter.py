@@ -62,7 +62,6 @@ def split(loaded: words.feature.TextRequiredResources
         headlines = [[
             iamraw.Headline(text=None, level=None, page=page),
         ] for page in range(start, end + 1)]
-
     result = []
     # ensure to preserve correct page order when having pages without headline
     headlines = insert_empty_pages(headlines, max(pages))

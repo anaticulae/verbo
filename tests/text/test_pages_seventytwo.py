@@ -58,7 +58,7 @@ def test_text_seventytwo_visit_sentences_merge_page_endstart():
     required = fseventytwo.textrequired(pages=(3, 4))
     pages = words.text.chapter.split(required)
 
-    merged = list(wts.merge_sentences(pages))
+    merged = wts.merge_sentences(pages)
     assert len(merged) == 30
 
     merged_middle_sentence = merged[16][1]
@@ -76,7 +76,7 @@ def test_text_seventytwo_visit_sentences_merge_page_endstart():
 def test_text_seventytwo_visit_sentences_merge_page5_7():
     required = fseventytwo.textrequired(pages=(5, 6, 7))
     pages = words.text.chapter.split(required)
-    merged = list(wts.merge_sentences(pages))
+    merged = wts.merge_sentences(pages)
 
     assert merged[10][0].text == (
         '2. Das Social Web und die Privatsphäre – '
