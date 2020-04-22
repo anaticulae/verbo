@@ -34,27 +34,31 @@ def extract_texts(loaded: words.feature.TextRequiredResources,
         list of text pages with textutal content definition
     """
     result = split(loaded)
-
-    chapters = list(
-        words.text.sentence.visit_chapters(
-            result,
-            merge_headlines=False,
-        ))
-
-    result = [
-        words.text.PageContentPageTextDetected(
-            page=page,
-            content=sorted(content, key=lambda x: x.headline.container),
-        ) for page, content in itertools.groupby(
-            chapters,
-            key=lambda x: x.headline.page,
-        )
-    ]
+    chapters = words.text.sentence.visit_chapters(
+        result,
+        merge_headlines=False,
+    )
+    grouped = itertools.groupby(chapters, key=lambda x: x.headline.page)
+    result = []
+    for page, item in grouped:
+        # item = list(item)
+        item = sorted(item, key=container_start)
+        result.append(
+            words.text.PageContentPageTextDetected(
+                page=page,
+                content=item,
+            ))
     return result
 
 
-def split(loaded: words.feature.TextRequiredResources
-         ) -> words.text.PageTextWithHeadlines:
+def container_start(item):
+    """Decide multiple line header."""
+    if isinstance(item.headline.container, int):
+        return item.headline.container
+    return item.headline.container[0]
+
+
+def split(loaded: words.feature.TextRequiredResources) -> words.text.PageTextWithHeadlines: # yapf:disable
     headlines = loaded.headlines
     pages = [item.page for item in loaded.textnavigators]
     if not headlines:

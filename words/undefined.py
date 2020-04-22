@@ -33,13 +33,21 @@ def extract_undefined(pages, text, text_position, contentborder: dict):  # pylin
             # TODO: CHECK HERE FOR BOXING
             splitted_paragraph = splitter(paragraph)
             # fill undefined groups with text content
-            paragraph_items = [(uindex, [
-                ptcn[intindex(item)] for item in undefineds
-            ]) for (uindex, undefineds) in enumerate(splitted_paragraph)]
+            try:
+                paragraph_items = [(uindex, [
+                    ptcn[intindex(item)] for item in undefineds
+                ]) for (uindex, undefineds) in enumerate(splitted_paragraph)]
+            except IndexError:
+                utila.error('IndexError')
+                paragraph_items = []
 
-            paragraph_undefined = [[
-                intindex(item) for item in undefineds
-            ] for (uindex, undefineds) in enumerate(splitted_paragraph)]
+            try:
+                paragraph_undefined = [[
+                    intindex(item) for item in undefineds
+                ] for (uindex, undefineds) in enumerate(splitted_paragraph)]
+            except IndexError:
+                utila.error('IndexError X')
+                paragraph_undefined = []
 
             if paragraph_items:
                 _pagecontent.append((

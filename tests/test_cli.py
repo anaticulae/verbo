@@ -27,7 +27,11 @@ import tests.resources
         id='pages',
     ),
     pytest.param(['-i', tests.resources.MASTER72], id='master72'),
-    pytest.param(['-i', tests.resources.PYPORTING], id='master72pyporting'),
+    pytest.param(
+        ['-i', tests.resources.PYPORTING],
+        id='pyporting',
+        marks=pytest.mark.xfail(reason='boxed is not fully implemented'),
+    ),
 ])
 @pytest.mark.usefixtures('testdir')
 def test_run(command, monkeypatch, capsys):
