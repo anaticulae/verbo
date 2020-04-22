@@ -3,21 +3,7 @@
 RP 0.4.0
 =========
 
-citomas
--------
-
-* [ ] write article
-
-* [x] check sentence for valid citation
-
-* [x] check paragraph for valid citation
-
-* [ ] check citation and footnote "...Hello"102.
-
-* [ ] check dot in citation
-
-* [ ] check citation marks. Double and single
-
+* [x] add step to extract sentences with quotations
 
 code quality
 ------------
