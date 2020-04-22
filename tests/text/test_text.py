@@ -8,9 +8,7 @@
 # =============================================================================
 
 import iamraw
-import pytest
 import serializeraw
-import texmex
 import utila
 
 import tests.fixtures.restruct
@@ -100,13 +98,15 @@ def test_text_extractor_titles():
 
     # page15
     page15 = utila.select_page(result, 15)
-    assert page15.content[0].headline.text == 'Aside: Other formats'
+    assert page15.content[0].headline.text is None
+    assert page15.content[1].headline.text == 'Aside: Other formats'
 
     # page16
     page16 = utila.select_page(result, 16)
-    assert page16.content[0].headline.text == 'Step 2'
-    assert not page16.content[0].content  # headline only, no content
-    assert page16.content[1].headline.text == 'Referencing Code'
+    assert page16.content[0].headline.text is None
+    assert page16.content[1].headline.text == 'Step 2'
+    assert not page16.content[1].content  # headline only, no content
+    assert page16.content[2].headline.text == 'Referencing Code'
 
     # page17
     # is merged to page 16
@@ -117,7 +117,6 @@ def test_text_extractor_titles():
     assert page18.content[1].headline.text == 'Sphinx Guide'
 
 
-@pytest.mark.xfail(reason='unable to merge undefined sections correctly')
 def test_text_convert_undefined_to_text():
     """Test to replace undefined `uindex` on last page."""
     headlines = tests.fixtures.restruct.restructured_headlines()

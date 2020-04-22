@@ -7,7 +7,6 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import pytest
 import serializeraw
 
 import words.feature.word
@@ -44,7 +43,6 @@ def restructured_words():
     return result
 
 
-@pytest.mark.xfail(reason='unable to merge undefined sections correctly')
 def test_dump_and_load_words_result():
     word_ = restructured_words()
     headlines = restructured_headlines()

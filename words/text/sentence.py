@@ -113,24 +113,32 @@ def merge_sentences(
         after = list(visit_sentences(after, skip_undefined=skip_undefined))
         first_headline, first_content = after[0]  # page start
         if not last_content.strip():
+            # Headline at the end of a page
             yield last_headline, ''
             continue
-        elif not is_sentence_closed(last_content.split()):
+        last_sentence_closed = is_sentence_closed(last_content.split())
+        if not last_sentence_closed:
             # merge sentence
             assert last_content
             if first_content:
                 # TODO: CHECK FOR A VALID PAGE START
                 yield last_headline, last_content + ' ' + first_content
             else:
+                # Content not closed but next page starts with Headline
                 yield last_headline, last_content
-        else:
+                continue
+
+        if last_sentence_closed:
             # new page with headline start
             yield last_headline, last_content
+
+        if last_sentence_closed:
             if last_headline != first_headline:
                 last_headline = first_headline
             if first_headline.text is not None:
                 # after page does not starts with virtual headline
                 yield last_headline, first_content
+
         # use headline of the page before to first headline of after page
         afterstart = 1  # normal headline
         if last_headline.text is None:
@@ -145,7 +153,7 @@ def merge_sentences(
             yield last_headline, sentence
 
 
-def visit_chapters(pages):
+def visit_chapters(pages, merge_headlines=True):
     current = None
     collected = []
     done = AlreadyDone()
@@ -155,7 +163,8 @@ def visit_chapters(pages):
         if current is None:
             # start
             current = headline
-        if headline != current and headline.text is not None:
+        merges = headline.text is not None if merge_headlines else True
+        if headline != current and merges:  # and headline.text is not None:
             yield words.text.TextSection(current, collected)
             collected = []
             current = headline

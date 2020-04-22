@@ -35,7 +35,11 @@ def extract_texts(loaded: words.feature.TextRequiredResources,
     """
     result = split(loaded)
 
-    chapters = list(words.text.sentence.visit_chapters(result))
+    chapters = list(
+        words.text.sentence.visit_chapters(
+            result,
+            merge_headlines=False,
+        ))
 
     result = [
         words.text.PageContentPageTextDetected(

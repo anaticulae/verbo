@@ -21,8 +21,6 @@ import tests.resources
     pytest.param(
         ['-i', tests.resources.RESTRUCT, '-o', '.'],
         id='restructured',
-        marks=pytest.mark.xfail(
-            reason='unable to merge undefined sections correctly'),
     ),
     pytest.param(
         ['-i', tests.resources.RESTRUCT, '-o', '.', '--pages', '0:9'],
