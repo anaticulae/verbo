@@ -2,6 +2,43 @@
 
 Every noteable change is logged here.
 
+## v0.4.0
+
+### Feature
+
+* extract and dump sentences which contains quotation marks (e597fb9f4754)
+* add quotation step to extract quotation out of sentences (32c296ec5fb3)
+* add interface information (8faae023cda1)
+* add option to select wanted behavior (53f1c63baa39)
+* merge pages between headlines (d68a4b06751e)
+* ensure to handle missing successor correctly (4a77d6686eb0)
+* extend interface documentation (cd800f2cc0f1)
+* extend validation interface (20687ac3d13b)
+* add language dependency to quotation rule (a54ad4a11a1e)
+* ensure position of double quotation (3d1e2ae8e888)
+* extend sentence parser with more complex sentence structure (d010013bc13f)
+* remove text division out of parsed sentences (3a69b2acb7c0)
+* add quotation mark validator (3507c39e6ec1)
+* add decider_textrule basic cli structure (892549773fc1)
+* add quotation mark to avoid splitting in citation (aa4ca8d78d21)
+* add single quotation marks (5fdabea19f88)
+
+### Fix
+
+* fix unit test (9d9c25e8c250)
+* support multiple line headlines and do not fail on index error (6747ac538773)
+* do not store empty sentences (ee1933dbf580)
+* make test compatible to new API (571c21935ed1)
+* ensure to handle headlines without content correctly (c09f4d4fa900)
+* fix sentence ending check, remove unused variable (3a6f60d7a5eb)
+* extend DUDEN whitelist (4b5e62c7039f)
+* fix colon pattern (13e0ee25e8ea)
+* ensure that failing alignment does not crash application (c833ca1405ae)
+
+### Documentation
+
+* add backlog to store upcoming features (96f5c99b11a1)
+
 ## v0.3.2
 
 ### Fix
