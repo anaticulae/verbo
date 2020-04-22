@@ -88,10 +88,11 @@ def visit_sentences(
     return result
 
 
-def merge_sentences(
+def merge_sentences( # pylint:disable=R1260,too-many-branches
         pages: words.text.PageTextWithHeadlines,
         skip_undefined: bool = False,
 ):
+    # TODO: REDUCE COMPLEXITY
     result = []
     if len(pages) == 1:
         pages = list(pages)  # avoid side effects
