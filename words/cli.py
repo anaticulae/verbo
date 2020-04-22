@@ -36,40 +36,12 @@ TEXTINPUT = [
 
 WORKPLAN = [
     step(
-        HEADLINE_STEP,
+        'abbreviation',
         inputs=[
-            ResultFile('sections', 'section_result'),
-            ResultFile('rawmaker', 'text_text'),
-            ResultFile('rawmaker', 'text_positions'),
-            ResultFile('rawmaker', 'fonts_header'),
-            ResultFile('rawmaker', 'fonts_content'),
-            ResultFile('rawmaker', 'border_pages'),
-            ResultFile('rawmaker', 'boxes_boxes'),
-            ResultFile('groupme', 'footer_footerheader'),
-        ],
-        output=(HEADLINE_STEP_RESULT,),
-    ),
-    step(
-        'text',
-        inputs=TEXTINPUT,
-        output=('text',),
-    ),
-    step(
-        'footerlink',
-        inputs=TEXTINPUT,
-        output=('footerlink',),
-    ),
-    step(
-        'list',
-        inputs=[
-            ResultFile('words', 'text_text'),
-            ResultFile('rawmaker', 'text_text'),
-            ResultFile('rawmaker', 'text_positions'),
-            ResultFile('rawmaker', 'border_pages'),
+            ResultFile('words', 'word_result'),
             ResultFile('words', HEADLINES),
-            ResultFile('groupme', 'footer_footerheader'),
         ],
-        output=('list',),
+        output=('detected',),
     ),
     step(
         'boxed',
@@ -84,6 +56,42 @@ WORKPLAN = [
         ],
         output=('boxed',),
     ),
+    step(
+        'footerlink',
+        inputs=TEXTINPUT,
+        output=('footerlink',),
+    ),
+    step(
+        HEADLINE_STEP,
+        inputs=[
+            ResultFile('sections', 'section_result'),
+            ResultFile('rawmaker', 'text_text'),
+            ResultFile('rawmaker', 'text_positions'),
+            ResultFile('rawmaker', 'fonts_header'),
+            ResultFile('rawmaker', 'fonts_content'),
+            ResultFile('rawmaker', 'border_pages'),
+            ResultFile('rawmaker', 'boxes_boxes'),
+            ResultFile('groupme', 'footer_footerheader'),
+        ],
+        output=(HEADLINE_STEP_RESULT,),
+    ),
+    step(
+        'list',
+        inputs=[
+            ResultFile('words', 'text_text'),
+            ResultFile('rawmaker', 'text_text'),
+            ResultFile('rawmaker', 'text_positions'),
+            ResultFile('rawmaker', 'border_pages'),
+            ResultFile('words', HEADLINES),
+            ResultFile('groupme', 'footer_footerheader'),
+        ],
+        output=('list',),
+    ),
+    step(
+        'text',
+        inputs=TEXTINPUT,
+        output=('text',),
+    ),
     # TODO: IS THAT RIGHT?
     step(
         'word',
@@ -94,14 +102,6 @@ WORKPLAN = [
             ResultFile('words', 'boxed_boxed'),
         ],
         output=('result',),
-    ),
-    step(
-        'abbreviation',
-        inputs=[
-            ResultFile('words', 'word_result'),
-            ResultFile('words', HEADLINES),
-        ],
-        output=('detected',),
     ),
 ]
 

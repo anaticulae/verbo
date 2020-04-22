@@ -18,20 +18,20 @@ DESCRIPTION = ('Textflow extracts the text alignment, spaces between '
 
 WORKPLAN = [
     utila.create_step(
-        'lineending',
-        inputs=[
-            utila.ResultFile('rawmaker', 'oneline_text_text'),
-            utila.ResultFile('rawmaker', 'oneline_text_positions'),
-        ],
-        output=('lastchar',),
-    ),
-    utila.create_step(
         'alignment',
         inputs=[
             utila.ResultFile('rawmaker', 'oneline_text_text'),
             utila.ResultFile('rawmaker', 'oneline_text_positions'),
         ],
         output=('current', 'expected'),
+    ),
+    utila.create_step(
+        'lineending',
+        inputs=[
+            utila.ResultFile('rawmaker', 'oneline_text_text'),
+            utila.ResultFile('rawmaker', 'oneline_text_positions'),
+        ],
+        output=('lastchar',),
     ),
     utila.create_step(
         'quotation',
