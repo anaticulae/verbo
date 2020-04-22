@@ -13,3 +13,9 @@ before
 
 * Total coverage: 93.79%
 * Your code has been rated: 10.0/10
+
+after
+~~~~~
+
+* Total coverage: 89.00%
+* Your code has been rated: 10.0/10
