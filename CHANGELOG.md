@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.4.1
+
+### Feature
+
+* add method to load and dump quotation (79f6bc186992)
+
 ## v0.4.0
 
 ### Feature
