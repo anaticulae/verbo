@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.4.2
+
+### Fix
+
+* ensure to handle empty sentences correctly (60aa0b10d82d)
+
 ## v0.4.1
 
 ### Feature
