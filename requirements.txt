@@ -8,9 +8,9 @@
 # =============================================================================
 
 utila==1.20.1
-iamraw==1.23.0
-sections==0.2.13
-hey==2.0.15
+iamraw==1.23.1
+sections==0.2.14
+hey==2.0.16
 
 # split sentences and determine language of written sentence
 german==0.2.3
