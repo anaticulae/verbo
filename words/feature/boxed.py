@@ -52,7 +52,11 @@ def work(
 
     result = process_content(extracted, boxes)
 
-    dumped = serializeraw.dump_boxedcontent(result)
+    try:
+        dumped = serializeraw.dump_boxedcontent(result)
+    except (TypeError, ValueError):
+        utila.error('could not dump boxed content')
+        dumped = '[]'
     return dumped
 
 
