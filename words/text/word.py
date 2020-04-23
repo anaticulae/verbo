@@ -40,6 +40,7 @@ class Mark(enum.Enum):
     SQUARE_BRACKET_OPEN = enum.auto()  # [
     SQUARE_BRACKET_CLOSE = enum.auto()  #  ]
     QUOTATION_MARK = enum.auto()  # '' ""
+    QUOTATION_MARK_SINGLE = enum.auto()  # '' ""
 
     @classmethod
     def fromstr(cls, item: str):
@@ -56,13 +57,14 @@ MATCH = {
     '?': Mark.QUESTION_MARK,
     '!': Mark.EXCLAMATION_MARK,
     "&": Mark.AND,
+    '"': Mark.QUOTATION_MARK,
+    "'": Mark.QUOTATION_MARK_SINGLE,
     "„": Mark.QUOTATION_MARK_DOUBLE_OPEN,
     '“': Mark.QUOTATION_MARK_DOUBLE_CLOSE,  # english open
     '”': Mark.QUOTATION_MARK_DOUBLE_CLOSE,
     '‚': Mark.QUOTATION_MARK_SINGLE_OPEN,
     '‘': Mark.QUOTATION_MARK_SINGLE_CLOSE,
     "’": Mark.APOSTROPHE,
-    "'": Mark.APOSTROPHE,
     '-': Mark.HYPHEN,
     '–': Mark.DASH,
     '...': Mark.DOTS,
@@ -71,7 +73,6 @@ MATCH = {
     ')': Mark.BRACKET_CLOSE,
     '[': Mark.SQUARE_BRACKET_OPEN,
     ']': Mark.SQUARE_BRACKET_CLOSE,
-    # '""': Mark.QUESTION_MARK,
 }
 
 

@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import collections
 import typing
 
 import iamraw
@@ -15,6 +16,13 @@ import yaml
 
 import words.text.word
 import words.undefined
+
+ExtractedQuotation = collections.namedtuple(
+    'ExtractedQuotation',
+    'page, index, sentence',
+)
+
+ExtractedQuotations = typing.List[ExtractedQuotation]
 
 
 def work(word: str, pages: tuple = None) -> str:
@@ -34,7 +42,19 @@ def dump_quotations(quotations) -> str:
     return dumped
 
 
-def collect_quotations(word):
+def load_quotations(content: str) -> ExtractedQuotations:
+    content = utila.from_raw_or_path(content, ftype='yaml')
+    loaded = yaml.load(content, Loader=yaml.FullLoader)
+    result = []
+    for item in loaded:
+        page, index, sentence = item.split(maxsplit=2)
+        page = int(page)
+        index = int(index)
+        result.append(ExtractedQuotation(page, index, sentence))
+    return result
+
+
+def collect_quotations(word) -> ExtractedQuotations:
     result = []
     for page, pagecontent in word:
         sentence_index = 0

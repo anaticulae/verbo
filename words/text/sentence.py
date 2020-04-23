@@ -88,7 +88,7 @@ def visit_sentences(
     return result
 
 
-def merge_sentences( # pylint:disable=R1260,too-many-branches
+def merge_sentences(  # pylint:disable=R1260,too-many-branches
         pages: words.text.PageTextWithHeadlines,
         skip_undefined: bool = False,
 ):

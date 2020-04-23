@@ -37,3 +37,12 @@ def lineending(path: str, prefix: str = '') -> str:
         'lineending_lastchar',
         prefix,
     )
+
+
+def quotation(path: str, prefix: str = '') -> str:
+    return utila.pathconnector(
+        path,
+        textflow.PROCESS,
+        'quotation_quotation',
+        prefix,
+    )
