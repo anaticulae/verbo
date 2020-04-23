@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.4.3
+
+### Fix
+
+* do not fail on wrong boxed output (8e511baa4cf8)
+
 ## v0.4.2
 
 ### Fix
