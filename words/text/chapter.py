@@ -34,10 +34,18 @@ def extract_texts(loaded: words.feature.TextRequiredResources,
         list of text pages with textutal content definition
     """
     result = split(loaded)
-    chapters = words.text.sentence.visit_chapters(
-        result,
-        merge_headlines=False,
-    )
+
+    if result:
+        chapters = words.text.sentence.visit_chapters(
+            result,
+            merge_headlines=False,
+        )
+    else:
+        # in some cases it is not possible to load any content, cause a
+        # document is to short or the headlines are not parsed correctly.
+        utila.error('could not merge empty pages')
+        chapters = []
+
     grouped = itertools.groupby(chapters, key=lambda x: x.headline.page)
     result = []
     for page, item in grouped:

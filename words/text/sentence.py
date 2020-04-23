@@ -160,6 +160,7 @@ def merge_sentences(  # pylint:disable=R1260,too-many-branches
 
 
 def visit_chapters(pages, merge_headlines=True):
+    assert pages and len(pages) >= 1, 'require at least one page'
     result = []
     current = None
     collected = []
