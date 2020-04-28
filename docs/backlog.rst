@@ -8,3 +8,9 @@ backlog
   for words like SPIEGEL, WELT etc. Example: VeLoDyn
 
 * Text Density checker. Check paragraph, chapter length
+
+* detect text alignment and display correctly
+
+* detect_decider mark abweichungen
+
+* Block-Zitate benötigen keine Anführungszeichen
