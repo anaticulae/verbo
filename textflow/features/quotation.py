@@ -26,6 +26,7 @@ ExtractedQuotations = typing.List[ExtractedQuotation]
 
 
 def work(word: str, pages: tuple = None) -> str:
+    # TODO: REPLACE WITH SERIALZIERAW?
     word = load_text(word, headlines=None, pages=pages)
 
     collected = collect_quotations(word)
