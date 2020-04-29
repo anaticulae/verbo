@@ -76,7 +76,7 @@ def document_textdistance(navigators, borders: iamraw.Borders) -> int:
         for yfirst, ysecond in zip(ydist[:-1], ydist[1:]):
             distance = yfirst - ysecond
             result.append(distance)
-    mode = modes(result, minimize=True)
+    mode = utila.modes(result)
     return mode
     # print(mode)
     # print(result)
@@ -92,39 +92,6 @@ def document_textdistance(navigators, borders: iamraw.Borders) -> int:
 
 
 texmex.document_textdistance = document_textdistance
-
-
-# TODO: MOVE TO UTILA
-def modes(
-        data: 'utila.math.number.Numbers',
-        minimize: bool = True,
-) -> 'utila.math.number.Number':
-    """Return the most common data point from discrete or nominal data.
-
-    It is possible to have multiple common data points. To extract a
-    unique point `minimize` enables to decide which number is used.
-
-    See: statistics.mode
-
-    Args:
-        data: list of numbers
-        minimize(bool): if True the biggest common number is used, if
-                        not the smallest is used.
-    Raises:
-        StatisticsError: if data is empty
-    Returns:
-        Most common number.
-    """
-    if not data:
-        raise statistics.StatisticsError('no mode for empty data')
-    table = statistics._counts(data)  # pylint:disable=W0212
-    if len(table) == 1:
-        return table[0][0]
-    current = sorted([item[0] for item in table], reverse=not minimize)
-    return current
-
-
-utila.modes = modes
 
 
 def document_textfeed(
