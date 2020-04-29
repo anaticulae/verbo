@@ -164,9 +164,9 @@ def visit_chapters(pages, merge_headlines=True):
     result = []
     current = None
     collected = []
-    done = AlreadyDone()
+    done = utila.Single()
     for headline, sentence in merge_sentences(pages):
-        if done.done((headline, sentence)):
+        if done.contains((headline, sentence)):
             continue
         if current is None:
             # start
@@ -182,19 +182,6 @@ def visit_chapters(pages, merge_headlines=True):
     if collected:
         result.append(words.text.TextSection(current, collected))
     return result
-
-
-class AlreadyDone:
-
-    def __init__(self):
-        self.saved = set()
-
-    def done(self, item):
-        hashed = str(item)
-        if hashed in self.saved:
-            return True
-        self.saved.add(hashed)
-        return False
 
 
 def split_token(text: str):
