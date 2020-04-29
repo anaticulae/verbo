@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import german
 import pytest
 import utila
 
@@ -156,7 +157,7 @@ def test_text_seventytwo_visit_chapters_complete():
 def test_text_seventytwo_extract_sentences():
     expected = fseventytwo.firstpage_sentences()
     raw = ' '.join(expected)
-    splitted = wts.split_sentences(raw)
+    splitted = german.split_sentences(raw)
 
     assert len(splitted) == len(expected)
     assert splitted == expected

@@ -10,11 +10,12 @@
 import collections
 import typing
 
+import german
+import german.word
 import iamraw
 import utila
 import yaml
 
-import words.text.word
 import words.undefined
 
 ExtractedQuotation = collections.namedtuple(
@@ -64,9 +65,9 @@ def collect_quotations(word) -> ExtractedQuotations:
                 undefined = words.undefined.intindex(sentence)
                 if undefined is not None:
                     continue
-                splitted = words.text.word.split_words(sentence)
+                splitted = german.split_words(sentence)
                 if splitted:
-                    if words.text.word.contain_quotation_marks(splitted):
+                    if german.word.contain_quotation_marks(splitted):
                         result.append((page, sentence_index, sentence))
                 sentence_index = sentence_index + 1
     return result

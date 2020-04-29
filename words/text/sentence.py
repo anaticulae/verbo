@@ -9,8 +9,8 @@
 
 import typing
 
+import german
 import iamraw
-import konrad
 import texmex
 import utila
 
@@ -25,7 +25,7 @@ def find_sentences(page: words.text.PageTextWithHeadlines) -> words.text.TextSec
         for seq in section.content:
             if not isinstance(seq, iamraw.Paragraph):
                 if current:
-                    lines.extend(split_sentences(' '.join(current)))
+                    lines.extend(german.split_sentences(' '.join(current)))
                     current = []
                 lines.append('%du' % seq.container)
                 continue
@@ -37,7 +37,7 @@ def find_sentences(page: words.text.PageTextWithHeadlines) -> words.text.TextSec
             text = text.replace(utila.NEWLINE, ' ').strip()
             current.append(text)
         if current:
-            lines.extend(split_sentences(' '.join(current)))
+            lines.extend(german.split_sentences(' '.join(current)))
             current = []
         result.append(
             words.text.TextSection(
@@ -74,7 +74,7 @@ def visit_sentences(
         for seq in section.content:
             if not isinstance(seq, iamraw.Paragraph):
                 if current:
-                    for sentence in split_sentences(' '.join(current)):
+                    for sentence in german.split_sentences(' '.join(current)):
                         result.append((section.headline, sentence))
                 if not skip_undefined:
                     result.append((section.headline, f'{seq.container}u'))
@@ -83,7 +83,7 @@ def visit_sentences(
             text = text.replace(utila.NEWLINE, ' ').strip()
             current.append(text)
         if current:
-            for sentence in split_sentences(' '.join(current)):
+            for sentence in german.split_sentences(' '.join(current)):
                 result.append((section.headline, sentence))
     return result
 
@@ -120,7 +120,7 @@ def merge_sentences(  # pylint:disable=R1260,too-many-branches
             # Headline at the end of a page
             result.append((last_headline, ''))
             continue
-        last_sentence_closed = is_sentence_closed(last_content.split())
+        last_sentence_closed = german.is_sentence_closed(last_content.split())
         if not last_sentence_closed:
             # merge sentence
             assert last_content
@@ -182,115 +182,3 @@ def visit_chapters(pages, merge_headlines=True):
     if collected:
         result.append(words.text.TextSection(current, collected))
     return result
-
-
-def split_token(text: str):
-    # replace text division -
-    text = text.replace('-\n', '')
-    # support multi line text
-    text = text.replace('\n', ' ')
-    tokens = text.split(' ')
-    result = [token for token in tokens if token]
-    return result
-
-
-def split_sentences(text: str) -> utila.Strings:  # pylint:disable=R1260,R0912
-    """Split a regular `text` into sentence chunks.
-
-    Args:
-        text(str): text to split without any newlines
-    Returns:
-        list of splitted sentences
-    """
-    # TODO: REPLACE WITH EXTERNAL SMART ALTERNATIVE, facebook, google or
-    # something else.
-    # TODO: MAKE ROBUST AGAINST WHITE SPACE
-    result = []
-    current = []
-    for token in split_token(text):
-        current.append(token)
-        token = token.lower()  # make approach more robust
-        lastchar = token[-1]
-        if lastchar == '.':
-            if len(token) == 2:
-                # W. G.
-                continue
-            if token in konrad.ABBREVIATION_LOWER:
-                continue
-            if token[:-1].isnumeric():
-                # 1.; 13.
-                continue
-            if token.startswith('(') and not token.endswith(').'):
-                # (z.B.), Phelps (2006).
-                continue
-        if lastchar in konrad.SIGN:
-            if token.startswith('('):
-                # (2004b: 3) SKIP
-                # (2006).    NOSKIP
-                if token[-2] != ')':
-                    continue
-            if open_quotation_mark(current):
-                continue
-            result.append(' '.join(current))
-            current = []
-        if lastchar in '’”“':  # TODO: LOOK DEEPER
-            if token[-2] in konrad.SIGN:
-                # to observe.” Dennoch
-                result.append(' '.join(current))
-                current = []
-    if current:
-        result.append(' '.join(current))
-    return result
-
-
-def open_quotation_mark(tokens):
-    count = 0
-    # TODO: CHECK DIFFERENT DOUBLE QUOTATION MARK SIGNS
-    for token in tokens:
-        count += token.count('„')
-        count -= token.count('”')
-        count -= token.count('“')
-    return count > 0
-
-
-QUOTATION_CLOSE_SIGNS = '"”“'
-
-
-def is_sentence_closed(token: list) -> bool:
-    """Check that the last character of the last token of a sentences contains
-    a sentence close sign."""
-    assert token, 'empty sentence'
-    assert isinstance(token, (list, tuple)), type(token)
-    last = token[-1].strip()
-    last_char = last[-1]
-    if last_char in konrad.SIGN:
-        # ... hello?
-        return True
-    if len(last) < 2:
-        return False
-    before_last_char = last[-2]
-    if last_char in QUOTATION_CLOSE_SIGNS:
-        # ... hello."
-        if before_last_char in konrad.SIGN:
-            return True
-    return False
-
-
-def is_sentence(sentence: str, min_length: int = 4):
-    if len(sentence) < min_length:  # TODO: HOLY VALUE
-        # sentence is too short
-        return False
-    length = len(sentence)
-    dotcount = sentence.count('.')
-    percent_sentence = sentence.count('.') / length if length else 0.0
-
-    if dotcount >= 3 and percent_sentence > 0.04:  # TODO: HOLY VALUE
-        # sentence contains too much dots, maybe a toc line
-        return False
-    splitted = split_sentences(sentence)
-    if len(splitted) > 1:
-        return False
-    token = split_token(splitted[0])
-    if is_sentence_closed(token):
-        return True
-    return False

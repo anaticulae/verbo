@@ -9,14 +9,11 @@
 
 import contextlib
 
+import german
 import groupme.abbreviation
 import groupme.abbreviation.lists
 import iamraw
 import utila
-
-import words.abbreviation.loader
-import words.text.sentence
-import words.text.word
 
 
 def parses(
@@ -43,9 +40,9 @@ def parse_page(  # pylint:disable=R0914
     page_sentence, page_word = 0, 0
     for _, headline_content in content.content:  # pylint:disable=unused-variable
         for paragraph in headline_content:
-            sentences = words.text.sentence.split_sentences(paragraph)
+            sentences = german.split_sentences(paragraph)
             for sentence in sentences:
-                items = words.text.word.split_words(sentence)
+                items = german.split_words(sentence)
                 if items is None:
                     utila.info(f'incomplete sentence: {sentence}')
                     continue

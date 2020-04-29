@@ -13,7 +13,6 @@ import utila
 
 import tests
 import tests.resources
-import words.abbreviation.loader
 import words.feature.abbreviation
 import words.path
 
