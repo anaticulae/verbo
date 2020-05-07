@@ -83,7 +83,8 @@ def extract():
         for future in concurrent.futures.as_completed(futures):
             try:
                 future.result()
-            except Exception:
+            except Exception as error:
+                utila.error(error)
                 utila.error(f'{future} failed.')
                 raise
 
