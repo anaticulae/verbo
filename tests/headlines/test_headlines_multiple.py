@@ -45,17 +45,16 @@ def test_headlines_multiple_master72_extract_pages_13_14():
     assert headlines == expected
 
 
-@pytest.mark.xfail(reason='detect footnote as headline')
 def test_headlines_multiple_master72_extract_pages_20_22():
     """The headline extractor strategy extracts footnotes as headlines."""
     path = tests.resources.MASTER72
-    pages = tuple(range(20, 22))
+    pages = tuple(range(20, 23))
     headlines = parse_multiline(path, pages)
     assert len(headlines) == 2
     expected = [
         '2.5.3 Privacy Paradox und Post-Privacy',
         ('3. Systemtheorie und moderne Netzwerksoziologie – zentrale Ansätze'
-         ' und Begriffe für den Themenkomplex Social Media ')
+         ' und Begriffe für den Themen- komplex Social Media')
     ]
     assert headlines == expected
 

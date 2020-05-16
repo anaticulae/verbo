@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import german
 import iamraw
 import texmex
 import utila
@@ -50,6 +51,8 @@ class MultiLine(words.headlines.HeadlineExtractorStrategy):
         result = []
         grouped = texmex.group_page_by_size_distance(pagecontent)
         for items in grouped:
+            if not possible_headline_group(items):
+                continue
             # TODO: REMOVE LATER
             text = ' '.join([item.text.strip() for item in items])
             # text = ' '.join([item.text for item in items])
@@ -83,6 +86,20 @@ class MultiLine(words.headlines.HeadlineExtractorStrategy):
             )
             result.append(headline)
         return result
+
+
+def possible_headline_group(items) -> bool:
+    text = ' '.join([item.text for item in items])
+    words_ = german.split_words(text, validate_sentences=False)
+    number_count = len([item for item in words_ if isnumber(item)])
+    if number_count >= 5:  # TODO: HOLY VALUE
+        # assume that headlines does not contain many numbers
+        return False
+    return True
+
+
+def isnumber(token: str):
+    return str(token).isnumeric()
 
 
 def normalize_whitespaces(line):
