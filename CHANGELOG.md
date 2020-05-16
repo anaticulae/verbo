@@ -2,6 +2,15 @@
 
 Every noteable change is logged here.
 
+## v0.5.0
+
+### Fix
+
+* fix headline level detector (cefe9684948e)
+* fix expected subjects (6d207b3306c0)
+* ignore sentence which are parsed as headlines (12eafcaac6fb)
+* add check to exclude miss parsed footnotes as headline (bd21836e6467)
+
 ## v0.4.8
 
 ## v0.4.7
