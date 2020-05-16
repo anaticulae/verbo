@@ -59,6 +59,20 @@ def test_headlines_multiple_master72_extract_pages_20_22():
     assert headlines == expected
 
 
+@pytest.mark.xfail(reason='see docs')
+def test_headlines_multiple_master72_extract_pages_38_42():
+    """The headline extractor strategy extracts list with sentences."""
+    path = tests.resources.MASTER72
+    pages = tuple(range(38, 42))
+    headlines = parse_multiline(path, pages)
+    assert len(headlines) == 2
+    expected = [
+        '3.6.2 Identitätsdimensionen',
+        '3.6.3 Soziale Netzwerke beinhalten Stories',
+    ]
+    assert headlines == expected
+
+
 def parse_multiline(path: str, pages: tuple):
     chapters = None
     sections_ = sections.feature.section.load_section_likelihood_frompath(
