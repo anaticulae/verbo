@@ -17,23 +17,7 @@ import words.loader.basic
 def test_headlines_multiple_master72_extract_pages_5_7():
     path = tests.resources.MASTER72
     pages = tuple(range(5, 7))
-    chapters = None
-
-    sections_ = sections.feature.section.load_section_likelihood_frompath(
-        path,
-        pages=pages,
-    )
-    loaded = words.loader.basic.load_basic_frompath(path, pages=pages)
-
-    strategy = words.headlines.multiline.MultiLine(
-        sectionlist=sections_,
-        basic=loaded,
-        chapters=chapters,
-    )
-    result = strategy.result(pages=pages)
-    result = utila.flatten(result)
-    assert len(result) == 3
-    headlines = [item.text for item in result]
+    headlines = parse_multiline(path, pages)
 
     expected = [
         '1.2 Aufbau der Arbeit',
@@ -43,15 +27,24 @@ def test_headlines_multiple_master72_extract_pages_5_7():
         ('2.1 Web 2.0, Social Web und Social Media: Abgrenzungen und '
          'Definitionen')
     ]
-
     assert headlines == expected
 
 
 def test_headlines_multiple_master72_extract_pages_13_14():
     path = tests.resources.MASTER72
     pages = tuple(range(13, 15))
-    chapters = None
+    headlines = parse_multiline(path, pages)
+    assert len(headlines) == 3
+    expected = [
+        '2.4 Einführung in das Konzept der Privatheit',
+        '2.5 Darstellungen in Massenmedien und Literatur',
+        '2.5.1 Selbstdarstellung und Privatheit als Problemfelder',
+    ]
+    assert headlines == expected
 
+
+def parse_multiline(path: str, pages: tuple):
+    chapters = None
     sections_ = sections.feature.section.load_section_likelihood_frompath(
         path,
         pages=pages,
@@ -66,10 +59,4 @@ def test_headlines_multiple_master72_extract_pages_13_14():
     result = strategy.result(pages=pages)
     result = utila.flatten(result)
     headlines = [item.text for item in result]
-    assert len(result) == 3
-    expected = [
-        '2.4 Einführung in das Konzept der Privatheit',
-        '2.5 Darstellungen in Massenmedien und Literatur',
-        '2.5.1 Selbstdarstellung und Privatheit als Problemfelder',
-    ]
-    assert headlines == expected
+    return headlines
