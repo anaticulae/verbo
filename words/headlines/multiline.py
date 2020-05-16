@@ -91,6 +91,10 @@ class MultiLine(words.headlines.HeadlineExtractorStrategy):
 def possible_headline_group(items) -> bool:
     text = ' '.join([item.text for item in items])
     words_ = german.split_words(text, validate_sentences=False)
+    if len(words_) >= 20:  # TODO: HOLY VALUE
+        # maybe a sentence but headlines are not so long
+        return False
+
     number_count = len([item for item in words_ if isnumber(item)])
     if number_count >= 5:  # TODO: HOLY VALUE
         # assume that headlines does not contain many numbers

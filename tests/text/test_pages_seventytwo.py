@@ -139,17 +139,14 @@ def test_text_seventytwo_visit_chapters_page5_6_7():
                             'soziale Komponente in den Vordergrund')
 
 
-# there is a problem that some content is parsed as headline
-@pytest.mark.xfail(reason='broken headline parser')
 @utila.skip_longrun
 def test_text_seventytwo_visit_chapters_complete():
     required = fseventytwo.textrequired()
     pages = words.text.chapter.split(required)
 
     chapters = list(wts.visit_chapters(pages))
-
-    # user content headlines, Literverzeichnis and Eidesstattliches are
-    # excluded cause there are part of appendix.
+    # user content headlines; Literaturverzeichnis and Eidesstattliches
+    # are excluded cause there are part of appendix.
     master72_headline_count = 30
     assert len(chapters) == master72_headline_count
 

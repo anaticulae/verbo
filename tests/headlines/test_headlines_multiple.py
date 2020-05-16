@@ -59,7 +59,6 @@ def test_headlines_multiple_master72_extract_pages_20_22():
     assert headlines == expected
 
 
-@pytest.mark.xfail(reason='see docs')
 def test_headlines_multiple_master72_extract_pages_38_42():
     """The headline extractor strategy extracts list with sentences."""
     path = tests.resources.MASTER72
