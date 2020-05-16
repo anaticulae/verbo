@@ -3,7 +3,7 @@
 RP 0.5.0
 =========
 
-* [ ] fix multi headline parser
+* [x] fix multi headline parser
 
 code quality
 ------------
