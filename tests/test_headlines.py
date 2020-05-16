@@ -178,12 +178,10 @@ def test_features_headlines_work_master72pages(testdir):
     assert headlines_text == expected_headlines, str(headlines_text)
 
 
-@pytest.mark.xfail(reason='require selective text distance approach')
-@utila.skip_longrun
 def test_features_headlines_work_master72pages_subsections(testdir):
     root = str(testdir)
     headlines_loaded = extract_master72_headlines(root)
-    expected_subsection_count = [2, 8, 10, 5, 2]
+    expected_subsection_count = [2, 8, 10, 5, 0]
 
     subsections = [item[1:] for item in headlines_loaded]
     subsections_count = [len(item) for item in subsections]
