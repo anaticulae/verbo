@@ -6,6 +6,8 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
+
+import pytest
 import sections.feature.section
 import utila
 
@@ -39,6 +41,21 @@ def test_headlines_multiple_master72_extract_pages_13_14():
         '2.4 Einführung in das Konzept der Privatheit',
         '2.5 Darstellungen in Massenmedien und Literatur',
         '2.5.1 Selbstdarstellung und Privatheit als Problemfelder',
+    ]
+    assert headlines == expected
+
+
+@pytest.mark.xfail(reason='detect footnote as headline')
+def test_headlines_multiple_master72_extract_pages_20_22():
+    """The headline extractor strategy extracts footnotes as headlines."""
+    path = tests.resources.MASTER72
+    pages = tuple(range(20, 22))
+    headlines = parse_multiline(path, pages)
+    assert len(headlines) == 2
+    expected = [
+        '2.5.3 Privacy Paradox und Post-Privacy',
+        ('3. Systemtheorie und moderne Netzwerksoziologie – zentrale Ansätze'
+         ' und Begriffe für den Themenkomplex Social Media ')
     ]
     assert headlines == expected
 
