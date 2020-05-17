@@ -44,8 +44,9 @@ class HeadlineExtractorStrategy(abc.ABC):  # pylint:disable=too-many-instance-at
                     extract_page
                         for line in page:
                             extract_headlines
-                                if not should_skip:
-                                    add Headline
+                                if should_skip:
+                                    continue
+                                add Headline
     """
 
     def __init__(
@@ -205,7 +206,6 @@ class HeadlineExtractorStrategy(abc.ABC):  # pylint:disable=too-many-instance-at
         dist_top = textdistances[distanceid]
         dist_bottom = None if lastitem else textdistances[distanceid + 1]
         level = self.levelme(textsize, dist_top, dist_bottom)
-
         text = text.strip()
         headline = iamraw.Headline(
             container=containerid,
@@ -340,6 +340,10 @@ def convert_level(result: iamraw.PagesHeadlineList) -> int:
     # TODO: copy elements
     for items in result.values():
         for item in items:
+            if item.rawlevel is not None:
+                # level is already determined, out of text
+                continue
+            # determine level out of dimension
             item.level = get_level(item.level)
     return result
 
