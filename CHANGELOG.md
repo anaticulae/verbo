@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.5.3
+
+### Fix
+
+* do not overwrite detected level (9ff7f0be723a)
+
 ## v0.5.2
 
 ## v0.5.1
