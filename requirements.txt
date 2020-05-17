@@ -9,10 +9,10 @@
 
 utila==1.21.1
 iamraw==1.24.2
-sections==0.2.21
-hey==2.4.2
+sections==0.2.22
+hey==2.4.3
 
 # split sentences and determine language of written sentence
-german==0.3.6
+german==0.3.7
 # some constants
-konrad==0.2.5
+konrad==0.2.6
