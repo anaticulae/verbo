@@ -77,8 +77,14 @@ def document_alignment(navigators: texmex.PageTextNavigators) -> TextAlignment:
 
 
 def document_textfeed(navigators):
-    left = texmex.document_textfeed(navigators)
-    right = texmex.document_textfeed(navigators, left=False)
+    try:
+        left = texmex.document_textfeed(navigators)
+    except IndexError:
+        left = None  # TODO: REMOVE LATER
+    try:
+        right = texmex.document_textfeed(navigators, left=False)
+    except IndexError:
+        right = None  # TODO: REMOVE LATER
     return left, right
 
 

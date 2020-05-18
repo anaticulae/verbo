@@ -30,70 +30,12 @@ HEADLINES = f'{HEADLINE_STEP}_{HEADLINE_STEP_RESULT}'
 WORDS_HEADLINES = f'{PROCESS}__{HEADLINES}.yaml'
 
 
-# TODO: MOVE TO TEXMEX
 @utila.todo(
     version=iamraw.__version__,
     major=1,
-    minor=25,
+    minor=26,
     description='replace with iamraw',
 )
-def fontdistance_textbounds(bounds: texmex.text.TextBoundsList) -> utila.Floats:
-    assert isinstance(bounds, list)
-    assert all(isinstance(item, texmex.TextBounds) for item in bounds)
-    distance = [
-        utila.roundme(first.bottomdist - second.bottomdist)
-        for (first), (second) in zip(bounds[0:], bounds[1:])
-    ]
-    if bounds:
-        # add distance from first content to page start
-        # xdist, ydist(1), width, height, fontsize
-        # distance.insert(0, bounds[0].bottomdist)
-        distance.insert(0, 0)
-    distance.append(0)  # TODO: CHECK AGAIN
-    return distance
-
-
-texmex.fontdistance_textbounds = fontdistance_textbounds
-
-
-@utila.todo(
-    version=iamraw.__version__,
-    major=1,
-    minor=25,
-    description='replace with iamraw',
-)
-def document_textdistance(navigators, borders: iamraw.Borders) -> int:
-    """Determine the most common text distance"""
-    result = []
-    for _, (navigator, contentborder) in utila.sync_pages([navigators, borders]): # yapf:disable
-        if not navigator:
-            # empty page
-            continue
-        bounds = texmex.textbounds(navigator, contentborder.border)
-        # ignore empty content
-        bounds = [item.bounds for item in bounds if len(item.text)]
-        ydist = [item.bottomdist for item in bounds]
-        for yfirst, ysecond in zip(ydist[:-1], ydist[1:]):
-            distance = yfirst - ysecond
-            result.append(distance)
-    mode = utila.modes(result)
-    return mode
-    # print(mode)
-    # print(result)
-    # try:
-    #     return statistics.mode(result)
-    # except statistics.StatisticsError:
-    #     print(result)
-    #     # TODO: Multiply add distances as often as characters are in line?
-    #     # TODO: Handle equal count, see StatisticsError [12, 11, 12, 11, 148,
-    #     # 17, 4, 51, 129, 58, 8, 41]
-    #     # Raise StategyError and try again with different strategy
-    #     assert 0, 'not decided yet'
-
-
-texmex.document_textdistance = document_textdistance
-
-
 def document_textfeed(
         navigators: texmex.PageTextNavigators,
         count: int = 1,

@@ -112,6 +112,7 @@ class HeadlineExtractorStrategy(abc.ABC):  # pylint:disable=too-many-instance-at
         textdistance = texmex.document_textdistance(
             navigators=self.pagetextnavigators,
             borders=self.sizeandborder,
+            digits=0,
         )
         try:
             self.textdistance = textdistance[0]
