@@ -108,18 +108,16 @@ def rawresult(request, tmpdir):
         os.makedirs(item)
 
     pdf, toccmd, generalcmd = request.param
-    rawtoc = f'rawmaker -i {pdf} -j=8 --pages=0:20 -o {tocpath} --prefix=oneline {toccmd}'
-    rawgeneral = f'rawmaker -i {pdf} -j=8 --pages=0:20 -o {generalpath} {generalcmd}'
+    rawtoc = f'rawmaker -i {pdf} -j=8 --images! --pages=0:10 -o {tocpath} --prefix=oneline {toccmd}'
+    rawgeneral = f'rawmaker -i {pdf} -j=8 --images! --pages=0:60 -o {generalpath} {generalcmd}'
     linero = f'linero -o {generalpath}'
 
-    completed = utila.run(rawtoc)
-    assert completed.returncode == utila.SUCCESS, str(completed)
-
-    completed = utila.run(rawgeneral)
-    assert completed.returncode == utila.SUCCESS, str(completed)
-
-    completed = utila.run(linero)
-    assert completed.returncode == utila.SUCCESS, str(completed)
+    utila.log(rawtoc)
+    utila.run(rawtoc)
+    utila.log(rawgeneral)
+    utila.run(rawgeneral)
+    utila.log(linero)
+    utila.run(linero)
 
     return (tmpdir, tocpath, generalpath)
 
@@ -132,9 +130,14 @@ def groupme(rawresult):  # pylint:disable=W0621
     os.makedirs(groupmepath)
 
     runme = f'groupme --toc! -i {generalpath} -i {tocpath} -o {groupmepath} -j8'
+    # TODO: USE VERBOSE FLAG
+    utila.log(runme)
     utila.run(runme)
+
     runme = f'groupme --toc -i {generalpath} -i {tocpath} -o {groupmepath} --pages=0:10'
+    utila.log(runme)
     utila.run(runme)
+
     return (tmpdir, tocpath, generalpath, groupmepath)
 
 
@@ -145,14 +148,9 @@ def sections_result(groupme):  # pylint:disable=W0621
     sectionspath = os.path.join(tmpdir, 'sections')
     os.makedirs(sectionspath)
 
-    runme = 'sections -i %s -i %s -i %s -o %s -j=8'
-    runme = runme % (generalpath, tocpath, groupmepath, sectionspath)
-
-    completed = utila.run(runme)
-    if completed.returncode != utila.SUCCESS:
-        utila.log(completed.stdout)
-        utila.log(completed.stderr)
-    assert completed.returncode == utila.SUCCESS
+    runme = f'sections -i {generalpath} -i {tocpath} -i {groupmepath} -o {sectionspath} -j=8'
+    utila.log(runme)
+    utila.run(runme)
     return (tmpdir, tocpath, generalpath, sectionspath, groupmepath)
 
 
@@ -163,13 +161,9 @@ def words_result(sections_result):  # pylint:disable=W0621
     wordspath = os.path.join(tmpdir, 'words')
     os.makedirs(wordspath)
 
-    runme = 'words -i %s -i %s -i %s -o %s -j=8'
-    runme = runme % (generalpath, sectionspath, groupmepath, wordspath)
-
-    completed = utila.run(runme)
-    if completed.returncode:
-        utila.error((utila.format_completed(completed)))
-    assert completed.returncode == utila.SUCCESS
+    runme = f'words -i {generalpath} -i {sectionspath} -i {groupmepath} -o {wordspath} -j=8'
+    utila.log(runme)
+    utila.run(runme)
 
     files = [
         ('words__word_result.yaml', 2000),
