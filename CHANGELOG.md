@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.5.5
+
+### Fix
+
+* adjust toc extractor range (c70ac159ca34)
+
 ## v0.5.4
 
 ## v0.5.3
