@@ -131,11 +131,10 @@ def groupme(rawresult):  # pylint:disable=W0621
     groupmepath = os.path.join(tmpdir, 'groupme')
     os.makedirs(groupmepath)
 
-    runme = 'groupme -i %s -i %s -o %s -j=8'
-    runme = runme % (generalpath, tocpath, groupmepath)
-
-    completed = utila.run(runme)
-    assert completed.returncode == utila.SUCCESS, str(completed)
+    runme = f'groupme --toc! -i {generalpath} -i {tocpath} -o {groupmepath} -j8'
+    utila.run(runme)
+    runme = f'groupme --toc -i {generalpath} -i {tocpath} -o {groupmepath} --pages=0:10'
+    utila.run(runme)
     return (tmpdir, tocpath, generalpath, groupmepath)
 
 
