@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.5.6
+
+### Fix
+
+* convert level when having None entry (ae667b556ab6)
+
 ## v0.5.5
 
 ### Fix
