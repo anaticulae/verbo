@@ -16,7 +16,7 @@ import texmex
 import texmex.text
 import utila
 
-__version__ = '0.5.9'
+__version__ = '0.5.10'
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
