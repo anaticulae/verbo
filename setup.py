@@ -64,7 +64,6 @@ if __name__ == "__main__":
         ],
         entry_points={
             'console_scripts': [
-                'decider_textrule = decider_textrule.cli:main',
                 'textflow = textflow.cli:main',
                 'words = words.cli:main',
             ],
