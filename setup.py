@@ -53,6 +53,7 @@ if __name__ == "__main__":
             'textflow',
             'textflow.alignment',
             'textflow.features',
+            'textflow.quotation',
             'words',
             'words.abbreviation',
             'words.feature',

@@ -12,6 +12,7 @@ import tests.resources
 import tests.textflow_
 import textflow.features.quotation
 import textflow.path
+import textflow.quotation.serialize
 
 
 def test_textflow_quotation(testdir, monkeypatch):
@@ -23,10 +24,10 @@ def test_textflow_quotation(testdir, monkeypatch):
         monkeypatch=monkeypatch,
     )
     source = textflow.path.quotation(testdir.tmpdir)
-    current = textflow.features.quotation.load_quotations(source)
+    current = textflow.quotation.serialize.load_quotations(source)
     assert current
     assert len(current) >= 30, str(current)
 
-    dumped = textflow.features.quotation.dump_quotations(current)
-    loaded = textflow.features.quotation.load_quotations(dumped)
+    dumped = textflow.quotation.serialize.dump_quotations(current)
+    loaded = textflow.quotation.serialize.load_quotations(dumped)
     assert loaded == current
