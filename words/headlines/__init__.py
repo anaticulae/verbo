@@ -303,7 +303,7 @@ FIRST_LEVEL = 0.8  # TODO: HOLY VALUE
 SECOND_LEVEL = 0.5
 
 
-def convert_level(result: iamraw.PagesHeadlineList) -> int:
+def convert_level(result: iamraw.PagesHeadlineList) -> int:  # pylint:disable=R1260
     """Convert chapter level based on text distances to logical level
     (1,2,3,4,...).
 
