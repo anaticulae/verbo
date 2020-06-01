@@ -17,10 +17,11 @@ import textflow.quotation.serialize
 
 def test_textflow_quotation(testdir, monkeypatch):
     pages = '--pages=10:20'
+    source = tests.resources.MASTER72
     # run words
-    tests.run(f'-i {tests.resources.MASTER72} {pages}', monkeypatch=monkeypatch)
+    tests.run(f'-i {source} {pages}', monkeypatch=monkeypatch)
     tests.textflow_.run(
-        f'-i {tests.resources.MASTER72} -i {testdir.tmpdir} {pages} --quotation',
+        f'-i {source} -i {testdir.tmpdir} {pages} --quotation',
         monkeypatch=monkeypatch,
     )
     source = textflow.path.quotation(testdir.tmpdir)
