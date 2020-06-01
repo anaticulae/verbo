@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.5.12
+
+### Fix
+
+* remove outdated moved code (1b9287e3207e)
+
 ## v0.5.11
 
 ## v0.5.10
