@@ -36,12 +36,13 @@ def extract_examples():
 
 # yapf:disable
 PACKAGE = [
+    (tests.resources.MASTER72_PDF, tests.resources.MASTER72, None),
+    (tests.resources.BACHELOR76_PDF, tests.resources.BACHELOR76, None),
+    (tests.resources.HOMEWORK40_PDF, tests.resources.HOMEWORK40, None),
     (tests.resources.BACHELOR37_PDF, tests.resources.BACHELOR37, None),
     (tests.resources.HOWTO_PYPORTING_PDF, tests.resources.HOWTO_PYPORTING, None),
-    (tests.resources.MASTER72_PDF, tests.resources.MASTER72, None),
     (tests.resources.PYPORTING_PDF, tests.resources.PYPORTING, None),
     (tests.resources.RESTRUCT_PDF, tests.resources.RESTRUCT, None),
-    (tests.resources.HOMEWORK40_PDF, tests.resources.HOMEWORK40, None),
 ]
 # yapf:enable
 
