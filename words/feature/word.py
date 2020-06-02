@@ -77,11 +77,11 @@ def process_words(text, listlookup, boxlookup):
                     undefined,
                 )
                 if searched is not None:
-                    headlinecontent[index] = '%dl' % searched
+                    headlinecontent[index] = f'{searched}l'
                     continue
                 searched = boxlookup.search(page, undefined)
                 if searched is not None:
-                    headlinecontent[index] = '%db' % searched
+                    headlinecontent[index] = f'{searched}b'
                     continue
     return text
 
