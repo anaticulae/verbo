@@ -14,6 +14,23 @@ import iamraw
 import texmex
 import utila
 
+
+def parse_single(content: str):
+    for method in [
+            parse_numbered_list,
+            parse_dotted_list,
+            parse_plus_list,
+            parse_minus_list,
+    ]:
+        extracted = method(content)
+        if not extracted:
+            continue
+        assert len(extracted) == 1
+        extracted = extracted[0]
+        return extracted
+    return None
+
+
 # TODO: Merge both pattern!
 NUMBERED_LIST_PATTERN = r"""
     ^(?P<LEVEL>[0-9]+\.[0-9]{0})           # list level e.g. 1. 4. 5.
