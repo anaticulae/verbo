@@ -165,10 +165,7 @@ def prepare_analyze_page(
     if contentborder is None:
         return None
 
-    pcn = texmex.PageTextContentNavigator(
-        textnavigator=utila.select_page(textnavigators, page=page),
-        content=utila.select_page(borders, page=page),
-    )
+    pcn = utila.select_page(textnavigators, page=page)
     if pcn.offset == (None, None):
         # empty page
         return None

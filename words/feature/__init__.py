@@ -30,7 +30,7 @@ class TextRequiredResources:
     boxes: words.boxed.BoxedChecker
     fontstore: iamraw.FontStore
     headlines: iamraw.PagesHeadlineList
-    textnavigators: texmex.PageTextNavigators
+    textnavigators: texmex.PageTextContentNavigators
 
 
 @functools.lru_cache(configo.CACHE_SMALL)
@@ -46,17 +46,22 @@ def load_resources(  # pylint:disable=R0914
         pages=None,
 ) -> TextRequiredResources:
     """Load content from path and create required object"""
-    text = serializeraw.load_document(text, pages=pages)
-    position = serializeraw.load_textpositions(textposition, pages=pages)
+
+    # TODO: CHECK REALY REQUIRED RESOURCES AND REMOVE NON REQUIRED
+    textnavigators = serializeraw.create_pagetextcontentnavigators_fromfile(
+        text=text,
+        textpositions=textposition,
+        sizeandborderpath=pagesizes,
+        headerfooterpath=headerfooters,
+        fontheader=fontheader,
+        fontcontent=fontcontent,
+        pages=pages,
+    )
     headlines = serializeraw.load_headlines(headlines, pages=pages)
     boxes = serializeraw.load_boxes(boxes, pages=pages)
 
     fontstore = serializeraw.create_fontstore(fontheader, fontcontent)
 
-    textnavigators = texmex.create_pagetextnavigators(
-        text=text,
-        text_positions=position,
-    )
     contentborder = serializeraw.load_pageborders(pagesizes, pages=pages)
 
     headerfooters = serializeraw.load_headerfooter(

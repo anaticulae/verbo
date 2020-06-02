@@ -20,6 +20,7 @@ import iamraw
 import serializeraw
 import texmex
 import utila
+
 import words.lists.geometry
 import words.lists.regex
 import words.loader.input
