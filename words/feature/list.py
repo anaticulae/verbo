@@ -16,6 +16,7 @@
      - check undefined area that area is list
 
 """
+
 import functools
 import re
 import typing
@@ -38,7 +39,7 @@ def work(
         headerfooters: str,
         pages: tuple = None,
 ) -> str:
-    """Combine `extracted_text` and check the `undefined` fields for lists
+    """Combine `extracted_text` and check the `undefined` fields for lists.
 
     extracted_text(str): document with `undefined fields` from `text`
                          module of `words`
@@ -254,10 +255,3 @@ def parse_general_list(content: str, selector: str) -> typing.List[str]:
     for item in parsed:
         result.append(item.group(1).strip())
     return result
-
-
-def commandline() -> utila.Flag:
-    return utila.Flag(
-        longcut='list',
-        message='Export list of extracted ordered and unordered lists',
-    )
