@@ -96,7 +96,7 @@ def split(loaded: words.feature.TextRequiredResources) -> words.text.PageTextWit
 def analyze_page(
         headlines,
         fontstore: iamraw.FontStore,
-        textnavigators: texmex.PageTextNavigator,
+        textnavigators: texmex.PageTextNavigators,
         border: iamraw.Border,
         boxes: words.boxed.BoxedChecker,
 ) -> words.text.PageTextWithHeadlines:
