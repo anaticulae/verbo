@@ -75,6 +75,18 @@ def intindex(index: str) -> int:
     return None
 
 
+def listindex(index: str) -> int:
+    """Convert list index `'10l'` to int index `10.
+
+    >>> listindex('10l')
+    10
+    """
+    with contextlib.suppress(ValueError):
+        if index[-1] == 'l':
+            return int(index[:-1])
+    return None
+
+
 def splitter(items):
     """Create groups of undefined items separated by content items"""
     result, current = [], []

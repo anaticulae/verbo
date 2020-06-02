@@ -87,20 +87,24 @@ def process_words(text, listlookup, boxlookup):
 
 
 class ListLookUp:
+    """ListLookUp
+
+    Uses page wise lookup. The first list on a page starts with the
+    number 0.
+    """
+
     # TODO: UNITE WITH BOXEDCHECKER!
     def __init__(self, lists):
         self.data = {}
         self.load(lists)
 
     def load(self, lists):
-        index = 0
         for page, content in lists:
-            for item in content:
+            for index, item in enumerate(content):
                 try:
                     self.data[page].append((item, index))
                 except KeyError:
                     self.data[page] = [(item, index)]
-                index += 1
 
     def search(self, page, headline, undefined):  # pylint:disable=W0613
         with contextlib.suppress(KeyError):
