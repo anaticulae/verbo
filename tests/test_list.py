@@ -10,11 +10,10 @@
 import pytest
 import serializeraw
 
+import tests.fixtures.restruct
 import tests.resources
+import words.lists.regex
 import words.path
-from tests.fixtures.restruct import restructured_list_work
-from words.feature.list import parse_dotted_list
-from words.feature.list import parse_numbered_list
 
 NUMBERED_LIST_SAMPLE_SIZE = 9
 NUMBERED_LIST = """
@@ -43,7 +42,7 @@ Text
 
 
 def test_list_numbered_regex():
-    parsed = parse_numbered_list(NUMBERED_LIST)
+    parsed = words.lists.regex.parse_numbered_list(NUMBERED_LIST)
 
     assert len(parsed) == NUMBERED_LIST_SAMPLE_SIZE, parsed
 
@@ -62,7 +61,7 @@ def test_list_numbered_regex_single_item():
         "type usage works in both Python 2 &\n3 (e.g. use mypy to check your "
         "typing under both Python 2 & Python 3).")
 
-    parsed = parse_numbered_list(raw)
+    parsed = words.lists.regex.parse_numbered_list(raw)
     assert len(parsed) == 1
     level = parsed[0][1]
     assert level == "8."
@@ -111,7 +110,7 @@ DOTTED_LIST_EXPECTED = [
 
 
 def test_list_dotted():
-    parsed = parse_dotted_list(DOTTED_LIST)
+    parsed = words.lists.regex.parse_dotted_list(DOTTED_LIST)
     assert parsed == DOTTED_LIST_EXPECTED
 
 
@@ -137,7 +136,7 @@ DOTTED_EXAMPLE_EXPECTED = [
 
 
 def test_list_dotted_with_start_and_end():
-    parsed = parse_dotted_list(DOTTED_EXAMPLE)
+    parsed = words.lists.regex.parse_dotted_list(DOTTED_EXAMPLE)
     assert parsed == DOTTED_EXAMPLE_EXPECTED
 
 
@@ -147,12 +146,13 @@ DOTTED_EXAMPLE_CONTENT_ONLY = """ • Index Page
 
 
 def test_list_dotted_with_content_only():
-    parsed = parse_dotted_list(DOTTED_EXAMPLE_CONTENT_ONLY)
+    parsed = words.lists.regex.parse_dotted_list(DOTTED_EXAMPLE_CONTENT_ONLY)
     assert parsed == ['Index Page', 'Support', 'Changelog']
 
 
 def test_list_work():  # pylint:disable=W0621
-    dumped_list = serializeraw.dump_lists(restructured_list_work())
+    extracted = tests.fixtures.restruct.restructured_list_work()
+    dumped_list = serializeraw.dump_lists(extracted)
     assert len(dumped_list) > 400, str(dumped_list)
 
     result = serializeraw.load_lists(dumped_list)
@@ -179,7 +179,7 @@ def test_list_work():  # pylint:disable=W0621
 
 
 def test_list_dump_and_load_lists():  # pylint:disable=W0621
-    result = restructured_list_work()
+    result = tests.fixtures.restruct.restructured_list_work()
     dumped_list = serializeraw.dump_lists(result)
     loaded = serializeraw.load_lists(dumped_list)
     assert loaded == result

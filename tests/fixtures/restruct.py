@@ -7,6 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import functools
+
 import iamraw
 import iamraw.path
 import iamraw.sections
@@ -147,5 +149,12 @@ def restructured_list_work():
         border=iamraw.path.sizeandborder(tests.resources.RESTRUCT),
         headerfooters=iamraw.path.headerfooters(tests.resources.RESTRUCT),
     )
-    result = words.feature.list.process(extracted, contentborder)
+    worker = functools.partial(
+        words.feature.list.process_page,
+        contentborder=contentborder,
+    )
+    result = words.loader.input.process_input(
+        extracted,
+        worker,
+    )
     return result
