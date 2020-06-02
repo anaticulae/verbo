@@ -15,17 +15,23 @@ import textflow.path
 import textflow.quotation.serialize
 
 
-def test_textflow_quotation(testdir, monkeypatch):
-    pages = '--pages=10:20'
-    source = tests.resources.MASTER72
+def extract_quotation(source, pages, testdir, monkeypatch):
     # run words
     tests.run(f'-i {source} {pages}', monkeypatch=monkeypatch)
     tests.textflow_.run(
         f'-i {source} -i {testdir.tmpdir} {pages} --quotation',
         monkeypatch=monkeypatch,
     )
-    source = textflow.path.quotation(testdir.tmpdir)
-    current = textflow.quotation.serialize.load_quotations(source)
+    outpath = textflow.path.quotation(testdir.tmpdir)
+    extracted = textflow.quotation.serialize.load_quotations(outpath)
+    return extracted
+
+
+def test_textflow_quotation(testdir, monkeypatch):
+    pages = '--pages=10:20'
+    source = tests.resources.MASTER72
+
+    current = extract_quotation(source, pages, testdir, monkeypatch)
     assert current
     assert len(current) >= 30, str(current)
 
@@ -37,13 +43,7 @@ def test_textflow_quotation(testdir, monkeypatch):
 def test_textflow_quotation_bachelor76(testdir, monkeypatch):
     pages = '--pages=4,5'
     source = tests.resources.BACHELOR76
-    # run words
-    tests.run(f'-i {source} {pages}', monkeypatch=monkeypatch)
-    tests.textflow_.run(
-        f'-i {source} -i {testdir.tmpdir} {pages} --quotation',
-        monkeypatch=monkeypatch,
-    )
-    path = textflow.path.quotation(testdir.tmpdir)
-    quotations = textflow.quotation.serialize.load_quotations(path)
+    quotations = extract_quotation(source, pages, testdir, monkeypatch)
+
     expected = 5
     assert len(quotations) == expected
