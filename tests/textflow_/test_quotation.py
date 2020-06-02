@@ -7,6 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import pytest
+
 import tests
 import tests.resources
 import tests.textflow_
@@ -32,3 +34,19 @@ def test_textflow_quotation(testdir, monkeypatch):
     dumped = textflow.quotation.serialize.dump_quotations(current)
     loaded = textflow.quotation.serialize.load_quotations(dumped)
     assert loaded == current
+
+
+@pytest.mark.xfail(reason='quotation parser does not support lists')
+def test_textflow_quotation_bachelor76(testdir, monkeypatch):
+    pages = '--pages=4'
+    source = tests.resources.BACHELOR76
+    # run words
+    tests.run(f'-i {source} {pages}', monkeypatch=monkeypatch)
+    tests.textflow_.run(
+        f'-i {source} -i {testdir.tmpdir} {pages} --quotation',
+        monkeypatch=monkeypatch,
+    )
+    path = textflow.path.quotation(testdir.tmpdir)
+    quotations = textflow.quotation.serialize.load_quotations(path)
+    expected = 5
+    assert len(quotations) == expected
