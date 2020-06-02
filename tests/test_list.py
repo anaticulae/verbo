@@ -9,6 +9,7 @@
 
 import pytest
 import serializeraw
+import utila
 
 import tests.fixtures.restruct
 import tests.resources
@@ -185,9 +186,8 @@ def test_list_dump_and_load_lists():  # pylint:disable=W0621
     assert loaded == result
 
 
-@pytest.mark.xfail(reason='prepare geometry parser')
-def test_list_bachelor76_page4(testdir, monkeypatch):
-    pages = '--pages=4'
+def test_list_bachelor76_page4_5(testdir, monkeypatch):
+    pages = '--pages=4,5,6,7,8'
     source = tests.resources.BACHELOR76
     # run words
     tests.run(
@@ -197,4 +197,9 @@ def test_list_bachelor76_page4(testdir, monkeypatch):
     )
     path = words.path.lists(testdir.tmpdir)
     lists = serializeraw.load_lists(path)
-    assert len(lists) == 1
+
+    flat = utila.flatten([item[1] for item in lists])
+    lists = [item[2] for item in flat]
+    assert len(lists) == 2
+
+    # TODO: EXTEND DOTTED PARSER TO SUPPORT MULTILINES

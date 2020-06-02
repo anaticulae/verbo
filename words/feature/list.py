@@ -14,25 +14,22 @@
      - load extracted text
      - filter undefined areas
      - check undefined area that area is list
-
 """
-
-import functools
 
 import iamraw
 import serializeraw
 import texmex
 import utila
-
+import words.lists.geometry
 import words.lists.regex
 import words.loader.input
 
 
 @utila.checkdatatype
 def work(
-        extracted_text: str,
+        extracted_text: str,  # pylint:disable=W0613
         text: str,
-        text_position: str,
+        textpositions: str,
         border: str,
         headlines: str,
         headerfooters: str,
@@ -43,23 +40,27 @@ def work(
     extracted_text(str): document with `undefined fields` from `text`
                          module of `words`
     """
-    extracted, contentborder = words.loader.input.load_resources(
-        extracted_text,
-        text,
-        text_position,
-        border,
-        headlines,
-        headerfooters,
+    ptcns = serializeraw.create_pagetextcontentnavigators_fromfile(
+        text=text,
+        textpositions=textpositions,
+        sizeandborderpath=border,
+        headerfooterpath=headerfooters,
         pages=pages,
     )
-    worker = functools.partial(
-        process_page,
-        contentborder=contentborder,
-    )
-    result = words.loader.input.process_input(
-        extracted,
-        worker,
-    )
+    headlines = serializeraw.load_headlines(headlines)
+    textfeed = texmex.document_textfeed(ptcns)
+
+    result = []
+    for navigator in ptcns:
+        pageslist = []
+        for lists in words.lists.geometry.analyze_page(
+                navigator,
+                headlines,
+                textfeed,
+        ):
+            # TODO: REPLACE 0,0 with correct one
+            pageslist.append((0, 0, lists))
+        result.append((navigator.page, pageslist))
     dumped = serializeraw.dump_lists(result)
     return dumped
 
@@ -75,6 +76,7 @@ def process_page(pagecontent, contentborder: iamraw.Border):
             0                4             []
             3                1             []
     """
+    # TODO: REMOVE METHOD?
     result, page = [], -1
     for paragraph in pagecontent:
         page, paragraphnumber, (content, uindexs) = paragraph

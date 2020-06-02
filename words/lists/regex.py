@@ -25,10 +25,8 @@ def parse_single(content: str):
         extracted = method(content)
         if not extracted:
             continue
-        assert len(extracted) == 1
-        extracted = extracted[0]
         return extracted
-    return None
+    return []
 
 
 # TODO: Merge both pattern!
