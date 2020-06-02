@@ -48,7 +48,7 @@ def work(
         headlines(str): path to extracted headlines from hey/words
         pagesizes(str): path to size and border
         boxes(str): definition of boxed rectangles
-        boxes(str): path to extracted lists
+        lists(str): path to extracted lists
         headerfooters: path to extracted footer and header
         pages: list of page numbers to process
     Returns:

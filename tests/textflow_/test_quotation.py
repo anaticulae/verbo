@@ -7,8 +7,6 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import pytest
-
 import tests
 import tests.resources
 import tests.textflow_
@@ -36,9 +34,8 @@ def test_textflow_quotation(testdir, monkeypatch):
     assert loaded == current
 
 
-@pytest.mark.xfail(reason='quotation parser does not support lists')
 def test_textflow_quotation_bachelor76(testdir, monkeypatch):
-    pages = '--pages=4'
+    pages = '--pages=4,5'
     source = tests.resources.BACHELOR76
     # run words
     tests.run(f'-i {source} {pages}', monkeypatch=monkeypatch)

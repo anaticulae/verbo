@@ -37,6 +37,7 @@ WORKPLAN = [
         'quotation',
         inputs=[
             utila.ResultFile('words', 'word_result'),
+            utila.ResultFile('words', 'list_list'),
         ],
         output=('quotation',),
     ),
