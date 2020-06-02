@@ -78,7 +78,6 @@ WORKPLAN = [
     step(
         'list',
         inputs=[
-            ResultFile('words', 'text_text'),
             ResultFile('rawmaker', 'text_text'),
             ResultFile('rawmaker', 'text_positions'),
             ResultFile('rawmaker', 'border_pages'),

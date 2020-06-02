@@ -28,7 +28,6 @@ import words.loader.input
 
 @utila.checkdatatype
 def work(
-        extracted_text: str,  # pylint:disable=W0613
         text: str,
         textpositions: str,
         border: str,
