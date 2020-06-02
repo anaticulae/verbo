@@ -7,8 +7,11 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import pytest
 import serializeraw
 
+import tests.resources
+import words.path
 from tests.fixtures.restruct import restructured_list_work
 from words.feature.list import parse_dotted_list
 from words.feature.list import parse_numbered_list
@@ -180,3 +183,18 @@ def test_list_dump_and_load_lists():  # pylint:disable=W0621
     dumped_list = serializeraw.dump_lists(result)
     loaded = serializeraw.load_lists(dumped_list)
     assert loaded == result
+
+
+@pytest.mark.xfail(reason='prepare geometry parser')
+def test_list_bachelor76_page4(testdir, monkeypatch):
+    pages = '--pages=4'
+    source = tests.resources.BACHELOR76
+    # run words
+    tests.run(
+        # TODO: replace with --list*
+        f'-i {source} --headlines  --text --list {pages}',
+        monkeypatch=monkeypatch,
+    )
+    path = words.path.lists(testdir.tmpdir)
+    lists = serializeraw.load_lists(path)
+    assert len(lists) == 1
