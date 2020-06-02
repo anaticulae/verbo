@@ -33,8 +33,9 @@ def work(
         fontcontent: str,
         headlines: str,
         pagesizes: str,
-        boxes: str,
         headerfooters: str,
+        boxes: str,
+        lists: str,
         pages: tuple = None,
 ) -> str:
     """Extract highnotes out of words.
@@ -47,6 +48,7 @@ def work(
         headlines(str): path to extracted headlines from hey/words
         pagesizes(str): path to size and border
         boxes(str): definition of boxed rectangles
+        boxes(str): path to extracted lists
         headerfooters: path to extracted footer and header
         pages: list of page numbers to process
     Returns:
@@ -54,6 +56,7 @@ def work(
     """
     resources = words.feature.load_resources(
         boxes=boxes,
+        lists=lists,
         fontcontent=fontcontent,
         fontheader=fontheader,
         headerfooters=headerfooters,

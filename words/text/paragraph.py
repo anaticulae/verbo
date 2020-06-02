@@ -12,6 +12,7 @@ import texmex
 
 import words.boxed
 import words.feature
+import words.feature.word
 import words.headlines
 
 
@@ -22,6 +23,7 @@ def collect_paragraph(
         pcn: texmex.PageTextContentNavigator,
         fcs: iamraw.FontContentStore,  # pylint:disable=W0613
         boxes: words.boxed.BoxedChecker,
+        lists: 'ListLookUp',
 ) -> iamraw.ChapterText:
     """Extract paragraphs between defined headlines.
 
@@ -47,7 +49,14 @@ def collect_paragraph(
     result = []
     for index in range(start, end):
         item = pcn[index]
-        contenttype = content_type(boxes, page, item.bounding, item.text)
+        contenttype = content_type(
+            boxes,
+            lists,
+            page,
+            item.bounding,
+            index,
+            item.text,
+        )
         if contenttype == iamraw.ContentType.PARAGRAPH:
             result.append(iamraw.Paragraph(content=item))
         else:
@@ -57,10 +66,15 @@ def collect_paragraph(
 
 def content_type(
         boxed: words.boxed.BoxedChecker,
+        lists: words.feature.word.ListLookUp,
         page: int,
         bounding: iamraw.BoundingBox,
+        index: int,
         content: str,
 ):
+    matched_list = lists.search(page, None, undefined=index)
+    if matched_list is not None:
+        return iamraw.ContentType.LIST
     if iamraw.DOT in content:
         return iamraw.ContentType.LIST
     if boxed.contains(page, bounding):

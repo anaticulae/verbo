@@ -110,6 +110,7 @@ def restruct_resources():
         pagesizes=iamraw.path.sizeandborder(tests.resources.RESTRUCT),
         headerfooters=iamraw.path.headerfooters(tests.resources.RESTRUCT),
         boxes=iamraw.path.boxed(tests.resources.RESTRUCT),
+        lists=words.path.lists(tests.resources.RESTRUCT),
     )
     return loaded
 

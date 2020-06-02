@@ -16,6 +16,7 @@ import tests.resources
 import words.feature
 import words.feature.text
 import words.headlines
+import words.path
 import words.text
 import words.undefined
 
@@ -24,6 +25,7 @@ def test_text_work():
     headlines = tests.fixtures.restruct.restructured_headlines()
     result = words.feature.text.work(
         boxes=iamraw.path.boxed(tests.resources.RESTRUCT),
+        lists=words.path.lists(tests.resources.RESTRUCT),
         fontcontent=iamraw.path.fontcontent(tests.resources.RESTRUCT),
         fontheader=iamraw.path.fontheader(tests.resources.RESTRUCT),
         headerfooters=iamraw.path.headerfooters(tests.resources.RESTRUCT),

@@ -85,6 +85,7 @@ def split(loaded: words.feature.TextRequiredResources) -> words.text.PageTextWit
             loaded.textnavigators,
             loaded.border,
             loaded.boxes,
+            loaded.lists,
         )
         if analyzed is None:
             # empty page
@@ -99,6 +100,7 @@ def analyze_page(
         textnavigators: texmex.PageTextNavigators,
         border: iamraw.Border,
         boxes: words.boxed.BoxedChecker,
+        lists: 'ListLookUp',
 ) -> words.text.PageTextWithHeadlines:
     assert headlines, 'empty `headlines`'
     # Seek pagetextnavigator to correct positon
@@ -118,6 +120,7 @@ def analyze_page(
         pcn=prepared.pagetextcontentnavigator,
         fcs=prepared.fontcontentstore,
         boxes=boxes,
+        lists=lists,
     )
     zipped = itertools.zip_longest(
         prepared.headlines,

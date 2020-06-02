@@ -30,8 +30,9 @@ TEXTINPUT = [
     ResultFile('rawmaker', 'fonts_content'),
     ResultFile('words', HEADLINES),
     ResultFile('rawmaker', 'border_pages'),
-    ResultFile('rawmaker', 'boxes_boxes'),
     ResultFile('groupme', 'footer_footerheader'),
+    ResultFile('rawmaker', 'boxes_boxes'),
+    ResultFile('words', 'list_list'),
 ]
 
 WORKPLAN = [

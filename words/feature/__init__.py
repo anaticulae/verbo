@@ -9,6 +9,7 @@
 
 import dataclasses
 import functools
+import os
 import typing
 
 import configo
@@ -18,16 +19,20 @@ import iamraw.path
 import sections.path
 import serializeraw
 import texmex
+import utila
 
 import words.boxed
 import words.feature.headlines
+import words.feature.word
 import words.headlines
+import words.path
 
 
 @dataclasses.dataclass
 class TextRequiredResources:
     border: iamraw.Border
     boxes: words.boxed.BoxedChecker
+    lists: 'ListLookUp'
     fontstore: iamraw.FontStore
     headlines: iamraw.PagesHeadlineList
     textnavigators: texmex.PageTextContentNavigators
@@ -42,6 +47,7 @@ def load_resources(  # pylint:disable=R0914
         headlines: str,
         pagesizes: str,
         boxes: str,
+        lists: str,
         headerfooters: str,
         pages=None,
 ) -> TextRequiredResources:
@@ -59,6 +65,13 @@ def load_resources(  # pylint:disable=R0914
     )
     headlines = serializeraw.load_headlines(headlines, pages=pages)
     boxes = serializeraw.load_boxes(boxes, pages=pages)
+
+    if os.path.exists(lists):
+        lists = serializeraw.load_lists(lists, pages=pages)
+    else:
+        utila.log(f'skip loading lists: {lists}')
+        lists = []
+    lists = words.feature.word.ListLookUp(lists)  # pylint:disable=R0204
 
     fontstore = serializeraw.create_fontstore(fontheader, fontcontent)
 
@@ -79,6 +92,7 @@ def load_resources(  # pylint:disable=R0914
     result = TextRequiredResources(
         border=border,
         boxes=boxed,
+        lists=lists,
         fontstore=fontstore,
         headlines=headlines,
         textnavigators=textnavigators,
@@ -99,6 +113,7 @@ def load_resources_frompath(
     sizeandborder = iamraw.path.sizeandborder(path)
     boxes = iamraw.path.boxed(path)
     headerfooters = groupme.path.headerfooters(path)
+    lists = words.path.lists(path)
 
     headlines = words.feature.headlines.work(
         sectionlist=section,
@@ -121,6 +136,7 @@ def load_resources_frompath(
         pagesizes=sizeandborder,
         boxes=boxes,
         headerfooters=headerfooters,
+        lists=lists,
         pages=pages,
     )
     return loaded
