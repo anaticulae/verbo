@@ -36,16 +36,6 @@ def work(word: str, lists: str, pages: tuple = None) -> str:
     return dumped
 
 
-def group_bypage(lists) -> dict:
-    # TODO: MOVE AS OPTION TO LIST LOADER?
-    result = collections.defaultdict(list)
-    for page, content in lists:
-        for _, __, item in content:
-            result[page].append(item)
-    result = dict(result)  # pylint:disable=R0204
-    return result
-
-
 def collect_quotations(  # pylint:disable=R1260
         word,
         lists: dict = None,
@@ -87,3 +77,13 @@ def sentences(  # pylint:disable=R1260
                 if splitted:
                     yield page, sentence_index, splitted
                 sentence_index = sentence_index + 1
+
+
+def group_bypage(lists) -> dict:
+    # TODO: MOVE AS OPTION TO LIST LOADER?
+    result = collections.defaultdict(list)
+    for page, content in lists:
+        for _, __, item in content:
+            result[page].append(item)
+    result = dict(result)  # pylint:disable=R0204
+    return result
