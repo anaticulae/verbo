@@ -93,6 +93,9 @@ def test_textflow_validate_quotation_bachelor76(testdir, monkeypatch):
     )
     path = textflow.path.quotation(testdir.tmpdir)
     quotations = textflow.quotation.serialize.load_quotations(path)
-    raw = (2 * utila.NEWLINE).join([item.sentence for item in quotations])
 
+    expected = len(BACHELOR76_EXPECTED.split('\n\n'))
+    assert len(quotations) == expected
+
+    raw = (2 * utila.NEWLINE).join([item.sentence for item in quotations])
     assert raw == BACHELOR76_EXPECTED
