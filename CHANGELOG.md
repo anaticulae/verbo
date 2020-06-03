@@ -2,6 +2,27 @@
 
 Every noteable change is logged here.
 
+## v0.6.0
+
+### Feature
+
+* dump extracted quotation instead of full sentence (baad1153a782)
+* add lists to quotation extractor (739bee700132)
+* use page wise list indexing (8c61e65ee924)
+* use extracted `lists` to determine which line is a list line (0aaaddf4b5e8)
+* load content navigator very early (4bfb1ecc0987)
+* add list geometry parser (499e5ae62bd6)
+* add method to parse potential list with regex (214baed1ed83)
+* add method to determine words list output path (06937923ef11)
+
+### Fix
+
+* overwrite method to extend usage with other data types (ee7fb13a8235)
+
+### Documentation
+
+* clean up documentation (03de659da693)
+
 ## v0.5.12
 
 ### Fix
