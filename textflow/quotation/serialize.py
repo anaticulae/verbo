@@ -22,13 +22,18 @@ def dump_quotations(quotations) -> str:
     return dumped
 
 
-def load_quotations(content: str) -> textflow.quotation.data.ExtractedQuotations: # yapf:disable
+def load_quotations(
+        content: str,
+        pages: tuple = None,
+) -> textflow.quotation.data.ExtractedQuotations:
     content = utila.from_raw_or_path(content, ftype='yaml')
     loaded = yaml.load(content, Loader=yaml.FullLoader)
     result = []
     for item in loaded:
         page, index, sentence = item.split(maxsplit=2)
         page = int(page)
+        if utila.should_skip(page, pages):
+            continue
         index = int(index)
         result.append(
             textflow.quotation.data.ExtractedQuotation(page, index, sentence))
