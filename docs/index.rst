@@ -1,13 +1,5 @@
-Welcome to to be or not to be
-=================================
-
-General
--------
-
-.. toctree::
-  :maxdepth: 1
-
-  bugs
+Welcome to `to be or not to be`
+===============================
 
 Progress
 --------
