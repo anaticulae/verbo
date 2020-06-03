@@ -37,6 +37,7 @@ def work(word: str, lists: str, pages: tuple = None) -> str:
 
 
 def group_bypage(lists) -> dict:
+    # TODO: MOVE AS OPTION TO LIST LOADER?
     result = collections.defaultdict(list)
     for page, content in lists:
         for _, __, item in content:
@@ -49,8 +50,17 @@ def collect_quotations(  # pylint:disable=R1260
         word,
         lists: dict = None,
 ) -> textflow.quotation.data.ExtractedQuotations:
-    # TODO: USE VISIT SENTENCE METHOD!<REFACTOR THIS>
     result = []
+    for page, index, splitted in sentences(word, lists):
+        if german.word.contain_quotation_marks(splitted):
+            result.append((page, index, splitted))
+    return result
+
+
+def sentences(  # pylint:disable=R1260
+        word,
+        lists: dict = None,
+) -> textflow.quotation.data.ExtractedQuotations:
     for page, pagecontent in word:  # pylint:disable=too-many-nested-blocks
         sentence_index = 0
         done = utila.Single()
@@ -62,12 +72,12 @@ def collect_quotations(  # pylint:disable=R1260
                         continue
                     extracted_list = lists[page][list_index]
                     for _, listitem in extracted_list:
+                        # list items must not be a full sentence
                         splitted = german.split_words(
                             listitem,
                             validate_sentences=False,
                         )
-                        if german.word.contain_quotation_marks(splitted):
-                            result.append((page, sentence_index, listitem))
+                        yield page, sentence_index, splitted
                         sentence_index = sentence_index + 1
                     continue
                 undefined = words.undefined.intindex(sentence)
@@ -75,7 +85,5 @@ def collect_quotations(  # pylint:disable=R1260
                     continue
                 splitted = german.split_words(sentence)
                 if splitted:
-                    if german.word.contain_quotation_marks(splitted):
-                        result.append((page, sentence_index, sentence))
+                    yield page, sentence_index, splitted
                 sentence_index = sentence_index + 1
-    return result
