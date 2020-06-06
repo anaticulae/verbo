@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.6.1
+
+### Feature
+
+* add option to select quotation loader pages (2dd0a5401b76)
+
 ## v0.6.0
 
 ### Feature
