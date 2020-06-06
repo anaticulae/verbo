@@ -7,12 +7,14 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-utila==1.23.0
-iamraw==1.25.4
-sections==0.2.32
-hey==2.7.6
+utila==1.23.1
+iamraw==1.25.7
+sections==0.2.34
+hey==3.0.0
 
+# rawmaker online configuration
+detector==0.1.1
 # split sentences and determine language of written sentence
-german==0.4.1
+german==0.5.3
 # some constants
-konrad==0.2.15
+konrad==0.2.16
