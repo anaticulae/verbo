@@ -88,7 +88,14 @@ class HeadlineExtractorStrategy(abc.ABC):  # pylint:disable=too-many-instance-at
         self.ready = True
         # run extraction
         for chapter in self.chapters:
-            if utila.should_skip(self.content[chapter], pages):
+            # HACK: REMOVE LAST PAGE TO PASS SHOULD_SKIP THERE IS A
+            # PROBLEM WITH THE LAST AREA, CAUSE THE INDEX OF AN AREA IS
+            # EXPANDED + 1 OVER THE AREA. AT THE LAST AREA THIS EXPANDS
+            # OUTSIDE OF THE DOCUMENT. HACKING PAGE SKIP CHECK SEEMS NOT
+            # SO PROBLEMATIC HERE, BUT MUST BE FIXED.
+            chapter_pages = list(self.content[chapter])
+            chapter_pages = tuple(chapter_pages[:-1])  # pylint:disable=R0204
+            if utila.should_skip(chapter_pages, pages):
                 continue
             self.extract_chapter(chapter)
 
