@@ -18,6 +18,7 @@ import utila
 def parse_single(content: str):
     for method in [
             parse_numbered_list,
+            parse_quardo_list,
             parse_dotted_list,
             parse_plus_list,
             parse_minus_list,
@@ -40,12 +41,16 @@ NUMBERED_LIST_PATTERN = r"""
 # TODO: refactor pattern, this pattern looks not very beautiful
 GENERAL = r"""
     ^[ ]{0,20}(?:%s\s)       # possible Whitespaces at front and DESCRIPTOR
-    (?P<TEXT>(?:.+\s){1,7}?) # list item content
+    (?P<TEXT>(?:.+\s){1,7}) # list item content
                              # Final
     (?=[ ]{0,20}%s\s?|       # next item possible Whitespace and DESCRIPTOR
      $                       # final line
      |\w)                    # following text after last dot
 """
+
+
+def parse_quardo_list(content: str) -> utila.Strings:
+    return parse_general_list(content, '')
 
 
 def parse_dotted_list(content: str) -> utila.Strings:
@@ -153,6 +158,7 @@ def extract_lists(  # pylint:disable=R0914
         detected = []
         for parser in [
                 parse_dotted_list,
+                parse_quardo_list,
                 parse_minus_list,
                 parse_numbered_list,
                 parse_plus_list,
