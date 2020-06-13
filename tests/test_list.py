@@ -185,17 +185,25 @@ def test_list_dump_and_load_lists():  # pylint:disable=W0621
     assert loaded == result
 
 
-def test_list_bachelor76_page4_5(testdir, monkeypatch):
-    pages = '--pages=4,5,6,7,8'
-    source = tests.resources.BACHELOR76
+def extract_lists(source, pages: tuple, testdir, monkeypatch):
+    # TODO: REPLACE WITH UTILA
+    pages = ','.join([str(item) for item in pages])
     # run words
     tests.run(
         # TODO: replace with --list*
-        f'-i {source} --headlines  --text --list {pages}',
+        f'-i {source} --headlines  --text --list --pages {pages}',
         monkeypatch=monkeypatch,
     )
     path = words.path.lists(testdir.tmpdir)
     lists = serializeraw.load_lists(path)
+    return lists
+
+
+def test_list_bachelor76_page4_5(testdir, monkeypatch):
+    pages = (4, 5, 6, 7, 8)
+    source = tests.resources.BACHELOR76
+
+    lists = extract_lists(source, pages, testdir, monkeypatch)
 
     flat = utila.flatten([item[1] for item in lists])
     lists = [item[2] for item in flat]
