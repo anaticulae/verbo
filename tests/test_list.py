@@ -9,11 +9,13 @@
 
 import pytest
 import serializeraw
+import texmex
 import utila
 
 import tests.fixtures.restruct
 import tests.resources
 import words.lists.regex
+import words.lists.vertical
 import words.path
 
 NUMBERED_LIST_SAMPLE_SIZE = 9
@@ -225,3 +227,17 @@ def test_list_master72_page9_10(testdir, monkeypatch):
 
     first = lists[0][1][0][2]
     assert len(first) == 7
+
+
+def test_list_master72_page39_one_list(testdir):
+    pages = (39,)
+    source = tests.resources.MASTER72
+
+    ptcn = serializeraw.create_pagetextcontentnavigators_frompath(
+        source,
+        pages=pages,
+    )
+
+    listinstance = words.lists.vertical.analyze_page(ptcn[0])
+    assert len(listinstance) == 1
+    assert len(listinstance[0]) == 2

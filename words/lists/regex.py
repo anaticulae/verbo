@@ -34,14 +34,14 @@ def parse_single(content: str):
 NUMBERED_LIST_PATTERN = r"""
     ^(?P<LEVEL>[0-9]+\.[0-9]{0})           # list level e.g. 1. 4. 5.
     \s                                     # whitespace
-    (?P<TEXT>(?:.+\s){1,7}?)               # list item content
+    (?P<TEXT>(?:.+\s){1,}?)               # list item content
     (?=[0-9]+\.\s?|$)                      # new list start or final newline
     """
 
 # TODO: refactor pattern, this pattern looks not very beautiful
 GENERAL = r"""
     ^[ ]{0,20}(?:%s\s)       # possible Whitespaces at front and DESCRIPTOR
-    (?P<TEXT>(?:.+\s){1,7}) # list item content
+    (?P<TEXT>(?:.+\s){1,}) # list item content
                              # Final
     (?=[ ]{0,20}%s\s?|       # next item possible Whitespace and DESCRIPTOR
      $                       # final line
