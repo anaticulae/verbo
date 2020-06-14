@@ -221,10 +221,7 @@ def test_list_master72_page9_10(testdir, monkeypatch):
     source = tests.resources.MASTER72
 
     lists = extract_lists(source, pages, testdir, monkeypatch=monkeypatch)
-    assert lists
+    assert len(lists) == 1
 
-    # TODO: UPGRADE AFTER PARSING LISTS OVER MORE THAN ONE PAGE
     first = lists[0][1][0][2]
-    assert len(first) == 5
-    second = lists[1][1][0][2]
-    assert len(second) == 2
+    assert len(first) == 7
