@@ -124,11 +124,9 @@ class BoxLookUp:
     def load(self, boxes):  # pylint:disable=R0914
         for line in boxes:
             page, content = line
-            for item in content:
-                __, _, items = item
+            for __, _, items in content:
                 chained = utila.flatten(items)  # support verschachtelte boxes
-                for real in chained:
-                    _, (bindex, bcontent) = real
+                for _, (bindex, bcontent) in chained:
                     uindexs = [uindex for (_, uindex, _) in bcontent]
                     self.append(page, bindex, uindexs)
 
