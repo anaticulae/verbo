@@ -21,8 +21,8 @@ import serializeraw
 import texmex
 import utila
 
-import words.lists.geometry
 import words.lists.regex
+import words.lists.strategy
 import words.loader.input
 
 
@@ -48,21 +48,8 @@ def work(
         pages=pages,
     )
     headlines = serializeraw.load_headlines(headlines)
-    textfeed = texmex.document_textfeed(ptcns)
 
-    result = []
-    for navigator in ptcns:
-        pageslist = []
-        for lists in words.lists.geometry.analyze_page(
-                navigator,
-                headlines,
-                textfeed,
-        ):
-            # TODO: REPLACE 0,0 with correct one
-            pageslist.append((0, 0, lists))
-        if not pageslist:
-            continue
-        result.append([navigator.page, pageslist, len(navigator)])
+    result = words.lists.strategy.extract_lists(ptcns, headlines)
 
     result = merge_overlapping_lists(result)
 

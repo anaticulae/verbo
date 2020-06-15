@@ -116,7 +116,7 @@ def parse_general_list(content: str, selector: str) -> utila.Strings:
     )
     result = []
     for item in parsed:
-        result.append(item.group(1).strip())
+        result.append((item.group(1).strip(), selector))
     return result
 
 

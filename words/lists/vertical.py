@@ -32,8 +32,14 @@ def analyze_page(ptcn):
         current = iamraw.PageList()
         for row, indexs in listgroup:
             for item in row:
+                assert len(item) == 2, str(item)
                 current.append(*item)
             current.area.extend(indexs)  # pylint:disable=E1101
+        if len(current) <= 1:
+            # SKIP PARSED HEADLINE
+            # TODO: THINK ABOUT SMARTER CONCEPT TO COVER SINGLE ITEM LIST
+            # TODO: IS SINGLE ITEM LIST NECESSARY?
+            continue
         result.append(current)
     return result
 
@@ -43,6 +49,7 @@ def groupby_none(items):
     >>> groupby_none([1, 2, None, 1, None, 3, 4, 5, None])
     [(1, 2), (1,), (3, 4, 5)]
     """
+    # TODO: REPLACE WITH UTILA CODE
     result = []
     collected = []
     for item in items:

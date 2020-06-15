@@ -9,7 +9,6 @@
 
 import pytest
 import serializeraw
-import texmex
 import utila
 
 import tests.fixtures.restruct
