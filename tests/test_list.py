@@ -240,3 +240,15 @@ def test_list_master72_page39_one_list(testdir):
     listinstance = words.lists.vertical.analyze_page(ptcn[0])
     assert len(listinstance) == 1
     assert len(listinstance[0]) == 2
+
+
+@pytest.mark.xfail(reason='extend list merger')
+def test_list_master72_page39_40_41(testdir, monkeypatch):
+    pages = (39, 40, 41)
+    source = tests.resources.MASTER72
+
+    lists = extract_lists(source, pages, testdir, monkeypatch=monkeypatch)
+    assert len(lists) == 1
+
+    first = lists[0][1][0][2]
+    assert len(first) == 7
