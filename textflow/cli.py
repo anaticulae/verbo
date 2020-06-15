@@ -41,6 +41,16 @@ WORKPLAN = [
         ],
         output=('quotation',),
     ),
+    utila.create_step(
+        'blockquote',
+        inputs=[
+            utila.ResultFile('rawmaker', 'oneline_text_text'),
+            utila.ResultFile('rawmaker', 'oneline_text_positions'),
+            utila.ResultFile('rawmaker', 'border_pages'),
+            utila.ResultFile('groupme', 'footer_footerheader'),
+        ],
+        output=('blockquote',),
+    ),
 ]
 
 # pylint:disable=C0103
