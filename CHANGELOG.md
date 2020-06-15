@@ -2,6 +2,15 @@
 
 Every noteable change is logged here.
 
+## v0.7.0
+
+### Feature
+
+* add list extraction strategy to select between geometry/vertical (4ce7f19aa098)
+* add vertical distance list parser (31130205def5)
+* merge more than one list over pages together (d57b187f9a56)
+* list parser - add list pattern with rectangle at front (b97cdfe0e22a)
+
 ## v0.6.2
 
 ## v0.6.1
