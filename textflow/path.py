@@ -46,3 +46,12 @@ def quotation(path: str, prefix: str = '') -> str:
         'quotation_quotation',
         prefix,
     )
+
+
+def blockquote(path: str, prefix: str = '') -> str:
+    return utila.pathconnector(
+        path,
+        textflow.PROCESS,
+        'blockquote_blockquote',
+        prefix,
+    )

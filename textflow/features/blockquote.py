@@ -13,12 +13,22 @@
 
 """
 
+import collections
+import typing
+
 import german
 import serializeraw
 import texmex
 import utila
+import yaml
 
 MIN_BLOCK_QUOTE_DIST = 5.0  # TODO: HOLY VALUE
+
+PageContentBlockQuotes = collections.namedtuple(
+    'PageContentBlockQuotes',
+    'content, page',
+)
+PageContentBlockQuotesList = typing.List[PageContentBlockQuotes]
 
 
 def work(
@@ -94,3 +104,24 @@ def group_distance(group):
 
     left, right = utila.mode(left), utila.mode(right)
     return left, right
+
+
+# TODO: MOVE TO SERIALIZERAW
+def dump_blockquotes(blockquotes: PageContentBlockQuotesList) -> str:
+    converted = [(page.page, page.content) for page in blockquotes]
+    dumped = yaml.dump(converted)
+    return dumped
+
+
+def load_blockquotes(
+        content: str,
+        pages: tuple = None,
+) -> PageContentBlockQuotesList:
+    content = utila.from_raw_or_path(content, ftype='yaml')
+    loaded = yaml.load(content, Loader=yaml.FullLoader)
+    result = []
+    for page, pagecontent in loaded:
+        if utila.should_skip(page, pages):
+            continue
+        result.append(PageContentBlockQuotes(page=page, content=pagecontent))
+    return result
