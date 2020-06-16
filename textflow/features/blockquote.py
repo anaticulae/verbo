@@ -64,7 +64,7 @@ def analyze_page(ptcn: texmex.PageTextContentNavigator) -> PageContentBlockQuote
     for index, (group, bounds) in enumerate(zip(datagroups, boundsgroups)):
         if not iscitation_group(bounds):
             continue
-        result.append((grouped[index], group))
+        result.append((grouped[index], [item.text.strip() for item in group]))
     return PageContentBlockQuotes(page=ptcn.page, content=result)
 
 
@@ -115,7 +115,7 @@ def group_distance(group):
 # TODO: MOVE TO SERIALIZERAW
 def dump_blockquotes(blockquotes: PageContentBlockQuotesList) -> str:
     converted = [(page.page, page.content) for page in blockquotes]
-    dumped = yaml.dump(converted)
+    dumped = yaml.safe_dump(converted, width=200)
     return dumped
 
 
@@ -124,7 +124,7 @@ def load_blockquotes(
         pages: tuple = None,
 ) -> PageContentBlockQuotesList:
     content = utila.from_raw_or_path(content, ftype='yaml')
-    loaded = yaml.load(content, Loader=yaml.FullLoader)
+    loaded = yaml.safe_load(content)
     result = []
     for page, pagecontent in loaded:
         if utila.should_skip(page, pages):
