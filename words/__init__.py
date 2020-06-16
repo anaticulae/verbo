@@ -33,7 +33,7 @@ WORDS_HEADLINES = f'{PROCESS}__{HEADLINES}.yaml'
 @utila.todo(
     version=iamraw.__version__,
     major=1,
-    minor=26,
+    minor=27,
     description='replace with iamraw',
 )
 def document_textfeed(
