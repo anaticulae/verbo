@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.8.1
+
+### Fix
+
+* upgrade later to enable using in hey project (66453ec3af3e)
+
 ## v0.8.0
 
 ### Feature
