@@ -45,21 +45,27 @@ def work(
         headerfooterpath,
         pages=pages,
     )
-    return ''
+    result = [analyze_page(page) for page in ptcns]
+
+    # remove empty pages
+    result = [item for item in result if item.content]
+    dumped = dump_blockquotes(result)
+    return dumped
 
 
-def analyze_page(ptcn: texmex.PageTextContentNavigator):
+def analyze_page(ptcn: texmex.PageTextContentNavigator) -> PageContentBlockQuotes: # yapf:disable
     grouped = texmex.group_linedistances_complex(ptcn)
 
     bounds = texmex.textbounds(ptcn, contentborder=ptcn.content)
     boundsgroups = group_todata(grouped, bounds)
     datagroups = group_todata(grouped, ptcn)
 
-    result = [
-        group for group, bounds in zip(datagroups, boundsgroups)
-        if iscitation_group(bounds)
-    ]
-    return result
+    result = []
+    for index, (group, bounds) in enumerate(zip(datagroups, boundsgroups)):
+        if not iscitation_group(bounds):
+            continue
+        result.append((grouped[index], group))
+    return PageContentBlockQuotes(page=ptcn.page, content=result)
 
 
 def group_todata(index, navigator):

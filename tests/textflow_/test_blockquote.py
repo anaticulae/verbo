@@ -10,7 +10,9 @@
 import serializeraw
 
 import tests.resources
+import tests.textflow_
 import textflow.features.blockquote
+import textflow.path
 
 
 def test_blockquote_master72():
@@ -22,4 +24,19 @@ def test_blockquote_master72():
         pages=pages,
     )
     extracted = textflow.features.blockquote.analyze_page(ptcn[0])
-    assert len(extracted) == 2
+    assert len(extracted.content) == 2
+
+
+def test_blockquote_validate_master72(testdir, monkeypatch):
+    tests.textflow_.run(
+        f'-i {tests.resources.MASTER72} --blockquote --pages=0:65',
+        monkeypatch=monkeypatch,
+    )
+
+    path = textflow.path.blockquote(testdir.tmpdir)
+    loaded = textflow.features.blockquote.load_blockquotes(path)
+
+    current = [(item.page, len(item.content)) for item in loaded]
+    expected = [(14, 1), (15, 2), (17, 1), (24, 1), (25, 1), (26, 1), (38, 1)]
+
+    assert current == expected
