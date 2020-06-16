@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v0.8.0
+
+### Feature
+
+* improve yaml representation (f248ba03fbab)
+* enable block quote feature for cli (e27de6c8e319)
+* add method to dump and load block quotes, determine path (712247458c67)
+* add simple algorithm to extract quotation mark blocks (20a27f9dd007)
+* add feature blockquote to extract block quotes (1d266867f090)
+
 ## v0.7.0
 
 ### Feature
