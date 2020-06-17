@@ -9,6 +9,7 @@
 
 import iamraw
 import texmex
+import utila
 
 import words.lists.regex
 
@@ -25,7 +26,7 @@ def analyze_page(ptcn):
         else:
             collected.append(None)
 
-    lists = groupby_none(collected)
+    lists = utila.groupby_none(collected)
 
     result = []
     for listgroup in lists:
@@ -41,24 +42,4 @@ def analyze_page(ptcn):
             # TODO: IS SINGLE ITEM LIST NECESSARY?
             continue
         result.append(current)
-    return result
-
-
-def groupby_none(items):
-    """\
-    >>> groupby_none([1, 2, None, 1, None, 3, 4, 5, None])
-    [(1, 2), (1,), (3, 4, 5)]
-    """
-    # TODO: REPLACE WITH UTILA CODE
-    result = []
-    collected = []
-    for item in items:
-        if item:
-            collected.append(item)
-        else:
-            if collected:
-                result.append(tuple(collected))
-                collected = []
-    if collected:
-        result.append(tuple(collected))
     return result

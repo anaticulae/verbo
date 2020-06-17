@@ -197,8 +197,7 @@ def test_list_dump_and_load_lists():  # pylint:disable=W0621
 
 
 def extract_lists(source, pages: tuple, testdir, monkeypatch):
-    # TODO: REPLACE WITH UTILA
-    pages = ','.join([str(item) for item in pages])
+    pages = utila.from_tuple(pages, separator=',')
     # run words
     tests.run(
         # TODO: replace with --list*
