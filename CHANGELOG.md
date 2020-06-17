@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.8.2
+
+### Fix
+
+* replace with texmex code (2c1c2f358332)
+
 ## v0.8.1
 
 ### Fix
