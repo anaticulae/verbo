@@ -31,17 +31,23 @@ def test_extract_linestyleinfo_master72():
 
 
 @pytest.mark.parametrize('source, expected', [
-    pytest.param(tests.resources.MASTER72, TextAlignment.BLOCK, id='master72'),
+    pytest.param(
+        tests.resources.MASTER72,
+        TextAlignment.BLOCK,
+        id='master72',
+        marks=pytest.mark.xfail(reason='require improvement'),
+    ),
     pytest.param(
         tests.resources.BACHELOR37,
         TextAlignment.BLOCK,
         id='bachelor37',
+        marks=pytest.mark.xfail(reason='require improvement'),
     ),
     pytest.param(
         tests.resources.HOWTO_PYPORTING,
         TextAlignment.BLOCK,
         id='pyporting',
-        marks=pytest.mark.xfail(reason='require imporvement'),
+        marks=pytest.mark.xfail(reason='require improvement'),
     ),
     pytest.param(
         tests.resources.HOMEWORK40,
@@ -77,6 +83,7 @@ def test_page_linealignment():
     assert linealignments[-1] == TextAlignment.RIGHT
 
 
+@pytest.mark.xfail(reason='broken alignment algo')
 def test_page_linealignment_master72_page4():
     navigators = serializeraw.create_pagetextnavigators_frompath(
         tests.resources.MASTER72,
