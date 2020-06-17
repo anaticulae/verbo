@@ -62,18 +62,3 @@ def document_textfeed(
 
 
 texmex.document_textfeed = document_textfeed
-
-
-def textsize_frompage(navigator: 'texmex.NavigatorMixin or list') -> float:
-    collected = []
-    for line in navigator:
-        fontsizes = texmex.TextStyle.textsizes(
-            line.style,
-            method=lambda x: x,  # do not filter anything
-        )
-        collected.extend(fontsizes)
-    return utila.mode(collected, minimize=True)
-
-
-# TODO: REMOVE LATER
-texmex.textsize_frompage = textsize_frompage
