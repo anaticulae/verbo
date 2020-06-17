@@ -51,8 +51,17 @@ def work(
 
     result = words.lists.strategy.extract_lists(ptcns, headlines)
 
-    result = merge_overlapping_lists(result)
+    merged = merge_overlapping_lists(result)
 
+    # TODO: REMOVE CONVERSION AFTER CHANGING UPPER ALGO
+    result = []
+    for page, content in merged:
+        collected = []
+        for paragraph, merged, listinstance in content:
+            listinstance.paragraph = paragraph
+            listinstance.merged = merged
+            collected.append(listinstance)
+        result.append(iamraw.PageContentList(page=page, content=collected))
     dumped = serializeraw.dump_lists(result)
     return dumped
 
@@ -108,7 +117,10 @@ def pagerange(items) -> int:
     return len(result)
 
 
-def process_page(pagecontent, contentborder: iamraw.Border):
+def process_page(
+        pagecontent,
+        contentborder: iamraw.Border,
+) -> iamraw.PageContentList:
     """Merges parameter  according due `pagecontent`
 
     Format:
@@ -140,7 +152,9 @@ def process_page(pagecontent, contentborder: iamraw.Border):
                 # could not extract any list
                 continue
             for listitem in potentiallist:
-                result.append((paragraphnumber, mergednumber, listitem))
+                listitem.merged = mergednumber
+                listitem.paragraph = paragraphnumber
+            result.extend(potentiallist)
     if not result:
         return None
-    return (page, result)
+    return iamraw.PageContentList(page=page, content=result)

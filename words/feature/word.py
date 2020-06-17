@@ -109,7 +109,7 @@ class ListLookUp:
     def search(self, page, headline, undefined):  # pylint:disable=W0613
         with contextlib.suppress(KeyError):
             current = self.data[page]
-            for ((_, _, content), index) in current:
+            for (content, index) in current:
                 if undefined in content.area:
                     return index
         return None

@@ -7,9 +7,9 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import collections
 
 import german
+import iamraw
 import serializeraw
 import utila
 
@@ -28,7 +28,6 @@ def work(word: str, lists: str, pages: tuple = None) -> str:
         lists,
         pages=pages,
     )
-    lists = group_bypage(lists)  # pylint:disable=R0204
     collected = collect_quotations(word, lists)
 
     dumped = textflow.quotation.serialize.dump_quotations(collected)
@@ -37,7 +36,7 @@ def work(word: str, lists: str, pages: tuple = None) -> str:
 
 def collect_quotations(  # pylint:disable=R1260
         word,
-        lists: dict = None,
+        lists: iamraw.PageContentLists = None,
 ) -> textflow.quotation.data.ExtractedQuotations:
     result = []
     for page, index, sentence, splitted in sentences(word, lists):
@@ -62,7 +61,7 @@ def collect_quotations(  # pylint:disable=R1260
 
 def sentences(  # pylint:disable=R1260
         word,
-        lists: dict = None,
+        lists: iamraw.PageContentLists = None,
 ) -> textflow.quotation.data.ExtractedQuotations:
     for page, pagecontent in word:  # pylint:disable=too-many-nested-blocks
         sentence_index = 0
@@ -73,7 +72,8 @@ def sentences(  # pylint:disable=R1260
                 if list_index is not None:
                     if done.contains(list_index):
                         continue
-                    extracted_list = lists[page][list_index]
+                    extracted_list = utila.select_page(lists, page).content
+                    extracted_list = extracted_list[list_index]
                     for _, listitem in extracted_list:
                         # list items must not be a full sentence
                         splitted = german.split_words(
@@ -90,13 +90,3 @@ def sentences(  # pylint:disable=R1260
                 if splitted:
                     yield page, sentence_index, sentence, splitted
                 sentence_index = sentence_index + 1
-
-
-def group_bypage(lists) -> dict:
-    # TODO: MOVE AS OPTION TO LIST LOADER?
-    result = collections.defaultdict(list)
-    for page, content in lists:
-        for _, __, item in content:
-            result[page].append(item)
-    result = dict(result)  # pylint:disable=R0204
-    return result

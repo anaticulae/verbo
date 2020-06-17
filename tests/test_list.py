@@ -163,9 +163,15 @@ def test_list_work():  # pylint:disable=W0621
     result = serializeraw.load_lists(dumped_list)
     assert len(result) == 3, str(result)
 
-    first_items = [item for (_, item) in result[0][1][0][2].data]
-    second_items = [item for (_, item) in result[1][1][0][2].data]
-    last_items = [item for (_, item) in result[2][1][0][2].data]
+    first_items = [
+        item[1] for item in utila.select_page(result, 8).content[0].data
+    ]
+    second_items = [
+        item[1] for item in utila.select_page(result, 14).content[0].data
+    ]
+    last_items = [
+        item[1] for item in utila.select_page(result, 24).content[0].data
+    ]
 
     assert len(first_items) == 15, str(first_items)
     assert first_items == [
@@ -210,8 +216,7 @@ def test_list_bachelor76_page4_5(testdir, monkeypatch):
 
     lists = extract_lists(source, pages, testdir, monkeypatch)
 
-    flat = utila.flatten([item[1] for item in lists])
-    lists = [item[2] for item in flat]
+    # 2 pages with list content
     assert len(lists) == 2
 
     # TODO: EXTEND DOTTED PARSER TO SUPPORT MULTILINES
@@ -223,9 +228,7 @@ def test_list_master72_page9_10(testdir, monkeypatch):
 
     lists = extract_lists(source, pages, testdir, monkeypatch=monkeypatch)
     assert len(lists) == 1
-
-    first = lists[0][1][0][2]
-    assert len(first) == 7
+    assert len(utila.select_page(lists, 9).content[0].data) == 7
 
 
 def test_list_master72_page39_one_list(testdir):
