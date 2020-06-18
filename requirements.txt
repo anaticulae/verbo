@@ -9,12 +9,12 @@
 
 utila==1.25.1
 iamraw==1.27.2
-sections==0.4.2
+sections==0.4.3
 hey==3.2.0
 
 # rawmaker online configuration
-detector==0.3.1
+detector==0.4.0
 # split sentences and determine language of written sentence
-german==0.6.2
+german==0.6.3
 # some constants
-konrad==0.2.19
+konrad==0.2.20
