@@ -13,6 +13,7 @@ import pytest
 import sections.path
 import serializeraw
 import utila
+import utilatest
 
 import tests.fixtures.headlines
 import tests.fixtures.restruct
@@ -153,7 +154,7 @@ def extract_master72_headlines(root: str):
     return result
 
 
-@utila.skip_longrun
+@utilatest.skip_longrun
 def test_features_headlines_work_master72pages(testdir):
     root = str(testdir)
     headlines_loaded = extract_master72_headlines(root)

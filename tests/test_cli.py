@@ -8,7 +8,7 @@
 # =============================================================================
 
 import pytest
-import utila
+import utilatest
 
 import tests
 import tests.fixtures
@@ -36,7 +36,7 @@ def test_run(command, monkeypatch, capsys):
     tests.write_capsys(capsys)
 
 
-@utila.skip_longrun
+@utilatest.skip_longrun
 def test_feature_words_work_pages0_10(testdir, monkeypatch):
     root = str(testdir)
     cmd = f'-i {root} -o {root} --pages=0:10'

@@ -12,6 +12,7 @@ import os
 
 import detector.feature.titlepage
 import utila
+import utilatest
 
 import tests.resources
 import words
@@ -20,7 +21,7 @@ WORKER = 12
 
 
 def install_requirements():
-    utila.clean_install(words.ROOT, words.PACKAGE)
+    utilatest.clean_install(words.ROOT, words.PACKAGE)
 
 
 def sync_resources():

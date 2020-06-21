@@ -10,20 +10,21 @@
 import functools
 
 import utila
+import utilatest
 
 import textflow
 import textflow.cli
 
 #pylint:disable=C0103
 run = functools.partial(
-    utila.run_command,
+    utilatest.run_command,
     main=textflow.cli.main,
     process=textflow.PROCESS,
     success=True,
 )
 
 fail = functools.partial(
-    utila.run_command,
+    utilatest.run_command,
     main=textflow.cli.main,
     process=textflow.PROCESS,
     success=False,

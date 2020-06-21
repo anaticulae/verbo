@@ -22,20 +22,21 @@ import glob
 import os
 
 import utila
+import utilatest
 
 import tests.resources
 import words
 import words.cli
 
 run = functools.partial(  #pylint:disable=C0103
-    utila.run_command,
+    utilatest.run_command,
     main=words.cli.main,
     process=words.PROCESS,
     success=True,
 )
 
 fail = functools.partial(  #pylint:disable=C0103
-    utila.run_command,
+    utilatest.run_command,
     main=words.cli.main,
     process=words.PROCESS,
     success=False,

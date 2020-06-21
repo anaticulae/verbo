@@ -9,7 +9,7 @@
 
 import pytest
 import serializeraw
-import utila
+import utilatest
 
 import tests.resources
 import textflow.alignment.style
@@ -55,7 +55,7 @@ def test_extract_linestyleinfo_master72():
         id='homework40',
     ),
 ])
-@utila.skip_longrun
+@utilatest.skip_longrun
 def test_document_alignment(source, expected):
     content_navigators = serializeraw.create_pagetextnavigators_frompath(
         source,

@@ -9,7 +9,7 @@
 
 import pytest
 import serializeraw
-import utila
+import utilatest
 
 import tests
 import tests.resources
@@ -31,13 +31,13 @@ def bachelor37(testdir, monkeypatch):
     return result
 
 
-@utila.skip_longrun
+@utilatest.skip_longrun
 def test_abbreviation_parse_page(bachelor37):  # pylint:disable=W0621
     result = bachelor37
     assert len(result) > 100, str(result)
 
 
-@utila.skip_longrun
+@utilatest.skip_longrun
 def test_abbreviation_dump_load_parsed_abbreviation(bachelor37):  # pylint:disable=W0621
     expected = bachelor37
     loaded = serializeraw.load_text_abbreviations(expected)
