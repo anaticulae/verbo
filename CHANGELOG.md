@@ -2,6 +2,8 @@
 
 Every noteable change is logged here.
 
+## v0.9.4
+
 ## v0.9.3
 
 ## v0.9.2
