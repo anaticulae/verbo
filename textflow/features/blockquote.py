@@ -13,22 +13,13 @@
 
 """
 
-import collections
-import typing
-
 import german
+import iamraw
 import serializeraw
 import texmex
 import utila
-import yaml
 
 MIN_BLOCK_QUOTE_DIST = 5.0  # TODO: HOLY VALUE
-
-PageContentBlockQuotes = collections.namedtuple(
-    'PageContentBlockQuotes',
-    'content, page',
-)
-PageContentBlockQuotesList = typing.List[PageContentBlockQuotes]
 
 
 def work(
@@ -49,11 +40,12 @@ def work(
 
     # remove empty pages
     result = [item for item in result if item.content]
-    dumped = dump_blockquotes(result)
+    dumped = serializeraw.dump_blockquotes(result)
     return dumped
 
 
-def analyze_page(ptcn: texmex.PageTextContentNavigator) -> PageContentBlockQuotes: # yapf:disable
+def analyze_page(ptcn: texmex.PageTextContentNavigator,
+                ) -> iamraw.PageContentBlockQuotes:
     grouped = texmex.group_linedistances_complex(ptcn)
 
     bounds = texmex.textbounds(ptcn, contentborder=ptcn.content)
@@ -65,7 +57,7 @@ def analyze_page(ptcn: texmex.PageTextContentNavigator) -> PageContentBlockQuote
         if not iscitation_group(bounds):
             continue
         result.append((grouped[index], [item.text.strip() for item in group]))
-    return PageContentBlockQuotes(page=ptcn.page, content=result)
+    return iamraw.PageContentBlockQuotes(page=ptcn.page, content=result)
 
 
 def group_todata(index, navigator):
@@ -110,24 +102,3 @@ def group_distance(group):
 
     left, right = utila.mode(left), utila.mode(right)
     return left, right
-
-
-# TODO: MOVE TO SERIALIZERAW
-def dump_blockquotes(blockquotes: PageContentBlockQuotesList) -> str:
-    converted = [(page.page, page.content) for page in blockquotes]
-    dumped = yaml.safe_dump(converted, width=200)
-    return dumped
-
-
-def load_blockquotes(
-        content: str,
-        pages: tuple = None,
-) -> PageContentBlockQuotesList:
-    content = utila.from_raw_or_path(content, ftype='yaml')
-    loaded = yaml.safe_load(content)
-    result = []
-    for page, pagecontent in loaded:
-        if utila.should_skip(page, pages):
-            continue
-        result.append(PageContentBlockQuotes(page=page, content=pagecontent))
-    return result
