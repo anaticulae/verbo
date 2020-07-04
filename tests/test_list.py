@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import power
 import pytest
 import serializeraw
 import utila
@@ -211,7 +212,7 @@ def extract_lists(source, pages: tuple, testdir, monkeypatch):
 
 def test_list_bachelor76_page4_5(testdir, monkeypatch):
     pages = (4, 5, 6, 7, 8)
-    source = tests.resources.BACHELOR76
+    source = power.link(power.BACHELOR076_PDF)
 
     lists = extract_lists(source, pages, testdir, monkeypatch)
 
@@ -223,7 +224,7 @@ def test_list_bachelor76_page4_5(testdir, monkeypatch):
 
 def test_list_master72_page9_10(testdir, monkeypatch):
     pages = (9, 10)
-    source = tests.resources.MASTER72
+    source = power.link(power.MASTER072_PDF)
 
     lists = extract_lists(source, pages, testdir, monkeypatch=monkeypatch)
     assert len(lists) == 1
@@ -232,7 +233,7 @@ def test_list_master72_page9_10(testdir, monkeypatch):
 
 def test_list_master72_page39_one_list(testdir):
     pages = (39,)
-    source = tests.resources.MASTER72
+    source = power.link(power.MASTER072_PDF)
 
     ptcn = serializeraw.create_pagetextcontentnavigators_frompath(
         source,
@@ -247,7 +248,7 @@ def test_list_master72_page39_one_list(testdir):
 @pytest.mark.xfail(reason='extend list merger')
 def test_list_master72_page39_40_41(testdir, monkeypatch):
     pages = (39, 40, 41)
-    source = tests.resources.MASTER72
+    source = power.link(power.MASTER072_PDF)
 
     lists = extract_lists(source, pages, testdir, monkeypatch=monkeypatch)
     assert len(lists) == 1

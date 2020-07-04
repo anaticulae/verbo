@@ -8,6 +8,7 @@
 # =============================================================================
 
 import iamraw
+import power
 import serializeraw
 import utila
 
@@ -24,15 +25,15 @@ import words.undefined
 def test_text_work():
     headlines = tests.fixtures.restruct.restructured_headlines()
     result = words.feature.text.work(
-        boxes=iamraw.path.boxed(tests.resources.RESTRUCT),
-        lists=words.path.lists(tests.resources.RESTRUCT),
-        fontcontent=iamraw.path.fontcontent(tests.resources.RESTRUCT),
-        fontheader=iamraw.path.fontheader(tests.resources.RESTRUCT),
-        headerfooters=iamraw.path.headerfooters(tests.resources.RESTRUCT),
+        boxes=iamraw.path.boxed(power.link(power.DOCU27_PDF)),
+        lists=words.path.lists(power.link(power.DOCU27_PDF)),
+        fontcontent=iamraw.path.fontcontent(power.link(power.DOCU27_PDF)),
+        fontheader=iamraw.path.fontheader(power.link(power.DOCU27_PDF)),
+        headerfooters=iamraw.path.headerfooters(power.link(power.DOCU27_PDF)),
         headlines=headlines,
-        pagesizes=iamraw.path.sizeandborder(tests.resources.RESTRUCT),
-        text=iamraw.path.text(tests.resources.RESTRUCT),
-        textposition=iamraw.path.textposition(tests.resources.RESTRUCT),
+        pagesizes=iamraw.path.sizeandborder(power.link(power.DOCU27_PDF)),
+        text=iamraw.path.text(power.link(power.DOCU27_PDF)),
+        textposition=iamraw.path.textposition(power.link(power.DOCU27_PDF)),
     )
     assert len(result) > 6000, str(result)
 
@@ -124,16 +125,16 @@ def test_text_convert_undefined_to_text():
     headlines = tests.fixtures.restruct.restructured_headlines()
     textexample = tests.fixtures.restruct.restructured_textexample()
 
-    text = iamraw.path.text(tests.resources.RESTRUCT)
+    text = iamraw.path.text(power.link(power.DOCU27_PDF))
     text = serializeraw.load_document(text)
 
-    textpositions = iamraw.path.textposition(tests.resources.RESTRUCT)
+    textpositions = iamraw.path.textposition(power.link(power.DOCU27_PDF))
     textpositions = serializeraw.load_textpositions(textpositions)
 
-    border = iamraw.path.sizeandborder(tests.resources.RESTRUCT)
+    border = iamraw.path.sizeandborder(power.link(power.DOCU27_PDF))
     border = serializeraw.load_pageborders(border)
 
-    headerfooters = iamraw.path.headerfooters(tests.resources.RESTRUCT)
+    headerfooters = iamraw.path.headerfooters(power.link(power.DOCU27_PDF))
     headerfooters = serializeraw.load_headerfooter(headerfooters)
 
     contentborder = words.headlines.contentborder(border, headerfooters)

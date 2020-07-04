@@ -7,11 +7,11 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import power
 import pytest
 import utila
 
 import tests
-import tests.resources
 import tests.textflow_
 import textflow.features.quotation
 import textflow.path
@@ -32,7 +32,7 @@ def extract_quotation(source, pages, testdir, monkeypatch):
 
 def test_textflow_quotation(testdir, monkeypatch):
     pages = '--pages=10:20'
-    source = tests.resources.MASTER72
+    source = power.link(power.MASTER072_PDF)
 
     current = extract_quotation(source, pages, testdir, monkeypatch)
     assert current
@@ -45,7 +45,7 @@ def test_textflow_quotation(testdir, monkeypatch):
 
 def test_textflow_quotation_bachelor76(testdir, monkeypatch):
     pages = '--pages=4,5'
-    source = tests.resources.BACHELOR76
+    source = power.link(power.BACHELOR076_PDF)
     quotations = extract_quotation(source, pages, testdir, monkeypatch)
 
     expected = 5
@@ -84,7 +84,7 @@ Effizienz.“
                    ', require quotation out of sentence extractor')
 def test_textflow_validate_quotation_bachelor76(testdir, monkeypatch):
     pages = '--pages=4:10'
-    source = tests.resources.BACHELOR76
+    source = power.link(power.BACHELOR076_PDF)
     # run words
     tests.run(f'-i {source} {pages}', monkeypatch=monkeypatch)
     tests.textflow_.run(

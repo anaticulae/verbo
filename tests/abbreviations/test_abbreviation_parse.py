@@ -7,12 +7,12 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import power
 import pytest
 import serializeraw
 import utilatest
 
 import tests
-import tests.resources
 import words.feature.abbreviation
 import words.path
 
@@ -21,7 +21,7 @@ import words.path
 def bachelor37(testdir, monkeypatch):
     source = testdir.tmpdir
     tests.run(
-        f'-i {tests.resources.BACHELOR37}',
+        f'-i {power.link(power.BACHELOR037_PDF)}',
         monkeypatch=monkeypatch,
     )
     text = words.path.text(source)

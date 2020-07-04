@@ -12,6 +12,7 @@ import functools
 import iamraw
 import iamraw.path
 import iamraw.sections
+import power
 import sections.creator
 import sections.feature.chapter
 import sections.feature.index
@@ -20,8 +21,6 @@ import sections.feature.toc
 import sections.feature.whitepage
 import serializeraw
 
-import tests.fixtures
-import tests.resources
 import words.feature
 import words.feature.boxed
 import words.feature.headlines
@@ -34,7 +33,7 @@ import words.text.chapter
 
 def restructured_sections():
     extracted = sections.feature.section.extract_sections_frompath(
-        tests.resources.RESTRUCT)
+        power.link(power.DOCU27_PDF))
     dumped = serializeraw.dump_sections(extracted)
     return dumped
 
@@ -44,13 +43,13 @@ def restructured_headlines():
 
     dumped = words.feature.headlines.work(
         sectionlist=sections_,
-        text=iamraw.path.text(tests.resources.RESTRUCT),
-        text_position=iamraw.path.textposition(tests.resources.RESTRUCT),
-        font_header=iamraw.path.fontheader(tests.resources.RESTRUCT),
-        font_content=iamraw.path.fontcontent(tests.resources.RESTRUCT),
-        sizeandborder=iamraw.path.sizeandborder(tests.resources.RESTRUCT),
-        boxes=iamraw.path.boxed(tests.resources.RESTRUCT),
-        headerfooters=iamraw.path.headerfooters(tests.resources.RESTRUCT),
+        text=iamraw.path.text(power.link(power.DOCU27_PDF)),
+        text_position=iamraw.path.textposition(power.link(power.DOCU27_PDF)),
+        font_header=iamraw.path.fontheader(power.link(power.DOCU27_PDF)),
+        font_content=iamraw.path.fontcontent(power.link(power.DOCU27_PDF)),
+        sizeandborder=iamraw.path.sizeandborder(power.link(power.DOCU27_PDF)),
+        boxes=iamraw.path.boxed(power.link(power.DOCU27_PDF)),
+        headerfooters=iamraw.path.headerfooters(power.link(power.DOCU27_PDF)),
     )
     return dumped
 
@@ -102,15 +101,15 @@ def restructured_sections_manual() -> iamraw.sections.Sections:
 def restruct_resources():
     headlines = restructured_headlines()
     loaded = words.feature.load_resources(
-        text=iamraw.path.text(tests.resources.RESTRUCT),
-        textposition=iamraw.path.textposition(tests.resources.RESTRUCT),
-        fontheader=iamraw.path.fontheader(tests.resources.RESTRUCT),
-        fontcontent=iamraw.path.fontcontent(tests.resources.RESTRUCT),
+        text=iamraw.path.text(power.link(power.DOCU27_PDF)),
+        textposition=iamraw.path.textposition(power.link(power.DOCU27_PDF)),
+        fontheader=iamraw.path.fontheader(power.link(power.DOCU27_PDF)),
+        fontcontent=iamraw.path.fontcontent(power.link(power.DOCU27_PDF)),
         headlines=headlines,
-        pagesizes=iamraw.path.sizeandborder(tests.resources.RESTRUCT),
-        headerfooters=iamraw.path.headerfooters(tests.resources.RESTRUCT),
-        boxes=iamraw.path.boxed(tests.resources.RESTRUCT),
-        lists=words.path.lists(tests.resources.RESTRUCT),
+        pagesizes=iamraw.path.sizeandborder(power.link(power.DOCU27_PDF)),
+        headerfooters=iamraw.path.headerfooters(power.link(power.DOCU27_PDF)),
+        boxes=iamraw.path.boxed(power.link(power.DOCU27_PDF)),
+        lists=words.path.lists(power.link(power.DOCU27_PDF)),
     )
     return loaded
 
@@ -127,13 +126,14 @@ def restructured_boxed():
     undefined = serializeraw.dump_text(restructured_textexample())
     extracted, _ = words.loader.input.load_resources(
         undefined,
-        iamraw.path.text(tests.resources.RESTRUCT),
-        iamraw.path.textposition(tests.resources.RESTRUCT),
-        border=iamraw.path.sizeandborder(tests.resources.RESTRUCT),
+        iamraw.path.text(power.link(power.DOCU27_PDF)),
+        iamraw.path.textposition(power.link(power.DOCU27_PDF)),
+        border=iamraw.path.sizeandborder(power.link(power.DOCU27_PDF)),
         headlines=headlines,
-        headerfooters=iamraw.path.headerfooters(tests.resources.RESTRUCT),
+        headerfooters=iamraw.path.headerfooters(power.link(power.DOCU27_PDF)),
     )
-    boxes = serializeraw.load_boxes(iamraw.path.boxed(tests.resources.RESTRUCT))
+    boxes = serializeraw.load_boxes(
+        iamraw.path.boxed(power.link(power.DOCU27_PDF)))
     result = words.feature.boxed.process_content(extracted, boxes)
     return result
 
@@ -144,11 +144,11 @@ def restructured_list_work():
 
     extracted, contentborder = words.loader.input.load_resources(
         undefined,
-        iamraw.path.text(tests.resources.RESTRUCT),
-        iamraw.path.textposition(tests.resources.RESTRUCT),
+        iamraw.path.text(power.link(power.DOCU27_PDF)),
+        iamraw.path.textposition(power.link(power.DOCU27_PDF)),
         headlines=headlines,
-        border=iamraw.path.sizeandborder(tests.resources.RESTRUCT),
-        headerfooters=iamraw.path.headerfooters(tests.resources.RESTRUCT),
+        border=iamraw.path.sizeandborder(power.link(power.DOCU27_PDF)),
+        headerfooters=iamraw.path.headerfooters(power.link(power.DOCU27_PDF)),
     )
     worker = functools.partial(
         words.feature.list.process_page,

@@ -11,45 +11,31 @@ import concurrent.futures
 import os
 
 import detector.feature.titlepage
+import power
 import utila
-import utilatest
-
-import tests.resources
-import words
 
 WORKER = 12
 
 
-def install_requirements():
-    utilatest.clean_install(words.ROOT, words.PACKAGE)
-
-
-def sync_resources():
-    completed = utila.run('power --all', tests.resources.RESOURCES)  # pylint:disable=C0103
-    assert completed.returncode == utila.SUCCESS, str(completed)
-
-
 def extract_examples():
-    if os.path.exists(tests.resources.GENERATED):
+    if os.path.exists(power.generated()):
         return
     extract()
 
 
-# yapf:disable
 PACKAGE = [
-    (tests.resources.MASTER72_PDF, tests.resources.MASTER72, None),
-    (tests.resources.BACHELOR76_PDF, tests.resources.BACHELOR76, None),
-    (tests.resources.HOMEWORK40_PDF, tests.resources.HOMEWORK40, None),
-    (tests.resources.BACHELOR37_PDF, tests.resources.BACHELOR37, None),
-    (tests.resources.HOWTO_PYPORTING_PDF, tests.resources.HOWTO_PYPORTING, None),
-    (tests.resources.PYPORTING_PDF, tests.resources.PYPORTING, None),
-    (tests.resources.RESTRUCT_PDF, tests.resources.RESTRUCT, None),
+    (power.MASTER072_PDF, power.link(power.MASTER072_PDF), None),
+    (power.BACHELOR076_PDF, power.link(power.BACHELOR076_PDF), None),
+    (power.HOMEWORK040_PDF, power.link(power.HOMEWORK040_PDF), None),
+    (power.BACHELOR037_PDF, power.link(power.BACHELOR037_PDF), None),
+    (power.DOCU07_PDF, power.link(power.DOCU07_PDF), None),
+    (power.DOCU09_PDF, power.link(power.DOCU09_PDF), None),
+    (power.DOCU27_PDF, power.link(power.DOCU27_PDF), None),
 ]
-# yapf:enable
 
 
 def run_package(pdf, outpath, pages=None):
-    relative = utila.make_relative(pdf, tests.resources.RESOURCES)
+    relative = utila.make_relative(pdf, power.REPOSITORY)
     utila.log(f'run: {relative}')
     todo = []
     todo.extend(create_todo_rawmaker(pdf, outpath, pages=pages))
@@ -69,12 +55,12 @@ def run_package(pdf, outpath, pages=None):
 
 
 def extract():
-    utila.log(f'root: {tests.resources.RESOURCES}')
+    utila.log(f'root: {power.REPOSITORY}')
     for pdf, _, __ in PACKAGE:
         assert pdf.endswith('.pdf') and os.path.exists(pdf), pdf
 
     # ensure that generation directory exists
-    os.makedirs(tests.resources.GENERATED)
+    os.makedirs(power.generated())
     with concurrent.futures.ThreadPoolExecutor(max_workers=WORKER) as executor:
         futures_standard = {
             executor.submit(run_package, pdf, out, pages=pages): pdf

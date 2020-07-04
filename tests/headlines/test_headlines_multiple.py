@@ -7,16 +7,16 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import power
 import sections.feature.section
 import utila
 
-import tests.resources
 import words.headlines.multiline
 import words.loader.basic
 
 
 def test_headlines_multiple_master72_extract_pages_5_7():
-    path = tests.resources.MASTER72
+    path = power.link(power.MASTER072_PDF)
     pages = tuple(range(5, 7))
     headlines = parse_multiline(path, pages)
 
@@ -32,7 +32,7 @@ def test_headlines_multiple_master72_extract_pages_5_7():
 
 
 def test_headlines_multiple_master72_extract_pages_13_14():
-    path = tests.resources.MASTER72
+    path = power.link(power.MASTER072_PDF)
     pages = tuple(range(13, 15))
     headlines = parse_multiline(path, pages)
     assert len(headlines) == 3
@@ -46,7 +46,7 @@ def test_headlines_multiple_master72_extract_pages_13_14():
 
 def test_headlines_multiple_master72_extract_pages_20_22():
     """The headline extractor strategy extracts footnotes as headlines."""
-    path = tests.resources.MASTER72
+    path = power.link(power.MASTER072_PDF)
     pages = tuple(range(20, 23))
     headlines = parse_multiline(path, pages)
     assert len(headlines) == 2
@@ -60,7 +60,7 @@ def test_headlines_multiple_master72_extract_pages_20_22():
 
 def test_headlines_multiple_master72_extract_pages_38_42():
     """The headline extractor strategy extracts list with sentences."""
-    path = tests.resources.MASTER72
+    path = power.link(power.MASTER072_PDF)
     pages = tuple(range(38, 42))
     headlines = parse_multiline(path, pages)
     assert len(headlines) == 2

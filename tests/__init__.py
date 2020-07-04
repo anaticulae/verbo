@@ -18,15 +18,15 @@ Required resources:
 """
 
 import functools
-import glob
-import os
 
+import power
 import utila
 import utilatest
 
-import tests.resources
 import words
 import words.cli
+
+power.setup(words.ROOT)
 
 run = functools.partial(  #pylint:disable=C0103
     utilatest.run_command,
@@ -48,24 +48,3 @@ def write_capsys(capsys):
     stdout, stderr = capsys.readouterr()
     utila.file_create('logging.txt', stdout)
     utila.file_create('error.txt', stderr)
-
-
-def pdfs():
-    """Collect all pdf files in test folder"""
-    pattern = os.path.join(tests.resources.RESOURCES, '**/*.pdf')
-    located = glob.glob(pattern, recursive=True)
-    return located
-
-
-def relative_path(item):
-    item = item.replace(tests.resources.RESOURCES, '')
-    start_with_slash = item[0] in ('/', '\\')
-    if start_with_slash:
-        item = item[1:]
-
-    item = utila.forward_slash(item)
-    return item
-
-
-def prepare(item):
-    return item.replace(utila.NEWLINE, '').replace(' ', '_')[0:40]

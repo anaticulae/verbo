@@ -8,9 +8,8 @@
 # =============================================================================
 
 import groupme.toc.strategy
+import power
 import serializeraw
-
-import tests.resources
 
 
 def headlines_frompath(path: str, pages=None, prefix='oneline'):
@@ -25,4 +24,4 @@ def headlines_frompath(path: str, pages=None, prefix='oneline'):
 
 
 def master72_toc():
-    return headlines_frompath(tests.resources.MASTER72, pages=(1, 2))
+    return headlines_frompath(power.link(power.MASTER072_PDF), pages=(1, 2))

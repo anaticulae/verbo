@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import power
 import pytest
 import utilatest
 
@@ -19,15 +20,15 @@ import tests.resources
     pytest.param(['--help'], id='help'),
     pytest.param(['--version'], id='version'),
     pytest.param(
-        ['-i', tests.resources.RESTRUCT, '-o', '.'],
+        ['-i', power.link(power.DOCU27_PDF), '-o', '.'],
         id='restructured',
     ),
     pytest.param(
-        ['-i', tests.resources.RESTRUCT, '-o', '.', '--pages', '0:9'],
+        ['-i', power.link(power.DOCU27_PDF), '-o', '.', '--pages', '0:9'],
         id='pages',
     ),
-    pytest.param(['-i', tests.resources.MASTER72], id='master72'),
-    pytest.param(['-i', tests.resources.PYPORTING], id='pyporting'),
+    pytest.param(['-i', power.link(power.MASTER072_PDF)], id='master72'),
+    pytest.param(['-i', power.link(power.DOCU09_PDF)], id='pyporting'),
 ])
 @pytest.mark.usefixtures('testdir')
 def test_run(command, monkeypatch, capsys):
@@ -42,7 +43,7 @@ def test_feature_words_work_pages0_10(testdir, monkeypatch):
     cmd = f'-i {root} -o {root} --pages=0:10'
 
     tests.fixtures.setup_testresources(
-        source=tests.resources.MASTER72,
+        source=power.link(power.MASTER072_PDF),
         dest=root,
         accept=['rawmaker', 'sections', 'groupme'],
     )

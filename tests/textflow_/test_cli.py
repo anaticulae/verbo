@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import power
 import pytest
 
 import tests
@@ -19,14 +20,14 @@ def test_textflow_cli(monkeypatch):
 
 def test_textflow_alignments_restruct(testdir, monkeypatch):
     """Ensure that document with empty page is parsed correctly."""
-    source = tests.resources.RESTRUCT
+    source = power.link(power.DOCU27_PDF)
     tests.run(f'-i {source}', monkeypatch=monkeypatch)
     tests.textflow_.run(f'-i {source}', monkeypatch=monkeypatch)
 
 
 @pytest.mark.parametrize('source', [
-    pytest.param(tests.resources.MASTER72, id='master72'),
-    pytest.param(tests.resources.PYPORTING, id='pyporting'),
+    pytest.param(power.link(power.MASTER072_PDF), id='master72'),
+    pytest.param(power.link(power.DOCU09_PDF), id='pyporting'),
 ])
 def test_textflow_alignments(source, testdir, monkeypatch):
     """Ensure that document with empty page is parsed correctly."""

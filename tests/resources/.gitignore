@@ -1,5 +1,2 @@
 # do not store generated test content
 *.yaml
-
-# do not store generated pdf
-*.pdf

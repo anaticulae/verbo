@@ -7,7 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import tests.resources
+import power
+
 import tests.textflow_
 import textflow.features.alignment
 import textflow.path
@@ -16,7 +17,7 @@ import textflow.serialize
 
 def test_textflow_alignment_expected(testdir, monkeypatch):
     tests.textflow_.run(
-        f'-i {tests.resources.MASTER72} --pages=10:20 --alignment',
+        f'-i {power.link(power.MASTER072_PDF)} --pages=10:20 --alignment',
         monkeypatch=monkeypatch,
     )
     source = textflow.path.alignment(testdir.tmpdir)

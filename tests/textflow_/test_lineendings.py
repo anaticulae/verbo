@@ -7,7 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import tests.resources
+import power
+
 import tests.textflow_
 import textflow.features.lineending
 import textflow.path
@@ -15,7 +16,7 @@ import textflow.path
 
 def test_textflow_lineendings(testdir, monkeypatch):
     tests.textflow_.run(
-        f'-i {tests.resources.MASTER72} --pages=0:10 --lineending',
+        f'-i {power.link(power.MASTER072_PDF)} --pages=0:10 --lineending',
         monkeypatch=monkeypatch,
     )
     source = textflow.path.lineending(testdir.tmpdir)

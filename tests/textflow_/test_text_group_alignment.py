@@ -7,16 +7,16 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import power
 import pytest
 import serializeraw
 
-import tests.resources
 import textflow.alignment.style
 
 
 @pytest.mark.xfail(reason='broken alignment parser')
 def test_page_linealignments_expected_master72_page4():
-    source = tests.resources.MASTER72
+    source = power.link(power.MASTER072_PDF)
     pages = (4,)
     navigators = serializeraw.create_pagetextnavigators_frompath(
         source,
@@ -36,7 +36,7 @@ def test_page_linealignments_expected_master72_page4():
 
 @pytest.mark.xfail(reason='broken alignment parser')
 def test_page_linealignments_expected_master72_page6():
-    source = tests.resources.MASTER72
+    source = power.link(power.MASTER072_PDF)
     pages = (6,)
     navigators = serializeraw.create_pagetextnavigators_frompath(
         source,
@@ -64,7 +64,7 @@ def test_page_linealignments_expected_master72_page6():
 
 @pytest.mark.xfail(reason='grouping does not work properly')
 def test_page_linealignments_expected_homework40_page3():
-    source = tests.resources.HOMEWORK40
+    source = power.link(power.HOMEWORK040_PDF)
     pages = (3,)
     navigators = serializeraw.create_pagetextnavigators_frompath(
         source,
@@ -89,7 +89,7 @@ def test_page_linealignments_expected_homework40_page3():
 
 @pytest.mark.xfail(reason='grouping does not work properly')
 def test_page_linealignments_expected_homework40_page4():
-    source = tests.resources.HOMEWORK40
+    source = power.link(power.HOMEWORK040_PDF)
     pages = (4,)
     navigators = serializeraw.create_pagetextnavigators_frompath(
         source,

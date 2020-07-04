@@ -11,9 +11,9 @@ import functools
 import os
 
 import configo
+import power
 import utila
 
-import tests.resources
 import words
 import words.feature
 
@@ -26,7 +26,7 @@ SEVENTYTWO_FIRSTPAGE = os.path.join(
 @functools.lru_cache(configo.CACHE_SMALL)
 def textrequired(pages=None):
     return words.feature.load_resources_frompath(
-        tests.resources.MASTER72,
+        power.link(power.MASTER072_PDF),
         pages=pages,
     )
 

@@ -7,11 +7,11 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import power
 import pytest
 import serializeraw
 import utilatest
 
-import tests.resources
 import textflow.alignment.style
 
 TextAlignment = textflow.alignment.style.TextAlignment
@@ -19,7 +19,7 @@ TextAlignment = textflow.alignment.style.TextAlignment
 
 def test_extract_linestyleinfo_master72():
     content_navigators = serializeraw.create_pagetextcontentnavigators_frompath(
-        tests.resources.MASTER72, pages=(3,), prefix='oneline')
+        power.link(power.MASTER072_PDF), pages=(3,), prefix='oneline')
     left = 114.0
     right = 527.5
     linestyles = textflow.alignment.style.page_textalignment(
@@ -32,25 +32,25 @@ def test_extract_linestyleinfo_master72():
 
 @pytest.mark.parametrize('source, expected', [
     pytest.param(
-        tests.resources.MASTER72,
+        power.link(power.MASTER072_PDF),
         TextAlignment.BLOCK,
         id='master72',
         marks=pytest.mark.xfail(reason='require improvement'),
     ),
     pytest.param(
-        tests.resources.BACHELOR37,
+        power.link(power.BACHELOR037_PDF),
         TextAlignment.BLOCK,
         id='bachelor37',
         marks=pytest.mark.xfail(reason='require improvement'),
     ),
     pytest.param(
-        tests.resources.HOWTO_PYPORTING,
+        power.link(power.DOCU07_PDF),
         TextAlignment.BLOCK,
         id='pyporting',
         marks=pytest.mark.xfail(reason='require improvement'),
     ),
     pytest.param(
-        tests.resources.HOMEWORK40,
+        power.link(power.HOMEWORK040_PDF),
         TextAlignment.LEFT,
         id='homework40',
     ),
@@ -68,7 +68,7 @@ def test_document_alignment(source, expected):
 @pytest.mark.xfail(reason='improve block parser')
 def test_page_linealignment():
     navigators = serializeraw.create_pagetextnavigators_frompath(
-        tests.resources.HOMEWORK40,
+        power.link(power.HOMEWORK040_PDF),
         prefix='oneline',
     )
     left, right = textflow.alignment.style.document_textfeed(navigators)
@@ -86,7 +86,7 @@ def test_page_linealignment():
 @pytest.mark.xfail(reason='broken alignment algo')
 def test_page_linealignment_master72_page4():
     navigators = serializeraw.create_pagetextnavigators_frompath(
-        tests.resources.MASTER72,
+        power.link(power.MASTER072_PDF),
         prefix='oneline',
     )
     left, right = textflow.alignment.style.document_textfeed(navigators)
@@ -106,7 +106,7 @@ def test_page_linealignment_master72_page4():
 @pytest.mark.xfail(reason='improve block parser')
 def test_page_linealignment_master72_page15():
     navigators = serializeraw.create_pagetextnavigators_frompath(
-        tests.resources.MASTER72,
+        power.link(power.MASTER072_PDF),
         prefix='oneline',
     )
     left, right = textflow.alignment.style.document_textfeed(navigators)

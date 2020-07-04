@@ -7,10 +7,10 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import power
 import pytest
 import serializeraw
 
-import tests.resources
 import textflow.alignment.info
 import textflow.alignment.style
 import textflow.features.alignment
@@ -18,7 +18,7 @@ import textflow.features.alignment
 
 @pytest.mark.xfail(reason='broken alignment parser')
 def test_info_adapter():
-    source = tests.resources.MASTER72
+    source = power.link(power.MASTER072_PDF)
     pages = (10, 11, 12, 13)
     navigators = serializeraw.create_pagetextnavigators_frompath(
         source,

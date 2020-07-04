@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import power
 import serializeraw
 
 import tests.resources
@@ -15,7 +16,7 @@ import textflow.path
 
 
 def test_blockquote_master72():
-    source = tests.resources.MASTER72
+    source = power.link(power.MASTER072_PDF)
     pages = (15,)
 
     ptcn = serializeraw.create_pagetextcontentnavigators_frompath(
@@ -28,7 +29,7 @@ def test_blockquote_master72():
 
 def test_blockquote_validate_master72(testdir, monkeypatch):
     tests.textflow_.run(
-        f'-i {tests.resources.MASTER72} --blockquote --pages=0:65',
+        f'-i {power.link(power.MASTER072_PDF)} --blockquote --pages=0:65',
         monkeypatch=monkeypatch,
     )
 
@@ -43,7 +44,7 @@ def test_blockquote_validate_master72(testdir, monkeypatch):
 
 def test_blockquote_validate_bachelor76_page8_11_13_15_16(testdir, monkeypatch):
     tests.textflow_.run(
-        f'-i {tests.resources.BACHELOR76} --blockquote --pages=8:17',
+        f'-i {power.link(power.BACHELOR076_PDF)} --blockquote --pages=8:17',
         monkeypatch=monkeypatch,
     )
     path = textflow.path.blockquote(testdir.tmpdir)

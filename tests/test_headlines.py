@@ -6,9 +6,11 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
+
 import os
 
 import iamraw
+import power
 import pytest
 import sections.path
 import serializeraw
@@ -87,7 +89,7 @@ EXPECTED = [
 def test_headlines_extract_headlines():
     # TODO: Require new approach, may look into table of content
     section = tests.fixtures.restruct.restructured_sections_manual()
-    basic = words.loader.basic.load_basic_frompath(tests.resources.RESTRUCT)
+    basic = words.loader.basic.load_basic_frompath(power.link(power.DOCU27_PDF))
     extractor = words.headlines.nolevel.NoLevelHeadlineExtractor(
         sectionlist=section,
         basic=basic,
@@ -103,14 +105,14 @@ def test_headlines_extract_headlines():
 def test_headlines_work():
     sections_ = tests.fixtures.restruct.restructured_sections()
     dumped = words.feature.headlines.work(
-        boxes=iamraw.path.boxed(tests.resources.RESTRUCT),
-        font_content=iamraw.path.fontcontent(tests.resources.RESTRUCT),
-        font_header=iamraw.path.fontheader(tests.resources.RESTRUCT),
-        headerfooters=iamraw.path.headerfooters(tests.resources.RESTRUCT),
+        boxes=iamraw.path.boxed(power.link(power.DOCU27_PDF)),
+        font_content=iamraw.path.fontcontent(power.link(power.DOCU27_PDF)),
+        font_header=iamraw.path.fontheader(power.link(power.DOCU27_PDF)),
+        headerfooters=iamraw.path.headerfooters(power.link(power.DOCU27_PDF)),
         sectionlist=sections_,
-        sizeandborder=iamraw.path.sizeandborder(tests.resources.RESTRUCT),
-        text=iamraw.path.text(tests.resources.RESTRUCT),
-        text_position=iamraw.path.textposition(tests.resources.RESTRUCT),
+        sizeandborder=iamraw.path.sizeandborder(power.link(power.DOCU27_PDF)),
+        text=iamraw.path.text(power.link(power.DOCU27_PDF)),
+        text_position=iamraw.path.textposition(power.link(power.DOCU27_PDF)),
     )
     # dump some headlines
     assert len(dumped) > 2100, str(dumped)
@@ -125,7 +127,7 @@ def test_headlines_dump_and_load_headlines():
 
 
 def extract_master72_headlines(root: str):
-    master72 = tests.resources.MASTER72
+    master72 = power.link(power.MASTER072_PDF)
     sections_ = sections.path.sections_(master72)
     text = iamraw.path.text(master72)
     text_positions = iamraw.path.textposition(master72)

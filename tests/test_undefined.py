@@ -8,6 +8,7 @@
 # =============================================================================
 
 import iamraw.path
+import power
 import serializeraw
 
 # pylint:disable=W0611
@@ -26,16 +27,16 @@ def test_extract_undefined():
     # TODO: Move to hey
     textexample = tests.fixtures.restruct.restructured_textexample()
 
-    text = iamraw.path.text(tests.resources.RESTRUCT)
+    text = iamraw.path.text(power.link(power.DOCU27_PDF))
     text = serializeraw.load_document(text)
 
-    textposition = iamraw.path.textposition(tests.resources.RESTRUCT)
+    textposition = iamraw.path.textposition(power.link(power.DOCU27_PDF))
     textposition = serializeraw.load_textpositions(textposition)
 
-    border = iamraw.path.sizeandborder(tests.resources.RESTRUCT)
+    border = iamraw.path.sizeandborder(power.link(power.DOCU27_PDF))
     border = serializeraw.load_pageborders(border)
 
-    headerfooters = iamraw.path.headerfooters(tests.resources.RESTRUCT)
+    headerfooters = iamraw.path.headerfooters(power.link(power.DOCU27_PDF))
     headerfooters = serializeraw.load_headerfooter(headerfooters)
 
     contentborder = words.headlines.contentborder(border, headerfooters)

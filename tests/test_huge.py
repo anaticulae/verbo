@@ -10,12 +10,12 @@
 import contextlib
 import os
 
+import power
 import pytest
 import serializeraw
 import utila
 import utilatest
 
-import tests
 import words
 
 # TODO: Reduce list of unsupported documents
@@ -62,12 +62,12 @@ HEADLINE_COUNT = {
 
 
 def params():
-    pdf = tests.pdfs()
+    pdf = power.PDF
     # skip documents cause of to few computing power
     ignore = SKIP_DOCUMENTS | UNSUPPORTED_DOCUMENTS
     pdf = [
         item for item in pdf if all([
-            not tests.relative_path(item) in ignore,
+            not utila.make_relative(item, power.REPOSITORY) in ignore,
             # skip generated pdfs to avoid double work
             not 'notitle' in item,
         ])
@@ -78,7 +78,7 @@ def params():
     result = []
 
     def determine_mark(pdf):
-        relative = tests.relative_path(pdf)
+        relative = utila.make_relative(pdf, power.REPOSITORY)
         if relative in UNSUPPORTED_DOCUMENTS:
             return pytest.mark.xfail(
                 reason="unsupported font format with current impl",)
@@ -93,7 +93,7 @@ def params():
                 '--char_margin 100.0 --boxes_flow 1.0',
                 '--char_margin 5.0 --boxes_flow 1.0 --line_margin 0.3',
             ),
-            id=tests.relative_path(item),
+            id=utila.make_relative(item, power.REPOSITORY),
             marks=determine_mark(item),
         )
         result.append(double)
