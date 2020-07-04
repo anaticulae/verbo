@@ -10,7 +10,6 @@
 
 .. todo:: think about block quotes without quotation marks
 
-
 """
 
 import german
@@ -54,7 +53,10 @@ def analyze_page(ptcn: texmex.PageTextContentNavigator,
 
     result = []
     for index, (group, bounds) in enumerate(zip(datagroups, boundsgroups)):
-        if not iscitation_group(bounds):
+        if not any((
+                iscitation_group_intention(bounds),
+                iscitation_group(bounds),
+        )):
             continue
         result.append((grouped[index], [item.text.strip() for item in group]))
     return iamraw.PageContentBlockQuotes(page=ptcn.page, content=result)
@@ -70,7 +72,7 @@ def group_todata(index, navigator):
     return result
 
 
-def iscitation_group(bounds) -> bool:
+def iscitation_group_intention(bounds) -> bool:
     """Check that group is indentend and contains some quotation
     marks."""
     left, right = group_distance(bounds)
@@ -88,6 +90,21 @@ def iscitation_group(bounds) -> bool:
     marks = utila.flatten(marks)
     contains_quotation = any(marks)
     return contains_quotation
+
+
+def iscitation_group(bounds) -> bool:
+    """Group starts and ends with quotation mark."""
+    text = ' '.join([item.text.strip() for item in bounds])
+    marks = german.split_words(text, validate_sentences=False)
+    if len(marks) < 2:
+        return False
+
+    if not german.contain_quotation_marks([marks[0]]):
+        return False
+    # 0:3 add some tolerance to ignore, dots or highnotes
+    if not german.contain_quotation_marks(marks[-3:]):
+        return False
+    return True
 
 
 def group_distance(group):

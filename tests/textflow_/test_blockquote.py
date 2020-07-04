@@ -39,3 +39,16 @@ def test_blockquote_validate_master72(testdir, monkeypatch):
     expected = [(14, 1), (15, 2), (17, 1), (24, 1), (25, 1), (26, 1), (38, 1)]
 
     assert current == expected
+
+
+def test_blockquote_validate_bachelor76_page8_11_13_15_16(testdir, monkeypatch):
+    tests.textflow_.run(
+        f'-i {tests.resources.BACHELOR76} --blockquote --pages=8:17',
+        monkeypatch=monkeypatch,
+    )
+    path = textflow.path.blockquote(testdir.tmpdir)
+    loaded = serializeraw.load_blockquotes(path)
+
+    expected = [(8, 1), (11, 1), (13, 1), (15, 1), (16, 2)]
+    current = [(item.page, len(item.content)) for item in loaded]
+    assert current == expected
