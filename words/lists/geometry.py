@@ -28,7 +28,7 @@ def analyze_page(ptcn, headlines, textfeed):
         parsed = parsed[0]
         extracted = extract_list(parsed, indexes)
         if not extracted:
-            utila.error(f'could not extract possible:\n{parsed}')
+            utila.debug(f'could not extract possible:\n{parsed}')
             continue
         result.append(extracted)
     return result
