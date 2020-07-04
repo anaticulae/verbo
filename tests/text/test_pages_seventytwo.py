@@ -132,8 +132,10 @@ def test_text_seventytwo_visit_chapters_page5_6_7():
 
     sentences = [sentence for _, sentence in chapters]
     count = [len(item) for item in sentences]
+
     # check sentence count for different sections
-    assert count == [10, 2, 26], str(count)
+    # TODO: EXCLUDE/INCLUDE LIST SENTENCE IN THIS TEST?
+    assert count == [10, 2, 31], str(count)
 
     lastsentence = chapters[-1][1][-1]
     assert lastsentence == ('Es sind Anwendungen entstanden, welche die '
