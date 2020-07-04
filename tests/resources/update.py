@@ -18,6 +18,7 @@ WORKER = 12
 PACKAGE = [
     (power.MASTER072_PDF, None),
     (power.BACHELOR076_PDF, None),
+    (power.MASTER098_PDF, '0:20'),
     (power.HOMEWORK040_PDF, None),
     (power.BACHELOR037_PDF, None),
     (power.DOCU07_PDF, None),
