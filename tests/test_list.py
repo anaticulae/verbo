@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import iamraw
 import power
 import pytest
 import serializeraw
@@ -14,6 +15,7 @@ import utila
 
 import tests.fixtures.restruct
 import tests.resources
+import words.feature.list
 import words.lists.regex
 import words.lists.vertical
 import words.path
@@ -255,3 +257,61 @@ def test_list_master72_page39_40_41(testdir, monkeypatch):
 
     first = lists[0][1][0][2]
     assert len(first) == 7
+
+
+def test_merge_overlapping_lists():
+    pages = [
+        [
+            36,
+            [
+                (0, 0,
+                 iamraw.PageList(
+                     data=[
+                         ('1.', 'A'),
+                         ('-', 'AA'),
+                         ('-', 'AAA'),
+                         ('2.', 'B'),
+                         ('-', 'BB'),
+                         ('3.', 'C'),
+                         ('-', 'CC'),
+                         ('-', 'CCC'),
+                     ],
+                     area=[6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+                     paragraph=None,
+                     merged=None)),
+            ], 17
+        ],
+        [
+            41,
+            [
+                (0, 0,
+                 iamraw.PageList(
+                     data=[
+                         ('-', 'A'),
+                         ('-', 'B'),
+                         ('-', 'C'),
+                     ],
+                     area=[2, 3, 4],
+                     paragraph=None,
+                     merged=None)),
+                (0, 0,
+                 iamraw.PageList(
+                     data=[
+                         ('+', 'www.Freebus.org'),
+                         ('+', 'www.eib-home.de'),
+                         ('+', 'www.knx.de'),
+                         ('+', 'First'),
+                         ('+', 'Second'),
+                         ('+', 'Third'),
+                         ('+', 'Fourth'),
+                     ],
+                     area=[6, 7, 8, 9, 10, 11, 12],
+                     paragraph=None,
+                     merged=None)),
+            ], 13
+        ],
+    ]
+    merged = words.feature.list.merge_overlapping_lists(pages)
+    assert len(merged) == 2
+    assert len(merged[0][1]) == 1
+    assert len(merged[1][1]) == 2

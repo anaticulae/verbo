@@ -27,7 +27,7 @@ import words.loader.input
 
 
 @utila.checkdatatype
-def work(
+def work(  # pylint:disable=R0914
         text: str,
         textpositions: str,
         border: str,
@@ -57,9 +57,9 @@ def work(
     result = []
     for page, content in merged:
         collected = []
-        for paragraph, merged, listinstance in content:
+        for paragraph, merged_, listinstance in content:
             listinstance.paragraph = paragraph
-            listinstance.merged = merged
+            listinstance.merged = merged_
             collected.append(listinstance)
         result.append(iamraw.PageContentList(page=page, content=collected))
     dumped = serializeraw.dump_lists(result)
@@ -81,6 +81,7 @@ def merge_overlapping_lists(items):
             ((lastpage + pageplus) == currentpage),
             ((lastlength - 1) == lastlist.area[-1]),
         ))
+
         if pagestart and connected:
             # merge lists
             for entree in currentlist:
@@ -89,11 +90,13 @@ def merge_overlapping_lists(items):
             # update length of page navigation where list is located to
             # merge more than two pages.
             result[-1][2] = lastlength
+
+            if item[1][1:]:
+                # more than one list per page
+                result[-1][1].extend(item[1][1:])
+                result[-1][2] = item[2]
         else:
             result.append(item)
-        if item[1][1:]:
-            # more than one list per page
-            result.append([currentpage, item[1][1:], item[2]])
 
     # remove navigator length entree
     result = [tuple(item[0:2]) for item in result]
