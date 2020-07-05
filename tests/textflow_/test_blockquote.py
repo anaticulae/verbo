@@ -60,7 +60,7 @@ def test_blockquote_validate_bachelor76_page8_11_13_15_16(testdir, monkeypatch):
 
 def test_blockquote_validate_master98(testdir, monkeypatch):
     tests.textflow_.run(
-        f'-i {power.link(power.MASTER098_PDF)} --blockquote',
+        f'-i {power.link(power.MASTER098_PDF)} --blockquote --pages=0:17',
         monkeypatch=monkeypatch,
     )
     path = textflow.path.blockquote(testdir.tmpdir)
