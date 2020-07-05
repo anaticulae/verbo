@@ -19,11 +19,15 @@ def test_blockquote_master72():
     source = power.link(power.MASTER072_PDF)
     pages = (15,)
 
+    textsize = 12.0  # TODO: NOT VALIDATED
     ptcn = serializeraw.create_pagetextcontentnavigators_frompath(
         source,
         pages=pages,
     )
-    extracted = textflow.features.blockquote.analyze_page(ptcn[0])
+    extracted = textflow.features.blockquote.analyze_page(
+        ptcn[0],
+        textsize=textsize,
+    )
     assert len(extracted.content) == 2
 
 
@@ -38,7 +42,6 @@ def test_blockquote_validate_master72(testdir, monkeypatch):
 
     current = [(item.page, len(item.content)) for item in loaded]
     expected = [(14, 1), (15, 2), (17, 1), (24, 1), (25, 1), (26, 1), (38, 1)]
-
     assert current == expected
 
 
@@ -51,5 +54,19 @@ def test_blockquote_validate_bachelor76_page8_11_13_15_16(testdir, monkeypatch):
     loaded = serializeraw.load_blockquotes(path)
 
     expected = [(8, 1), (11, 1), (13, 1), (15, 1), (16, 2)]
+    current = [(item.page, len(item.content)) for item in loaded]
+    assert current == expected
+
+
+def test_blockquote_validate_master98(testdir, monkeypatch):
+    tests.textflow_.run(
+        f'-i {power.link(power.MASTER098_PDF)} --blockquote',
+        monkeypatch=monkeypatch,
+    )
+    path = textflow.path.blockquote(testdir.tmpdir)
+    loaded = serializeraw.load_blockquotes(path)
+
+    expected = [(2, 1), (3, 1), (7, 2), (8, 1), (11, 1), (12, 1), (13, 1),
+                (15, 1)]
     current = [(item.page, len(item.content)) for item in loaded]
     assert current == expected

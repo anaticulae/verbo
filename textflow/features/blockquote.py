@@ -35,7 +35,9 @@ def work(
         headerfooterpath,
         pages=pages,
     )
-    result = [analyze_page(page) for page in ptcns]
+    textsize = texmex.document_textsize(ptcns)
+
+    result = [analyze_page(page, textsize=textsize) for page in ptcns]
 
     # remove empty pages
     result = [item for item in result if item.content]
@@ -43,8 +45,10 @@ def work(
     return dumped
 
 
-def analyze_page(ptcn: texmex.PageTextContentNavigator,
-                ) -> iamraw.PageContentBlockQuotes:
+def analyze_page(
+        ptcn: texmex.PageTextContentNavigator,
+        textsize: float,
+) -> iamraw.PageContentBlockQuotes:
     grouped = texmex.group_linedistances_complex(ptcn)
 
     bounds = texmex.textbounds(ptcn, contentborder=ptcn.content)
@@ -54,8 +58,9 @@ def analyze_page(ptcn: texmex.PageTextContentNavigator,
     result = []
     for index, (group, bounds) in enumerate(zip(datagroups, boundsgroups)):
         if not any((
-                iscitation_group_intention(bounds),
                 iscitation_group(bounds),
+                iscitation_group_intention(bounds),
+                iscitation_group_right_bounded(group, bounds, textsize),
         )):
             continue
         result.append((grouped[index], [item.text.strip() for item in group]))
@@ -70,6 +75,29 @@ def group_todata(index, navigator):
         collected = [navigator[index] for index in group]
         result.append(collected)
     return result
+
+
+def iscitation_group_right_bounded(group, bounds, textsize) -> bool:
+    if len(bounds) < 3:
+        # bock quote must have at least 3 lines
+        return False
+    left, right = group_distance(bounds)
+    blocksize = texmex.textsize_frompage(group)
+    if blocksize >= textsize:
+        return False
+    if right > 3.0:
+        return False
+    if left <= 20.0:  # TODO: HOLY VALUE
+        # left feeded text
+        return False
+    left = utila.groupby_diff(
+        [item.bounds.leftdist for item in bounds],
+        diff=1.5,
+    )
+    if len(left) > 1:
+        # more than one different text feed on the left side
+        return False
+    return True
 
 
 def iscitation_group_intention(bounds) -> bool:
