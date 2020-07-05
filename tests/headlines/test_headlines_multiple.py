@@ -17,7 +17,7 @@ import words.loader.basic
 
 def test_headlines_multiple_master72_extract_pages_5_7():
     path = power.link(power.MASTER072_PDF)
-    pages = tuple(range(5, 7))
+    pages = utila.ranged_tuple(5, 7)
     headlines = parse_multiline(path, pages)
 
     expected = [
@@ -33,7 +33,7 @@ def test_headlines_multiple_master72_extract_pages_5_7():
 
 def test_headlines_multiple_master72_extract_pages_13_14():
     path = power.link(power.MASTER072_PDF)
-    pages = tuple(range(13, 15))
+    pages = utila.ranged_tuple(13, 15)
     headlines = parse_multiline(path, pages)
     assert len(headlines) == 3
     expected = [
@@ -47,7 +47,7 @@ def test_headlines_multiple_master72_extract_pages_13_14():
 def test_headlines_multiple_master72_extract_pages_20_22():
     """The headline extractor strategy extracts footnotes as headlines."""
     path = power.link(power.MASTER072_PDF)
-    pages = tuple(range(20, 23))
+    pages = utila.ranged_tuple(20, 23)
     headlines = parse_multiline(path, pages)
     assert len(headlines) == 2
     expected = [
@@ -61,7 +61,7 @@ def test_headlines_multiple_master72_extract_pages_20_22():
 def test_headlines_multiple_master72_extract_pages_38_42():
     """The headline extractor strategy extracts list with sentences."""
     path = power.link(power.MASTER072_PDF)
-    pages = tuple(range(38, 42))
+    pages = utila.ranged_tuple(38, 43)
     headlines = parse_multiline(path, pages)
     assert len(headlines) == 2
     expected = [
