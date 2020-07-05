@@ -2,6 +2,19 @@
 
 Every noteable change is logged here.
 
+## v0.10.0
+
+### Feature
+
+* add right aligned blockquote parser (65ba8959c15f)
+* add blockquote detector (64c9f7662cd2)
+
+### Fix
+
+* increase required debug level (6de4d37d73e9)
+* adjust unit test with sentence/chapter with list example (18ad2b362c11)
+* fix list extractor (917981e3daa9)
+
 ## v0.9.9
 
 ## v0.9.8
