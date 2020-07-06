@@ -68,7 +68,7 @@ def container_start(item):
 
 def split(loaded: words.feature.TextRequiredResources) -> words.text.PageTextWithHeadlines: # yapf:disable
     headlines = loaded.headlines
-    pages = [item.page for item in loaded.textnavigators]
+    pages = [int(item.page) for item in loaded.textnavigators]
     if not headlines:
         start, end = min(pages), max(pages)
         headlines = [[

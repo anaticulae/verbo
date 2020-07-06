@@ -18,30 +18,30 @@ import words.path
 MASTER98_HEADLINES = """\
 1  Einleitung
 2  Theoretische Grundlagen
-2.1  Von der mémoire collective zu den Lieux de mémoire
-2.2  Binationale Erinnerungsorte
-2.3  Das dialogische Erinnern von Aleida Assmann
-2.4  Erinnerungsorte im DaF-Landeskundeunterricht
+    2.1  Von der mémoire collective zu den Lieux de mémoire
+    2.2  Binationale Erinnerungsorte
+    2.3  Das dialogische Erinnern von Aleida Assmann
+    2.4  Erinnerungsorte im DaF-Landeskundeunterricht
 3  Der Elysée-Vertrag – Ein deutsch-französischer Erinnerungsort
-3.1  Die Vorgeschichte
-3.2  Adenauer, de Gaulle und der Elysée-Vertrag
-3.3  Mythos Elysée-Vertrag
-3.4  Die Entwicklung des Elysée-Vertrags vom Ereignis zum Erinnerungsort
+    3.1  Die Vorgeschichte
+    3.2  Adenauer, de Gaulle und der Elysée-Vertrag
+    3.3  Mythos Elysée-Vertrag
+    3.4  Die Entwicklung des Elysée-Vertrags vom Ereignis zum Erinnerungsort
 4  Didaktisierung
-4.1  Eignung des Elysée-Vertrags für den DaF-Landeskundeunterricht
-4.2  Zielgruppe und Sprachniveau
-4.3  Zielsetzungen
-4.4  Vorstellung der Materialien
+    4.1  Eignung des Elysée-Vertrags für den DaF-Landeskundeunterricht
+    4.2  Zielgruppe und Sprachniveau
+    4.3  Zielsetzungen
+    4.4  Vorstellung der Materialien
 5  Reflexion
-5.1  Reflexion der Themenwahl
-5.2  Reflexion der Zielgruppe
-5.3  Reflexion der inhaltlichen Lernziele
-5.5  Reflexion der Methodik und des Materials
-5.6  Reflexion der kulturdidaktischen Lernziele
+    5.1  Reflexion der Themenwahl
+    5.2  Reflexion der Zielgruppe
+    5.3  Reflexion der inhaltlichen Lernziele
+    5.5  Reflexion der Methodik und des Materials
+    5.6  Reflexion der kulturdidaktischen Lernziele
 6  Fazit und Ausblick
 7  Verzeichnisse
-7.1  Literaturverzeichnis
-7.2  Tabellenverzeichnis
+    7.1  Literaturverzeichnis
+    7.2  Tabellenverzeichnis
 8  Anhang"""
 
 
@@ -62,6 +62,10 @@ def test_headlines_validate(source, expected, testdir, monkeypatch):
 def raw_headlines(parsed) -> str:
     collected = []
     for chapter in parsed:
-        for headline in chapter:
-            collected.append(headline.text)
+        if chapter:
+            collected.append(chapter[0].text)
+        else:
+            collected.append('None')
+        for headline in chapter[1:]:
+            collected.append('    ' + headline.text)
     return utila.NEWLINE.join(collected)

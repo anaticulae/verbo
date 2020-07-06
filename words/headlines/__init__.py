@@ -6,6 +6,7 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
+
 import abc
 import collections
 import typing
@@ -130,7 +131,7 @@ class HeadlineExtractorStrategy(abc.ABC):  # pylint:disable=too-many-instance-at
         assert 0 <= chapter < self.chaptercount, chapter
         result = []
         start, end = self.content[chapter]
-        for page in range(start, end + 1):
+        for page in range(int(start), int(end + 1)):
             border = utila.select_page(self.border, page=page)
             textnavigator = utila.select_page(self.pagetextnavigators, page=page) # yapf:disable
             if not border or not textnavigator:
@@ -379,17 +380,16 @@ def determine_contentrange(items) -> ChapterRanges:
     contents = [
         item for item in items if isinstance(
             item,
-            (iamraw.MainPart, iamraw.sections.Unknown),
+            (
+                iamraw.MainPart,
+                iamraw.MultipleSection,
+                iamraw.sections.Appendix,
+                iamraw.sections.Unknown,
+            ),
         )
     ]
     # support more than one content element
-    chapters = [[
-        chapter
-        for chapter in content.content
-        if isinstance(chapter, iamraw.sections.Chapter)
-    ]
-                for content in contents]
-    chapters = utila.flatten(chapters)
+    chapters = flat_chapters(contents)
 
     if not chapters and contents:
         # no chapter is present - create `virtual chapter`
@@ -407,6 +407,17 @@ def determine_contentrange(items) -> ChapterRanges:
 
     # ensure ascending page numbers
     assert all([start <= end for start, end in result]), str(result)
+    return result
+
+
+def flat_chapters(contents):
+    result = []
+    for item in contents:
+        try:
+            result.extend(flat_chapters(item.content))
+        except AttributeError:
+            result.append(item)
+    result = utila.select_type(result, iamraw.sections.Chapter)
     return result
 
 
