@@ -101,13 +101,3 @@ HEADLINE = re.compile(
         r'$'),
     re.VERBOSE,
 )
-
-
-def isdotted(items):
-    assert items
-    flat = utila.flatten(items)
-
-    dotted = [item for item in flat if is_headline(item.text)]
-    percent = len(dotted) / len(flat)
-
-    return percent >= MIN_DOTTED_COUNT
