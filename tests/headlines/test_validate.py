@@ -46,11 +46,7 @@ MASTER98_HEADLINES = """\
 
 
 @pytest.mark.parametrize('source, expected', [
-    pytest.param(
-        power.MASTER098_PDF,
-        MASTER98_HEADLINES,
-        id='master98',
-        marks=pytest.mark.xfail(reason='adjust headline extractor')),
+    pytest.param(power.MASTER098_PDF, MASTER98_HEADLINES, id='master98'),
 ])
 def test_headlines_validate(source, expected, testdir, monkeypatch):
     source = power.link(power.MASTER098_PDF)

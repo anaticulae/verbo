@@ -167,6 +167,7 @@ class HeadlineExtractorStrategy(abc.ABC):  # pylint:disable=too-many-instance-at
         ):
             splitted = item.text.splitlines()
             if len(splitted) > 1:
+                # TODO: REMOVE?
                 continue
             headline = self.extract_headline(
                 textinfo=item,
@@ -193,7 +194,9 @@ class HeadlineExtractorStrategy(abc.ABC):  # pylint:disable=too-many-instance-at
         text = textinfo.text
         contentstart, contentend = content_range
         distanceid = containerid - contentstart
-        fontdistance = textdistances[distanceid]
+        # TODO: BEFORE, AFTER, TOP OF THE PAGE? DISTANCE IS ZERO ON PAGE
+        # START.
+        fontdistance = textdistances[distanceid + 1]
         textfeed = textfeeds[distanceid]
         textsize = texmex.TextStyle.textsizes(textinfo.style)
 

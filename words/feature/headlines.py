@@ -110,11 +110,23 @@ def extract_headlines(
 
 
 def judge_result(results):
-    # TODO: add judeging unit
-    extracted = results[1]
+    """\
+        1. Compare Multiline and NoLevel - prefer multiline over NoLevel
+        2. Compare result of 1. with StandardHeadlineExtractor
+    """
+    best = results[1]
     if any([len(item) for item in results[0]]):
-        extracted = results[0]
-    return extracted
+        # if any item is detected with multiline strategy, choose
+        # multiline over NoLevelheadline
+        best = results[0]
+
+    # longest common text selection
+    best_flat = sum([len(item.text) for item in utila.flatten(best)])
+    standard_flat = sum([len(item.text) for item in utila.flatten(results[2])])
+
+    if best_flat > standard_flat:
+        return best
+    return results[2]
 
 
 def headlines_frompath(path: str, prefix: str = '', pages: tuple = None):
