@@ -34,7 +34,7 @@ import tests.resources
 def test_run(command, monkeypatch, capsys):
     """Run help and version command to reach basic test coverage"""
     tests.run(command, monkeypatch=monkeypatch)
-    tests.write_capsys(capsys)
+    utilatest.write_capsys(capsys)
 
 
 @utilatest.skip_longrun

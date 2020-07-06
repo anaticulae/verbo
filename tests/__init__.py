@@ -20,7 +20,6 @@ Required resources:
 import functools
 
 import power
-import utila
 import utilatest
 
 import words
@@ -41,10 +40,3 @@ fail = functools.partial(  #pylint:disable=C0103
     process=words.PROCESS,
     success=False,
 )
-
-
-def write_capsys(capsys):
-    """Save logged capsys to filespace"""
-    stdout, stderr = capsys.readouterr()
-    utila.file_create('logging.txt', stdout)
-    utila.file_create('error.txt', stderr)
