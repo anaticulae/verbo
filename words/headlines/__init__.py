@@ -286,17 +286,17 @@ def contentborder(sizeandborders, headerfooters):
         selected = utila.select_page(sizeandborders, page)
         pageheight = selected.size.height
         pageborder = selected.border
+        # Not every page provides footer and/or header information,
+        # therefore we have to check if footerheader exists before
+        # acessing the value.
         footerheader = utila.select_page(headerfooters, page)
 
-        if footerheader is None:
-            continue
-
         top = 0
-        if footerheader.header:
+        if footerheader and footerheader.header:
             top = pageheight * footerheader.header.end
 
         bottom = pageheight
-        if footerheader.footer:
+        if footerheader and footerheader.footer:
             bottom = pageheight * footerheader.footer.begin
 
         top, bottom = utila.roundme(top), utila.roundme(bottom)

@@ -164,8 +164,12 @@ def test_text_seventytwo_extract_sentences():
     assert splitted == expected
 
 
-@pytest.mark.xfail(reason='multiple equal fontdistance, think about later')
 def test_text_doubleequal_fontdistance():
-    required = fseventytwo.textrequired(pages=(0))
+    """Regression test to solve problems with duplicated equal font
+    distance on one page.
+
+    Hint: Don't know why this is solved, but don't remove this test for
+    providing regression."""
+    required = fseventytwo.textrequired(pages=(0,))
     extracted = words.text.chapter.extract_texts(required)
     assert extracted
