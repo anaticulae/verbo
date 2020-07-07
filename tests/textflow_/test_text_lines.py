@@ -49,8 +49,7 @@ def test_document_alignment(source, expected):
     assert alignment == expected, alignment
 
 
-@pytest.mark.xfail(reason='improve block parser')
-def test_page_linealignment():
+def test_page_linealignment_homework40_page4():
     navigators = serializeraw.create_pagetextnavigators_frompath(
         power.link(power.HOMEWORK040_PDF),
         prefix='oneline',

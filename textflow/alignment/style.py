@@ -84,6 +84,10 @@ def document_textfeed(navigators):
 
 TEXT_BORDER_NOISE = 15  # TODO HOLY VALUE
 
+# A center block must have a minimal width to exclude page numbers or very
+# short centered text as beeing a center text block.
+BLOCK_CENTER_MIN_WIDTH = 300  # TODO: HOLY VALUE
+
 
 def page_linealignments(
         navigator,
@@ -97,6 +101,7 @@ def page_linealignments(
         right_alignment,
     )
     for left, right in zip(border_left, border_right):
+        width = navigator.width - left - right
         # TODO: HOLY VALUES
         if right == 0.0:
             if left > 100:
@@ -106,7 +111,8 @@ def page_linealignments(
         elif right >= 20:
             if left >= 20:
                 # left and right textfeed is equal
-                if math.fabs(right - left) <= 5.0:
+                if (math.fabs(right - left) <= 5.0 and
+                        width >= BLOCK_CENTER_MIN_WIDTH):
                     result.append(TextAlignment.BLOCK_CENTER)
                 else:
                     result.append(TextAlignment.CENTER)
