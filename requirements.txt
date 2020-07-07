@@ -15,6 +15,6 @@ hey==3.5.3
 # rawmaker online configuration
 detector==0.5.6
 # split sentences and determine language of written sentence
-german==0.6.9
+german==0.7.0
 # some constants
 konrad==0.2.21

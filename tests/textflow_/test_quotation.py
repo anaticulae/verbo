@@ -97,6 +97,16 @@ def test_textflow_validate_quotation_bachelor76(testdir, monkeypatch):
     assert raw == BACHELOR76_EXPECTED
 
 
+def test_textflow_validate_quotation_bachelor76_page8(testdir, monkeypatch):
+    quotations = extract_quotations(
+        power.BACHELOR076_PDF,
+        '8',
+        testdir,
+        monkeypatch,
+    )
+    assert len(quotations) == 2
+
+
 def extract_quotations(
         source,
         pages: str,
