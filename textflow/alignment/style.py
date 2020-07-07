@@ -71,8 +71,8 @@ def document_alignment(navigators: texmex.PageTextNavigators) -> TextAlignment:
     left, right = document_textfeed(navigators)
     for page in navigators:
         # left, right = page.content.left, page.content.right
-        style = page_textalignment(page, left, right)
-        result.append(style)
+        style = page_linealignments(page, left, right)
+        result.extend(style)
     return utila.modes(result)
 
 
@@ -83,19 +83,6 @@ def document_textfeed(navigators):
 
 
 TEXT_BORDER_NOISE = 15  # TODO HOLY VALUE
-
-
-def page_textalignment(navigator, left, right) -> TextAlignment:
-    left, right = leftright(navigator, left, right)
-    leftzero = zero(left)
-    rightzero = zero(right)
-    if leftzero >= 0.9 and rightzero >= 0.75:
-        return TextAlignment.BLOCK
-    if leftzero <= 0.75 and rightzero >= 0.9:
-        return TextAlignment.RIGHT
-    if leftzero >= 0.75:
-        return TextAlignment.LEFT
-    return TextAlignment.UNDEFINED
 
 
 def page_linealignments(
