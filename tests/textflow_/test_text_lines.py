@@ -86,7 +86,6 @@ def test_page_linealignment_master72_page4():
     assert linealignments[-1] == TextAlignment.RIGHT
 
 
-@pytest.mark.xfail(reason='improve block parser')
 def test_page_linealignment_master72_page15():
     navigators = serializeraw.create_pagetextnavigators_frompath(
         power.link(power.MASTER072_PDF),
@@ -99,10 +98,13 @@ def test_page_linealignment_master72_page15():
         left,
         right,
     )
+    # CENTER marks the end of BLOCK_CENTER
+    # LEFT marks the end of BLOCK
     assert linealignments[0] == TextAlignment.BLOCK_CENTER
     assert linealignments[1] == TextAlignment.BLOCK_CENTER
     assert linealignments[2] == TextAlignment.BLOCK_CENTER
+    assert linealignments[3] == TextAlignment.CENTER
 
     assert linealignments[7] == TextAlignment.BLOCK_CENTER
     assert linealignments[8] == TextAlignment.BLOCK_CENTER
-    assert linealignments[9] == TextAlignment.BLOCK_CENTER
+    assert linealignments[9] == TextAlignment.CENTER
