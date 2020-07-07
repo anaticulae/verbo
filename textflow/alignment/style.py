@@ -136,8 +136,10 @@ def page_linealignments(
 
 def document_linealignments_expected(navigators):
     border = document_textfeed(navigators)
-    result = [(navigator.page, page_linealignments_expected(navigator))
-              for navigator in navigators]
+    result = [(
+        navigator.page,
+        page_linealignments_expected(navigator),
+    ) for navigator in navigators]
     return result
 
 
@@ -148,7 +150,11 @@ def page_linealignments_expected(navigator, border=None):
     content = groupby(navigator, grouped)
     result = []
     for group in content:
-        alignments = page_linealignments(group, *border)
+        # TODO: MOVE TO SEPARATE METHOD
+        nav = texmex.PageTextNavigator()
+        nav.width = navigator.width
+        nav.data = group
+        alignments = page_linealignments(nav, *border)
         if not alignments:
             continue
         alignment = utila.modes(alignments)
@@ -176,7 +182,17 @@ def feed_left(navigator, left):
 
 
 def feed_right(navigator, right):
-    diff = [right - item.bounding[2] for item in navigator]
+    """Determine distance to right pagefeed(distance to right paper border).
+
+    Args:
+        navigator: content of one page
+        right(float): distance to the right paper side
+    Returns:
+        List of distances to paper page feed for every line.
+    """
+    # absolute coordinate measured from left paper as origin
+    expected = navigator.width - right
+    diff = [expected - item.bounding[2] for item in navigator]
     diff = utila.roundme(diff, convert=False)
     return diff
 

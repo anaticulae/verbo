@@ -8,7 +8,6 @@
 # =============================================================================
 
 import power
-import pytest
 import serializeraw
 
 import textflow.alignment.info
@@ -16,7 +15,6 @@ import textflow.alignment.style
 import textflow.features.alignment
 
 
-@pytest.mark.xfail(reason='broken alignment parser')
 def test_info_adapter():
     source = power.link(power.MASTER072_PDF)
     pages = (10, 11, 12, 13)
@@ -38,7 +36,10 @@ def test_info_adapter():
     )
     first_page = layout[0]
 
+    # Das Social Web stellt also vielfältige Kommunikationsmöglichkeiten...
     item = first_page[5]
+
     selected = adapter.alignment(first_page.page, item.bounding)
+    expected = [textflow.alignment.style.TextAlignment.BLOCK]
     assert selected, selected
-    assert selected == [textflow.alignment.style.TextAlignment.BLOCK], selected
+    assert selected == expected, selected

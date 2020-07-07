@@ -19,9 +19,11 @@ TextAlignment = textflow.alignment.style.TextAlignment
 
 def test_extract_linestyleinfo_master72():
     content_navigators = serializeraw.create_pagetextcontentnavigators_frompath(
-        power.link(power.MASTER072_PDF), pages=(3,), prefix='oneline')
-    left = 114.0
-    right = 527.5
+        power.link(power.MASTER072_PDF),
+        pages=(3,),
+        prefix='oneline',
+    )
+    left, right = textflow.alignment.style.document_textfeed(content_navigators)
     linestyles = textflow.alignment.style.page_textalignment(
         content_navigators[0],
         left=left,
@@ -35,13 +37,11 @@ def test_extract_linestyleinfo_master72():
         power.link(power.MASTER072_PDF),
         TextAlignment.BLOCK,
         id='master72',
-        marks=pytest.mark.xfail(reason='require improvement'),
     ),
     pytest.param(
         power.link(power.BACHELOR037_PDF),
         TextAlignment.BLOCK,
         id='bachelor37',
-        marks=pytest.mark.xfail(reason='require improvement'),
     ),
     pytest.param(
         power.link(power.DOCU07_PDF),
@@ -83,7 +83,6 @@ def test_page_linealignment():
     assert linealignments[-1] == TextAlignment.RIGHT
 
 
-@pytest.mark.xfail(reason='broken alignment algo')
 def test_page_linealignment_master72_page4():
     navigators = serializeraw.create_pagetextnavigators_frompath(
         power.link(power.MASTER072_PDF),

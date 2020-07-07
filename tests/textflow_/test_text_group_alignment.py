@@ -14,7 +14,6 @@ import serializeraw
 import textflow.alignment.style
 
 
-@pytest.mark.xfail(reason='broken alignment parser')
 def test_page_linealignments_expected_master72_page4():
     source = power.link(power.MASTER072_PDF)
     pages = (4,)
@@ -34,7 +33,6 @@ def test_page_linealignments_expected_master72_page4():
     assert current == expected, expected
 
 
-@pytest.mark.xfail(reason='broken alignment parser')
 def test_page_linealignments_expected_master72_page6():
     source = power.link(power.MASTER072_PDF)
     pages = (6,)
