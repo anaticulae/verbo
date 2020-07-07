@@ -83,19 +83,33 @@ Effizienz.“
 @pytest.mark.xfail(reason='broken list parser and no line `-` connector'
                    ', require quotation out of sentence extractor')
 def test_textflow_validate_quotation_bachelor76(testdir, monkeypatch):
-    pages = '--pages=4:10'
-    source = power.link(power.BACHELOR076_PDF)
-    # run words
-    tests.run(f'-i {source} {pages}', monkeypatch=monkeypatch)
-    tests.textflow_.run(
-        f'-i {source} -i {testdir.tmpdir} {pages} --quotation',
-        monkeypatch=monkeypatch,
+    quotations = extract_quotations(
+        power.BACHELOR076_PDF,
+        '4:10',
+        testdir,
+        monkeypatch,
     )
-    path = textflow.path.quotation(testdir.tmpdir)
-    quotations = textflow.quotation.serialize.load_quotations(path)
 
     expected = len(BACHELOR76_EXPECTED.split('\n\n'))
     assert len(quotations) == expected
 
     raw = (2 * utila.NEWLINE).join([item.sentence for item in quotations])
     assert raw == BACHELOR76_EXPECTED
+
+
+def extract_quotations(
+        source,
+        pages: str,
+        testdir,
+        monkeypatch,
+) -> textflow.quotation.data.ExtractedQuotation:
+    source = power.link(source)
+    # run words
+    tests.run(f'-i {source} --pages={pages}', monkeypatch=monkeypatch)
+    tests.textflow_.run(
+        f'-i {source} -i {testdir.tmpdir} --pages={pages} --quotation',
+        monkeypatch=monkeypatch,
+    )
+    path = textflow.path.quotation(testdir.tmpdir)
+    result = textflow.quotation.serialize.load_quotations(path)
+    return result

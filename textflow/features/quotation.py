@@ -33,7 +33,7 @@ def work(word: str, lists: str, pages: tuple = None) -> str:
     return dumped
 
 
-def collect_quotations(  # pylint:disable=R1260
+def collect_quotations(
         word,
         lists: iamraw.PageContentLists = None,
 ) -> textflow.quotation.data.ExtractedQuotations:
