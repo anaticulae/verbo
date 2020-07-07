@@ -22,10 +22,11 @@ def analyze_page(ptcn):
         content = ''.join([ptcn[item].text for item in group])
         parsed = words.lists.regex.parse_single(content)
         if parsed:
+            # TODO: GROUP DOES NOT REPRESENT THE COLLECTED LINES, GROUPS
+            # CONTAINS THE WHOLE CONTENT CHUNK
             collected.append((parsed, group))
         else:
             collected.append(None)
-
     lists = utila.groupby_none(collected)
 
     result = []
@@ -33,8 +34,11 @@ def analyze_page(ptcn):
         current = iamraw.PageList()
         for row, indexs in listgroup:
             for item in row:
-                assert len(item) == 2, str(item)
-                current.append(*item)
+                # assert len(item) == 2, str(item)
+                if len(item) == 2:
+                    current.append(*item)
+                else:
+                    current.append(item)
             current.area.extend(indexs)  # pylint:disable=E1101
         if len(current) <= 1:
             # SKIP PARSED HEADLINE

@@ -92,6 +92,7 @@ Improving upon the pattern established at:
 • Lists: Nested
 • Paragraphs
 • Images: Reference
+
 Futher text
 """
 
@@ -114,7 +115,6 @@ DOTTED_LIST_EXPECTED = [
 ]
 
 
-@pytest.mark.xfail(reason='broken regex')
 def test_list_dotted():
     parsed = words.lists.regex.parse_dotted_list(DOTTED_LIST)
     assert parsed == DOTTED_LIST_EXPECTED
@@ -128,6 +128,7 @@ For this project, we’ll have the following pages:
   • Cookbook/Examples
 • Command Line Options
 • Changelog
+
 Let’s start with the Support page.
 """
 
@@ -141,7 +142,6 @@ DOTTED_EXAMPLE_EXPECTED = [
 ]
 
 
-@pytest.mark.xfail(reason='broken regex')
 def test_list_dotted_with_start_and_end():
     parsed = words.lists.regex.parse_dotted_list(DOTTED_EXAMPLE)
     assert parsed == DOTTED_EXAMPLE_EXPECTED
@@ -152,7 +152,6 @@ DOTTED_EXAMPLE_CONTENT_ONLY = """ • Index Page
 • Changelog"""
 
 
-@pytest.mark.xfail(reason='broken regex')
 def test_list_dotted_with_content_only():
     parsed = words.lists.regex.parse_dotted_list(DOTTED_EXAMPLE_CONTENT_ONLY)
     assert parsed == ['Index Page', 'Support', 'Changelog']
@@ -212,16 +211,22 @@ def extract_lists(source, pages: tuple, testdir, monkeypatch):
     return lists
 
 
-def test_list_bachelor76_page4_5(testdir, monkeypatch):
-    pages = (4, 5, 6, 7, 8)
+def test_list_bachelor76_page4(testdir, monkeypatch):
+    pages = (4,)
     source = power.link(power.BACHELOR076_PDF)
 
     lists = extract_lists(source, pages, testdir, monkeypatch)
+    # 1 pages with list content
+    assert len(lists) == 1
 
-    # 2 pages with list content
-    assert len(lists) == 2
 
-    # TODO: EXTEND DOTTED PARSER TO SUPPORT MULTILINES
+def test_list_bachelor76_page5_10(testdir, monkeypatch):
+    pages = (5, 6, 7, 8, 9, 10)
+    source = power.link(power.BACHELOR076_PDF)
+
+    lists = extract_lists(source, pages, testdir, monkeypatch)
+    # 1 pages with list content
+    assert len(lists) == 1
 
 
 def test_list_master72_page9_10(testdir, monkeypatch):

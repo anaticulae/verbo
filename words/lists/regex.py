@@ -38,14 +38,11 @@ NUMBERED_LIST_PATTERN = r"""
     (?=[0-9]+\.\s?|$)                      # new list start or final newline
     """
 
-# TODO: refactor pattern, this pattern looks not very beautiful
+# Double Newline must end this list item.
 GENERAL = r"""
-    ^[ ]{0,20}(?:%s\s)       # possible Whitespaces at front and DESCRIPTOR
-    (?P<TEXT>(?:.+\s){1,}) # list item content
-                             # Final
-    (?=[ ]{0,20}%s\s?|       # next item possible Whitespace and DESCRIPTOR
-     $                       # final line
-     |\w)                    # following text after last dot
+    ^\s*
+    {selector}\s*
+    (?P<TEXT>([^{selector}]+\n))      # list item content
 """
 
 
@@ -62,7 +59,14 @@ def parse_plus_list(content: str) -> utila.Strings:
 
 
 def parse_minus_list(content: str) -> utila.Strings:
-    return parse_general_list(content, '-')
+    """Black token is required cause regex parser works with black
+    listing list sign in list content."""
+    # TODO: THINK ABOUT A BETTER PLAN
+    black_token = '$$$$$$$$_$$$$$$$$'
+    content = content.replace('-\n', black_token)
+    parsed = parse_general_list(content, '-')
+    parsed = [item.replace(black_token, '-\n') for item in parsed]
+    return parsed
 
 
 def parse_numbered_list(content: str) -> list:
@@ -104,7 +108,7 @@ def parse_numbered_list(content: str) -> list:
 def parse_general_list(content: str, selector: str) -> utila.Strings:
     assert isinstance(content, str), type(content)
 
-    pattern = GENERAL % (selector, selector)
+    pattern = GENERAL.format(selector=selector)
 
     # Workaround: Adding newline to content. The regex does not work, if the
     # content ends with a newline. TODO: Improve regex
@@ -116,7 +120,11 @@ def parse_general_list(content: str, selector: str) -> utila.Strings:
     )
     result = []
     for item in parsed:
-        result.append((item.group(1).strip(), selector))
+        # TODO: IMPROVE REGEX
+        text = item['TEXT'].split('\n\n')
+        text = text[0]
+        text = text.strip()
+        result.append(text)
     return result
 
 
@@ -179,7 +187,6 @@ def extract_lists(  # pylint:disable=R0914
             else:
                 content, level = item
                 pagelist.append(content, level)
-
         if pagelist:
             result.append(pagelist)
     return result
