@@ -131,7 +131,7 @@ def document_linealignments_expected(navigators):
     border = document_textfeed(navigators)
     result = [(
         navigator.page,
-        page_linealignments_expected(navigator),
+        page_linealignments_expected(navigator, border=border),
     ) for navigator in navigators]
     return result
 

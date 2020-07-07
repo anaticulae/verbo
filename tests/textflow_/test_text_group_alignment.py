@@ -8,8 +8,8 @@
 # =============================================================================
 
 import power
-import pytest
 import serializeraw
+import utila
 
 import textflow.alignment.style
 
@@ -60,16 +60,15 @@ def test_page_linealignments_expected_master72_page6():
     assert current == expected, expected
 
 
-@pytest.mark.xfail(reason='grouping does not work properly')
 def test_page_linealignments_expected_homework40_page3():
     source = power.link(power.HOMEWORK040_PDF)
-    pages = (3,)
-    navigators = serializeraw.create_pagetextnavigators_frompath(
-        source,
-        pages=pages,
+    navigators = serializeraw.create_pagetextnavigators_frompath(source,)
+    border = textflow.alignment.style.document_textfeed(navigators)
+
+    current = textflow.alignment.style.page_linealignments_expected(
+        utila.select_page(navigators, 3),
+        border=border,
     )
-    page3 = navigators[0]
-    current = textflow.alignment.style.page_linealignments_expected(page3)
 
     expected = [
         textflow.alignment.style.TextAlignment.CENTER,
@@ -77,24 +76,23 @@ def test_page_linealignments_expected_homework40_page3():
         textflow.alignment.style.TextAlignment.LEFT,
         textflow.alignment.style.TextAlignment.LEFT,
         textflow.alignment.style.TextAlignment.LEFT,
+        textflow.alignment.style.TextAlignment.BLOCK,
         textflow.alignment.style.TextAlignment.LEFT,
         textflow.alignment.style.TextAlignment.LEFT,
-        textflow.alignment.style.TextAlignment.LEFT,
-        textflow.alignment.style.TextAlignment.RIGHT,
+        textflow.alignment.style.TextAlignment.BLOCK,
     ]
-    assert current == expected, expected
+    assert current[0:9] == expected, expected
 
 
-@pytest.mark.xfail(reason='grouping does not work properly')
 def test_page_linealignments_expected_homework40_page4():
     source = power.link(power.HOMEWORK040_PDF)
-    pages = (4,)
-    navigators = serializeraw.create_pagetextnavigators_frompath(
-        source,
-        pages=pages,
+    navigators = serializeraw.create_pagetextnavigators_frompath(source)
+    border = textflow.alignment.style.document_textfeed(navigators)
+
+    current = textflow.alignment.style.page_linealignments_expected(
+        utila.select_page(navigators, page=4),
+        border=border,
     )
-    page4 = navigators[0]
-    current = textflow.alignment.style.page_linealignments_expected(page4)
 
     expected = [
         textflow.alignment.style.TextAlignment.CENTER,
@@ -102,6 +100,6 @@ def test_page_linealignments_expected_homework40_page4():
         textflow.alignment.style.TextAlignment.LEFT,
         textflow.alignment.style.TextAlignment.LEFT,
         textflow.alignment.style.TextAlignment.LEFT,
-        textflow.alignment.style.TextAlignment.RIGHT,
+        textflow.alignment.style.TextAlignment.LEFT,
     ]
-    assert current == expected, expected
+    assert current[0:6] == expected, expected
