@@ -167,6 +167,7 @@ def visit_chapters(pages, merge_headlines=True):
     done = utila.Single()
     for headline, sentence in merge_sentences(pages):
         if done.contains((headline, sentence)):
+            # TODO: THINK ABOUT DUPLICATED USER CONTENT ON ONE PAGE?
             continue
         if current is None:
             # start
