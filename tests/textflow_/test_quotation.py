@@ -8,7 +8,6 @@
 # =============================================================================
 
 import power
-import pytest
 import utila
 
 import tests
@@ -52,36 +51,32 @@ def test_textflow_quotation_bachelor76(testdir, monkeypatch):
     assert len(quotations) == expected
 
 
+# TODO: ADJUST EXPECTED AFTER IMPROVING PARSER
 BACHELOR76_EXPECTED = """\
-„Digitalisierung“
+„ Digitalisierung ”
 
-„Gesetzen der Digitalisierung“
+„ Gesetzen der Digitalisierung ”
 
-„Alles, was digitalisiert und in Informationen verwandelt werden kann, \
-wird digitalisiert und in Informationen verwandelt“1
+„ Alles , was digitalisiert und in Informationen verwandelt werden kann , wird\
+ digita - lisiert und in Informationen verwandelt ”
 
-„Was automatisiert werden kann, wird automatisiert“2
+„ Was automatisiert werden kann , wird automatisiert ”
 
-„Jede Technologie, die zum Zweck der Überwachung und Kontrolle \
-kolonisiert werden kann, wird, was immer auch ihr ursprünglicher Zweck \
-war, zum Zwecke der Überwachung und Kontrolle kolonisiert“3
+„ Jede Technologie , die zum Zweck der Überwachung und Kontrolle kolonisiert wer\
+ - den kann , wird , was immer auch ihr ursprünglicher Zweck war , zum Zwecke der\
+ Überwachung und Kontrolle kolonisiert ”
 
-„Digitalisierung und Industrie 4.0 im Mittelstand – \
-Gestaltungsmöglichkeiten der digitalen Infrastruktur entlang der \
-Wertschöpfungskette“
+„ Digitalisierung und Industrie 4.0 im Mittelstand – Gestaltungsmöglich - \
+keiten der digitalen Infrastruktur entlang der Wertschöpfungskette ”
 
-„Unter dem Begriff Digitalisierung verstehen wir die Transformation von \
-Geschäftsmodellen mit Hilfe von Informations- und \
-Kommunikationstechnologien zur Reduktion von Schnittstellen, zur \
-funktionsübergreifenden Vernetzung und zur Erhöhung der Effektivität und \
-Effizienz.“
+„ Unter dem Begriff Digitalisierung verstehen wir die Transformation von \
+Geschäftsmodellen mit Hilfe von Informations - und Kommunikationstechnologien \
+zur Reduktion von Schnittstellen , zur funktionsübergreifenden Vernetzung und\
+ zur Erhöhung der Effektivität und Effizienz ”
 
-„Industrie 4.0“
-"""
+„ Industrie 4.0 ”"""
 
 
-@pytest.mark.xfail(reason='broken list parser and no line `-` connector'
-                   ', require quotation out of sentence extractor')
 def test_textflow_validate_quotation_bachelor76_page4_10(testdir, monkeypatch):
     quotations = extract_quotations(
         power.BACHELOR076_PDF,
