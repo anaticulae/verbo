@@ -82,7 +82,7 @@ Effizienz.“
 
 @pytest.mark.xfail(reason='broken list parser and no line `-` connector'
                    ', require quotation out of sentence extractor')
-def test_textflow_validate_quotation_bachelor76(testdir, monkeypatch):
+def test_textflow_validate_quotation_bachelor76_page4_10(testdir, monkeypatch):
     quotations = extract_quotations(
         power.BACHELOR076_PDF,
         '4:10',
