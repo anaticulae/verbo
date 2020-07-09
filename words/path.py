@@ -20,6 +20,10 @@ def headlines(path: str, prefix: str = '') -> str:
 
 
 def text(path: str, prefix: str = '') -> str:
+    return utila.pathconnector(path, 'words', 'text_text', prefix)
+
+
+def word(path: str, prefix: str = '') -> str:
     return utila.pathconnector(path, 'words', 'word_result', prefix)
 
 

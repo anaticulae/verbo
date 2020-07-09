@@ -39,7 +39,7 @@ WORKPLAN = [
     step(
         'abbreviation',
         inputs=[
-            ResultFile('words', 'word_result'),
+            ResultFile('words', 'text_text'),
             ResultFile('words', HEADLINES),
         ],
         output=('detected',),

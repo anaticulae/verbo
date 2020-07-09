@@ -33,6 +33,7 @@ PageAnalyzeResources = collections.namedtuple(
 class TextSection:
     headline: str = None
     content: typing.List = dataclasses.field(default_factory=list)
+    pages: typing.List = dataclasses.field(default_factory=list)
 
     def __getitem__(self, index):
         # TODO: support tuple unpacking, remove later

@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import collections
 import typing
 
 import german
@@ -15,6 +16,13 @@ import texmex
 import utila
 
 import words.text
+import words.undefined
+
+HeadlinedSentence = collections.namedtuple(
+    'HeadlinedSentence',
+    'headline, page, sentence',
+)
+HeadlinedSentences = typing.List[HeadlinedSentence]
 
 
 def find_sentences(page: words.text.PageTextWithHeadlines) -> words.text.TextSections: # yapf:disable
@@ -76,6 +84,7 @@ def visit_sentences(
                 if current:
                     for sentence in german.split_sentences(' '.join(current)):
                         result.append((section.headline, sentence))
+                    current = []
                 if not skip_undefined:
                     result.append((section.headline, f'{seq.container}u'))
                 continue
@@ -88,98 +97,112 @@ def visit_sentences(
     return result
 
 
-def merge_sentences(  # pylint:disable=R1260,too-many-branches
+def merge_sentences(  # pylint:disable=R0912,R1260
         pages: words.text.PageTextWithHeadlines,
         skip_undefined: bool = False,
-):
-    # TODO: REDUCE COMPLEXITY
+) -> HeadlinedSentences:
     result = []
-    if len(pages) == 1:
-        pages = list(pages)  # avoid side effects
-        pages.append(None)
-    assert len(pages) >= 2, 'require at least two `pages`'
-    for current, after in zip(pages[0:-1], pages[1:]):
-        # it is possible to have a None successor or there is a whitepage
-        # and no content after.
-        valid_successor = after and (current.page + 1) == (after.page)
-
-        current = visit_sentences(current, skip_undefined=skip_undefined)
-
-        if valid_successor:
-            for headline, sentence in current[0:-1]:
-                result.append((headline, sentence))
-        else:
-            for headline, sentence in current:
-                result.append((headline, sentence))
-            continue
-
-        last_headline, last_content = current[-1]  # page ending
-        after = visit_sentences(after, skip_undefined=skip_undefined)
-        first_headline, first_content = after[0]  # page start
-        if not last_content.strip():
-            # Headline at the end of a page
-            result.append((last_headline, ''))
-            continue
-        last_sentence_closed = german.is_sentence_closed(last_content.split())
-        if not last_sentence_closed:
-            # merge sentence
-            assert last_content
-            if first_content:
-                # TODO: CHECK FOR A VALID PAGE START
-                result.append((last_headline,
-                               last_content + ' ' + first_content))
+    lastheadline = None
+    lastsentence = None
+    lastpage = None
+    for page in pages:
+        if lastpage is not None:
+            if lastpage + 1 != page.page:
+                # TODO: Figurepage between sentences?
+                # Do not merge sentence if empty page is between?
+                lastsentence = None
+                # TODO: THIS SENTENCE IS LOST, WE MUST MERGE IT?
+        current = visit_sentences(page, skip_undefined=skip_undefined)
+        for headline, sentence in current:
+            if headline.text and headline != lastheadline and lastsentence:
+                # headline does not contains a complete sentence and
+                # follows by a headline with text and not with text is
+                # None, which indicates that this is a new page.
+                # HINT: lastpage can be None if no page was processed
+                pagenr = lastpage if lastpage is not None else page.page
+                result.append(
+                    HeadlinedSentence(
+                        headline=lastheadline,
+                        page=pagenr,
+                        sentence=lastsentence,
+                    ))
+                lastsentence = None
+            if headline.text:
+                lastheadline = headline
             else:
-                # Content not closed but next page starts with Headline
-                result.append((last_headline, last_content))
-                continue
-
-        if last_sentence_closed:
-            # new page with headline start
-            result.append((last_headline, last_content))
-
-        if last_sentence_closed:
-            if last_headline != first_headline:
-                last_headline = first_headline
-            if first_headline.text is not None:
-                # after page does not starts with virtual headline
-                result.append((last_headline, first_content))
-
-        # use headline of the page before to first headline of after page
-        afterstart = 1  # normal headline
-        if last_headline.text is None:
-            # virtual headline
-            afterstart = 0
-        for headline, sentence in after[afterstart:]:
-            if headline != last_headline:
-                if headline.text is not None:
-                    # do not replace headlines from page before with
-                    # virtual none-headlines after page break.
-                    last_headline = headline
-            result.append((last_headline, sentence))
+                headline = lastheadline
+            pagenr = page.page
+            if lastsentence:
+                # merge with sentence of page before
+                sentence = lastsentence + ' ' + sentence
+                sentence = sentence.strip()
+                lastsentence = None
+                pagenr = lastpage
+                headline = lastheadline
+            if not sentence:
+                result.append(
+                    HeadlinedSentence(
+                        headline=headline,
+                        page=page.page,
+                        sentence=None,
+                    ))
+            else:
+                isundefined = words.undefined.intindex(sentence) is not None
+                issentence = german.is_sentence_closed(sentence.split())
+                if issentence or isundefined:
+                    assert not lastsentence
+                    result.append(
+                        HeadlinedSentence(
+                            headline=headline,
+                            page=pagenr,
+                            sentence=sentence,
+                        ))
+                else:
+                    lastsentence = sentence
+                    # merging on the same page is also possible
+                    lastpage = page.page
+        lastpage = page.page
+    # headline
+    if lastsentence:
+        # non added headline on the end of the document
+        result.append(
+            HeadlinedSentence(
+                headline=lastheadline,
+                page=lastpage,
+                sentence=lastsentence,
+            ))
     return result
 
 
-def visit_chapters(pages, merge_headlines=True):
+def visit_chapters(pages, merge_headlines=True) -> words.text.TextSections:
     assert pages and len(pages) >= 1, 'require at least one page'
     result = []
     current = None
-    collected = []
-    done = utila.Single()
-    for headline, sentence in merge_sentences(pages):
-        if done.contains((headline, sentence)):
-            # TODO: THINK ABOUT DUPLICATED USER CONTENT ON ONE PAGE?
-            continue
+    collected, contentpages = [], []
+    for headline, page, sentence in merge_sentences(pages):
         if current is None:
             # start
             current = headline
         merges = headline.text is not None if merge_headlines else True
         if headline != current and merges:  # and headline.text is not None:
-            result.append(words.text.TextSection(current, collected))
-            collected = []
-            current = headline
+            result.append(
+                words.text.TextSection(
+                    current,
+                    collected,
+                    pages=contentpages,
+                ))
+            collected, contentpages = [], []
         if sentence:
             # do not store empty sentences?
             collected.append(sentence)
+            contentpages.append(page)
+        current = headline
+
     if collected:
-        result.append(words.text.TextSection(current, collected))
+        result.append(
+            words.text.TextSection(
+                current,
+                collected,
+                pages=contentpages,
+            ))
     return result

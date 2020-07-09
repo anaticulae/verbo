@@ -63,16 +63,16 @@ def test_text_seventytwo_visit_sentences_merge_page_endstart():
     merged = wts.merge_sentences(pages)
     assert len(merged) == 30
 
-    merged_middle_sentence = merged[16][1]
+    merged_middle_sentence = merged[16].sentence
     assert merged_middle_sentence == (
         'Kritisch beurteilt wird das '
         'Nutzerverhalten vor allem in Bezug auf die Privatheitsthematik.')
 
     # ensure that every sentence has a headline
-    assert all([item is not None for item, _ in merged])
+    assert all([item.headline is not None for item in merged])
 
     # ensure that every sentence has content
-    assert all([item is not None for _, item in merged])
+    assert all([item.sentence is not None for item in merged])
 
 
 def test_text_seventytwo_visit_sentences_merge_page5_7():
@@ -80,17 +80,17 @@ def test_text_seventytwo_visit_sentences_merge_page5_7():
     pages = words.text.chapter.split(required)
     merged = wts.merge_sentences(pages)
 
-    assert merged[10][0].text == (
+    assert merged[10].headline.text == (
         '2. Das Social Web und die Privatsphäre – '
         'Selbstdarstellungsverhalten der Nutzer aus Sicht von Massenmedien und '
         'Literatur')
-    assert merged[10][1] == (
+    assert merged[10].sentence == (
         'Im Folgenden geht es zunächst um eine definitorische Einführung in '
         'den Bereich der Social Media sowie um die Eigenschaften netzbasierter '
         'Kommunikation, die für das Social Web von Bedeutung sind.')
     lastsentence = ('Es sind Anwendungen entstanden, welche die '
                     'soziale Komponente in den Vordergrund')
-    assert merged[-1][1] == lastsentence
+    assert merged[-1].sentence == lastsentence
 
 
 @utilatest.skip_longrun

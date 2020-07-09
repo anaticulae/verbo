@@ -52,11 +52,13 @@ def test_text_dump_and_load_text():
         words.text.PageContentPageTextDetected(
             page=page,
             content=[
-                words.text.TextSection(headline=headline, content=item)
-                for headline, item in content
+                words.text.TextSection(
+                    headline=headline,
+                    content=item,
+                    pages=[page] * len(item),
+                ) for headline, item in content
             ],
-        )
-        for page, content in loaded
+        ) for page, content in loaded
     ]
     for first, second in zip(loaded, textexample):
         assert first == second, '\n\n%s\n%s\n\n\n' % (first, second)
@@ -65,6 +67,7 @@ def test_text_dump_and_load_text():
 
 def test_text_extractor_titles():
     result = tests.fixtures.restruct.restructured_textexample()
+
     # page6
     page6 = utila.select_page(result, 6)
     assert page6.content[0].headline.text == 'CHAPTER 1'
@@ -106,10 +109,9 @@ def test_text_extractor_titles():
 
     # page16
     page16 = utila.select_page(result, 16)
-    assert page16.content[0].headline.text is None
-    assert page16.content[1].headline.text == 'Step 2'
-    assert not page16.content[1].content  # headline only, no content
-    assert page16.content[2].headline.text == 'Referencing Code'
+    assert page16.content[0].headline.text == 'Step 2'
+    assert not page16.content[0].content  # headline only, no content
+    assert page16.content[1].headline.text == 'Referencing Code'
 
     # page17
     # is merged to page 16

@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import collections
 import functools
 import itertools
 
@@ -46,10 +47,10 @@ def extract_texts(loaded: words.feature.TextRequiredResources,
         utila.error('could not merge empty pages')
         chapters = []
 
-    grouped = itertools.groupby(chapters, key=lambda x: x.headline.page)
+    grouped = groupby_page(chapters)
+
     result = []
-    for page, item in grouped:
-        # item = list(item)
+    for page, item in grouped.items():
         item = sorted(item, key=container_start)
         result.append(
             words.text.PageContentPageTextDetected(
@@ -59,8 +60,54 @@ def extract_texts(loaded: words.feature.TextRequiredResources,
     return result
 
 
+def groupby_page(chapters) -> dict:
+    chapters = utila.flatten([split_textsection(item) for item in chapters])
+
+    def getpage(item) -> int:
+        if item.headline:
+            return item.headline.page
+        return item.pages[0]
+
+    grouped = collections.defaultdict(list)
+    for item in chapters:
+        page = getpage(item)
+        grouped[page].append(item)
+    return dict(grouped)
+
+
+def split_textsection(item: words.text.TextSection) -> words.text.TextSections:
+    if not item.pages:
+        return [item]
+    result = [
+        words.text.TextSection(
+            headline=item.headline,
+            content=[item.content[0]],
+            pages=[item.pages[0]],
+        )
+    ]
+    for content, page in zip(item.content[1:], item.pages[1:]):
+        if page != result[-1].pages[0]:  # pylint:disable=E1136
+            result.append(
+                words.text.TextSection(
+                    headline=iamraw.Headline(
+                        text=None,
+                        level=None,  # TODO: REMOVE AFTER FIXING LOADER/DUMPER
+                        page=page,
+                        container=-1,
+                    ),
+                    content=[content],
+                    pages=[page],
+                ))
+        else:
+            result[-1].pages.append(page)  # pylint:disable=E1136,E1101
+            result[-1].content.append(content)  # pylint:disable=E1136,E1101
+    return result
+
+
 def container_start(item):
     """Decide multiple line header."""
+    if item.headline is None:
+        return -1
     if isinstance(item.headline.container, int):
         return item.headline.container
     return item.headline.container[0]
