@@ -33,9 +33,24 @@ def test_extract_lists():
     pages = utila.ranged_tuple(35, 50)
     lists = extract_multiple_lists(source, pages)
     # TODO: REPLACE AFTER CHANGING DATA STRUCTURE
-    assert len(lists) == 1
-    assert len(lists[0]) == 1
-    assert len(lists[0][0][2].data) == 4
+    page39 = utila.select_page(lists, 39)
+    assert len(page39.content) == 1
+    assert len(page39.content[0]) == 4
+
+
+def test_extract_multiple_lists_master72():
+    source = power.link(power.MASTER072_PDF)
+    pages = None
+    lists = extract_multiple_lists(source, pages)
+    # TODO: REPLACE AFTER CHANGING DATA STRUCTURE
+    # lists = utila.flatten(lists)
+
+    # lists on 4 starting pages
+    assert len(lists) == 4
+
+    listinstances = utila.flatten([item.content for item in lists])
+    # number of lists
+    assert len(listinstances) == 4
 
 
 def extract_multiple_lists(source, pages):

@@ -31,12 +31,14 @@ we use `CHUNK_SIZE` one, we run our default strategies in single page
 mode.
 """
 
+import collections
 import math
 
+import iamraw
 import texmex
 import utila
 
-CHUNK_SIZE = 10
+CHUNK_SIZE = 30
 
 
 def extract_lists(ptcns, headlines):
@@ -53,9 +55,31 @@ def extract_lists(ptcns, headlines):
             headlines,
             textfeed,
         )
-        if extracted:
-            result.append(extracted)
-    return result
+        # if extracted:
+        result.append(extracted)
+
+    adjusted = adjust_pagenumbers(result, chunked, ptcns)
+    return adjusted
+
+
+def adjust_pagenumbers(extracted, chunked, ptcns) -> iamraw.PageContentLists:
+    """Add pagenumber to extracted lists. The lists does not have the
+    correct page number cause there extracted with big connect page
+    chunk."""
+    lookup = chunk_lookup(chunked, ptcns)
+    matched = collections.defaultdict(list)
+    for index, chunk in enumerate(extracted):
+        for paragraph, merged_, list_ in chunk:
+            list_.paragraph = paragraph
+            list_.merged = merged_
+            first_area = list_.area[0]
+            starting_page = lookup[index][first_area]
+            matched[starting_page].append(list_)
+    pages = [
+        iamraw.PageContentList(page=page, content=content)
+        for page, content in matched.items()
+    ]
+    return pages
 
 
 def split(ptcns, offset=0):  # pylint:disable=W0613
@@ -88,6 +112,24 @@ def merge(items):
     navigator.data = result
     navigator.page = items[0].page
     return navigator
+
+
+def chunk_lookup(chunked, ptcns):
+    if not chunked:
+        return {}
+    pages = []
+    for navigator in ptcns:
+        for _ in navigator:
+            pages.append(navigator.page)
+    result = collections.defaultdict(dict)
+    globalindex = 0
+    for chunkid, chunk in enumerate(chunked):
+        for index, _ in enumerate(chunk):
+            result[chunkid][index] = pages[globalindex]
+            index += 1
+            globalindex += 1
+    converted = dict(result)  # enable KeyError
+    return converted
 
 
 def chunks(items, size: int = 1):
