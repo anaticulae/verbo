@@ -33,9 +33,11 @@ def extract_lists(ptcns, headlines):
 def extract_best(navigator, headlines, textfeed):
     geo = words.lists.geometry.analyze_page(navigator, headlines, textfeed)
     vertical = words.lists.vertical.analyze_page(navigator)
-
     # TODO: CHOOSE BETTER SELECTOR
-    selected = geo if len(geo) > len(vertical) else vertical
+    geo_score = sum([len(item.area) for item in geo])
+    vertical_score = sum([len(item.area) for item in vertical])
+    # prefere result which explains more areas
+    selected = geo if geo_score > vertical_score else vertical
     result = []
     for lists in selected:
         # TODO: REPLACE 0,0 with correct one
