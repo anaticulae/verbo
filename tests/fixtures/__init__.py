@@ -12,8 +12,6 @@ import os
 import iamraw
 import iamraw.sections
 import power
-import serializeraw
-import texmex
 import utila
 
 
@@ -39,28 +37,6 @@ def assert_chapter_count(chapter, expected):
     msg = (f'{count} != {expected}\n'
            'check chapter detector and min feature value')
     assert count == expected, msg + str(chapter)
-
-
-def create_pagetextnavigators(path, pages=None):
-    text = iamraw.path.text(path)
-    text = serializeraw.load_document(
-        text,
-        pages=pages,
-    )
-    assert text
-
-    text_positions = iamraw.path.textposition(path)
-    text_positions = serializeraw.load_textpositions(
-        text_positions,
-        pages=pages,
-    )
-    assert text_positions
-
-    navigators = texmex.create_pagetextnavigators(
-        text=text,
-        text_positions=text_positions,
-    )
-    return navigators
 
 
 def setup_testresources(source, dest, accept=None):
