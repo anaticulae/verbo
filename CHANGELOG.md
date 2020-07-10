@@ -2,6 +2,25 @@
 
 Every noteable change is logged here.
 
+## v0.11.0
+
+### Feature
+
+* add support for Chapter starts on MultiplePages (feed0cd2b208)
+* introduce new judgement strategy to pass master98 example (6574d1ea5108)
+
+### Fix
+
+* adjust unit test to pass current quotation parser (daaa78c0e847)
+* adjust page sentence merger (a478339af1f5)
+* fix alignment parser test (41e7ead6ec7c)
+* fix broken regex list parser (f5c35181f2c0)
+* introduce min block center width (e723c971eac2)
+* fix expected result due new specification (ed2e4929140f)
+* use more stable line based alignment approach (20b6c73e7235)
+* adjust relative text feed computation (54cbef1e1892)
+* solve duplicated font distance error test (0c987f9580f8)
+
 ## v0.10.0
 
 ### Feature
