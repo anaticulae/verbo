@@ -19,17 +19,7 @@ def extract_lists(ptcns, headlines):
 
     result = []
     for navigator in ptcns:
-        pageslist = []
-
-        geo = words.lists.geometry.analyze_page(navigator, headlines, textfeed)
-        vertical = words.lists.vertical.analyze_page(navigator)
-
-        # TODO: CHOOSE BETTER SELECTOR
-        selected = geo if len(geo) > len(vertical) else vertical
-
-        for lists in selected:
-            # TODO: REPLACE 0,0 with correct one
-            pageslist.append((0, 0, lists))
+        pageslist = extract_best(navigator, headlines, textfeed)
         if not pageslist:
             continue
         result.append([navigator.page, pageslist, len(navigator)])
@@ -37,6 +27,19 @@ def extract_lists(ptcns, headlines):
     merged = merge_overlapping_lists(result)
 
     result = pagecontentlist(merged)
+    return result
+
+
+def extract_best(navigator, headlines, textfeed):
+    geo = words.lists.geometry.analyze_page(navigator, headlines, textfeed)
+    vertical = words.lists.vertical.analyze_page(navigator)
+
+    # TODO: CHOOSE BETTER SELECTOR
+    selected = geo if len(geo) > len(vertical) else vertical
+    result = []
+    for lists in selected:
+        # TODO: REPLACE 0,0 with correct one
+        result.append((0, 0, lists))
     return result
 
 
