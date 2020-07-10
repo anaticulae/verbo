@@ -12,9 +12,23 @@
 This strategy is required to parse lists which are very long and
 expanded over multiple pages. If the content of some list steps is so
 huge, that only one content line is on the page, it is very
-hard/impossible to detect this as a valid lists, cause most of the
+hard/impossible to detect this as a valid list, cause most of the
 strategies expect more than one list item on a page. Furthermore it is
 hard to distinguish between lists and headlines.
+
+To solve this issue we expand the horizon from page to multiple page
+level. We comebine `CHUNK_SIZE` pages to one big page and use or default
+one page strategies to detect the huge lists on this single huge page.
+
+It is important to run this strategy twice. The second run is done with
+a offset to catch lists which are placed on the border of `CHUNK_SIZE`.
+Using `CHUNK_SIZE` with the document length should solve this issue.
+The problem of using a very long `CHUNK_SIZE` is selecting best result
+uses only one extraction strategy for all content.
+
+Furthermore `CHUNK_SIZE` limit the maximum length of detected list. If
+we use `CHUNK_SIZE` one, we run our default strategies in single page
+mode.
 """
 
 import math
