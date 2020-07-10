@@ -9,11 +9,10 @@
 
 import power
 import pytest
+import utila
 import utilatest
 
 import tests
-import tests.fixtures
-import tests.resources
 
 
 @pytest.mark.parametrize('command', [
@@ -42,10 +41,9 @@ def test_feature_words_work_pages0_10(testdir, monkeypatch):
     root = str(testdir)
     cmd = f'-i {root} -o {root} --pages=0:10'
 
-    tests.fixtures.setup_testresources(
+    utila.copy_content(
         source=power.link(power.MASTER072_PDF),
-        dest=root,
-        accept=['rawmaker', 'sections', 'groupme'],
+        destination=root,
+        pattern='(rawmaker|sections|groupme)__*.yaml',
     )
-
     tests.run(cmd, monkeypatch=monkeypatch)

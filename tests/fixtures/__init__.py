@@ -7,12 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import os
-
 import iamraw
 import iamraw.sections
-import power
-import utila
 
 
 def count_chapter(items):
@@ -37,17 +33,3 @@ def assert_chapter_count(chapter, expected):
     msg = (f'{count} != {expected}\n'
            'check chapter detector and min feature value')
     assert count == expected, msg + str(chapter)
-
-
-def setup_testresources(source, dest, accept=None):
-    # TODO: REPLACE WITH UTILA CODE
-    # this step is required, cause the test generator already
-    # generates this required items.
-    sources = [
-        item.name
-        for item in os.scandir(power.link(power.DOCU27_PDF))
-        if accept is None or
-        any([item.name.startswith(pattern) for pattern in accept])
-    ]
-    for item in sources:
-        utila.copy_content(os.path.join(source, item), dest)
