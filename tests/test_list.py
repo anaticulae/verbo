@@ -15,8 +15,8 @@ import utila
 
 import tests.fixtures.restruct
 import tests.resources
-import words.feature.list
 import words.lists.regex
+import words.lists.strategy
 import words.lists.vertical
 import words.path
 
@@ -316,7 +316,7 @@ def test_merge_overlapping_lists():
             ], 13
         ],
     ]
-    merged = words.feature.list.merge_overlapping_lists(pages)
+    merged = words.lists.strategy.merge_overlapping_lists(pages)
     assert len(merged) == 2
     assert len(merged[0][1]) == 1
     assert len(merged[1][1]) == 2

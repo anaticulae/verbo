@@ -51,73 +51,8 @@ def work(  # pylint:disable=R0914
 
     result = words.lists.strategy.extract_lists(ptcns, headlines)
 
-    merged = merge_overlapping_lists(result)
-
-    # TODO: REMOVE CONVERSION AFTER CHANGING UPPER ALGO
-    result = []
-    for page, content in merged:
-        collected = []
-        for paragraph, merged_, listinstance in content:
-            listinstance.paragraph = paragraph
-            listinstance.merged = merged_
-            collected.append(listinstance)
-        result.append(iamraw.PageContentList(page=page, content=collected))
     dumped = serializeraw.dump_lists(result)
     return dumped
-
-
-def merge_overlapping_lists(items):
-    if not items:
-        return []
-    result = [items[0]]
-    for item in items[1:]:
-        lastpage, content, lastlength = result[-1]
-        lastlist = content[-1][2]
-        pageplus = pagerange(lastlist.area)
-
-        currentpage, currentlist = item[0], item[1][0][2]
-        pagestart = currentlist.area[0] == 0
-        connected = all((
-            ((lastpage + pageplus) == currentpage),
-            ((lastlength - 1) == lastlist.area[-1]),
-        ))
-
-        if pagestart and connected:
-            # merge lists
-            for entree in currentlist:
-                lastlist.append(*entree)
-            lastlist.area.extend(currentlist.area)
-            # update length of page navigation where list is located to
-            # merge more than two pages.
-            result[-1][2] = lastlength
-
-            if item[1][1:]:
-                # more than one list per page
-                result[-1][1].extend(item[1][1:])
-                result[-1][2] = item[2]
-        else:
-            result.append(item)
-
-    # remove navigator length entree
-    result = [tuple(item[0:2]) for item in result]
-    return result
-
-
-def pagerange(items) -> int:
-    """\
-    >>> pagerange([1, 2, 3, 0, 1, 2, 3, 4, 0, 1])
-    3
-    """
-    if not items:
-        return 0
-    # TODO: REPLACE WITH UTILA CODE
-    result = [[items[0]]]
-    for item in items[1:]:
-        if item < result[-1][-1]:
-            result.append([item])
-        else:
-            result[-1].append(item)
-    return len(result)
 
 
 def process_page(
