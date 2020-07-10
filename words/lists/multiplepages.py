@@ -19,9 +19,37 @@ hard to distinguish between lists and headlines.
 
 import math
 
+import texmex
 import utila
 
 CHUNK_SIZE = 10
+
+
+def extract_lists(ptcns, headlines):
+    textfeed = texmex.document_textfeed(ptcns)
+
+    chunked = split(ptcns)
+
+    import words.lists.strategy  # TODO: REFACTOR THIS
+
+    result = []
+    for navigator in chunked:
+        extracted = words.lists.strategy.extract_best(
+            navigator,
+            headlines,
+            textfeed,
+        )
+        if extracted:
+            result.append(extracted)
+    return result
+
+
+def split(ptcns, offset=0):  # pylint:disable=W0613
+    splitted = chunks(ptcns, size=CHUNK_SIZE)
+    grouped = []
+    for item in splitted:
+        grouped.append(merge(item))
+    return grouped
 
 
 def merge(items):
@@ -32,15 +60,20 @@ def merge(items):
     header = items[0][0].bounding[1]  # y0
     y0 = header
     for page in items:
+        offset = y0 - header
         for item in page:
             # avoid side effects to other content
             item = item.copy()
-            item.bounding.y0 = utila.roundme(item.bounding.y0 + y0 - header)
-            item.bounding.y1 = utila.roundme(item.bounding.y1 + y0 - header)
+            item.bounding.y0 = utila.roundme(item.bounding.y0 + offset)
+            item.bounding.y1 = utila.roundme(item.bounding.y1 + offset)
             result.append(item)
         footer = page.content.bottom
         y0 += footer - header
-    return result
+
+    navigator = texmex.PageTextNavigator()
+    navigator.data = result
+    navigator.page = items[0].page
+    return navigator
 
 
 def chunks(items, size: int = 1):

@@ -12,6 +12,7 @@ import serializeraw
 import utila
 
 import words.lists.multiplepages
+import words.path
 
 
 def test_merge_pages():
@@ -25,3 +26,26 @@ def test_merge_pages():
     merged = words.lists.multiplepages.merge(ptcns)
     assert merged
     assert merged[-1].bounding[3] >= 3000
+
+
+def test_extract_lists():
+    source = power.link(power.MASTER072_PDF)
+    pages = utila.ranged_tuple(35, 50)
+    lists = extract_multiple_lists(source, pages)
+    # TODO: REPLACE AFTER CHANGING DATA STRUCTURE
+    assert len(lists) == 1
+    assert len(lists[0]) == 1
+    assert len(lists[0][0][2].data) == 4
+
+
+def extract_multiple_lists(source, pages):
+    ptcns = serializeraw.create_pagetextcontentnavigators_frompath(
+        path=source,
+        pages=pages,
+    )
+    headlines = serializeraw.load_headlines(
+        words.path.headlines(source),
+        pages=pages,
+    )
+    lists = words.lists.multiplepages.extract_lists(ptcns, headlines)
+    return lists
