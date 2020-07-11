@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import configo
 import german
 import iamraw
 import texmex
@@ -14,6 +15,11 @@ import utila
 
 import words.headlines
 import words.headlines.standard as whs
+
+# longer word chains may be a sentence or something else
+MAX_HEADLINE_TOKEN_LENGTH = configo.HV_INT_PLUS(20)
+# assume that headlines does not contain many numbers
+MAX_NUMBERS_IN_HEADLINE = configo.HV_INT_PLUS(5)
 
 
 class MultiLine(words.headlines.HeadlineExtractorStrategy):
@@ -112,12 +118,12 @@ def numbered_level(raw: str) -> int:
 def possible_headline_group(items) -> bool:
     text = ' '.join([item.text for item in items])
     words_ = german.split_words(text, validate_sentences=False)
-    if len(words_) >= 20:  # TODO: HOLY VALUE
-        # maybe a sentence but headlines are not so long
+    if len(words_) >= MAX_HEADLINE_TOKEN_LENGTH:
+        # maybe a sentence cause headlines are not so long
         return False
 
     number_count = len([item for item in words_ if utila.isnumber(item)])
-    if number_count >= 5:  # TODO: HOLY VALUE
+    if number_count >= MAX_NUMBERS_IN_HEADLINE:  # TODO: HOLY VALUE
         # assume that headlines does not contain many numbers
         return False
     return True
