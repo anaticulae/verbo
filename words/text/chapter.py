@@ -23,14 +23,17 @@ import words.text.paragraph
 import words.text.sentence
 
 
-def extract_texts(loaded: words.feature.TextRequiredResources,
-                 ) -> words.text.PageContentPageTextDetecteds:
+def extract_texts(
+        loaded: words.feature.TextRequiredResources,
+        require_headlinelevel: bool = True,
+) -> words.text.PageContentPageTextDetecteds:
     """Iterate thrue document via headline and process the content
     between the headlines. Split Chapter into paragraphs and paragraphs
     into sentences and words.
 
     Args:
         loaded: resources provided by text module
+        require_headlinelevel(bool): shrink chapter data to leveled headlines
     Returns:
         list of text pages with textutal content definition
     """
@@ -40,6 +43,7 @@ def extract_texts(loaded: words.feature.TextRequiredResources,
         chapters = words.text.sentence.visit_chapters(
             result,
             merge_headlines=False,
+            require_headlinelevel=require_headlinelevel,
         )
     else:
         # in some cases it is not possible to load any content, cause a

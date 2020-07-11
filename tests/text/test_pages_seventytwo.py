@@ -8,7 +8,6 @@
 # =============================================================================
 
 import german
-import pytest
 import utila
 import utilatest
 
@@ -142,17 +141,25 @@ def test_text_seventytwo_visit_chapters_page5_6_7():
                             'soziale Komponente in den Vordergrund')
 
 
-@pytest.mark.xfail(reason='corrupt appendix parser')
-@utilatest.skip_longrun
 def test_text_seventytwo_visit_chapters_complete():
+    """\
+    HINT: This test may change if none leveled headlines like `Anhang`
+    etc. gets an level later.
+    """
     required = fseventytwo.textrequired()
     pages = words.text.chapter.split(required)
     # user content headlines; Literaturverzeichnis and Eidesstattliches
     # are excluded cause there are part of appendix.
-    headlines = [headline for headline, _ in wts.visit_chapters(pages)]
+    require_headlinelevel = True
+    headlines = [
+        headline for headline, _ in wts.visit_chapters(
+            pages,
+            require_headlinelevel=require_headlinelevel,
+        )
+    ]
     master72_headline_count = 30
     assert len(headlines) == master72_headline_count
-    assert headlines[0].text == 'Einleitung'
+    assert headlines[0].text == '1. Einleitung'
     assert headlines[-1].text == '5. Schlussbetrachtung und Fazit'
 
 
@@ -172,5 +179,8 @@ def test_text_doubleequal_fontdistance():
     Hint: Don't know why this is solved, but don't remove this test for
     providing regression."""
     required = fseventytwo.textrequired(pages=(0,))
-    extracted = words.text.chapter.extract_texts(required)
+    extracted = words.text.chapter.extract_texts(
+        required,
+        require_headlinelevel=False,
+    )
     assert extracted

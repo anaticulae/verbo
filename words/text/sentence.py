@@ -174,7 +174,11 @@ def merge_sentences(  # pylint:disable=R0912,R1260
     return result
 
 
-def visit_chapters(pages, merge_headlines=True) -> words.text.TextSections:
+def visit_chapters(
+        pages,
+        merge_headlines: bool = True,
+        require_headlinelevel: bool = True,
+) -> words.text.TextSections:
     assert pages and len(pages) >= 1, 'require at least one page'
     result = []
     current = None
@@ -197,7 +201,6 @@ def visit_chapters(pages, merge_headlines=True) -> words.text.TextSections:
             collected.append(sentence)
             contentpages.append(page)
         current = headline
-
     if collected:
         result.append(
             words.text.TextSection(
@@ -205,4 +208,9 @@ def visit_chapters(pages, merge_headlines=True) -> words.text.TextSections:
                 collected,
                 pages=contentpages,
             ))
+    if require_headlinelevel:
+        result = [
+            item for item in result
+            if item.headline and item.headline.level is not None
+        ]
     return result
