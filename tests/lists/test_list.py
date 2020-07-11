@@ -14,7 +14,6 @@ import serializeraw
 import utila
 
 import tests.fixtures.restruct
-import tests.resources
 import words.lists.regex
 import words.lists.strategy
 import words.lists.vertical
