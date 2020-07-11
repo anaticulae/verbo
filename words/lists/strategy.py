@@ -1,5 +1,5 @@
-# =============================================================================
 # C O P Y R I G H T
+# =============================================================================
 # -----------------------------------------------------------------------------
 # Copyright (c) 2020 by Helmut Konrad Fahrendholz. All rights reserved.
 # This file is property of Helmut Konrad Fahrendholz. Any unauthorized copy,
@@ -9,14 +9,32 @@
 
 import iamraw
 import texmex
+import utila
 
 import words.lists.geometry
+import words.lists.multiplepages
 import words.lists.vertical
 
 
 def extract_lists(ptcns, headlines) -> iamraw.PageContentLists:
-    pagebased = page_based_extraction(ptcns, headlines)
-    return pagebased
+    """Run different strategies to gather the best list extraction result."""
+    best, result = 0, []
+    for strategy in [
+            page_based_extraction,
+            words.lists.multiplepages.extract_lists,
+    ]:
+        extracted = strategy(ptcns, headlines)
+        score = global_score(extracted)
+        if score > best:
+            best = score
+            result = extracted
+    return result
+
+
+def global_score(items) -> int:
+    content = utila.flatten([item.content for item in items])
+    areas = sum([len(item.area) for item in content])
+    return areas
 
 
 def page_based_extraction(ptcns, headlines) -> iamraw.PageContentLists:

@@ -9,7 +9,6 @@
 
 import iamraw
 import power
-import pytest
 import serializeraw
 import utila
 
@@ -251,9 +250,8 @@ def test_list_master72_page39_one_list(testdir):
     assert len(listinstance[0]) == 2
 
 
-@pytest.mark.xfail(reason='extend list merger')
 def test_list_master72_page39_40_41(testdir, monkeypatch):
-    pages = (39, 40, 41)
+    pages = (39, 40, 41, 42)
     source = power.link(power.MASTER072_PDF)
 
     lists = extract_lists(source, pages, testdir, monkeypatch=monkeypatch)

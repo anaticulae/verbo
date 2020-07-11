@@ -48,9 +48,7 @@ def work(  # pylint:disable=R0914
         pages=pages,
     )
     headlines = serializeraw.load_headlines(headlines)
-
     result = words.lists.strategy.extract_lists(ptcns, headlines)
-
     dumped = serializeraw.dump_lists(result)
     return dumped
 
