@@ -124,9 +124,14 @@ def test_headlines_dump_and_load_headlines():
 
 
 @utilatest.skip_longrun
-def test_features_headlines_work_master72pages():
+def test_features_headlines_work_master72pages_headlines():
     master72 = power.link(power.MASTER072_PDF)
     headlines = words.feature.headlines.headlines_frompath(master72)
+
+    # TODO: Adjust later, when it is possible to separate two appendix
+    # headlines as single main headlines
+    # Appendix does not have any main headline
+    headlines = headlines[0:-1]
 
     # TODO: CHANGE AFTER SUPPORTING LITERATURVERZEICH AND ERKLARUNG
     assert len(headlines) == 5, str(headlines)
@@ -148,16 +153,20 @@ def test_features_headlines_work_master72pages():
     assert headlines_text == expected_headlines, str(headlines_text)
 
 
-@pytest.mark.xfail(reason='appendix is not grouped correctly')
 def test_features_headlines_work_master72pages_subsections():
     master72 = power.link(power.MASTER072_PDF)
     headlines = words.feature.headlines.headlines_frompath(master72)
 
-    subsections = [item[1:] for item in headlines]
+    grouped, none_grouped = headlines[0:-1], headlines[-1]
+
+    subsections = [item[1:] for item in grouped]
     subsections_count = [len(item) for item in subsections]
 
     expected_subsection_count = [2, 8, 10, 5, 0]
     assert subsections_count == expected_subsection_count
+
+    # Literaturverzeichnis, Eidesstattliche Erklärung
+    assert len(none_grouped) == 2
 
 
 def test_features_headlines_filter_headlines():

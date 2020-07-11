@@ -414,10 +414,16 @@ def flat_chapters(contents):
     result = []
     for item in contents:
         try:
-            result.extend(flat_chapters(item.content))
+            flats = flat_chapters(item.content)
+            result.append(item)
+            if flats:
+                result.extend(flats)
         except AttributeError:
             result.append(item)
-    result = utila.select_type(result, iamraw.sections.Chapter)
+    result = utila.select_type(
+        result,
+        (iamraw.sections.Chapter, iamraw.sections.Appendix),
+    )
     return result
 
 
