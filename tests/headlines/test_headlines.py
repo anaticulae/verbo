@@ -7,14 +7,10 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import os
-
 import iamraw
 import power
 import pytest
-import sections.path
 import serializeraw
-import utila
 import utilatest
 
 import tests.fixtures.headlines
@@ -104,15 +100,16 @@ def test_headlines_extract_headlines():
 
 def test_headlines_work():
     sections_ = tests.fixtures.restruct.restructured_sections()
+    docu27 = power.link(power.DOCU27_PDF)
     dumped = words.feature.headlines.work(
-        boxes=iamraw.path.boxed(power.link(power.DOCU27_PDF)),
-        font_content=iamraw.path.fontcontent(power.link(power.DOCU27_PDF)),
-        font_header=iamraw.path.fontheader(power.link(power.DOCU27_PDF)),
-        headerfooters=iamraw.path.headerfooters(power.link(power.DOCU27_PDF)),
+        boxes=iamraw.path.boxed(docu27),
+        font_content=iamraw.path.fontcontent(docu27),
+        font_header=iamraw.path.fontheader(docu27),
+        headerfooters=iamraw.path.headerfooters(docu27),
         sectionlist=sections_,
-        sizeandborder=iamraw.path.sizeandborder(power.link(power.DOCU27_PDF)),
-        text=iamraw.path.text(power.link(power.DOCU27_PDF)),
-        text_position=iamraw.path.textposition(power.link(power.DOCU27_PDF)),
+        sizeandborder=iamraw.path.sizeandborder(docu27),
+        text=iamraw.path.text(docu27),
+        text_position=iamraw.path.textposition(docu27),
     )
     # dump some headlines
     assert len(dumped) > 2100, str(dumped)
@@ -126,43 +123,13 @@ def test_headlines_dump_and_load_headlines():
     assert loaded == EXPECTED
 
 
-def extract_master72_headlines(root: str):
-    master72 = power.link(power.MASTER072_PDF)
-    sections_ = sections.path.sections_(master72)
-    text = iamraw.path.text(master72)
-    text_positions = iamraw.path.textposition(master72)
-    font_header = iamraw.path.fontheader(master72)
-    font_content = iamraw.path.fontcontent(master72)
-    sizeandborder = iamraw.path.sizeandborder(master72)
-    boxed = iamraw.path.boxed(master72)
-    headerfooters = iamraw.path.headerfooters(master72)
-
-    headlines = words.feature.headlines.work(
-        sections_,
-        text,
-        text_positions,
-        font_header,
-        font_content,
-        sizeandborder,
-        boxes=boxed,
-        headerfooters=headerfooters,
-    )
-    headlines_outpath = os.path.join(root, 'headlines_result.yaml')
-    utila.file_create(headlines_outpath, headlines)
-
-    assert len(headlines) > 400, str(headlines)
-    result = serializeraw.load_headlines(headlines)
-
-    return result
-
-
 @utilatest.skip_longrun
-def test_features_headlines_work_master72pages(testdir):
-    root = str(testdir)
-    headlines_loaded = extract_master72_headlines(root)
+def test_features_headlines_work_master72pages():
+    master72 = power.link(power.MASTER072_PDF)
+    headlines = words.feature.headlines.headlines_frompath(master72)
 
     # TODO: CHANGE AFTER SUPPORTING LITERATURVERZEICH AND ERKLARUNG
-    assert len(headlines_loaded) == 5, str(headlines_loaded)
+    assert len(headlines) == 5, str(headlines)
 
     expected_headlines = [
         '1. Einleitung',
@@ -177,15 +144,16 @@ def test_features_headlines_work_master72pages(testdir):
         '5. Schlussbetrachtung und Fazit',
     ]
     # headlines of first element in section
-    headlines_text = [item[0].text for item in headlines_loaded]
+    headlines_text = [item[0].text for item in headlines]
     assert headlines_text == expected_headlines, str(headlines_text)
 
 
 @pytest.mark.xfail(reason='appendix is not grouped correctly')
-def test_features_headlines_work_master72pages_subsections(testdir):
-    headlines_loaded = extract_master72_headlines(testdir.tmpdir)
+def test_features_headlines_work_master72pages_subsections():
+    master72 = power.link(power.MASTER072_PDF)
+    headlines = words.feature.headlines.headlines_frompath(master72)
 
-    subsections = [item[1:] for item in headlines_loaded]
+    subsections = [item[1:] for item in headlines]
     subsections_count = [len(item) for item in subsections]
 
     expected_subsection_count = [2, 8, 10, 5, 0]
