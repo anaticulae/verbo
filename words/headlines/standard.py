@@ -75,25 +75,18 @@ def filter_headlines(items: iamraw.PagesHeadlineList):
     return result
 
 
+# TODO: CODE DUPLICATION, COLLECT DIFFERENT HEADLINE PARSING APPROACHES
+# AND CONVERT TO SINGLE ONE.
+HEADLINE = re.compile(
+    ('^'
+     r'(?P<level>(\d{1,2}\.?)+\d{0,2})'
+     r'[ ]{1,5}'
+     r'(?P<text>.+?)'
+     '$'),
+    re.VERBOSE,
+)
+
+
 def parse_headline(line):
     line = line.strip()
     return re.match(HEADLINE, line)
-
-
-# Unicode special minus sign
-SPECIAL_MINUS_SIGN = '–'
-
-# TODO: CODE DUPLICATION, COLLECT DIFFERENT HEADLINE PARSING APPROACHES AND
-# CONVERT TO SINGLE ONE.
-USER_CONTENT = r'\w\d\.&:, \-' + SPECIAL_MINUS_SIGN
-# \W to ensure non-unicode character, like special - chars
-HEADLINE = re.compile(
-    (
-        r'^'
-        r'(?P<level>(\d{1,2}\.?)+\d{0,2})'
-        r'[ ]{1,5}'
-        r'(?P<text>\w'  # ensure that text does not start with whitespace
-        fr'[{USER_CONTENT}]+?)'
-        r'$'),
-    re.VERBOSE,
-)
