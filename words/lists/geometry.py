@@ -21,7 +21,6 @@ def analyze_page(ptcn, headlines, textfeed):
         data = [item[1] for item in group]
         indexes = [item[0] for item in group]
         try:
-            hey.geometry.alternate.MIN_LINE_ELEMENT = 2  # TODO: REMOVE THIS HACK LATER
             parsed = hey.geometry.alternate.parse_pages([data])
         except hey.geometry.alternate.AlternateGeometryException:
             continue
