@@ -183,13 +183,12 @@ def test_features_headlines_work_master72pages(testdir):
 
 @pytest.mark.xfail(reason='appendix is not grouped correctly')
 def test_features_headlines_work_master72pages_subsections(testdir):
-    root = str(testdir)
-    headlines_loaded = extract_master72_headlines(root)
-    expected_subsection_count = [2, 8, 10, 5, 0]
+    headlines_loaded = extract_master72_headlines(testdir.tmpdir)
 
     subsections = [item[1:] for item in headlines_loaded]
     subsections_count = [len(item) for item in subsections]
 
+    expected_subsection_count = [2, 8, 10, 5, 0]
     assert subsections_count == expected_subsection_count
 
 
@@ -202,6 +201,6 @@ def test_features_headlines_filter_headlines():
 
     subsections = [item[1:] for item in filtered]
     subsections_count = [len(item) for item in subsections]
-    expected_subsection_count = [2, 5, 7, 5, 2]
 
+    expected_subsection_count = [2, 5, 7, 5, 2]
     assert subsections_count == expected_subsection_count
