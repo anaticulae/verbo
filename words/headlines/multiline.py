@@ -64,7 +64,7 @@ class MultiLine(words.headlines.HeadlineExtractorStrategy):
             if issentence(text):
                 # ignore extracted lists which are interpreted as headlines
                 continue
-            text = normalize_whitespaces(text)
+            text = utila.normalize_whitespaces(text)
             # TODO: REPLACE WITH LEVEL DETERMINER
             try:
                 rawlevel = parsed['level'].strip()  # TODO: REMOVE STRIP LATER
@@ -125,11 +125,6 @@ def possible_headline_group(items) -> bool:
 
 def isnumber(token: str):
     return str(token).isnumeric()
-
-
-def normalize_whitespaces(line):
-    token = [item for item in line.split(' ') if item]
-    return ' '.join(token)
 
 
 def issentence(line: str):
