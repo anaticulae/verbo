@@ -388,7 +388,6 @@ def determine_contentrange(items) -> ChapterRanges:
             ),
         )
     ]
-    # support more than one content element
     chapters = flat_chapters(contents)
 
     if not chapters and contents:
@@ -404,7 +403,6 @@ def determine_contentrange(items) -> ChapterRanges:
         # TODO: check after.start - 1 later
         result.append((current.start, after.start - 1))
     result.append((chapters[-1].start, contents[-1].end))
-
     # ensure ascending page numbers
     assert all([start <= end for start, end in result]), str(result)
     return result
@@ -413,12 +411,9 @@ def determine_contentrange(items) -> ChapterRanges:
 def flat_chapters(contents):
     result = []
     for item in contents:
-        try:
-            flats = flat_chapters(item.content)
-            result.append(item)
-            if flats:
-                result.extend(flats)
-        except AttributeError:
+        if isinstance(item, iamraw.MainPart):
+            result.extend(item.content)
+        elif isinstance(item, iamraw.sections.Appendix):
             result.append(item)
     result = utila.select_type(
         result,
