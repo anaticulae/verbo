@@ -259,8 +259,10 @@ def test_list_master72_page39_40_41(testdir, monkeypatch):
     lists = extract_lists(source, pages, testdir, monkeypatch=monkeypatch)
     assert len(lists) == 1
 
-    first = lists[0][1][0][2]
-    assert len(first) == 7
+    page39 = utila.select_page(lists, page=39).content
+    assert len(page39) == 1
+    first_list = page39[0]
+    assert len(first_list) == 4
 
 
 def test_merge_overlapping_lists():
