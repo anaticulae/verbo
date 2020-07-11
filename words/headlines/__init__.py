@@ -22,6 +22,7 @@ import words.loader.basic
 WHITELIST = set([
     'Anhang',
     'Eidesstattliche Erklärung',
+    'Erklärung',
     'Literaturverzeichnis',
 ])
 
