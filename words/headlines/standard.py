@@ -62,7 +62,7 @@ def filter_headlines(items: iamraw.PagesHeadlineList):
     for chapter, content in items.items():
         chapter_headlines = []
         for headline in content:
-            parsed = is_headline(headline.text)
+            parsed = parse_headline(headline.text)
             if parsed:
                 chapter_headlines.append(headline)
                 continue
@@ -73,10 +73,6 @@ def filter_headlines(items: iamraw.PagesHeadlineList):
     # require KeyError
     result = dict(result)  # pylint:disable=R0204
     return result
-
-
-def is_headline(line):
-    return parse_headline(line) is not None
 
 
 def parse_headline(line):
