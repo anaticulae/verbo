@@ -2,6 +2,27 @@
 
 Every noteable change is logged here.
 
+## v0.12.0
+
+### Feature
+
+* extend NoLevel headline white list (a346e48b69bd)
+* enable best global selecting strategy (8c88f5c852a1)
+* add step to adjust extracted PageList page number (0eb3d853d344)
+* add first approach of multiple pages strategy (6c9637bf0deb)
+* use count covered space to detect best list extraction (e48f1745881f)
+* add method to merge content to one long content page (0af1c3229b63)
+* add new multiple pages strategy (c52e252d9c75)
+
+### Fix
+
+* fix content border selection (87399a7db239)
+* handle headlines of appendix separately (1f8dcc2e8d6e)
+
+### Documentation
+
+* extend module documentation (442e3da42c32)
+
 ## v0.11.0
 
 ### Feature
