@@ -116,15 +116,11 @@ def possible_headline_group(items) -> bool:
         # maybe a sentence but headlines are not so long
         return False
 
-    number_count = len([item for item in words_ if isnumber(item)])
+    number_count = len([item for item in words_ if utila.isnumber(item)])
     if number_count >= 5:  # TODO: HOLY VALUE
         # assume that headlines does not contain many numbers
         return False
     return True
-
-
-def isnumber(token: str):
-    return str(token).isnumeric()
 
 
 def issentence(line: str):

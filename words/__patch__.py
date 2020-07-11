@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import contextlib
 import functools
 
 import configo
@@ -81,3 +82,22 @@ def inside_section(section: dict, pages: tuple) -> list:
 
 
 serializeraw.load_sections = load_sections
+
+
+def isnumber(item: str) -> bool:
+    """Check if `item` is a number.
+
+    >>> isnumber('ten')
+    False
+    >>> isnumber(10.5)
+    True
+    >>> isnumber('3.5')
+    True
+    """
+    with contextlib.suppress(ValueError):
+        _ = float(str(item))
+        return True
+    return False
+
+
+utila.isnumber = isnumber
