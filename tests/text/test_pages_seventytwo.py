@@ -147,12 +147,13 @@ def test_text_seventytwo_visit_chapters_page5_6_7():
 def test_text_seventytwo_visit_chapters_complete():
     required = fseventytwo.textrequired()
     pages = words.text.chapter.split(required)
-
-    chapters = list(wts.visit_chapters(pages))
     # user content headlines; Literaturverzeichnis and Eidesstattliches
     # are excluded cause there are part of appendix.
+    headlines = [headline for headline, _ in wts.visit_chapters(pages)]
     master72_headline_count = 30
-    assert len(chapters) == master72_headline_count
+    assert len(headlines) == master72_headline_count
+    assert headlines[0].text == 'Einleitung'
+    assert headlines[-1].text == '5. Schlussbetrachtung und Fazit'
 
 
 def test_text_seventytwo_extract_sentences():
