@@ -14,23 +14,25 @@ import words.lists.geometry
 import words.lists.vertical
 
 
-def extract_lists(ptcns, headlines):
-    textfeed = texmex.document_textfeed(ptcns)
+def extract_lists(ptcns, headlines) -> iamraw.PageContentLists:
+    pagebased = page_based_extraction(ptcns, headlines)
+    return pagebased
 
+
+def page_based_extraction(ptcns, headlines) -> iamraw.PageContentLists:
+    textfeed = texmex.document_textfeed(ptcns)
     result = []
     for navigator in ptcns:
-        pageslist = extract_best(navigator, headlines, textfeed)
+        pageslist = extract_best_page(navigator, headlines, textfeed)
         if not pageslist:
             continue
         result.append([navigator.page, pageslist, len(navigator)])
-
     merged = merge_overlapping_lists(result)
-
     result = pagecontentlist(merged)
     return result
 
 
-def extract_best(navigator, headlines, textfeed):
+def extract_best_page(navigator, headlines, textfeed):
     geo = words.lists.geometry.analyze_page(navigator, headlines, textfeed)
     vertical = words.lists.vertical.analyze_page(navigator)
     # TODO: CHOOSE BETTER SELECTOR

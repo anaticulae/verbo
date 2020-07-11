@@ -41,16 +41,15 @@ import utila
 CHUNK_SIZE = 30
 
 
-def extract_lists(ptcns, headlines):
+def extract_lists(ptcns, headlines) -> iamraw.PageContentLists:
     textfeed = texmex.document_textfeed(ptcns)
-
     chunked = split(ptcns)
 
     import words.lists.strategy  # TODO: REFACTOR THIS
 
     result = []
     for navigator in chunked:
-        extracted = words.lists.strategy.extract_best(
+        extracted = words.lists.strategy.extract_best_page(
             navigator,
             headlines,
             textfeed,
