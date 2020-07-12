@@ -115,7 +115,7 @@ class HeadlineExtractorStrategy(abc.ABC):  # pylint:disable=too-many-instance-at
     def setup(self):
         """Run before starting extraction."""
         self.textsize = texmex.document_textsize(
-            navigators=self.pagetextnavigators,)
+            navigators=self.pagetextnavigators)
 
         # TODO: DECIDE WHAT TODO WITH TEXTDISTANCE
         textdistance = texmex.document_textdistance(
@@ -134,7 +134,10 @@ class HeadlineExtractorStrategy(abc.ABC):  # pylint:disable=too-many-instance-at
         start, end = self.content[chapter]
         for page in range(int(start), int(end + 1)):
             border = utila.select_page(self.border, page=page)
-            textnavigator = utila.select_page(self.pagetextnavigators, page=page) # yapf:disable
+            textnavigator = utila.select_page(
+                self.pagetextnavigators,
+                page=page,
+            )
             if not border or not textnavigator:
                 # empty page
                 continue
@@ -163,10 +166,7 @@ class HeadlineExtractorStrategy(abc.ABC):  # pylint:disable=too-many-instance-at
 
         textfeeds = [item.bounds.leftdist for item in bounds]
 
-        for containerid, item in enumerate(
-                pagecontent,
-                start=xoff,
-        ):
+        for containerid, item in enumerate(pagecontent, start=xoff):
             splitted = item.text.splitlines()
             if len(splitted) > 1:
                 # TODO: REMOVE?
