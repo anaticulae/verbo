@@ -175,7 +175,7 @@ def merge_sentences(  # pylint:disable=R0912,R1260
     return result
 
 
-def visit_chapters(
+def extract_textsections(
         pagedata: words.feature.TextRequiredResources,
         *,
         merge_headlines: bool = True,

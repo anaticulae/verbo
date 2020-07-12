@@ -40,7 +40,7 @@ def extract_texts(
     result = split(loaded)
 
     if result:
-        chapters = words.text.sentence.visit_chapters(
+        chapters = words.text.sentence.extract_textsections(
             result,
             merge_headlines=False,
             require_headlinelevel=require_headlinelevel,

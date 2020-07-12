@@ -93,11 +93,11 @@ def test_text_seventytwo_visit_sentences_merge_page5_7():
 
 
 @utilatest.skip_longrun
-def test_text_seventytwo_visit_chapters():
+def test_text_seventytwo_extract_textsections():
     required = fseventytwo.textrequired(pages=tuple(range(0, 14)))
     pages = words.text.chapter.split(required)
 
-    chapters = wts.visit_chapters(pages)
+    chapters = wts.extract_textsections(pages)
     minpage = min([headline.page for headline, _ in chapters])
     assert minpage == 3, minpage
     # '1.  Einleitung'
@@ -119,11 +119,11 @@ def test_text_seventytwo_visit_chapters():
 
 
 @utilatest.skip_longrun
-def test_text_seventytwo_visit_chapters_page5_6_7():
+def test_text_seventytwo_extract_textsections_page5_6_7():
     required = fseventytwo.textrequired(pages=(5, 6, 7))
     pages = words.text.chapter.split(required)
 
-    chapters = wts.visit_chapters(pages)
+    chapters = wts.extract_textsections(pages)
     assert len(chapters) == 3
 
     headlines = [headline for headline, _ in chapters]
@@ -144,7 +144,7 @@ def test_text_seventytwo_visit_chapters_page5_6_7():
                             'soziale Komponente in den Vordergrund')
 
 
-def test_text_seventytwo_visit_chapters_complete():
+def test_text_seventytwo_extract_textsections_complete():
     """\
     HINT: This test may change if none leveled headlines like `Anhang`
     etc. gets an level later.
@@ -155,7 +155,7 @@ def test_text_seventytwo_visit_chapters_complete():
     # are excluded cause there are part of appendix.
     require_headlinelevel = True
     headlines = [
-        headline for headline, _ in wts.visit_chapters(
+        headline for headline, _ in wts.extract_textsections(
             pages,
             require_headlinelevel=require_headlinelevel,
         )
