@@ -97,7 +97,7 @@ def test_text_seventytwo_visit_chapters():
     required = fseventytwo.textrequired(pages=tuple(range(0, 14)))
     pages = words.text.chapter.split(required)
 
-    chapters = list(wts.visit_chapters(pages))
+    chapters = wts.visit_chapters(pages)
     minpage = min([headline.page for headline, _ in chapters])
     assert minpage == 3, minpage
     # '1.  Einleitung'
@@ -123,7 +123,7 @@ def test_text_seventytwo_visit_chapters_page5_6_7():
     required = fseventytwo.textrequired(pages=(5, 6, 7))
     pages = words.text.chapter.split(required)
 
-    chapters = list(wts.visit_chapters(pages))
+    chapters = wts.visit_chapters(pages)
     assert len(chapters) == 3
 
     headlines = [headline for headline, _ in chapters]
