@@ -29,7 +29,7 @@ def extract_quotation(source, pages, testdir, monkeypatch):
     return extracted
 
 
-def test_textflow_quotation(testdir, monkeypatch):
+def test_textflow_quotation_master72_pages10_20(testdir, monkeypatch):
     pages = '--pages=10:20'
     source = power.link(power.MASTER072_PDF)
 

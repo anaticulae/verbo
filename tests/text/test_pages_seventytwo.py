@@ -16,7 +16,7 @@ import words.text.chapter
 import words.text.sentence as wts
 
 
-def test_text_seventytwo_extract_texts():
+def test_text_seventytwo_extract_texts_page3():
     required = fseventytwo.textrequired(pages=(3,))
     extracted = words.text.chapter.extract_texts(required)
     assert extracted
