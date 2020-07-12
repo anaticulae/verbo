@@ -195,13 +195,3 @@ def threshold(item, diff: float, center: float = 0.0) -> float:
     if math.fabs(center - item) <= diff:
         return center
     return item
-
-
-def zero(items) -> float:
-    if not items:
-        return None
-    counted = 0
-    for item in items:
-        if not item:
-            counted += 1
-    return utila.roundme(counted / len(items))
