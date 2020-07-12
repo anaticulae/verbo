@@ -9,7 +9,7 @@
 
 utila==2.4.0
 iamraw==1.31.3
-sections==0.5.0
+sections==0.5.1
 hey==3.5.3
 
 # rawmaker online configuration
