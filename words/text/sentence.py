@@ -15,6 +15,7 @@ import iamraw
 import texmex
 import utila
 
+import words.feature
 import words.text
 import words.undefined
 
@@ -175,15 +176,31 @@ def merge_sentences(  # pylint:disable=R0912,R1260
 
 
 def visit_chapters(
-        pages,
+        pagedata: words.feature.TextRequiredResources,
+        *,
         merge_headlines: bool = True,
         require_headlinelevel: bool = True,
 ) -> words.text.TextSections:
-    assert pages and len(pages) >= 1, 'require at least one page'
+    """Extract `TextSections out of chapters based on extracted headline
+    definition.
+
+    Args:
+        pagedata: data to visit to extract TextSections
+        merge_headlines(bool): if True: the content of a page without any
+                  headline is merged to the headline of the page before.
+                  if False: the content of a page starting without a
+                  headline is treated as a new TextSection.
+        require_headlinelevel(bool): if True, do not return headlines where
+                  the headline level is None. For example "1.
+                  Einleitung" has an level, "Anhang" not.
+    Returns:
+        List of extracted TextSection
+    """
+    assert pagedata and len(pagedata) >= 1, 'require at least one page'
     result = []
     current = None
     collected, contentpages = [], []
-    for headline, page, sentence in merge_sentences(pages):
+    for headline, page, sentence in merge_sentences(pagedata):
         if current is None:
             # start
             current = headline
