@@ -322,8 +322,6 @@ def convert_level(result: iamraw.PagesHeadlineList) -> int:  # pylint:disable=R1
     Hint: This function updates the level
     TODO: copy items
     """
-
-    # pylint:disable=len-as-condition
     utila.call('convert_level')
     if not result:
         return result
