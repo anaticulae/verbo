@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v0.12.1
+
+### Fix
+
+* decide to handle expanded list items in sentence analysis (2e341bc4a29b)
+* ensure that fix is executed (fabfcc86faa4)
+
 ## v0.12.0
 
 ### Feature
