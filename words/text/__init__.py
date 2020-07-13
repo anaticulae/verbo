@@ -54,15 +54,5 @@ class PageContentPageTextDetected:
     page: int = None
     content: list = None
 
-    def __getitem__(self, index):
-        # TODO: support tuple unpacking, remove later
-        if index > 1:
-            raise IndexError
-        return self.page if index == 0 else self.content
-
-    def __eq__(self, value):
-        # TODO: support tuple unpacking, remove later
-        return self[0] == value[0] and self[1] == value[1]
-
 
 PageContentPageTextDetectedList = typing.List[PageContentPageTextDetected]

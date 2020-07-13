@@ -11,7 +11,6 @@ import power
 import serializeraw
 
 import tests
-import words.abbreviation.loader
 import words.path
 
 
@@ -26,7 +25,7 @@ def test_text_extract_pages7_8_9(testdir, monkeypatch):
         content=headlines,
         pages=(7, 8, 9),
     )
-    text = words.abbreviation.loader.load_text(text, headlines=headlines)
+    text = serializeraw.load_text(text, headlines=headlines)
 
     sentences = []
     for page in text:

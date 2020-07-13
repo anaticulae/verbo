@@ -30,14 +30,13 @@ import groupme.abbreviation
 import groupme.abbreviation.lists
 import serializeraw
 
-import words.abbreviation.loader
 import words.abbreviation.parser
 
 
 def work(text: str, headlines: str, pages: tuple = None) -> str:
     headlines = serializeraw.load_headlines(headlines, pages=pages)
 
-    loaded = words.abbreviation.loader.load_text(text, headlines, pages=pages)
+    loaded = serializeraw.load_text(text, headlines, pages=pages)
     # TODO: Load parsed data from abbreviation table
     lookup = groupme.abbreviation.lists.AbbreviationListLookup.fromparsed()
 

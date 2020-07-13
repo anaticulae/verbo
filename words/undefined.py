@@ -23,14 +23,14 @@ def extract_undefined(pages, text, text_position, contentborder: dict):  # pylin
         text_positions=text_position,
     )
     result = []
-    for (page, pagecontent) in pages:
-        navigator = utila.select_page(pagetextnavigators, page)
+    for pageitem in pages:
+        navigator = utila.select_page(pagetextnavigators, pageitem.page)
         ptcn = texmex.PageTextContentNavigator(
             navigator,
-            content=utila.select_page(contentborder, page=page),
+            content=utila.select_page(contentborder, page=pageitem.page),
         )
-        _pagecontent = []
-        for index, (_, paragraph) in enumerate(pagecontent):
+        content = []
+        for index, (_, paragraph) in enumerate(pageitem.content):
             # split the undefined groups
             # TODO: CHECK HERE FOR BOXING
             splitted_paragraph = splitter(paragraph)
@@ -52,14 +52,14 @@ def extract_undefined(pages, text, text_position, contentborder: dict):  # pylin
                 paragraph_undefined = []
 
             if paragraph_items:
-                _pagecontent.append((
-                    page,
+                content.append((
+                    pageitem.page,
                     index,
                     (paragraph_items, paragraph_undefined),
                 ))
         # skip empty elements
-        if _pagecontent:
-            result.append(_pagecontent)
+        if content:
+            result.append(content)
     return result
 
 

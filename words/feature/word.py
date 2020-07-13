@@ -63,23 +63,23 @@ def work(
 
 
 def process_words(text, listlookup, boxlookup):
-    # TODO: Copy before replacing, to avoid side effects
-    for (page, pagecontent) in text:
+    # TODO: Copy before replacing, to avoid side effects?
+    for item in text:
         # headline,
-        for (headline, headlinecontent) in pagecontent:
+        for (headline, headlinecontent) in item.content:
             for index, line in enumerate(headlinecontent):
                 if not PATTERN.match(line):
                     continue
                 undefined = words.undefined.intindex(line)
                 searched = listlookup.search(
-                    page,
+                    item.page,
                     headline.container,
                     undefined,
                 )
                 if searched is not None:
                     headlinecontent[index] = f'{searched}l'
                     continue
-                searched = boxlookup.search(page, undefined)
+                searched = boxlookup.search(item.page, undefined)
                 if searched is not None:
                     headlinecontent[index] = f'{searched}b'
                     continue
