@@ -47,20 +47,12 @@ def test_text_dump_and_load_text():
     dumped = serializeraw.dump_text(textexample)
     loaded = serializeraw.load_text(dumped, headlines)
 
-    # TODO: REMOVE AFTER FIXING DUMP/LOAD
-    loaded = [
-        words.text.PageContentPageTextDetected(
-            page=page,
-            content=[
-                words.text.TextSection(
-                    headline=headline,
-                    content=item,
-                    pages=[page] * len(item),
-                ) for headline, item in content
-            ],
-        ) for page, content in loaded
-    ]
-    for first, second in zip(loaded, textexample):
+    for first, second in zip(textexample, loaded):
+        print(first)
+        print()
+        print(second)
+        print()
+        print()
         assert first == second, '\n\n%s\n%s\n\n\n' % (first, second)
     assert loaded == textexample
 

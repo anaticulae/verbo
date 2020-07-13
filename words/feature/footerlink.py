@@ -74,7 +74,7 @@ def work(
 
 
 def extract_highnotes(loaded: words.feature.TextRequiredResources,
-                     ) -> words.text.PageContentPageTextDetecteds:
+                     ) -> words.text.PageContentPageTextDetectedList:
     """Iterate thrue document via headline and process the content
     between the headlines. Extract highnotes to find links to footer.
 

@@ -26,7 +26,7 @@ import words.text.sentence
 def extract_texts(
         loaded: words.feature.TextRequiredResources,
         require_headlinelevel: bool = True,
-) -> words.text.PageContentPageTextDetecteds:
+) -> words.text.PageContentPageTextDetectedList:
     """Iterate thrue document via headline and process the content
     between the headlines. Split Chapter into paragraphs and paragraphs
     into sentences and words.

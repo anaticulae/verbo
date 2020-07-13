@@ -65,4 +65,4 @@ class PageContentPageTextDetected:
         return self[0] == value[0] and self[1] == value[1]
 
 
-PageContentPageTextDetecteds = typing.List[PageContentPageTextDetected]
+PageContentPageTextDetectedList = typing.List[PageContentPageTextDetected]
