@@ -2,6 +2,17 @@
 
 Every noteable change is logged here.
 
+## v0.13.0
+
+### Feature
+
+* determine headline level out of geometry (9ab4e33e7a9a)
+* add multi dimension near checker (f5f831808278)
+
+### Documentation
+
+* extend interface documentation (230110119d30)
+
 ## v0.12.1
 
 ### Fix
