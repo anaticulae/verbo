@@ -10,8 +10,7 @@ current
 .. toctree::
   :maxdepth: 1
 
-  0.5.0
-
+  0.13.0
 
 completed
 ---------
@@ -19,5 +18,6 @@ completed
 .. toctree::
   :maxdepth: 1
 
+  0.5.0
   0.4.0
   0.1.0
