@@ -121,12 +121,23 @@ def judge_result(results):
         best = results[0]
 
     # longest common text selection
-    best_flat = sum([len(item.text) for item in utila.flatten(best)])
-    standard_flat = sum([len(item.text) for item in utila.flatten(results[2])])
+    best_flat = score_headlines(best)
+    standard_flat = score_headlines(results[2])
 
     if best_flat > standard_flat:
         return best
     return results[2]
+
+
+def score_headlines(items):
+    score = 0
+    for item in utila.flatten(items):
+        score += len(item.text)
+        if item.level is not None:
+            # prefer headline with extracted level over headlines without
+            # level
+            score += len(item.text)
+    return score
 
 
 def headlines_frompath(path: str, prefix: str = '', pages: tuple = None):

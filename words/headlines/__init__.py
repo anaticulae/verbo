@@ -9,6 +9,7 @@
 
 import abc
 import collections
+import re
 import typing
 
 import iamraw
@@ -17,6 +18,7 @@ import sections.feature.section
 import texmex
 import utila
 
+import words.headlines.cluster
 import words.loader.basic
 
 WHITELIST = set([
@@ -211,6 +213,12 @@ class HeadlineExtractorStrategy(abc.ABC):  # pylint:disable=too-many-instance-at
             textfeed=textfeed,
             lastitem=lastitem,
         )
+        if len(text) <= 6:  # TODO: MIN HEADLINE LENGTH
+            return None
+
+        if headline_blacklisted(text):
+            utila.debug(f'{self.__class__.__name__}: {skip} {text}')
+            return None
 
         utila.debug(f'{self.__class__.__name__}: {skip} {text}')
         if skip:
@@ -218,13 +226,18 @@ class HeadlineExtractorStrategy(abc.ABC):  # pylint:disable=too-many-instance-at
 
         dist_top = textdistances[distanceid]
         dist_bottom = None if lastitem else textdistances[distanceid + 1]
-        level = self.levelme(textsize, dist_top, dist_bottom)
-        text = text.strip()
+
+        style = dict(
+            textsize=textsize,
+            before=dist_top,
+            after=dist_bottom,
+            feed=textfeed,
+        )
         headline = iamraw.Headline(
             container=containerid,
-            level=level,
+            level=style,
             page=page,
-            text=text,
+            text=text.strip(),
         )
         return headline
 
@@ -238,20 +251,6 @@ class HeadlineExtractorStrategy(abc.ABC):  # pylint:disable=too-many-instance-at
     ):
         pass
 
-    def levelme(  # pylint:disable=R0201
-            self,
-            textsize: float,  # pylint:disable=W0613
-            dist_top: float,
-            dist_bottom: float,
-    ) -> float:
-        level = dist_top
-        if dist_bottom is None:
-            # Headline is alone on the page end
-            level = level * 2
-        else:
-            level = level + dist_bottom
-        return level
-
     @property
     def chaptercount(self):
         return len(self.chapters)
@@ -263,6 +262,22 @@ class HeadlineExtractorStrategy(abc.ABC):  # pylint:disable=too-many-instance-at
     @abc.abstractmethod
     def smallest_textsize(self):
         pass
+
+
+BLACK_CHAPTER = re.compile(r'(Kapitel|Chapter)[ ]{0,5}\d{1,2}', re.IGNORECASE)
+
+
+def headline_blacklisted(item: str) -> bool:
+    """\
+    >>> headline_blacklisted('KAPITEL  1 ')
+    True
+    >>> headline_blacklisted('Chapter 5 ')
+    True
+    """
+    item = item.strip()
+    if BLACK_CHAPTER.match(item):
+        return True
+    return False
 
 
 def prepare_chapter_and_content(sections_, chapter):
@@ -315,7 +330,7 @@ FIRST_LEVEL = 0.8  # TODO: HOLY VALUE
 SECOND_LEVEL = 0.5
 
 
-def convert_level(result: iamraw.PagesHeadlineList) -> int:  # pylint:disable=R1260
+def convert_level(result: iamraw.PagesHeadlineList) -> int:
     """Convert chapter level based on text distances to logical level
     (1,2,3,4,...).
 
@@ -323,44 +338,19 @@ def convert_level(result: iamraw.PagesHeadlineList) -> int:  # pylint:disable=R1
     TODO: copy items
     """
     utila.call('convert_level')
-    if not result:
-        return result
-
-    if not any(result) or not any([item for item in result.values()]):
+    if (not result or not any(result.values()) or
+            not any([item for item in result.values()])):
         # check that result pages are empty
         utila.info('empty PageHeadlineList')
         return {}
     assert isinstance(result, dict), type(result)
 
-    maxsize = []
-    for chapter in result.values():
-        if not chapter:
-            continue
-        level = [item.level for item in chapter if item.level is not None]
-        if level:
-            level = max(level)
-            maxsize.append(level)
-    maxsize = max(maxsize) if maxsize else 10000  # TODO: HIGH OR LOW NUMBER?
-
-    # TODO: check this approach
-    first_level = FIRST_LEVEL * maxsize
-    second_level = SECOND_LEVEL * maxsize
-
-    def get_level(value):
-        if value >= first_level:
-            return 1
-        if value >= second_level:
-            return 2
-        return 3
-
-    # TODO: copy elements
-    for items in result.values():
-        for item in items:
-            if item.rawlevel is not None:
-                # level is already determined, out of text
-                continue
-            # determine level out of dimension
-            item.level = get_level(item.level)
+    nolevel = []
+    for item in result.values():
+        nolevel.extend(item)
+    level = [item for item in nolevel if isinstance(item.level, int)]
+    if not level:
+        result = words.headlines.cluster.cluster_headline_level(result)
     return result
 
 
