@@ -7,8 +7,6 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import contextlib
-
 import german
 import groupme.abbreviation
 import groupme.abbreviation.lists
@@ -91,18 +89,11 @@ def abbreviation(items):
 
     items = [item for item in items if 2 <= len(item) <= 5]
 
-    items = [item for item in items if not isnumber(item)]
+    items = [item for item in items if not utila.isnumber(item)]
 
     items = [item for item in items if count_upper(item) / len(item) >= 0.3]
 
     return items
-
-
-def isnumber(item):
-    with contextlib.suppress(ValueError):
-        _ = int(item)
-        return True
-    return False
 
 
 def count_upper(items):
