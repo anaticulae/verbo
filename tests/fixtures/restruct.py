@@ -114,9 +114,12 @@ def restruct_resources():
     return loaded
 
 
-def restructured_textexample():
+def restructured_textexample(require_headlinelevel: bool = True):
     loaded = restruct_resources()
-    extracted = words.text.chapter.extract_texts(loaded)
+    extracted = words.text.chapter.extract_texts(
+        loaded,
+        require_headlinelevel=require_headlinelevel,
+    )
     assert extracted is not None
     return extracted
 

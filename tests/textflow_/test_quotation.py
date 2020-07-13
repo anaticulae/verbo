@@ -30,7 +30,7 @@ def extract_quotation(source, pages, testdir, monkeypatch):
 
 
 def test_textflow_quotation_master72_pages10_20(testdir, monkeypatch):
-    pages = '--pages=10:20'
+    pages = '--pages=10:21'
     source = power.link(power.MASTER072_PDF)
 
     current = extract_quotation(source, pages, testdir, monkeypatch)

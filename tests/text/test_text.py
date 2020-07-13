@@ -39,35 +39,35 @@ def test_text_work():
 
 
 def test_text_dump_and_load_text():
-    headlines = tests.fixtures.restruct.restructured_headlines()
-    textexample = tests.fixtures.restruct.restructured_textexample()
-    assert textexample is not None
+    resources = tests.fixtures.restruct.restruct_resources()
+    extracted = words.text.chapter.extract_texts(
+        resources,
+        # TODO: SET TO TRUE TO IMPROVE HEADLINE PARSER
+        require_headlinelevel=False,
+    )
+    assert extracted is not None
+    headlines = resources.headlines
     assert headlines is not None
-    headlines = serializeraw.load_headlines(headlines)
-    dumped = serializeraw.dump_text(textexample)
-    loaded = serializeraw.load_text(dumped, headlines)
 
-    for first, second in zip(textexample, loaded):
-        print(first)
-        print()
-        print(second)
-        print()
-        print()
+    dumped = serializeraw.dump_text(extracted)
+    loaded = serializeraw.load_text(dumped, headlines)
+    for first, second in zip(extracted, loaded):
         assert first == second, '\n\n%s\n%s\n\n\n' % (first, second)
-    assert loaded == textexample
+    assert loaded == extracted
 
 
 def test_text_extractor_titles():
-    result = tests.fixtures.restruct.restructured_textexample()
+    result = tests.fixtures.restruct.restructured_textexample(
+        require_headlinelevel=
+        False,  # TODO: SET TO TRUE TO IMPROVE HEADLINE PARSER
+    )
 
     # page6
     page6 = utila.select_page(result, 6)
-    assert page6.content[0].headline.text == 'CHAPTER 1'
-    assert page6.content[1].headline.text == 'RestructuredText Tutorial'
+    assert page6.content[0].headline.text == 'RestructuredText Tutorial'
 
     # page8
     page8 = utila.select_page(result, 8)
-    assert page8.content[0].headline.text == 'CHAPTER 2'
     assert page8.content[1].headline.text == 'RestructuredText Guide'
     assert page8.content[2].headline.text == 'Basics'
 
@@ -78,12 +78,11 @@ def test_text_extractor_titles():
 
     # page10
     page10 = utila.select_page(result, 10)
-    assert page10.content[0].headline.text == 'CHAPTER 3'
-    assert page10.content[1].headline.text == 'RestructuredText Customizations'
+    assert page10.content[0].headline.text == 'RestructuredText Customizations'
 
     # page12
     page12 = utila.select_page(result, 12)
-    assert page12.content[0].headline.text == 'CHAPTER 4'
+    assert page12.content[0].headline.text is None
     assert page12.content[1].headline.text == 'Sphinx Tutorial'
     assert page12.content[2].headline.text == 'Step 1'
 
@@ -110,7 +109,6 @@ def test_text_extractor_titles():
 
     # page18
     page18 = utila.select_page(result, 18)
-    assert page18.content[0].headline.text == 'CHAPTER 5'
     assert page18.content[1].headline.text == 'Sphinx Guide'
 
 

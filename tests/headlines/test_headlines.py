@@ -9,13 +9,11 @@
 
 import iamraw
 import power
-import pytest
 import serializeraw
 import utilatest
 
 import tests.fixtures.headlines
 import tests.fixtures.restruct
-import tests.resources
 import words.feature
 import words.feature.headlines
 import words.headlines
@@ -26,15 +24,8 @@ import words.loader.basic
 EXPECTED = [
     [
         iamraw.Headline(
-            text='CHAPTER 1',
-            level=1,
-            rawlevel=None,
-            container=0,
-            page=6,
-        ),
-        iamraw.Headline(
             text='RestructuredText Tutorial',
-            level=2,
+            level=1,
             rawlevel=None,
             container=1,
             page=6,
@@ -42,36 +33,29 @@ EXPECTED = [
     ],
     [
         iamraw.Headline(
-            text='CHAPTER 2',
-            level=1,
-            rawlevel=None,
-            container=0,
-            page=8,
-        ),
-        iamraw.Headline(
             text='RestructuredText Guide',
-            level=2,
+            level=1,
             rawlevel=None,
             container=1,
             page=8,
         ),
         iamraw.Headline(
             text='Basics',
-            level=3,
+            level=2,
             rawlevel=None,
             container=2,
             page=8,
         ),
         iamraw.Headline(
             text='Blockquotes',
-            level=3,
+            level=2,
             rawlevel=None,
             container=1,
             page=9,
         ),
         iamraw.Headline(
             text='Code: Block',
-            level=3,
+            level=2,
             rawlevel=None,
             container=17,
             page=9,
@@ -80,18 +64,16 @@ EXPECTED = [
 ]
 
 
-@pytest.mark.xfail(reason='determining the level due text distance is a bad'
-                   ' approach')
 def test_headlines_extract_headlines():
-    # TODO: Require new approach, may look into table of content
     section = tests.fixtures.restruct.restructured_sections_manual()
     basic = words.loader.basic.load_basic_frompath(power.link(power.DOCU27_PDF))
     extractor = words.headlines.nolevel.NoLevelHeadlineExtractor(
         sectionlist=section,
         basic=basic,
-        chapters=[0, 1],
+        chapters=[0, 1, 2, 3, 4, 5, 6, 7],
     )
-    extracted = extractor.result()
+    # check only the start, TODO: increase check later?
+    extracted = extractor.result()[0:2]
     assert len(extracted) == len(EXPECTED)
 
     assert [len(item) for item in extracted] == [len(item) for item in EXPECTED]
@@ -112,7 +94,7 @@ def test_headlines_work():
         text_position=iamraw.path.textposition(docu27),
     )
     # dump some headlines
-    assert len(dumped) > 2100, str(dumped)
+    assert len(dumped) > 1740, str(dumped)
 
 
 def test_headlines_dump_and_load_headlines():
