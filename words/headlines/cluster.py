@@ -67,7 +67,7 @@ def update_level(items: iamraw.PagesHeadlineList, border, diff):
             after = headline.level['after']
             feed = headline.level['feed']
             current = (textsize, after, feed)
-            matched = utila.near_dims(  # pylint:disable=E1101
+            matched = utila.near_dims(  # pylint:disable=E1101,unexpected-keyword-arg
                 current,
                 border,
                 diff,

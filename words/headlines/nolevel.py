@@ -9,6 +9,7 @@
 import utila
 
 import words.headlines
+import words.headlines.standard as whs
 
 SMALLEST_HEADLINE_DISTANCE = 1.2  # TODO: HOLY VALUE
 SMALLEST_HEADLINE_TEXTSIZE = 1.1
@@ -34,3 +35,18 @@ class NoLevelHeadlineExtractor(words.headlines.HeadlineExtractorStrategy):
         if headline_tosmall:
             return True
         return False
+
+    def filter(self, items):  # pylint:disable=R0201
+        """Convert level etc."""
+        # TODO: IMprove this
+        result = {}
+        for number, chapter in items.items():
+            # skip `normal` headlines, we want to analyze NoLevelHeadlines
+            items = [
+                item for item in chapter if not whs.parse_headline(item.text)
+            ]
+            result[number] = items
+
+        # TODO: USE DICT CONVERTER HERE
+        result = super().filter(result)
+        return result

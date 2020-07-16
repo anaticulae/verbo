@@ -64,6 +64,9 @@ def filter_headlines(items: iamraw.PagesHeadlineList):
         for headline in content:
             parsed = parse_headline(headline.text)
             if parsed:
+                rawlevel = parsed['level']
+                headline.level = words.headlines.numbered_level(rawlevel)
+                headline.rawlevel = rawlevel
                 chapter_headlines.append(headline)
                 continue
             if headline.text in words.headlines.WHITELIST:

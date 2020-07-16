@@ -76,11 +76,14 @@ class MultiLine(words.headlines.HeadlineExtractorStrategy):
                 rawlevel = parsed['level'].strip()  # TODO: REMOVE STRIP LATER
             except TypeError:
                 rawlevel = text
-            level = numbered_level(rawlevel)
+            level = words.headlines.numbered_level(rawlevel)
             if len(items) == 1:  # TODO: CHECK THIS
                 container = items.firstid
             else:
                 container = (items.firstid, items.firstid + len(items) - 1)
+            # if parsed:
+            # TODO: ENABLE LATER?
+            #     text = parsed['text']
             headline = iamraw.Headline(
                 container=container,
                 level=level,
@@ -90,29 +93,6 @@ class MultiLine(words.headlines.HeadlineExtractorStrategy):
             )
             result.append(headline)
         return result
-
-
-def numbered_level(raw: str) -> int:
-    """Convert number to raw level.
-
-    >>> numbered_level('5')
-    1
-    >>> numbered_level('2.')
-    1
-    >>> numbered_level('2.1.3.')
-    3
-    >>> numbered_level('2.1')
-    2
-    >>> numbered_level('2..1...') # ignore typos
-    2
-    """
-    # TODO: MOVE TESTS?
-    raw = raw.strip()
-    if not '.' in raw:
-        return 1 if raw.isnumeric() else None
-    # 2.1.3
-    splitted = [item for item in raw.split('.') if item]
-    return len(splitted)
 
 
 def possible_headline_group(items) -> bool:

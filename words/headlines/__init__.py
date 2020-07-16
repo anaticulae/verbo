@@ -106,7 +106,23 @@ class HeadlineExtractorStrategy(abc.ABC):  # pylint:disable=too-many-instance-at
         # filter result
         self.__result = self.filter(self.__result)
         extracted = [item for item in self.__result.values()]
-        return extracted
+
+        flatten = utila.flatten(extracted)
+        grouped = []
+        if flatten:
+            if isinstance(flatten[0].level, dict):
+                # HACK NOLEVEL?
+                flatten[0].level = None
+            grouped.append([flatten[0]])
+        for item in flatten[1:]:
+            if isinstance(item.level, dict):
+                # HACK NOLEVEL?
+                item.level = None
+            if item.level is None or item.level == 1:
+                grouped.append([item])
+            else:
+                grouped[-1].append(item)
+        return grouped
 
     def filter(self, items):  # pylint:disable=R0201
         """Convert level etc."""
@@ -349,6 +365,7 @@ def convert_level(result: iamraw.PagesHeadlineList) -> int:
     for item in result.values():
         nolevel.extend(item)
     level = [item for item in nolevel if isinstance(item.level, int)]
+
     if not level:
         result = words.headlines.cluster.cluster_headline_level(result)
     return result
@@ -431,3 +448,26 @@ def items_before_firstchapter(chapters, contents):
     if not before:
         return []
     return [(before[0].start, before[-1].end)]
+
+
+def numbered_level(raw: str) -> int:
+    """Convert number to raw level.
+
+    >>> numbered_level('5')
+    1
+    >>> numbered_level('2.')
+    1
+    >>> numbered_level('2.1.3.')
+    3
+    >>> numbered_level('2.1')
+    2
+    >>> numbered_level('2..1...') # ignore typos
+    2
+    """
+    # TODO: MOVE TESTS?
+    raw = raw.strip()
+    if not '.' in raw:
+        return 1 if raw.isnumeric() else None
+    # 2.1.3
+    splitted = [item for item in raw.split('.') if item]
+    return len(splitted)

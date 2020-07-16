@@ -110,14 +110,6 @@ def test_features_headlines_work_master72pages_headlines():
     master72 = power.link(power.MASTER072_PDF)
     headlines = words.feature.headlines.headlines_frompath(master72)
 
-    # TODO: Adjust later, when it is possible to separate two appendix
-    # headlines as single main headlines
-    # Appendix does not have any main headline
-    headlines = headlines[0:-1]
-
-    # TODO: CHANGE AFTER SUPPORTING LITERATURVERZEICH AND ERKLARUNG
-    assert len(headlines) == 5, str(headlines)
-
     expected_headlines = [
         '1. Einleitung',
         ('2. Das Social Web und die Privatsphäre – '
@@ -129,6 +121,8 @@ def test_features_headlines_work_master72pages_headlines():
         ('4. Privatheit und Identitätsbildung im Social Web – '
          'funktional betrachtet'),
         '5. Schlussbetrachtung und Fazit',
+        'Literaturverzeichnis',
+        'Eidesstattliche Erklärung',
     ]
     # headlines of first element in section
     headlines_text = [item[0].text for item in headlines]
@@ -139,16 +133,12 @@ def test_features_headlines_work_master72pages_subsections():
     master72 = power.link(power.MASTER072_PDF)
     headlines = words.feature.headlines.headlines_frompath(master72)
 
-    grouped, none_grouped = headlines[0:-1], headlines[-1]
-
-    subsections = [item[1:] for item in grouped]
+    subsections = [item[1:] for item in headlines]
     subsections_count = [len(item) for item in subsections]
 
-    expected_subsection_count = [2, 8, 10, 5, 0]
+    # See: test_features_headlines_work_master72pages_headlines
+    expected_subsection_count = [2, 8, 10, 5, 0, 0, 0]
     assert subsections_count == expected_subsection_count
-
-    # Literaturverzeichnis, Eidesstattliche Erklärung
-    assert len(none_grouped) == 2
 
 
 def test_features_headlines_filter_headlines():
