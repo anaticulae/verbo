@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.13.1
+
+### Fix
+
+* fix headline parser after upgrading requirements (b4d161f71b2f)
+
 ## v0.13.0
 
 ### Feature
