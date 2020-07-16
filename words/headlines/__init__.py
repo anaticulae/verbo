@@ -406,8 +406,11 @@ def determine_contentrange(items) -> ChapterRanges:
 
     result = items_before_firstchapter(chapters, contents)
     for current, after in zip(chapters[:-1], chapters[1:]):
-        # TODO: check after.start - 1 later
-        result.append((current.start, after.start - 1))
+        if current.end == after.start:
+            # multi page: content on same page
+            result.append((current.start, current.end))
+        else:
+            result.append((current.start, after.start - 1))
     result.append((chapters[-1].start, contents[-1].end))
     # ensure ascending page numbers
     assert all([start <= end for start, end in result]), str(result)
