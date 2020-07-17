@@ -2,6 +2,17 @@
 
 Every noteable change is logged here.
 
+## v0.13.2
+
+### Fix
+
+* add support for non decimal page numbers (999c6ed95f13)
+* handle range determination for multiple page section (d465bf0a159b)
+
+### Documentation
+
+* remove duplicated backlog (2bb22cc38c0b)
+
 ## v0.13.1
 
 ### Fix
