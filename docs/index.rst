@@ -8,7 +8,6 @@ Progress
   :maxdepth: 1
 
   releases/releases
-  releases/backlog
   pages/changelog
 
 Developer
@@ -17,7 +16,7 @@ Developer
 .. toctree::
   :maxdepth: 1
 
-  backlog
+  releases/backlog
 
 Modules
 --------------------
