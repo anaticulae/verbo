@@ -9,6 +9,7 @@
 
 import contextlib
 import functools
+import math
 
 import configo
 import iamraw
@@ -152,3 +153,48 @@ def assert_equal_dim(item, dims) -> int:
 
 
 utila.near_dims = near_dims
+
+
+def should_skip(page: 'PageNumbers', pages: tuple) -> bool:  # pylint:disable=W0621
+    """Determine if `page` is invalid.
+
+    If `pages` is None, every page is accepted.
+    If `pages` is a tuple, only the elements in tuple are valid and
+    return False.
+
+    Args:
+        page(int): check to skip this page number
+        pages(tuple): tuple with accepted pages, !require tuple to serialize!
+    Returns:
+        return True if `page` is in `pages` or pages is None else False
+
+    Examples:
+    >>> should_skip(5, (1, 2, 3))
+    True
+    >>> should_skip(5, None)
+    False
+    >>> should_skip(6, 5)
+    True
+    >>> should_skip((4, 5, 6), [1, 2, 3, 4, 5])
+    True
+    >>> should_skip((0.0, 0.5), (0, 1, 2, 3))
+    False
+    >>> should_skip((0.0, 0.5), (0,))
+    True
+    >>> should_skip((0.0, 0.5), (0, 1))
+    False
+    """
+    if pages is None:
+        return False
+    if not isinstance(pages, tuple):
+        pages = (pages,)
+    # support multiple pages
+    if isinstance(page, tuple):
+        # ensure that all (page..) are in range, all selected and all inside
+        start, end = min(page), max(page)
+        start, end = math.floor(start), math.ceil(end)
+        return any([should_skip(pp, pages) for pp in range(start, end + 1)])
+    return not page in pages
+
+
+utila.should_skip = should_skip
