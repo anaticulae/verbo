@@ -319,3 +319,43 @@ def test_merge_overlapping_lists():
     assert len(merged) == 2
     assert len(merged[0][1]) == 1
     assert len(merged[1][1]) == 2
+
+
+def test_merge_overlapping_lists_two_pages():
+    pages = [
+        [
+            9,
+            [(0, 0,
+              iamraw.PageList(
+                  data=[(None, 'Blogs  gelten  als  die  fr▒heste  '),
+                        (None, 'Wikis  sind  Gemeinschaftsproduktio'),
+                        (None, 'Social  Network  Sites  widmen  sic'),
+                        (None, 'Microblogs  erm▒glichen  das  Versc'),
+                        (None, 'Social-Sharing-Plattformen  bzw.  C')],
+                  area=[
+                      12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,
+                      26, 27
+                  ],
+                  paragraph=None,
+                  merged=None))],
+            28,
+        ],
+        [
+            10,
+            [(0, 0,
+              iamraw.PageList(
+                  data=[(None, 'Virtual  Social  Worlds  ('),
+                        (None, 'Chats und Diskussionsforen')],
+                  area=[0, 1, 2, 3, 4],
+                  paragraph=None,
+                  merged=None))],
+            27,
+        ],
+    ]
+    merged = words.lists.strategy.merge_overlapping_lists(pages)
+    single = merged[0][1][0][2]
+
+    print(single)
+    marker = [item[0] for item in single]
+    # ensure that list separator is None
+    assert not any(marker), str(marker)

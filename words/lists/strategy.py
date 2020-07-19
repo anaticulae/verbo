@@ -84,7 +84,7 @@ def merge_overlapping_lists(items):
         if pagestart and connected:
             # merge lists
             for entree in currentlist:
-                lastlist.append(*entree)
+                lastlist.append(level=entree[0], title=entree[1])
             lastlist.area.extend(currentlist.area)
             # update length of page navigation where list is located to
             # merge more than two pages.
