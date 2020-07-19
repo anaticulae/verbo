@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v0.13.3
+
+### Feature
+
+* ensure that only proper lists are accepted to dump (ec3466e9ba2d)
+
+### Fix
+
+* fix merging list (126107ad0088)
+
 ## v0.13.2
 
 ### Fix
