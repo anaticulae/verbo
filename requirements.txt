@@ -12,8 +12,6 @@ iamraw==2.0.0
 sections==0.8.0
 hey==3.7.1
 
-# rawmaker online configuration
-detector==0.6.0
 # split sentences and determine language of written sentence
 german==0.7.1
 # some constants
