@@ -21,14 +21,14 @@ PACKAGE = words.PACKAGE
 power.setup(words.ROOT)
 
 RESOURCES = [
-    power.todo(power.MASTER072_PDF),
-    power.todo(power.BACHELOR076_PDF),
-    power.todo(power.MASTER098_PDF),
-    power.todo(power.HOMEWORK040_PDF),
-    power.todo(power.BACHELOR037_PDF),
-    power.todo(power.DOCU07_PDF),
-    power.todo(power.DOCU09_PDF),
-    power.todo(power.DOCU27_PDF),
+    power.MASTER072_PDF,
+    power.BACHELOR076_PDF,
+    power.MASTER098_PDF,
+    power.HOMEWORK040_PDF,
+    power.BACHELOR037_PDF,
+    power.DOCU07_PDF,
+    power.DOCU09_PDF,
+    power.DOCU27_PDF,
 ]
 
 WORKER = 12
@@ -55,4 +55,5 @@ def extract(resources):
         sections=True,
         words=True,
         worker=WORKER,
+        pages=':',
     )

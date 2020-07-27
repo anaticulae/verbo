@@ -22,7 +22,6 @@ import functools
 import power
 import utilatest
 
-import tests.__patch__
 import words
 import words.cli
 
