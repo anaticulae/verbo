@@ -13,7 +13,7 @@ import words.__headlines__
 import words.__list__
 import words.__patch__
 
-__version__ = '0.13.4'
+__version__ = '0.13.5'
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
