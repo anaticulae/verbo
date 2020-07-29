@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 #==============================================================================
 
-from words.cli import main
+import words.cli
 
 if __name__ == "__main__":
-    main()
+    words.cli.main()
