@@ -89,6 +89,8 @@ TEXT_BORDER_NOISE = 15  # TODO HOLY VALUE
 # short centered text as beeing a center text block.
 BLOCK_CENTER_MIN_WIDTH = 300  # TODO: HOLY VALUE
 
+BLOCK_EUQAL_BORDER_MAX_DIFF = 5.0
+
 
 def page_linealignments(
         navigator,
@@ -104,16 +106,16 @@ def page_linealignments(
     for left, right in zip(border_left, border_right):
         width = navigator.width - left - right
         # TODO: HOLY VALUES
-        if right == 0.0:
+        if utila.near(right, 0.0, diff=3.0):
             if left > 100:
                 result.append(TextAlignment.RIGHT)
             elif left <= 50:
                 result.append(TextAlignment.BLOCK)
         elif right >= 20:
             if left >= 20:
-                # left and right textfeed is equal
-                if (math.fabs(right - left) <= 5.0 and
-                        width >= BLOCK_CENTER_MIN_WIDTH):
+                if utila.near(right, left, BLOCK_EUQAL_BORDER_MAX_DIFF)\
+                   and width >= BLOCK_CENTER_MIN_WIDTH:
+                    # left and right textfeed is equal
                     result.append(TextAlignment.BLOCK_CENTER)
                 else:
                     result.append(TextAlignment.CENTER)
