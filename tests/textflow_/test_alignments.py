@@ -8,6 +8,8 @@
 # =============================================================================
 
 import power
+import pytest
+import utila
 
 import tests.textflow_
 import textflow.features.alignment
@@ -25,3 +27,17 @@ def test_textflow_alignment_expected(testdir, monkeypatch):
 
     assert current
     assert len(current) == 10, str(current)
+
+
+@pytest.mark.xfail(reason='unsupported block_end')
+def test_alignment_master98_page2(testdir, monkeypatch):
+    tests.textflow_.run(
+        f'-i {power.link(power.MASTER098_PDF)} --pages=2 --alignment',
+        monkeypatch=monkeypatch,
+    )
+    source = textflow.path.alignment(testdir.tmpdir)
+    current = textflow.features.alignment.load_alignment(source)
+
+    content = utila.select_content(current, 2)
+
+    assert content[4] == textflow.alignment.style.TextAlignment.BLOCK_END

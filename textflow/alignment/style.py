@@ -43,6 +43,7 @@ class TextAlignment(enum.Enum):
     RIGHT = 2
     BLOCK = 4
     BLOCK_CENTER = 8
+    BLOCK_END = 16
     UNDEFINED = -1
 
     def __lt__(self, item):
