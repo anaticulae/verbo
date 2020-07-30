@@ -71,8 +71,8 @@ def dump_alignment(items) -> str:
 
 @textflow.serialize.loadme
 def load_alignment(items):
-    loaded = [item for item in items]
-    return loaded
+    items = items.replace('TextAlignment.', '')
+    return textflow.alignment.style.TextAlignment[items]
 
 
 def extract_alignment_frompath(path, prefix, pages: tuple = None):
