@@ -355,7 +355,6 @@ def test_merge_overlapping_lists_two_pages():
     merged = words.lists.strategy.merge_overlapping_lists(pages)
     single = merged[0][1][0][2]
 
-    print(single)
     marker = [item[0] for item in single]
     # ensure that list separator is None
     assert not any(marker), str(marker)
