@@ -16,6 +16,10 @@ import utila
 
 
 def parse_single(content: str):
+    r"""\
+    >>> parse_single('+ list item\n+ next item\n+\n') # skip last plus sign
+    ['list item', 'next item']
+    """
     for method in [
             parse_numbered_list,
             parse_quardo_list,
@@ -124,6 +128,12 @@ def parse_general_list(content: str, selector: str) -> utila.Strings:
         text = item['TEXT'].split('\n\n')
         text = text[0]
         text = text.strip()
+        if not text:
+            # newlines where parsed as content. If we ignore newlines in
+            # regex, it is not possible to parse multiple lists items.
+            # Therefore we strip the result and check if result does
+            # contain any content.
+            continue
         result.append(text)
     return result
 
