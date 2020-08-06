@@ -55,7 +55,7 @@ def parse_quardo_list(content: str) -> utila.Strings:
 
 
 def parse_dotted_list(content: str) -> utila.Strings:
-    return parse_general_list(content, '•')
+    return parse_general_list(content, ['•', '\x88'])
 
 
 def parse_plus_list(content: str) -> utila.Strings:
@@ -110,10 +110,15 @@ def parse_numbered_list(content: str) -> list:
 
 
 def parse_general_list(content: str, selector: str) -> utila.Strings:
+    r"""\
+    >>> parse_general_list('\x88 Humus\n\x88 Bread', ['•', '\x88'])
+    ['Humus', 'Bread']
+    """
     assert isinstance(content, str), type(content)
-
+    if isinstance(selector, list):
+        # join multiple selector
+        selector = '(' + '|'.join(selector) + ')'
     pattern = GENERAL.format(selector=selector)
-
     # Workaround: Adding newline to content. The regex does not work, if the
     # content ends with a newline. TODO: Improve regex
     content = content + utila.NEWLINE
