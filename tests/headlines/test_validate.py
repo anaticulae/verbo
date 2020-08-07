@@ -49,7 +49,7 @@ MASTER98_HEADLINES = """\
     pytest.param(power.MASTER098_PDF, MASTER98_HEADLINES, id='master98'),
 ])
 def test_headlines_validate(source, expected, testdir, monkeypatch):
-    source = power.link(power.MASTER098_PDF)
+    source = power.link(source)
     tests.run(f'-i {source} --headlines', monkeypatch=monkeypatch)
 
     headlines = words.path.headlines(testdir.tmpdir)
