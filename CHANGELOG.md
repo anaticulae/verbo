@@ -2,6 +2,19 @@
 
 Every noteable change is logged here.
 
+## v0.14.0
+
+### Feature
+
+* improve headline parser quality (b1c2cceb4898)
+* extend dotted list parser pattern (29131b0bf20b)
+* add alignment to describe block end (a1314bb6656d)
+
+### Fix
+
+* do not parse newline as list content (ebc116102e8c)
+* fix alignment loader (7efd5be62d25)
+
 ## v0.13.6
 
 ## v0.13.5
