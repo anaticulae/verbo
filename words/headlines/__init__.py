@@ -467,6 +467,7 @@ def numbered_level(raw: str) -> int:
     >>> numbered_level('2..1... Fehlerfrei') # ignore typos
     2
     """
+    # TODO: REPLACE WITH GROUPME CODE
     # TODO: MOVE TESTS?
     raw = raw.strip()
     if not raw:
