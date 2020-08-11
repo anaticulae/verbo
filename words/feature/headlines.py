@@ -37,6 +37,7 @@ import serializeraw
 import utila
 
 import words.headlines
+import words.headlines.levelfour
 import words.headlines.multiline
 import words.headlines.nolevel
 import words.headlines.standard
@@ -68,9 +69,45 @@ def work(
         pages=pages,
     )
     extracted = judge_result(results)
+
+    textnavigators = serializeraw.create_pagetextcontentnavigators_fromfile(
+        text=text,
+        textpositions=text_position,
+        sizeandborderpath=sizeandborder,
+        headerfooterpath=headerfooters,
+        fontheader=font_header,
+        fontcontent=font_content,
+        pages=pages,
+    )
+    levelfour_ = words.headlines.levelfour.headlines(textnavigators)
+    if levelfour_:
+        extracted = merge_levelfour(extracted, levelfour_)
     # dump
     dumped = serializeraw.dump_headlines(extracted)
     return dumped
+
+
+def merge_levelfour(extracted, levelfour):
+    result = [item[:] for item in extracted]
+    levelfour = levelfour[:]
+
+    def insert(current, result):
+        for chapter in result:
+            for index, item in enumerate(chapter):
+                start = item.container
+                if isinstance(start, tuple):
+                    start = start[0]
+                if current.page > item.page:
+                    continue
+                if current.page == item.page and current.container > start:
+                    continue
+                chapter.insert(index, current)
+                return
+
+    while levelfour:
+        current = levelfour.pop()
+        insert(current, result)
+    return result
 
 
 def extract_headlines(
