@@ -158,10 +158,10 @@ def test_headlines_validate(source, expected, testdir, monkeypatch):
 def raw_headlines(parsed) -> str:
     collected = []
     for chapter in parsed:
-        if chapter:
-            collected.append(chapter[0].text)
-        else:
-            collected.append('None')
-        for headline in chapter[1:]:
-            collected.append('    ' + headline.text)
+        for headline in chapter:
+            if headline.level is None:
+                intent = ''
+            else:
+                intent = (headline.level - 1) * '    '
+            collected.append(intent + headline.text)
     return utila.NEWLINE.join(collected)
