@@ -21,6 +21,8 @@ import utila
 
 HEADLINES_COUNT_MIN = configo.HV_INT_PLUS(5).value
 
+MAX_LEVELFOUR_PER_PAGE = configo.HV_INT_PLUS(4).value
+
 
 def headlines(ptns):
     # TODO: MOVE TO DOCTEXTSTYLE?
@@ -69,7 +71,21 @@ def headlines(ptns):
         )
         result.append(headline)
     result = sorted(result, key=operator.attrgetter('page', 'container'))
+    if tomany_headlines_perpage(result):
+        # disable feature if too many items detected
+        return []
     return result
+
+
+def tomany_headlines_perpage(result: list) -> bool:
+    pages = sorted([item.page for item in result])
+    if not pages:
+        return False
+    pages = utila.groupby_diff(pages, diff=0)
+    maxpage = len(utila.longest(pages, number=1))
+    if maxpage > MAX_LEVELFOUR_PER_PAGE:
+        return True
+    return False
 
 
 # TODO: DIRTY BUT WORKS
