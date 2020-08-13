@@ -139,10 +139,70 @@ BACHELOR90_HEADLINES = """\
             Player - Ubuntu
 Literaturverzeichnis"""
 
+DISS264_HEADLINES = """\
+1 Einleitung
+    1.1 Problembeschreibung
+    1.2 Entwicklungs- und Handlungsansätze aus BMBF geförderten Projekten
+    1.3 Zielsetzung und Kernfragen
+    1.4 Aufbau der Arbeit
+2 Demographischer Wandel in der Arbeitswelt
+    2.1 Geschichtlicher Hintergrund der Demographie
+    2.2 Begriffliche Grundlagen
+        2.2.1 Demographie
+        2.2.2 Alter und seine Abgrenzungskriterien
+        2.2.3 Betriebliche Personalpolitik
+        2.2.4 Arbeitsmarktpolitik
+    2.3 Hauptelemente der demographischen Entwicklung
+        2.3.1 Lebenserwartung
+        2.3.2 Geburtenentwicklung
+        2.3.3 Migration
+        2.3.4 Entwicklung der Bevölkerungszahlen innerhalb der Bundesrepublik Deutschland und Zusammensetzung der Altersstruktur
+            2.3.4.1 Bevölkerungsentwicklung insgesamt
+            2.3.4.2 Bevölkerung im erwerbsfähigen Alter
+            2.3.4.3 Altenquotient als Indikator der Alterung
+    2.4 Theoretische Erklärungsansätze
+        2.4.1 Psychologische Erklärungsansätze
+        2.4.2 Erklärungsansätze aus der Arbeitsmarkttheorie
+        2.4.3 Industriesoziologische Erklärungsansätze
+        2.4.4 Erklärungsansätze aus der „Sozialpolitikwissenschaft“
+    2.5 Auswirkungen des demographischen Wandels auf die Arbeitswelt und die gesetzliche Rentenversicherung
+        2.5.1 Erwerbsbeteiligung und Arbeitslosigkeit älterer Arbeitnehmer
+        2.5.2 Entwicklung der Renten nach Rentenarten
+    2.6 Zusammenfassung und Schlussfolgerung
+3 Gesetzliche Rahmenbedingungen und arbeitsmarktpolitische Maßnahmen
+    3.1 Konsequenzen der demographischen Entwicklung für die gesetzliche Rentenversicherung
+            Anhebung des Rentenzugangsalters
+            Beitragserhöhung oder Rentenniveausenkung
+    3.2 Veränderte rechtliche Rahmenbedingungen auf dem Arbeitsmarkt und in den sozialen Sicherungssystemen
+            Regelungen der Altersteilzeitarbeit und Altersrente wegen Arbeitslosigkeit
+            Erleichterte Befristung von Arbeitsverhältnissen mit älteren Arbeitnehmern
+            Förderung der Weiterbildung für Arbeitnehmer ab 50 Jahre
+            Entgeltsicherung für ältere Arbeitnehmer
+            Befreiung des Arbeitgebers von Beiträgen zur Arbeitslosenversicherung
+    3.3 Regionale arbeitsmarktpolitische Programme und Maßnahmen
+        3.3.1 Bundesprogramm „Perspektive 50plus“
+        3.3.2 Programme aus dem Bayerischen Arbeitsmarktfonds
+        3.3.3 Arbeitsmarktpolitisches Programm in Thüringen „50-plus“
+        3.3.4 Kampagne „Zeitarbeit mit 50 plus“ in Nordrhein-Westfalen
+    3.4 Bildungsmaßnahmen zur Sicherung der Beschäftigungsfähigkeit und Verbesserung der Wiedereingliederungschancen älterer Arbeitnehmer
+    3.5 Maßnahmen zur alterns- und altersgerechten Erwerbsarbeit von überbetrieblichen Akteuren
+    3.6 Zusammenfassung und Schlussfolgerung
+4 Ältere Arbeitnehmer in Unternehmen – Chancen, Risiken und Modelle
+    4.1 Neuorientierung der betrieblichen Personalpolitik
+        4.1.1 Alternsgerechte Arbeitsgestaltung
+        4.1.2 Betriebliche Gesundheitsförderung
+        4.1.3 Weiterbildung und lebensbegleitendes Lernen"""
+
 
 @pytest.mark.parametrize('source, expected', [
     pytest.param(power.MASTER098_PDF, MASTER98_HEADLINES, id='master98'),
     pytest.param(power.BACHELOR090_PDF, BACHELOR90_HEADLINES, id='bachelor90'),
+    pytest.param(
+        power.DISS264_PDF,
+        DISS264_HEADLINES,
+        id='diss264',
+        marks=pytest.mark.xfail,
+    ),
 ])
 def test_headlines_validate(source, expected, testdir, monkeypatch):
     source = power.link(source)
