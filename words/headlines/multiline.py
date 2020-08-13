@@ -7,6 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import statistics
+
 import configo
 import german
 import iamraw
@@ -67,23 +69,24 @@ class MultiLine(words.headlines.HeadlineExtractorStrategy):
                 text = text.strip()
                 if text not in words.headlines.WHITELIST:
                     continue
-            if issentence(text):
-                # ignore extracted lists which are interpreted as headlines
-                continue
             text = utila.normalize_whitespaces(text)
             # TODO: REPLACE WITH LEVEL DETERMINER
+            # with contextlib.suppress(TypeError):
+            #     text = parsed['text'].strip()  # TODO: REMOVE STRIP LATER
             try:
                 rawlevel = parsed['level'].strip()  # TODO: REMOVE STRIP LATER
             except TypeError:
                 rawlevel = text
             level = words.headlines.numbered_level(rawlevel)
+            if level is False:
+                continue
+            if noheadline(text):
+                continue
+
             if len(items) == 1:  # TODO: CHECK THIS
                 container = items.firstid
             else:
                 container = (items.firstid, items.firstid + len(items) - 1)
-            # if parsed:
-            # TODO: ENABLE LATER?
-            #     text = parsed['text']
             headline = iamraw.Headline(
                 container=container,
                 level=level,
@@ -93,6 +96,22 @@ class MultiLine(words.headlines.HeadlineExtractorStrategy):
             )
             result.append(headline)
         return result
+
+
+def noheadline(text: str) -> bool:
+    text = text.strip()
+    if not text:
+        return True
+    if issentence(text):
+        # ignore extracted lists which are interpreted as headlines
+        return True
+    if text.count('.') > 5:
+        return True
+    wordslength = [len(word) for word in text.split()]
+    mean_words_length = statistics.mean(wordslength)
+    if mean_words_length <= 3.0:
+        return True
+    return False
 
 
 def possible_headline_group(items) -> bool:
