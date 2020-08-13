@@ -403,10 +403,10 @@ def determine_contentrange(items) -> ChapterRanges:
     if not chapters:
         # TODO: INVESTIGATE HERE
         return []
-
     result = items_before_firstchapter(chapters, contents)
     for current, after in zip(chapters[:-1], chapters[1:]):
-        if current.end == after.start:
+        floatrange = isinstance(current.end, float) or isinstance(after.start, float) # yapf:disable
+        if current.end == after.start and floatrange:
             # multi page: content on same page
             result.append((current.start, current.end))
         else:
