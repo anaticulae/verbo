@@ -466,6 +466,8 @@ def numbered_level(raw: str) -> int:
     2
     >>> numbered_level('2..1... Fehlerfrei') # ignore typos
     2
+    >>> numbered_level('2020 This is not a headline level')
+    False
     """
     # TODO: REPLACE WITH GROUPME CODE
     # TODO: MOVE TESTS?
@@ -474,7 +476,12 @@ def numbered_level(raw: str) -> int:
         return None
     raw = raw.split()[0]
     if not '.' in raw:
-        return 1 if raw.isnumeric() else None
+        if raw.isnumeric():
+            rawlevel = int(raw)
+            if rawlevel > 30:  # TODO: HOLY VALUE
+                return False
+            return 1
+        return None
     # 2.1.3
     splitted = [item for item in raw.split('.') if item]
     return len(splitted)
