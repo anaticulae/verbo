@@ -40,16 +40,17 @@ def restructured_sections():
 
 def restructured_headlines():
     sections_ = restructured_sections()
+    source = power.link(power.DOCU27_PDF)
 
     dumped = words.feature.headlines.work(
         sectionlist=sections_,
-        text=iamraw.path.text(power.link(power.DOCU27_PDF)),
-        text_position=iamraw.path.textposition(power.link(power.DOCU27_PDF)),
-        font_header=iamraw.path.fontheader(power.link(power.DOCU27_PDF)),
-        font_content=iamraw.path.fontcontent(power.link(power.DOCU27_PDF)),
-        sizeandborder=iamraw.path.sizeandborder(power.link(power.DOCU27_PDF)),
-        boxes=iamraw.path.boxed(power.link(power.DOCU27_PDF)),
-        headerfooters=iamraw.path.headerfooters(power.link(power.DOCU27_PDF)),
+        text=iamraw.path.text(source),
+        text_position=iamraw.path.textposition(source),
+        font_header=iamraw.path.fontheader(source),
+        font_content=iamraw.path.fontcontent(source),
+        sizeandborder=iamraw.path.sizeandborder(source),
+        boxes=iamraw.path.boxed(source),
+        headerfooters=iamraw.path.headerfooters(source),
     )
     return dumped
 
