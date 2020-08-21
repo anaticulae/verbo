@@ -19,6 +19,15 @@ def headlines(path: str, prefix: str = '') -> str:
     )
 
 
+def oneline_headlines(path: str, prefix: str = '') -> str:
+    return utila.pathconnector(
+        path,
+        'words',
+        'headlines_oneline',
+        prefix,
+    )
+
+
 def text(path: str, prefix: str = '') -> str:
     return utila.pathconnector(path, 'words', 'text_text', prefix)
 
