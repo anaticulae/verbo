@@ -82,16 +82,20 @@ def test_headlines_extract_headlines():
 
 def test_headlines_work():
     sections_ = tests.fixtures.restruct.restructured_sections()
-    docu27 = power.link(power.DOCU27_PDF)
-    dumped = words.feature.headlines.work(
-        boxes=iamraw.path.boxed(docu27),
-        font_content=iamraw.path.fontcontent(docu27),
-        font_header=iamraw.path.fontheader(docu27),
-        headerfooters=iamraw.path.headerfooters(docu27),
+    src = power.link(power.DOCU27_PDF)
+    dumped, _ = words.feature.headlines.work(
+        text=iamraw.path.text(src),
+        text_position=iamraw.path.textposition(src),
+        font_content=iamraw.path.fontcontent(src),
+        font_header=iamraw.path.fontheader(src),
+        oneline_text=iamraw.path.text(src, prefix='oneline'),
+        oneline_text_position=iamraw.path.textposition(src, prefix='oneline'),
+        oneline_font_content=iamraw.path.fontcontent(src, prefix='oneline'),
+        oneline_font_header=iamraw.path.fontheader(src, prefix='oneline'),
+        boxes=iamraw.path.boxed(src),
+        headerfooters=iamraw.path.headerfooters(src),
         sectionlist=sections_,
-        sizeandborder=iamraw.path.sizeandborder(docu27),
-        text=iamraw.path.text(docu27),
-        text_position=iamraw.path.textposition(docu27),
+        sizeandborder=iamraw.path.sizeandborder(src),
     )
     # dump some headlines
     assert len(dumped) > 1740, str(dumped)

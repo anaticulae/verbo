@@ -109,7 +109,7 @@ def rawresult(request, tmpdir):
         os.makedirs(item)
 
     pdf, toccmd, generalcmd = request.param
-    rawtoc = f'rawmaker -i {pdf} -j=8 --images! --pages=0:10 -o {tocpath} --prefix=oneline {toccmd}'
+    rawtoc = f'rawmaker -i {pdf} -j=8 --images! --pages=0:60 -o {tocpath} --prefix=oneline {toccmd}'
     rawgeneral = f'rawmaker -i {pdf} -j=8 --images! --pages=0:60 -o {generalpath} {generalcmd}'
     linero = f'linero -o {generalpath}'
 
@@ -162,7 +162,7 @@ def words_result(sections_result):  # pylint:disable=W0621
     wordspath = os.path.join(tmpdir, 'words')
     os.makedirs(wordspath)
 
-    runme = f'words -i {generalpath} -i {sectionspath} -i {groupmepath} -o {wordspath} -j=8'
+    runme = f'words -i {generalpath} -i {tocpath} -i {sectionspath} -i {groupmepath} -o {wordspath} -j=8'
     utila.log(runme)
     utila.run(runme)
 
