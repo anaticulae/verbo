@@ -30,6 +30,7 @@ headline.
 """
 
 import collections
+import typing
 
 import iamraw.path
 import sections.path
@@ -46,17 +47,21 @@ PageContentBoxed = collections.namedtuple('PageContentBoxed', 'page content')
 
 
 @utila.checkdatatype
-def work(
+def work(  # pylint:disable=R0913,R0914
         sectionlist: str,
         text: str,
         text_position: str,
         font_header: str,
         font_content: str,
+        oneline_text: str,
+        oneline_text_position: str,
+        oneline_font_header: str,
+        oneline_font_content: str,
         sizeandborder: str,
         boxes: str,  # pylint:disable=W0613
         headerfooters: str,
         pages: tuple = None,
-) -> str:
+) -> typing.Tuple[str, str]:
     """Extract headlines out of data."""
     results = extract_headlines(
         sectionlist,
@@ -69,6 +74,18 @@ def work(
         pages=pages,
     )
     extracted = judge_result(results)
+
+    oneline_results = extract_headlines(
+        sectionlist,
+        oneline_text,
+        oneline_text_position,
+        oneline_font_header,
+        oneline_font_content,
+        sizeandborder,
+        headerfooters,
+        pages=pages,
+    )
+    oneline_extracted = judge_result(oneline_results)
 
     textnavigators = serializeraw.create_pagetextcontentnavigators_fromfile(
         text=text,
@@ -84,7 +101,8 @@ def work(
         extracted = merge_levelfour(extracted, levelfour_)
     # dump
     dumped = serializeraw.dump_headlines(extracted)
-    return dumped
+    oneline_dumped = serializeraw.dump_headlines(oneline_extracted)
+    return dumped, oneline_dumped
 
 
 def merge_levelfour(extracted, levelfour):
