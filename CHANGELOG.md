@@ -2,6 +2,23 @@
 
 Every noteable change is logged here.
 
+## v0.15.0
+
+### Feature
+
+* extract headlines based on oneline layout data (4212c6976ce6)
+* make multiline headline parser more robust (c54a998cb12b)
+* disable headline level for useless input (7fa3dc87d616)
+* add guard to disable feature (5ff31f61b5ef)
+* merge level four headlines to normal extraction (f037e70af74e)
+* add first draft of level 4 headline parser (d663dfd3ac00)
+
+### Fix
+
+* adjust headlines section range (921e23051caa)
+* adjust headline validation test (756be01b41fd)
+* determine `level + text` correctly (746fd30ce9f4)
+
 ## v0.14.0
 
 ### Feature
