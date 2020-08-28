@@ -74,7 +74,13 @@ Geschäftsmodellen mit Hilfe von Informations - und Kommunikationstechnologien \
 zur Reduktion von Schnittstellen , zur funktionsübergreifenden Vernetzung und\
  zur Erhöhung der Effektivität und Effizienz ”
 
-„ Industrie 4.0 ”"""
+„ Industrie 4.0 ”
+
+„ digitale Revolution ”
+
+„ Cyber - Physischen Systemen ”
+
+„ In - dustrie 4.0 ”"""
 
 
 def test_textflow_validate_quotation_bachelor76_page4_10(testdir, monkeypatch):
