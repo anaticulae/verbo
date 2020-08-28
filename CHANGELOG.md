@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v0.15.1
+
+### Feature
+
+* disable headlines which hugely differ from level 1-3 (0d7c5911c3da)
+* extend path location (60458574f475)
+
 ## v0.15.0
 
 ### Feature
