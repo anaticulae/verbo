@@ -97,7 +97,8 @@ def work(  # pylint:disable=R0913,R0914
         pages=pages,
     )
     levelfour_ = words.headlines.levelfour.headlines(textnavigators)
-    if levelfour_:
+    valid = words.headlines.levelfour.valid_levelfour(extracted, levelfour_)
+    if levelfour_ and valid:
         extracted = merge_levelfour(extracted, levelfour_)
     # dump
     dumped = serializeraw.dump_headlines(extracted)

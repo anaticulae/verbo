@@ -8,6 +8,7 @@
 # =============================================================================
 
 import operator
+import statistics
 
 import configo
 import doctextstyle.cluster
@@ -86,6 +87,32 @@ def tomany_headlines_perpage(result: list) -> bool:
     if maxpage > MAX_LEVELFOUR_PER_PAGE:
         return True
     return False
+
+
+MIN_LEVELFOUR_WORD_COUNT_DIFF = configo.HV_FLOAT_PLUS(0.7).value
+MAX_LEVELFOUR_WORD_COUNT_DIFF = configo.HV_FLOAT_PLUS(1.3).value
+
+
+def valid_levelfour(extracted, levelfour) -> bool:
+    """Disable potential levelfour headlines which seem out of range by
+    word count."""
+    if not extracted:
+        return False
+    if not levelfour:
+        return False
+
+    extracted = utila.flatten(extracted)
+    # -1, remove level: [level] [text]
+    headline_words = (len(headline.text.split()) - 1 for headline in extracted)
+    levelfour_words = (len(headline.text.split()) for headline in levelfour)
+
+    mean = statistics.mean(headline_words)
+    mean_levelfour = statistics.mean(levelfour_words)
+
+    # valid range
+    lower_bound = mean * MIN_LEVELFOUR_WORD_COUNT_DIFF
+    upper_bound = mean * MAX_LEVELFOUR_WORD_COUNT_DIFF
+    return lower_bound <= mean_levelfour <= upper_bound
 
 
 # TODO: DIRTY BUT WORKS
