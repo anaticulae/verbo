@@ -89,17 +89,19 @@ def split(ptcns, offset=0):  # pylint:disable=W0613
     return grouped
 
 
-def merge(items):
-    if not items:
+def merge(navigators: texmex.PageTextNavigators) -> texmex.PageTextNavigator:
+    """Merge more than one pagenavigators to a single huge navigator to
+    detect multi page lists."""
+    if not navigators:
         return None
-    if items[0]:
-        header = items[0][0].bounding[1]  # y0
+    if navigators[0]:
+        header = navigators[0][0].bounding[1]  # y0
     else:
         # starts on empty page without any content and no header
         header = 0
     y0 = header
     result = []
-    for page in items:
+    for page in navigators:
         offset = y0 - header
         for item in page:
             # avoid side effects to other content
@@ -112,7 +114,7 @@ def merge(items):
 
     navigator = texmex.PageTextNavigator()
     navigator.data = result
-    navigator.page = items[0].page
+    navigator.page = navigators[0].page
     return navigator
 
 
