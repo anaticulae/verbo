@@ -91,11 +91,14 @@ def split(ptcns, offset=0):  # pylint:disable=W0613
 
 def merge(items):
     if not items:
-        return []
-    result = []
-
-    header = items[0][0].bounding[1]  # y0
+        return None
+    if items[0]:
+        header = items[0][0].bounding[1]  # y0
+    else:
+        # starts on empty page without any content and no header
+        header = 0
     y0 = header
+    result = []
     for page in items:
         offset = y0 - header
         for item in page:
