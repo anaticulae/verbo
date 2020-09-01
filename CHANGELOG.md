@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.15.2
+
+### Fix
+
+* fix bug of merging on empty page start (83b2ec7a6e1a)
+
 ## v0.15.1
 
 ### Feature
