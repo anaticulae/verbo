@@ -9,7 +9,7 @@
 
 utila==2.8.0
 iamraw==2.4.2
-sections==0.9.4
+sections==0.9.5
 hey==4.0.1
 
 # split sentences and determine language of written sentence
