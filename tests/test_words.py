@@ -8,6 +8,7 @@
 # =============================================================================
 
 import serializeraw
+import utilatest
 
 import words.feature.word
 from tests.fixtures.restruct import restructured_boxed
@@ -43,6 +44,7 @@ def restructured_words():
     return result
 
 
+@utilatest.skip_longrun
 def test_dump_and_load_words_result():
     word_ = restructured_words()
     headlines = restructured_headlines()

@@ -11,6 +11,7 @@ import power
 import pytest
 import serializeraw
 import utila
+import utilatest
 
 import tests
 import words.path
@@ -204,6 +205,7 @@ DISS264_HEADLINES = """\
         marks=pytest.mark.xfail,
     ),
 ])
+@utilatest.skip_longrun
 def test_headlines_validate(source, expected, testdir, monkeypatch):
     source = power.link(source)
     tests.run(f'-i {source} --headlines', monkeypatch=monkeypatch)

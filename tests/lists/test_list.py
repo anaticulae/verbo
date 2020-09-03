@@ -11,6 +11,7 @@ import iamraw
 import power
 import serializeraw
 import utila
+import utilatest
 
 import tests.fixtures.restruct
 import words.lists.regex
@@ -227,6 +228,7 @@ def test_list_bachelor76_page5_10(testdir, monkeypatch):
     assert len(lists) == 1
 
 
+@utilatest.skip_longrun
 def test_list_master72_page9_10(testdir, monkeypatch):
     pages = (9, 10)
     source = power.link(power.MASTER072_PDF)
@@ -250,6 +252,7 @@ def test_list_master72_page39_one_list(testdir):
     assert len(listinstance[0]) == 2
 
 
+@utilatest.skip_longrun
 def test_list_master72_page39_40_41(testdir, monkeypatch):
     pages = (39, 40, 41, 42)
     source = power.link(power.MASTER072_PDF)

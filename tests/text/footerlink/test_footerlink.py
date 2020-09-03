@@ -7,10 +7,13 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import utilatest
+
 import tests.fixtures.master72.seventytwo as fseventytwo
 import words.feature.footerlink
 
 
+@utilatest.skip_longrun
 def test_footerlink_extract_highnotes():
     required = fseventytwo.textrequired(pages=(3,))
     extracted = words.feature.footerlink.extract_highnotes(required)

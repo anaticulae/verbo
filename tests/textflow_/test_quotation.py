@@ -9,6 +9,7 @@
 
 import power
 import utila
+import utilatest
 
 import tests
 import tests.textflow_
@@ -29,6 +30,7 @@ def extract_quotation(source, pages, testdir, monkeypatch):
     return extracted
 
 
+@utilatest.skip_longrun
 def test_textflow_quotation_master72_pages10_20(testdir, monkeypatch):
     pages = '--pages=10:21'
     source = power.link(power.MASTER072_PDF)
@@ -83,6 +85,7 @@ zur Reduktion von Schnittstellen , zur funktionsübergreifenden Vernetzung und\
 „ In - dustrie 4.0 ”"""
 
 
+@utilatest.skip_longrun
 def test_textflow_validate_quotation_bachelor76_page4_10(testdir, monkeypatch):
     quotations = extract_quotations(
         power.BACHELOR076_PDF,

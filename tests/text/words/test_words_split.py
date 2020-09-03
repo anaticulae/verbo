@@ -7,6 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import utilatest
+
 import tests.fixtures.master72.seventytwo as fseventytwo
 import words.text.chapter
 import words.text.sentence
@@ -20,6 +22,7 @@ MASTER72_EXPECTED = {
 }
 
 
+@utilatest.skip_longrun
 def test_validate_words_split_master72():
     pages = tuple(MASTER72_EXPECTED.keys())
     required = fseventytwo.textrequired(pages=pages)
