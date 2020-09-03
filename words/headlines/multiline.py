@@ -59,6 +59,8 @@ class MultiLine(words.headlines.HeadlineExtractorStrategy):
         result = []
         grouped = texmex.group_page_by_size_distance(pagecontent)
         for items in grouped:
+            if wrong_position(items):
+                continue
             if not possible_headline_group(items):
                 continue
             # TODO: REMOVE LATER
@@ -132,3 +134,16 @@ def issentence(line: str):
     # TODO: IMPROVE THIS
     # TODO: USE BIG FIVE FEATURES
     return line.strip().endswith('.')
+
+
+def wrong_position(
+        items,
+        max_x0: float = 200.0,  # HOLY VALUE
+):
+    """We assume that headlines start on the left side of the document.
+    This should skip false possitive headline extraction.
+
+    TODO: RUN SECOND EXTRACTION WITHOUT LEFTSTARTED AND COMPARE TO
+    SUPPORT RIGHT ALIGNED HEADLINES?
+    """
+    return items.bounding[0] >= max_x0
