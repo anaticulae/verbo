@@ -47,6 +47,7 @@ def group_page_by_size_distance(content: texmex.PageTextNavigator):
     result = []
     for group in grouped:
         groupcontent = [content[index] for index in group]
+        groupcontent = merge_group(groupcontent)
         # TODO: make container more pythonic
         size = groupcontent[0].style.content[0].size
         firstid = group[0]
@@ -58,6 +59,24 @@ def group_page_by_size_distance(content: texmex.PageTextNavigator):
                 size=size,
                 text=groupcontent,
             ))
+    return result
+
+
+def merge_group(items):
+    if not items:
+        return items
+    result = [items[0]]
+    for item in items[1:]:
+        before = result[-1]
+        ynear = utila.near(item.bounding[3], before.bounding[3], diff=5.0)
+        xnear = utila.near(item.bounding[0], before.bounding[2], diff=1.0)
+        if ynear and xnear:
+            # merge before
+            before.text = before.text.strip() + item.text
+            before.bounding[2] = item.bounding[2]
+            before.style.content.extend(item.style.content)
+        else:
+            result.append(item)
     return result
 
 
