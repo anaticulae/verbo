@@ -45,7 +45,7 @@ class MultiLine(words.headlines.HeadlineExtractorStrategy):
     def smallest_textsize(self):
         return utila.roundme(self.textsize)
 
-    def extract_page(
+    def extract_page(  # pylint:disable=R1260
             self,
             pagecontent: texmex.PageTextNavigator,
     ) -> iamraw.Headlines:
@@ -116,6 +116,20 @@ def noheadline(text: str) -> bool:
     return False
 
 
+HEADLINE_MEDIAN = configo.HolyTable(  # TODO: HOLY VALUE
+    left_outranges_none=False,
+    right_outranges_none=False,
+)
+# TODO: REPLACE AFTER UPGRADING CONFIGO
+# HEADLINE_MEDIAN.add(10, 55)
+# FONTSIZE; MINIMAL MEDIAN CHAR LENGTH
+HEADLINE_MEDIAN.add(10, 40)
+HEADLINE_MEDIAN.add(12, 35)
+HEADLINE_MEDIAN.add(14, 30)
+HEADLINE_MEDIAN.add(16, 26)
+HEADLINE_MEDIAN.add(22, 16)
+
+
 def possible_headline_group(items) -> bool:
     text = ' '.join([item.text for item in items])
     words_ = german.split_words(text, validate_sentences=False)
@@ -127,6 +141,15 @@ def possible_headline_group(items) -> bool:
     if number_count >= MAX_NUMBERS_IN_HEADLINE:  # TODO: HOLY VALUE
         # assume that headlines does not contain many numbers
         return False
+
+    if len(items) >= 2:  # multiline
+        # In general, multiline headlines fill the whole line. If this
+        # does not happen, it is other content which is false positive
+        # parsed as headline.
+        line_length = [len(item.text) for item in items.text]
+        median = statistics.median(line_length)
+        if median <= HEADLINE_MEDIAN(items.size):
+            return False
     return True
 
 
