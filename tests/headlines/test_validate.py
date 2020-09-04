@@ -194,6 +194,40 @@ DISS264_HEADLINES = """\
         4.1.2 Betriebliche Gesundheitsförderung
         4.1.3 Weiterbildung und lebensbegleitendes Lernen"""
 
+BACHELOR63_HEADLINES = """\
+1 Einleitung
+2 Grundlagen
+    2.1 Blutdruck
+    2.2 Ultraschall-Doppler-Blutflussmessung
+    2.3 Digitale Regelung
+    2.4 Programmiersprache LabVIEW
+    2.5 Valsalva-Press-Versuch
+3 Aufgabenstellung
+    3.1 Bestehender Versuchsaufbau
+    3.2 Anforderungen an den neuen Versuchsaufbau
+4 Material und Methoden
+    4.3 Erstellung einer Bedienoberfläche
+    4.4 Überarbeitung der Sondenfixierung
+5 Ergebnisse
+    5.1 Optimierter Versuchsaufbau
+    5.2 Testmessungen
+6 Diskussion und Ausblick
+7 Anhang
+    7.1 Programmstruktur
+        7.1.1 Hauptprogramm
+        7.1.2 Sub-VI „Messprogramm“
+    7.2 Hardwareaufbau
+        7.2.1 Schalt- und Anschlusspläne
+            7.2.1.1 Schaltplan Verteilerplatine
+            7.2.1.4 Pneumatikplan Druckerzeugungseinheit Quelle: Diplomarbeit Thomas Eberhard [Ebe96]
+        7.2.2 Zeichnungen
+            7.2.2.1 Frontplatte
+    7.3 Sondenfixierung
+        7.3.1 Zeichnung Befestigungsblock
+    7.4 Testmessungen
+        7.4.1 Messprotokoll
+Literaturverzeichnis"""
+
 
 @pytest.mark.parametrize('source, expected', [
     pytest.param(power.MASTER098_PDF, MASTER98_HEADLINES, id='master98'),
@@ -204,6 +238,7 @@ DISS264_HEADLINES = """\
         id='diss264',
         marks=pytest.mark.xfail,
     ),
+    pytest.param(power.BACHELOR063_PDF, BACHELOR63_HEADLINES, id='bachelor63'),
 ])
 @utilatest.skip_longrun
 def test_headlines_validate(source, expected, testdir, monkeypatch):
