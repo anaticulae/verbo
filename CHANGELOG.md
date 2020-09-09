@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.16.2
+
+### Fix
+
+* add missing page attribute (0151fc591d5b)
+
 ## v0.16.1
 
 ### Documentation
