@@ -153,7 +153,6 @@ def extract_lists(  # pylint:disable=R0914
     Numbered... 1.2.3, I. II. III., + + +, - - -, * * *.
     """
     # TODO: MAX_Y_MERGE IS VERY INSTABLE
-    # assert hey.textnavigator.is_navigator(page), type(page)
 
     page, merged = texmex.merge_content(
         page,

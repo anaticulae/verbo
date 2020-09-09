@@ -57,7 +57,7 @@ def work(
         textposition(str): path to textposition matching with text-extraction
         fontheader(str): table with all fonts in document
         fontcontent(str): font definition for every word
-        headlines(str): path to extracted headlines from hey/words
+        headlines(str): path to extracted headlines from words
         pagesizes(str): path to size and border
         boxes(str): definition of boxed rectangles
         lists(str): definition of lists path
