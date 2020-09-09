@@ -2,6 +2,15 @@
 
 Every noteable change is logged here.
 
+## v0.16.0
+
+### Feature
+
+* merge group horizontal to fix layout extraction bugs (7a9c97607cb8)
+* add patch to alter MultilineGroup behavior (c462e5a37b65)
+* ignore false positive headlines with short content (191340ef70a4)
+* ignore no headlines which start on right side (ff3ba6c62c6f)
+
 ## v0.15.3
 
 ## v0.15.2
