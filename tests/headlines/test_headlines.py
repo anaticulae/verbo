@@ -24,41 +24,46 @@ import words.loader.basic
 EXPECTED = [
     [
         iamraw.Headline(
-            title='RestructuredText Tutorial',
-            level=1,
-            raw_level=None,
             container=1,
+            level=1,
             page=6,
+            raw='RestructuredText Tutorial',
+            raw_level=None,
+            title='RestructuredText Tutorial',
         ),
     ],
     [
         iamraw.Headline(
-            title='RestructuredText Guide',
+            container=1,
             level=1,
-            raw_level=None,
-            container=1,
             page=8,
+            raw='RestructuredText Guide',
+            raw_level=None,
+            title='RestructuredText Guide',
         ),
         iamraw.Headline(
-            title='Basics',
-            level=2,
-            raw_level=None,
             container=2,
+            level=2,
             page=8,
+            raw='Basics',
+            raw_level=None,
+            title='Basics',
         ),
         iamraw.Headline(
-            title='Blockquotes',
-            level=2,
-            raw_level=None,
             container=1,
+            level=2,
             page=9,
+            raw='Blockquotes',
+            raw_level=None,
+            title='Blockquotes',
         ),
         iamraw.Headline(
-            title='Code: Block',
-            level=2,
-            raw_level=None,
             container=17,
+            level=2,
             page=9,
+            raw='Code: Block',
+            raw_level=None,
+            title='Code: Block',
         ),
     ],
 ]
@@ -113,23 +118,22 @@ def test_headlines_dump_and_load_headlines():
 def test_features_headlines_work_master72pages_headlines():
     master72 = power.link(power.MASTER072_PDF)
     headlines = words.feature.headlines.headlines_frompath(master72)
-
     expected_headlines = [
-        '1. Einleitung',
-        ('2. Das Social Web und die Privatsphäre – '
-         'Selbstdarstellungsverhalten der Nutzer aus Sicht von '
-         'Massenmedien und Literatur'),
-        ('3. Systemtheorie und moderne Netzwerksoziologie – '
-         'zentrale Ansätze und Begriffe für den Themen- '
-         'komplex Social Media'),
-        ('4. Privatheit und Identitätsbildung im Social Web – '
-         'funktional betrachtet'),
-        '5. Schlussbetrachtung und Fazit',
-        'Literaturverzeichnis',
-        'Eidesstattliche Erklärung',
+        ('1.', 'Einleitung'),
+        ('2.', ('Das Social Web und die Privatsphäre – '
+                'Selbstdarstellungsverhalten der Nutzer aus Sicht von '
+                'Massenmedien und Literatur')),
+        ('3.', ('Systemtheorie und moderne Netzwerksoziologie – '
+                'zentrale Ansätze und Begriffe für den Themen- '
+                'komplex Social Media')),
+        ('4.', ('Privatheit und Identitätsbildung im Social Web – '
+                'funktional betrachtet')),
+        ('5.', 'Schlussbetrachtung und Fazit'),
+        ('', 'Literaturverzeichnis'),
+        ('', 'Eidesstattliche Erklärung'),
     ]
     # headlines of first element in section
-    headlines_text = [item[0].title for item in headlines]
+    headlines_text = [(item[0].raw_level, item[0].title) for item in headlines]
     assert headlines_text == expected_headlines, str(headlines_text)
 
 

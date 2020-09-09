@@ -82,10 +82,10 @@ def test_text_seventytwo_visit_sentences_merge_page5_7():
     pages = words.text.chapter.split(required)
     merged = wts.merge_sentences(pages)
 
-    assert merged[10].headline.title == (
-        '2. Das Social Web und die Privatsphäre – '
-        'Selbstdarstellungsverhalten der Nutzer aus Sicht von Massenmedien und '
-        'Literatur')
+    assert merged[10].headline.raw == (
+        '2.  Das Social Web und die Privatsphäre – '
+        'Selbstdarstellungsverhalten  der  Nutzer  aus  Sicht  von '
+        'Massenmedien und Literatur')
     assert merged[10].sentence == (
         'Im Folgenden geht es zunächst um eine definitorische Einführung in '
         'den Bereich der Social Media sowie um die Eigenschaften netzbasierter '
@@ -166,8 +166,8 @@ def test_text_seventytwo_extract_textsections_complete():
     ]
     master72_headline_count = 30
     assert len(headlines) == master72_headline_count
-    assert headlines[0].title == '1. Einleitung'
-    assert headlines[-1].title == '5. Schlussbetrachtung und Fazit'
+    assert headlines[0].title == 'Einleitung'
+    assert headlines[-1].raw == '5.  Schlussbetrachtung und Fazit'
 
 
 def test_text_seventytwo_extract_sentences():

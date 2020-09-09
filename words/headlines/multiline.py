@@ -64,25 +64,26 @@ class MultiLine(words.headlines.HeadlineExtractorStrategy):
             if not possible_headline_group(items):
                 continue
             # TODO: REMOVE LATER
-            text = ' '.join([item.text.strip() for item in items])
+            raw = ' '.join([item.text.strip() for item in items])
             # text = ' '.join([item.text for item in items])
-            parsed = whs.parse_headline(text)
+            parsed = whs.parse_headline(raw)
             if not parsed:
-                text = text.strip()
-                if text not in words.headlines.WHITELIST:
+                raw = raw.strip()
+                if raw not in words.headlines.WHITELIST:
                     continue
-            text = utila.normalize_whitespaces(text)
+            title = utila.normalize_whitespaces(raw)
             # TODO: REPLACE WITH LEVEL DETERMINER
             # with contextlib.suppress(TypeError):
             #     text = parsed['text'].strip()  # TODO: REMOVE STRIP LATER
             try:
                 raw_level = parsed['level'].strip()  # TODO: REMOVE STRIP LATER
+                title = title.replace(raw_level, '').strip()
             except TypeError:
-                raw_level = text
+                raw_level = ''
             level = words.headlines.numbered_level(raw_level)
             if level is False:
                 continue
-            if noheadline(text):
+            if noheadline(title):
                 continue
 
             if len(items) == 1:  # TODO: CHECK THIS
@@ -93,8 +94,9 @@ class MultiLine(words.headlines.HeadlineExtractorStrategy):
                 container=container,
                 level=level,
                 page=pagecontent.page,
+                raw=raw,
                 raw_level=raw_level,
-                title=text,
+                title=title,
             )
             result.append(headline)
         return result

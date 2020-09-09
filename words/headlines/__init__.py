@@ -254,6 +254,7 @@ class HeadlineExtractorStrategy(abc.ABC):  # pylint:disable=too-many-instance-at
             level=style,
             page=page,
             title=text.strip(),
+            raw=text.strip(),
         )
         return headline
 
