@@ -177,6 +177,7 @@ def grouped(pages: iamraw.PageTextPropertiesList) -> iamraw.TextProperties:
                     bottom=ypos[1],
                     left=left,
                     right=right,
+                    page=page.page,
                 ))
         result.append(collected)
     return result
