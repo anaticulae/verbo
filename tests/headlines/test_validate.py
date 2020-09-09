@@ -198,7 +198,7 @@ BACHELOR63_HEADLINES = """\
 1 Einleitung
 2 Grundlagen
     2.1 Blutdruck
-    2.2 Ultraschall-Doppler-Blutflussmessung
+    2.2 Ultraschall-Doppler -Blutflussmessung
     2.3 Digitale Regelung
     2.4 Programmiersprache LabVIEW
     2.5 Valsalva-Press-Versuch
