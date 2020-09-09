@@ -14,3 +14,6 @@ power==0.15.0
 
 # ensure that test data is generated with the right version of rawmaker
 rawmaker==2.5.0
+
+genex==0.1.1
+groupme==0.3.2

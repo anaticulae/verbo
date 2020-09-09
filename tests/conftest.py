@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import hey.example
+import genex
 import power
 import pytest
 import utila
@@ -52,7 +52,7 @@ def extract(resources):
     utila.log(f'root: {power.REPOSITORY}')
     resources.append(power.REPOSITORY)
 
-    hey.example.extract(
+    genex.extract(
         files=resources,
         destination=power.generated(),
         groupme=True,
