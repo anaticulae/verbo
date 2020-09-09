@@ -12,7 +12,7 @@ import os
 import words.__headlines__
 import words.__iamraw__
 
-__version__ = '0.16.0'
+__version__ = '0.16.1'
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 

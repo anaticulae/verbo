@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.16.1
+
+### Documentation
+
+* adjust outdated documentation (64850d30d141)
+
 ## v0.16.0
 
 ### Feature
