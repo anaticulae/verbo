@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import hey.geometry.alternate
+import geostrat
 import iamraw
 import utila
 
@@ -21,8 +21,8 @@ def analyze_page(ptcn, headlines, textfeed):
         data = [item[1] for item in group]
         indexes = [item[0] for item in group]
         try:
-            parsed = hey.geometry.alternate.parse_pages([data])
-        except hey.geometry.alternate.AlternateGeometryException:
+            parsed = geostrat.al_parse_pages([data])
+        except geostrat.AlternateGeometryException:
             continue
         parsed = parsed[0]
         extracted = extract_list(parsed, indexes)
