@@ -21,12 +21,12 @@ import utila
 import words.headlines.cluster
 import words.loader.basic
 
-WHITELIST = set([
+WHITELIST = {
     'Anhang',
     'Eidesstattliche Erklärung',
     'Erklärung',
     'Literaturverzeichnis',
-])
+}
 
 ChapterRange = collections.namedtuple('ChapterRange', 'start end')
 ChapterRanges = typing.List[ChapterRange]
