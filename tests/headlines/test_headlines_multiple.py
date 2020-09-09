@@ -86,5 +86,5 @@ def parse_multiline(path: str, pages: tuple):
     )
     result = strategy.result(pages=pages)
     result = utila.flatten(result)
-    headlines = [(item.text, item.level) for item in result]
+    headlines = [(item.title, item.level) for item in result]
     return headlines

@@ -43,7 +43,7 @@ class NoLevelHeadlineExtractor(words.headlines.HeadlineExtractorStrategy):
         for number, chapter in items.items():
             # skip `normal` headlines, we want to analyze NoLevelHeadlines
             items = [
-                item for item in chapter if not whs.parse_headline(item.text)
+                item for item in chapter if not whs.parse_headline(item.title)
             ]
             result[number] = items
 

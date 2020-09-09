@@ -24,39 +24,39 @@ import words.loader.basic
 EXPECTED = [
     [
         iamraw.Headline(
-            text='RestructuredText Tutorial',
+            title='RestructuredText Tutorial',
             level=1,
-            rawlevel=None,
+            raw_level=None,
             container=1,
             page=6,
         ),
     ],
     [
         iamraw.Headline(
-            text='RestructuredText Guide',
+            title='RestructuredText Guide',
             level=1,
-            rawlevel=None,
+            raw_level=None,
             container=1,
             page=8,
         ),
         iamraw.Headline(
-            text='Basics',
+            title='Basics',
             level=2,
-            rawlevel=None,
+            raw_level=None,
             container=2,
             page=8,
         ),
         iamraw.Headline(
-            text='Blockquotes',
+            title='Blockquotes',
             level=2,
-            rawlevel=None,
+            raw_level=None,
             container=1,
             page=9,
         ),
         iamraw.Headline(
-            text='Code: Block',
+            title='Code: Block',
             level=2,
-            rawlevel=None,
+            raw_level=None,
             container=17,
             page=9,
         ),
@@ -129,7 +129,7 @@ def test_features_headlines_work_master72pages_headlines():
         'Eidesstattliche Erklärung',
     ]
     # headlines of first element in section
-    headlines_text = [item[0].text for item in headlines]
+    headlines_text = [item[0].title for item in headlines]
     assert headlines_text == expected_headlines, str(headlines_text)
 
 

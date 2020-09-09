@@ -72,9 +72,9 @@ def load_text(
             headline = headlines[headline] if headlines is not None else None
             if headline is None:
                 headline = iamraw.Headline(
-                    text=None,
+                    title=None,
                     level=None,
-                    rawlevel=None,
+                    raw_level=None,
                     page=page,
                     container=section['fc'])
             pagecontent.append((headline, section_content))

@@ -67,8 +67,8 @@ def headlines(ptns):
             container=container,
             level=4,
             page=ptns[page].page,
-            rawlevel='',
-            text=item.hashed,
+            raw_level='',
+            title=item.hashed,
         )
         result.append(headline)
     result = sorted(result, key=operator.attrgetter('page', 'container'))
@@ -103,8 +103,8 @@ def valid_levelfour(extracted, levelfour) -> bool:
 
     extracted = utila.flatten(extracted)
     # -1, remove level: [level] [text]
-    headline_words = (len(headline.text.split()) - 1 for headline in extracted)
-    levelfour_words = (len(headline.text.split()) for headline in levelfour)
+    headline_words = (len(headline.title.split()) - 1 for headline in extracted)
+    levelfour_words = (len(headline.title.split()) for headline in levelfour)
 
     mean = statistics.mean(headline_words)
     mean_levelfour = statistics.mean(levelfour_words)

@@ -94,7 +94,7 @@ def split_textsection(item: words.text.TextSection) -> words.text.TextSections:
             result.append(
                 words.text.TextSection(
                     headline=iamraw.Headline(
-                        text=None,
+                        title=None,
                         level=None,  # TODO: REMOVE AFTER FIXING LOADER/DUMPER
                         page=page,
                         container=-1,
@@ -123,7 +123,7 @@ def split(loaded: words.feature.TextRequiredResources) -> words.text.PageTextWit
     if not headlines:
         start, end = min(pages), max(pages)
         headlines = [[
-            iamraw.Headline(text=None, level=None, page=page),
+            iamraw.Headline(title=None, level=None, page=page),
         ] for page in range(start, end + 1)]
     result = []
     # ensure to preserve correct page order when having pages without headline
@@ -235,9 +235,9 @@ def prepare_analyze_page(
         # line the starting content of the page is ignored
         # -> add starting container
         headline = iamraw.Headline(
-            text=None,
+            title=None,
             level=None,
-            rawlevel=None,
+            raw_level=None,
             page=page,
             container=pcn.offset[0] - 1,  # absoulte coordinate
         )
@@ -279,7 +279,7 @@ def insert_empty_pages(
         # add virtual headlines to analyse content which does not ends
         # with headline.
         for index in range(first.page + 1, secondpage):
-            heads.append(iamraw.Headline(text=None, level=None, page=index))
+            heads.append(iamraw.Headline(title=None, level=None, page=index))
 
     headlines = [
         list(group) for _, group in itertools.groupby(heads, lambda x: x.page)

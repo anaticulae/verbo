@@ -260,5 +260,5 @@ def raw_headlines(parsed) -> str:
                 intent = ''
             else:
                 intent = (headline.level - 1) * '    '
-            collected.append(intent + headline.text)
+            collected.append(intent + headline.title)
     return utila.NEWLINE.join(collected)

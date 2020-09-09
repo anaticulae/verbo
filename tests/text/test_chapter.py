@@ -22,7 +22,7 @@ def test_text_chapter_split_page2():
     secondpage = splitted[0]
     assert secondpage
     firstsection = secondpage.content[0]
-    assert firstsection.headline.text is None, firstsection.headline.text
+    assert firstsection.headline.title is None, firstsection.headline.title
     assert firstsection.headline.page == 4, str(firstsection.headline)
 
     # 2 headline sections on page

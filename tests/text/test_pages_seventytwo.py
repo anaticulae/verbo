@@ -82,7 +82,7 @@ def test_text_seventytwo_visit_sentences_merge_page5_7():
     pages = words.text.chapter.split(required)
     merged = wts.merge_sentences(pages)
 
-    assert merged[10].headline.text == (
+    assert merged[10].headline.title == (
         '2. Das Social Web und die Privatsphäre – '
         'Selbstdarstellungsverhalten der Nutzer aus Sicht von Massenmedien und '
         'Literatur')
@@ -104,17 +104,17 @@ def test_text_seventytwo_extract_textsections():
     minpage = min([headline.page for headline, _ in chapters])
     assert minpage == 3, minpage
     # '1.  Einleitung'
-    # Headline(text=None, level=None, rawlevel=None, page=4, container=-1)
+    # Headline(title=None, level=None, raw_level=None, page=4, container=-1)
     # '1.1  Fragestellung und Zielsetzung'
     # '1.2  Aufbau der Arbeit'
     # '2.  Das Social Web und die Privatsphre '
     # '2.1  Web  2.0,  Social  Web  und  Social  Media:  Abgrenzungen  und'
-    # Headline(text=None, level=None, rawlevel=None, page=7, container=-1)
-    # Headline(text=None, level=None, rawlevel=None, page=8, container=-1)
-    # Headline(text=None, level=None, rawlevel=None, page=9, container=-1)
-    # Headline(text=None, level=None, rawlevel=None, page=10, container=-1)
+    # Headline(title=None, level=None, raw_level=None, page=7, container=-1)
+    # Headline(title=None, level=None, raw_level=None, page=8, container=-1)
+    # Headline(title=None, level=None, raw_level=None, page=9, container=-1)
+    # Headline(title=None, level=None, raw_level=None, page=10, container=-1)
     # '2.2  Merkmale von Social Network Sites'
-    # Headline(text=None, level=None, rawlevel=None, page=11, container=-1)
+    # Headline(title=None, level=None, raw_level=None, page=11, container=-1)
     # '2.3  Eigenschaften netzbasierter Kommunikation'
     # '2.4  Einfhrung in das Konzept der Privatheit'
     sectionpages = [headline.page for headline, _ in chapters]
@@ -130,7 +130,7 @@ def test_text_seventytwo_extract_textsections_page5_6_7():
     assert len(chapters) == 3
 
     headlines = [headline for headline, _ in chapters]
-    assert all([item.text is not None for item in headlines])
+    assert all([item.title is not None for item in headlines])
 
     sentences = [sentence for _, sentence in chapters]
     count = [len(item) for item in sentences]
@@ -166,8 +166,8 @@ def test_text_seventytwo_extract_textsections_complete():
     ]
     master72_headline_count = 30
     assert len(headlines) == master72_headline_count
-    assert headlines[0].text == '1. Einleitung'
-    assert headlines[-1].text == '5. Schlussbetrachtung und Fazit'
+    assert headlines[0].title == '1. Einleitung'
+    assert headlines[-1].title == '5. Schlussbetrachtung und Fazit'
 
 
 def test_text_seventytwo_extract_sentences():

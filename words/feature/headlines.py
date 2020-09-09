@@ -188,11 +188,11 @@ def judge_result(results):
 def score_headlines(items):
     score = 0
     for item in utila.flatten(items):
-        score += len(item.text)
+        score += len(item.title)
         if item.level is not None:
             # prefer headline with extracted level over headlines without
             # level
-            score += len(item.text)
+            score += len(item.title)
     return score
 
 

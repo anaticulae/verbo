@@ -115,7 +115,7 @@ def merge_sentences(  # pylint:disable=R0912,R1260
                 # TODO: THIS SENTENCE IS LOST, WE MUST MERGE IT?
         current = visit_sentences(page, skip_undefined=skip_undefined)
         for headline, sentence in current:
-            if headline.text and headline != lastheadline and lastsentence:
+            if headline.title and headline != lastheadline and lastsentence:
                 # headline does not contains a complete sentence and
                 # follows by a headline with text and not with text is
                 # None, which indicates that this is a new page.
@@ -128,7 +128,7 @@ def merge_sentences(  # pylint:disable=R0912,R1260
                         sentence=lastsentence,
                     ))
                 lastsentence = None
-            if headline.text:
+            if headline.title:
                 lastheadline = headline
             else:
                 headline = lastheadline
@@ -204,8 +204,8 @@ def extract_textsections(
         if current is None:
             # start
             current = headline
-        merges = headline.text is not None if merge_headlines else True
-        if headline != current and merges:  # and headline.text is not None:
+        merges = headline.title is not None if merge_headlines else True
+        if headline != current and merges:  # and headline.title is not None:
             result.append(
                 words.text.TextSection(
                     current,

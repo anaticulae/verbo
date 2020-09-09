@@ -253,7 +253,7 @@ class HeadlineExtractorStrategy(abc.ABC):  # pylint:disable=too-many-instance-at
             container=containerid,
             level=style,
             page=page,
-            text=text.strip(),
+            title=text.strip(),
         )
         return headline
 
@@ -477,8 +477,8 @@ def numbered_level(raw: str) -> int:
     raw = raw.split()[0]
     if not '.' in raw:
         if raw.isnumeric():
-            rawlevel = int(raw)
-            if rawlevel > 30:  # TODO: HOLY VALUE
+            raw_level = int(raw)
+            if raw_level > 30:  # TODO: HOLY VALUE
                 return False
             return 1
         return None

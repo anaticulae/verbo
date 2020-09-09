@@ -52,5 +52,5 @@ def test_extract_levelfour_bachelor90():
         pages=utila.ranged_tuple(11, 90),
     )
     headlines = words.headlines.levelfour.headlines(navigators)
-    current = '\n'.join(item.text for item in headlines)
+    current = '\n'.join(item.title for item in headlines)
     assert current == EXPECTED

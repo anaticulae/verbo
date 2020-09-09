@@ -76,10 +76,10 @@ class MultiLine(words.headlines.HeadlineExtractorStrategy):
             # with contextlib.suppress(TypeError):
             #     text = parsed['text'].strip()  # TODO: REMOVE STRIP LATER
             try:
-                rawlevel = parsed['level'].strip()  # TODO: REMOVE STRIP LATER
+                raw_level = parsed['level'].strip()  # TODO: REMOVE STRIP LATER
             except TypeError:
-                rawlevel = text
-            level = words.headlines.numbered_level(rawlevel)
+                raw_level = text
+            level = words.headlines.numbered_level(raw_level)
             if level is False:
                 continue
             if noheadline(text):
@@ -93,8 +93,8 @@ class MultiLine(words.headlines.HeadlineExtractorStrategy):
                 container=container,
                 level=level,
                 page=pagecontent.page,
-                rawlevel=rawlevel,
-                text=text,
+                raw_level=raw_level,
+                title=text,
             )
             result.append(headline)
         return result

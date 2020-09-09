@@ -62,17 +62,17 @@ def filter_headlines(items: iamraw.PagesHeadlineList):
     for chapter, content in items.items():
         chapter_headlines = []
         for headline in content:
-            if headline.text.count('.') > 5:
+            if headline.title.count('.') > 5:
                 # Skip toc line entries
                 continue
-            parsed = parse_headline(headline.text)
+            parsed = parse_headline(headline.title)
             if parsed:
-                rawlevel = parsed['level']
-                headline.level = words.headlines.numbered_level(rawlevel)
-                headline.rawlevel = rawlevel
+                raw_level = parsed['level']
+                headline.level = words.headlines.numbered_level(raw_level)
+                headline.raw_level = raw_level
                 chapter_headlines.append(headline)
                 continue
-            if headline.text in words.headlines.WHITELIST:
+            if headline.title in words.headlines.WHITELIST:
                 chapter_headlines.append(headline)
                 continue
         result[chapter].extend(chapter_headlines)
