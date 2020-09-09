@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v0.16.3
+
+### Feature
+
+*  use new title/raw field (66a0cad9a581)
+
+### Fix
+
+* patching headlines dumper to store raw data (1bae3fb5ecac)
+
 ## v0.16.2
 
 ### Fix
