@@ -240,7 +240,7 @@ Literaturverzeichnis"""
     ),
     pytest.param(power.BACHELOR063_PDF, BACHELOR63_HEADLINES, id='bachelor63'),
 ])
-@utilatest.skip_longrun
+@utilatest.skip_nightly
 def test_headlines_validate(source, expected, testdir, monkeypatch):
     source = power.link(source)
     tests.run(f'-i {source} --headlines', monkeypatch=monkeypatch)
