@@ -68,7 +68,6 @@ def headlines(ptns):
             level=4,
             page=ptns[page].page,
             raw=item.hashed,
-            raw_level='',
             title=item.hashed,
         )
         result.append(headline)
