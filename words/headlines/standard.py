@@ -70,6 +70,7 @@ def filter_headlines(items: iamraw.PagesHeadlineList):
                 raw_level = parsed['level']
                 headline.level = words.headlines.numbered_level(raw_level)
                 headline.raw_level = raw_level
+                headline.title = headline.title.replace(raw_level, '').strip()
                 chapter_headlines.append(headline)
                 continue
             if headline.title in words.headlines.WHITELIST:
