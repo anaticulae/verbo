@@ -2,6 +2,14 @@
 
 Every noteable change is logged here.
 
+## v0.16.4
+
+### Fix
+
+* remove level from title in standard headline extractor (7ba27b02bfcb)
+* level four validator (552b1160b8f9)
+* do not change default level type (a325f6e1ff0c)
+
 ## v0.16.3
 
 ### Feature
