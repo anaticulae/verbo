@@ -102,8 +102,7 @@ def valid_levelfour(extracted, levelfour) -> bool:
         return False
 
     extracted = utila.flatten(extracted)
-    # -1, remove level: [level] [text]
-    headline_words = (len(headline.title.split()) - 1 for headline in extracted)
+    headline_words = (len(headline.title.split()) for headline in extracted)
     levelfour_words = (len(headline.title.split()) for headline in levelfour)
 
     mean = statistics.mean(headline_words)
