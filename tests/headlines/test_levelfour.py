@@ -54,3 +54,47 @@ def test_extract_levelfour_bachelor90():
     headlines = words.headlines.levelfour.headlines(navigators)
     current = '\n'.join(item.title for item in headlines)
     assert current == EXPECTED
+
+
+MASTER116_EXPECTED = """\
+Serielle Hybridstruktur
+Parallele Hybridstruktur
+Leistungsverzweigte Hybridstruktur
+Start-Stopp-Funktion
+Elektrisches Boosten
+Rekuperation
+Elektrisches Fahren
+Lastpunktanhebung und Lastpunktverlagerung
+Railpower GG20B Greengoat
+Alstom H3
+Toshiba HD300
+Übersicht Hybridlokomotiven
+Prüfzyklen von Schienenfahrzeugen
+Anforderungen an Referenzzyklen für Hybridfahrzeuge
+Luftwiderstand
+Rollwiderstand
+Steigungswiderstand
+Beschleunigungswiderstand
+Aufbau und Kinematik einer einfachen Planetenradstufe
+Leistungsverzweigung
+Generator
+Elektrische Fahrmaschine
+Rückwärtsrechnung
+Vorwärtsrechnung
+Velodynmodell
+Systemregelung durch den Hybridmanager
+Vergleich mit der konventionellen Lokomotive
+Vergleich mit dem theoretischen Optimum
+Vergleich der Methodik"""
+
+
+def test_extract_levelfour_master116():
+    source = power.link(power.MASTER116_PDF)
+    navigators = serializeraw.create_pagetextcontentnavigators_frompath(
+        path=source,
+        prefix='oneline',
+        pages=utila.ranged_tuple(7, 87),
+    )
+    headlines = words.headlines.levelfour.headlines(navigators)
+    current = '\n'.join(item.title for item in headlines)
+    assert current == MASTER116_EXPECTED
