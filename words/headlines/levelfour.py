@@ -25,14 +25,16 @@ HEADLINES_COUNT_MIN = configo.HV_INT_PLUS(5).value
 MAX_LEVELFOUR_PER_PAGE = configo.HV_INT_PLUS(4).value
 
 
-def headlines(ptns):
+def headlines(ptns):  # pylint:disable=R0914
     # TODO: MOVE TO DOCTEXTSTYLE?
     parsed = doctextstyle.parser.parses(ptns)
     flat = doctextstyle.utils.flatten(parsed)
     text = doctextstyle.features.text(flat)
 
-    textfont = text[1]
+    textsize, textfont = text[0], text[1]
 
+    # remove too small text size
+    flat = [item for item in flat if item.size >= textsize]
     # remove non textual items
     flat = [item for item in flat if item.font != textfont]
     # left adjusted text
