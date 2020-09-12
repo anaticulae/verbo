@@ -9,7 +9,10 @@
 
 import dataclasses
 
+import doctextstyle.parser
 import iamraw
+import texmex
+import utila
 
 
 @dataclasses.dataclass(unsafe_hash=True)
@@ -42,3 +45,19 @@ class PageTextProperties:
 
 iamraw.TextProperty = TextProperty
 iamraw.PageTextProperties = PageTextProperties
+
+
+def textfonts(navi: texmex.NavigatorMixin) -> utila.Ints:
+    # TODO: REMOVE AFTER PATCHING HEY
+    assert issubclass(navi.__class__, texmex.NavigatorMixin), type(navi)
+    collected = []
+    for line in navi:
+        # TODO: REPLACE WITH char.width
+        # determine most common font family
+        family = [[char.font] * (char.end - char.start) for char in line.style]
+        family = utila.flatten(family)
+        collected.append(utila.mode(family))
+    return collected
+
+
+doctextstyle.parser.textfonts = textfonts
