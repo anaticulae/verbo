@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v0.17.0
+
+### Feature
+
+* skip small text for level4 computation (15a107d55596)
+
+### Fix
+
+* patch most common font family determination (18fdd7295714)
+
 ## v0.16.4
 
 ### Fix
