@@ -14,7 +14,7 @@ import words.__iamraw__
 import words.__patch__
 import words.__serialize__
 
-__version__ = '0.17.0'
+__version__ = '0.17.1'
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
