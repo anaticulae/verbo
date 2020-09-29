@@ -7,10 +7,13 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import utilatest
+
 import tests.fixtures.master72.seventytwo as fseventytwo
 import words.text.sentence
 
 
+@utilatest.skip_longrun
 def test_chapter_split_words():
     required = fseventytwo.textrequired(pages=(13, 14))
     pages = words.text.chapter.split(required)

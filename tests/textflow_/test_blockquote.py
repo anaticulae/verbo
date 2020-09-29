@@ -9,6 +9,7 @@
 
 import power
 import serializeraw
+import utilatest
 
 import tests.resources
 import tests.textflow_
@@ -31,6 +32,7 @@ def test_blockquote_master72():
     assert len(extracted.content) == 2
 
 
+@utilatest.skip_longrun
 def test_blockquote_validate_master72(testdir, monkeypatch):
     tests.textflow_.run(
         f'-i {power.link(power.MASTER072_PDF)} --blockquote --pages=0:65',
@@ -58,6 +60,7 @@ def test_blockquote_validate_bachelor76_page8_11_13_15_16(testdir, monkeypatch):
     assert current == expected
 
 
+@utilatest.skip_longrun
 def test_blockquote_validate_master98(testdir, monkeypatch):
     tests.textflow_.run(
         f'-i {power.link(power.MASTER098_PDF)} --blockquote --pages=0:17',

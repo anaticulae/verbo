@@ -10,11 +10,13 @@
 import power
 import sections.feature.section
 import utila
+import utilatest
 
 import words.headlines.multiline
 import words.loader.basic
 
 
+@utilatest.skip_longrun
 def test_headlines_multiple_master72_extract_pages_5_7():
     path = power.link(power.MASTER072_PDF)
     pages = utila.ranged_tuple(5, 7)
@@ -31,6 +33,7 @@ def test_headlines_multiple_master72_extract_pages_5_7():
     assert headlines == expected
 
 
+@utilatest.skip_longrun
 def test_headlines_multiple_master72_extract_pages_13_14():
     path = power.link(power.MASTER072_PDF)
     pages = utila.ranged_tuple(13, 15)
@@ -44,6 +47,7 @@ def test_headlines_multiple_master72_extract_pages_13_14():
     assert headlines == expected
 
 
+@utilatest.skip_longrun
 def test_headlines_multiple_master72_extract_pages_20_22():
     """The headline extractor strategy extracts footnotes as headlines."""
     path = power.link(power.MASTER072_PDF)
@@ -59,6 +63,7 @@ def test_headlines_multiple_master72_extract_pages_20_22():
     assert headlines == expected
 
 
+@utilatest.skip_longrun
 def test_headlines_multiple_master72_extract_pages_38_42():
     """The headline extractor strategy extracts list with sentences."""
     path = power.link(power.MASTER072_PDF)

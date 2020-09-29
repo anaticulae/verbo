@@ -10,6 +10,7 @@
 import power
 import serializeraw
 import utila
+import utilatest
 
 import words.headlines.levelfour
 
@@ -88,6 +89,7 @@ Vergleich mit dem theoretischen Optimum
 Vergleich der Methodik"""
 
 
+@utilatest.skip_longrun
 def test_extract_levelfour_master116():
     source = power.link(power.MASTER116_PDF)
     navigators = serializeraw.create_pagetextcontentnavigators_frompath(

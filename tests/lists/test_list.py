@@ -210,6 +210,7 @@ def extract_lists(source, pages: tuple, testdir, monkeypatch):
     return lists
 
 
+@utilatest.skip_longrun
 def test_list_bachelor76_page4(testdir, monkeypatch):
     pages = (4,)
     source = power.link(power.BACHELOR076_PDF)
@@ -219,6 +220,7 @@ def test_list_bachelor76_page4(testdir, monkeypatch):
     assert len(lists) == 1
 
 
+@utilatest.skip_longrun
 def test_list_bachelor76_page5_10(testdir, monkeypatch):
     pages = (5, 6, 7, 8, 9, 10)
     source = power.link(power.BACHELOR076_PDF)

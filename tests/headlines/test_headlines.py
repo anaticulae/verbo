@@ -137,6 +137,7 @@ def test_features_headlines_work_master72pages_headlines():
     assert headlines_text == expected_headlines, str(headlines_text)
 
 
+@utilatest.skip_longrun
 def test_features_headlines_work_master72pages_subsections():
     master72 = power.link(power.MASTER072_PDF)
     headlines = words.feature.headlines.headlines_frompath(master72)

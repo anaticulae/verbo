@@ -9,11 +9,13 @@
 
 import power
 import serializeraw
+import utilatest
 
 import tests
 import words.path
 
 
+@utilatest.skip_longrun
 def test_text_extract_pages7_8_9(testdir, monkeypatch):
     source = power.link(power.BACHELOR076_PDF)
     cmd = f'--text  --headlines -i={source} --pages=7,8,9'

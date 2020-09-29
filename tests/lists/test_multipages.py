@@ -10,11 +10,13 @@
 import power
 import serializeraw
 import utila
+import utilatest
 
 import words.lists.multiplepages
 import words.path
 
 
+@utilatest.skip_longrun
 def test_merge_pages():
     # TODO: WHAT SHOULD WE CHECK?
     source = power.link(power.MASTER072_PDF)
@@ -28,6 +30,7 @@ def test_merge_pages():
     assert merged[-1].bounding[3] >= 3000
 
 
+@utilatest.skip_longrun
 def test_extract_lists():
     source = power.link(power.MASTER072_PDF)
     pages = utila.ranged_tuple(35, 50)
@@ -38,6 +41,7 @@ def test_extract_lists():
     assert len(page39.content[0]) == 4
 
 
+@utilatest.skip_longrun
 def test_extract_multiple_lists_master72():
     source = power.link(power.MASTER072_PDF)
     pages = None
