@@ -6,3 +6,113 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
+
+import contextlib
+import dataclasses
+import functools
+
+import configo
+import iamraw
+import serializeraw
+import utila
+import yaml
+
+
+@dataclasses.dataclass
+class Headline:
+    title: str
+    level: int = dataclasses.field(default=0)
+    raw: str = dataclasses.field(default=None)
+    raw_level: str = dataclasses.field(default=None, compare=False)
+    page: int = dataclasses.field(default=-1)
+    container: int = dataclasses.field(default=None)
+    decoration: tuple = dataclasses.field(default=None)
+
+    @property
+    def start(self):
+        with contextlib.suppress(TypeError):
+            return self.container[0]  # pylint:disable=E1136
+        return self.container
+
+    @property
+    def end(self):
+        with contextlib.suppress(TypeError):
+            return self.container[1]  # pylint:disable=E1136
+        return self.container
+
+
+iamraw.Headline = Headline
+
+
+def dump_headlines(headlines: iamraw.PagesHeadlineList) -> str:
+    raw = []
+    for index, page in enumerate(headlines):
+        content = []
+        for item in page:
+            container = item.container
+            if isinstance(container, tuple):
+                container = utila.from_tuple(container)
+            content.append({
+                'container': container,
+                'level': item.level,
+                'page': item.page,
+                'raw': item.raw,
+                'raw_level': item.raw_level,
+                'title': item.title,
+                'decoration': item.decoration,
+            })
+        if not content:
+            # do not write empty pages
+            continue
+        raw.append({
+            'chapter?': index,  # TODO: How to deal with empty chapter?
+            'headlines': content,
+        })
+    dumped = yaml.safe_dump(raw)
+    return dumped
+
+
+serializeraw.dump_headlines = dump_headlines
+
+
+@functools.lru_cache(configo.CACHE_SMALL)
+def load_headlines(content: str, pages=None) -> iamraw.PagesHeadlineList:
+    content = utila.from_raw_or_path(content, ftype='yaml')
+    loaded = yaml.safe_load(content)
+    result = []
+    for step in loaded:
+        loadedstep = []
+        for headline in step['headlines']:
+            pagenumber = int(headline['page'])
+            if utila.should_skip(pagenumber, pages):
+                continue
+            try:
+                container = int(headline['container'])
+            except ValueError:
+                # support ranged container id
+                container = utila.parse_tuple(  # pylint:disable=R0204
+                    headline['container'],
+                    length=2,
+                    typ=int,
+                )
+            level = headline['level']
+            if level is not None:
+                level = int(level)
+            else:
+                utila.error(f'headline level is None: {headline["title"]}')
+            item = iamraw.Headline(
+                container=container,
+                level=level,
+                page=pagenumber,
+                raw=headline['raw'],
+                raw_level=headline['raw_level'],
+                title=headline['title'],
+                decoration=headline.get('decoration', None),
+            )
+            loadedstep.append(item)
+        if loadedstep:
+            result.append(loadedstep)
+    return result
+
+
+serializeraw.load_headlines = load_headlines
