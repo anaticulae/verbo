@@ -10,9 +10,7 @@
 import os
 
 import words.__headlines__
-import words.__iamraw__
 import words.__patch__
-import words.__serialize__
 
 __version__ = '0.17.2'
 
