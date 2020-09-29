@@ -247,12 +247,17 @@ class HeadlineExtractorStrategy(abc.ABC):  # pylint:disable=too-many-instance-at
             after=dist_bottom,
             feed=textfeed,
         )
+        decoration = headline_decoration(
+            navigator=utila.select_page(self.pagetextnavigators, page),
+            containerid=containerid,
+        )
         headline = iamraw.Headline(
             container=containerid,
             level=style,
             page=page.page,
             raw=text.strip(),
             title=text.strip(),
+            decoration=decoration,
         )
         return headline
 
@@ -277,6 +282,17 @@ class HeadlineExtractorStrategy(abc.ABC):  # pylint:disable=too-many-instance-at
     @abc.abstractmethod
     def smallest_textsize(self):
         pass
+
+
+def headline_decoration(navigator, containerid: int) -> int:
+    if not navigator:
+        # HACK
+        return None
+    before = navigator[containerid - 1] if containerid > 0 else None
+    # after = navigator[containerid + 1] if containerid + 1 < len(navigator) else None
+    if before and headline_blacklisted(before.text):
+        return containerid - 1
+    return None
 
 
 BLACK_CHAPTER = re.compile(r'(Kapitel|Chapter)[ ]{0,5}\d{1,2}', re.IGNORECASE)
