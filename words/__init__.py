@@ -18,9 +18,3 @@ ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
 PROCESS = 'words'
 PACKAGE = PROCESS
-
-HEADLINE_STEP = 'headlines'
-HEADLINE_STEP_RESULT = 'headlines'
-HEADLINES = f'{HEADLINE_STEP}_{HEADLINE_STEP_RESULT}'
-
-WORDS_HEADLINES = f'{PROCESS}__{HEADLINES}.yaml'

@@ -12,9 +12,6 @@ from utila import ResultFile as RF
 from utila import create_step as step
 from utila import featurepack
 
-from words import HEADLINE_STEP
-from words import HEADLINE_STEP_RESULT
-from words import HEADLINES
 from words import PROCESS
 from words import ROOT
 from words import __version__
@@ -28,7 +25,7 @@ TEXTINPUT = [
     ResultFile('rawmaker', 'text_positions'),
     ResultFile('rawmaker', 'fonts_header'),
     ResultFile('rawmaker', 'fonts_content'),
-    ResultFile('words', HEADLINES),
+    ResultFile('words', 'headlines_headlines'),
     ResultFile('rawmaker', 'border_pages'),
     ResultFile('groupme', 'footer_footerheader'),
     ResultFile('rawmaker', 'boxes_boxes'),
@@ -40,7 +37,7 @@ WORKPLAN = [
         'abbreviation',
         inputs=[
             ResultFile('words', 'text_text'),
-            ResultFile('words', HEADLINES),
+            ResultFile('words', 'headlines_headlines'),
         ],
         output=('detected',),
     ),
@@ -50,7 +47,7 @@ WORKPLAN = [
             ResultFile('words', 'text_text'),
             ResultFile('rawmaker', 'text_text'),
             ResultFile('rawmaker', 'text_positions'),
-            ResultFile('words', HEADLINES),
+            ResultFile('words', 'headlines_headlines'),
             ResultFile('rawmaker', 'border_pages'),
             ResultFile('rawmaker', 'boxes_boxes'),
             ResultFile('groupme', 'footer_footerheader'),
@@ -63,7 +60,7 @@ WORKPLAN = [
         output=('footerlink',),
     ),
     step(
-        HEADLINE_STEP,
+        'headlines',
         inputs=[
             ResultFile('sections', 'section_result'),
             ResultFile('rawmaker', 'text_text'),
@@ -78,7 +75,7 @@ WORKPLAN = [
             ResultFile('rawmaker', 'boxes_boxes'),
             ResultFile('groupme', 'footer_footerheader'),
         ],
-        output=(HEADLINE_STEP_RESULT, 'oneline'),
+        output=('headlines', 'oneline'),
     ),
     step(
         'list',
@@ -86,7 +83,7 @@ WORKPLAN = [
             ResultFile('rawmaker', 'text_text'),
             ResultFile('rawmaker', 'text_positions'),
             ResultFile('rawmaker', 'border_pages'),
-            ResultFile('words', HEADLINES),
+            ResultFile('words', 'headlines_headlines'),
             ResultFile('groupme', 'footer_footerheader'),
         ],
         output=('list',),
@@ -101,7 +98,7 @@ WORKPLAN = [
         'word',
         inputs=[
             ResultFile('words', 'text_text'),
-            ResultFile('words', HEADLINES),
+            ResultFile('words', 'headlines_headlines'),
             ResultFile('words', 'list_list'),
             ResultFile('words', 'boxed_boxed'),
         ],

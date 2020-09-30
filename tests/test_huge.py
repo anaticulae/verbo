@@ -16,7 +16,7 @@ import serializeraw
 import utila
 import utilatest
 
-import words
+import words.path
 
 # TODO: Reduce list of unsupported documents
 # this documents does not passes the current implementation
@@ -186,11 +186,8 @@ def test_huge_running_words(words_result, request):  # pylint:disable=W0621
     testfile = request.node.name.split('[')[1].split(']')[0]
     expected_headlines = HEADLINE_COUNT.get(testfile, 0)
 
-    headlines = serializeraw.load_headlines(
-        os.path.join(
-            words_result[4],
-            words.WORDS_HEADLINES,
-        ))
+    headlines = words.path.headlines(words_result[4])
+    headlines = serializeraw.load_headlines(headlines)
     headlines = utila.flatten(headlines)
 
     if expected_headlines:
