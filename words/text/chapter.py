@@ -108,8 +108,9 @@ def split_textsection(item: words.text.TextSection) -> words.text.TextSections:
     return result
 
 
-def container_start(item):
-    """Decide multiple line header."""
+def container_start(item) -> int:
+    """Determine start of headline container. Some headlines are spread
+    over more than one line."""
     if item.headline is None:
         return -1
     if isinstance(item.headline.container, int):
@@ -207,7 +208,7 @@ def prepare_analyze_page(
         fontstore,
         borders,
 ) -> words.text.PageAnalyzeResources:
-    """Add dummy headline if required
+    """Add dummy headline if required.
 
     Some pages does not contain a headline or the headline starts after
     the first text content. Therefore adding a dummy headline is
