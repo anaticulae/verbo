@@ -58,7 +58,7 @@ def process_input(extracted, worker):
         if not extracted and pagecontent:
             # TODO: REMOVE LATER
             page = pagecontent[0][0]
-            utila.info('skip on page: %d' % (page))
+            utila.info(f'skip on page: {page}')
             utila.info(pprint.pformat(pagecontent))
             continue
         result.append(extracted)
