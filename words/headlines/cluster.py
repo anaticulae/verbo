@@ -7,8 +7,6 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import math
-
 import iamraw
 import utila
 
@@ -119,13 +117,15 @@ def equal_feed(candidat, clusteritem) -> bool:
     feed_left_cluster = clusteritem['feed'] < 15.0  # TODO: HOLY VALUE
     feed_right_cluster = clusteritem['feed'] >= 200.0  # TODO: HOLY VALUE
 
-    return (feed_left_candiat == feed_left_cluster and
-            feed_right_candiat == feed_right_cluster)
+    return feed_left_candiat == feed_left_cluster and feed_right_candiat == feed_right_cluster
 
 
 def equal_fontsize(candidat, clusteritem) -> bool:
-    sizediff = math.fabs(candidat['textsize'] - clusteritem['textsize'])
-    return sizediff <= MAX_TEXTSIZE_DIFF
+    return utila.near(
+        candidat['textsize'],
+        clusteritem['textsize'],
+        MAX_TEXTSIZE_DIFF,
+    )
 
 
 def equal_after(candidat, clusteritem) -> bool:
