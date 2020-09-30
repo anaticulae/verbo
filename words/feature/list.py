@@ -23,7 +23,7 @@ import utila
 
 import words.lists.regex
 import words.lists.strategy
-import words.loader.input
+import words.loader
 
 
 @utila.checkdatatype

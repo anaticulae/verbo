@@ -26,7 +26,7 @@ import words.feature.boxed
 import words.feature.headlines
 import words.feature.list
 import words.headlines
-import words.loader.input
+import words.loader
 import words.text
 import words.text.chapter
 
@@ -134,7 +134,7 @@ def restructured_boxed():
     headlines = restructured_headlines()
     undefined = serializeraw.dump_text(restructured_textexample())
     source = power.link(power.DOCU27_PDF)
-    extracted, _ = words.loader.input.load_resources(
+    extracted, _ = words.loader.load_resources(
         undefined,
         iamraw.path.text(source),
         iamraw.path.textposition(source),
@@ -150,7 +150,7 @@ def restructured_boxed():
 def restructured_list_work():
     headlines = restructured_headlines()
     undefined = serializeraw.dump_text(restructured_textexample())
-    extracted, contentborder = words.loader.input.load_resources(
+    extracted, contentborder = words.loader.load_resources(
         undefined,
         iamraw.path.text(power.link(power.DOCU27_PDF)),
         iamraw.path.textposition(power.link(power.DOCU27_PDF)),
@@ -162,7 +162,7 @@ def restructured_list_work():
         words.feature.list.process_page,
         contentborder=contentborder,
     )
-    result = words.loader.input.process_input(
+    result = words.loader.process_input(
         extracted,
         worker,
     )

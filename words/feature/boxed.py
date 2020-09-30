@@ -18,7 +18,7 @@ import serializeraw
 import utila
 
 import words.boxed
-import words.loader.input
+import words.loader
 
 PageContentBoxed = collections.namedtuple('PageContentBoxed', 'page content')
 
@@ -39,7 +39,7 @@ def work(
     extracted_text(str): document with `undefined fields` from `text`
                          module of `words`
     """
-    extracted, _ = words.loader.input.load_resources(
+    extracted, _ = words.loader.load_resources(
         extracted_text,
         text,
         text_position,
@@ -64,7 +64,7 @@ def process_content(extracted, boxes: words.boxed.BoxedChecker):
     boxes = words.boxed.BoxedChecker(boxes)
     worker = functools.partial(extract_boxed_content, boxed=boxes)
 
-    result = words.loader.input.process_input(extracted, worker)
+    result = words.loader.process_input(extracted, worker)
     return result
 
 
