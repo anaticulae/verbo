@@ -12,6 +12,7 @@ import collections
 import re
 import typing
 
+import configo
 import iamraw
 import iamraw.sections
 import sections.feature.section
@@ -30,6 +31,8 @@ WHITELIST = {
 
 ChapterRange = collections.namedtuple('ChapterRange', 'start end')
 ChapterRanges = typing.List[ChapterRange]
+
+HEADLINE_MIN_LENGTH = configo.HV_INT_PLUS(7).value
 
 
 class HeadlineExtractorStrategy(abc.ABC):  # pylint:disable=too-many-instance-attributes
@@ -229,7 +232,7 @@ class HeadlineExtractorStrategy(abc.ABC):  # pylint:disable=too-many-instance-at
             textfeed=textfeed,
             lastitem=lastitem,
         )
-        if len(text) <= 6:  # TODO: MIN HEADLINE LENGTH
+        if len(text) < HEADLINE_MIN_LENGTH:  # TODO: MIN HEADLINE LENGTH
             return None
 
         if headline_blacklisted(text):
