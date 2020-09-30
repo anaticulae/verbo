@@ -23,6 +23,18 @@ MAX_HEADLINE_TOKEN_LENGTH = configo.HV_INT_PLUS(20)
 # assume that headlines does not contain many numbers
 MAX_NUMBERS_IN_HEADLINE = configo.HV_INT_PLUS(5)
 
+HEADLINE_MEDIAN = configo.HolyTable(  # TODO: HOLY VALUE
+    items=[
+        (10, 40),
+        (12, 35),
+        (14, 30),
+        (16, 26),
+        (22, 16),
+    ],
+    left_outranges_none=False,
+    right_outranges_none=False,
+)
+
 
 class MultiLine(words.headlines.HeadlineExtractorStrategy):
 
@@ -116,20 +128,6 @@ def noheadline(text: str) -> bool:
     if mean_words_length <= 3.0:
         return True
     return False
-
-
-HEADLINE_MEDIAN = configo.HolyTable(  # TODO: HOLY VALUE
-    left_outranges_none=False,
-    right_outranges_none=False,
-)
-# TODO: REPLACE AFTER UPGRADING CONFIGO
-# HEADLINE_MEDIAN.add(10, 55)
-# FONTSIZE; MINIMAL MEDIAN CHAR LENGTH
-HEADLINE_MEDIAN.add(10, 40)
-HEADLINE_MEDIAN.add(12, 35)
-HEADLINE_MEDIAN.add(14, 30)
-HEADLINE_MEDIAN.add(16, 26)
-HEADLINE_MEDIAN.add(22, 16)
 
 
 def possible_headline_group(items) -> bool:
