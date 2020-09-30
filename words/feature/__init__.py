@@ -65,6 +65,7 @@ def load_resources(  # pylint:disable=R0914
     )
     headlines = serializeraw.load_headlines(headlines, pages=pages)
     boxes = serializeraw.load_boxes(boxes, pages=pages)
+    boxed = words.boxed.BoxedChecker(boxes)
 
     if os.path.exists(lists):
         lists = serializeraw.load_lists(lists, pages=pages)
@@ -74,10 +75,7 @@ def load_resources(  # pylint:disable=R0914
     lists = words.feature.word.ListLookUp(lists)  # pylint:disable=R0204
 
     fontstore = serializeraw.create_fontstore(fontheader, fontcontent)
-
     border = {navigator.page: navigator.content for navigator in ptcns}
-
-    boxed = words.boxed.BoxedChecker(boxes)
     result = TextRequiredResources(
         border=border,
         boxes=boxed,
