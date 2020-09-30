@@ -20,7 +20,7 @@ import texmex
 import utila
 
 import words.headlines.cluster
-import words.loader.basic
+import words.headlines.utils
 
 WHITELIST = {
     'Anhang',
@@ -58,7 +58,7 @@ class HeadlineExtractorStrategy(abc.ABC):  # pylint:disable=too-many-instance-at
 
     def __init__(
             self,
-            basic: words.loader.basic.BasicRequiredResources,
+            contentnavigators: texmex.PageTextContentNavigators,
             sectionlist: typing.List[iamraw.Sections],
             chapters: ChapterRanges = None,
     ):
@@ -73,18 +73,11 @@ class HeadlineExtractorStrategy(abc.ABC):  # pylint:disable=too-many-instance-at
         self.__result = {}
 
         self.sectionlist = sectionlist
-        self.pagetextnavigators = basic.textnavigators
-        self.fontstore = basic.fontstore
-        self.sizeandborder = basic.sizeandborder
-        self.headerfooters = basic.headerfooters
+        self.pagetextnavigators = contentnavigators
+
         self.chapters, self.content = prepare_chapter_and_content(
             sectionlist,
             chapters,
-        )
-        # bounding box of text content
-        self.border = contentborder(
-            self.sizeandborder,
-            self.headerfooters,
         )
         self.setup()
         self.ready = False
@@ -139,9 +132,8 @@ class HeadlineExtractorStrategy(abc.ABC):  # pylint:disable=too-many-instance-at
             navigators=self.pagetextnavigators)
 
         # TODO: DECIDE WHAT TODO WITH TEXTDISTANCE
-        textdistance = texmex.document_textdistance(
-            navigators=self.pagetextnavigators,
-            borders=self.sizeandborder,
+        textdistance = words.headlines.utils.document_textdistance(
+            self.pagetextnavigators,
             digits=0,
         )
         try:
@@ -154,19 +146,11 @@ class HeadlineExtractorStrategy(abc.ABC):  # pylint:disable=too-many-instance-at
         result = []
         start, end = self.content[chapter]
         for page in range(int(start), int(end + 1)):
-            border = utila.select_page(self.border, page=page)
-            textnavigator = utila.select_page(
-                self.pagetextnavigators,
-                page=page,
-            )
-            if not border or not textnavigator:
+            navigator = utila.select_page(self.pagetextnavigators, page)
+            if not navigator or not navigator.content:  # TODO: CHECK .content
                 # empty page
                 continue
-            pagecontent = texmex.PageTextContentNavigator(
-                textnavigator,
-                border,
-            )
-            pageheadlines = self.extract_page(pagecontent)
+            pageheadlines = self.extract_page(navigator)
             result.extend(pageheadlines)
         self.__result[chapter] = result
 
@@ -177,10 +161,9 @@ class HeadlineExtractorStrategy(abc.ABC):  # pylint:disable=too-many-instance-at
         result = []
         xoff, xend = pagecontent.offset
         xoff = xoff if xoff is not None else 0
-        bounds = texmex.textbounds(
-            pagecontent,
-            utila.select_page(self.border, page=pagecontent.page),
-        )
+        border = utila.select_page(
+            self.pagetextnavigators, page=pagecontent.page).content
+        bounds = texmex.textbounds(pagecontent, border)
         without_content = [item.bounds for item in bounds]
         # PageContentNavigator, the header and footer is ignored
         textdistances = texmex.fontdistance_textbounds(without_content)

@@ -18,7 +18,6 @@ import words.feature
 import words.feature.headlines
 import words.headlines
 import words.headlines.nolevel
-import words.loader.basic
 
 # NOTE: WHAT SHOULD WE DO WITH THE RAW_LEVEL?
 EXPECTED = [
@@ -70,11 +69,12 @@ EXPECTED = [
 
 
 def test_headlines_extract_headlines():
+    path = power.link(power.DOCU27_PDF)
     section = tests.fixtures.restruct.restructured_sections_manual()
-    basic = words.loader.basic.load_basic_frompath(power.link(power.DOCU27_PDF))
+    content = serializeraw.create_pagetextcontentnavigators_frompath(path)
     extractor = words.headlines.nolevel.NoLevelHeadlineExtractor(
         sectionlist=section,
-        basic=basic,
+        contentnavigators=content,
         chapters=[0, 1, 2, 3, 4, 5, 6, 7],
     )
     # check only the start, TODO: increase check later?

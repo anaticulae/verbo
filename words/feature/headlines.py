@@ -139,13 +139,13 @@ def extract_headlines(
         headerfooters,
         pages: tuple = None,
 ):
-    loaded = words.loader.basic.load_basic(
+    loaded = serializeraw.create_pagetextcontentnavigators_fromfile(
         text,
         textposition,
-        fontheader,
-        fontcontent,
         sizeandborder,
         headerfooters,
+        fontheader,
+        fontcontent,
         pages=pages,
     )
     sectionlist = serializeraw.load_sections(sections_, pages=pages)
@@ -157,7 +157,7 @@ def extract_headlines(
     ]
     results = [
         strategy(
-            basic=loaded,
+            contentnavigators=loaded,
             sectionlist=sectionlist,
             chapters=None,
         ).result(pages=pages) for strategy in strategies

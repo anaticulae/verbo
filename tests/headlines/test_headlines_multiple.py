@@ -9,11 +9,11 @@
 
 import power
 import sections.feature.section
+import serializeraw
 import utila
 import utilatest
 
 import words.headlines.multiline
-import words.loader.basic
 
 
 @utilatest.skip_longrun
@@ -83,11 +83,13 @@ def parse_multiline(path: str, pages: tuple):
         path,
         pages=pages,
     )
-    loaded = words.loader.basic.load_basic_frompath(path, pages=pages)
-
+    loaded = serializeraw.create_pagetextcontentnavigators_frompath(
+        path,
+        pages=pages,
+    )
     strategy = words.headlines.multiline.MultiLine(
         sectionlist=sections_,
-        basic=loaded,
+        contentnavigators=loaded,
         chapters=chapters,
     )
     result = strategy.result(pages=pages)
