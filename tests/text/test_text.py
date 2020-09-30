@@ -118,32 +118,14 @@ def test_text_convert_undefined_to_text():
     headlines = tests.fixtures.restruct.restructured_headlines()
     textexample = tests.fixtures.restruct.restructured_textexample()
 
-    text = iamraw.path.text(power.link(power.DOCU27_PDF))
-    text = serializeraw.load_document(text)
-
-    textpositions = iamraw.path.textposition(power.link(power.DOCU27_PDF))
-    textpositions = serializeraw.load_textpositions(textpositions)
-
-    border = iamraw.path.sizeandborder(power.link(power.DOCU27_PDF))
-    border = serializeraw.load_pageborders(border)
-
-    headerfooters = iamraw.path.headerfooters(power.link(power.DOCU27_PDF))
-    headerfooters = serializeraw.load_headerfooter(headerfooters)
-
-    contentborder = words.headlines.contentborder(border, headerfooters)
-    assert textexample is not None
-    assert headlines is not None
     headlines = serializeraw.load_headlines(headlines)
-
     dumped = serializeraw.dump_text(textexample)
     loaded = serializeraw.load_text(dumped, headlines)
 
-    undefined = words.undefined.extract_undefined(
-        loaded,
-        text,
-        textpositions,
-        contentborder=contentborder,
-    )
+    source = power.link(power.DOCU27_PDF)
+    ptcns = serializeraw.create_pagetextcontentnavigators_frompath(source)
+
+    undefined = words.undefined.extract_undefined(loaded, ptcns)
 
     last_item = undefined[-1]
     text = [item.text.strip() for item in last_item[0][2][0][0][1]]

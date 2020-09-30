@@ -12,23 +12,19 @@ import contextlib
 import texmex
 import utila
 
+import words.text
 
-def extract_undefined(pages, text, text_position, contentborder: dict):  # pylint:disable=R0914
+
+def extract_undefined(
+        pages: words.text.PageContentPageTextDetectedList,
+        ptcns: texmex.PageTextContentNavigators,
+):
     """Fill `undefined items` with TextContent and BoundingBox.
     Returns replaced pages with grouped replaced undefined items
     """
-    # assert isinstance(contentborder, Border), type(contentborder)
-    pagetextnavigators = texmex.create_pagetextnavigators(
-        text=text,
-        text_positions=text_position,
-    )
     result = []
     for pageitem in pages:
-        navigator = utila.select_page(pagetextnavigators, pageitem.page)
-        ptcn = texmex.PageTextContentNavigator(
-            navigator,
-            content=utila.select_page(contentborder, page=pageitem.page),
-        )
+        ptcn = utila.select_page(ptcns, pageitem.page)
         content = []
         for index, (_, paragraph) in enumerate(pageitem.content):
             # split the undefined groups

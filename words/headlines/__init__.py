@@ -65,9 +65,10 @@ class HeadlineExtractorStrategy(abc.ABC):  # pylint:disable=too-many-instance-at
         """Extract Headlines out of document.
 
         Args:
-            basic: extracted pages with font and size information.
-            sectionlist: list that devides pages into introduction, main-
-                         content, appendix
+            contentnavigators: extracted pages with font and size
+                information
+            sectionlist: list that devides pages into introduction,
+                main- content, appendix
             chapters: list with tuple of (start, end) of defined chapter
         """
         self.__result = {}

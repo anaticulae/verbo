@@ -24,7 +24,7 @@ import words.undefined
 def load_resources(
         extracted_text,
         text,
-        text_position,
+        textpositions,
         border,
         headlines,
         headerfooters,
@@ -36,28 +36,17 @@ def load_resources(
         headlines,
         pages=pages,
     )
-    border = serializeraw.load_pageborders(border, pages=pages)
-    headerfooters = serializeraw.load_headerfooter(
-        headerfooters,
-        pages=pages,
-    )
-    contentborder = words.headlines.contentborder(
+    ptcns = serializeraw.create_pagetextcontentnavigators_fromfile(
+        text,
+        textpositions,
         border,
         headerfooters,
-    )
-    text = serializeraw.load_document(
-        text,
         pages=pages,
     )
-    text_position = serializeraw.load_textpositions(
-        text_position,
-        pages=pages,
-    )
+    contentborder = serializeraw.load_pageborders(border)  # TODO: REMOVE LATER
     undefined = words.undefined.extract_undefined(
-        extracted_text,
-        text,
-        text_position,
-        contentborder=contentborder,
+        pages=extracted_text,
+        ptcns=ptcns,
     )
     return undefined, contentborder
 
