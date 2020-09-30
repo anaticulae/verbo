@@ -212,7 +212,6 @@ def prepare_analyze_page(
     Some pages does not contain a headline or the headline starts after
     the first text content. Therefore adding a dummy headline is
     required to collect this content under the dummy headline.
-
     """
     page = headlines[0].page
     contentborder = utila.select_page(borders, page=page)
@@ -260,8 +259,8 @@ def insert_empty_pages(
 ) -> iamraw.Headlines:
     """Add pages with content but without any headlines.
 
-    What happens when we forget to fill the headlines? All pages without any
-    headlines are ignored in content analyzis.
+    What happens when we forget to fill the headlines? All pages without
+    any headlines are ignored in content analyzis.
 
     Args:
         headlines: loaded headlines, without virtual headlines
@@ -280,7 +279,6 @@ def insert_empty_pages(
         # with headline.
         for index in range(first.page + 1, secondpage):
             heads.append(iamraw.Headline(title=None, level=None, page=index))
-
     headlines = [
         list(group) for _, group in itertools.groupby(heads, lambda x: x.page)
     ]
