@@ -54,7 +54,7 @@ def load_resources(  # pylint:disable=R0914
     """Load content from path and create required object"""
 
     # TODO: CHECK REALY REQUIRED RESOURCES AND REMOVE NON REQUIRED
-    textnavigators = serializeraw.create_pagetextcontentnavigators_fromfile(
+    ptcns = serializeraw.create_pagetextcontentnavigators_fromfile(
         text=text,
         textpositions=textposition,
         sizeandborderpath=pagesizes,
@@ -75,27 +75,16 @@ def load_resources(  # pylint:disable=R0914
 
     fontstore = serializeraw.create_fontstore(fontheader, fontcontent)
 
-    contentborder = serializeraw.load_pageborders(pagesizes, pages=pages)
-
-    headerfooters = serializeraw.load_headerfooter(
-        headerfooters,
-        pages=pages,
-    )
-
-    border = words.headlines.contentborder(
-        contentborder,
-        headerfooters,
-    )
+    border = {navigator.page: navigator.content for navigator in ptcns}
 
     boxed = words.boxed.BoxedChecker(boxes)
-
     result = TextRequiredResources(
         border=border,
         boxes=boxed,
         lists=lists,
         fontstore=fontstore,
         headlines=headlines,
-        textnavigators=textnavigators,
+        textnavigators=ptcns,
     )
     return result
 
