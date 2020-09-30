@@ -75,9 +75,8 @@ class MultiLine(words.headlines.HeadlineExtractorStrategy):
                 continue
             if not possible_headline_group(items):
                 continue
-            # TODO: REMOVE LATER
+            # TODO: REMOVE STRIP LATER
             raw = ' '.join([item.text.strip() for item in items])
-            # text = ' '.join([item.text for item in items])
             parsed = whs.parse_headline(raw)
             if not parsed:
                 raw = raw.strip()

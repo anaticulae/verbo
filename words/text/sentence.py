@@ -135,8 +135,7 @@ def merge_sentences(  # pylint:disable=R0912,R1260
             pagenr = page.page
             if lastsentence:
                 # merge with sentence of page before
-                sentence = lastsentence + ' ' + sentence
-                sentence = sentence.strip()
+                sentence = f'{lastsentence} {sentence}'.strip()
                 lastsentence = None
                 pagenr = lastpage
                 headline = lastheadline
