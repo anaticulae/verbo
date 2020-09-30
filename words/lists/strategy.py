@@ -119,13 +119,5 @@ def pagerange(items) -> int:
     >>> pagerange([1, 2, 3, 0, 1, 2, 3, 4, 0, 1])
     3
     """
-    if not items:
-        return 0
-    # TODO: REPLACE WITH UTILA CODE
-    result = [[items[0]]]
-    for item in items[1:]:
-        if item < result[-1][-1]:
-            result.append([item])
-        else:
-            result[-1].append(item)
-    return len(result)
+    grouped = utila.groupby_ascending(items)
+    return len(grouped)
