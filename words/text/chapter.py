@@ -170,7 +170,6 @@ def analyze_page(
         words.text.paragraph.collect_paragraph,
         page=prepared.number,
         pcn=prepared.pagetextcontentnavigator,
-        fcs=prepared.fontcontentstore,
         boxes=boxes,
         lists=lists,
     )

@@ -21,7 +21,6 @@ def collect_paragraph(
         second: iamraw.Headline,
         page: int,
         pcn: texmex.PageTextContentNavigator,
-        fcs: iamraw.FontContentStore,  # pylint:disable=W0613
         boxes: words.boxed.BoxedChecker,
         lists: 'ListLookUp',
 ) -> iamraw.ChapterText:
@@ -31,7 +30,6 @@ def collect_paragraph(
     the content requires to subtract the offset which is produced by the
     header.
     """
-    # TODO: fcs is not required anymore?
     # convert to content coordiante, and step one element further cause of
     # current element is the headline and we want to start with content
     start = first.end + 1 - pcn.offset[0]
