@@ -157,11 +157,7 @@ def test_list_dotted_with_content_only():
 
 
 def test_list_work():  # pylint:disable=W0621
-    extracted = tests.fixtures.restruct.restructured_list_work()
-    dumped_list = serializeraw.dump_lists(extracted)
-    assert len(dumped_list) > 400, str(dumped_list)
-
-    result = serializeraw.load_lists(dumped_list)
+    result = tests.fixtures.restruct.restructured_list_work()
     assert len(result) == 3, str(result)
 
     first_items = [
