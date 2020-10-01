@@ -150,7 +150,8 @@ def restructured_boxed():
 def restructured_list_work():
     source = power.link(power.DOCU27_PDF)
     headlines = restructured_headlines()
-    undefined = serializeraw.dump_text(restructured_textexample())
+    undefined = restructured_textexample()
+    undefined = serializeraw.dump_text(undefined)
     extracted, contentborder = words.loader.load_resources(
         undefined,
         iamraw.path.text(source),
