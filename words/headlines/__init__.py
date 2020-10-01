@@ -155,15 +155,9 @@ class HeadlineExtractorStrategy(abc.ABC):  # pylint:disable=too-many-instance-at
             result.extend(pageheadlines)
         self.__result[chapter] = result
 
-    def extract_page(
-            self,
-            pagecontent,
-    ):
+    def extract_page(self, pagecontent: texmex.PageTextContentNavigator):
         result = []
-        xoff, xend = pagecontent.offset
-        xoff = xoff if xoff is not None else 0
-        border = utila.select_page(
-            self.pagetextnavigators, page=pagecontent.page).content
+        border = utila.select_page(self.pagetextnavigators, page=pagecontent.page).content # yapf:disable
         bounds = texmex.textbounds(pagecontent, border)
         without_content = [item.bounds for item in bounds]
         # PageContentNavigator, the header and footer is ignored
@@ -171,7 +165,7 @@ class HeadlineExtractorStrategy(abc.ABC):  # pylint:disable=too-many-instance-at
 
         textfeeds = [item.bounds.leftdist for item in bounds]
 
-        for containerid, item in enumerate(pagecontent, start=xoff):
+        for containerid, item in enumerate(pagecontent):
             splitted = item.text.splitlines()
             if len(splitted) > 1:
                 # TODO: REMOVE?
@@ -180,9 +174,8 @@ class HeadlineExtractorStrategy(abc.ABC):  # pylint:disable=too-many-instance-at
                 textinfo=item,
                 textdistances=textdistances,
                 textfeeds=textfeeds,
-                page=pagecontent.page,
+                page=pagecontent,
                 containerid=containerid,
-                content_range=(xoff, xend),
             )
             if not headline:
                 continue
@@ -194,22 +187,19 @@ class HeadlineExtractorStrategy(abc.ABC):  # pylint:disable=too-many-instance-at
             textinfo,
             textdistances,
             textfeeds,
-            page,
-            containerid,
-            content_range,
+            page: texmex.PageTextContentNavigator,
+            containerid: int,
     ):  # pylint:disable=R0914
         text = textinfo.text
-        contentstart, contentend = content_range
-        distanceid = containerid - contentstart
         # TODO: BEFORE, AFTER, TOP OF THE PAGE? DISTANCE IS ZERO ON PAGE
         # START.
-        fontdistance = textdistances[distanceid + 1]
-        textfeed = textfeeds[distanceid]
+        fontdistance = textdistances[containerid + 1]
+        textfeed = textfeeds[containerid]
         textsize = texmex.TextStyle.textsizes(textinfo.style)
 
         distance_tosmall = fontdistance < self.smallest_headlinedistance()
         headline_tosmall = textsize < self.smallest_textsize()
-        lastitem = (distanceid + 1) == contentend
+        lastitem = (containerid + 1) == len(page)
         skip = self.should_skip(
             distance_tosmall=distance_tosmall,
             headline_tosmall=headline_tosmall,
@@ -227,8 +217,8 @@ class HeadlineExtractorStrategy(abc.ABC):  # pylint:disable=too-many-instance-at
         if skip:
             return None
 
-        dist_top = textdistances[distanceid]
-        dist_bottom = None if lastitem else textdistances[distanceid + 1]
+        dist_top = textdistances[containerid]
+        dist_bottom = None if lastitem else textdistances[containerid + 1]
 
         style = dict(
             textsize=textsize,
@@ -239,7 +229,7 @@ class HeadlineExtractorStrategy(abc.ABC):  # pylint:disable=too-many-instance-at
         headline = iamraw.Headline(
             container=containerid,
             level=style,
-            page=page,
+            page=page.page,
             raw=text.strip(),
             title=text.strip(),
         )

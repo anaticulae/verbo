@@ -79,7 +79,7 @@ def test_text_extractor_titles():
 
     # page10
     page10 = utila.select_page(result, 10)
-    assert page10.content[0].headline.title == 'RestructuredText Customizations'
+    assert page10.content[1].headline.title == 'RestructuredText Customizations'
 
     # page12
     page12 = utila.select_page(result, 12)
@@ -101,9 +101,9 @@ def test_text_extractor_titles():
 
     # page16
     page16 = utila.select_page(result, 16)
-    assert page16.content[0].headline.title == 'Step 2'
-    assert not page16.content[0].content  # headline only, no content
-    assert page16.content[1].headline.title == 'Referencing Code'
+    assert page16.content[1].headline.title == 'Step 2'
+    assert not page16.content[1].content  # headline only, no content
+    assert page16.content[2].headline.title == 'Referencing Code'
 
     # page17
     # is merged to page 16

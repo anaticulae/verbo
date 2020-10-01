@@ -49,7 +49,7 @@ EXPECTED = [
             title='Basics',
         ),
         iamraw.Headline(
-            container=1,
+            container=0,
             level=2,
             page=9,
             raw='Blockquotes',
@@ -57,7 +57,7 @@ EXPECTED = [
             title='Blockquotes',
         ),
         iamraw.Headline(
-            container=17,
+            container=16,
             level=2,
             page=9,
             raw='Code: Block',
