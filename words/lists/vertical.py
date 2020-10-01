@@ -19,12 +19,14 @@ def analyze_page(ptcn):
 
     collected = []
     for group in grouped:
-        content = ''.join([ptcn[item].text for item in group])
+        rawgroup = [ptcn[item].text for item in group]
+        content = ''.join(rawgroup)
         parsed = words.lists.regex.parse_single(content)
         if parsed:
             # TODO: GROUP DOES NOT REPRESENT THE COLLECTED LINES, GROUPS
             # CONTAINS THE WHOLE CONTENT CHUNK
-            collected.append((parsed, group))
+            indexes = group_indexes(rawgroup, parsed, offset=min(group))
+            collected.append((parsed, indexes))
         else:
             collected.append(None)
     lists = utila.groupby_none(collected)
@@ -47,3 +49,19 @@ def analyze_page(ptcn):
             continue
         result.append(current)
     return result
+
+
+def group_indexes(group, parsed, offset: int) -> tuple:
+    # TODO: O^2 RUNTIME
+    # TODO: BUGGY
+    group = [line.strip() for line in group]
+    result = []
+    for index, item in enumerate(group):
+        for parse in parsed:
+            parse = parse if isinstance(parse, str) else parse[0]  # HACK:
+            # TODO: HOLY VALUE
+            if utila.similar(item, parse, maxdiff=0.6) or item in parse:
+                result.append(index + offset)
+    result = utila.make_unique(result)
+    result = utila.longest(utila.groupby_diff(result))
+    return tuple(result)

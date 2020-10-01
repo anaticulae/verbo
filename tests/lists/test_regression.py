@@ -10,6 +10,7 @@
 import power
 import pytest
 import serializeraw
+import utila
 
 import tests
 import words.path
@@ -24,3 +25,15 @@ def test_nolist_bachelor241_page81(testdir, monkeypatch):
 
     loaded = serializeraw.load_lists(words.path.lists(testdir.tmpdir))
     assert not loaded
+
+
+def test_list_docu_restructured_page4(testdir, monkeypatch):
+    """This test was designed cause on this page table content was
+    parsed as lists."""
+    source = power.link(power.DOCU27_PDF)
+    tests.run(f'-i {source} --pages=4 --list', monkeypatch=monkeypatch)
+
+    loaded = serializeraw.load_lists(words.path.lists(testdir.tmpdir))
+    assert len(loaded) == 1
+    area = utila.select_content(loaded, page=4)[0].area
+    assert area == [5, 6, 7, 8]  # remove 8 after fixing parser
