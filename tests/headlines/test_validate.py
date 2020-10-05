@@ -228,6 +228,51 @@ BACHELOR63_HEADLINES = """\
         7.4.1 Messprotokoll
 Literaturverzeichnis"""
 
+BACHELOR051_HEADLINES = """\
+1 Einleitung und Problemstellung
+2 Zielsetzung
+3 Gegenwärtiger Kenntnisstand
+    3.1 Heutige Lebens- und Arbeitswelt
+        3.1.1 Heutige Lebenswelt
+        3.1.2 Heutige Arbeitswelt
+    3.2 Begriffserklärung Gesundheit
+        3.2.1 Allgemeine Gesundheit
+        3.2.2 Psychische Gesundheit
+    3.3 Themengebiet Stress
+        3.3.1 Begriffserklärung Stress
+        3.3.2 Stressmodell nach Lazarus
+        3.3.3 Begriffserklärung Individuelles Stresserleben
+        3.3.4 Begriffserklärung Stressbewältigung
+        3.3.5 Folgen von Stress
+    3.4 Sportaktivität und individuelles Stresserleben
+    3.5 Funktionsweise EMS-Training und Studienlage
+        3.5.1 Funktionsweise EMS-Training
+        3.5.2 Studienlage EMS-Training und individuelles Stresserleben
+4 Methodik
+    4.1 Untersuchungsablauf und Probandenrekrutierung
+        4.1.1 Untersuchungsablauf
+        4.1.2 Probandenrekrutierung
+    4.2 Erhebungsinstrument Individuelles Stresserleben
+    4.3 Standardisiertes EMS-Krafttrainingsprogramm
+        4.3.1 Beschreibung EMS-Krafttrainingsprogramm
+        4.3.2 Durchführung beim Kunden zu Hause
+    4.4 Auswertung der Befragung
+        4.4.1 Deskriptive Auswertung
+        4.4.2 Inferenzstatistische Auswertung
+5 Ergebnisse
+    5.1 Deskriptive Ergebnisse
+    5.2 Inferenzstatistische Ergebnisse
+6 Diskussion
+    6.1 Methodendiskussion
+    6.2 Ergebnisdiskussion
+    6.3 Schlussfolgerungen und Ausblick
+7 Zusammenfassung
+8 Literaturverzeichnis
+9 Abbildungs-, Tabellen-, Abkürzungsverzeichnis
+    9.1 Abbildungsverzeichnis
+    9.2 Tabellenverzeichnis
+    9.3 Abkürzungsverzeichnis"""
+
 
 @pytest.mark.parametrize('source, expected', [
     pytest.param(power.MASTER098_PDF, MASTER98_HEADLINES, id='master98'),
@@ -239,6 +284,7 @@ Literaturverzeichnis"""
         marks=pytest.mark.xfail,
     ),
     pytest.param(power.BACHELOR063_PDF, BACHELOR63_HEADLINES, id='bachelor63'),
+    pytest.param(power.BACHELOR051_PDF, BACHELOR051_HEADLINES, id='bachelor51'),
 ])
 @utilatest.skip_nightly
 def test_headlines_validate(source, expected, testdir, monkeypatch):
