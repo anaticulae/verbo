@@ -155,13 +155,15 @@ def extract_headlines(
         words.headlines.nolevel.NoLevelHeadlineExtractor,
         words.headlines.standard.StandardHeadlineExtractor,
     ]
-    results = [
-        strategy(
+    results = []
+    for strategy in strategies:
+        utila.debug(strategy)
+        result = strategy(
             contentnavigators=loaded,
             sectionlist=sectionlist,
             chapters=None,
-        ).result(pages=pages) for strategy in strategies
-    ]
+        ).result(pages=pages)
+        results.append(result)
     return results
 
 
