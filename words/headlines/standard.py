@@ -10,6 +10,7 @@
 import collections
 import re
 
+import groupme.toc.group
 import iamraw
 import utila
 
@@ -68,7 +69,7 @@ def filter_headlines(items: iamraw.PagesHeadlineList):
             parsed = parse_headline(headline.title)
             if parsed:
                 raw_level = parsed['level']
-                headline.level = words.headlines.numbered_level(raw_level)
+                headline.level = groupme.toc.group.numbered_level(raw_level)
                 headline.raw_level = raw_level
                 headline.title = headline.title.replace(raw_level, '').strip()
                 chapter_headlines.append(headline)

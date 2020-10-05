@@ -13,6 +13,7 @@ import re
 import typing
 
 import configo
+import groupme.toc.group
 import iamraw
 import iamraw.sections
 import sections.feature.section
@@ -209,7 +210,7 @@ class HeadlineExtractorStrategy(abc.ABC):  # pylint:disable=too-many-instance-at
         distance_tosmall = fontdistance < self.smallest_headlinedistance()
         headline_tosmall = textsize < self.smallest_textsize()
 
-        level = numbered_level(textinfo.text)
+        level = groupme.toc.group.numbered_level(textinfo.text)
         if level is not None and level >= 3:
             # deactivate distance check for 3.1.1. etc. cause it is a very
             # expressive pattern and these headlines can be very small.
@@ -414,37 +415,3 @@ def items_before_firstchapter(chapters, contents):
     if not before:
         return []
     return [(before[0].start, before[-1].end)]
-
-
-def numbered_level(raw: str) -> int:
-    """Convert number to raw level.
-
-    >>> numbered_level('5 Geology')
-    1
-    >>> numbered_level('2. Zentrum')
-    1
-    >>> numbered_level('2.1.3. Abschluss')
-    3
-    >>> numbered_level('2.1 Anhang')
-    2
-    >>> numbered_level('2..1... Fehlerfrei') # ignore typos
-    2
-    >>> numbered_level('2020 This is not a headline level')
-    False
-    """
-    # TODO: REPLACE WITH GROUPME CODE
-    # TODO: MOVE TESTS?
-    raw = raw.strip()
-    if not raw:
-        return None
-    raw = raw.split()[0]
-    if not '.' in raw:
-        if raw.isnumeric():
-            raw_level = int(raw)
-            if raw_level > 30:  # TODO: HOLY VALUE
-                return False
-            return 1
-        return None
-    # 2.1.3
-    splitted = [item for item in raw.split('.') if item]
-    return len(splitted)

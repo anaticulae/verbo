@@ -11,6 +11,7 @@ import statistics
 
 import configo
 import german
+import groupme.toc.group
 import iamraw
 import texmex
 import utila
@@ -91,7 +92,7 @@ class MultiLine(words.headlines.HeadlineExtractorStrategy):
                 title = title.replace(raw_level, '').strip()
             except TypeError:
                 raw_level = ''
-            level = words.headlines.numbered_level(raw_level)
+            level = groupme.toc.group.numbered_level(raw_level)
             if level is False:
                 continue
             if noheadline(title):
