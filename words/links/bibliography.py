@@ -11,14 +11,14 @@ import dataclasses
 import re
 import typing
 
-PAGES = r'''
+PAGES = r"""
     (
         \d+|            # single page
         \d+ff\.|        # single page with following
         \d+\-\d+        # from x till y
-    )'''
+    )"""
 
-PATTERN = r'''
+PATTERN = r"""
     (vgl[.][ ])?
     (?P<author>
         (
@@ -40,7 +40,7 @@ PATTERN = r'''
             )
         )
     )
-'''
+"""
 
 AUTHOR_AND_YEAR = r"""
     \(
@@ -75,7 +75,6 @@ BibliographyLinks = typing.List[BibliographyLink]
 
 def parse(raw: str) -> BibliographyLinks:
     result = []
-
     for current in [PATTERN, AUTHOR_AND_YEAR]:
         parsed = _parse(raw, current)
         result.extend(parsed)
@@ -86,7 +85,6 @@ def _parse(raw: str, pattern) -> BibliographyLinks:
     matched = re.finditer(pattern, raw, re.VERBOSE)
     if not matched:
         return []
-
     result = []
     for item in matched:
         author = item['author']
