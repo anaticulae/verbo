@@ -210,29 +210,32 @@ class HeadlineExtractorStrategy(abc.ABC):  # pylint:disable=too-many-instance-at
         distance_tosmall = fontdistance < self.smallest_headlinedistance()
         headline_tosmall = textsize < self.smallest_textsize()
 
-        level = groupme.toc.group.numbered_level(textinfo.text)
-        if level is not None and level >= 3:
+        level = groupme.toc.group.numbered_level(text)
+        # print(text.strip(), level)
+        higher_equalthree = level is not None and level >= 3
+        if higher_equalthree:
             # deactivate distance check for 3.1.1. etc. cause it is a very
             # expressive pattern and these headlines can be very small.
             distance_tosmall = False
             headline_tosmall = False
 
         lastitem = (containerid + 1) == len(page)
+        if len(text) < HEADLINE_MIN_LENGTH:  # TODO: MIN HEADLINE LENGTH
+            return None
+
         skip = self.should_skip(
             distance_tosmall=distance_tosmall,
             headline_tosmall=headline_tosmall,
             textfeed=textfeed,
             lastitem=lastitem,
         )
-        if len(text) < HEADLINE_MIN_LENGTH:  # TODO: MIN HEADLINE LENGTH
-            return None
 
         if headline_blacklisted(text):
             utila.debug(f'{self.__class__.__name__}: {skip} {text}')
             return None
 
         utila.debug(f'{self.__class__.__name__}: {skip} {text}')
-        if skip:
+        if skip and not higher_equalthree:
             return None
 
         dist_top = textdistances[containerid]
