@@ -197,9 +197,12 @@ class HeadlineExtractorStrategy(abc.ABC):  # pylint:disable=too-many-instance-at
             containerid: int,
     ):  # pylint:disable=R0914
         text = textinfo.text
-        # TODO: BEFORE, AFTER, TOP OF THE PAGE? DISTANCE IS ZERO ON PAGE
-        # START.
         fontdistance = textdistances[containerid + 1]
+        if containerid:
+            # for non page start check distance before and after
+            fontdistance += textdistances[containerid]
+            fontdistance = fontdistance / 2.0
+
         textfeed = textfeeds[containerid]
         textsize = texmex.TextStyle.textsizes(textinfo.style)
 
