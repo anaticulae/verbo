@@ -24,9 +24,15 @@ import words.headlines.utils
 
 WHITELIST = {
     'Anhang',
+    'Anhangsverzeichnis',
+    'Bibliografie',
     'Eidesstattliche Erklärung',
+    'Eidesstattliche Versicherung',
     'Erklärung',
+    'Internetquellen',
     'Literaturverzeichnis',
+    'Quellenverzeichnis',
+    'Zeitschriftenartikel',
 }
 
 ChapterRange = collections.namedtuple('ChapterRange', 'start end')
