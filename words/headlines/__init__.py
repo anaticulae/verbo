@@ -305,38 +305,6 @@ def prepare_chapter_and_content(sections_, chapter):
     return chapter, content
 
 
-def contentborder(sizeandborders, headerfooters):
-    assert all([isinstance(it, iamraw.PageSizeBorder) for it in sizeandborders])
-    result = {}
-    pages = [item.page for item in sizeandborders]
-    for page in pages:
-        selected = utila.select_page(sizeandborders, page)
-        pageheight = selected.size.height
-        pageborder = selected.border
-        # Not every page provides footer and/or header information,
-        # therefore we have to check if footerheader exists before
-        # acessing the value.
-        footerheader = utila.select_page(headerfooters, page)
-
-        top = 0
-        if footerheader and footerheader.header:
-            top = pageheight * footerheader.header.end
-
-        bottom = pageheight
-        if footerheader and footerheader.footer:
-            bottom = pageheight * footerheader.footer.begin
-
-        top, bottom = utila.roundme(top), utila.roundme(bottom)
-
-        result[page] = iamraw.Border(
-            left=pageborder.left,
-            right=pageborder.right,
-            top=top,
-            bottom=bottom,
-        )
-    return result
-
-
 FIRST_LEVEL = 0.8  # TODO: HOLY VALUE
 SECOND_LEVEL = 0.5
 
