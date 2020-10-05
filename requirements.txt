@@ -18,3 +18,6 @@ konrad==0.2.23
 
 geostrat==1.0.0
 hey==5.1.1
+
+# determine headline level
+groupme==0.4.0
