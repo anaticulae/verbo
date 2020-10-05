@@ -12,6 +12,7 @@ import dataclasses
 import functools
 
 import configo
+import groupme.toc.group
 import iamraw
 import serializeraw
 import utila
@@ -116,3 +117,39 @@ def load_headlines(content: str, pages=None) -> iamraw.PagesHeadlineList:
 
 
 serializeraw.load_headlines = load_headlines
+
+
+def numbered_level(raw: str) -> int:
+    """Convert number to raw level.
+
+    >>> numbered_level('5 Geology')
+    1
+    >>> numbered_level('2. Zentrum')
+    1
+    >>> numbered_level('2.1.3. Abschluss')
+    3
+    >>> numbered_level('2.1 Anhang')
+    2
+    >>> numbered_level('2..1... Fehlerfrei') # ignore typos
+    2
+    >>> numbered_level('2020 This is not a headline level')
+    False
+    >>> numbered_level('04.03.2016. No Headline')
+    False
+    """
+    # TODO: SUPPORT LEVEL WITHOUT SPACE
+    # TODO: MOVE TESTS?
+    raw = raw.strip()
+    if not raw:
+        return None
+    raw = raw.split()[0]
+    try:
+        splitted = [int(item) for item in raw.split('.') if item]
+        if max(splitted) > 20:
+            return False
+    except ValueError:
+        return None
+    return len(splitted)
+
+
+groupme.toc.group.numbered_level = numbered_level
