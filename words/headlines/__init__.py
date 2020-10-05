@@ -208,6 +208,14 @@ class HeadlineExtractorStrategy(abc.ABC):  # pylint:disable=too-many-instance-at
 
         distance_tosmall = fontdistance < self.smallest_headlinedistance()
         headline_tosmall = textsize < self.smallest_textsize()
+
+        level = numbered_level(textinfo.text)
+        if level is not None and level >= 3:
+            # deactivate distance check for 3.1.1. etc. cause it is a very
+            # expressive pattern and these headlines can be very small.
+            distance_tosmall = False
+            headline_tosmall = False
+
         lastitem = (containerid + 1) == len(page)
         skip = self.should_skip(
             distance_tosmall=distance_tosmall,
