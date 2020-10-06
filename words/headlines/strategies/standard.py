@@ -20,6 +20,7 @@ def extract_headline(
         textfeeds,
         ptcn: texmex.PageTextContentNavigator,
         containerid: int,
+        skipper=None,
         **kwargs,
 ):  # pylint:disable=R0914
     text = textinfo.text
@@ -36,7 +37,6 @@ def extract_headline(
     headline_tosmall = textsize < kwargs['textsize']
 
     level = groupme.toc.group.numbered_level(text)
-    # print(text.strip(), level)
     higher_equalthree = level is not None and level >= 3
     if higher_equalthree:
         # deactivate distance check for 3.1.1. etc. cause it is a very
@@ -48,7 +48,9 @@ def extract_headline(
     if len(text) < words.headlines.strategies.HEADLINE_MIN_LENGTH:
         return None
 
-    skip = should_skip(
+    skipper = should_skip if skipper is None else skipper
+
+    skip = skipper(
         distance_tosmall=distance_tosmall,
         headline_tosmall=headline_tosmall,
         textfeed=textfeed,

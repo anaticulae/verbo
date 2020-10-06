@@ -15,12 +15,14 @@ import iamraw
 import texmex
 import utila
 
+import words.headlines.strategies.multiline
+import words.headlines.strategies.nolevel
 import words.headlines.strategies.standard
 import words.headlines.utils
 
 STRATEGIES = [
-    words.headlines.strategies.standard,
-    words.headlines.strategies.standard,
+    words.headlines.strategies.multiline,
+    words.headlines.strategies.nolevel,
     words.headlines.strategies.standard,
 ]
 
@@ -96,7 +98,7 @@ def extract_chapter(strategy, data, chapter_range):
             continue
         try:
             # use module extractor
-            pageheadlines = strategy.extract_page(strategy, data, page)
+            pageheadlines = strategy.extract_page(data, page)
         except AttributeError:
             # use default extractor
             pageheadlines = extract_page(strategy, data, page)

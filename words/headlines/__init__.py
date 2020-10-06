@@ -177,7 +177,6 @@ class HeadlineExtractorStrategy(abc.ABC):
         headline_tosmall = textsize < self.smallest_textsize()
 
         level = groupme.toc.group.numbered_level(text)
-        # print(text.strip(), level)
         higher_equalthree = level is not None and level >= 3
         if higher_equalthree:
             # deactivate distance check for 3.1.1. etc. cause it is a very
