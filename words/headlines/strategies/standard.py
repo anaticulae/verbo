@@ -7,13 +7,10 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import collections
-
 import groupme.toc.group
 import iamraw
 import texmex
 
-import words.headlines.standard as whs
 import words.headlines.strategies
 
 
@@ -106,28 +103,5 @@ def should_skip(
     return False
 
 
-def filter_headlines(items: iamraw.PagesHeadlineList):
-    if isinstance(items, list):
-        items = {index: value for index, value in enumerate(items)}
-    result = collections.defaultdict(list)
-    for chapter, content in items.items():
-        chapter_headlines = []
-        for headline in content:
-            if headline.title.count('.') > 5:
-                # Skip toc line entries
-                continue
-            parsed = whs.parse_headline(headline.title)
-            if parsed:
-                raw_level = parsed['level']
-                headline.level = groupme.toc.group.numbered_level(raw_level)
-                headline.raw_level = raw_level
-                headline.title = headline.title.replace(raw_level, '').strip()
-                chapter_headlines.append(headline)
-                continue
-            if headline.title in words.headlines.WHITELIST:
-                chapter_headlines.append(headline)
-                continue
-        result[chapter].extend(chapter_headlines)
-    # require KeyError
-    result = dict(result)  # pylint:disable=R0204
-    return result
+# use default headline filter
+filter_headlines = words.headlines.strategies.filter_headlines  # pylint:disable=C0103

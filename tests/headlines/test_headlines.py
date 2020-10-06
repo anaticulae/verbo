@@ -20,6 +20,7 @@ import words.feature
 import words.feature.headlines
 import words.headlines
 import words.headlines.nolevel
+import words.headlines.strategies
 
 # NOTE: WHAT SHOULD WE DO WITH THE RAW_LEVEL?
 EXPECTED = [
@@ -155,7 +156,7 @@ def test_features_headlines_work_master72pages_subsections():
 def test_features_headlines_filter_headlines():
     example = tests.fixtures.headlines.EXAMPLE
 
-    filtered = words.headlines.standard.filter_headlines(example)
+    filtered = words.headlines.strategies.filter_headlines(example)
 
     filtered = [item for item in filtered.values()]  # dict to list
 
