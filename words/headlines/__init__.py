@@ -9,6 +9,7 @@
 
 import abc
 import collections
+import contextlib
 import re
 import typing
 
@@ -42,7 +43,7 @@ ChapterRanges = typing.List[ChapterRange]
 HEADLINE_MIN_LENGTH = configo.HV_INT_PLUS(7).value
 
 
-class HeadlineExtractorStrategy(abc.ABC):  # pylint:disable=too-many-instance-attributes
+class HeadlineExtractorStrategy(abc.ABC):
     """Strategy approach to determine the `Headlines` of a given set of
     pages.
 
@@ -78,54 +79,35 @@ class HeadlineExtractorStrategy(abc.ABC):  # pylint:disable=too-many-instance-at
                 main- content, appendix
             chapters: list with tuple of (start, end) of defined chapter
         """
-        self.__result = {}
+        self.ptcns = contentnavigators
 
-        self.sectionlist = sectionlist
-        self.pagetextnavigators = contentnavigators
-
-        self.chapters, self.content = prepare_chapter_and_content(
+        self.chapter_numbers, self.chapter_ranges = prepare_chapter_and_content(
             sectionlist,
             chapters,
         )
-        self.setup()
-        self.ready = False
+
+        self.textsize = texmex.document_textsize(navigators=contentnavigators)
+        self.textdistance = document_textdistance(ptcns=contentnavigators)
 
     def result(self, pages=None):
-        if self.ready:
-            return self.__result
-        self.ready = True
+        results = {}
         # run extraction
-        for chapter in self.chapters:
+        for chapter in self.chapter_numbers:
             # HACK: REMOVE LAST PAGE TO PASS SHOULD_SKIP THERE IS A
             # PROBLEM WITH THE LAST AREA, CAUSE THE INDEX OF AN AREA IS
             # EXPANDED + 1 OVER THE AREA. AT THE LAST AREA THIS EXPANDS
             # OUTSIDE OF THE DOCUMENT. HACKING PAGE SKIP CHECK SEEMS NOT
             # SO PROBLEMATIC HERE, BUT MUST BE FIXED.
-            chapter_pages = list(self.content[chapter])
+            chapter_pages = list(self.chapter_ranges[chapter])
             chapter_pages = tuple(chapter_pages[:-1])  # pylint:disable=R0204
             if utila.should_skip(chapter_pages, pages):
                 continue
-            self.extract_chapter(chapter)
+            results[chapter] = self.extract_chapter(chapter)
 
         # filter result
-        self.__result = self.filter(self.__result)
-        extracted = [item for item in self.__result.values()]
+        results = self.filter(results)
 
-        flatten = utila.flatten(extracted)
-        grouped = []
-        if flatten:
-            if isinstance(flatten[0].level, dict):
-                # HACK NOLEVEL?
-                flatten[0].level = None
-            grouped.append([flatten[0]])
-        for item in flatten[1:]:
-            if isinstance(item.level, dict):
-                # HACK NOLEVEL?
-                item.level = None
-            if item.level is None or item.level == 1:
-                grouped.append([item])
-            else:
-                grouped[-1].append(item)
+        grouped = groupby_headlinelevel(results)
         return grouped
 
     def filter(self, items):  # pylint:disable=R0201
@@ -134,38 +116,22 @@ class HeadlineExtractorStrategy(abc.ABC):  # pylint:disable=too-many-instance-at
         convert_level(items)
         return items
 
-    def setup(self):
-        """Run before starting extraction."""
-        self.textsize = texmex.document_textsize(
-            navigators=self.pagetextnavigators)
-
-        # TODO: DECIDE WHAT TODO WITH TEXTDISTANCE
-        textdistance = words.headlines.utils.document_textdistance(
-            self.pagetextnavigators,
-            digits=0,
-        )
-        try:
-            self.textdistance = textdistance[0]
-        except TypeError:
-            self.textdistance = textdistance
-
     def extract_chapter(self, chapter: int):
         assert 0 <= chapter < self.chaptercount, chapter
         result = []
-        start, end = self.content[chapter]
+        start, end = self.chapter_ranges[chapter]
         for page in range(int(start), int(end + 1)):
-            navigator = utila.select_page(self.pagetextnavigators, page)
+            navigator = utila.select_page(self.ptcns, page)
             if not navigator or not navigator.content:  # TODO: CHECK .content
                 # empty page
                 continue
             pageheadlines = self.extract_page(navigator)
             result.extend(pageheadlines)
-        self.__result[chapter] = result
+        return result
 
     def extract_page(self, pagecontent: texmex.PageTextContentNavigator):
         result = []
-        border = utila.select_page(self.pagetextnavigators, page=pagecontent.page).content # yapf:disable
-        bounds = texmex.textbounds(pagecontent, border)
+        bounds = texmex.textbounds(pagecontent, pagecontent.content)
         without_content = [item.bounds for item in bounds]
         # PageContentNavigator, the header and footer is ignored
         textdistances = texmex.fontdistance_textbounds(without_content)
@@ -248,7 +214,7 @@ class HeadlineExtractorStrategy(abc.ABC):  # pylint:disable=too-many-instance-at
             feed=textfeed,
         )
         decoration = headline_decoration(
-            navigator=utila.select_page(self.pagetextnavigators, page),
+            navigator=utila.select_page(self.ptcns, page),
             containerid=containerid,
         )
         headline = iamraw.Headline(
@@ -273,7 +239,7 @@ class HeadlineExtractorStrategy(abc.ABC):  # pylint:disable=too-many-instance-at
 
     @property
     def chaptercount(self):
-        return len(self.chapters)
+        return len(self.chapter_numbers)
 
     @abc.abstractmethod
     def smallest_headlinedistance(self):
@@ -282,6 +248,37 @@ class HeadlineExtractorStrategy(abc.ABC):  # pylint:disable=too-many-instance-at
     @abc.abstractmethod
     def smallest_textsize(self):
         pass
+
+
+def document_textdistance(ptcns: texmex.PageTextContentNavigators) -> float:
+    textdistance = words.headlines.utils.document_textdistance(
+        ptcns,
+        digits=0,
+    )
+    with contextlib.suppress(TypeError):
+        return textdistance[0]
+    return textdistance
+
+
+def groupby_headlinelevel(chapters):
+    extracted = [item for item in chapters.values()]
+
+    flatten = utila.flatten(extracted)
+    grouped = []
+    if flatten:
+        if isinstance(flatten[0].level, dict):
+            # HACK NOLEVEL?
+            flatten[0].level = None
+        grouped.append([flatten[0]])
+    for item in flatten[1:]:
+        if isinstance(item.level, dict):
+            # HACK NOLEVEL?
+            item.level = None
+        if item.level is None or item.level == 1:
+            grouped.append([item])
+        else:
+            grouped[-1].append(item)
+    return grouped
 
 
 def headline_decoration(navigator, containerid: int) -> int:
