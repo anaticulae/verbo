@@ -7,6 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import re
+
 import iamraw
 import iamraw.sections
 import sections.feature.section
@@ -151,3 +153,20 @@ def groupby_headlinelevel(chapters):
         else:
             grouped[-1].append(item)
     return grouped
+
+
+# TODO: CODE DUPLICATION, COLLECT DIFFERENT HEADLINE PARSING APPROACHES
+# AND CONVERT TO SINGLE ONE.
+HEADLINE = re.compile(
+    ('^'
+     r'(?P<level>(\d{1,2}\.?)+\d{0,2})'
+     r'[ ]{1,5}'
+     r'(?P<text>.+?)'
+     '$'),
+    re.VERBOSE,
+)
+
+
+def parse_headline(line):
+    line = line.strip()
+    return re.match(HEADLINE, line)

@@ -13,7 +13,8 @@ import serializeraw
 import utila
 import utilatest
 
-import words.headlines.multiline
+import words.headlines.machine
+import words.headlines.strategies.multiline
 
 
 @utilatest.skip_longrun
@@ -78,7 +79,6 @@ def test_headlines_multiple_master72_extract_pages_38_42():
 
 
 def parse_multiline(path: str, pages: tuple):
-    chapters = None
     sections_ = sections.feature.section.load_section_likelihood_frompath(
         path,
         pages=pages,
@@ -87,12 +87,12 @@ def parse_multiline(path: str, pages: tuple):
         path,
         pages=pages,
     )
-    strategy = words.headlines.multiline.MultiLine(
+    result = words.headlines.machine.headlines(
+        ptcns=loaded,
         sectionlist=sections_,
-        contentnavigators=loaded,
-        chapters=chapters,
-    )
-    result = strategy.result(pages=pages)
+        strategies=[words.headlines.strategies.multiline],
+        pages=pages,
+    )[0]
     result = utila.flatten(result)
     headlines = [(item.raw_level, item.title, item.level) for item in result]
     return headlines

@@ -16,7 +16,7 @@ import iamraw
 import texmex
 
 import words.headlines
-import words.headlines.standard as whs
+import words.headlines.utils as whu
 
 SMALLEST_HEADLINE_DISTANCE = 1.05  # TODO: HOLY VALUE
 SMALLEST_HEADLINE_TEXTSIZE = 1.0
@@ -63,7 +63,7 @@ def filter_headlines(items: iamraw.PagesHeadlineList):
             if headline.title.count('.') > 5:
                 # Skip toc line entries
                 continue
-            parsed = whs.parse_headline(headline.title)
+            parsed = whu.parse_headline(headline.title)
             if parsed:
                 raw_level = parsed['level']
                 headline.level = groupme.toc.group.numbered_level(raw_level)

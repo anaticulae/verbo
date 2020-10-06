@@ -36,8 +36,10 @@ def headlines(
         ptcns: texmex.PageTextContentNavigators,
         sectionlist: typing.List[iamraw.Sections],
         chapters: 'ChapterRanges' = None,
+        strategies=None,
         pages: tuple = None,
 ) -> iamraw.Headlines:
+    strategies = strategies if strategies else STRATEGIES
     # prepare data
     textsize = texmex.document_textsize(navigators=ptcns)
     textdistance = words.headlines.utils.document_textdistance(
@@ -51,7 +53,7 @@ def headlines(
             strategy=strategy,
             data=data,
             pages=pages,
-        ) for strategy in STRATEGIES
+        ) for strategy in strategies
     ]
     return results
 

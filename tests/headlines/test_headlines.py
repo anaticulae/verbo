@@ -19,8 +19,8 @@ import tests.fixtures.restruct
 import words.feature
 import words.feature.headlines
 import words.headlines
-import words.headlines.nolevel
 import words.headlines.strategies
+import words.headlines.strategies.nolevel
 
 # NOTE: WHAT SHOULD WE DO WITH THE RAW_LEVEL?
 EXPECTED = [
@@ -32,6 +32,7 @@ EXPECTED = [
             raw='RestructuredText Tutorial',
             raw_level=None,
             title='RestructuredText Tutorial',
+            decoration=0,
         ),
     ],
     [
@@ -42,6 +43,7 @@ EXPECTED = [
             raw='RestructuredText Guide',
             raw_level=None,
             title='RestructuredText Guide',
+            decoration=0,
         ),
         iamraw.Headline(
             container=2,
@@ -75,13 +77,14 @@ def test_headlines_extract_headlines():
     path = power.link(power.DOCU27_PDF)
     section = tests.fixtures.restruct.restructured_sections_manual()
     content = serializeraw.create_pagetextcontentnavigators_frompath(path)
-    extractor = words.headlines.nolevel.NoLevelHeadlineExtractor(
+    result = words.headlines.machine.headlines(
+        ptcns=content,
         sectionlist=section,
-        contentnavigators=content,
+        strategies=[words.headlines.strategies.nolevel],
         chapters=[0, 1, 2, 3, 4, 5, 6, 7],
-    )
+    )[0]
     # check only the start, TODO: increase check later?
-    extracted = extractor.result()[0:2]
+    extracted = result[0:2]
     assert len(extracted) == len(EXPECTED)
 
     assert [len(item) for item in extracted] == [len(item) for item in EXPECTED]
