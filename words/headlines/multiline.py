@@ -58,7 +58,7 @@ class MultiLine(words.headlines.HeadlineExtractorStrategy):
     def smallest_textsize(self):
         return utila.roundme(self.textsize)
 
-    def extract_page(  # pylint:disable=R1260
+    def extract_page(
             self,
             pagecontent: texmex.PageTextNavigator,
     ) -> iamraw.Headlines:
@@ -74,44 +74,34 @@ class MultiLine(words.headlines.HeadlineExtractorStrategy):
         for items in grouped:
             if wrong_position(items):
                 continue
-            if not possible_headline_group(items):
+            if invalid_headline_group(items):
                 continue
-            # TODO: REMOVE STRIP LATER
-            raw = ' '.join([item.text.strip() for item in items])
-            parsed = whs.parse_headline(raw)
+            raw = plain(items)
+            parsed = parse_headline(raw)
             if not parsed:
-                raw = raw.strip()
-                if raw not in words.headlines.WHITELIST:
-                    continue
-            title = utila.normalize_whitespaces(raw)
-            # TODO: REPLACE WITH LEVEL DETERMINER
-            # with contextlib.suppress(TypeError):
-            #     text = parsed['text'].strip()  # TODO: REMOVE STRIP LATER
-            try:
-                raw_level = parsed['level'].strip()  # TODO: REMOVE STRIP LATER
-                title = title.replace(raw_level, '').strip()
-            except TypeError:
-                raw_level = ''
-            level = groupme.toc.group.numbered_level(raw_level)
-            if level is False:
                 continue
+            title, level, rawlevel = parsed
             if noheadline(title):
                 continue
-
-            if len(items) == 1:  # TODO: CHECK THIS
-                container = items.firstid
-            else:
-                container = (items.firstid, items.firstid + len(items) - 1)
             headline = iamraw.Headline(
-                container=container,
+                container=headline_range(items),
                 level=level,
                 page=pagecontent.page,
                 raw=raw,
-                raw_level=raw_level,
-                title=title,
+                raw_level=rawlevel,
+                title=utila.normalize_whitespaces(title),
             )
             result.append(headline)
         return result
+
+
+def headline_range(items):
+    if len(items) == 1:
+        # single line headline
+        container = items.firstid
+    else:
+        container = (items.firstid, items.firstid + len(items) - 1)
+    return container
 
 
 def noheadline(text: str) -> bool:
@@ -130,17 +120,17 @@ def noheadline(text: str) -> bool:
     return False
 
 
-def possible_headline_group(items) -> bool:
+def invalid_headline_group(items) -> bool:
     text = ' '.join([item.text for item in items])
     words_ = german.split_words(text, validate_sentences=False)
     if len(words_) >= MAX_HEADLINE_TOKEN_LENGTH:
         # maybe a sentence cause headlines are not so long
-        return False
+        return True
 
     number_count = len([item for item in words_ if utila.isnumber(item)])
     if number_count >= MAX_NUMBERS_IN_HEADLINE:  # TODO: HOLY VALUE
         # assume that headlines does not contain many numbers
-        return False
+        return True
 
     if len(items) >= 2:  # multiline
         # In general, multiline headlines fill the whole line. If this
@@ -149,8 +139,8 @@ def possible_headline_group(items) -> bool:
         line_length = [len(item.text) for item in items.text]
         median = statistics.median(line_length)
         if median <= HEADLINE_MEDIAN(items.size):
-            return False
-    return True
+            return True
+    return False
 
 
 def issentence(line: str):
@@ -162,7 +152,7 @@ def issentence(line: str):
 def wrong_position(
         items,
         max_x0: float = 200.0,  # HOLY VALUE
-):
+) -> bool:
     """We assume that headlines start on the left side of the document.
     This should skip false possitive headline extraction.
 
@@ -170,3 +160,22 @@ def wrong_position(
     SUPPORT RIGHT ALIGNED HEADLINES?
     """
     return items.bounding[0] >= max_x0
+
+
+def plain(items: list) -> str:
+    # TODO: REPLACE WITH UTILA CODE
+    raw = ' '.join([item.text.strip() for item in items])
+    return raw
+
+
+def parse_headline(raw: str):
+    parsed = whs.parse_headline(raw)
+    if parsed:
+        rawlevel, title = parsed['level'], parsed['text']
+        level = groupme.toc.group.numbered_level(rawlevel)
+        if level is False:
+            return None
+        return title, level, rawlevel
+    if raw not in words.headlines.WHITELIST:
+        return None
+    return raw, None, ''
