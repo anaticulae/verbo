@@ -57,10 +57,10 @@ def extract_headline(
         lastitem=lastitem,
     )
 
-    if words.headlines.strategies.headline_blacklisted(text):
+    if skip and not higher_equalthree:
         return None
 
-    if skip and not higher_equalthree:
+    if words.headlines.strategies.headline_blacklisted(text):
         return None
 
     dist_top = textdistances[containerid]
