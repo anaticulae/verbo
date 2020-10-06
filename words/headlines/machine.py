@@ -72,7 +72,7 @@ def run(strategy, data: Data, pages: tuple = None):
         chapter_pages = tuple(chapter_pages[:-1])  # pylint:disable=R0204
         if utila.should_skip(chapter_pages, pages):
             continue
-        results[chapter] = words.headlines.utils.extract_chapter(
+        results[chapter] = extract_chapter(
             strategy,
             data,
             chapter_ranges[chapter],
@@ -84,3 +84,51 @@ def run(strategy, data: Data, pages: tuple = None):
 
     grouped = words.headlines.utils.groupby_headlinelevel(results)
     return grouped
+
+
+def extract_chapter(strategy, data, chapter_range):
+    result = []
+    start, end = chapter_range
+    for page in range(int(start), int(end + 1)):
+        navigator = utila.select_page(data.ptcns, page)
+        if not navigator or not navigator.content:  # TODO: CHECK .content
+            # empty page
+            continue
+        try:
+            # use module extractor
+            pageheadlines = strategy.extract_page(strategy, data, page)
+        except AttributeError:
+            # use default extractor
+            pageheadlines = extract_page(strategy, data, page)
+        result.extend(pageheadlines)
+    return result
+
+
+def extract_page(strategy, data, page):
+    pagecontent = utila.select_page(data.ptcns, page)
+    result = []
+    bounds = texmex.textbounds(pagecontent, pagecontent.content)
+    without_content = [item.bounds for item in bounds]
+    # PageContentNavigator, the header and footer is ignored
+    textdistances = texmex.fontdistance_textbounds(without_content)
+
+    textfeeds = [item.bounds.leftdist for item in bounds]
+
+    for containerid, item in enumerate(pagecontent):
+        splitted = item.text.splitlines()
+        if len(splitted) > 1:
+            # TODO: REMOVE?
+            continue
+        headline = strategy.extract_headline(
+            textinfo=item,
+            textdistances=textdistances,
+            textfeeds=textfeeds,
+            textsize=data.textsize,
+            textdistance=data.textdistance,
+            ptcn=pagecontent,
+            containerid=containerid,
+        )
+        if not headline:
+            continue
+        result.append(headline)
+    return result
