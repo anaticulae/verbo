@@ -36,30 +36,21 @@ def headlines(
         chapters: 'ChapterRanges' = None,
         pages: tuple = None,
 ) -> iamraw.Headlines:
+    # prepare data
     textsize = texmex.document_textsize(navigators=ptcns)
     textdistance = words.headlines.utils.document_textdistance(
         navigators=ptcns,
         digits=0,
     )
     data = Data(ptcns, sectionlist, chapters, textsize, textdistance)
-
-    results = strategies(
-        data=data,
-        pages=pages,
-    )
-
-    return results
-
-
-def strategies(data: Data = None, pages: tuple = None):
-    results = []
-    for strategy in STRATEGIES:
-        result = run(
+    # run strategies
+    results = [
+        run(
             strategy=strategy,
             data=data,
             pages=pages,
-        )
-        results.append(result)
+        ) for strategy in STRATEGIES
+    ]
     return results
 
 
@@ -93,7 +84,3 @@ def run(strategy, data: Data, pages: tuple = None):
 
     grouped = words.headlines.utils.groupby_headlinelevel(results)
     return grouped
-
-
-def best(results):
-    return results[0]

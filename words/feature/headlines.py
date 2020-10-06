@@ -38,6 +38,7 @@ import serializeraw
 import utila
 
 import words.headlines
+import words.headlines.judge
 import words.headlines.levelfour
 import words.headlines.machine
 import words.headlines.multiline
@@ -74,7 +75,7 @@ def work(  # pylint:disable=R0913,R0914
         headerfooters,
         pages=pages,
     )
-    extracted = judge_result(results)
+    extracted = words.headlines.judge.run(results)
 
     oneline_results = extract_headlines(
         sectionlist,
@@ -86,7 +87,7 @@ def work(  # pylint:disable=R0913,R0914
         headerfooters,
         pages=pages,
     )
-    oneline_extracted = judge_result(oneline_results)
+    oneline_extracted = words.headlines.judge.run(oneline_results)
 
     textnavigators = serializeraw.create_pagetextcontentnavigators_fromfile(
         text=text,
@@ -173,26 +174,6 @@ def extract_headlines(
     return result
 
 
-def judge_result(results):
-    """\
-        1. Compare Multiline and NoLevel - prefer multiline over NoLevel
-        2. Compare result of 1. with StandardHeadlineExtractor
-    """
-    best = results[1]
-    if any([len(item) for item in results[0]]):
-        # if any item is detected with multiline strategy, choose
-        # multiline over NoLevelheadline
-        best = results[0]
-
-    # longest common text selection
-    best_flat = score_headlines(best)
-    standard_flat = score_headlines(results[2])
-
-    if best_flat > standard_flat:
-        return best
-    return results[2]
-
-
 def score_headlines(items):
     score = 0
     for item in utila.flatten(items):
@@ -223,5 +204,5 @@ def headlines_frompath(path: str, prefix: str = '', pages: tuple = None):
         headerfooters,
         pages=pages,
     )
-    result = judge_result(extracted)
+    result = words.headlines.judge.run(extracted)
     return result
