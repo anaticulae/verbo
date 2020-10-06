@@ -283,7 +283,12 @@ BACHELOR051_HEADLINES = """\
         id='diss264',
         marks=pytest.mark.xfail,
     ),
-    pytest.param(power.BACHELOR063_PDF, BACHELOR63_HEADLINES, id='bachelor63'),
+    pytest.param(
+        power.BACHELOR063_PDF,
+        BACHELOR63_HEADLINES,
+        id='bachelor63',
+        marks=pytest.mark.xfail,
+    ),
     pytest.param(power.BACHELOR051_PDF, BACHELOR051_HEADLINES, id='bachelor51'),
 ])
 @utilatest.skip_nightly
