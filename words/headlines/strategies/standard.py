@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import configo
 import groupme.toc.group
 import iamraw
 import texmex
@@ -33,16 +34,12 @@ def extract_headline(
     textfeed = textfeeds[containerid]
     textsize = texmex.TextStyle.textsizes(textinfo.style)
 
-    distance_tosmall = fontdistance < kwargs['textdistance']
-    headline_tosmall = textsize < kwargs['textsize']
-
-    level = groupme.toc.group.numbered_level(text)
-    higher_equalthree = level is not None and level >= 3
-    if higher_equalthree:
-        # deactivate distance check for 3.1.1. etc. cause it is a very
-        # expressive pattern and these headlines can be very small.
-        distance_tosmall = False
-        headline_tosmall = False
+    distance_toosmall, headline_toosmall, higher_equalthree = too_small(
+        text,
+        fontdistance,
+        textsize,
+        **kwargs,
+    )
 
     lastitem = (containerid + 1) == len(ptcn)
     if len(text) < words.headlines.strategies.HEADLINE_MIN_LENGTH:
@@ -51,8 +48,8 @@ def extract_headline(
     skipper = should_skip if skipper is None else skipper
 
     skip = skipper(
-        distance_tosmall=distance_tosmall,
-        headline_tosmall=headline_tosmall,
+        distance_tosmall=distance_toosmall,
+        headline_tosmall=headline_toosmall,
         textfeed=textfeed,
         lastitem=lastitem,
     )
@@ -87,15 +84,51 @@ def extract_headline(
     return headline
 
 
+DISTANCE_TOOSMALL = configo.HolyTable(
+    items=(
+        (0, 1.2),
+        (1, 1.15),
+        (2, 1.1),
+        (3, 1.0),
+    ),
+    right_outranges_none=False,
+)
+TEXTSIZE_TOOSMALL = configo.HolyTable(
+    items=(
+        (0, 1.12),
+        (1, 1.08),
+        (2, 1.05),
+        (3, 1.0),
+    ),
+    right_outranges_none=False,
+)
+
+
+def too_small(text, fontdistance, textsize_, **kwargs):
+    level = groupme.toc.group.numbered_level(text)
+    level = 0 if level is None else level
+
+    distance_tosmall = fontdistance < kwargs['textdistance'] * DISTANCE_TOOSMALL(level) # yapf:disable
+    headline_tosmall = textsize_ < kwargs['textsize'] * TEXTSIZE_TOOSMALL(level)
+
+    higher_equalthree = level is not None and level >= 3
+    if higher_equalthree:
+        # deactivate distance check for 3.1.1. etc. cause it is a very
+        # expressive pattern and these headlines can be very small.
+        distance_tosmall = False
+        headline_tosmall = False
+    return distance_tosmall, headline_tosmall, higher_equalthree
+
+
 def should_skip(
         distance_tosmall,
         headline_tosmall,
-        textfeed,
+        textfeed,  # pylint:disable=W0613
         lastitem,  # pylint:disable=W0613
 ):
-    if textfeed > words.headlines.strategies.MAX_HEADLINE_TEXTFEED:
-        # skip numbered lists
-        return True
+    # if textfeed > words.headlines.strategies.MAX_HEADLINE_TEXTFEED:
+    #     # skip numbered lists
+    #     return True
 
     if distance_tosmall:
         return True

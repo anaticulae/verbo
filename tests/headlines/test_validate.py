@@ -37,13 +37,15 @@ MASTER98_HEADLINES = """\
     5.1 Reflexion der Themenwahl
     5.2 Reflexion der Zielgruppe
     5.3 Reflexion der inhaltlichen Lernziele
+    5.4 Reflexion der sprachlichen Lernziele
     5.5 Reflexion der Methodik und des Materials
     5.6 Reflexion der kulturdidaktischen Lernziele
 6 Fazit und Ausblick
 7 Verzeichnisse
     7.1 Literaturverzeichnis
     7.2 Tabellenverzeichnis
-8 Anhang"""
+8 Anhang
+Erklärung"""
 
 BACHELOR90_HEADLINES = """\
 1. Einleitung
@@ -198,30 +200,54 @@ BACHELOR63_HEADLINES = """\
 1 Einleitung
 2 Grundlagen
     2.1 Blutdruck
+        2.1.1 Invasive Messung des arteriellen Drucks
+        2.1.2 Nicht-invasive Messung des arteriellen Drucks
+            2.1.2.1 Auskultatorische Methode
+            2.1.2.2 Oszillometrische Methode
+            2.1.2.3 Volumenkompensationsmethode
     2.2 Ultraschall-Doppler -Blutflussmessung
     2.3 Digitale Regelung
+        2.3.1 Grundprinzip der Regelungste chnik
+        2.3.2 Besonderheiten der digitalen Regelung
+        2.3.3 Der PI-Regler
     2.4 Programmiersprache LabVIEW
     2.5 Valsalva-Press-Versuch
 3 Aufgabenstellung
     3.1 Bestehender Versuchsaufbau
     3.2 Anforderungen an den neuen Versuchsaufbau
 4 Material und Methoden
+    4.1 Realisierung einer digitalen Steuerung/Regelung
+        4.1.1 Programmierung
+        4.1.2 Anpassung der Hardware
+    4.2 Anpassung der Messwerte mit alternativem Verfahren
+        4.2.1 Oszillometrische Bestimmung des mittleren arteriellen Blutdrucks
+        4.2.2 Anpassung der Druckwerte
+        4.2.3 Manuelle Eingabe alternativer Werte
     4.3 Erstellung einer Bedienoberfläche
+        4.3.1 Anforderungen an die Bedienoberfläche
+        4.3.2 Hauptprogramm
+        4.3.3 Sub-VI „Messprogramm“
     4.4 Überarbeitung der Sondenfixierung
 5 Ergebnisse
     5.1 Optimierter Versuchsaufbau
     5.2 Testmessungen
+        5.2.1 Durchführung
+        5.2.2 Ergebnisse
 6 Diskussion und Ausblick
 7 Anhang
     7.1 Programmstruktur
         7.1.1 Hauptprogramm
         7.1.2 Sub-VI „Messprogramm“
+        7.1.3 Blockdiagramm der optimierten Regelschleife
     7.2 Hardwareaufbau
         7.2.1 Schalt- und Anschlusspläne
             7.2.1.1 Schaltplan Verteilerplatine
-            7.2.1.4 Pneumatikplan Druckerzeugungseinheit Quelle: Diplomarbeit Thomas Eberhard [Ebe96]
+            7.2.1.2 Schaltplan Netzversorgung
+            7.2.1.3 Anschlussplan
+            7.2.1.4 Pneumatikplan Druckerzeugungseinheit
         7.2.2 Zeichnungen
             7.2.2.1 Frontplatte
+            7.2.2.2 Rückwand
     7.3 Sondenfixierung
         7.3.1 Zeichnung Befestigungsblock
     7.4 Testmessungen
@@ -271,7 +297,8 @@ BACHELOR051_HEADLINES = """\
 9 Abbildungs-, Tabellen-, Abkürzungsverzeichnis
     9.1 Abbildungsverzeichnis
     9.2 Tabellenverzeichnis
-    9.3 Abkürzungsverzeichnis"""
+    9.3 Abkürzungsverzeichnis
+Anhang"""
 
 
 @pytest.mark.parametrize('source, expected', [
@@ -283,12 +310,7 @@ BACHELOR051_HEADLINES = """\
         id='diss264',
         marks=pytest.mark.xfail,
     ),
-    pytest.param(
-        power.BACHELOR063_PDF,
-        BACHELOR63_HEADLINES,
-        id='bachelor63',
-        marks=pytest.mark.xfail,
-    ),
+    pytest.param(power.BACHELOR063_PDF, BACHELOR63_HEADLINES, id='bachelor63'),
     pytest.param(power.BACHELOR051_PDF, BACHELOR051_HEADLINES, id='bachelor51'),
 ])
 @utilatest.skip_nightly
