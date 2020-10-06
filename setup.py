@@ -55,6 +55,7 @@ if __name__ == "__main__":
             'words.abbreviation',
             'words.feature',
             'words.headlines',
+            'words.headlines.strategies',
             'words.links',
             'words.lists',
             'words.text',
