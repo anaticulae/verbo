@@ -96,14 +96,27 @@ def work(  # pylint:disable=R0913,R0914
         fontcontent=font_content,
         pages=pages,
     )
-    levelfour_ = words.headlines.levelfour.headlines(textnavigators)
-    valid = words.headlines.levelfour.valid_levelfour(extracted, levelfour_)
-    if levelfour_ and valid:
-        extracted = merge_levelfour(extracted, levelfour_)
+
+    if not has_levelfour(extracted):
+        # only extract level four headlines if result does not contain any
+        # 4.1.2.3 levels.
+        levelfour_ = words.headlines.levelfour.headlines(textnavigators)
+        valid = words.headlines.levelfour.valid_levelfour(extracted, levelfour_)
+        if levelfour_ and valid:
+            extracted = merge_levelfour(extracted, levelfour_)
     # dump
     dumped = serializeraw.dump_headlines(extracted)
     oneline_dumped = serializeraw.dump_headlines(oneline_extracted)
     return dumped, oneline_dumped
+
+
+def has_levelfour(headlines):
+    flat = utila.flatten(headlines)
+    maxlevel = max(
+        [item.level for item in flat if item.level is not None],
+        default=0,
+    )
+    return maxlevel >= 4
 
 
 def merge_levelfour(extracted, levelfour):
