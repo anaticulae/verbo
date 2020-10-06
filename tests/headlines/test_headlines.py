@@ -10,8 +10,10 @@
 import iamraw
 import power
 import serializeraw
+import utila
 import utilatest
 
+import tests
 import tests.fixtures.headlines
 import tests.fixtures.restruct
 import words.feature
@@ -162,3 +164,20 @@ def test_features_headlines_filter_headlines():
 
     expected_subsection_count = [2, 5, 7, 5, 2]
     assert subsections_count == expected_subsection_count
+
+
+def test_headlines_container_logical_indexing():
+    """Ensure that headlines are parsed as logical headlines, this means
+    that header and footer is ignored for determining the container id
+    of headlines."""
+    source = power.link(power.BACHELOR128_PDF)
+    headlines = words.feature.headlines.headlines_frompath(source)
+    headlines = utila.flatten(headlines)
+    first = headlines[0]
+    assert first.container == 0, first.container
+
+    source = power.link(power.BACHELOR090_PDF)
+    headlines = words.feature.headlines.headlines_frompath(source)
+    headlines = utila.flatten(headlines)
+    headline_system = headlines[5]
+    assert headline_system.container == 1, headline_system.container
