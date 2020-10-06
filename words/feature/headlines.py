@@ -39,6 +39,7 @@ import utila
 
 import words.headlines
 import words.headlines.levelfour
+import words.headlines.machine
 import words.headlines.multiline
 import words.headlines.nolevel
 import words.headlines.standard
@@ -152,7 +153,7 @@ def extract_headlines(
         headerfooters,
         pages: tuple = None,
 ):
-    loaded = serializeraw.create_pagetextcontentnavigators_fromfile(
+    ptcns = serializeraw.create_pagetextcontentnavigators_fromfile(
         text,
         textposition,
         sizeandborder,
@@ -163,21 +164,13 @@ def extract_headlines(
     )
     sectionlist = serializeraw.load_sections(sections_, pages=pages)
 
-    strategies = [
-        words.headlines.multiline.MultiLine,
-        words.headlines.nolevel.NoLevelHeadlineExtractor,
-        words.headlines.standard.StandardHeadlineExtractor,
-    ]
-    results = []
-    for strategy in strategies:
-        utila.debug(strategy)
-        result = strategy(
-            contentnavigators=loaded,
-            sectionlist=sectionlist,
-            chapters=None,
-        ).result(pages=pages)
-        results.append(result)
-    return results
+    result = words.headlines.machine.headlines(
+        ptcns,
+        sectionlist,
+        chapters=None,
+        pages=pages,
+    )
+    return result
 
 
 def judge_result(results):

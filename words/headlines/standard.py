@@ -96,3 +96,4 @@ HEADLINE = re.compile(
 def parse_headline(line):
     line = line.strip()
     return re.match(HEADLINE, line)
+    parsed = whs.parse_headline(raw)
