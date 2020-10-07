@@ -319,6 +319,70 @@ Sphinx Customizations
 Testing your Documentation
 Indices and tables"""
 
+# TODO: 5.2 Die ´Demenzkampagne Ostfildern „Wir sind Nachbarn!“`: Oktober 2007 – Juni 2008
+BACHELOR128_HEADLINES = """\
+1. Einleitung
+    1.1 Problemstellung
+    1.2 Zielsetzung der Arbeit
+    1.3 Gliederung und Vorgehensweise der Arbeit
+2. Demenz
+    2.1 Das Bild der ´Demenz`
+    2.2 Demenz – Ablehnung oder Akzeptanz?
+    2.3 Folgen für Menschen mit Demenz
+    2.4 Bedarf von Menschen mit Demenz
+3. Kommune
+    3.1 Demenz und Kommune – wie gehören diese Begriffe zusammen?
+    3.2 Sozialpolitische Aufgaben
+    3.3 Kommunale Aufgaben
+        3.3.1 Aufgaben in der Altenplanung
+        3.3.2 Das Thema Demenz in die Öffentlichkeit rücken
+    4.1 Die Zivilgesellschaft
+        4.1.1 Begriffsbestimmung
+        4.1.2 Aspekte für eine aktive Zivilgesellschaft
+        4.1.3 Grundbausteine eines zivilgesellschaftlichen Demenzmodells
+        4.1.4 „Leben und Sterben, wo ich hingehöre!“
+    4.2. Das Bürgerschaftliche Engagement
+        4.2.1 Begriffsbestimmung
+        4.2.2 Merkmale und Akteure
+        4.2.3 Formen
+        4.2.4 Hochkonjunktur bürgerschaftliches Engagement – wie und warum?
+    4.3 Bedeutungen für eine demenzfreundliche Kommune
+5. Initiative: ´Demenzfreundliche Kommune`
+    5.1 Auf dem Weg zum Verein „Aktion Demenz e.V.“
+        5.2.1 Projektplanung
+        5.2.2 Projektbeteiligte
+        5.2.3 Ziele und Inhalte des Projektes
+        5.2.4 Projektdurchführung
+        5.2.5 Ergebnisse und Wirkungen
+    5.3 Das ´Projekt-Demenz-Arnsberg`: Januar 2008 – etwa Dezember 2010
+        5.3.1 Projektplanung
+        5.3.2 Projektbeteiligte
+        5.3.3 Ziele und Inhalte des Projektes
+        5.3.4 Projektdurchführung
+        5.3.5 Ergebnisse und Wirkungen
+6. Empirische Untersuchung
+    6.1 Methodische Vorgehensweise
+        6.1.1 Strukturiertes Leitfadeninterview am Beispiel des Experteninterviews
+        6.1.2 Auswahl der Interviewpartner
+        6.1.3 Aufbau und Inhalt des Interviewleitfaden
+        6.1.4 Vorbereitung und Durchführung der Interviews
+        6.1.5 Vorgehensweise der Auswertung
+    6.2 Verarbeitungen der Erkenntnisse
+        6.2.1 Auswertung der Interviewergebnisse
+            6.2.1.1 Ergebnisse in Bezug auf den Theorieteil
+            6.2.1.2 Ergebnisse in Bezug auf den Praxisteil
+    6.3. Gemeinsamkeiten und Unterschiede der vorgestellten Initiativen
+7. Handlungsempfehlungen
+8. Fazit und Ausblick
+    8.1 Fazit
+    8.2 Ausblick
+Quellenverzeichnis
+Bibliografie
+Zeitschriftenartikel
+Internetquellen
+Anhangsverzeichnis
+Eidesstattliche Versicherung"""
+
 
 @pytest.mark.parametrize('source, expected', [
     pytest.param(power.MASTER098_PDF, MASTER98_HEADLINES, id='master98'),
@@ -332,6 +396,7 @@ Indices and tables"""
     pytest.param(power.BACHELOR063_PDF, BACHELOR63_HEADLINES, id='bachelor63'),
     pytest.param(power.BACHELOR051_PDF, BACHELOR051_HEADLINES, id='bachelor51'),
     pytest.param(power.DOCU27_PDF, DOCU027_HEADLINES, id='docu27'),
+    pytest.param(power.BACHELOR128_PDF, BACHELOR128_HEADLINES, id='bsc128'),
 ])
 @utilatest.skip_nightly
 def test_headlines_validate(source, expected, testdir, monkeypatch):
