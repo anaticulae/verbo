@@ -300,6 +300,25 @@ BACHELOR051_HEADLINES = """\
     9.3 Abkürzungsverzeichnis
 Anhang"""
 
+DOCU027_HEADLINES = """\
+RestructuredText Tutorial
+RestructuredText Guide
+    Basics
+    Blockquotes
+    Code: Block
+RestructuredText Customizations
+Sphinx Tutorial
+    Step 1
+        Getting Set Up
+        Documenting a Project
+        Aside: Other formats
+    Step 2
+        Referencing Code
+Sphinx Guide
+Sphinx Customizations
+Testing your Documentation
+Indices and tables"""
+
 
 @pytest.mark.parametrize('source, expected', [
     pytest.param(power.MASTER098_PDF, MASTER98_HEADLINES, id='master98'),
@@ -312,6 +331,7 @@ Anhang"""
     ),
     pytest.param(power.BACHELOR063_PDF, BACHELOR63_HEADLINES, id='bachelor63'),
     pytest.param(power.BACHELOR051_PDF, BACHELOR051_HEADLINES, id='bachelor51'),
+    pytest.param(power.DOCU27_PDF, DOCU027_HEADLINES, id='docu27'),
 ])
 @utilatest.skip_nightly
 def test_headlines_validate(source, expected, testdir, monkeypatch):

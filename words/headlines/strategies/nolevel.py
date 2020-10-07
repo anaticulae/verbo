@@ -37,7 +37,7 @@ def should_skip(distance_tosmall, headline_tosmall, **kwargs):  # pylint:disable
 
 def extract_headline(**kwargs):
     kwargs['textdistance'] = kwargs['textdistance'] * 1.2
-    kwargs['textsize'] = kwargs['textsize'] * 1.1
+    kwargs['textsize'] = kwargs['textsize'] * 1.05
     return words.headlines.strategies.standard.extract_headline(
         **kwargs,
         skipper=should_skip,
