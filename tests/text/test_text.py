@@ -64,13 +64,13 @@ def test_text_extractor_titles():
 
     # page6
     page6 = utila.select_page(result, 6)
-    assert page6.content[0].headline.title is None
-    assert page6.content[1].headline.title == 'RestructuredText Tutorial'
+    # assert page6.content[0].headline.title is None
+    assert page6.content[0].headline.title == 'RestructuredText Tutorial'
 
     # page8
     page8 = utila.select_page(result, 8)
-    assert page8.content[0].headline.title == 'RestructuredText Guide'
-    assert page8.content[1].headline.title == 'Basics'
+    assert page8.content[1].headline.title == 'RestructuredText Guide'
+    assert page8.content[2].headline.title == 'Basics'
 
     # page9
     page9 = utila.select_page(result, 9)
