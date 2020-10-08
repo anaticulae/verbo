@@ -2,6 +2,31 @@
 
 Every noteable change is logged here.
 
+## v0.18.0
+
+### Feature
+
+* skip extraction result with too many level one headlines (a698117bafb4)
+* use improve headline extractor strategies (81748199788b)
+* add separate headline filter (37e3ce586f92)
+* introduce separate page extraction possibility (f7428bca9be9)
+* add new headline extraction mechanism (25825af180ed)
+* add decoration parser to detect `Kapitel 1` pattern (c9946aef3550)
+* disable levelfour parser if regularly levelfour was parsed (b829228c0597)
+* deactivate distance check for level 3 and more headlines (dd5686129c2c)
+* use distance before to improve distance check (dbeaf01ff925)
+* use logical indexing (711fb7d950ef)
+* add decoration field to handle `Kapitel 1 Headlines` (bdcdb74d64f1)
+
+### Fix
+
+* use improved headline level parser (67e81fa245c4)
+* fix extract area of parsed list (ff081d8fd449)
+
+### Documentation
+
+* extend interface documentation (1ca1f9aff9ad)
+
 ## v0.17.2
 
 ## v0.17.1
