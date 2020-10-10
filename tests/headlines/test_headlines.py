@@ -170,6 +170,7 @@ def test_features_headlines_filter_headlines():
     assert subsections_count == expected_subsection_count
 
 
+@utilatest.skip_longrun
 def test_headlines_container_logical_indexing():
     """Ensure that headlines are parsed as logical headlines, this means
     that header and footer is ignored for determining the container id
@@ -187,6 +188,7 @@ def test_headlines_container_logical_indexing():
     assert headline_system.container == 1, headline_system.container
 
 
+@utilatest.skip_longrun
 def test_headlines_master110_page18():
     source = power.link(power.MASTER110_PDF)
     headlines = words.feature.headlines.headlines_frompath(

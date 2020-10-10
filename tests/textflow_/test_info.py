@@ -9,12 +9,14 @@
 
 import power
 import serializeraw
+import utilatest
 
 import textflow.alignment.info
 import textflow.alignment.style
 import textflow.features.alignment
 
 
+@utilatest.skip_longrun
 def test_info_adapter():
     source = power.link(power.MASTER072_PDF)
     pages = (10, 11, 12, 13)
