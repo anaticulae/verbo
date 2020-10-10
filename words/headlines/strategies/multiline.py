@@ -18,7 +18,7 @@ import utila
 
 import words.headlines
 import words.headlines.cluster
-import words.headlines.utils as whu
+import words.headlines.utils
 
 # longer word chains may be a sentence or something else
 MAX_HEADLINE_TOKEN_LENGTH = configo.HV_INT_PLUS(20)
@@ -141,7 +141,7 @@ def plain(items: list) -> str:
 
 
 def parse_headline(raw: str):
-    parsed = whu.parse_headline(raw)
+    parsed = words.headlines.utils.parse_headline(raw)
     if parsed:
         rawlevel, title = parsed['level'], parsed['text']
         level = groupme.toc.group.numbered_level(rawlevel)
