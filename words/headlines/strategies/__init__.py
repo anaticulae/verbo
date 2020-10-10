@@ -60,7 +60,7 @@ def filter_headlines(items: iamraw.PagesHeadlineList):
     for chapter, content in items.items():
         chapter_headlines = []
         for headline in content:
-            if headline.title.count('.') > 5:
+            if headline.title.count('.') > 5 or '. .' in headline.title:
                 # Skip toc line entries
                 continue
             parsed = whu.parse_headline(headline.title)
