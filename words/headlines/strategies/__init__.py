@@ -37,8 +37,8 @@ def headline_decoration(navigator, containerid: int) -> int:
     return None
 
 
-BLACK_CHAPTER = re.compile(r'(Kapitel|Chapter|Anhang|Appendix)[ ]{0,5}\d{1,2}', re.IGNORECASE) # yapf:disable
-BLACK_APPENDIX = re.compile(r'(Anhang|Appendix)[ ]{0,5}[A-Z]', re.IGNORECASE)
+BLACK_CHAPTER = re.compile(r'(Kapitel|Chapter|Anhang|Appendix)[ ]{0,5}\d{1,2}$', re.IGNORECASE) # yapf:disable
+BLACK_APPENDIX = re.compile(r'(Anhang|Appendix)[ ]{0,5}[A-Z]$', re.IGNORECASE)
 
 
 def headline_blacklisted(item: str) -> bool:

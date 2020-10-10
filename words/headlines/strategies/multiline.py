@@ -54,6 +54,10 @@ def extract_page(data, page) -> iamraw.Headlines:
         parsed = parse_headline(raw, before)
         if not parsed:
             continue
+        if parsed[1] == 1:
+            # first level headline
+            if items.size <= 12.0:
+                continue
         title, level, rawlevel = parsed
         if noheadline(title):
             continue
