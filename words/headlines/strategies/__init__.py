@@ -71,6 +71,11 @@ def filter_headlines(items: iamraw.PagesHeadlineList):
                 headline.title = headline.title.replace(raw_level, '').strip()
                 chapter_headlines.append(headline)
                 continue
+            if headline.decoration is not None:
+                # Kapitel 1\nEinleitung
+                headline.level = 1  # pylint:disable=R0204
+                chapter_headlines.append(headline)
+                continue
             if headline.title in words.headlines.WHITELIST:
                 chapter_headlines.append(headline)
                 continue

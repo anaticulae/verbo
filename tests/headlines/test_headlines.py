@@ -185,3 +185,16 @@ def test_headlines_container_logical_indexing():
     headlines = utila.flatten(headlines)
     headline_system = headlines[5]
     assert headline_system.container == 1, headline_system.container
+
+
+def test_headlines_master110_page18():
+    source = power.link(power.MASTER110_PDF)
+    headlines = words.feature.headlines.headlines_frompath(
+        source,
+        pages=utila.ranged_tuple(18, 20),
+    )
+    headlines = utila.flatten(headlines)
+    first = headlines[0]
+    assert first.decoration is not None
+    assert first.title == 'Einleitung'
+    assert first.level == 1
