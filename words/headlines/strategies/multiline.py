@@ -18,6 +18,7 @@ import utila
 
 import words.headlines
 import words.headlines.cluster
+import words.headlines.strategies
 import words.headlines.utils
 
 # longer word chains may be a sentence or something else
@@ -43,13 +44,14 @@ def extract_page(data, page) -> iamraw.Headlines:
     pagecontent = utila.select_page(data.ptcns, page)
     result = []
     grouped = texmex.group_page_by_size_distance(pagecontent)
-    for items in grouped:
+    befores = [None] + grouped
+    for items, before in zip(grouped, befores):
         if wrong_position(items):
             continue
         if invalid_headline_group(items):
             continue
         raw = plain(items)
-        parsed = parse_headline(raw)
+        parsed = parse_headline(raw, before)
         if not parsed:
             continue
         title, level, rawlevel = parsed
@@ -140,7 +142,7 @@ def plain(items: list) -> str:
     return raw
 
 
-def parse_headline(raw: str):
+def parse_headline(raw: str, before=None):
     parsed = words.headlines.utils.parse_headline(raw)
     if parsed:
         rawlevel, title = parsed['level'], parsed['text']
@@ -148,6 +150,12 @@ def parse_headline(raw: str):
         if level is False:
             return None
         return title, level, rawlevel
+    if before:
+        # look back and check for `Kapitel-X-Pattern`
+        before = plain(before)
+        chapter = words.headlines.strategies.headline_blacklisted(before)
+        if chapter:
+            return raw, 1, ''
     if raw not in words.headlines.WHITELIST:
         return None
     return raw, None, ''
