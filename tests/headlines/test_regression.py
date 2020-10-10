@@ -10,7 +10,7 @@
 import iamraw
 import iamraw.sections
 
-import words.headlines
+import words.headlines.utils
 
 
 def test_headlines_determine_contentrange():
@@ -26,7 +26,7 @@ def test_headlines_determine_contentrange():
                 iamraw.sections.Text(start=2, end=2, trust=1.0)
             ])
     ])
-    contentrange = words.headlines.determine_contentrange(sections)
+    contentrange = words.headlines.utils.determine_contentrange(sections)
 
     # TODO: CHECK (1, 1)
     expected = [(0.0, 0.5), (0.5, 1.0), (1, 1), (2, 3)]
