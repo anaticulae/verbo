@@ -62,6 +62,7 @@ def extract(resources):
         groupme=True,
         sections=True,
         words=True,
+        magic=True,
         worker=WORKER,
         pages=':',
         rawmaker=genex.CONFIG.replace('--char_margin=3.1', '--char_margin=5.0'),
