@@ -54,11 +54,11 @@ def extract_page(data, page) -> iamraw.Headlines:
         parsed = parse_headline(raw, before)
         if not parsed:
             continue
-        if parsed[1] == 1:
+        title, level, rawlevel = parsed
+        if level == 1:
             # first level headline
             if items.size <= 12.0:
                 continue
-        title, level, rawlevel = parsed
         if noheadline(title):
             continue
         headline = iamraw.Headline(
@@ -69,6 +69,12 @@ def extract_page(data, page) -> iamraw.Headlines:
             raw_level=rawlevel,
             title=utila.normalize_whitespaces(title),
         )
+        # add decorating if required
+        if before:
+            before = plain(before)
+            chapter = words.headlines.strategies.headline_blacklisted(before)
+            if chapter:
+                headline.decoration = headline.start - 1
         result.append(headline)
     return result
 
