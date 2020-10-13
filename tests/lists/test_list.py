@@ -17,7 +17,6 @@ import tests.fixtures.restruct
 import words.lists.regex
 import words.lists.strategy
 import words.lists.vertical
-import words.path
 
 NUMBERED_LIST_SAMPLE_SIZE = 9
 NUMBERED_LIST = """
@@ -157,7 +156,7 @@ def test_list_dotted_with_content_only():
 
 
 @utilatest.skip_longrun
-def test_list_work():  # pylint:disable=W0621
+def test_list_work():
     result = tests.fixtures.restruct.restructured_list_work()
     assert len(result) == 3, str(result)
 
@@ -187,54 +186,11 @@ def test_list_work():  # pylint:disable=W0621
     assert last_items == ['genindex', 'modindex', 'search']
 
 
-def test_list_dump_and_load_lists():  # pylint:disable=W0621
+def test_list_dump_and_load_lists():
     result = tests.fixtures.restruct.restructured_list_work()
     dumped_list = serializeraw.dump_lists(result)
     loaded = serializeraw.load_lists(dumped_list)
     assert loaded == result
-
-
-def extract_lists(source, pages: tuple, testdir, monkeypatch):
-    pages = utila.from_tuple(pages, separator=',')
-    # run words
-    tests.run(
-        # TODO: replace with --list*
-        f'-i {source} --headlines  --text --list --pages {pages}',
-        monkeypatch=monkeypatch,
-    )
-    path = words.path.lists(testdir.tmpdir)
-    lists = serializeraw.load_lists(path)
-    return lists
-
-
-@utilatest.skip_longrun
-def test_list_bachelor76_page4(testdir, monkeypatch):
-    pages = (4,)
-    source = power.link(power.BACHELOR076_PDF)
-
-    lists = extract_lists(source, pages, testdir, monkeypatch)
-    # 1 pages with list content
-    assert len(lists) == 1
-
-
-@utilatest.skip_longrun
-def test_list_bachelor76_page5_10(testdir, monkeypatch):
-    pages = (5, 6, 7, 8, 9, 10)
-    source = power.link(power.BACHELOR076_PDF)
-
-    lists = extract_lists(source, pages, testdir, monkeypatch)
-    # 1 pages with list content
-    assert len(lists) == 1
-
-
-@utilatest.skip_longrun
-def test_list_master72_page9_10(testdir, monkeypatch):
-    pages = (9, 10)
-    source = power.link(power.MASTER072_PDF)
-
-    lists = extract_lists(source, pages, testdir, monkeypatch=monkeypatch)
-    assert len(lists) == 1
-    assert len(utila.select_page(lists, 9).content[0].data) == 7
 
 
 @utilatest.skip_longrun
@@ -250,20 +206,6 @@ def test_list_master72_page39_one_list(testdir):
     listinstance = words.lists.vertical.analyze_page(ptcn[0])
     assert len(listinstance) == 1
     assert len(listinstance[0]) == 2
-
-
-@utilatest.skip_longrun
-def test_list_master72_page39_40_41(testdir, monkeypatch):
-    pages = (39, 40, 41, 42)
-    source = power.link(power.MASTER072_PDF)
-
-    lists = extract_lists(source, pages, testdir, monkeypatch=monkeypatch)
-    assert len(lists) == 1
-
-    page39 = utila.select_page(lists, page=39).content
-    assert len(page39) == 1
-    first_list = page39[0]
-    assert len(first_list) == 4
 
 
 def test_merge_overlapping_lists():
