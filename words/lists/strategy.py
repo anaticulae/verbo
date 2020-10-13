@@ -16,7 +16,7 @@ import words.lists.multiplepages
 import words.lists.vertical
 
 
-def extract_lists(ptcns, headlines, magic=None) -> iamraw.PageContentLists:
+def extract_lists(ptcns, headlines, magic=None) -> iamraw.PageContentLists:  # pylint:disable=W0613
     """Run different strategies to gather the best list extraction result."""
     best, result = 0, []
     for strategy in [
