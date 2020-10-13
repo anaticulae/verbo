@@ -64,15 +64,19 @@ def adjust_pagenumbers(extracted, chunked, ptcns) -> iamraw.PageContentLists:
     """Add pagenumber to extracted lists. The lists does not have the
     correct page number, cause there extracted with big connected page
     chunk."""
-    lookup = chunk_lookup(chunked, ptcns)
+    lookup, local = chunk_lookup(chunked, ptcns)
     matched = collections.defaultdict(list)
     for index, chunk in enumerate(extracted):
-        for paragraph, merged_, list_ in chunk:
-            list_.paragraph = paragraph
-            list_.merged = merged_
-            first_area = list_.area[0]
+        for paragraph, merged_, listi in chunk:
+            listi.paragraph = paragraph
+            listi.merged = merged_
+            first_area = listi.area[0]
             starting_page = lookup[index][first_area]
-            matched[starting_page].append(list_)
+            matched[starting_page].append(listi)
+            # convert to local content navigator area
+            area = [local[index] for index in listi.area]
+            splitted = utila.groupby_ascending(area)
+            listi.area = splitted
     pages = [
         iamraw.PageContentList(page=page, content=content)
         for page, content in matched.items()
@@ -120,10 +124,13 @@ def merge(navigators: texmex.PageTextNavigators) -> texmex.PageTextNavigator:
 def chunk_lookup(chunked, ptcns):
     if not chunked:
         return {}
+    # TODO: WHAT A CRAZY APPROACH
     pages = []
+    local = []
     for navigator in ptcns:
-        for _ in navigator:
+        for index, _ in enumerate(navigator):
             pages.append(navigator.page)
+            local.append(index)
     result = collections.defaultdict(dict)
     globalindex = 0
     for chunkid, chunk in enumerate(chunked):
@@ -132,4 +139,4 @@ def chunk_lookup(chunked, ptcns):
             index += 1
             globalindex += 1
     converted = dict(result)  # enable KeyError
-    return converted
+    return converted, local
