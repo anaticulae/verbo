@@ -32,7 +32,6 @@ mode.
 """
 
 import collections
-import math
 
 import iamraw
 import texmex
@@ -82,7 +81,7 @@ def adjust_pagenumbers(extracted, chunked, ptcns) -> iamraw.PageContentLists:
 
 
 def split(ptcns, offset=0):  # pylint:disable=W0613
-    splitted = chunks(ptcns, size=CHUNK_SIZE)
+    splitted = utila.chunks(ptcns, size=CHUNK_SIZE)
     grouped = []
     for item in splitted:
         grouped.append(merge(item))
@@ -134,14 +133,3 @@ def chunk_lookup(chunked, ptcns):
             globalindex += 1
     converted = dict(result)  # enable KeyError
     return converted
-
-
-def chunks(items, size: int = 1):
-    """\
-    >>> chunks((1, 2, 3, 4, 5, 6, 7, 8, 9, 10), size=3)
-    [(1, 2, 3), (4, 5, 6), (7, 8, 9), (10,)]
-    """
-    result = []
-    for index in range(math.ceil(len(items) / size)):
-        result.append(items[index * size:(index + 1) * size])
-    return result
