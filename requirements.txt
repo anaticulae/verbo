@@ -8,16 +8,16 @@
 # =============================================================================
 
 utila==2.12.0
-iamraw==4.1.0
-sections==0.11.0
+iamraw==4.2.0
+sections==0.12.0
 
 # split sentences and determine language of written sentence
 german==0.9.0
 # some constants
 konrad==0.2.24
 
-geostrat==1.1.0
-hey==5.2.0
+geostrat==1.1.1
+hey==5.3.0
 
 # determine headline level
-groupme==0.5.0
+groupme==0.5.1
