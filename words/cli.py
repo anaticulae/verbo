@@ -8,7 +8,7 @@
 #==============================================================================
 
 import utila
-from utila import ResultFile as RF
+from utila import ResultFile
 from utila import create_step as step
 from utila import featurepack
 
@@ -17,8 +17,6 @@ from words import ROOT
 from words import __version__
 
 DESCRIPTION = 'TODO'
-
-ResultFile = lambda producer, name: RF(producer=producer, name=name)  # pylint:disable=C0103
 
 TEXTINPUT = [
     ResultFile('rawmaker', 'text_text'),
