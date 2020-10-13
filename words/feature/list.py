@@ -33,6 +33,7 @@ def work(  # pylint:disable=R0914
         border: str,
         headlines: str,
         headerfooters: str,
+        magic: str = None,
         pages: tuple = None,
 ) -> str:
     """Combine `extracted_text` and check the `undefined` fields for lists.
@@ -48,6 +49,12 @@ def work(  # pylint:disable=R0914
         pages=pages,
     )
     headlines = serializeraw.load_headlines(headlines, pages=pages)
+    magic = serializeraw.load_types(
+        magic,
+        pages=pages,
+    ) if utila.exists(magic) else None  # pylint:disable=E1101
+    if magic is None:
+        utila.error('list: no magic data')
     result = words.lists.strategy.extract_lists(ptcns, headlines)
     dumped = serializeraw.dump_lists(result)
     return dumped

@@ -83,6 +83,7 @@ WORKPLAN = [
             ResultFile('rawmaker', 'border_pages'),
             ResultFile('words', 'headlines_headlines'),
             ResultFile('groupme', 'footer_footerheader'),
+            ResultFile('magic', 'content_content', optional=True),
         ],
         output=('list',),
     ),
