@@ -33,7 +33,7 @@ def extract_lists(ptcns, headlines, magic=None) -> iamraw.PageContentLists:
 
 def global_score(items) -> int:
     content = utila.flatten([item.content for item in items])
-    areas = sum([len(item.area) for item in content])
+    areas = sum([score_area(item.area) for item in content])
     return areas
 
 
@@ -54,8 +54,8 @@ def extract_best_page(navigator, headlines, textfeed):
     geo = words.lists.geometry.analyze_page(navigator, headlines, textfeed)
     vertical = words.lists.vertical.analyze_page(navigator)
     # TODO: CHOOSE BETTER SELECTOR
-    geo_score = sum([len(item.area) for item in geo])
-    vertical_score = sum([len(item.area) for item in vertical])
+    geo_score = sum([score_area(item.area) for item in geo])
+    vertical_score = sum([score_area(item.area) for item in vertical])
     # prefere result which explains more areas
     selected = geo if geo_score > vertical_score else vertical
     result = []
@@ -63,6 +63,20 @@ def extract_best_page(navigator, headlines, textfeed):
         # TODO: REPLACE 0,0 with correct one
         result.append((0, 0, lists))
     return result
+
+
+def score_area(area):
+    """\
+    >>> score_area([(17, 18, 19, ), (0, 1, 2, 3), (0, 1, 2, 3)])
+    11
+    >>> score_area([0, 1, 2, 3])
+    4
+    """
+    try:
+        flat = utila.flatten(area)
+    except TypeError:
+        flat = area
+    return len(flat)
 
 
 def merge_overlapping_lists(items):
