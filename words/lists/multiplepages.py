@@ -62,7 +62,7 @@ def extract_lists(ptcns, headlines) -> iamraw.PageContentLists:
 
 def adjust_pagenumbers(extracted, chunked, ptcns) -> iamraw.PageContentLists:
     """Add pagenumber to extracted lists. The lists does not have the
-    correct page number cause there extracted with big connect page
+    correct page number, cause there extracted with big connected page
     chunk."""
     lookup = chunk_lookup(chunked, ptcns)
     matched = collections.defaultdict(list)
