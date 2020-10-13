@@ -8,7 +8,6 @@
 # =============================================================================
 
 import power
-import pytest
 import serializeraw
 import utila
 
@@ -16,7 +15,6 @@ import tests
 import words.path
 
 
-@pytest.mark.xfail(reason='improve list parser')
 def test_nolist_bachelor241_page81(testdir, monkeypatch):
     """This test was designed cause on this page table content was
     parsed as lists."""
