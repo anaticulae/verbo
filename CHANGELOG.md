@@ -2,6 +2,23 @@
 
 Every noteable change is logged here.
 
+## v0.19.0
+
+### Feature
+
+* change to local area index for multiple lists (cb61991359b0)
+* extend score lists to support extended lists (ec2861922cdd)
+* patch list serializer to supported extended lists over pages (2e5fe627c4dd)
+* use oneline data to improve extraction results (9fcaf96c2d4f)
+* add magic data as optional data source (f38159cab5f6)
+* add path checking routine (25e8c6aa9fcf)
+* add decoration for multi line extraction (1150f90a8c4a)
+* specify multiline headline parser (26e754ffc842)
+* add look back for chapter-X-pattern to multiline (3ad005a7088e)
+* extend black list pattern (be1959a9d883)
+* extend headline exclude strategy (c815ccd8c125)
+* add Kapitel-X-Pattern to standard headline extractor (114bfefadba1)
+
 ## v0.18.0
 
 ### Feature
