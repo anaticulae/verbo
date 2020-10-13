@@ -45,6 +45,7 @@ SSH
 Player - Ubuntu"""
 
 
+@utilatest.skip_longrun
 def test_extract_levelfour_bachelor90():
     source = power.link(power.BACHELOR090_PDF)
     navigators = serializeraw.create_pagetextcontentnavigators_frompath(

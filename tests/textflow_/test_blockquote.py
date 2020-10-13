@@ -16,6 +16,7 @@ import tests.textflow_
 import textflow.path
 
 
+@utilatest.skip_longrun
 def test_blockquote_master72():
     source = power.link(power.MASTER072_PDF)
     pages = (15,)
@@ -47,6 +48,7 @@ def test_blockquote_validate_master72(testdir, monkeypatch):
     assert current == expected
 
 
+@utilatest.skip_longrun
 def test_blockquote_validate_bachelor76_page8_11_13_15_16(testdir, monkeypatch):
     tests.textflow_.run(
         f'-i {power.link(power.BACHELOR076_PDF)} --blockquote --pages=8:17',

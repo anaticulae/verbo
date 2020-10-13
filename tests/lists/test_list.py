@@ -156,6 +156,7 @@ def test_list_dotted_with_content_only():
     assert parsed == ['Index Page', 'Support', 'Changelog']
 
 
+@utilatest.skip_longrun
 def test_list_work():  # pylint:disable=W0621
     result = tests.fixtures.restruct.restructured_list_work()
     assert len(result) == 3, str(result)
@@ -236,6 +237,7 @@ def test_list_master72_page9_10(testdir, monkeypatch):
     assert len(utila.select_page(lists, 9).content[0].data) == 7
 
 
+@utilatest.skip_longrun
 def test_list_master72_page39_one_list(testdir):
     pages = (39,)
     source = power.link(power.MASTER072_PDF)

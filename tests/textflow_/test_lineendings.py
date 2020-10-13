@@ -8,12 +8,14 @@
 # =============================================================================
 
 import power
+import utilatest
 
 import tests.textflow_
 import textflow.features.lineending
 import textflow.path
 
 
+@utilatest.skip_longrun
 def test_textflow_lineendings(testdir, monkeypatch):
     tests.textflow_.run(
         f'-i {power.link(power.MASTER072_PDF)} --pages=0:10 --lineending',

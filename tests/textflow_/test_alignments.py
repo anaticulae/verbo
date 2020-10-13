@@ -10,6 +10,7 @@
 import power
 import pytest
 import utila
+import utilatest
 
 import tests.textflow_
 import textflow.features.alignment
@@ -17,6 +18,7 @@ import textflow.path
 import textflow.serialize
 
 
+@utilatest.skip_longrun
 def test_textflow_alignment_expected(testdir, monkeypatch):
     tests.textflow_.run(
         f'-i {power.link(power.MASTER072_PDF)} --pages=10:20 --alignment',
@@ -30,6 +32,7 @@ def test_textflow_alignment_expected(testdir, monkeypatch):
 
 
 @pytest.mark.xfail(reason='unsupported block_end')
+@utilatest.skip_longrun
 def test_alignment_master98_page2(testdir, monkeypatch):
     tests.textflow_.run(
         f'-i {power.link(power.MASTER098_PDF)} --pages=2 --alignment',
