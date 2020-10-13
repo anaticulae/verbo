@@ -10,6 +10,7 @@
 import contextlib
 import dataclasses
 import functools
+import os
 
 import configo
 import groupme.toc.group
@@ -153,3 +154,23 @@ def numbered_level(raw: str) -> int:
 
 
 groupme.toc.group.numbered_level = numbered_level
+
+
+def exists(path: str) -> bool:
+    """Wrapper for os.path.exists with checking None and convert path to
+    str if required.
+
+    >>> exists(__file__)
+    True
+    >>> exists(None)
+    False
+    >>> exists(1234)
+    False
+    """
+    if path is None:
+        return False
+    path = str(path)
+    return os.path.exists(path)
+
+
+utila.exists = exists
