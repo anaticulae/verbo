@@ -21,7 +21,7 @@ def extract_lists(source, pages: tuple, testdir, monkeypatch):
     # run words
     tests.run(
         # TODO: replace with --list*
-        f'-i {source} --headlines  --text --list --pages {pages}',
+        f'-i {source} --list --pages {pages}',
         monkeypatch=monkeypatch,
     )
     path = words.path.lists(testdir.tmpdir)
