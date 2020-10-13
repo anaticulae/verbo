@@ -71,3 +71,23 @@ def test_list_master72_page39_40_41(testdir, monkeypatch):
     assert len(page39) == 1
     first_list = page39[0]
     assert len(first_list) == 4
+
+
+def test_list_bachelor128_page36_42(testdir, monkeypatch):
+    pages = (36, 37, 38, 39, 40, 41, 42)
+    source = power.link(power.BACHELOR128_PDF)
+
+    extracted = extract_lists(source, pages, testdir, monkeypatch=monkeypatch)
+    assert len(extracted) == 1
+    selected = utila.select_content(extracted, page=37)
+    assert len(selected) == 1
+    data = selected[0].data
+    assert len(data) == 8
+    area = selected[0].area
+
+    expected = [
+        (17, 18, 19, 20, 21),  # page 37
+        utila.ranged_tuple(0, 30),  # page 38
+        utila.ranged_tuple(0, 11),  # page 39
+    ]
+    assert area == expected
