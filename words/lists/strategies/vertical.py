@@ -11,7 +11,7 @@ import iamraw
 import texmex
 import utila
 
-import words.lists.regex
+import words.lists.strategies.regex
 
 
 def analyze_page(ptcn):
@@ -21,7 +21,7 @@ def analyze_page(ptcn):
     for group in grouped:
         rawgroup = [ptcn[item].text for item in group]
         content = ''.join(rawgroup)
-        parsed = words.lists.regex.parse_single(content)
+        parsed = words.lists.strategies.regex.parse_single(content)
         if parsed:
             # TODO: GROUP DOES NOT REPRESENT THE COLLECTED LINES, GROUPS
             # CONTAINS THE WHOLE CONTENT CHUNK

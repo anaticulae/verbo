@@ -1,5 +1,5 @@
-# C O P Y R I G H T
 # =============================================================================
+# C O P Y R I G H T
 # -----------------------------------------------------------------------------
 # Copyright (c) 2020 by Helmut Konrad Fahrendholz. All rights reserved.
 # This file is property of Helmut Konrad Fahrendholz. Any unauthorized copy,
@@ -9,39 +9,21 @@
 
 import iamraw
 import texmex
-import utila
 
-import words.lists.geometry
-import words.lists.multiplepages
-import words.lists.vertical
-
-
-def extract_lists(ptcns, headlines, magic=None) -> iamraw.PageContentLists:  # pylint:disable=W0613
-    """Run different strategies to gather the best list extraction result."""
-    best, result = 0, []
-    for strategy in [
-            page_based_extraction,
-            words.lists.multiplepages.extract_lists,
-    ]:
-        extracted = strategy(ptcns, headlines)
-        score = global_score(extracted)
-        if score > best:
-            best = score
-            result = extracted
-    return result
-
-
-def global_score(items) -> int:
-    content = utila.flatten([item.content for item in items])
-    areas = sum([score_area(item.area) for item in content])
-    return areas
+import words.lists.strategies.geometry
+import words.lists.strategies.vertical
+import words.lists.utils
 
 
 def page_based_extraction(ptcns, headlines) -> iamraw.PageContentLists:
     textfeed = texmex.document_textfeed(ptcns)
     result = []
     for navigator in ptcns:
-        pageslist = extract_best_page(navigator, headlines, textfeed)
+        pageslist = extract_best_page(
+            navigator,
+            headlines,
+            textfeed,
+        )
         if not pageslist:
             continue
         result.append([navigator.page, pageslist, len(navigator)])
@@ -51,11 +33,15 @@ def page_based_extraction(ptcns, headlines) -> iamraw.PageContentLists:
 
 
 def extract_best_page(navigator, headlines, textfeed):
-    geo = words.lists.geometry.analyze_page(navigator, headlines, textfeed)
-    vertical = words.lists.vertical.analyze_page(navigator)
+    geo = words.lists.strategies.geometry.analyze_page(
+        navigator,
+        headlines,
+        textfeed,
+    )
+    vertical = words.lists.strategies.vertical.analyze_page(navigator)
     # TODO: CHOOSE BETTER SELECTOR
-    geo_score = sum([score_area(item.area) for item in geo])
-    vertical_score = sum([score_area(item.area) for item in vertical])
+    geo_score = sum([words.lists.utils.score_area(item.area) for item in geo])
+    vertical_score = sum([words.lists.utils.score_area(item.area) for item in vertical]) # yapf:disable
     # prefere result which explains more areas
     selected = geo if geo_score > vertical_score else vertical
     result = []
@@ -65,20 +51,6 @@ def extract_best_page(navigator, headlines, textfeed):
     return result
 
 
-def score_area(area):
-    """\
-    >>> score_area([(17, 18, 19, ), (0, 1, 2, 3), (0, 1, 2, 3)])
-    11
-    >>> score_area([0, 1, 2, 3])
-    4
-    """
-    try:
-        flat = utila.flatten(area)
-    except TypeError:
-        flat = area
-    return len(flat)
-
-
 def merge_overlapping_lists(items):
     if not items:
         return []
@@ -86,7 +58,7 @@ def merge_overlapping_lists(items):
     for item in items[1:]:
         lastpage, content, lastlength = result[-1]
         lastlist = content[-1][2]
-        pageplus = pagerange(lastlist.area)
+        pageplus = words.lists.utils.pagerange(lastlist.area)
 
         currentpage, currentlist = item[0], item[1][0][2]
         pagestart = currentlist.area[0] == 0
@@ -126,12 +98,3 @@ def pagecontentlist(pages) -> iamraw.PageContentLists:
             collected.append(listinstance)
         result.append(iamraw.PageContentList(page=page, content=collected))
     return result
-
-
-def pagerange(items) -> int:
-    """\
-    >>> pagerange([1, 2, 3, 0, 1, 2, 3, 4, 0, 1])
-    3
-    """
-    grouped = utila.groupby_ascending(items)
-    return len(grouped)

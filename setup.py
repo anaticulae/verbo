@@ -58,6 +58,7 @@ if __name__ == "__main__":
             'words.headlines.strategies',
             'words.links',
             'words.lists',
+            'words.lists.strategies',
             'words.text',
             'words.utils',
         ],

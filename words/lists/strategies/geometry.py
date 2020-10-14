@@ -11,7 +11,7 @@ import geostrat
 import iamraw
 import utila
 
-import words.lists.regex
+import words.lists.strategies.regex
 
 
 def analyze_page(ptcn, headlines, textfeed):
@@ -38,7 +38,7 @@ def extract_list(possible_list, indexes):
     index = 0
     for listitem in possible_list:
         content = utila.NEWLINE.join([item.text.strip() for item in listitem])
-        parsed = words.lists.regex.parse_single(content)
+        parsed = words.lists.strategies.regex.parse_single(content)
         if not parsed:
             # utila.error(f'could not extract list step:\n{content}')
             continue

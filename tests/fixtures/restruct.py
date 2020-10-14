@@ -24,8 +24,8 @@ import serializeraw
 import words.feature
 import words.feature.boxed
 import words.feature.headlines
-import words.feature.list
 import words.headlines
+import words.lists.pager
 import words.loader
 import words.text
 import words.text.chapter
@@ -161,7 +161,7 @@ def restructured_list_work():
         headerfooters=iamraw.path.headerfooters(source),
     )
     worker = functools.partial(
-        words.feature.list.process_page,
+        words.lists.pager.process_page,
         contentborder=contentborder,
     )
     result = words.loader.process_input(

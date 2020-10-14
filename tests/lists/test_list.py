@@ -14,9 +14,10 @@ import utila
 import utilatest
 
 import tests.fixtures.restruct
-import words.lists.regex
-import words.lists.strategy
-import words.lists.vertical
+import words.lists.runtime
+import words.lists.strategies.bestpage
+import words.lists.strategies.regex
+import words.lists.strategies.vertical
 
 NUMBERED_LIST_SAMPLE_SIZE = 9
 NUMBERED_LIST = """
@@ -45,7 +46,7 @@ Text
 
 
 def test_list_numbered_regex():
-    parsed = words.lists.regex.parse_numbered_list(NUMBERED_LIST)
+    parsed = words.lists.strategies.regex.parse_numbered_list(NUMBERED_LIST)
 
     assert len(parsed) == NUMBERED_LIST_SAMPLE_SIZE, parsed
 
@@ -64,7 +65,7 @@ def test_list_numbered_regex_single_item():
         "type usage works in both Python 2 &\n3 (e.g. use mypy to check your "
         "typing under both Python 2 & Python 3).")
 
-    parsed = words.lists.regex.parse_numbered_list(raw)
+    parsed = words.lists.strategies.regex.parse_numbered_list(raw)
     assert len(parsed) == 1
     level = parsed[0][1]
     assert level == "8."
@@ -114,7 +115,7 @@ DOTTED_LIST_EXPECTED = [
 
 
 def test_list_dotted():
-    parsed = words.lists.regex.parse_dotted_list(DOTTED_LIST)
+    parsed = words.lists.strategies.regex.parse_dotted_list(DOTTED_LIST)
     assert parsed == DOTTED_LIST_EXPECTED
 
 
@@ -141,7 +142,7 @@ DOTTED_EXAMPLE_EXPECTED = [
 
 
 def test_list_dotted_with_start_and_end():
-    parsed = words.lists.regex.parse_dotted_list(DOTTED_EXAMPLE)
+    parsed = words.lists.strategies.regex.parse_dotted_list(DOTTED_EXAMPLE)
     assert parsed == DOTTED_EXAMPLE_EXPECTED
 
 
@@ -151,7 +152,8 @@ DOTTED_EXAMPLE_CONTENT_ONLY = """ • Index Page
 
 
 def test_list_dotted_with_content_only():
-    parsed = words.lists.regex.parse_dotted_list(DOTTED_EXAMPLE_CONTENT_ONLY)
+    parsed = words.lists.strategies.regex.parse_dotted_list(
+        DOTTED_EXAMPLE_CONTENT_ONLY)
     assert parsed == ['Index Page', 'Support', 'Changelog']
 
 
@@ -203,7 +205,7 @@ def test_list_master72_page39_one_list(testdir):
         pages=pages,
     )
 
-    listinstance = words.lists.vertical.analyze_page(ptcn[0])
+    listinstance = words.lists.strategies.vertical.analyze_page(ptcn[0])
     assert len(listinstance) == 1
     assert len(listinstance[0]) == 2
 
@@ -260,7 +262,7 @@ def test_merge_overlapping_lists():
             ], 13
         ],
     ]
-    merged = words.lists.strategy.merge_overlapping_lists(pages)
+    merged = words.lists.strategies.bestpage.merge_overlapping_lists(pages)
     assert len(merged) == 2
     assert len(merged[0][1]) == 1
     assert len(merged[1][1]) == 2
@@ -297,7 +299,7 @@ def test_merge_overlapping_lists_two_pages():
             27,
         ],
     ]
-    merged = words.lists.strategy.merge_overlapping_lists(pages)
+    merged = words.lists.strategies.bestpage.merge_overlapping_lists(pages)
     single = merged[0][1][0][2]
 
     marker = [item[0] for item in single]

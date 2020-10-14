@@ -12,7 +12,7 @@ import serializeraw
 import utila
 import utilatest
 
-import words.lists.multiplepages
+import words.lists.strategies.multiplepages
 import words.path
 
 
@@ -25,7 +25,7 @@ def test_merge_pages():
         path=source,
         pages=pages,
     )
-    merged = words.lists.multiplepages.merge(ptcns)
+    merged = words.lists.strategies.multiplepages.merge(ptcns)
     assert merged
     assert merged[-1].bounding[3] >= 3000
 
@@ -66,5 +66,5 @@ def extract_multiple_lists(source, pages):
         words.path.headlines(source),
         pages=pages,
     )
-    lists = words.lists.multiplepages.extract_lists(ptcns, headlines)
+    lists = words.lists.strategies.multiplepages.extract_lists(ptcns, headlines)
     return lists
