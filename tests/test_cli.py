@@ -31,7 +31,7 @@ import tests
 ])
 @pytest.mark.usefixtures('testdir')
 @utilatest.skip_nightly
-def test_run(command, monkeypatch, capsys):
+def test_run_words(command, monkeypatch, capsys):
     """Run help and version command to reach basic test coverage"""
     tests.run(command, monkeypatch=monkeypatch)
     utilatest.write_capsys(capsys)
