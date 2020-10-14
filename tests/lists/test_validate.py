@@ -8,6 +8,7 @@
 # =============================================================================
 
 import power
+import pytest
 import serializeraw
 import utila
 import utilatest
@@ -73,12 +74,16 @@ def test_list_master72_page39_40_41(testdir, monkeypatch):
     assert len(first_list) == 4
 
 
-def test_list_bachelor128_page36_42(testdir, monkeypatch):
-    pages = (36, 37, 38, 39, 40, 41, 42)
+@pytest.mark.parametrize('pages', [
+    pytest.param((36, 37, 38, 39, 40, 41, 42), id='no_chunks'),
+    pytest.param(utila.ranged_tuple(0, 42), id='using_chunks'),
+])
+def test_list_bachelor128_page36_42(pages, testdir, monkeypatch):
+    """Use pages to ensure that extracting works when extraction uses
+    more than one chunk."""
     source = power.link(power.BACHELOR128_PDF)
-
     extracted = extract_lists(source, pages, testdir, monkeypatch=monkeypatch)
-    assert len(extracted) == 1
+    # assert len(extracted) == 1
     selected = utila.select_content(extracted, page=37)
     assert len(selected) == 1
     data = selected[0].data

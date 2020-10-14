@@ -41,15 +41,17 @@ import words.lists.strategies.bestpage
 
 CHUNK_SIZE = 30
 
+# TODO: RUN THIS STRATEGY TWICE!!!
+
 
 def extract_lists(ptcns, headlines) -> iamraw.PageContentLists:
     textfeed = texmex.document_textfeed(ptcns)
     chunked = split(ptcns)
 
     result = []
-    for navigator in chunked:
+    for chunk in chunked:
         extracted = words.lists.strategies.bestpage.extract_best_page(
-            navigator,
+            chunk,
             headlines,
             textfeed,
         )
@@ -74,7 +76,7 @@ def adjust_pagenumbers(extracted, chunked, ptcns) -> iamraw.PageContentLists:  #
             starting_page = lookup[index][first_area]
             matched[starting_page].append(listi)
             # convert to local content navigator area
-            area = [local[index] for index in listi.area]
+            area = [local[index][relativ] for relativ in listi.area]
             splitted = utila.groupby_ascending(area)
             listi.area = splitted
     pages = [
@@ -132,11 +134,13 @@ def chunk_lookup(chunked, ptcns):
             pages.append(navigator.page)
             local.append(index)
     result = collections.defaultdict(dict)
+    local_chunk = collections.defaultdict(dict)
     globalindex = 0
     for chunkid, chunk in enumerate(chunked):
         for index, _ in enumerate(chunk):
             result[chunkid][index] = pages[globalindex]
-            index += 1
+            local_chunk[chunkid][index] = local[globalindex]
             globalindex += 1
     converted = dict(result)  # enable KeyError
-    return converted, local
+    local_chunk = dict(local_chunk)  # pylint:disable=R0204
+    return converted, local_chunk
