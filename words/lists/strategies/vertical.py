@@ -22,6 +22,8 @@ def analyze_page(ptcn):
         rawgroup = [ptcn[item].text for item in group]
         content = ''.join(rawgroup)
         parsed = words.lists.strategies.regex.parse_single(content)
+        parsed = fix_lastone(parsed)
+
         if parsed:
             # TODO: GROUP DOES NOT REPRESENT THE COLLECTED LINES, GROUPS
             # CONTAINS THE WHOLE CONTENT CHUNK
@@ -49,6 +51,31 @@ def analyze_page(ptcn):
             continue
         result.append(current)
     return result
+
+
+def fix_lastone(items):
+    """Workaround to ensure that last list item is not expanded into the
+    text.
+
+    NOTE: this is only a first approach.
+    """
+    if not items:
+        return items
+    last = items[-1][0] if isinstance(items[-1], tuple) else items[-1]
+    splitted = last.splitlines()
+    connected = [splitted[0]]
+    for item in splitted[1:]:
+        if len(item) > (len(connected[-1]) * 1.1):  # TODO: HOLY VALUE
+            break
+        else:
+            connected.append(item)
+    # update last one
+    updated = '\n'.join(connected)
+    if isinstance(items[-1], tuple):
+        items[-1] = (updated, items[-1][1])
+    else:
+        items[-1] = updated
+    return items
 
 
 def group_indexes(group, parsed, offset: int) -> tuple:
