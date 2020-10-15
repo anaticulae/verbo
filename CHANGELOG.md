@@ -2,6 +2,18 @@
 
 Every noteable change is logged here.
 
+## v0.19.1
+
+### Feature
+
+* use magic data to improve list extractor (021aff27e0f4)
+* use improve list strategy selector (50e208749560)
+* add zip_optimizer form utila code (5e5d63996565)
+
+### Fix
+
+* ensure to handle chunk sized mode correctly (a6453f63136e)
+
 ## v0.19.0
 
 ### Feature
