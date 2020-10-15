@@ -15,7 +15,7 @@ import textflow.features.lineending
 import textflow.path
 
 
-@utilatest.skip_longrun
+@utilatest.longrun
 def test_textflow_lineendings(testdir, monkeypatch):
     tests.textflow_.run(
         f'-i {power.link(power.MASTER072_PDF)} --pages=0:10 --lineending',

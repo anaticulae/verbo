@@ -471,7 +471,7 @@ Literaturverzeichnis"""
         marks=pytest.mark.xfail(reason='require ffi special char converter'),
     ),
 ])
-@utilatest.skip_nightly
+@utilatest.nightly
 def test_headlines_validate(source, expected, testdir, monkeypatch):
     source = power.link(source)
     tests.run(f'-i {source} --headlines', monkeypatch=monkeypatch)

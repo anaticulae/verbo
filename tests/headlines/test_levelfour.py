@@ -45,7 +45,7 @@ SSH
 Player - Ubuntu"""
 
 
-@utilatest.skip_longrun
+@utilatest.longrun
 def test_extract_levelfour_bachelor90():
     source = power.link(power.BACHELOR090_PDF)
     navigators = serializeraw.create_pagetextcontentnavigators_frompath(
@@ -90,7 +90,7 @@ Vergleich mit dem theoretischen Optimum
 Vergleich der Methodik"""
 
 
-@utilatest.skip_longrun
+@utilatest.longrun
 def test_extract_levelfour_master116():
     source = power.link(power.MASTER116_PDF)
     navigators = serializeraw.create_pagetextcontentnavigators_frompath(

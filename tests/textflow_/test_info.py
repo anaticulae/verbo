@@ -16,7 +16,7 @@ import textflow.alignment.style
 import textflow.features.alignment
 
 
-@utilatest.skip_longrun
+@utilatest.longrun
 def test_info_adapter():
     source = power.link(power.MASTER072_PDF)
     pages = (10, 11, 12, 13)

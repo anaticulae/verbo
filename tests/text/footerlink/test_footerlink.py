@@ -13,7 +13,7 @@ import tests.fixtures.master72.seventytwo as fseventytwo
 import words.feature.footerlink
 
 
-@utilatest.skip_longrun
+@utilatest.longrun
 def test_footerlink_extract_highnotes():
     required = fseventytwo.textrequired(pages=(3,))
     extracted = words.feature.footerlink.extract_highnotes(required)

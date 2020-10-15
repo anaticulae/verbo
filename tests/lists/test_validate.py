@@ -30,7 +30,7 @@ def extract_lists(source, pages: tuple, testdir, monkeypatch):
     return lists
 
 
-@utilatest.skip_longrun
+@utilatest.longrun
 def test_list_bachelor76_page4(testdir, monkeypatch):
     pages = (4,)
     source = power.link(power.BACHELOR076_PDF)
@@ -40,7 +40,7 @@ def test_list_bachelor76_page4(testdir, monkeypatch):
     assert len(lists) == 1
 
 
-@utilatest.skip_longrun
+@utilatest.longrun
 def test_list_bachelor76_page5_10(testdir, monkeypatch):
     pages = (5, 6, 7, 8, 9, 10)
     source = power.link(power.BACHELOR076_PDF)
@@ -50,7 +50,7 @@ def test_list_bachelor76_page5_10(testdir, monkeypatch):
     assert len(lists) == 1
 
 
-@utilatest.skip_longrun
+@utilatest.longrun
 def test_list_master72_page9_10(testdir, monkeypatch):
     pages = (9, 10)
     source = power.link(power.MASTER072_PDF)
@@ -60,7 +60,7 @@ def test_list_master72_page9_10(testdir, monkeypatch):
     assert len(utila.select_page(lists, 9).content[0].data) == 7
 
 
-@utilatest.skip_longrun
+@utilatest.longrun
 def test_list_master72_page39_40_41(testdir, monkeypatch):
     pages = (39, 40, 41, 42)
     source = power.link(power.MASTER072_PDF)

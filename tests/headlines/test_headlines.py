@@ -120,7 +120,7 @@ def test_headlines_dump_and_load_headlines():
     assert loaded == EXPECTED
 
 
-@utilatest.skip_longrun
+@utilatest.longrun
 def test_features_headlines_work_master72pages_headlines():
     master72 = power.link(power.MASTER072_PDF)
     headlines = words.feature.headlines.headlines_frompath(master72)
@@ -143,7 +143,7 @@ def test_features_headlines_work_master72pages_headlines():
     assert headlines_text == expected_headlines, str(headlines_text)
 
 
-@utilatest.skip_longrun
+@utilatest.longrun
 def test_features_headlines_work_master72pages_subsections():
     master72 = power.link(power.MASTER072_PDF)
     headlines = words.feature.headlines.headlines_frompath(master72)
@@ -170,7 +170,7 @@ def test_features_headlines_filter_headlines():
     assert subsections_count == expected_subsection_count
 
 
-@utilatest.skip_longrun
+@utilatest.longrun
 def test_headlines_container_logical_indexing():
     """Ensure that headlines are parsed as logical headlines, this means
     that header and footer is ignored for determining the container id
@@ -188,7 +188,7 @@ def test_headlines_container_logical_indexing():
     assert headline_system.container == 1, headline_system.container
 
 
-@utilatest.skip_longrun
+@utilatest.longrun
 def test_headlines_master110_page18():
     source = power.link(power.MASTER110_PDF)
     headlines = words.feature.headlines.headlines_frompath(

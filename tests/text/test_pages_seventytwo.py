@@ -16,7 +16,7 @@ import words.text.chapter
 import words.text.sentence as wts
 
 
-@utilatest.skip_longrun
+@utilatest.longrun
 def test_text_seventytwo_extract_texts_page3():
     required = fseventytwo.textrequired(pages=(3,))
     extracted = words.text.chapter.extract_texts(required)
@@ -29,7 +29,7 @@ def test_text_seventytwo_extract_texts_page3():
     assert len(sectioncontent) == 17
 
 
-@utilatest.skip_longrun
+@utilatest.longrun
 def test_text_seventytwo_visit_sentences():
     required = fseventytwo.textrequired(pages=(3,))
     firstpage = words.text.chapter.split(required)[0]
@@ -53,7 +53,7 @@ def test_text_seventytwo_visit_sentences():
                                'der Nutzer.')
 
 
-@utilatest.skip_longrun
+@utilatest.longrun
 def test_text_seventytwo_visit_sentences_merge_page_endstart():
     """Merge the first two content pages to one sentence unit. Important
     is to unite the last sentence of the first page with the first
@@ -76,7 +76,7 @@ def test_text_seventytwo_visit_sentences_merge_page_endstart():
     assert all([item.sentence is not None for item in merged])
 
 
-@utilatest.skip_longrun
+@utilatest.longrun
 def test_text_seventytwo_visit_sentences_merge_page5_7():
     required = fseventytwo.textrequired(pages=(5, 6, 7))
     pages = words.text.chapter.split(required)
@@ -95,7 +95,7 @@ def test_text_seventytwo_visit_sentences_merge_page5_7():
     assert merged[-1].sentence == lastsentence
 
 
-@utilatest.skip_longrun
+@utilatest.longrun
 def test_text_seventytwo_extract_textsections():
     required = fseventytwo.textrequired(pages=tuple(range(0, 14)))
     pages = words.text.chapter.split(required)
@@ -121,7 +121,7 @@ def test_text_seventytwo_extract_textsections():
     assert sectionpages == [3, 4, 5, 6, 6, 10, 12, 13]
 
 
-@utilatest.skip_longrun
+@utilatest.longrun
 def test_text_seventytwo_extract_textsections_page5_6_7():
     required = fseventytwo.textrequired(pages=(5, 6, 7))
     pages = words.text.chapter.split(required)
@@ -147,7 +147,7 @@ def test_text_seventytwo_extract_textsections_page5_6_7():
                             'soziale Komponente in den Vordergrund')
 
 
-@utilatest.skip_longrun
+@utilatest.longrun
 def test_text_seventytwo_extract_textsections_complete():
     """\
     HINT: This test may change if none leveled headlines like `Anhang`
@@ -179,7 +179,7 @@ def test_text_seventytwo_extract_sentences():
     assert splitted == expected
 
 
-@utilatest.skip_longrun
+@utilatest.longrun
 def test_text_doubleequal_fontdistance():
     """Regression test to solve problems with duplicated equal font
     distance on one page.

@@ -30,7 +30,7 @@ def extract_quotation(source, pages, testdir, monkeypatch):
     return extracted
 
 
-@utilatest.skip_longrun
+@utilatest.longrun
 def test_textflow_quotation_master72_pages10_20(testdir, monkeypatch):
     pages = '--pages=10:21'
     source = power.link(power.MASTER072_PDF)
@@ -44,7 +44,7 @@ def test_textflow_quotation_master72_pages10_20(testdir, monkeypatch):
     assert loaded == current
 
 
-@utilatest.skip_longrun
+@utilatest.longrun
 def test_textflow_quotation_bachelor76(testdir, monkeypatch):
     pages = '--pages=4,5'
     source = power.link(power.BACHELOR076_PDF)
@@ -86,7 +86,7 @@ zur Reduktion von Schnittstellen , zur funktionsübergreifenden Vernetzung und\
 # „ In - dustrie 4.0 ”"""
 
 
-@utilatest.skip_longrun
+@utilatest.longrun
 def test_textflow_validate_quotation_bachelor76_page4_10(testdir, monkeypatch):
     quotations = extract_quotations(
         power.BACHELOR076_PDF,
@@ -102,7 +102,7 @@ def test_textflow_validate_quotation_bachelor76_page4_10(testdir, monkeypatch):
     assert raw == BACHELOR76_EXPECTED
 
 
-@utilatest.skip_longrun
+@utilatest.longrun
 def test_textflow_validate_quotation_bachelor76_page8(testdir, monkeypatch):
     quotations = extract_quotations(
         power.BACHELOR076_PDF,

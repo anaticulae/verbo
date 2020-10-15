@@ -13,7 +13,7 @@ import tests.fixtures.master72.seventytwo as fseventytwo
 import words.text.sentence
 
 
-@utilatest.skip_longrun
+@utilatest.longrun
 def test_chapter_split_words():
     required = fseventytwo.textrequired(pages=(13, 14))
     pages = words.text.chapter.split(required)

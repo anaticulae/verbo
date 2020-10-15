@@ -30,14 +30,14 @@ import tests
     pytest.param(['-i', power.link(power.DOCU09_PDF)], id='pyporting'),
 ])
 @pytest.mark.usefixtures('testdir')
-@utilatest.skip_nightly
+@utilatest.nightly
 def test_run_words(command, monkeypatch, capsys):
     """Run help and version command to reach basic test coverage"""
     tests.run(command, monkeypatch=monkeypatch)
     utilatest.write_capsys(capsys)
 
 
-@utilatest.skip_longrun
+@utilatest.longrun
 def test_feature_words_work_pages0_10(testdir, monkeypatch):
     root = str(testdir)
     cmd = f'-i {root} -o {root} --pages=0:10'
