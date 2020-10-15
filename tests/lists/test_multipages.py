@@ -66,5 +66,5 @@ def extract_multiple_lists(source, pages):
         words.path.headlines(source),
         pages=pages,
     )
-    lists = words.lists.strategies.multiplepages.extract_lists(ptcns, headlines)
+    lists = words.lists.strategies.multiplepages.run(ptcns, headlines)
     return lists

@@ -18,8 +18,8 @@ def extract_lists(ptcns, headlines, magic=None) -> iamraw.PageContentLists:  # p
     """Run different strategies to gather the best list extraction result."""
     best, result = 0, []
     for strategy in [
-            words.lists.strategies.bestpage.page_based_extraction,
-            words.lists.strategies.multiplepages.extract_lists,
+            words.lists.strategies.bestpage.run,
+            words.lists.strategies.multiplepages.run,
     ]:
         extracted = strategy(ptcns, headlines)
         score = words.lists.utils.global_score(extracted)

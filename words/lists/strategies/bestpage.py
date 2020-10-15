@@ -16,7 +16,7 @@ import words.lists.strategies.vertical
 import words.lists.utils
 
 
-def page_based_extraction(ptcns, headlines) -> iamraw.PageContentLists:
+def run(ptcns, headlines) -> iamraw.PageContentLists:
     textfeed = texmex.document_textfeed(ptcns)
     result = []
     for navigator in ptcns:

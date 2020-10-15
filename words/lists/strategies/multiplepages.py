@@ -42,7 +42,7 @@ import utila
 import words.lists.strategies.bestpage
 
 
-def extract_lists(ptcns, headlines) -> iamraw.PageContentLists:
+def run(ptcns, headlines) -> iamraw.PageContentLists:
     textfeed = texmex.document_textfeed(ptcns, count=1)
 
     merged = merge(ptcns)
