@@ -9,6 +9,7 @@
 
 import iamraw
 import texmex
+import utila
 
 import words.lists.strategies.geometry
 import words.lists.strategies.vertical
@@ -39,17 +40,16 @@ def extract_best_page(navigator, headlines, textfeed):
         textfeed,
     )
     geo = [item for item in geo if words.lists.utils.valid_area(item.area)]
-    geo_score = sum([words.lists.utils.score_area(item.area) for item in geo])
 
     vertical = words.lists.strategies.vertical.analyze_page(navigator)
-    vertical = [
-        item for item in vertical if words.lists.utils.valid_area(item.area)
-    ]
-    vertical_score = sum([words.lists.utils.score_area(item.area) for item in vertical]) # yapf:disable
+    vertical = [item for item in vertical if words.lists.utils.valid_area(item.area)] # yapf:disable
 
-    # TODO: CHOOSE BETTER SELECTOR
-    # prefere result which explains more areas
-    selected = geo if geo_score > vertical_score else vertical
+    selected = utila.zip_optimizer(  # pylint:disable=E1101
+        geo,
+        vertical,
+        selector=lambda x: x.area,
+    )
+
     result = []
     for lists in selected:
         # TODO: REPLACE 0,0 with correct one
