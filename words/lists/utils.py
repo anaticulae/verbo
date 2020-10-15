@@ -52,3 +52,11 @@ def valid_area(items) -> bool:
         if max(unqiue) > 2:
             return False
     return True
+
+
+def valid_list_content(items) -> bool:
+    for _, content in items:
+        if content.count('..') > 5 or content.count('. .') > 5:
+            # exclude table content `1 .Einleitung ............ 5`
+            return False
+    return True
