@@ -15,7 +15,11 @@ import words.lists.strategies.regex
 
 
 def analyze_page(ptcn):
-    grouped = texmex.group_linedistances_complex(ptcn)
+    # TODO: RUN GROUPING A FEW TIMES AND SELECT "BEST" ONE?
+    grouped = texmex.group_linedistances_complex(
+        ptcn,
+        max_distance=maxdistance,
+    )
 
     collected = []
     for group in grouped:
@@ -51,6 +55,17 @@ def analyze_page(ptcn):
             continue
         result.append(current)
     return result
+
+
+def maxdistance(size: float):
+    # TODO: HOLY VALUE. Support table as holy value
+    if size <= 12.0:
+        return 40.0
+    if size <= 14.5:
+        return 50
+    if size <= 15.96:
+        return 50
+    return 50.0
 
 
 def fix_lastone(items):
