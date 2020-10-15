@@ -38,10 +38,16 @@ def extract_best_page(navigator, headlines, textfeed):
         headlines,
         textfeed,
     )
-    vertical = words.lists.strategies.vertical.analyze_page(navigator)
-    # TODO: CHOOSE BETTER SELECTOR
+    geo = [item for item in geo if words.lists.utils.valid_area(item.area)]
     geo_score = sum([words.lists.utils.score_area(item.area) for item in geo])
+
+    vertical = words.lists.strategies.vertical.analyze_page(navigator)
+    vertical = [
+        item for item in vertical if words.lists.utils.valid_area(item.area)
+    ]
     vertical_score = sum([words.lists.utils.score_area(item.area) for item in vertical]) # yapf:disable
+
+    # TODO: CHOOSE BETTER SELECTOR
     # prefere result which explains more areas
     selected = geo if geo_score > vertical_score else vertical
     result = []

@@ -31,6 +31,8 @@ we use `CHUNK_SIZE` one, we run our default strategies in single page
 mode.
 """
 
+# TODO: UPDATE OUTDATED DOCS
+
 import collections
 
 import iamraw
@@ -39,59 +41,52 @@ import utila
 
 import words.lists.strategies.bestpage
 
-CHUNK_SIZE = 30
-
-# TODO: RUN THIS STRATEGY TWICE!!!
-
 
 def extract_lists(ptcns, headlines) -> iamraw.PageContentLists:
-    textfeed = texmex.document_textfeed(ptcns)
-    chunked = split(ptcns)
+    textfeed = texmex.document_textfeed(ptcns, count=1)
 
-    result = []
-    for chunk in chunked:
-        extracted = words.lists.strategies.bestpage.extract_best_page(
-            chunk,
-            headlines,
-            textfeed,
-        )
-        # if extracted:
-        result.append(extracted)
+    merged = merge(ptcns)
+    extracted = words.lists.strategies.bestpage.extract_best_page(
+        merged,
+        headlines,
+        textfeed,
+    )
+    pages, local = lookup_table(ptcns)
 
-    adjusted = adjust_pagenumbers(result, chunked, ptcns)
+    adjusted = adjust_pagenumbers(extracted, pages, local)
     return adjusted
 
 
-def adjust_pagenumbers(extracted, chunked, ptcns) -> iamraw.PageContentLists:  # pylint:disable=R0914
+def lookup_table(ptcns):
+    pages = []
+    local = []
+    for navigator in ptcns:
+        for index, _ in enumerate(navigator):
+            pages.append(navigator.page)
+            local.append(index)
+    return pages, local
+
+
+def adjust_pagenumbers(extracted, lookup, local) -> iamraw.PageContentLists:
     """Add pagenumber to extracted lists. The lists does not have the
     correct page number, cause there extracted with big connected page
     chunk."""
-    lookup, local = chunk_lookup(chunked, ptcns)
     matched = collections.defaultdict(list)
-    for index, chunk in enumerate(extracted):
-        for paragraph, merged_, listi in chunk:
-            listi.paragraph = paragraph
-            listi.merged = merged_
-            first_area = listi.area[0]
-            starting_page = lookup[index][first_area]
-            matched[starting_page].append(listi)
-            # convert to local content navigator area
-            area = [local[index][relativ] for relativ in listi.area]
-            splitted = utila.groupby_ascending(area)
-            listi.area = splitted
+    for paragraph, merged_, listi in extracted:
+        listi.paragraph = paragraph
+        listi.merged = merged_
+        first_area = listi.area[0]
+        starting_page = lookup[first_area]
+        # convert to local content navigator area
+        area = [local[relativ] for relativ in listi.area]
+        splitted = utila.groupby_ascending(area)
+        listi.area = splitted
+        matched[starting_page].append(listi)
     pages = [
         iamraw.PageContentList(page=page, content=content)
         for page, content in matched.items()
     ]
     return pages
-
-
-def split(ptcns, offset=0):  # pylint:disable=W0613
-    splitted = utila.chunks(ptcns, size=CHUNK_SIZE)
-    grouped = []
-    for item in splitted:
-        grouped.append(merge(item))
-    return grouped
 
 
 def merge(navigators: texmex.PageTextNavigators) -> texmex.PageTextNavigator:
@@ -121,26 +116,3 @@ def merge(navigators: texmex.PageTextNavigators) -> texmex.PageTextNavigator:
     navigator.data = result
     navigator.page = navigators[0].page
     return navigator
-
-
-def chunk_lookup(chunked, ptcns):
-    if not chunked:
-        return {}
-    # TODO: WHAT A CRAZY APPROACH
-    pages = []
-    local = []
-    for navigator in ptcns:
-        for index, _ in enumerate(navigator):
-            pages.append(navigator.page)
-            local.append(index)
-    result = collections.defaultdict(dict)
-    local_chunk = collections.defaultdict(dict)
-    globalindex = 0
-    for chunkid, chunk in enumerate(chunked):
-        for index, _ in enumerate(chunk):
-            result[chunkid][index] = pages[globalindex]
-            local_chunk[chunkid][index] = local[globalindex]
-            globalindex += 1
-    converted = dict(result)  # enable KeyError
-    local_chunk = dict(local_chunk)  # pylint:disable=R0204
-    return converted, local_chunk

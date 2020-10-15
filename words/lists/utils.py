@@ -37,3 +37,18 @@ def pagerange(items) -> int:
     """
     grouped = utila.groupby_ascending(items)
     return len(grouped)
+
+
+def valid_area(items) -> bool:
+    if isinstance(items[0], int):
+        items = [items]
+    for item in items:
+        unqiue = utila.make_unique(
+            utila.roundme(
+                utila.diffs(item),
+                digits=0,
+                convert=False,
+            ))
+        if max(unqiue) > 2:
+            return False
+    return True

@@ -77,6 +77,7 @@ def test_list_master72_page39_40_41(testdir, monkeypatch):
 @pytest.mark.parametrize('pages', [
     pytest.param((36, 37, 38, 39, 40, 41, 42), id='no_chunks'),
     pytest.param(utila.ranged_tuple(0, 42), id='using_chunks'),
+    pytest.param(':', id='all'),
 ])
 def test_list_bachelor128_page36_42(pages, testdir, monkeypatch):
     """Use pages to ensure that extracting works when extraction uses
