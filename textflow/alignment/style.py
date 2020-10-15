@@ -165,9 +165,9 @@ def groupby(navigator, grouped):
 
 def leftright(navigator, left, right):
     left = feed_left(navigator, left)
-    left = [threshold(item, diff=TEXT_BORDER_NOISE) for item in left]
+    left = [utila.threshold(item, diff=TEXT_BORDER_NOISE) for item in left]
     right = feed_right(navigator, right)
-    right = [threshold(item, diff=TEXT_BORDER_NOISE) for item in right]
+    right = [utila.threshold(item, diff=TEXT_BORDER_NOISE) for item in right]
     return left, right
 
 
@@ -191,10 +191,3 @@ def feed_right(navigator, right):
     diff = [expected - item.bounding[2] for item in navigator]
     diff = utila.roundme(diff, convert=False)
     return diff
-
-
-def threshold(item, diff: float, center: float = 0.0) -> float:
-    # TODO: MOVE TO UTILA
-    if math.fabs(center - item) <= diff:
-        return center
-    return item
