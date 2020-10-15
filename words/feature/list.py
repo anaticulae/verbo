@@ -16,6 +16,7 @@
      - check undefined area that area is list
 """
 
+import iamraw
 import serializeraw
 import utila
 
@@ -49,9 +50,28 @@ def work(  # pylint:disable=R0914
     magic = serializeraw.load_types(
         magic,
         pages=pages,
-    ) if utila.exists(magic) else None  # pylint:disable=E1101
+    ) if utila.exists(magic) else []  # pylint:disable=E1101
     if magic is None:
         utila.error('list: no magic data')
+
+    valid = {
+        iamraw.PageContentType.LIST,
+        iamraw.PageContentType.TEXT,
+    }
+    ptcns = skip_magic(ptcns, magic, valid)
+
     result = words.lists.runtime.extract_lists(ptcns, headlines)
     dumped = serializeraw.dump_lists(result)
     return dumped
+
+
+def skip_magic(ptcns, magics, valid):
+    for page in ptcns:
+        magic = utila.select_content(magics, page.page)
+        if magic:
+            invalid = [item[0] for item in magic if item[1] not in valid]
+        else:
+            invalid = {}
+        data = [item for index, item in enumerate(page) if index not in invalid]
+        page.data = data
+    return ptcns
