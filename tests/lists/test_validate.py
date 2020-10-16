@@ -97,3 +97,41 @@ def test_list_bachelor128_page36_42(pages, testdir, monkeypatch):
         utila.ranged_tuple(0, 11),  # page 39
     ]
     assert area == expected
+
+
+def validate_master99(extracted):
+    # single list with six items on page 9
+    page9 = utila.select_content(extracted, page=9)
+    assert len(page9) == 1
+    # TODO: ADD TEST FOR LAST ITEM WHICH IN TOO LONG YET
+    assert len(page9[0]) == 6
+
+    page46 = utila.select_content(extracted, page=46)
+    assert len(page46) == 1
+    assert len(page46[0]) == 9
+
+    # regression check to avoid parsing table as list
+    assert not utila.select_content(extracted, page=48)
+
+    page49 = utila.select_content(extracted, page=49)
+    assert len(page49) == 1
+    assert len(page49[0]) == 3
+
+    page79 = utila.select_content(extracted, page=79)
+    # assert len(page79[0]) == 3 # TODO: Activate later
+    assert len(page79[0]) == 2
+
+    page80 = utila.select_content(extracted, page=80)
+    # assert len(page80[0]) == 9 # TODO: Activate later
+    assert len(page80[0]) == 3
+
+
+@pytest.mark.parametrize('source, validator', [
+    pytest.param(power.MASTER099_PDF, validate_master99, id='master99'),
+])
+def test_list_validate(source, validator, testdir, monkeypatch):
+    source = power.link(source)
+    # run extraction
+    extracted = extract_lists(source, ':', testdir, monkeypatch=monkeypatch)
+    # run validator
+    validator(extracted)
