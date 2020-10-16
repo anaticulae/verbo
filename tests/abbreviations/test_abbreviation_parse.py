@@ -8,38 +8,28 @@
 # =============================================================================
 
 import power
-import pytest
 import serializeraw
-import utilatest
 
-import tests
 import words.feature.abbreviation
 import words.path
 
 
-@pytest.fixture
-def bachelor37(testdir, monkeypatch):
-    source = testdir.tmpdir
-    tests.run(
-        f'-i {power.link(power.BACHELOR037_PDF)}',
-        monkeypatch=monkeypatch,
-    )
+def bachelor37():
+    source = power.link(power.BACHELOR037_PDF)
+    pages = tuple(range(6, 10))
     text = words.path.text(source)
     headlines = words.path.headlines(source)
-    pages = tuple(range(6, 10))
     result = words.feature.abbreviation.work(text, headlines, pages=pages)
     return result
 
 
-@utilatest.longrun
-def test_abbreviation_parse_page(bachelor37):  # pylint:disable=W0621
-    result = bachelor37
+def test_abbreviation_parse_page():
+    result = bachelor37()
     assert len(result) > 100, str(result)
 
 
-@utilatest.longrun
-def test_abbreviation_dump_load_parsed_abbreviation(bachelor37):  # pylint:disable=W0621
-    expected = bachelor37
+def test_abbreviation_dump_load_parsed_abbreviation():
+    expected = bachelor37()
     loaded = serializeraw.load_text_abbreviations(expected)
     dumped = serializeraw.dump_text_abbreviations(loaded)
     assert dumped == expected, dumped
