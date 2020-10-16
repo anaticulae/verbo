@@ -42,6 +42,8 @@ def pagerange(items) -> int:
 def valid_area(items) -> bool:
     if isinstance(items[0], int):
         items = [items]
+    if len(items) == 1:
+        return True
     for item in items:
         unqiue = utila.make_unique(
             utila.roundme(
