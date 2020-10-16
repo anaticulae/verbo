@@ -35,10 +35,11 @@ def remove_headline_content(ptcn, headlines):
 
 
 def group_and_parse(ptcn):
-    grouped = texmex.group_linedistances_complex(
-        ptcn,
-        max_distance=maxdistance,
-    )
+    # grouped = texmex.group_linedistances_complex(
+    #     ptcn,
+    #     max_distance=maxdistance,
+    # )
+    grouped = texmex.group_linedistances_complex(ptcn)
     collected = []
     for group in grouped:
         rawgroup = [ptcn[item].text for item in group]
