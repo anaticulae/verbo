@@ -110,6 +110,7 @@ def pagecontentlist(pages) -> iamraw.PageContentLists:
         for paragraph, merged_, listinstance in content:
             listinstance.paragraph = paragraph
             listinstance.merged = merged_
+            listinstance.area = utila.groupby_ascending(listinstance.area)
             collected.append(listinstance)
         result.append(iamraw.PageContentList(page=page, content=collected))
     return result
