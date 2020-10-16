@@ -11,20 +11,42 @@ import iamraw
 import texmex
 import utila
 
+import words.lists.strategies.geometry
 import words.lists.strategies.regex
 
 
-def analyze_page(ptcn):
+def analyze_page(ptcn, headlines):
     # TODO: RUN GROUPING A FEW TIMES AND SELECT "BEST" ONE?
+    remove_headline_content(ptcn, headlines)
+
+    lists = group_and_parse(ptcn)
+
+    result = create_lists(lists)
+    return result
+
+
+def remove_headline_content(ptcn, headlines):
+    synced = words.lists.strategies.geometry.sync_headlines(ptcn, headlines)
+    for index, line in enumerate(synced):
+        if line:
+            continue
+        # invalidate headline content
+        ptcn.data[index].text = ''
+
+
+def group_and_parse(ptcn):
     grouped = texmex.group_linedistances_complex(
         ptcn,
         max_distance=maxdistance,
     )
-
     collected = []
     for group in grouped:
         rawgroup = [ptcn[item].text for item in group]
         content = ''.join(rawgroup)
+        if not content.strip():
+            collected.append(None)
+            continue
+
         parsed = words.lists.strategies.regex.parse_single(content)
         parsed = fix_lastone(parsed)
 
@@ -36,7 +58,10 @@ def analyze_page(ptcn):
         else:
             collected.append(None)
     lists = utila.groupby_none(collected)
+    return lists
 
+
+def create_lists(lists) -> list:
     result = []
     for listgroup in lists:
         current = iamraw.PageList()

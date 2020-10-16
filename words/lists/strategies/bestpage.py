@@ -44,7 +44,10 @@ def extract_best_page(navigator, headlines, textfeed):
         words.lists.utils.valid_list_content(item.data)
     ]
 
-    vertical = words.lists.strategies.vertical.analyze_page(navigator)
+    vertical = words.lists.strategies.vertical.analyze_page(
+        navigator,
+        headlines,
+    )
     vertical = [
         item for item in vertical if words.lists.utils.valid_area(item.area) and
         words.lists.utils.valid_list_content(item.data)

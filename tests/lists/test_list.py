@@ -205,7 +205,7 @@ def test_list_master72_page39_one_list(testdir):
         pages=pages,
     )
 
-    listinstance = words.lists.strategies.vertical.analyze_page(ptcn[0])
+    listinstance = words.lists.strategies.vertical.analyze_page(ptcn[0], [])
     assert len(listinstance) == 1
     assert len(listinstance[0]) == 2
 
