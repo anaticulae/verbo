@@ -7,17 +7,17 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-utila==2.12.0
-iamraw==4.2.0
-sections==0.12.0
+utila==2.13.0
+iamraw==4.3.0
+sections==0.12.1
 
 # split sentences and determine language of written sentence
-german==0.9.0
+german==0.9.1
 # some constants
 konrad==0.2.24
 
-geostrat==1.1.1
-hey==5.3.0
+geostrat==1.1.2
+hey==5.4.0
 
 # determine headline level
-groupme==0.5.1
+groupme==0.6.0

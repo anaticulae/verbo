@@ -63,7 +63,7 @@ def test_page_linealignments_expected_master72_page6():
 
 
 def test_page_linealignments_expected_homework40_page3():
-    source = power.link(power.HOMEWORK040_PDF)
+    source = power.link(power.HOME040_PDF)
     navigators = serializeraw.create_pagetextnavigators_frompath(source,)
     border = textflow.alignment.style.document_textfeed(navigators)
 
@@ -87,7 +87,7 @@ def test_page_linealignments_expected_homework40_page3():
 
 
 def test_page_linealignments_expected_homework40_page4():
-    source = power.link(power.HOMEWORK040_PDF)
+    source = power.link(power.HOME040_PDF)
     navigators = serializeraw.create_pagetextnavigators_frompath(source)
     border = textflow.alignment.style.document_textfeed(navigators)
 

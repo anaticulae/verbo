@@ -34,7 +34,7 @@ TextAlignment = textflow.alignment.style.TextAlignment
         id='pyporting',
     ),
     pytest.param(
-        power.link(power.HOMEWORK040_PDF),
+        power.link(power.HOME040_PDF),
         TextAlignment.LEFT,
         id='homework40',
     ),
@@ -51,7 +51,7 @@ def test_document_alignment(source, expected):
 
 def test_page_linealignment_homework40_page4():
     navigators = serializeraw.create_pagetextnavigators_frompath(
-        power.link(power.HOMEWORK040_PDF),
+        power.link(power.HOME040_PDF),
         prefix='oneline',
     )
     left, right = textflow.alignment.style.document_textfeed(navigators)
