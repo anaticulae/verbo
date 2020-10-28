@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.20.1
+
+### Fix
+
+* fix empty valid area check (28c93cf5a026)
+
 ## v0.20.0
 
 ### Feature
