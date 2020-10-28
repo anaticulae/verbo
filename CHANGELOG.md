@@ -2,6 +2,21 @@
 
 Every noteable change is logged here.
 
+## v0.20.0
+
+### Feature
+
+* remove headline content to improve vertical list parser (fe34237e1369)
+* adjust holy value of vertical parser (8cf144ecd1d5)
+* improve vertical parser (bd8632540b07)
+* improve list regex parser (c4a8fcefec0f)
+* exclude more invalid list data (81abaf4589eb)
+
+### Fix
+
+* single area is always valid (8261d66749fb)
+* add missing area splitter (930dc88214b2)
+
 ## v0.19.1
 
 ### Feature
