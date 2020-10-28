@@ -40,6 +40,12 @@ def pagerange(items) -> int:
 
 
 def valid_area(items) -> bool:
+    """\
+    >>> valid_area([])
+    False
+    """
+    if not items:
+        return False
     if isinstance(items[0], int):
         items = [items]
     if len(items) == 1:
