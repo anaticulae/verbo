@@ -9,6 +9,7 @@
 
 import os
 
+import words.__german__
 import words.__headlines__
 import words.__iamraw__
 import words.__patch__
