@@ -152,3 +152,29 @@ def test_parse_bibliographylink_in_text():
     ]
     parsed = ll.parse(INLINE)
     assert parsed == expected
+
+
+RAW = """\
+Das Stadtgebiet von Neunkirchen war schon in keltischer Zeit besiedelt
+wovon Grabstätten in den Stadtteilen Mühlfeld und Steinfeld Zeugnis
+ablegen. Nach dem Einmarsch der Römer errichteten sie anstelle der
+Keltenburg ein steinernes Kastellum sowie Wohn- und Wirtschaftsgebäude
+rund um den Holz- und Hauptplatz – hiervon zeugen Funde von römischen
+Grabsteinen und Münzen (vgl. Arbeitsgemeinschaft 900 Jahre Neunkirchen,
+S. 50).
+
+Im Jahre 872 soll nach Schweickhadt, Ritter von Sickingen, die
+heutige Pfarrkirche erbaut worden sein, hierfür gibt es aber weder
+Beweise durch Inschriften noch durch schriftliche Quellen, 1036 wurde
+die Siedlung durch König Konrad II. zum Markt erhoben, 1136 wurde das
+Münzrecht verliehen und 1139 von Papst Innozenz II. bestätigt. Die erste
+urkundliche Erwähnung geht auf das Jahr 1094 zurück wo Neunkirchen als
+„Niuwenchirgun“, als „Neue Kirche“, bezeichnet wird (vgl. BOUS (1933),
+S. 3 ff).
+"""
+
+
+@pytest.mark.xfail(reason='wait for nltk')
+def test_parse_biblink_fulltext():
+    parsed = ll.parse(RAW)
+    assert len(parsed) == 2
