@@ -76,6 +76,14 @@ WORKPLAN = [
         output=('headlines', 'oneline'),
     ),
     step(
+        'links',
+        inputs=[
+            ResultFile('words', 'text_text'),
+            ResultFile('words', 'headlines_headlines'),
+        ],
+        output=('links',),
+    ),
+    step(
         'list',
         inputs=[
             ResultFile('rawmaker', 'oneline_text_text'),
