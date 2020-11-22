@@ -33,9 +33,19 @@ def process_text(texts):
 
 def process_chunk(sentence):
     result = []
-    hyperlinks = german.hyperlink(sentence)
-    for hyperlink in hyperlinks:
-        result.append(iamraw.ExtractedHyperLink(href=hyperlink))  # pylint:disable=E1101
+    hyperlinks = german.hyperlink(sentence, position=True)  # pylint:disable=unexpected-keyword-arg
+    if hyperlinks:
+        hyperlinks = try_merge(sentence)
+    for hyperlink, starting in hyperlinks:
+        date = lookaround(
+            sentence,
+            start=starting,
+            end=starting + len(hyperlink),
+            collector=german.dates,
+            after=30,
+        )
+        date = date[0] if date else None
+        result.append(iamraw.ExtractedHyperLink(href=hyperlink, visited=date))  # pylint:disable=E1101
     return result
 
 
@@ -44,3 +54,66 @@ def sentences(texts):
         for section in chunk.content:
             for page, sentence in zip(section.pages, section.content):
                 yield page, sentence
+
+
+def lookaround(
+        text: str,
+        start: int,
+        end: int,
+        collector: callable,
+        before: int = 0,
+        after: int = 0,
+):
+    """Try to parse pattern `collector` before and or after parsed item.
+    Check the neighborhood."""
+    before = text[start - before:start]
+    after = text[end:end + after]
+    result = []
+    for item in [before, after]:
+        parsed = collector(item)
+        if not parsed:
+            continue
+        result.extend(parsed)
+    return result
+
+
+def try_merge(sentence: str) -> list:
+    """\
+    >>> try_merge('(Quelle: https://www.menschen _und_gesellschaft/'
+    ... 'bevoelkerung/_geschlecht/index.html - aufgerufen am 15.03.2017)')
+    [('https://www.menschen_und_gesellschaft/bevoelkerung/_geschlecht/index.html', 9)]
+    """
+    # TODO: SUPPORT MORE THAN ONE FORWARD MERGE
+    result = []
+    hyperlinks = german.hyperlink(sentence, position=True)  # pylint:disable=unexpected-keyword-arg
+    for hyperlink, starting in hyperlinks:
+        index = starting + len(hyperlink)
+        try:
+            connector, _ = sentence[index:].split(maxsplit=1)
+        except ValueError:
+            result.append((hyperlink, starting))
+            continue
+        if plain_word(connector):
+            # next word seams not content of hyperlink
+            result.append((hyperlink, starting))
+            continue
+        mixed = hyperlink + connector
+        parsed = german.hyperlink(mixed)
+        if parsed:
+            result.append((parsed[0], starting))
+            continue
+        # connecting is not possible
+        result.append((hyperlink, starting))
+    return result
+
+
+def plain_word(text: str) -> bool:
+    """\
+    >>> plain_word('Hesus one')
+    True
+    >>> plain_word('_geschlec')
+    False
+    >>> plain_word('ht/index.html')
+    False
+    """
+    return all(item.isalpha() for item in text.split())
