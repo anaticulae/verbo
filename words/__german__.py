@@ -13,7 +13,7 @@ import german
 import utila
 
 
-def link(raw: str):
+def link(raw: str, position: bool = False):
     r"""\
     >>> link('Before: http://student.unifr.ch/\nReferenzrahmen2001.pdf after.')[0]
     'http://student.unifr.ch/Referenzrahmen2001.pdf'
@@ -31,7 +31,10 @@ def link(raw: str):
     result = []
     for item in re.finditer(pattern, raw, flags=re.VERBOSE):
         matched = utila.extract_match(item)
-        result.append(matched)
+        if position:
+            result.append((matched, item.span()[0]))
+        else:
+            result.append(matched)
     return result
 
 
