@@ -23,10 +23,12 @@ def link(raw: str, position: bool = False):
     'http://google.de'
     >>> link('Gemeinde Neunkirchen 31818\nwww.statistik.at/blickgem/fa1/g31818.pdf (03.12.2017')[0]
     'www.statistik.at/blickgem/fa1/g31818.pdf'
+    >>> link('http://www.statistik.at/index.html?includePage=detailedView%C2%A7ionName=Bildung%2C+Kultur&pubId=461')
+    ['http://www.statistik.at/index.html?includePage=detailedView%C2%A7ionName=Bildung%2C+Kultur&pubId=461']
     """
     raw = raw.replace('\n', '')
     pattern = r"""
-    (http://|https://|www)[\w\d\./\-\?\=\&]+
+    (http://|https://|www)[\w\d\./\-\?\=\&\%\+]+
     """
     result = []
     for item in re.finditer(pattern, raw, flags=re.VERBOSE):
