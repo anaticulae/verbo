@@ -7,42 +7,13 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import contextlib
-import dataclasses
 import functools
-import os
 
 import configo
 import iamraw
 import serializeraw
 import utila
 import yaml
-
-
-@dataclasses.dataclass
-class Headline:
-    title: str
-    level: int = dataclasses.field(default=0)
-    raw: str = dataclasses.field(default=None)
-    raw_level: str = dataclasses.field(default=None, compare=False)
-    page: int = dataclasses.field(default=-1)
-    container: int = dataclasses.field(default=None)
-    decoration: tuple = dataclasses.field(default=None)
-
-    @property
-    def start(self):
-        with contextlib.suppress(TypeError):
-            return self.container[0]  # pylint:disable=E1136
-        return self.container
-
-    @property
-    def end(self):
-        with contextlib.suppress(TypeError):
-            return self.container[1]  # pylint:disable=E1136
-        return self.container
-
-
-iamraw.Headline = Headline
 
 
 def dump_headlines(headlines: iamraw.PagesHeadlineList) -> str:
@@ -117,23 +88,3 @@ def load_headlines(content: str, pages=None) -> iamraw.PagesHeadlineList:
 
 
 serializeraw.load_headlines = load_headlines
-
-
-def exists(path: str) -> bool:
-    """Wrapper for os.path.exists with checking None and convert path to
-    str if required.
-
-    >>> exists(__file__)
-    True
-    >>> exists(None)
-    False
-    >>> exists(1234)
-    False
-    """
-    if path is None:
-        return False
-    path = str(path)
-    return os.path.exists(path)
-
-
-utila.exists = exists
