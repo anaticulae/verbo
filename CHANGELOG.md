@@ -2,6 +2,15 @@
 
 Every noteable change is logged here.
 
+## v0.21.0
+
+### Feature
+
+* extend links parser (81854829c2fa)
+* add more accepted chars to link parser (5ebada6e4581)
+* add option to collect starting position of parsed pattern (70ee204edd2a)
+* add step to parse hyperlinks (942fba939f0e)
+
 ## v0.20.3
 
 ## v0.20.2
