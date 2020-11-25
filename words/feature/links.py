@@ -11,6 +11,8 @@ import german
 import iamraw
 import serializeraw
 
+import words.utils
+
 
 def work(text: str, headlines: str, pages: tuple = None) -> str:
     headlines = serializeraw.load_headlines(headlines, pages=pages)
@@ -23,7 +25,7 @@ def work(text: str, headlines: str, pages: tuple = None) -> str:
 
 def process_text(texts):
     result = []
-    for page, sentence in sentences(texts):
+    for page, sentence in words.utils.sentences(texts):
         extracted = process_chunk(sentence)
         for item in extracted:
             item.page = page
@@ -47,13 +49,6 @@ def process_chunk(sentence):
         date = date[0] if date else None
         result.append(iamraw.ExtractedHyperLink(href=hyperlink, visited=date))  # pylint:disable=E1101
     return result
-
-
-def sentences(texts):
-    for chunk in texts:
-        for section in chunk.content:
-            for page, sentence in zip(section.pages, section.content):
-                yield page, sentence
 
 
 def lookaround(

@@ -8,3 +8,10 @@
 # =============================================================================
 
 # NOTE: STORE EXPERIMENTAL CODE HERE
+
+
+def sentences(texts):
+    for chunk in texts:
+        for section in chunk.content:
+            for page, sentence in zip(section.pages, section.content):
+                yield page, sentence
