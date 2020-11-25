@@ -75,7 +75,7 @@ keiten der digitalen Infrastruktur entlang der Wertschöpfungskette ”
 „ Unter dem Begriff Digitalisierung verstehen wir die Transformation von \
 Geschäftsmodellen mit Hilfe von Informations - und Kommunikationstechnologien \
 zur Reduktion von Schnittstellen , zur funktionsübergreifenden Vernetzung und\
- zur Erhöhung der Effektivität und Effizienz ”
+ zur Erhöhung der Effektivität und Effizienz . ”
 
 „ Industrie 4.0 ”"""
 
