@@ -10,8 +10,17 @@
 # NOTE: STORE EXPERIMENTAL CODE HERE
 
 
-def sentences(texts):
+def sentences(texts, numbers: bool = False):
+    number, current = 0, None
     for chunk in texts:
         for section in chunk.content:
             for page, sentence in zip(section.pages, section.content):
-                yield page, sentence
+                if not numbers:
+                    yield page, sentence
+                else:
+                    if current != page:
+                        number = 0
+                        current = page
+                    else:
+                        number += 1
+                    yield page, number, sentence
