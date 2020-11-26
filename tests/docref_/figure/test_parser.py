@@ -7,15 +7,18 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import serializeraw
-
 import docref.figure
 
+SENTENCE = """\
+Verkehrsanbindung der Stadt Neunkirchen An der schon immer wichtigen
+Handelsroute von Wien über den Semmering via Graz nach Triest gelegen
+wurde die Stadt von je her von Handel und Verkehr geprägt (siehe Abb.
+1).
+"""
 
-def work(text: str, headlines: str, pages: tuple = None) -> str:
-    headlines = serializeraw.load_headlines(headlines, pages=pages)
-    text = serializeraw.load_text(text, headlines=headlines, pages=pages)
 
-    parsed = docref.figure.parse_text(text)
-    dumped = docref.serialize.dump_docref(parsed)
-    return dumped
+def test_figure_parser():
+    detected = docref.figure.parse_sentence(SENTENCE)
+    assert len(detected) == 1
+    expected = [(31, 36)]
+    assert detected == expected

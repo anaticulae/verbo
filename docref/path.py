@@ -7,15 +7,10 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import serializeraw
+import utila
 
-import docref.figure
+import docref
 
 
-def work(text: str, headlines: str, pages: tuple = None) -> str:
-    headlines = serializeraw.load_headlines(headlines, pages=pages)
-    text = serializeraw.load_text(text, headlines=headlines, pages=pages)
-
-    parsed = docref.figure.parse_text(text)
-    dumped = docref.serialize.dump_docref(parsed)
-    return dumped
+def docref_figure(path: str, prefix: str = '') -> str:
+    return utila.pathconnector(path, docref.PROCESS, 'figure_parsed', prefix)

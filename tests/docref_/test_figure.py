@@ -7,15 +7,18 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import serializeraw
+import power
 
-import docref.figure
+import docref.path
+import docref.serialize
+import tests.docref_
 
 
-def work(text: str, headlines: str, pages: tuple = None) -> str:
-    headlines = serializeraw.load_headlines(headlines, pages=pages)
-    text = serializeraw.load_text(text, headlines=headlines, pages=pages)
+def test_figure_master75_pages6(testdir, monkeypatch):
+    source = power.link(power.MASTER075_PDF)
+    cmd = f'-i {source} --figure --pages=7:21'
+    tests.docref_.run(cmd, monkeypatch=monkeypatch)
 
-    parsed = docref.figure.parse_text(text)
-    dumped = docref.serialize.dump_docref(parsed)
-    return dumped
+    path = docref.path.docref_figure(testdir.tmpdir)
+    loaded = docref.serialize.load_docref(path)
+    assert len(loaded) == 5
