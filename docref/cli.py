@@ -27,6 +27,14 @@ WORKPLAN = [
         ],
         output=('parsed',),
     ),
+    utila.create_step(
+        'section',
+        inputs=[
+            utila.ResultFile('words', 'text_text'),
+            utila.ResultFile('words', 'headlines_headlines'),
+        ],
+        output=('parsed',),
+    ),
 ]
 
 # pylint:disable=C0103

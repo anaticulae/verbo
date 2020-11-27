@@ -7,6 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import german
+
 import docref.figure
 
 SENTENCE = """\
@@ -18,7 +20,7 @@ wurde die Stadt von je her von Handel und Verkehr geprägt (siehe Abb.
 
 
 def test_figure_parser():
-    detected = docref.figure.parse_sentence(SENTENCE)
+    detected = german.searches(docref.figure.PATTERN, SENTENCE)
     assert len(detected) == 1
     expected = [(31, 36)]
     assert detected == expected

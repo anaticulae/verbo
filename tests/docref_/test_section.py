@@ -7,14 +7,18 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import utila
+import power
 
-import docref
-
-
-def docref_figure(path: str, prefix: str = '') -> str:
-    return utila.pathconnector(path, docref.PROCESS, 'figure_parsed', prefix)
+import docref.path
+import docref.serialize
+import tests.docref_
 
 
-def docref_section(path: str, prefix: str = '') -> str:
-    return utila.pathconnector(path, docref.PROCESS, 'section_parsed', prefix)
+def test_section_master75_pages25_50(testdir, monkeypatch):
+    source = power.link(power.MASTER075_PDF)
+    cmd = f'-i {source} --section --pages=25:50'
+    tests.docref_.run(cmd, monkeypatch=monkeypatch)
+
+    path = docref.path.docref_section(testdir.tmpdir)
+    loaded = docref.serialize.load_docref(path)
+    assert len(loaded) == 9  # TODO: VALIDATE LATER
