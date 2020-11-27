@@ -101,26 +101,24 @@ def params():
 
 
 @pytest.fixture(params=params())
-def rawresult(request, tmpdir):
-    tmpdir = str(tmpdir)
-    tocpath = os.path.join(tmpdir, 'toc')
-    generalpath = os.path.join(tmpdir, 'general')
+def rawresult(request, testdir):
+    tocpath = os.path.join(testdir.tmpdir, 'toc')
+    generalpath = os.path.join(testdir.tmpdir, 'general')
     for item in [tocpath, generalpath]:
         os.makedirs(item)
 
     pdf, toccmd, generalcmd = request.param
     rawtoc = f'rawmaker -i {pdf} -j=8 --images! --pages=0:60 -o {tocpath} --prefix=oneline {toccmd}'
     rawgeneral = f'rawmaker -i {pdf} -j=8 --images! --pages=0:60 -o {generalpath} {generalcmd}'
-    linero = f'linero -o {generalpath}'
+    linero = f'linero -i {tocpath} -o {generalpath}'
 
     utila.log(rawtoc)
-    utila.run(rawtoc)
     utila.log(rawgeneral)
-    utila.run(rawgeneral)
+    utila.run_parallel([rawtoc, rawgeneral])
     utila.log(linero)
     utila.run(linero)
 
-    return (tmpdir, tocpath, generalpath)
+    return (testdir.tmpdir, tocpath, generalpath)
 
 
 @pytest.fixture
@@ -179,7 +177,6 @@ def words_result(sections_result):  # pylint:disable=W0621
 
 
 @utilatest.nightly
-@pytest.mark.usefixtures('testdir')
 def test_huge_running_words(words_result, request):  # pylint:disable=W0621
     """Run rawmaker -> sections -> words. Ensure that this chain works for
     huge pdf example provided by power tool."""
