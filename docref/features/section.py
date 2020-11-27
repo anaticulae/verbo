@@ -23,11 +23,17 @@ def work(text: str, headlines: str, pages: tuple = None) -> str:
 
 
 PATTERN = (
+    '(siehe Abs. 5)',
+    '(siehe Kapitel 2.2)'
+    'Abs. 5',
     'Abschnitt 1',
     'Abschnitt 1.',
+    'Kapitel 2.',
     'Punkt 4.1.4',
-    'siehe Punkt 4.7',
+    'siehe Abs. 5',
+    'siehe Kapitel 2.2'
     'siehe Punkt 4.2.2.',
+    'siehe Punkt 4.7',
     'siehe auch Punkt 4.3.2.',
 )
 

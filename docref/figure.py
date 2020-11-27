@@ -17,9 +17,12 @@ PATTERN = (
     '(siehe Abb. 100 und 101)',
     '(siehe Abb. 100)',
     '(siehe Abbildung 100)',
+    '(siehe Abbildung 2.12)',
     'Abb. 100 und 1001',
     'Abb. 100 und Abb. 101',
+    'Abbildung 2.1',
     'Abbildungen 100 und 1001',
+    'siehe Abbildung 2.12',
 )
 
 
