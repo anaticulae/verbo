@@ -24,4 +24,7 @@ def test_docref_bachelor37(testdir, monkeypatch):
     path = testdir.tmpdir
 
     figures = docref.serialize.load_docref(docref.path.docref_figure(path))
-    assert len(figures) == 10  # may changes later
+    assert len(figures) == 11  # may changes later
+
+    tables = docref.serialize.load_docref(docref.path.docref_table(path))
+    assert len(tables) == 3
