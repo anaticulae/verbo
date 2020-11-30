@@ -20,3 +20,5 @@ backlog
 * detect_decider mark abweichungen
 
 * Block-Zitate benötigen keine Anführungszeichen
+
+* docref: add math ref parser, siehe Formel
