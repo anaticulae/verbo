@@ -2,6 +2,23 @@
 
 Every noteable change is logged here.
 
+## v0.22.0
+
+### Feature
+
+* add table reference extractor (2c4546780479)
+* extend figure pattern (abacdffe1d4a)
+* extend parser pattern (b2b7d2157206)
+* add section label parser (9c60190f776d)
+* extend figure extraction step (20a0166daaf2)
+* add flag to enumerate sentence number (a97a81fcc103)
+* add figure reference extractor (31792860fa0e)
+* add basic docref cli structure (2bda35db86ec)
+
+### Fix
+
+* improve code style (aa1ef163a3ad)
+
 ## v0.21.0
 
 ### Feature
