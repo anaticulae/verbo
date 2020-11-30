@@ -21,7 +21,4 @@ def test_links_master75(testdir, monkeypatch):
 
     loaded = serializeraw.load_hyperlinks(words.path.links(testdir.tmpdir))  # pylint:disable=E1101
 
-    for item in loaded:
-        print(item)
-
     assert len(loaded) == 22
