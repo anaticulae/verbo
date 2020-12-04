@@ -8,9 +8,9 @@
 # =============================================================================
 
 import power
+import serializeraw
 
 import docref.path
-import docref.serialize
 import tests.docref_
 
 
@@ -23,8 +23,8 @@ def test_docref_bachelor37(testdir, monkeypatch):
     tests.docref_.run(f'-i {source}', monkeypatch=monkeypatch)
     path = testdir.tmpdir
 
-    figures = docref.serialize.load_docref(docref.path.docref_figure(path))
+    figures = serializeraw.load_docref(docref.path.docref_figure(path))
     assert len(figures) == 11  # may changes later
 
-    tables = docref.serialize.load_docref(docref.path.docref_table(path))
+    tables = serializeraw.load_docref(docref.path.docref_table(path))
     assert len(tables) == 3

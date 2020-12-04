@@ -8,9 +8,9 @@
 # =============================================================================
 
 import power
+import serializeraw
 
 import docref.path
-import docref.serialize
 import tests.docref_
 
 
@@ -20,5 +20,5 @@ def test_figure_master75_pages6(testdir, monkeypatch):
     tests.docref_.run(cmd, monkeypatch=monkeypatch)
 
     path = docref.path.docref_figure(testdir.tmpdir)
-    loaded = docref.serialize.load_docref(path)
+    loaded = serializeraw.load_docref(path)
     assert len(loaded) == 5

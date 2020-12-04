@@ -7,10 +7,10 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import iamraw
 import serializeraw
 
 import docref.figure
-import docref.serialize
 
 
 def work(text: str, headlines: str, pages: tuple = None) -> str:
@@ -18,7 +18,7 @@ def work(text: str, headlines: str, pages: tuple = None) -> str:
     text = serializeraw.load_text(text, headlines=headlines, pages=pages)
 
     parsed = parse_text(text)
-    dumped = docref.serialize.dump_docref(parsed)
+    dumped = serializeraw.dump_docref(parsed)
     return dumped
 
 
@@ -38,5 +38,5 @@ PATTERN = (
 )
 
 
-def parse_text(text) -> docref.serialize.DocRefs:
+def parse_text(text) -> iamraw.DocRefs:
     return docref.figure.parse_text(text, pattern=PATTERN)

@@ -8,8 +8,8 @@
 # =============================================================================
 
 import german
+import iamraw
 
-import docref.serialize
 import words.utils
 
 PATTERN = (
@@ -28,11 +28,11 @@ PATTERN = (
 )
 
 
-def parse_text(text, pattern=PATTERN) -> docref.serialize.DocRefs:
+def parse_text(text, pattern=PATTERN) -> iamraw.DocRefs:
     result = []
     for page, number, sentence in words.utils.sentences(text, numbers=True):
         parsed = german.searches(pattern, sentence)
         if not parsed:
             continue
-        result.append(docref.serialize.DocRef(page, number, parsed))
+        result.append(iamraw.DocRef(page, number, parsed))
     return result
