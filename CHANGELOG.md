@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.23.0
+
+### Feature
+
+* add first approach of bibref parser (24af8961f3e6)
+
 ## v0.22.1
 
 ## v0.22.0
