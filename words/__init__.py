@@ -9,11 +9,6 @@
 
 import os
 
-import words.__german__
-import words.__headlines__
-import words.__patch__
-import words.__utils__
-
 __version__ = '0.22.1'
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))

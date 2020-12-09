@@ -39,24 +39,6 @@ def test_text_work():
     assert len(result) > 6000, str(result)
 
 
-def test_text_dump_and_load_text():
-    resources = tests.fixtures.restruct.restruct_resources()
-    extracted = words.text.chapter.extract_texts(
-        resources,
-        # TODO: SET TO TRUE TO IMPROVE HEADLINE PARSER
-        require_headlinelevel=False,
-    )
-    assert extracted is not None
-    headlines = resources.headlines
-    assert headlines is not None
-
-    dumped = serializeraw.dump_text(extracted)
-    loaded = serializeraw.load_text(dumped, headlines)
-    for first, second in zip(extracted, loaded):
-        assert first == second, '\n\n%s\n%s\n\n\n' % (first, second)
-    assert loaded == extracted
-
-
 def test_text_extractor_titles():
     result = tests.fixtures.restruct.restructured_textexample(
         require_headlinelevel=
