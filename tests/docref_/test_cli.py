@@ -9,6 +9,7 @@
 
 import power
 import serializeraw
+import utilatest
 
 import docref.path
 import tests.docref_
@@ -18,6 +19,7 @@ def test_docref_help(monkeypatch):
     tests.docref_.run('--help', monkeypatch=monkeypatch)
 
 
+@utilatest.longrun
 def test_docref_bachelor37(testdir, monkeypatch):
     source = power.link(power.BACHELOR037_PDF)
     tests.docref_.run(f'-i {source}', monkeypatch=monkeypatch)

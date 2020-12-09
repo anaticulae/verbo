@@ -188,6 +188,7 @@ def test_list_work():
     assert last_items == ['genindex', 'modindex', 'search']
 
 
+@utilatest.longrun
 def test_list_dump_and_load_lists():
     result = tests.fixtures.restruct.restructured_list_work()
     dumped_list = serializeraw.dump_lists(result)

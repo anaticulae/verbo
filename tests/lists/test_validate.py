@@ -130,6 +130,7 @@ def validate_master99(extracted):
 @pytest.mark.parametrize('source, validator', [
     pytest.param(power.MASTER099_PDF, validate_master99, id='master99'),
 ])
+@utilatest.longrun
 def test_list_validate(source, validator, testdir, monkeypatch):
     source = power.link(source)
     # run extraction
