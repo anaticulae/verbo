@@ -27,12 +27,15 @@ UNSUPPORTED_DOCUMENTS = {
     'book/leftright.pdf',
 }
 
-EXPECTED_FAILURE = {  # yapf:disable
+# yapf:disable
+EXPECTED_FAILURE = {
     # 'docu/twine.pdf': 'font extracting problem',
     'howto_argparse/howto_argparse.pdf': 'not every headlines can be detected',
+    'bachelor/bachelor085.pdf': 'all content is detected as figure(pdf printer error)',
     # ambigous sections, groupme works, words does not work
     # 'order/howtowrite_pages9.pdf': 'headline detection does not works correctly',
 }
+# yapf:enable
 
 SKIP_DOCUMENTS = {
     'bachelor/page_111_images_toc.pdf',
