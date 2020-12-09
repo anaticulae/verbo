@@ -86,13 +86,9 @@ def abbreviation(items):
 
     # make unique
     items = list(set(items))
-
     items = [item for item in items if 2 <= len(item) <= 5]
-
     items = [item for item in items if not utila.isnumber(item)]
-
     items = [item for item in items if count_upper(item) / len(item) >= 0.3]
-
     return items
 
 
