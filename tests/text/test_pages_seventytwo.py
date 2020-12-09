@@ -140,7 +140,7 @@ def test_text_seventytwo_extract_textsections_page5_6_7():
     # is expanded. If we handle every list line as a sentence, there are
     # 31 "sentences".
     # TODO: THIS MAY CHANGES IF WE FIX AREA DEFINITION OF EXTRACTED LIST
-    assert count == [10, 2, 26], str(count)
+    assert count == [10, 2, 31], str(count)
 
     lastsentence = chapters[-1][1][-1]
     assert lastsentence == ('Es sind Anwendungen entstanden, welche die '
