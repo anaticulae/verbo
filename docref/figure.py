@@ -28,10 +28,18 @@ PATTERN = (
 )
 
 
-def parse_text(text, pattern=PATTERN) -> iamraw.DocRefs:
+def parse_text(
+        text,
+        pattern=PATTERN,
+        compare_content: bool = True,
+) -> iamraw.DocRefs:
     result = []
     for page, number, sentence in words.utils.sentences(text, numbers=True):
-        parsed = german.searches(pattern, sentence)
+        parsed = german.searches(
+            pattern,
+            sentence,
+            compare_content=compare_content,
+        )
         if not parsed:
             continue
         result.append(iamraw.DocRef(page, number, parsed))

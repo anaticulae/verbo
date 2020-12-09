@@ -22,3 +22,7 @@ def docref_section(path: str, prefix: str = '') -> str:
 
 def docref_table(path: str, prefix: str = '') -> str:
     return utila.pathconnector(path, docref.PROCESS, 'table_parsed', prefix)
+
+
+def docref_bibliography(path: str, prefix: str = '') -> str:
+    return utila.pathconnector(path, docref.PROCESS, 'bibliography_parsed', prefix)  # yapf:disable

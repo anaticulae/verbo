@@ -20,6 +20,14 @@ Abbildung 5) with structure elements(figure, table, etc.).
 
 WORKPLAN = [
     utila.create_step(
+        'bibliography',
+        inputs=[
+            utila.ResultFile('words', 'text_text'),
+            utila.ResultFile('words', 'headlines_headlines'),
+        ],
+        output=('parsed',),
+    ),
+    utila.create_step(
         'figure',
         inputs=[
             utila.ResultFile('words', 'text_text'),
