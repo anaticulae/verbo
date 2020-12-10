@@ -7,7 +7,10 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-# NOTE: STORE EXPERIMENTAL CODE HERE
+import collections
+
+import german
+import utila
 
 
 def sentences(texts, numbers: bool = False):
@@ -24,3 +27,27 @@ def sentences(texts, numbers: bool = False):
                     else:
                         number += 1
                     yield page, number, sentence
+
+
+def sentence_lookup(text) -> dict:
+    lookup = collections.defaultdict(list)
+    for page, sentence in sentences(text):
+        lookup[page].append(sentence)
+    return dict(lookup)
+
+
+def sentence_plain(sentence, marks) -> list:
+    result = []
+    splitted = german.split_words(sentence, validate_sentences=False)
+    for start, end in marks:
+        selected = [splitted[item] for item in utila.ranged_tuple(start, end)]
+        selected = selection_plain(selected)
+        result.append(selected)
+    return result
+
+
+def selection_plain(items: list) -> str:
+    raw = ' '.join(items)
+    raw = raw.replace('( ', '(')
+    raw = raw.replace(' )', ')')
+    return raw
