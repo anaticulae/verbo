@@ -7,9 +7,11 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+# import dataclasses
 import re
 
 import iamraw
+import utila
 
 PAGES = r"""
     (
@@ -66,6 +68,7 @@ def _parse(raw: str, pattern) -> iamraw.BibliographyReferences:
         return []
     result = []
     for item in matched:
+        raw = utila.extract_match(item)
         author = item['author']
         year = int(item['year']) if item['year'] else None
         try:
@@ -76,6 +79,7 @@ def _parse(raw: str, pattern) -> iamraw.BibliographyReferences:
             authors=[author],
             year=year,
             page=pages,
+            # raw=raw, # TODO: ENABLE LATER
         )
         result.append(link)
     return result
