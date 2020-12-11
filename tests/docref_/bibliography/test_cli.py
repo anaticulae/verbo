@@ -15,13 +15,18 @@ import docref.path
 import tests.docref_
 
 
-@utilatest.longrun
-def test_docref_master116_bibliography(testdir, monkeypatch):
-    source = power.link(power.MASTER116_PDF)
+def extract_label(source, testdir, monkeypatch):
+    source = power.link(source)
     tests.docref_.run(
         f'-i {source} --bibliography',
         monkeypatch=monkeypatch,
     )
     bibliography = docref.path.docref_bibliography(testdir.tmpdir)
     bibliography = serializeraw.load_docref(bibliography)
+    return bibliography
+
+
+@utilatest.longrun
+def test_docref_bibliography_master116(testdir, monkeypatch):
+    bibliography = extract_label(power.MASTER116_PDF, testdir, monkeypatch)
     assert len(bibliography) == 87  # NOT VALIDATED YET
