@@ -7,9 +7,9 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import dataclasses
 import re
-import typing
+
+import iamraw
 
 PAGES = r"""
     (
@@ -52,28 +52,7 @@ AUTHOR_AND_YEAR = r"""
 """
 
 
-@dataclasses.dataclass
-class LLPages:
-    start: int = None
-    start_info: str = None
-    end: int = None
-    end_info: str = None
-    follow: str = None
-    raw: str = None
-
-
-@dataclasses.dataclass
-class BibliographyLink:
-    author: str = None
-    year: int = None
-    pages: int = None
-    raw: str = None
-
-
-BibliographyLinks = typing.List[BibliographyLink]
-
-
-def parse(raw: str) -> BibliographyLinks:
+def parse(raw: str) -> iamraw.BibliographyReferences:
     result = []
     for current in [PATTERN, AUTHOR_AND_YEAR]:
         parsed = _parse(raw, current)
@@ -81,7 +60,7 @@ def parse(raw: str) -> BibliographyLinks:
     return result
 
 
-def _parse(raw: str, pattern) -> BibliographyLinks:
+def _parse(raw: str, pattern) -> iamraw.BibliographyReferences:
     matched = re.finditer(pattern, raw, re.VERBOSE)
     if not matched:
         return []
@@ -93,10 +72,10 @@ def _parse(raw: str, pattern) -> BibliographyLinks:
             pages = item['pages']
         except IndexError:
             pages = None
-        link = BibliographyLink(
-            author=author,
+        link = iamraw.BibliographyReference(
+            authors=[author],
             year=year,
-            pages=pages,
+            page=pages,
         )
         result.append(link)
     return result
