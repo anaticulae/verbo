@@ -7,9 +7,13 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import iamraw
 import serializeraw
+import utila
 
+import docref.bibliography.parser
 import docref.figure
+import words.utils
 
 
 def work(text: str, headlines: str, pages: tuple = None) -> str:
@@ -21,8 +25,27 @@ def work(text: str, headlines: str, pages: tuple = None) -> str:
         pattern=PATTERN,
         compare_content=False,
     )
+    parsed = remove_invalid(parsed, text)
     dumped = serializeraw.dump_docref(parsed)
     return dumped
+
+
+def remove_invalid(items, text):
+    lookup = words.utils.sentence_lookup(text)
+    result = []
+    for item in items:
+        sentence = lookup[item.page][item.sentence]
+        plain = words.utils.sentence_plain(sentence, item.marked)
+        for reference, mark in zip(plain, item.marked):
+            if not valid(reference):
+                utila.error(f'docref:bib:invalid reference: {reference}')
+                continue
+            result.append(iamraw.DocRef(item.page, item.sentence, [mark]))
+    return result
+
+
+def valid(item: str):
+    return docref.bibliography.parser.parse(item) is not None
 
 
 PATTERN = (

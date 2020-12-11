@@ -28,11 +28,12 @@ def extract_label(source, testdir, monkeypatch):
 
 @utilatest.longrun
 def test_docref_bibliography_master116(testdir, monkeypatch):
+    # TODO: Changes after support more tech label
     bibliography = extract_label(power.MASTER116_PDF, testdir, monkeypatch)
-    assert len(bibliography) == 87  # NOT VALIDATED YET
+    assert len(bibliography) == 86  # NOT VALIDATED YET
 
 
 @utilatest.longrun
 def test_docref_bibliography_master98(testdir, monkeypatch):
     bibliography = extract_label(power.MASTER098_PDF, testdir, monkeypatch)
-    assert len(bibliography) == 230  # NOT VALIDATED YET
+    assert len(bibliography) == 257  # NOT VALIDATED YET
