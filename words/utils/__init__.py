@@ -10,6 +10,7 @@
 import collections
 
 import german
+import konrad
 import utila
 
 
@@ -47,7 +48,14 @@ def sentence_plain(sentence, marks) -> list:
 
 
 def selection_plain(items: list) -> str:
+    items = [konrad.mark2str(item) for item in items]
     raw = ' '.join(items)
     raw = raw.replace('( ', '(')
+    raw = raw.replace('[ ', '[')
     raw = raw.replace(' )', ')')
+    raw = raw.replace(' ]', ']')
+    raw = raw.replace(' ,', ',')
+    raw = raw.replace(' ; ', '; ')
+    raw = raw.replace(' - ', '-')
+    raw = raw.replace(' : ', ': ')
     return raw
