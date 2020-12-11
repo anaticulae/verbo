@@ -9,7 +9,7 @@
 
 import pytest
 
-import words.links.bibliography as ll
+import docref.bibliography.strategies.intext as ll
 
 TEXT = """
 (vgl. Abels 2010: 94ff.).
