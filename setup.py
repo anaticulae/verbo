@@ -49,6 +49,8 @@ if __name__ == "__main__":
         packages=[
             'docref',
             'docref.features',
+            'docref.bibliography',
+            'docref.bibliography.strategies',
             'textflow',
             'textflow.alignment',
             'textflow.features',
