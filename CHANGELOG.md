@@ -2,6 +2,18 @@
 
 Every noteable change is logged here.
 
+## v0.24.0
+
+### Feature
+
+* extend bib pattern parser (56735079f8ef)
+* skip invalid bib references (b8f04fde5068)
+* extend plain converter (7030633c7bc6)
+* add raw content later (bafa9d8642bd)
+* add tech parser facade (f32b065ff828)
+* extend bibliography pattern parser (80898b548ea1)
+* add sentence lookup (a3754bc8f709)
+
 ## v0.23.0
 
 ### Feature
