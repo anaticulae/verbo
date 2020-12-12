@@ -56,13 +56,13 @@ AUTHOR_AND_YEAR = r"""
 
 def parse(raw: str) -> iamraw.BibliographyReferences:
     result = []
-    for current in [PATTERN, AUTHOR_AND_YEAR]:
-        parsed = _parse(raw, current)
+    for pattern in [PATTERN, AUTHOR_AND_YEAR]:
+        parsed = parse_pattern(raw, pattern)
         result.extend(parsed)
     return result
 
 
-def _parse(raw: str, pattern) -> iamraw.BibliographyReferences:
+def parse_pattern(raw: str, pattern) -> iamraw.BibliographyReferences:
     matched = re.finditer(pattern, raw, re.VERBOSE)
     if not matched:
         return []
