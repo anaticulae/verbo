@@ -32,7 +32,7 @@ PATTERN = r"""
     (?P<year>\d{4})?
     (
         [:]                         # optional collon between author and year
-        [ ]                         # space between collon and pages
+        [ ]{0,3}                    # space between collon and pages
         (?P<pages>
             (
                 \d+(a|b|c|d)[-]\d+(a|b|c|d)| # from x till y
