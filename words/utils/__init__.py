@@ -59,3 +59,16 @@ def selection_plain(items: list) -> str:
     raw = raw.replace(' - ', '-')
     raw = raw.replace(' : ', ': ')
     return raw
+
+
+def references_plain(references, text) -> list:
+    result = []
+    lookup = sentence_lookup(text)
+    for ref in references:
+        page, sentenceid, marked = ref.page, ref.sentence, ref.marked
+        selected = sentence_plain(  # pylint:disable=E1101
+            lookup[page][sentenceid],
+            marks=marked,
+        )
+        result.append(selected)
+    return result
