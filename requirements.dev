@@ -15,4 +15,4 @@ power==1.0.0
 # ensure that test data is generated with the right version of rawmaker
 rawmaker==2.9.3
 
-genex==0.5.3
+genex==0.5.4

@@ -23,4 +23,4 @@ hey==5.5.4
 groupme==0.7.2
 
 # parse bib tech labels [FHK2016]
-detector==0.12.1
+detector==0.12.2
