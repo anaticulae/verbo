@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.24.1
+
+### Feature
+
+* add reference to raw converter (2b365d3f9c8a)
+
 ## v0.24.0
 
 ### Feature
