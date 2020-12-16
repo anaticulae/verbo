@@ -8,13 +8,10 @@
 #==============================================================================
 
 import utila
-from utila import ResultFile
-from utila import create_step as step
-from utila import featurepack
 
-from words import PROCESS
-from words import ROOT
-from words import __version__
+import words
+
+ResultFile = utila.ResultFile
 
 DESCRIPTION = 'TODO'
 
@@ -31,7 +28,7 @@ TEXTINPUT = [
 ]
 
 WORKPLAN = [
-    step(
+    utila.create_step(
         'abbreviation',
         inputs=[
             ResultFile('words', 'text_text'),
@@ -39,7 +36,7 @@ WORKPLAN = [
         ],
         output=('detected',),
     ),
-    step(
+    utila.create_step(
         'boxed',
         inputs=[
             ResultFile('words', 'text_text'),
@@ -52,12 +49,12 @@ WORKPLAN = [
         ],
         output=('boxed',),
     ),
-    step(
+    utila.create_step(
         'footerlink',
         inputs=TEXTINPUT,
         output=('footerlink',),
     ),
-    step(
+    utila.create_step(
         'headlines',
         inputs=[
             ResultFile('sections', 'section_result'),
@@ -75,7 +72,7 @@ WORKPLAN = [
         ],
         output=('headlines', 'oneline'),
     ),
-    step(
+    utila.create_step(
         'links',
         inputs=[
             ResultFile('words', 'text_text'),
@@ -83,7 +80,7 @@ WORKPLAN = [
         ],
         output=('links',),
     ),
-    step(
+    utila.create_step(
         'list',
         inputs=[
             ResultFile('rawmaker', 'oneline_text_text'),
@@ -95,13 +92,13 @@ WORKPLAN = [
         ],
         output=('list',),
     ),
-    step(
+    utila.create_step(
         'text',
         inputs=TEXTINPUT,
         output=('text',),
     ),
     # TODO: IS THAT RIGHT?
-    step(
+    utila.create_step(
         'word',
         inputs=[
             ResultFile('words', 'text_text'),
@@ -115,15 +112,15 @@ WORKPLAN = [
 
 
 def main():
-    featurepack(
-        root=ROOT,
+    utila.featurepack(
+        root=words.ROOT,
         workplan=WORKPLAN,
         featurepackage='words.feature',
         config=utila.FeaturePackConfig(
             description=DESCRIPTION,
             multiprocessed=True,
-            name=PROCESS,
+            name=words.PROCESS,
             pages=True,
-            version=__version__,
+            version=words.__version__,
         ),
     )
