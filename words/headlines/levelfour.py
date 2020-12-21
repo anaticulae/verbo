@@ -37,6 +37,9 @@ def headlines(ptns):  # pylint:disable=R0914
     flat = [item for item in flat if item.size >= textsize]
     # remove non textual items
     flat = [item for item in flat if item.font != textfont]
+    # test if some data is left
+    if not flat:
+        return []
     # left adjusted text
     left = utila.mode([item.left for item in flat])
     flat = [item for item in flat if utila.near(left, item.left, diff=5.0)]
