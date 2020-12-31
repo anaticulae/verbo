@@ -22,6 +22,7 @@ power.setup(words.ROOT)
 
 RESOURCES = [
     power.MASTER116_PDF,
+    power.MASTER155_PDF,
     power.MASTER072_PDF,
     power.MASTER110_PDF,
     power.BACHELOR090_PDF,
