@@ -13,6 +13,6 @@ utilatest==0.2.2
 power==1.0.0
 
 # ensure that test data is generated with the right version of rawmaker
-rawmaker==2.9.3
+rawmaker==2.9.4
 
 genex==0.5.4

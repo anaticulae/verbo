@@ -17,7 +17,7 @@ german==0.13.3
 konrad==0.3.0
 
 geostrat==1.1.6
-hey==5.5.4
+hey==5.6.2
 
 # determine headline level
 groupme==0.7.2
