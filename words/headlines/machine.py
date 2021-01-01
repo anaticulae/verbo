@@ -8,7 +8,6 @@
 # =============================================================================
 
 import collections
-import contextlib
 import typing
 
 import iamraw
@@ -83,7 +82,8 @@ def run(strategy, data: Data, pages: tuple = None):
         )
 
     # filter result
-    with contextlib.suppress(AttributeError):
+    if hasattr(strategy, 'filter_headlines'):
+        # do not use AttributeError to avoid hiding strategy errors
         results = strategy.filter_headlines(results)
 
     grouped = words.headlines.utils.groupby_headlinelevel(results)
@@ -104,6 +104,9 @@ def extract_chapter(strategy, data, chapter_range):
         except AttributeError:
             # use default extractor
             pageheadlines = extract_page(strategy, data, page)
+        if pageheadlines is None:
+            raise NotImplementedError('missing extract_page return value '
+                                      f'for strategy {strategy}')
         result.extend(pageheadlines)
     return result
 
