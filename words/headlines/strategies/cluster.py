@@ -24,6 +24,7 @@ import iamraw
 import utila
 
 import words.headlines.strategies
+import words.headlines.strategies.multiline
 
 
 def filter_headlines(parsed) -> dict:  # pylint:disable=R0914
@@ -49,10 +50,17 @@ def filter_headlines(parsed) -> dict:  # pylint:disable=R0914
                     continue
                 if words.headlines.strategies.noheadline(line):
                     continue
+                parsed = words.headlines.strategies.multiline.parse_headline(line) # yapf:disable
+                if parsed:
+                    title, level, rawlevel = parsed
+                else:
+                    title, level, rawlevel = line, current + 1, ''
                 headline = iamraw.Headline(
-                    title=line,
-                    level=current + 1,
+                    title=title,
+                    level=level,
                     page=page.page,
+                    raw=line,
+                    raw_level=rawlevel,
                     container=containerid,
                 )
                 result[number].append(headline)
