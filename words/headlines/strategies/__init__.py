@@ -9,6 +9,7 @@
 
 import collections
 import re
+import statistics
 
 import configo
 import groupme.toc.group
@@ -88,3 +89,32 @@ def filter_headlines(items: iamraw.PagesHeadlineList):
     # require KeyError
     result = dict(result)  # pylint:disable=R0204
     return result
+
+
+def noheadline(text: str) -> bool:
+    """\
+    >>> noheadline(' Anzahl der Transaktionen')
+    True
+    """
+    text = text.strip()
+    if not text:
+        return True
+    if issentence(text):
+        # ignore extracted lists which are interpreted as headlines
+        return True
+    if text.count('.') > 5:
+        return True
+    wordslength = [len(word) for word in text.split()]
+    mean_words_length = statistics.mean(wordslength)
+    if mean_words_length <= 3.0:
+        return True
+    # \uF0B7
+    if '' in text:
+        return True
+    return False
+
+
+def issentence(line: str):
+    # TODO: IMPROVE THIS
+    # TODO: USE BIG FIVE FEATURES
+    return line.strip().endswith('.')

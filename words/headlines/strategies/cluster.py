@@ -23,7 +23,7 @@ import doctextstyle.utils
 import iamraw
 import utila
 
-import words.headlines.strategies.multiline
+import words.headlines.strategies
 
 
 def filter_headlines(parsed) -> dict:  # pylint:disable=R0914
@@ -47,7 +47,7 @@ def filter_headlines(parsed) -> dict:  # pylint:disable=R0914
                 current = search_level(line, clusters)
                 if current == -1:
                     continue
-                if words.headlines.strategies.multiline.noheadline(line):
+                if words.headlines.strategies.noheadline(line):
                     continue
                 headline = iamraw.Headline(
                     title=line,

@@ -59,7 +59,7 @@ def extract_page(data, page) -> iamraw.Headlines:
             # first level headline
             if items.size <= 12.0:
                 continue
-        if noheadline(title):
+        if words.headlines.strategies.noheadline(title):
             continue
         headline = iamraw.Headline(
             container=headline_range(items),
@@ -88,29 +88,6 @@ def headline_range(items):
     return container
 
 
-def noheadline(text: str) -> bool:
-    """\
-    >>> noheadline(' Anzahl der Transaktionen')
-    True
-    """
-    text = text.strip()
-    if not text:
-        return True
-    if issentence(text):
-        # ignore extracted lists which are interpreted as headlines
-        return True
-    if text.count('.') > 5:
-        return True
-    wordslength = [len(word) for word in text.split()]
-    mean_words_length = statistics.mean(wordslength)
-    if mean_words_length <= 3.0:
-        return True
-    # \uF0B7
-    if '' in text:
-        return True
-    return False
-
-
 def invalid_headline_group(items) -> bool:
     text = ' '.join([item.text for item in items])
     words_ = german.split_words(text, validate_sentences=False)
@@ -132,12 +109,6 @@ def invalid_headline_group(items) -> bool:
         if median <= HEADLINE_MEDIAN(items.size):
             return True
     return False
-
-
-def issentence(line: str):
-    # TODO: IMPROVE THIS
-    # TODO: USE BIG FIVE FEATURES
-    return line.strip().endswith('.')
 
 
 def wrong_position(
