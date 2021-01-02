@@ -2,6 +2,23 @@
 
 Every noteable change is logged here.
 
+## v0.25.0
+
+### Feature
+
+* extend level four check (175b0fee0ba0)
+* split headline level and title (97b1c9baceb3)
+* enable fourth cluster strategy (0ef4389c08cb)
+* exclude dotted list as potential headline (7be33e778c40)
+* extend best strategy selector (ba442a285dc5)
+* add cluster strategy (77a5ce66ad42)
+* improve strategy error feedback (1e45f36bb92c)
+* ease accessing path module (85e45c62f2e8)
+
+### Fix
+
+* handle empty data correctly (441d5bec5f08)
+
 ## v0.24.1
 
 ### Feature
