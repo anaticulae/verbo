@@ -39,8 +39,8 @@ def document_textdistance(
 
 
 def prepare_chapter_and_content(sections_, chapter):
-    assert isinstance(sections_, iamraw.Sections)
-    assert sections_, 'no sections provided'
+    assert isinstance(sections_, iamraw.Sections), type(sections_)
+    assert sections_, f'no sections provided: {sections_}'
     if chapter is None:
         # process all chapter
         # TODO: clearify code

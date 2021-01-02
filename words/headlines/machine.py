@@ -8,7 +8,6 @@
 # =============================================================================
 
 import collections
-import typing
 
 import iamraw
 import texmex
@@ -33,7 +32,7 @@ Data = collections.namedtuple(
 
 def headlines(
         ptcns: texmex.PageTextContentNavigators,
-        sectionlist: typing.List[iamraw.Sections],
+        sectionlist: iamraw.SectionsList,
         chapters: 'ChapterRanges' = None,
         strategies=None,
         pages: tuple = None,
@@ -62,7 +61,6 @@ def run(strategy, data: Data, pages: tuple = None):
         data.sectionlist,
         data.chapters,
     )
-
     results = {}
     # run extraction
     for chapter in chapter_numbers:
