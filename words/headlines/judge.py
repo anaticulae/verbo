@@ -15,6 +15,7 @@ def run(results):
     """\
         1. Compare Multiline and NoLevel - prefer multiline over NoLevel
         2. Compare result of 1. with StandardHeadlineExtractor
+        3. Select best one one remaing strategies # TODO: VERIFY
     """
     # remove invalid result
     results = [item if not invalid_extraction(item) else [] for item in results]
@@ -28,10 +29,13 @@ def run(results):
     # longest common text selection
     best_flat = score_headlines(best)
     standard_flat = score_headlines(results[2])
+    cluster_flat = score_headlines(results[3])
 
-    if best_flat > standard_flat:
-        return best
-    return results[2]
+    maxed = max(best_flat, standard_flat) * 2
+    if cluster_flat > maxed:
+        # backup strategy
+        return results[3]
+    return best if best_flat > standard_flat else results[2]
 
 
 def score_headlines(items):
