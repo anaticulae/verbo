@@ -89,6 +89,10 @@ def headline_range(items):
 
 
 def noheadline(text: str) -> bool:
+    """\
+    >>> noheadline(' Anzahl der Transaktionen')
+    True
+    """
     text = text.strip()
     if not text:
         return True
@@ -100,6 +104,9 @@ def noheadline(text: str) -> bool:
     wordslength = [len(word) for word in text.split()]
     mean_words_length = statistics.mean(wordslength)
     if mean_words_length <= 3.0:
+        return True
+    # \uF0B7
+    if '' in text:
         return True
     return False
 
