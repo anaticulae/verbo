@@ -115,7 +115,21 @@ def has_levelfour(headlines):
         [item.level for item in flat if item.level is not None],
         default=0,
     )
-    return maxlevel >= 4
+    if maxlevel >= 4:
+        return True
+    # TODO: USE SMARTER DECIDER, MAY COLLECT HEADLINE DUPLICATON
+    # THIS STEP IS REQUIRED WHEN STRATEGY ALREADY PARSE LEVEL FOUR
+    # HEADLINES.
+    counted = 0
+    for headline in flat:
+        # Headline(title='A) Einführungsphase', level=3, raw='A)
+        # Einführungsphase', raw_level='', page=52, container=21,
+        # decoration=None)
+        if headline.level == 3 and not headline.raw_level:
+            counted += 1
+    if counted >= 3:
+        return True
+    return False
 
 
 def merge_levelfour(extracted, levelfour):
