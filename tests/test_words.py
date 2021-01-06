@@ -44,7 +44,7 @@ def restructured_words():
     return result
 
 
-@utilatest.longrun
+@utilatest.nightly
 def test_dump_and_load_words_result():
     word_ = restructured_words()
     headlines = restructured_headlines()

@@ -11,11 +11,13 @@ import iamraw
 import power
 import serializeraw
 import utila
+import utilatest
 
 import words.headlines.machine
 import words.headlines.strategies.cluster
 
 
+@utilatest.longrun
 def test_headlines_cluster_master155():
     source = power.link(power.MASTER155_PDF)
     pages = utila.ranged_tuple(0, 50)

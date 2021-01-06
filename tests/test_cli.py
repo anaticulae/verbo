@@ -37,7 +37,7 @@ def test_run_words(command, monkeypatch, capsys):
     utilatest.write_capsys(capsys)
 
 
-@utilatest.longrun
+@utilatest.nightly
 def test_feature_words_work_pages0_10(testdir, monkeypatch):
     root = str(testdir)
     cmd = f'-i {root} -o {root} --pages=0:10'

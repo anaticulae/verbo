@@ -48,7 +48,7 @@ def test_headlines_multiple_master72_extract_pages_13_14():
     assert headlines == expected
 
 
-@utilatest.longrun
+@utilatest.nightly
 def test_headlines_multiple_master72_extract_pages_20_22():
     """The headline extractor strategy extracts footnotes as headlines."""
     path = power.link(power.MASTER072_PDF)

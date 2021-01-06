@@ -31,7 +31,7 @@ def extract_quotation(source, pages, testdir, monkeypatch):
     return extracted
 
 
-@utilatest.longrun
+@utilatest.nightly
 def test_textflow_quotation_master72_pages10_20(testdir, monkeypatch):
     pages = '--pages=10:21'
     source = power.link(power.MASTER072_PDF)
@@ -45,7 +45,7 @@ def test_textflow_quotation_master72_pages10_20(testdir, monkeypatch):
     assert loaded == current
 
 
-@utilatest.longrun
+@utilatest.nightly
 def test_textflow_quotation_bachelor76(testdir, monkeypatch):
     pages = '--pages=4,5'
     source = power.link(power.BACHELOR076_PDF)
