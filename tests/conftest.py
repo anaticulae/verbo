@@ -21,6 +21,7 @@ PACKAGE = words.PACKAGE
 power.setup(words.ROOT)
 
 RESOURCES = [
+    power.DISS266_PDF,
     power.MASTER116_PDF,
     power.MASTER155_PDF,
     power.MASTER072_PDF,
