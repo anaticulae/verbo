@@ -185,17 +185,6 @@ def extract_headlines(
     return result
 
 
-def score_headlines(items):
-    score = 0
-    for item in utila.flatten(items):
-        score += len(item.title)
-        if item.level is not None:
-            # prefer headline with extracted level over headlines without
-            # level
-            score += len(item.title)
-    return score
-
-
 def headlines_frompath(path: str, prefix: str = '', pages: tuple = None):
     sections_ = sections.path.sections_(path, prefix=prefix)
     text = iamraw.path.text(path, prefix=prefix)
