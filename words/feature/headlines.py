@@ -86,17 +86,16 @@ def work(  # pylint:disable=R0913,R0914
     )
     oneline_extracted = words.headlines.judge.run(oneline_results)
 
-    textnavigators = serializeraw.create_pagetextcontentnavigators_fromfile(
-        text=text,
-        textpositions=text_position,
-        sizeandborderpath=sizeandborder,
-        headerfooterpath=headerfooters,
-        fontheader=font_header,
-        fontcontent=font_content,
-        pages=pages,
-    )
-
     if not has_levelfour(extracted):
+        textnavigators = serializeraw.create_pagetextcontentnavigators_fromfile(
+            text=text,
+            textpositions=text_position,
+            sizeandborderpath=sizeandborder,
+            headerfooterpath=headerfooters,
+            fontheader=font_header,
+            fontcontent=font_content,
+            pages=pages,
+        )
         # only extract level four headlines if result does not contain any
         # 4.1.2.3 levels.
         levelfour_ = words.headlines.levelfour.headlines(textnavigators)
