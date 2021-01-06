@@ -149,10 +149,6 @@ def test_text_seventytwo_extract_textsections_page5_6_7():
 
 @utilatest.longrun
 def test_text_seventytwo_extract_textsections_complete():
-    """\
-    HINT: This test may change if none leveled headlines like `Anhang`
-    etc. gets an level later.
-    """
     required = fseventytwo.textrequired()
     pages = words.text.chapter.split(required)
     # user content headlines; Literaturverzeichnis and Eidesstattliches
@@ -164,10 +160,11 @@ def test_text_seventytwo_extract_textsections_complete():
             require_headlinelevel=require_headlinelevel,
         )
     ]
-    master72_headline_count = 30
+    master72_headline_count = 32  # VALIDATED BY HAND
     assert len(headlines) == master72_headline_count
     assert headlines[0].title == 'Einleitung'
-    assert headlines[-1].raw == '5.  Schlussbetrachtung und Fazit'
+    assert headlines[-3].raw == '5.  Schlussbetrachtung und Fazit'
+    assert headlines[-1].raw == 'Eidesstattliche Erklärung'
 
 
 def test_text_seventytwo_extract_sentences():
