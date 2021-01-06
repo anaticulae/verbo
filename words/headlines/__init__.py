@@ -20,8 +20,16 @@ WHITELIST = {
     'Internetquellen',
     'Literaturverzeichnis',
     'Quellenverzeichnis',
+    'Vorwort',
     'Zeitschriftenartikel',
 }
 
 ChapterRange = collections.namedtuple('ChapterRange', 'start end')
 ChapterRanges = typing.List[ChapterRange]
+
+
+def isheadline(raw: str) -> bool:
+    if not raw:
+        return False
+    raw = raw.lower().strip().title()
+    return raw in WHITELIST
