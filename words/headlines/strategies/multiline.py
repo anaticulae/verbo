@@ -130,7 +130,7 @@ def plain(items: list) -> str:
     return raw
 
 
-def parse_headline(raw: str, before=None):
+def parse_headline(raw: str, before=None):  # pylint:disable=R0911
     parsed = words.headlines.utils.parse_headline(raw)
     if parsed:
         rawlevel, title = parsed['level'], parsed['text']
@@ -138,6 +138,18 @@ def parse_headline(raw: str, before=None):
         if level is False:
             return None
         return title, level, rawlevel
+    parsed = words.headlines.utils.parse_chapter_level(raw)
+    if parsed:
+        title, rawlevel = parsed
+        level = 1  # pylint:disable=R0204
+        if 'anhang' in rawlevel.lower():
+            # ANHANG
+            #   ANHANG 1: ZUSAMMENFASSUNG
+            #   ANHANG 2: SUMMARY
+            level = 2
+        return title, level, rawlevel
+    if words.headlines.isheadline(raw):
+        return raw, 1, ''
     if before:
         # look back and check for `Kapitel-X-Pattern`
         before = plain(before)
