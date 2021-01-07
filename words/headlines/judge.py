@@ -7,8 +7,13 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import contextlib
+
 import configo
+import groupme.toc.group
 import utila
+
+import words.headlines.visitor
 
 
 def run(results):
@@ -38,7 +43,7 @@ def run(results):
     return best if best_flat > standard_flat else results[2]
 
 
-def score_headlines(items):
+def score_headlines(items) -> int:
     score = 0
     for item in utila.flatten(items):
         score += len(item.title)
@@ -47,6 +52,50 @@ def score_headlines(items):
             # level
             score += len(item.title)
     return score
+
+
+def score_levelerror(items: list) -> int:
+    """Determine holes in ascending headline level. This is may
+    indicated by user, but mostly by selecting the wrong headline
+    determination algorithm."""
+    flat = utila.flatten(items)
+    flat = utila.flatten(flat, append=True)
+    error = 0
+    rawlevel = [
+        item.raw_level
+        for item in flat
+        if item.raw_level and groupme.toc.group.numbered_level(item.raw_level)
+    ]
+    rawlevel = utila.notempty(rawlevel)
+    grouped = words.headlines.visitor.groupby_level(rawlevel)
+    for groups in grouped:
+        for group in groups:
+            group = [patch(item) for item in group]
+            if group[0] != 1:
+                error += 1
+            diffs = utila.diffs(group) if len(group) > 1 else []
+            diffs = [item for item in diffs if item != 1]
+            error += len(diffs)
+    return error
+
+
+def patch(raw: str) -> int:
+    """\
+    >>> patch('1.4.2')
+    2
+    >>> patch('1.0.')
+    0
+    >>> patch('1.')
+    1
+    """
+    if not raw:
+        return None
+    splitted = [item for item in raw.rsplit('.') if item]
+    if not splitted:
+        return None
+    with contextlib.suppress(ValueError):
+        return int(splitted[-1])
+    return 0
 
 
 MAX_LEVELONE_IN_A_ROW = configo.HV_INT_PLUS(4).value
