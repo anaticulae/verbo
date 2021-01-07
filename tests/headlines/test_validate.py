@@ -320,6 +320,8 @@ Testing your Documentation
 Indices and tables"""
 
 # TODO: 5.2 Die ´Demenzkampagne Ostfildern „Wir sind Nachbarn!“`: Oktober 2007 – Juni 2008
+# 5.2 Die  ´Demenzkampagne  Ostfildern  „Wir  sind  Nachbarn!“`:
+# 4. Zivilgesellschaftliche Perspektive und Bürgerschaftliches
 BACHELOR128_HEADLINES = """\
 1. Einleitung
     1.1 Problemstellung
@@ -382,6 +384,12 @@ Zeitschriftenartikel
 Internetquellen
 Anhangsverzeichnis
 Eidesstattliche Versicherung"""
+# Anhang 1: Prävalenz von Demenzen in Abhängigkeit vom Al-
+# Anhang 3: Freiwillig Engagierte und „nur“ gemeinschaftlich
+# Anhang 4: Freiwillig Engagierte nach Altersgruppen
+# Anhang 5: Freiwilliges Engagement und Bereitschaft zum
+# Anhang 7: Leitfragebogen
+# Anhang 8: Thesenpapier"""
 
 MASTER110_HEADLINES = """\
 Einleitung
