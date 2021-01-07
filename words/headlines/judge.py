@@ -23,7 +23,10 @@ def run(results):
         3. Select best one one remaing strategies # TODO: VERIFY
     """
     # remove invalid result
-    results = [item if not invalid_extraction(item) else [] for item in results]
+    results = [
+        item if not (invalid_extraction(item) or too_many_error(item)) else []
+        for item in results
+    ]
 
     best = results[1]
     if any([len(item) for item in results[0]]):
@@ -114,3 +117,30 @@ def invalid_extraction(headlines) -> bool:
     if len(longest_levelone) > MAX_LEVELONE_IN_A_ROW:  # TODO: HOLY VALUE
         return True
     return False
+
+
+ERROR_MAX = configo.HolyTable(
+    [
+        (0, 0),
+        (10, 1),
+        (20, 2),
+        (30, 3),
+        (50, 4),
+    ],
+    strategy=utila.Strategy.LOWER,
+    left_outranges_none=False,
+    right_outranges_none=False,
+)
+
+
+def too_many_error(headlines) -> bool:
+    if not headlines:
+        return False
+    headline_count = len(utila.flatten(headlines))
+    if headline_count < 10:  # TODO: MAGIC NUMBER
+        # TODO: THINK ABOUT THIS
+        # disable check for too few headlines
+        return False
+    error = score_levelerror(headlines)
+    error_max = ERROR_MAX(headline_count)
+    return error > error_max
