@@ -12,6 +12,7 @@ import re
 import statistics
 
 import configo
+import elements
 import groupme.toc.group
 import iamraw
 import texmex
@@ -82,36 +83,13 @@ def filter_headlines(items: iamraw.PagesHeadlineList):
                 headline.level = 1  # pylint:disable=R0204
                 chapter_headlines.append(headline)
                 continue
-            if headline.title in words.headlines.WHITELIST:
+            if elements.isheadline(headline.title):
                 chapter_headlines.append(headline)
                 continue
         result[chapter].extend(chapter_headlines)
     # require KeyError
     result = dict(result)  # pylint:disable=R0204
     return result
-
-
-def noheadline(text: str) -> bool:
-    """\
-    >>> noheadline(' Anzahl der Transaktionen')
-    True
-    """
-    text = text.strip()
-    if not text:
-        return True
-    if issentence(text):
-        # ignore extracted lists which are interpreted as headlines
-        return True
-    if text.count('.') > 5:
-        return True
-    wordslength = [len(word) for word in text.split()]
-    mean_words_length = statistics.mean(wordslength)
-    if mean_words_length <= 3.0:
-        return True
-    # \uF0B7
-    if '' in text:
-        return True
-    return False
 
 
 def issentence(line: str):

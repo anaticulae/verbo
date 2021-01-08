@@ -20,6 +20,7 @@ import doctextstyle.features
 import doctextstyle.features.headline
 import doctextstyle.parser
 import doctextstyle.utils
+import elements
 import iamraw
 import utila
 
@@ -48,7 +49,7 @@ def filter_headlines(parsed) -> dict:  # pylint:disable=R0914
                 current = search_level(line, clusters)
                 if current == -1:
                     continue
-                if words.headlines.strategies.noheadline(line):
+                if elements.noheadline(line):
                     continue
                 parsed = words.headlines.strategies.multiline.parse_headline(line) # yapf:disable
                 if parsed:

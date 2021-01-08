@@ -10,6 +10,7 @@
 import statistics
 
 import configo
+import elements
 import german
 import groupme.toc.group
 import iamraw
@@ -59,7 +60,7 @@ def extract_page(data, page) -> iamraw.Headlines:
             # first level headline
             if items.size <= 12.0:
                 continue
-        if words.headlines.strategies.noheadline(title):
+        if elements.noheadline(title):
             continue
         headline = iamraw.Headline(
             container=headline_range(items),
@@ -148,7 +149,7 @@ def parse_headline(raw: str, before=None):  # pylint:disable=R0911
             #   ANHANG 2: SUMMARY
             level = 2
         return title, level, rawlevel
-    if words.headlines.isheadline(raw):
+    if elements.isheadline(raw):
         return raw, 1, ''
     if before:
         # look back and check for `Kapitel-X-Pattern`
@@ -156,9 +157,7 @@ def parse_headline(raw: str, before=None):  # pylint:disable=R0911
         chapter = words.headlines.strategies.headline_blacklisted(before)
         if chapter:
             return raw, 1, ''
-    if raw not in words.headlines.WHITELIST:
-        return None
-    return raw, None, ''
+    return None
 
 
 def filter_headlines(result: iamraw.PagesHeadlineList) -> int:
