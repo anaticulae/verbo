@@ -2,6 +2,17 @@
 
 Every noteable change is logged here.
 
+## v0.26.0
+
+### Feature
+
+* add judge debugging information (a33efcbbcf65)
+* disable headline strategy on too many headline hole (f8813ed5a083)
+* add another first level chapter pattern (6f16cdf2157b)
+* add method to check that token is a headline (b77775ad7d15)
+* add method to score invalid headlines (9bab61b1122a)
+* add method to travel toc by numbered level (5229db25420c)
+
 ## v0.25.2
 
 ## v0.25.1
