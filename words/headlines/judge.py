@@ -56,11 +56,11 @@ def report_results(results: list):
         utila.log()
 
     for strategy, result in zip(words.headlines.machine.STRATEGIES, results):
-        utila.log(strategy.__name__)
+        utila.debug(strategy.__name__)
         for item in utila.flatten(result):
-            utila.log(item.raw)
-        utila.log()
-        utila.log()
+            utila.debug(item.raw)
+        utila.debug('')
+        utila.debug('')
 
 
 def score_headlines(items) -> int:
