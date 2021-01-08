@@ -13,6 +13,7 @@ import configo
 import groupme.toc.group
 import utila
 
+import words.headlines.machine
 import words.headlines.visitor
 
 
@@ -22,6 +23,7 @@ def run(results):
         2. Compare result of 1. with StandardHeadlineExtractor
         3. Select best one one remaing strategies # TODO: VERIFY
     """
+    report_results(results)
     # remove invalid result
     results = [
         item if not (invalid_extraction(item) or too_many_error(item)) else []
@@ -44,6 +46,21 @@ def run(results):
         # backup strategy
         return results[3]
     return best if best_flat > standard_flat else results[2]
+
+
+def report_results(results: list):
+    for strategy, result in zip(words.headlines.machine.STRATEGIES, results):
+        utila.log(strategy.__name__)
+        utila.log(f'score: {score_headlines(result)}')
+        utila.log(f'error: {score_levelerror(result)}')
+        utila.log()
+
+    for strategy, result in zip(words.headlines.machine.STRATEGIES, results):
+        utila.log(strategy.__name__)
+        for item in utila.flatten(result):
+            utila.log(item.raw)
+        utila.log()
+        utila.log()
 
 
 def score_headlines(items) -> int:
