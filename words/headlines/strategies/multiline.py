@@ -60,7 +60,10 @@ def extract_page(data, page) -> iamraw.Headlines:
             # first level headline
             if items.size <= 12.0:
                 continue
-        if elements.noheadline(title):
+        if elements.noheadline(
+                title,
+                wordcount_max=words.headlines.strategies.HEADLINE_WORDCOUT_MAX,
+        ):
             continue
         headline = iamraw.Headline(
             container=headline_range(items),

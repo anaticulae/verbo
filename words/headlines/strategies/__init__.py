@@ -26,6 +26,7 @@ SMALLEST_HEADLINE_TEXTSIZE = 1.0
 MAX_HEADLINE_TEXTFEED = 0.0  # TODO: HOLY VALUE
 
 HEADLINE_MIN_LENGTH = configo.HV_INT_PLUS(7).value
+HEADLINE_WORDCOUT_MAX = 20
 
 
 def headline_decoration(navigator, containerid: int) -> int:

@@ -49,7 +49,11 @@ def filter_headlines(parsed) -> dict:  # pylint:disable=R0914
                 current = search_level(line, clusters)
                 if current == -1:
                     continue
-                if elements.noheadline(line):
+                if elements.noheadline(
+                        line,
+                        wordcount_max=words.headlines.strategies.
+                        HEADLINE_WORDCOUT_MAX,
+                ):
                     continue
                 parsed = words.headlines.strategies.multiline.parse_headline(line) # yapf:disable
                 if parsed:
