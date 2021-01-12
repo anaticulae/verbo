@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v0.26.1
+
+### Feature
+
+* skip cluster which seam no headline (28e28ff2afc6)
+
+### Fix
+
+* allow longer headline (e3fc83bcc1a5)
+
 ## v0.26.0
 
 ### Feature
