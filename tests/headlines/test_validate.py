@@ -136,6 +136,7 @@ BACHELOR90_HEADLINES = """\
             Ergebnis der Integration
         4.7.3. Bewertung
 5. Diskussion und Ausblick
+A. Anhang
             Simulink-Modell
             Putty
             SSH
@@ -252,7 +253,8 @@ BACHELOR63_HEADLINES = """\
         7.3.1 Zeichnung Befestigungsblock
     7.4 Testmessungen
         7.4.1 Messprotokoll
-Literaturverzeichnis"""
+Literaturverzeichnis
+Abbildungsverzeichnis"""
 
 BACHELOR051_HEADLINES = """\
 1 Einleitung und Problemstellung
