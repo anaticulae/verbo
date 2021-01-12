@@ -51,6 +51,18 @@ WORKPLAN = [
         ],
         output=('blockquote',),
     ),
+    utila.create_step(
+        'wordspace',
+        inputs=[
+            utila.ResultFile('rawmaker', 'oneline_text_text'),
+            utila.ResultFile('rawmaker', 'oneline_text_positions'),
+            utila.ResultFile('rawmaker', 'border_pages'),
+            utila.ResultFile('groupme', 'footer_footerheader'),
+            utila.ResultFile('magic', 'content_content'),
+            utila.ResultFile('spacestation', 'wspace_wspace'),
+        ],
+        output=('wordspace',),
+    ),
 ]
 
 # pylint:disable=C0103
