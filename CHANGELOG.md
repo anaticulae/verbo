@@ -2,6 +2,18 @@
 
 Every noteable change is logged here.
 
+## v0.27.0
+
+### Feature
+
+* add method to dump and load wordspace results (3383d2f47e1b)
+* skip formula, figure, list and table wordspace check (ebf6a89f0035)
+* add basic wordspace step infrastructure (5be0f2eff5a6)
+
+### Fix
+
+* reduce logging verbosity (44dcbc1c65e2)
+
 ## v0.26.1
 
 ### Feature
