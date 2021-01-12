@@ -12,7 +12,6 @@ import statistics
 import configo
 import elements
 import german
-import groupme.toc.group
 import iamraw
 import texmex
 import utila
@@ -138,7 +137,7 @@ def parse_headline(raw: str, before=None):  # pylint:disable=R0911
     parsed = words.headlines.utils.parse_headline(raw)
     if parsed:
         rawlevel, title = parsed['level'], parsed['text']
-        level = groupme.toc.group.numbered_level(rawlevel)
+        level = elements.level_numbered(rawlevel)
         if level is False:
             return None
         return title, level, rawlevel

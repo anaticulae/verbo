@@ -10,7 +10,7 @@
 import contextlib
 
 import configo
-import groupme.toc.group
+import elements
 import utila
 
 import words.headlines.machine
@@ -84,7 +84,7 @@ def score_levelerror(items: list) -> int:
     rawlevel = [
         item.raw_level
         for item in flat
-        if item.raw_level and groupme.toc.group.numbered_level(item.raw_level)
+        if item.raw_level and elements.level_numbered(item.raw_level)
     ]
     rawlevel = utila.notempty(rawlevel)
     grouped = words.headlines.visitor.groupby_level(rawlevel)

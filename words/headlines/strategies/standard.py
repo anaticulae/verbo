@@ -8,7 +8,7 @@
 # =============================================================================
 
 import configo
-import groupme.toc.group
+import elements
 import iamraw
 import texmex
 
@@ -105,7 +105,7 @@ TEXTSIZE_TOOSMALL = configo.HolyTable(
 
 
 def too_small(text, fontdistance, textsize_, **kwargs):
-    level = groupme.toc.group.numbered_level(text)
+    level = elements.level_numbered(text)
     level = 0 if level is None else level
 
     distance_tosmall = fontdistance < kwargs['textdistance'] * DISTANCE_TOOSMALL(level) # yapf:disable

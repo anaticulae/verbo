@@ -15,8 +15,7 @@ import doctextstyle.cluster
 import doctextstyle.features
 import doctextstyle.parser
 import doctextstyle.utils
-import groupme.toc.group
-import groupme.toc.strategy
+import elements
 import iamraw
 import utila
 
@@ -48,8 +47,7 @@ def headlines(ptns):  # pylint:disable=R0914
     flat = [item for item in flat if item.before is None or item.before >= 10.0]
     # remove numbered headlines
     flat = [
-        item for item in flat
-        if groupme.toc.group.numbered_level(item.hashed) is None
+        item for item in flat if elements.level_numbered(item.hashed) is None
     ]
     clusters = doctextstyle.cluster.cluster(
         flat,

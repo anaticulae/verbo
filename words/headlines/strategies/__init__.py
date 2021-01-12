@@ -13,7 +13,6 @@ import statistics
 
 import configo
 import elements
-import groupme.toc.group
 import iamraw
 import texmex
 
@@ -74,7 +73,7 @@ def filter_headlines(items: iamraw.PagesHeadlineList):
             parsed = whu.parse_headline(headline.title)
             if parsed:
                 raw_level = parsed['level']
-                headline.level = groupme.toc.group.numbered_level(raw_level)
+                headline.level = elements.level_numbered(raw_level)
                 headline.raw_level = raw_level
                 headline.title = headline.title.replace(raw_level, '').strip()
                 chapter_headlines.append(headline)
