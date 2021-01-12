@@ -8,7 +8,6 @@
 # =============================================================================
 
 import power
-import pytest
 import utila
 import utilatest
 
@@ -87,7 +86,6 @@ zur Reduktion von Schnittstellen , zur funktionsübergreifenden Vernetzung und\
 # „ In - dustrie 4.0 ”"""
 
 
-@pytest.mark.xfail(reason='missing sentence Unter dem Begriff DIgi...')
 @utilatest.longrun
 def test_textflow_validate_quotation_bachelor76_page4_10(testdir, monkeypatch):
     quotations = extract_quotations(
@@ -104,7 +102,6 @@ def test_textflow_validate_quotation_bachelor76_page4_10(testdir, monkeypatch):
     assert raw == BACHELOR76_EXPECTED
 
 
-@pytest.mark.xfail(reason='missing sentence Unter dem Begriff DIgi...')
 @utilatest.longrun
 def test_textflow_validate_quotation_bachelor76_page8(testdir, monkeypatch):
     quotations = extract_quotations(
