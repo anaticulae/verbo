@@ -13,7 +13,6 @@ import os
 import typing
 
 import configo
-import groupme.path
 import iamraw
 import iamraw.path
 import sections.path
@@ -103,7 +102,7 @@ def load_resources_frompath(  # pylint:disable=R0914
     section = sections.path.sections_(path)
     sizeandborder = iamraw.path.sizeandborder(path)
     boxes = iamraw.path.boxed(path)
-    headerfooters = groupme.path.headerfooters(path)
+    headerfooters = iamraw.path.headerfooters(path)
     lists = words.path.lists(path)
 
     headlines, _ = words.feature.headlines.work(
