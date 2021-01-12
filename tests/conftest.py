@@ -52,17 +52,11 @@ def pytest_sessionstart():
 
 
 def extract(resources):
-    # ensure to handle single file generation or common resource subfolder
-    # correctly. To determine the output path it is required to determine
-    # the parent path of at least two files. If resources provide only a
-    # single file the parental determination is not possible. Therefore we
-    # have to add the data root of all test files.
     utila.log(f'root: {power.REPOSITORY}')
-    resources.append(power.REPOSITORY)
-
     genex.extract(
         files=resources,
         destination=power.generated(),
+        base=power.REPOSITORY,
         groupme=True,
         sections=True,
         words=True,
