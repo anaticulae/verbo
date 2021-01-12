@@ -40,6 +40,7 @@ def filter_headlines(parsed) -> dict:  # pylint:disable=R0914
         return {}
 
     _, clusters = headlines
+    clusters = [cluster for cluster in clusters if valid_cluster(cluster)]
     clusters = [{item.hashed for item in level} for level in clusters]
 
     result = collections.defaultdict(list)
@@ -71,6 +72,26 @@ def filter_headlines(parsed) -> dict:  # pylint:disable=R0914
                 result[number].append(headline)
     result = dict(result)  # pylint:disable=R0204
     return result
+
+
+NO_HEADLINE_CHARS = '+_'
+
+
+def valid_cluster(cluster) -> bool:
+    content = {item.hashed for item in cluster}
+    # unique = len(content)
+    special = special_char_rate(content, specials=NO_HEADLINE_CHARS)
+    if special > 0.25:  # TODO: HOLY VALUE
+        return False
+    return True
+
+
+def special_char_rate(items, specials: str = '') -> float:
+    # TODO: MOVE TO UTILA
+    if not items:
+        return 0.0
+    special = [item for item in items if any(char in item for char in specials)]
+    return len(special) / len(items)
 
 
 def extract_page(data, page):
