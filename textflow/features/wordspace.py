@@ -9,6 +9,9 @@
 
 import serializeraw
 
+import textflow.serialize
+import textflow.wordspace
+
 
 def work(
         text: str,
@@ -31,4 +34,8 @@ def work(
         pages=pages,
     )
     wordspaces = serializeraw.load_wspaces(wordspaces, pages=pages)
-    return ''
+
+    result = textflow.wordspace.extract(ptcns, magic, wordspaces)
+
+    dumped = textflow.serialize.dump_wordspaces(result)
+    return dumped

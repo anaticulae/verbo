@@ -19,3 +19,49 @@ Source:
 * PageTextContentNavigator
 * Magic content
 """
+
+import iamraw
+import texmex
+import utila
+
+
+def extract(
+        ptcns: texmex.PageTextContentNavigators,
+        magics: iamraw.PageContentContentTypes,
+        wordspaces,
+) -> iamraw.PageContents:
+    result = []
+    for ptcn, magic, wordspace in utila.sync_pages(
+            iterators=[ptcns, magics, wordspaces],
+            numbers=False,
+    ):
+        wordspace = wordspace.content
+        magic = magic.content if magic else {}
+        extracted = extract_page(ptcn, magic, wordspace)
+        result.append(iamraw.PageContent(page=ptcn.page, content=extracted))
+    return result
+
+
+def extract_page(ptcn, magic, wordspace) -> list:
+    magic = {number for number, typ in magic if typ in INVALID}
+    result = []
+    for number, line in enumerate(ptcn):
+        if number in magic:
+            continue
+        bounding = line.bounding
+        inline = [
+            item for item in wordspace
+            if utila.rectangle_inside(bounding, item)
+        ]
+        if not inline:
+            continue
+        result.append((number, inline))
+    return result
+
+
+INVALID = {
+    iamraw.PageContentType.FIGURE,
+    iamraw.PageContentType.FORMULA,
+    iamraw.PageContentType.LIST,
+    iamraw.PageContentType.TABLE,
+}

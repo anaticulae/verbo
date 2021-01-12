@@ -35,3 +35,11 @@ def test_textflow_alignments(source, testdir, monkeypatch):
     """Ensure that document with empty page is parsed correctly."""
     tests.run(f'-i {source}', monkeypatch=monkeypatch)
     tests.textflow_.run(f'-i {source}', monkeypatch=monkeypatch)
+
+
+def test_textflow_wordspace_bachelor56page4(testdir, monkeypatch):
+    source = power.link(power.BACHELOR056_PDF)
+    tests.textflow_.run(
+        f'-i {source} --wordspace --pages=4',
+        monkeypatch=monkeypatch,
+    )

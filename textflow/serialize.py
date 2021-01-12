@@ -9,6 +9,7 @@
 
 import collections
 
+import serializeraw
 import utila
 import yaml
 
@@ -56,3 +57,8 @@ def loadme(func=None, ctor=PageContent):
     if func is None:
         return decorating_function
     return decorating_function(func)
+
+
+def dump_wordspaces(items) -> str:
+    dumped = serializeraw.dump_pagecontent(items)
+    return dumped
