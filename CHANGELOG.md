@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.27.1
+
+### Fix
+
+* handle empty page (e346f622b75a)
+
 ## v0.27.0
 
 ### Feature
