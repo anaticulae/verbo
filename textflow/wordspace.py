@@ -31,18 +31,21 @@ def extract(
         wordspaces,
 ) -> iamraw.PageContents:
     result = []
-    for ptcn, magic, wordspace in utila.sync_pages(
+    for page, (ptcn, magic, wordspace) in utila.sync_pages(
             iterators=[ptcns, magics, wordspaces],
-            numbers=False,
+            numbers=True,
     ):
         wordspace = wordspace.content
         magic = magic.content if magic else {}
         extracted = extract_page(ptcn, magic, wordspace)
-        result.append(iamraw.PageContent(page=ptcn.page, content=extracted))
+        result.append(iamraw.PageContent(page=page, content=extracted))
     return result
 
 
 def extract_page(ptcn, magic, wordspace) -> list:
+    if not ptcn:
+        # empty page
+        return []
     magic = {number for number, typ in magic if typ in INVALID}
     result = []
     for number, line in enumerate(ptcn):
