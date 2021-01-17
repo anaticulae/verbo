@@ -78,7 +78,7 @@ def parse_pattern(raw: str, pattern: str) -> iamraw.BibliographyReferences:
             authors=[author],
             year=year,
             page=pages,
-            # raw=raw, # TODO: ENABLE LATER
+            raw=raw,
         )
         result.append(link)
     return result
