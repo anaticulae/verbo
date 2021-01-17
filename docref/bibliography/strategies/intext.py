@@ -7,7 +7,6 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-# import dataclasses
 import re
 
 import iamraw
@@ -62,7 +61,7 @@ def parse(raw: str) -> iamraw.BibliographyReferences:
     return result
 
 
-def parse_pattern(raw: str, pattern) -> iamraw.BibliographyReferences:
+def parse_pattern(raw: str, pattern: str) -> iamraw.BibliographyReferences:
     matched = re.finditer(pattern, raw, re.VERBOSE)
     if not matched:
         return []
