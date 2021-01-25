@@ -7,110 +7,34 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import os
+
 import power
 import pytest
 import serializeraw
 import utila
-import utilatest
 
 import tests
+import words
 import words.path
 
-BACHELOR90_HEADLINES = """\
-1. Einleitung
-    1.1. Motivation
-    1.2. Zielsetzung und Aufbau der Arbeit
-2. Grundlagen eingebetteter Systeme
-    2.1. Embedded System
-        2.1.1. Systembegriff
-        2.1.2. Computersysteme
-        2.1.3. Entwicklungen im Embedded-Bereich
-    2.2. Standards in der eingebetteten Softwareentwicklung
-        2.2.1. AUTOSAR
-        2.2.2. MISRA-C
-    2.3. Controller Area Network - CAN
-        2.3.1. Topologie
-        2.3.2. Datenübertragung
-            Abitrierungsphase
-            Bitstromkompressor
-            CAN-Nachricht
-3. Methodik
-    3.1. Modellgetriebene Softwareentwicklung
-        3.1.1. Entwicklungswerkzeuge
-        3.1.2. Stand der Technik im Automobilbereich
-    3.2. Automatische Codegenerierung aus Modellen
-        3.2.1. Konzept
-            Geschützte Bereiche
-            Generierung für eine abstrakte Schnittstelle
-            Parametrisierte Codegenerierung
-        3.2.2. Probleme beim Erzeugen von Quellcode
-        3.2.3. Validierung der Ergebnisse
-    3.3. Strategien zur Zerlegung der Probleme
-        3.3.1. Randbedingungen
-        3.3.2. Modularisierung
-        3.3.3. Information Hiding
-        3.3.4. Kopplung
-    3.4. Umsetzung des Softwaresystems
-        3.4.1. Manuell erzeugter Quellcode
-        3.4.2. Modulweise Automatisierung, manuelle Verknüpfung
-        3.4.3. Vollständige Automatisierung
-        3.4.4. Zusammenfassung der Umsetzung
-    3.5. Simulink
-        3.5.1. Embedded Coder
-        3.5.2. Verwendung von S-Funktionen
-        3.5.3. Erzeugen des Simulinkmodells
-            Konfiguration des Simulinkmodells
-            Anpassen der Simulation
-            Kommunikation durch Ports
-    3.6. Testen der Software
-        3.6.1. Softwarespezifikation
-        3.6.2. Grundprinzip der Prüfung
-        3.6.3. Klassifikation der Tests nach Komplexität
-        3.6.4. Testen eingebetteter Systeme
-            Model in the loop
-            Software in the loop
-            Hardware in the loop
-        3.6.5. Bewertung des Testens als Prüfverfahren
-    3.7. Debugging der Software
-    3.8. Eignung für die Umsetzung
-4. Umsetzung
-    4.1. Problemstellung
-    4.2. Vorgehen um Code zu erzeugen
-    4.3. Übersicht der praktischen Entwicklung
-        4.3.1. Entwicklungsumgebung Ubuntu
-            Programm anlegen3
-            Programm verwalten
-        4.3.2. Arbeit auf der OBU
-    4.4. Allgemeiner Aufbau der Algorithmen
-    4.5. Umsetzung der Algorithmen
-        4.5.1. Algorithmus zur Durchmesserberechnung
-        4.5.2. Moduldefinition
-            Einlesen
-            Buffer
-            Durchmesser
-            Statistische Auswertung
-    4.6. Komponententest
-        4.6.1. Testen der Komponente Einlesen
-            Lesen vom Speicher
-            Deserialisierung der Nachrichten
-        4.6.2. Testen des Buffers
-        4.6.3. Testen der Durchmesserberechnung
-        4.6.4. Verifikation des Histogramms
-    4.7. Integration und Integrationstest der entwickelten Komponenten
-        4.7.1. Manuelle Integration
-        4.7.2. Vollständige Integration in Simulink
-            Integrationstest Einlesen
-            Manueller Einzeltest der Gesamtintegration
-            Test der Gesamtintegration mit Histogramm
-            Ergebnis der Integration
-        4.7.3. Bewertung
-5. Diskussion und Ausblick
-A. Anhang
-            Simulink-Modell
-            Putty
-            SSH
-            Player - Ubuntu
-Literaturverzeichnis"""
+EXPECTED = os.path.join(words.ROOT, 'tests/headlines/expected')
+file_read = lambda x: utila.file_read(os.path.join(EXPECTED, x)).strip()  # pylint:disable=C0103
+
+BACHELOR051_HEADLINES = file_read('bachelor051')
+BACHELOR063_HEADLINES = file_read('bachelor063')
+BACHELOR090_HEADLINES = file_read('bachelor090')
+
+# TODO: 5.2 Die ´Demenzkampagne Ostfildern „Wir sind Nachbarn!“`: Oktober 2007 – Juni 2008
+# 5.2 Die  ´Demenzkampagne  Ostfildern  „Wir  sind  Nachbarn!“`:
+# 4. Zivilgesellschaftliche Perspektive und Bürgerschaftliches
+BACHELOR128_HEADLINES = file_read('bachelor128')
+# Anhang 1: Prävalenz von Demenzen in Abhängigkeit vom Al-
+# Anhang 3: Freiwillig Engagierte und „nur“ gemeinschaftlich
+# Anhang 4: Freiwillig Engagierte nach Altersgruppen
+# Anhang 5: Freiwilliges Engagement und Bereitschaft zum
+# Anhang 7: Leitfragebogen
+# Anhang 8: Thesenpapier"""
 
 DISS264_HEADLINES = """\
 1 Einleitung
@@ -166,111 +90,6 @@ DISS264_HEADLINES = """\
         4.1.2 Betriebliche Gesundheitsförderung
         4.1.3 Weiterbildung und lebensbegleitendes Lernen"""
 
-BACHELOR63_HEADLINES = """\
-1 Einleitung
-2 Grundlagen
-    2.1 Blutdruck
-        2.1.1 Invasive Messung des arteriellen Drucks
-        2.1.2 Nicht-invasive Messung des arteriellen Drucks
-            2.1.2.1 Auskultatorische Methode
-            2.1.2.2 Oszillometrische Methode
-            2.1.2.3 Volumenkompensationsmethode
-    2.2 Ultraschall-Doppler -Blutflussmessung
-    2.3 Digitale Regelung
-        2.3.1 Grundprinzip der Regelungste chnik
-        2.3.2 Besonderheiten der digitalen Regelung
-        2.3.3 Der PI-Regler
-    2.4 Programmiersprache LabVIEW
-    2.5 Valsalva-Press-Versuch
-3 Aufgabenstellung
-    3.1 Bestehender Versuchsaufbau
-    3.2 Anforderungen an den neuen Versuchsaufbau
-4 Material und Methoden
-    4.1 Realisierung einer digitalen Steuerung/Regelung
-        4.1.1 Programmierung
-        4.1.2 Anpassung der Hardware
-    4.2 Anpassung der Messwerte mit alternativem Verfahren
-        4.2.1 Oszillometrische Bestimmung des mittleren arteriellen Blutdrucks
-        4.2.2 Anpassung der Druckwerte
-        4.2.3 Manuelle Eingabe alternativer Werte
-    4.3 Erstellung einer Bedienoberfläche
-        4.3.1 Anforderungen an die Bedienoberfläche
-        4.3.2 Hauptprogramm
-        4.3.3 Sub-VI „Messprogramm“
-    4.4 Überarbeitung der Sondenfixierung
-5 Ergebnisse
-    5.1 Optimierter Versuchsaufbau
-    5.2 Testmessungen
-        5.2.1 Durchführung
-        5.2.2 Ergebnisse
-6 Diskussion und Ausblick
-7 Anhang
-    7.1 Programmstruktur
-        7.1.1 Hauptprogramm
-        7.1.2 Sub-VI „Messprogramm“
-        7.1.3 Blockdiagramm der optimierten Regelschleife
-    7.2 Hardwareaufbau
-        7.2.1 Schalt- und Anschlusspläne
-            7.2.1.1 Schaltplan Verteilerplatine
-            7.2.1.2 Schaltplan Netzversorgung
-            7.2.1.3 Anschlussplan
-            7.2.1.4 Pneumatikplan Druckerzeugungseinheit
-        7.2.2 Zeichnungen
-            7.2.2.1 Frontplatte
-            7.2.2.2 Rückwand
-    7.3 Sondenfixierung
-        7.3.1 Zeichnung Befestigungsblock
-    7.4 Testmessungen
-        7.4.1 Messprotokoll
-Literaturverzeichnis
-Abbildungsverzeichnis"""
-
-BACHELOR051_HEADLINES = """\
-1 Einleitung und Problemstellung
-2 Zielsetzung
-3 Gegenwärtiger Kenntnisstand
-    3.1 Heutige Lebens- und Arbeitswelt
-        3.1.1 Heutige Lebenswelt
-        3.1.2 Heutige Arbeitswelt
-    3.2 Begriffserklärung Gesundheit
-        3.2.1 Allgemeine Gesundheit
-        3.2.2 Psychische Gesundheit
-    3.3 Themengebiet Stress
-        3.3.1 Begriffserklärung Stress
-        3.3.2 Stressmodell nach Lazarus
-        3.3.3 Begriffserklärung Individuelles Stresserleben
-        3.3.4 Begriffserklärung Stressbewältigung
-        3.3.5 Folgen von Stress
-    3.4 Sportaktivität und individuelles Stresserleben
-    3.5 Funktionsweise EMS-Training und Studienlage
-        3.5.1 Funktionsweise EMS-Training
-        3.5.2 Studienlage EMS-Training und individuelles Stresserleben
-4 Methodik
-    4.1 Untersuchungsablauf und Probandenrekrutierung
-        4.1.1 Untersuchungsablauf
-        4.1.2 Probandenrekrutierung
-    4.2 Erhebungsinstrument Individuelles Stresserleben
-    4.3 Standardisiertes EMS-Krafttrainingsprogramm
-        4.3.1 Beschreibung EMS-Krafttrainingsprogramm
-        4.3.2 Durchführung beim Kunden zu Hause
-    4.4 Auswertung der Befragung
-        4.4.1 Deskriptive Auswertung
-        4.4.2 Inferenzstatistische Auswertung
-5 Ergebnisse
-    5.1 Deskriptive Ergebnisse
-    5.2 Inferenzstatistische Ergebnisse
-6 Diskussion
-    6.1 Methodendiskussion
-    6.2 Ergebnisdiskussion
-    6.3 Schlussfolgerungen und Ausblick
-7 Zusammenfassung
-8 Literaturverzeichnis
-9 Abbildungs-, Tabellen-, Abkürzungsverzeichnis
-    9.1 Abbildungsverzeichnis
-    9.2 Tabellenverzeichnis
-    9.3 Abkürzungsverzeichnis
-Anhang"""
-
 DOCU027_HEADLINES = """\
 RestructuredText Tutorial
 RestructuredText Guide
@@ -289,78 +108,6 @@ Sphinx Guide
 Sphinx Customizations
 Testing your Documentation
 Indices and tables"""
-
-# TODO: 5.2 Die ´Demenzkampagne Ostfildern „Wir sind Nachbarn!“`: Oktober 2007 – Juni 2008
-# 5.2 Die  ´Demenzkampagne  Ostfildern  „Wir  sind  Nachbarn!“`:
-# 4. Zivilgesellschaftliche Perspektive und Bürgerschaftliches
-BACHELOR128_HEADLINES = """\
-1. Einleitung
-    1.1 Problemstellung
-    1.2 Zielsetzung der Arbeit
-    1.3 Gliederung und Vorgehensweise der Arbeit
-2. Demenz
-    2.1 Das Bild der ´Demenz`
-    2.2 Demenz – Ablehnung oder Akzeptanz?
-    2.3 Folgen für Menschen mit Demenz
-    2.4 Bedarf von Menschen mit Demenz
-3. Kommune
-    3.1 Demenz und Kommune – wie gehören diese Begriffe zusammen?
-    3.2 Sozialpolitische Aufgaben
-    3.3 Kommunale Aufgaben
-        3.3.1 Aufgaben in der Altenplanung
-        3.3.2 Das Thema Demenz in die Öffentlichkeit rücken
-    4.1 Die Zivilgesellschaft
-        4.1.1 Begriffsbestimmung
-        4.1.2 Aspekte für eine aktive Zivilgesellschaft
-        4.1.3 Grundbausteine eines zivilgesellschaftlichen Demenzmodells
-        4.1.4 „Leben und Sterben, wo ich hingehöre!“
-    4.2. Das Bürgerschaftliche Engagement
-        4.2.1 Begriffsbestimmung
-        4.2.2 Merkmale und Akteure
-        4.2.3 Formen
-        4.2.4 Hochkonjunktur bürgerschaftliches Engagement – wie und warum?
-    4.3 Bedeutungen für eine demenzfreundliche Kommune
-5. Initiative: ´Demenzfreundliche Kommune`
-    5.1 Auf dem Weg zum Verein „Aktion Demenz e.V.“
-        5.2.1 Projektplanung
-        5.2.2 Projektbeteiligte
-        5.2.3 Ziele und Inhalte des Projektes
-        5.2.4 Projektdurchführung
-        5.2.5 Ergebnisse und Wirkungen
-    5.3 Das ´Projekt-Demenz-Arnsberg`: Januar 2008 – etwa Dezember 2010
-        5.3.1 Projektplanung
-        5.3.2 Projektbeteiligte
-        5.3.3 Ziele und Inhalte des Projektes
-        5.3.4 Projektdurchführung
-        5.3.5 Ergebnisse und Wirkungen
-6. Empirische Untersuchung
-    6.1 Methodische Vorgehensweise
-        6.1.1 Strukturiertes Leitfadeninterview am Beispiel des Experteninterviews
-        6.1.2 Auswahl der Interviewpartner
-        6.1.3 Aufbau und Inhalt des Interviewleitfaden
-        6.1.4 Vorbereitung und Durchführung der Interviews
-        6.1.5 Vorgehensweise der Auswertung
-    6.2 Verarbeitungen der Erkenntnisse
-        6.2.1 Auswertung der Interviewergebnisse
-            6.2.1.1 Ergebnisse in Bezug auf den Theorieteil
-            6.2.1.2 Ergebnisse in Bezug auf den Praxisteil
-    6.3. Gemeinsamkeiten und Unterschiede der vorgestellten Initiativen
-7. Handlungsempfehlungen
-8. Fazit und Ausblick
-    8.1 Fazit
-    8.2 Ausblick
-Quellenverzeichnis
-Bibliografie
-Zeitschriftenartikel
-Internetquellen
-Anhangsverzeichnis
-Eidesstattliche Versicherung"""
-# Anhang 1: Prävalenz von Demenzen in Abhängigkeit vom Al-
-# Anhang 3: Freiwillig Engagierte und „nur“ gemeinschaftlich
-# Anhang 4: Freiwillig Engagierte nach Altersgruppen
-# Anhang 5: Freiwilliges Engagement und Bereitschaft zum
-# Anhang 7: Leitfragebogen
-# Anhang 8: Thesenpapier"""
 
 MASTER98_HEADLINES = """\
 1 Einleitung
@@ -546,14 +293,14 @@ ANHANG
 @pytest.mark.parametrize('source, expected', [
     pytest.param(power.MASTER098_PDF, MASTER98_HEADLINES, id='master98'),
     pytest.param(power.MASTER155_PDF, MASTER155_HEADLINES, id='master155'),
-    pytest.param(power.BACHELOR090_PDF, BACHELOR90_HEADLINES, id='bachelor90'),
+    pytest.param(power.BACHELOR090_PDF, BACHELOR090_HEADLINES, id='bachelor90'),
     pytest.param(
         power.DISS264_PDF,
         DISS264_HEADLINES,
         id='diss264',
         marks=pytest.mark.xfail,
     ),
-    pytest.param(power.BACHELOR063_PDF, BACHELOR63_HEADLINES, id='bachelor63'),
+    pytest.param(power.BACHELOR063_PDF, BACHELOR063_HEADLINES, id='bachelor63'),
     pytest.param(power.BACHELOR051_PDF, BACHELOR051_HEADLINES, id='bachelor51'),
     pytest.param(power.DOCU27_PDF, DOCU027_HEADLINES, id='docu27'),
     pytest.param(power.BACHELOR128_PDF, BACHELOR128_HEADLINES, id='bsc128'),
@@ -565,7 +312,7 @@ ANHANG
     ),
     pytest.param(power.DISS266_PDF, DISS266_HEADLINES, id='diss266'),
 ])
-@utilatest.nightly
+# @utilatest.nightly
 def test_headlines_validate(source, expected, testdir, monkeypatch):
     source = power.link(source)
     tests.run(f'-i {source} --headlines', monkeypatch=monkeypatch)
