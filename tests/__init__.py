@@ -40,3 +40,5 @@ fail = functools.partial(  #pylint:disable=C0103
     process=words.PROCESS,
     success=False,
 )
+
+utilatest.register_marker('huge')
