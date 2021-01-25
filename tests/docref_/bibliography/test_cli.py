@@ -15,10 +15,10 @@ import docref.path
 import tests.docref_
 
 
-def extract_label(source, testdir, monkeypatch):
+def extract_label(source, testdir, monkeypatch, pages=':'):
     source = power.link(source)
     tests.docref_.run(
-        f'-i {source} --bibliography',
+        f'-i {source} --bibliography --pages={pages}',
         monkeypatch=monkeypatch,
     )
     bibliography = docref.path.docref_bibliography(testdir.tmpdir)
@@ -29,7 +29,12 @@ def extract_label(source, testdir, monkeypatch):
 @utilatest.nightly
 def test_docref_bibliography_master116(testdir, monkeypatch):
     # TODO: Changes after support more tech label
-    bibliography = extract_label(power.MASTER116_PDF, testdir, monkeypatch)
+    bibliography = extract_label(
+        power.MASTER116_PDF,
+        testdir,
+        monkeypatch,
+        pages='8:93',
+    )
     assert len(bibliography) == 94  # NOT VALIDATED YET
 
 
