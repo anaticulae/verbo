@@ -50,10 +50,10 @@ def run(results):
 
 def report_results(results: list):
     for strategy, result in zip(words.headlines.machine.STRATEGIES, results):
-        utila.log(strategy.__name__)
-        utila.log(f'score: {score_headlines(result)}')
-        utila.log(f'error: {score_levelerror(result)}')
-        utila.log()
+        utila.debug(strategy.__name__)
+        utila.debug(f'score: {score_headlines(result)}')
+        utila.debug(f'error: {score_levelerror(result)}')
+        utila.debug()
 
     for strategy, result in zip(words.headlines.machine.STRATEGIES, results):
         utila.debug(strategy.__name__)
