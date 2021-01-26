@@ -2,6 +2,22 @@
 
 Every noteable change is logged here.
 
+## v0.27.2
+
+### Feature
+
+* enable raw bib ref attribute (1b81b1cb8b62)
+
+### Fix
+
+* adjust cluster strategy (0ac1e0dac203)
+* fix holy value access (fb81f1d5fd2c)
+* increase required logging level (43cd4acabedf)
+
+### Documentation
+
+* move bibliography documentation (f9f2b3824596)
+
 ## v0.27.1
 
 ### Fix
