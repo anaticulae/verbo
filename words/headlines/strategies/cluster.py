@@ -34,6 +34,8 @@ def filter_headlines(parsed) -> dict:  # pylint:disable=R0914
     headlines = doctextstyle.features.headline.headlines(
         flat,
         returncluster=True,
+        distance_before_min=1.05,
+        distance_after_min=0.80,
     )
     if not headlines:
         utila.error('empty headlines for strategy cluster')
