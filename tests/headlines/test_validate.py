@@ -21,6 +21,7 @@ import words.path
 EXPECTED = os.path.join(words.ROOT, 'tests/headlines/expected')
 file_read = lambda x: utila.file_read(os.path.join(EXPECTED, x)).strip()  # pylint:disable=C0103
 
+BACHELOR037_HEADLINES = file_read('bachelor037')
 BACHELOR051_HEADLINES = file_read('bachelor051')
 BACHELOR063_HEADLINES = file_read('bachelor063')
 BACHELOR090_HEADLINES = file_read('bachelor090')
@@ -291,6 +292,7 @@ ANHANG
 
 
 @pytest.mark.parametrize('source, expected', [
+    pytest.param(power.BACHELOR037_PDF, BACHELOR037_HEADLINES, id='bachelor37'),
     pytest.param(power.MASTER098_PDF, MASTER98_HEADLINES, id='master98'),
     pytest.param(power.MASTER155_PDF, MASTER155_HEADLINES, id='master155'),
     pytest.param(power.BACHELOR090_PDF, BACHELOR090_HEADLINES, id='bachelor90'),
