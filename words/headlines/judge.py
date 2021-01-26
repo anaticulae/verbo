@@ -128,7 +128,7 @@ def invalid_extraction(headlines) -> bool:
     """
     headlines = utila.flatten(headlines)
     levels = [item.level for item in headlines if item.level is not None]
-    grouped = utila.groupby_diff(levels, diff=0, sort=False)  # pylint:disable=unexpected-keyword-arg
+    grouped = utila.groupby_diff(levels, diff=0, sort=False)
 
     longest_levelone = utila.longest([item for item in grouped if item[0] == 1])
     if len(longest_levelone) > MAX_LEVELONE_IN_A_ROW:  # TODO: HOLY VALUE
