@@ -11,7 +11,7 @@ import os
 
 import words.path
 
-__version__ = '0.27.3'
+__version__ = '0.27.4'
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
