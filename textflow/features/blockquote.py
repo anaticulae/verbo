@@ -18,7 +18,9 @@ import serializeraw
 import texmex
 import utila
 
-MIN_BLOCK_QUOTE_DIST = 5.0  # TODO: HOLY VALUE
+MIN_BLOCK_QUOTE_DIST = 5.0  # TODO: HOLY VALUE, SEAMS VERY LOW
+
+MAX_BLOCK_QUOTE_LINE_LENGTH = 15  # TODO: HOLY VALUE
 
 
 def work(
@@ -62,6 +64,10 @@ def analyze_page(
                 iscitation_group_intention(bounds),
                 iscitation_group_right_bounded(group, bounds, textsize),
         )):
+            continue
+        if len(group) > MAX_BLOCK_QUOTE_LINE_LENGTH:
+            # TODO: ADD WARNING ABOUT VERY LONG CITATION, DO WE REQUIRE A
+            # BETTER STRATEGY?
             continue
         result.append((grouped[index], [item.text.strip() for item in group]))
     return iamraw.PageContentBlockQuotes(page=ptcn.page, content=result)
@@ -116,6 +122,7 @@ def iscitation_group_intention(bounds) -> bool:
     ]
     marks = [word for word in lines if german.contain_quotation_marks(word)]
     marks = utila.flatten(marks)
+    # TODO: COUNT QUOTATION SIGNS?
     contains_quotation = any(marks)
     return contains_quotation
 
