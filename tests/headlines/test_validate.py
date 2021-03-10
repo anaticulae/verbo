@@ -13,6 +13,7 @@ import power
 import pytest
 import serializeraw
 import utila
+import utilatest
 
 import tests
 import words
@@ -333,7 +334,7 @@ ANHANG
     ),
     pytest.param(power.DISS266_PDF, DISS266_HEADLINES, id='diss266'),
 ])
-# @utilatest.nightly
+@utilatest.nightly
 def test_headlines_validate(source, expected, testdir, monkeypatch):
     source = power.link(source)
     tests.run(f'-i {source} --headlines', monkeypatch=monkeypatch)
