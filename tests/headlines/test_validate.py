@@ -19,7 +19,27 @@ import words
 import words.path
 
 EXPECTED = os.path.join(words.ROOT, 'tests/headlines/expected')
-file_read = lambda x: utila.file_read(os.path.join(EXPECTED, x)).strip()  # pylint:disable=C0103
+
+
+class LazyFile:
+
+    # TODO: MOVE TO UTILA
+
+    def __init__(self, path):
+        self.path = path
+        self.content = None
+
+    def lazy(self):
+        if self.content is not None:
+            return
+        self.content = utila.file_read(self.path).strip()
+
+    def __eq__(self, value):
+        self.lazy()
+        return self.content == value
+
+
+file_read = lambda x: LazyFile(os.path.join(EXPECTED, x))  # pylint:disable=C0103
 
 BACHELOR037_HEADLINES = file_read('bachelor037')
 BACHELOR051_HEADLINES = file_read('bachelor051')
