@@ -14,7 +14,7 @@ import words.text.sentence
 
 
 @utilatest.longrun
-def test_chapter_split_words():
+def test_chapter_word_tokenize():
     required = fseventytwo.textrequired(pages=(13, 14))
     pages = words.text.chapter.split(required)
     assert pages

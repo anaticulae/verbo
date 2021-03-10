@@ -75,7 +75,7 @@ def sentences(  # pylint:disable=R1260
                     extracted_list = extracted_list[list_index]
                     for _, listitem in extracted_list:
                         # list items must not be a full sentence
-                        splitted = german.split_words(
+                        splitted = german.word_tokenize(
                             listitem,
                             validate_sentences=False,
                         )
@@ -85,7 +85,7 @@ def sentences(  # pylint:disable=R1260
                 undefined = words.undefined.intindex(sentence)
                 if undefined is not None:
                     continue
-                splitted = german.split_words(sentence)
+                splitted = german.word_tokenize(sentence)
                 if splitted:
                     yield page, sentence_index, sentence, splitted
                 sentence_index = sentence_index + 1

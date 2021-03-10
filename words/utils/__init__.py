@@ -39,7 +39,7 @@ def sentence_lookup(text) -> dict:
 
 def sentence_plain(sentence, marks) -> list:
     result = []
-    splitted = german.split_words(sentence, validate_sentences=False)
+    splitted = german.word_tokenize(sentence, validate_sentences=False)
     for start, end in marks:
         selected = [splitted[item] for item in utila.ranged_tuple(start, end)]
         selected = selection_plain(selected)

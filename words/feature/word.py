@@ -47,7 +47,6 @@ def work(
         boxed: str,
         pages: tuple = None,
 ) -> str:
-
     text, listlookup, boxlookup = load_resources(
         headlines,
         text,
@@ -55,9 +54,7 @@ def work(
         lists,
         pages=pages,
     )
-
     text = process_words(text, listlookup, boxlookup)
-
     dumped = serializeraw.dump_text(text)
     return dumped
 

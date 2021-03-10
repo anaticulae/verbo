@@ -173,7 +173,7 @@ def test_text_seventytwo_extract_textsections_complete():
 def test_text_seventytwo_extract_sentences():
     expected = fseventytwo.firstpage_sentences()
     raw = ' '.join(expected)
-    splitted = german.split_sentences(raw)
+    splitted = german.sentence_tokenize(raw)
 
     assert len(splitted) == len(expected)
     assert splitted == expected

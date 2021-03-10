@@ -117,7 +117,7 @@ def iscitation_group_intention(bounds) -> bool:
         return False
 
     lines = [
-        german.split_words(item.text, validate_sentences=False)
+        german.word_tokenize(item.text, validate_sentences=False)
         for item in bounds
     ]
     marks = [word for word in lines if german.contain_quotation_marks(word)]
@@ -130,7 +130,7 @@ def iscitation_group_intention(bounds) -> bool:
 def iscitation_group(bounds) -> bool:
     """Group starts and ends with quotation mark."""
     text = ' '.join([item.text.strip() for item in bounds])
-    marks = german.split_words(text, validate_sentences=False)
+    marks = german.word_tokenize(text, validate_sentences=False)
     if len(marks) < 2:
         return False
 

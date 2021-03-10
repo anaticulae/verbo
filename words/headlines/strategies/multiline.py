@@ -93,7 +93,7 @@ def headline_range(items):
 
 def invalid_headline_group(items) -> bool:
     text = ' '.join([item.text for item in items])
-    words_ = german.split_words(text, validate_sentences=False)
+    words_ = german.word_tokenize(text, validate_sentences=False)
     if len(words_) >= MAX_HEADLINE_TOKEN_LENGTH:
         # maybe a sentence cause headlines are not so long
         return True

@@ -38,9 +38,9 @@ def parse_page(  # pylint:disable=R0914
     page_sentence, page_word = 0, 0
     for _, headline_content in content.content:  # pylint:disable=unused-variable
         for paragraph in headline_content:
-            sentences = german.split_sentences(paragraph)
+            sentences = german.sentence_tokenize(paragraph)
             for sentence in sentences:
-                items = german.split_words(sentence)
+                items = german.word_tokenize(sentence)
                 if items is None:
                     utila.info(f'incomplete sentence: {sentence}')
                     continue
