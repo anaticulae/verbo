@@ -91,7 +91,7 @@ def test_text_seventytwo_visit_sentences_merge_page5_7():
     assert merged[9].sentence == (
         'Im Folgenden geht es zunächst um eine definitorische Einführung in '
         'den Bereich der Social Media sowie um die Eigenschaften netzbasierter '
-        'Kommunikation, die für das Social  Web  von  Bedeutung  sind.')
+        'Kommunikation, die für das Social Web von Bedeutung sind.')
     lastsentence = ('Es sind Anwendungen entstanden, welche die '
                     'soziale Komponente in den Vordergrund')
     assert normalize(merged[-1].sentence) == lastsentence

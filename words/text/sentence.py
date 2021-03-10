@@ -72,6 +72,8 @@ def visit_sections(page: words.text.PageTextWithHeadlines):
 def visit_sentences(
         page: words.text.PageTextWithHeadlines,
         skip_undefined: bool = False,
+        merge_divis: bool = True,
+        normalize_spaces: bool = True,
 ) -> typing.Tuple[iamraw.Headline, str]:
     """Yield tuple of Headline and extracted sentence."""
     result = []
@@ -83,17 +85,23 @@ def visit_sentences(
         for seq in section.content:
             if not isinstance(seq, iamraw.Paragraph):
                 if current:
-                    for sentence in german.sentence_tokenize(' '.join(current)):
+                    for sentence in german.sentence_tokenize(
+                            ''.join(current),
+                            merge_divis=merge_divis,
+                    ):
                         result.append((section.headline, sentence))
                     current = []
                 if not skip_undefined:
                     result.append((section.headline, f'{seq.container}u'))
                 continue
             text = texmex.remove_highnotes(seq.content)
-            text = text.replace(utila.NEWLINE, ' ').strip()
             current.append(text)
         if current:
-            for sentence in german.sentence_tokenize(' '.join(current)):
+            for sentence in german.sentence_tokenize(
+                    ''.join(current),
+                    merge_divis=merge_divis,
+                    normalize_spaces=normalize_spaces,
+            ):
                 result.append((section.headline, sentence))
     return result
 
@@ -101,6 +109,8 @@ def visit_sentences(
 def merge_sentences(  # pylint:disable=R0912,R1260
         pages: words.text.PageTextWithHeadlines,
         skip_undefined: bool = False,
+        merge_divis: bool = True,
+        normalize_spaces: bool = True,
 ) -> HeadlinedSentences:
     result = []
     lastheadline = None
@@ -113,7 +123,12 @@ def merge_sentences(  # pylint:disable=R0912,R1260
                 # Do not merge sentence if empty page is between?
                 lastsentence = None
                 # TODO: THIS SENTENCE IS LOST, WE MUST MERGE IT?
-        current = visit_sentences(page, skip_undefined=skip_undefined)
+        current = visit_sentences(
+            page,
+            skip_undefined=skip_undefined,
+            merge_divis=merge_divis,
+            normalize_spaces=normalize_spaces,
+        )
         for headline, sentence in current:
             if headline.title and headline != lastheadline and lastsentence:
                 # headline does not contains a complete sentence and

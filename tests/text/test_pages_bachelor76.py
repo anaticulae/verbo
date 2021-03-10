@@ -41,6 +41,6 @@ def test_text_extract_pages7_8_9(testdir, monkeypatch):
     assert sentences[12] == expected
 
     # First complete sentence after page break
-    expected = ('Dadurch wird die Informa- tions- und Kommunikationstechnik'
+    expected = ('Dadurch wird die Informations- und Kommunikationstechnik'
                 ' zu einem zentralen Bestandteil für die Digitalisierung.')
     assert sentences[13] == expected
