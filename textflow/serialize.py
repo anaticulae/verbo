@@ -39,8 +39,7 @@ def loadme(func=None, ctor=PageContent):
     def decorating_function(user_function):
 
         def loader(raw: str, pages: tuple = None):
-            raw = utila.from_raw_or_path(raw, ftype='yaml')
-            loaded = yaml.load(raw, Loader=yaml.FullLoader)
+            loaded = utila.yaml_from_raw_or_path(raw, safe=False)
             result = []
             for page in loaded:
                 pagenumber = int(page['page'])

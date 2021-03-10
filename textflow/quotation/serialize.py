@@ -26,8 +26,7 @@ def load_quotations(
         content: str,
         pages: tuple = None,
 ) -> textflow.quotation.data.ExtractedQuotations:
-    content = utila.from_raw_or_path(content, ftype='yaml')
-    loaded = yaml.load(content, Loader=yaml.FullLoader)
+    loaded = utila.yaml_from_raw_or_path(content, safe=False)
     result = []
     for item in loaded:
         page, index, sentence = item.split(maxsplit=2)
@@ -55,8 +54,7 @@ def load_text(
     Returns:
         loaded text with replaced headlines
     """
-    content = utila.from_raw_or_path(content, ftype='yaml')
-    loaded = yaml.load(content, Loader=yaml.FullLoader)
+    loaded = utila.yaml_from_raw_or_path(content, safe=False)
 
     # convert page index to global index
     headlines = utila.flatten(headlines) if headlines else None
