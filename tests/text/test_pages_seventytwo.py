@@ -7,6 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import re
+
 import german
 import utila
 import utilatest
@@ -26,7 +28,7 @@ def test_text_seventytwo_extract_texts_page3():
     firstsection = firstpage.content[0]
     sectioncontent = firstsection.content
 
-    assert len(sectioncontent) == 17
+    assert len(sectioncontent) == 15
 
 
 @utilatest.nightly
@@ -37,10 +39,10 @@ def test_text_seventytwo_visit_sentences():
     secondpage = words.text.chapter.split(required)[0]
 
     sentences = list(wts.visit_sentences(firstpage))
-    assert len(sentences) == 17
+    assert len(sentences) == 15
 
     sentences = list(wts.visit_sentences(secondpage))
-    assert len(sentences) == 14
+    assert len(sentences) == 12
 
     # second page first sentence
     assert sentences[0][1] == ('Nutzerverhalten vor allem in '
@@ -62,10 +64,10 @@ def test_text_seventytwo_visit_sentences_merge_page_endstart():
     pages = words.text.chapter.split(required)
 
     merged = wts.merge_sentences(pages)
-    assert len(merged) == 30
+    assert len(merged) == 26
 
-    merged_middle_sentence = merged[16].sentence
-    assert merged_middle_sentence == (
+    merged_middle_sentence = merged[14].sentence
+    assert normalize(merged_middle_sentence) == (
         'Kritisch beurteilt wird das '
         'Nutzerverhalten vor allem in Bezug auf die Privatheitsthematik.')
 
@@ -82,17 +84,17 @@ def test_text_seventytwo_visit_sentences_merge_page5_7():
     pages = words.text.chapter.split(required)
     merged = wts.merge_sentences(pages)
 
-    assert merged[10].headline.raw == (
+    assert merged[9].headline.raw == (
         '2.  Das Social Web und die Privatsphäre – '
         'Selbstdarstellungsverhalten  der  Nutzer  aus  Sicht  von '
         'Massenmedien und Literatur')
-    assert merged[10].sentence == (
+    assert merged[9].sentence == (
         'Im Folgenden geht es zunächst um eine definitorische Einführung in '
         'den Bereich der Social Media sowie um die Eigenschaften netzbasierter '
-        'Kommunikation, die für das Social Web von Bedeutung sind.')
+        'Kommunikation, die für das Social  Web  von  Bedeutung  sind.')
     lastsentence = ('Es sind Anwendungen entstanden, welche die '
                     'soziale Komponente in den Vordergrund')
-    assert merged[-1].sentence == lastsentence
+    assert normalize(merged[-1].sentence) == lastsentence
 
 
 @utilatest.longrun
@@ -140,11 +142,12 @@ def test_text_seventytwo_extract_textsections_page5_6_7():
     # is expanded. If we handle every list line as a sentence, there are
     # 31 "sentences".
     # TODO: THIS MAY CHANGES IF WE FIX AREA DEFINITION OF EXTRACTED LIST
-    assert count == [10, 2, 31], str(count)
+    assert count == [9, 2, 29], str(count)
 
     lastsentence = chapters[-1][1][-1]
-    assert lastsentence == ('Es sind Anwendungen entstanden, welche die '
-                            'soziale Komponente in den Vordergrund')
+    assert normalize(lastsentence) == (
+        'Es sind Anwendungen entstanden, '
+        'welche die soziale Komponente in den Vordergrund')
 
 
 @utilatest.nightly
@@ -189,3 +192,7 @@ def test_text_doubleequal_fontdistance():
         require_headlinelevel=False,
     )
     assert extracted
+
+
+def normalize(text: str) -> str:
+    return re.sub(r'\s+', ' ', text)

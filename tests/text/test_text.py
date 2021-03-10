@@ -62,7 +62,7 @@ def test_text_extractor_titles():
 
     # page10
     page10 = utila.select_page(result, 10)
-    assert page10.content[1].headline.title == 'RestructuredText Customizations'
+    assert page10.content[0].headline.title == 'RestructuredText Customizations'
 
     # page12
     page12 = utila.select_page(result, 12)

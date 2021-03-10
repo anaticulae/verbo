@@ -41,4 +41,4 @@ def test_docref_bibliography_master116(testdir, monkeypatch):
 @utilatest.nightly
 def test_docref_bibliography_master98(testdir, monkeypatch):
     bibliography = extract_label(power.MASTER098_PDF, testdir, monkeypatch)
-    assert len(bibliography) == 257  # NOT VALIDATED YET
+    assert len(bibliography) == 267  # NOT VALIDATED YET

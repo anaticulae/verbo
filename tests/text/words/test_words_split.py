@@ -14,11 +14,11 @@ import words.text.chapter
 import words.text.sentence
 
 MASTER72_EXPECTED = {
-    30: 18,
-    31: 6 + 12,
-    32: 20,
+    30: 16,
+    31: 6 + 11,
+    32: 19,
     33: 9 + 5,
-    34: 18,
+    34: 17,
 }
 
 
