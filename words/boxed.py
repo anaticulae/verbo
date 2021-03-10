@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-from iamraw import BoundingBox
+import iamraw
 
 NO_BOX = -1
 
@@ -41,9 +41,9 @@ class BoxedChecker:
                     return index
         return NO_BOX
 
-    def boundingbox(self, page, boxid: int) -> BoundingBox:
+    def boundingbox(self, page, boxid: int) -> iamraw.BoundingBox:
         """Return a copy of `BoundingBox` defined by `boxid`"""
         current = self.data[page][boxid]
         # copy BoundingBox
-        copybox = BoundingBox.from_str(str(current))
+        copybox = iamraw.BoundingBox.from_str(str(current))
         return copybox
