@@ -9,6 +9,7 @@
 
 import power
 import serializeraw
+import utilatest
 
 # pylint:disable=W0611
 import tests.fixtures.restruct
@@ -20,6 +21,7 @@ import words.undefined
 RESTRUCTURED_NON_TEXTUAL_PAGE = 10
 
 
+@utilatest.longrun
 def test_extract_undefined():
     """Text replacing the undefined items with content"""
     # TODO: Move to hey

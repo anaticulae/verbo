@@ -8,11 +8,13 @@
 # =============================================================================
 
 import utila
+import utilatest
 
 import tests.fixtures.master72.seventytwo as fseventytwo
 import words.text.sentence
 
 
+@utilatest.longrun
 def test_merge_sentences_merge_divis():
     required = fseventytwo.textrequired(pages=(13, 14))
     pages = words.text.chapter.split(required)
@@ -29,6 +31,7 @@ def test_merge_sentences_merge_divis():
     assert 'Kontrollmöglichkeiten' in text
 
 
+@utilatest.longrun
 def test_merge_sentences_before_headline_regression():
     required = fseventytwo.textrequired(pages=(14,))
     pages = words.text.chapter.split(required)
