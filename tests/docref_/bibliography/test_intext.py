@@ -28,8 +28,6 @@ TODO = """\
 
 def test_parse_label():
     parsed = docref.bibliography.strategies.intext.parse(RAW)
-    for item in parsed:
-        print(item)
     expected = len(RAW.splitlines())
     assert len(parsed) == expected
 
