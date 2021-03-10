@@ -27,3 +27,15 @@ def test_merge_sentences_merge_divis():
     text = utila.NEWLINE.join(sentences)
     # ensure that divis is replaced correctly
     assert 'Kontrollmöglichkeiten' in text
+
+
+def test_merge_sentences_before_headline_regression():
+    required = fseventytwo.textrequired(pages=(14,))
+    pages = words.text.chapter.split(required)
+    assert pages
+
+    merged = words.text.sentence.merge_sentences(pages)
+    sentences = [item.sentence for item in merged]
+    text = utila.NEWLINE.join(sentences)
+    assert 'Ausgewählte Positionen hierzu werden im Folgenden dargestellt.' in text
+    assert len(text.splitlines()) == 12

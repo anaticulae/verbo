@@ -35,14 +35,16 @@ def collect_paragraph(
     start = first.end + 1 - pcn.offset[0]
     # determine end mark
     if second and first.page == second.page:
-        end = second.end - 1
+        end = second.start
     else:
         end = len(pcn)
-
     if first.start == -1 and second and second.start != -1:
         # start with None-Container followed by Headline container
         # TODO: Check theses indexes
         end = second.start
+    if second is not None and start + 1 == second.start:
+        # no content between headlines, skip range(start, end)
+        end = start
     # collect content after headline
     result = []
     for index in range(start, end):

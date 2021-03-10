@@ -71,6 +71,7 @@ def visit_sections(page: words.text.PageTextWithHeadlines):
 
 def visit_sentences(
         page: words.text.PageTextWithHeadlines,
+        *,
         skip_undefined: bool = False,
         merge_divis: bool = True,
         normalize_spaces: bool = True,
@@ -88,6 +89,7 @@ def visit_sentences(
                     for sentence in german.sentence_tokenize(
                             ''.join(current),
                             merge_divis=merge_divis,
+                            normalize_spaces=normalize_spaces,
                     ):
                         result.append((section.headline, sentence))
                     current = []

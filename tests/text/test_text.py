@@ -52,8 +52,8 @@ def test_text_extractor_titles():
 
     # page8
     page8 = utila.select_page(result, 8)
-    assert page8.content[1].headline.title == 'RestructuredText Guide'
-    assert page8.content[2].headline.title == 'Basics'
+    assert page8.content[0].headline.title == 'RestructuredText Guide'
+    assert page8.content[1].headline.title == 'Basics'
 
     # page9
     page9 = utila.select_page(result, 9)
@@ -66,9 +66,9 @@ def test_text_extractor_titles():
 
     # page12
     page12 = utila.select_page(result, 12)
-    assert page12.content[0].headline.title is None
-    assert page12.content[1].headline.title == 'Sphinx Tutorial'
-    assert page12.content[2].headline.title == 'Step 1'
+    # assert page12.content[0].headline.title is None
+    assert page12.content[0].headline.title == 'Sphinx Tutorial'
+    assert page12.content[1].headline.title == 'Step 1'
 
     # page13
     # is merged to page12
@@ -93,7 +93,7 @@ def test_text_extractor_titles():
 
     # page18
     page18 = utila.select_page(result, 18)
-    assert page18.content[1].headline.title == 'Sphinx Guide'
+    assert page18.content[0].headline.title == 'Sphinx Guide'
 
 
 @utilatest.longrun
