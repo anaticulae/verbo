@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v0.27.5
+
+### Fix
+
+* fix list lookup (0defc55e02ee)
+* improve sentence merger (124abe0532c3)
+* merge divis at end of a line (111a5df024a3)
+* adjust to new double colon rule (a2078783069c)
+* limit max blockquote length (7bb78f112998)
+
 ## v0.27.4
 
 ## v0.27.3
