@@ -39,3 +39,21 @@ def test_merge_sentences_before_headline_regression():
     text = utila.NEWLINE.join(sentences)
     assert 'Ausgewählte Positionen hierzu werden im Folgenden dargestellt.' in text
     assert len(text.splitlines()) == 12
+
+
+def test_merge_sentences_list_detection_regression():
+    required = fseventytwo.textrequired(pages=(9,))
+    pages = words.text.chapter.split(required)
+    assert pages
+
+    merged = words.text.sentence.merge_sentences(pages)
+    sentences = [item.sentence for item in merged]
+    text = utila.NEWLINE.join(sentences)
+    utila.log(text)
+
+    # no list starter in text
+    assert '&#61607;' not in text
+    # list start
+    assert '12u' in text
+    # list end
+    assert '27u' in text

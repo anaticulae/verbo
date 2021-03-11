@@ -26,6 +26,7 @@
     </document>
 
 """
+import collections
 import contextlib
 import functools
 import re
@@ -92,24 +93,48 @@ class ListLookUp:
 
     # TODO: UNITE WITH BOXEDCHECKER!
     def __init__(self, lists):
-        self.data = {}
+        self.data = None
         self.load(lists)
 
     def load(self, lists):
+        # rewrite input data
+        lists = [
+            [(page, item.area) for item in content] for page, content in lists
+        ]
+        lists = utila.flatten(lists)
+        lists = flat_lookup(lists)
+        data = collections.defaultdict(list)
         for page, content in lists:
-            for index, item in enumerate(content):
-                try:
-                    self.data[page].append((item, index))
-                except KeyError:
-                    self.data[page] = [(item, index)]
+            listnumber = len(data[page])
+            data[page].append((content, listnumber))
+        # enable KeyError
+        self.data = dict(data)
 
     def search(self, page, headline, undefined):  # pylint:disable=W0613
         with contextlib.suppress(KeyError):
             current = self.data[page]
             for (content, index) in current:
-                if undefined in content.area:
+                if undefined in content:
                     return index
         return None
+
+
+def flat_lookup(items):
+    """\
+    >>> flat_lookup([(10, [(12, 13, 14, 15, 16, 17), (0, 1, 2, 3, 4)])])
+    [(10, (12, 13, 14, 15, 16, 17)), (11, (0, 1, 2, 3, 4))]
+    >>> flat_lookup([(8, [12, 13, 14, 15, 16, 17])])
+    [(8, [12, 13, 14, 15, 16, 17])]
+    """
+    result = []
+    for page, content in items:
+        if isinstance(content, list) and not \
+                               all((isinstance(item, int) for item in content)):
+            for number, pagecontent in enumerate(content, start=page):
+                result.extend(flat_lookup([(number, pagecontent)]))
+        else:
+            result.append((page, content))
+    return result
 
 
 class BoxLookUp:
