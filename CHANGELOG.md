@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.27.6
+
+### Fix
+
+* skip invalid list as a result of area changing (62734af0131b)
+
 ## v0.27.5
 
 ### Fix
