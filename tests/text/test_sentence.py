@@ -52,7 +52,6 @@ def test_merge_sentences_list_detection_regression():
     merged = words.text.sentence.merge_sentences(pages)
     sentences = [item.sentence for item in merged]
     text = utila.NEWLINE.join(sentences)
-    utila.log(text)
 
     # no list starter in text
     assert '&#61607;' not in text
@@ -60,3 +59,17 @@ def test_merge_sentences_list_detection_regression():
     assert '12u' in text
     # list end
     assert '27u' in text
+
+
+def test_merge_sentences_footer_regression():
+    required = fseventytwo.textrequired(pages=(21,))
+    pages = words.text.chapter.split(required)
+    assert pages
+
+    merged = words.text.sentence.merge_sentences(pages)
+    sentences = [item.sentence for item in merged]
+    text = utila.NEWLINE.join(sentences)
+    utila.log(text)
+    # ensure that footer is not parsed as text
+    assert 's. Michael Zimmer' not in text
+    assert 'www.spiegel.de' not in text
