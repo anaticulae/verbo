@@ -75,7 +75,11 @@ def sentences(  # pylint:disable=R1260
                     if extracted_list is None:
                         utila.error(f'could not find list on page: {page}; TODO: split area') # yapf:disable
                         continue
-                    extracted_list = extracted_list[list_index]
+                    try:
+                        extracted_list = extracted_list[list_index]
+                    except IndexError:
+                        utila.error(f'could not access: {list_index} on page: {page}') # yapf:disable
+                        continue
                     for _, listitem in extracted_list:
                         # list items must not be a full sentence
                         splitted = german.word_tokenize(
