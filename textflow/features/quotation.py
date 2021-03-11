@@ -71,7 +71,10 @@ def sentences(  # pylint:disable=R1260
                 if list_index is not None:
                     if done.contains(list_index):
                         continue
-                    extracted_list = utila.select_page(lists, page).content
+                    extracted_list = utila.select_content(lists, page)
+                    if extracted_list is None:
+                        utila.error(f'could not find list on page: {page}; TODO: split area') # yapf:disable
+                        continue
                     extracted_list = extracted_list[list_index]
                     for _, listitem in extracted_list:
                         # list items must not be a full sentence
