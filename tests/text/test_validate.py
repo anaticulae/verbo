@@ -1,0 +1,53 @@
+# =============================================================================
+# C O P Y R I G H T
+# -----------------------------------------------------------------------------
+# Copyright (c) 2021 by Helmut Konrad Fahrendholz. All rights reserved.
+# This file is property of Helmut Konrad Fahrendholz. Any unauthorized copy,
+# use or distribution is an offensive act against international law and may
+# be prosecuted under federal law. Its content is company confidential.
+# =============================================================================
+
+import os
+
+import power
+import pytest
+import utila
+
+import words
+import words.feature
+import words.text.sentence
+
+
+def load_expected(name) -> str:
+    source = os.path.join(words.ROOT, f'tests/text/expected/{name}')
+    content = utila.file_read(source)
+    return content
+
+
+@pytest.mark.xfail(reason='require some little changes')
+def test_validate_master072_text():
+    source = power.MASTER072_PDF
+    pages = utila.ranged_tuple(3, 64)
+
+    raw = load_current(source, pages)
+    expected = load_expected('master072')
+
+    assert raw == expected
+
+
+def load_current(source, pages) -> str:
+    resources = words.feature.load_resources_frompath(
+        power.link(source),
+        pages=pages,
+    )
+    splitted = words.text.chapter.split(resources)
+    merged = words.text.sentence.merge_sentences(splitted)
+    collected = []
+    headline = None
+    for item in merged:
+        if item.headline != headline:
+            collected.append(f'\n\n:::: {item.headline.title} ::::\n\n')
+            headline = item.headline
+        collected.append(item.sentence)
+    result = utila.NEWLINE.join(collected)
+    return result
