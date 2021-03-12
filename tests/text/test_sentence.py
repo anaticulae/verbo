@@ -11,6 +11,7 @@ import utila
 import utilatest
 
 import tests.fixtures.master72.seventytwo as fseventytwo
+import tests.fixtures.text
 import words.text.sentence
 
 
@@ -64,12 +65,23 @@ def test_merge_sentences_list_detection_regression():
 def test_merge_sentences_footer_regression():
     required = fseventytwo.textrequired(pages=(21,))
     pages = words.text.chapter.split(required)
-    assert pages
+    # merge sentences
+    merged = words.text.sentence.merge_sentences(pages)
+    sentences = [item.sentence for item in merged]
+    text = utila.NEWLINE.join(sentences)
+    # ensure that footer is not parsed as text
+    assert 's. Michael Zimmer' not in text
+    assert 'www.spiegel.de' not in text
 
+
+def test_merge_sentences_table_regression():
+    required = tests.fixtures.text.bachelor051_textrequired(pages=(21,))
+    pages = words.text.chapter.split(required)
+    # merge sentences
     merged = words.text.sentence.merge_sentences(pages)
     sentences = [item.sentence for item in merged]
     text = utila.NEWLINE.join(sentences)
     utila.log(text)
-    # ensure that footer is not parsed as text
-    assert 's. Michael Zimmer' not in text
-    assert 'www.spiegel.de' not in text
+    assert 'Tab. 2: Untersuchungsplan' in text  # TODO: CHANGE AFTER SUPPORTING CAPTION
+    # exclude table content from sentence matcher
+    assert 'Probandenstichprobe' not in text
