@@ -35,6 +35,19 @@ def test_validate_master072_text():
     assert raw == expected
 
 
+# yapf:disable
+@pytest.mark.parametrize('source, pages, expected', [
+    pytest.param(power.BACHELOR051_PDF, utila.ranged_tuple(3, 42), 'bachelor051', id='bachelor051'),
+])
+# yapf:enable
+def test_text_validate(source, pages, expected):
+    """Run help and version command to reach basic test coverage"""
+    raw = load_current(source, pages)
+    expected = load_expected(expected)
+    utila.log(raw)
+    assert raw == expected
+
+
 def load_current(source, pages) -> str:
     resources = words.feature.load_resources_frompath(
         power.link(source),
@@ -48,6 +61,8 @@ def load_current(source, pages) -> str:
         if item.headline != headline:
             collected.append(f'\n\n:::: {item.headline.title} ::::\n\n')
             headline = item.headline
-        collected.append(item.sentence)
+        if item.sentence:
+            # skip None-Sentence between two headlines without content
+            collected.append(item.sentence)
     result = utila.NEWLINE.join(collected)
     return result
