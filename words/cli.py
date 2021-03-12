@@ -94,7 +94,9 @@ WORKPLAN = [
     ),
     utila.create_step(
         'text',
-        inputs=TEXTINPUT,
+        inputs=TEXTINPUT + [
+            ResultFile('magic', 'content_content_normal', optional=True),
+        ],
         output=('text',),
     ),
     # TODO: IS THAT RIGHT?

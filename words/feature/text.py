@@ -37,7 +37,7 @@ import words.headlines
 import words.text.chapter
 
 
-def work(
+def work(  # pylint:disable=R0913
         text: str,
         textposition: str,
         fontheader: str,
@@ -47,6 +47,7 @@ def work(
         headerfooters: str,
         boxes: str,
         lists: str,
+        magics: str = None,
         pages: tuple = None,
 ) -> str:
     """Extract textual structure out of document. A text is structured
@@ -61,7 +62,8 @@ def work(
         pagesizes(str): path to size and border
         boxes(str): definition of boxed rectangles
         lists(str): definition of lists path
-        headerfooters: path to extracted footer and header
+        headerfooters(str): path to extracted footer and header
+        magics(str): path to optional magic file
         pages: list of page numbers to process
     Returns:
         dumped paragraphs
@@ -76,6 +78,7 @@ def work(
         pagesizes=pagesizes,
         text=text,
         textposition=textposition,
+        magics=magics,
         pages=pages,
     )
 

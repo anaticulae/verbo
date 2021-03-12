@@ -15,6 +15,7 @@ import typing
 import configo
 import iamraw
 import iamraw.path
+import magic.path
 import sections.path
 import serializeraw
 import texmex
@@ -35,10 +36,11 @@ class TextRequiredResources:
     fontstore: iamraw.FontStore
     headlines: iamraw.PagesHeadlineList
     textnavigators: texmex.PageTextContentNavigators
+    magics: iamraw.PageContentContentTypes = None
 
 
 @functools.lru_cache(configo.CACHE_SMALL)
-def load_resources(  # pylint:disable=R0914
+def load_resources(  # pylint:disable=R0914,R0913
         text: str,
         textposition: str,
         fontheader: str,
@@ -48,6 +50,7 @@ def load_resources(  # pylint:disable=R0914
         boxes: str,
         lists: str,
         headerfooters: str,
+        magics: str = None,
         pages=None,
 ) -> TextRequiredResources:
     """Load content from path and create required object"""
@@ -73,6 +76,18 @@ def load_resources(  # pylint:disable=R0914
         lists = []
     lists = words.feature.word.ListLookUp(lists)  # pylint:disable=R0204
 
+    if magics:
+        if os.path.exists(magics):
+            magics = serializeraw.load_magic_types(
+                magics,
+                pages=pages,
+            )
+        else:
+            utila.log(f'skip loading magic: {magics}')
+            magics = None
+    else:
+        utila.log(f'skip loading magic')
+
     fontstore = serializeraw.create_fontstore(fontheader, fontcontent)
     border = {navigator.page: navigator.content for navigator in ptcns}
     result = TextRequiredResources(
@@ -82,6 +97,7 @@ def load_resources(  # pylint:disable=R0914
         fontstore=fontstore,
         headlines=headlines,
         textnavigators=ptcns,
+        magics=magics,
     )
     return result
 
@@ -104,6 +120,7 @@ def load_resources_frompath(  # pylint:disable=R0914
     boxes = iamraw.path.boxed(path)
     headerfooters = iamraw.path.headerfooters(path)
     lists = words.path.lists(path)
+    magics = magic.path.content_normal(path)
 
     headlines, _ = words.feature.headlines.work(
         sectionlist=section,
@@ -131,6 +148,7 @@ def load_resources_frompath(  # pylint:disable=R0914
         boxes=boxes,
         headerfooters=headerfooters,
         lists=lists,
+        magics=magics,
         pages=pages,
     )
     return loaded

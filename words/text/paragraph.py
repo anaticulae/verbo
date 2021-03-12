@@ -9,6 +9,7 @@
 
 import iamraw
 import texmex
+import utila
 
 import words.boxed
 import words.feature
@@ -23,6 +24,7 @@ def collect_paragraph(
         pcn: texmex.PageTextContentNavigator,
         boxes: words.boxed.BoxedChecker,
         lists: 'ListLookUp',
+        magics: iamraw.PageContentContentTypes = None,
 ) -> iamraw.ChapterText:
     """Extract paragraphs between defined headlines.
 
@@ -56,6 +58,7 @@ def collect_paragraph(
             item.bounding,
             index,
             item.text,
+            magics,
         )
         if contenttype == iamraw.ContentType.PARAGRAPH:
             result.append(iamraw.Paragraph(content=item))
@@ -71,6 +74,7 @@ def content_type(
         bounding: iamraw.BoundingBox,
         index: int,
         content: str,
+        magics: iamraw.PageContentContentTypes = None,
 ):
     matched_list = lists.search(page, None, undefined=index)
     if matched_list is not None:
@@ -79,4 +83,12 @@ def content_type(
         return iamraw.ContentType.LIST
     if boxed.contains(page, bounding):
         return iamraw.ContentType.BOXED
+    if magics:
+        # TODO: DIRTY
+        magics = utila.select_content(magics, page=page)
+        for idx, item in magics:
+            if idx == index:
+                if item == iamraw.PageContentType.TABLE:
+                    return iamraw.PageContentType.TABLE
+                break
     return iamraw.ContentType.PARAGRAPH
