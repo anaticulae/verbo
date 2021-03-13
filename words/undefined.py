@@ -64,8 +64,10 @@ def intindex(index: str) -> int:
 
     >>> intindex('31u')
     31
+    >>> intindex('1') is None
+    True
     """
-    with contextlib.suppress(ValueError):
+    with contextlib.suppress(ValueError, IndexError):
         if index[-1] == 'u':
             return int(index[:-1])
     return None
