@@ -145,6 +145,15 @@ def merge_sentences(  # pylint:disable=R0912,R1260
                         sentence=lastsentence,
                     ))
                 lastsentence = None
+            isundefined = words.undefined.intindex(sentence) is not None
+            if isundefined and lastsentence:
+                result.append(
+                    HeadlinedSentence(
+                        headline=lastheadline,
+                        page=lastpage,
+                        sentence=lastsentence,
+                    ))
+                lastsentence = None
             if headline.title:
                 lastheadline = headline
             else:
