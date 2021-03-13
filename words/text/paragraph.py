@@ -34,7 +34,7 @@ def collect_paragraph(
     """
     # convert to content coordiante, and step one element further cause of
     # current element is the headline and we want to start with content
-    start = first.end + 1 - pcn.offset[0]
+    start = first.end + 1
     # determine end mark
     if second and first.page == second.page:
         end = second.start
