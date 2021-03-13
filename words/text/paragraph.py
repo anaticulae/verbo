@@ -60,7 +60,7 @@ def collect_paragraph(
             item.text,
             magics,
         )
-        if contenttype == iamraw.PageContentType.TEXT:
+        if contenttype == iamraw.PageContentType.TEXT:  # TODO: AND BLOCKQUOTE?
             result.append(iamraw.Paragraph(content=item))
         else:
             result.append(iamraw.Undefined(container=index))
