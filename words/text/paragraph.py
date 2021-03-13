@@ -60,7 +60,7 @@ def collect_paragraph(
             item.text,
             magics,
         )
-        if contenttype == iamraw.ContentType.PARAGRAPH:
+        if contenttype == iamraw.PageContentType.TEXT:
             result.append(iamraw.Paragraph(content=item))
         else:
             result.append(iamraw.Undefined(container=index))
@@ -75,20 +75,21 @@ def content_type(
         index: int,
         content: str,
         magics: iamraw.PageContentContentTypes = None,
-):
+) -> iamraw.PageContentType:
     matched_list = lists.search(page, None, undefined=index)
     if matched_list is not None:
         return iamraw.ContentType.LIST
     if texmex.DOT in content:  # TODO: SUPPORT OTHER DOTS
-        return iamraw.ContentType.LIST
+        return iamraw.PageContentType.LIST
     if boxed.contains(page, bounding):
-        return iamraw.ContentType.BOXED
+        return iamraw.PageContentType.BOXED
     if magics:
         # TODO: DIRTY
-        magics = utila.select_content(magics, page=page)
-        for idx, item in magics:
-            if idx == index:
-                if item == iamraw.PageContentType.TABLE:
-                    return iamraw.PageContentType.TABLE
-                break
-    return iamraw.ContentType.PARAGRAPH
+        magiccontent = utila.select_content(magics, page=page)
+        if magiccontent:
+            for idx, item in magiccontent:
+                if idx == index:
+                    if item == iamraw.PageContentType.TABLE:
+                        return iamraw.PageContentType.TABLE
+                    break
+    return iamraw.PageContentType.TEXT
