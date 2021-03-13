@@ -76,17 +76,19 @@ def test_text_extractor_titles():
     # page14
     page14 = utila.select_page(result, 14)
     assert page14.content[0].headline.title == 'Documenting a Project'
+    assert page14.content[0].content[0].startswith('Now that we')
 
     # page15
     page15 = utila.select_page(result, 15)
     assert page15.content[0].headline.title is None
     assert page15.content[1].headline.title == 'Aside: Other formats'
+    # TODO: VALIDATE PAGES FLAG OF PAGE 15
 
     # page16
     page16 = utila.select_page(result, 16)
-    assert page16.content[1].headline.title == 'Step 2'
-    assert not page16.content[1].content  # headline only, no content
-    assert page16.content[2].headline.title == 'Referencing Code'
+    assert page16.content[0].headline.title == 'Step 2'
+    assert not page16.content[0].content  # headline only, no content
+    assert page16.content[1].headline.title == 'Referencing Code'
 
     # page17
     # is merged to page 16
