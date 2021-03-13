@@ -75,7 +75,7 @@ def content_type(
     matched_list = lists.search(page, None, undefined=index)
     if matched_list is not None:
         return iamraw.ContentType.LIST
-    if iamraw.DOT in content:
+    if texmex.DOT in content:
         return iamraw.ContentType.LIST
     if boxed.contains(page, bounding):
         return iamraw.ContentType.BOXED
