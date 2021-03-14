@@ -111,32 +111,17 @@ def load_resources_frompath(  # pylint:disable=R0914
     textposition = iamraw.path.textposition(path)
     fontheader = iamraw.path.fontheader(path)
     fontcontent = iamraw.path.fontcontent(path)
-    oneline_text = iamraw.path.text(path, prefix='oneline')
-    oneline_textposition = iamraw.path.textposition(path, prefix='oneline')
-    oneline_fontheader = iamraw.path.fontheader(path, prefix='oneline')
-    oneline_fontcontent = iamraw.path.fontcontent(path, prefix='oneline')
-    section = sections.path.sections_(path)
+    # oneline_text = iamraw.path.text(path, prefix='oneline')
+    # oneline_textposition = iamraw.path.textposition(path, prefix='oneline')
+    # oneline_fontheader = iamraw.path.fontheader(path, prefix='oneline')
+    # oneline_fontcontent = iamraw.path.fontcontent(path, prefix='oneline')
+    # section = sections.path.sections_(path)
     sizeandborder = iamraw.path.sizeandborder(path)
     boxes = iamraw.path.boxed(path)
     headerfooters = iamraw.path.headerfooters(path)
     lists = words.path.lists(path)
+    headlines = words.path.headlines(path)
     magics = magic.path.content_normal(path)
-
-    headlines, _ = words.feature.headlines.work(
-        sectionlist=section,
-        text=text,
-        text_position=textposition,
-        font_header=fontheader,
-        font_content=fontcontent,
-        oneline_text=oneline_text,
-        oneline_text_position=oneline_textposition,
-        oneline_font_header=oneline_fontheader,
-        oneline_font_content=oneline_fontcontent,
-        sizeandborder=sizeandborder,
-        boxes=boxes,
-        headerfooters=headerfooters,
-        pages=pages,
-    )
 
     loaded = load_resources(
         text=text,
