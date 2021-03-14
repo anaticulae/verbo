@@ -81,7 +81,19 @@ def test_merge_sentences_table_regression():
     merged = words.text.sentence.merge_sentences(pages)
     sentences = [item.sentence for item in merged]
     text = utila.NEWLINE.join(sentences)
-    utila.log(text)
     assert 'Tab. 2: Untersuchungsplan' in text  # TODO: CHANGE AFTER SUPPORTING CAPTION
     # exclude table content from sentence matcher
     assert 'Probandenstichprobe' not in text
+
+
+def test_merge_sentences_figure_regression():
+    required = tests.fixtures.text.bachelor051_textrequired(pages=(31,))
+    pages = words.text.chapter.split(required)
+    # merge sentences
+    merged = words.text.sentence.merge_sentences(pages)
+    sentences = [item.sentence for item in merged]
+    text = utila.NEWLINE.join(sentences)
+    # exclude figure from sentence detection
+    assert 'Präwert' not in text
+    assert 'Postwert' not in text
+    assert 'Abb. 4: Skalawerte' in text  # TODO: CHANGES LATER
