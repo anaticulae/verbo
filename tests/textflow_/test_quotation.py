@@ -69,8 +69,8 @@ BACHELOR76_EXPECTED = """\
  - den kann , wird , was immer auch ihr ursprünglicher Zweck war , zum Zwecke der\
  Überwachung und Kontrolle kolonisiert ”
 
-„ Digitalisierung und Industrie 4.0 im Mittelstand – Gestaltungsmöglich - \
-keiten der digitalen Infrastruktur entlang der Wertschöpfungskette ”
+„ Digitalisierung und Industrie 4.0 im Mittelstand – Gestaltungsmöglichkeiten \
+der digitalen Infrastruktur entlang der Wertschöpfungskette ”
 
 „ Unter dem Begriff Digitalisierung verstehen wir die Transformation von \
 Geschäftsmodellen mit Hilfe von Informations - und Kommunikationstechnologien \
