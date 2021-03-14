@@ -32,28 +32,36 @@ def test_merge_sentences_merge_divis():
     assert 'Kontrollmöglichkeiten' in text
 
 
-@utilatest.longrun
-def test_merge_sentences_before_headline_regression():
-    required = fseventytwo.textrequired(pages=(14,))
+def master72_text(pages: tuple) -> str:
+    required = fseventytwo.textrequired(pages)
     pages = words.text.chapter.split(required)
     assert pages
-
+    # merge sentences
     merged = words.text.sentence.merge_sentences(pages)
     sentences = [item.sentence for item in merged]
     text = utila.NEWLINE.join(sentences)
+    return text
+
+
+def bachelor51_text(pages: tuple = None) -> str:
+    required = tests.fixtures.text.bachelor051_textrequired(pages=pages)
+    pages = words.text.chapter.split(required)
+    # merge sentences
+    merged = words.text.sentence.merge_sentences(pages)
+    sentences = [item.sentence for item in merged]
+    text = utila.NEWLINE.join(sentences)
+    return text
+
+
+@utilatest.longrun
+def test_merge_sentences_before_headline_regression():
+    text = master72_text((14,))
     assert 'Ausgewählte Positionen hierzu werden im Folgenden dargestellt.' in text
     assert len(text.splitlines()) == 12
 
 
 def test_merge_sentences_list_detection_regression():
-    required = fseventytwo.textrequired(pages=(9,))
-    pages = words.text.chapter.split(required)
-    assert pages
-
-    merged = words.text.sentence.merge_sentences(pages)
-    sentences = [item.sentence for item in merged]
-    text = utila.NEWLINE.join(sentences)
-
+    text = master72_text((9,))
     # no list starter in text
     assert '&#61607;' not in text
     # list start
@@ -63,36 +71,21 @@ def test_merge_sentences_list_detection_regression():
 
 
 def test_merge_sentences_footer_regression():
-    required = fseventytwo.textrequired(pages=(21,))
-    pages = words.text.chapter.split(required)
-    # merge sentences
-    merged = words.text.sentence.merge_sentences(pages)
-    sentences = [item.sentence for item in merged]
-    text = utila.NEWLINE.join(sentences)
+    text = master72_text((21,))
     # ensure that footer is not parsed as text
     assert 's. Michael Zimmer' not in text
     assert 'www.spiegel.de' not in text
 
 
 def test_merge_sentences_table_regression():
-    required = tests.fixtures.text.bachelor051_textrequired(pages=(21,))
-    pages = words.text.chapter.split(required)
-    # merge sentences
-    merged = words.text.sentence.merge_sentences(pages)
-    sentences = [item.sentence for item in merged]
-    text = utila.NEWLINE.join(sentences)
+    text = bachelor51_text((21,))
     assert 'Tab. 2: Untersuchungsplan' in text  # TODO: CHANGE AFTER SUPPORTING CAPTION
     # exclude table content from sentence matcher
     assert 'Probandenstichprobe' not in text
 
 
 def test_merge_sentences_figure_regression():
-    required = tests.fixtures.text.bachelor051_textrequired(pages=(31,))
-    pages = words.text.chapter.split(required)
-    # merge sentences
-    merged = words.text.sentence.merge_sentences(pages)
-    sentences = [item.sentence for item in merged]
-    text = utila.NEWLINE.join(sentences)
+    text = bachelor51_text((31,))
     # exclude figure from sentence detection
     assert 'Präwert' not in text
     assert 'Postwert' not in text
