@@ -27,6 +27,8 @@ TEXTINPUT = [
     ResultFile('words', 'list_list'),
 ]
 
+# TODO: USE ONELINE CONTENT FOR TEXT COMPUTATION?!
+
 WORKPLAN = [
     utila.create_step(
         'abbreviation',
