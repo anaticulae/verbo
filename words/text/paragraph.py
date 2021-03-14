@@ -89,7 +89,5 @@ def content_type(
         if magiccontent:
             for idx, item in magiccontent:
                 if idx == index:
-                    if item == iamraw.PageContentType.TABLE:
-                        return iamraw.PageContentType.TABLE
-                    break
+                    return item
     return iamraw.PageContentType.TEXT
