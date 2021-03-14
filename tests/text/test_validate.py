@@ -39,6 +39,7 @@ def test_validate_master072_text():
 @pytest.mark.parametrize('source, pages, expected', [
     pytest.param(power.BACHELOR051_PDF, utila.ranged_tuple(3, 42), 'bachelor051', id='bachelor051',
     marks=pytest.mark.xfail(reason='not ready yet')),
+    pytest.param(power.DISS266_PDF, utila.ranged_tuple(7, 213), 'diss266', id='diss266'),
 ])
 # yapf:enable
 def test_text_validate(source, pages, expected):
