@@ -43,7 +43,6 @@ def test_validate_master072_text():
 ])
 # yapf:enable
 def test_text_validate(source, pages, expected):
-    """Run help and version command to reach basic test coverage"""
     raw = load_current(source, pages)
     expected = load_expected(expected)
     utila.log(raw)
