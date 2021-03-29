@@ -9,6 +9,7 @@
 
 import configo
 import elements
+import elements.headline
 import iamraw
 import texmex
 
@@ -57,7 +58,7 @@ def extract_headline(
     if skip and not higher_equalthree:
         return None
 
-    if words.headlines.strategies.headline_blacklisted(text):
+    if elements.headline.noheadeline_pattern(text):
         return None
 
     dist_top = textdistances[containerid]

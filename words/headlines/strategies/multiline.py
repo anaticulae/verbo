@@ -11,6 +11,7 @@ import statistics
 
 import configo
 import elements
+import elements.headline
 import german
 import iamraw
 import texmex
@@ -75,7 +76,7 @@ def extract_page(data, page) -> iamraw.Headlines:
         # add decorating if required
         if before:
             before = plain(before)
-            chapter = words.headlines.strategies.headline_blacklisted(before)
+            chapter = elements.headline.noheadeline_pattern(before)
             if chapter:
                 headline.decoration = headline.start - 1
         result.append(headline)
@@ -156,7 +157,7 @@ def parse_headline(raw: str, before=None):  # pylint:disable=R0911
     if before:
         # look back and check for `Kapitel-X-Pattern`
         before = plain(before)
-        chapter = words.headlines.strategies.headline_blacklisted(before)
+        chapter = elements.headline.noheadeline_pattern(before)
         if chapter:
             return raw, 1, ''
     return None
