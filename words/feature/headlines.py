@@ -98,10 +98,10 @@ def work(  # pylint:disable=R0913,R0914
         )
         # only extract level four headlines if result does not contain any
         # 4.1.2.3 levels.
-        levelfour_ = words.headlines.levelfour.headlines(textnavigators)
-        valid = words.headlines.levelfour.valid_levelfour(extracted, levelfour_)
-        if levelfour_ and valid:
-            extracted = merge_levelfour(extracted, levelfour_)
+        levelfour = words.headlines.levelfour.headlines(textnavigators)
+        valid = words.headlines.levelfour.valid_levelfour(extracted, levelfour)
+        if levelfour and valid:
+            extracted = merge_levelfour(extracted, levelfour)
     # dump
     dumped = serializeraw.dump_headlines(extracted)
     oneline_dumped = serializeraw.dump_headlines(oneline_extracted)
