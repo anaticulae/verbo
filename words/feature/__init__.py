@@ -121,7 +121,7 @@ def load_resources_frompath(  # pylint:disable=R0914
     headerfooters = iamraw.path.headerfooters(path)
     lists = words.path.lists(path)
     headlines = words.path.headlines(path)
-    magics = magic.path.content_normal(path)
+    magics = magic.path.content_oneline(path)
 
     loaded = load_resources(
         text=text,

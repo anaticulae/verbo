@@ -58,7 +58,7 @@ def extract_headline(
     if skip and not higher_equalthree:
         return None
 
-    if elements.headline.noheadeline_pattern(text):
+    if elements.headline.noheadline_pattern(text):
         return None
 
     dist_top = textdistances[containerid]
