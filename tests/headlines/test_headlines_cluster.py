@@ -8,6 +8,7 @@
 # =============================================================================
 
 import iamraw
+import magic.path
 import power
 import pytest
 import serializeraw
@@ -16,17 +17,24 @@ import utilatest
 
 import words.headlines.machine
 import words.headlines.strategies.cluster
+import words.headlines.strategies.magic
 
 
 @pytest.fixture
 def master155pages50():
     source = power.link(power.MASTER155_PDF)
-    pages = utila.ranged_tuple(0, 50)
+    pages = utila.ranged_tuple(1, 86)
     ptcns = serializeraw.create_pagetextcontentnavigators_frompath(
         source,
         pages=pages,
+        prefix='oneline',
     )
-    return ptcns, pages
+    fontstore = serializeraw.create_fontstore_frompath(source)
+    magics = serializeraw.load_magic_types(
+        magic.path.content_oneline(source),
+        pages=pages,
+    )
+    return ptcns, fontstore, magics, pages
 
 
 MASTER155_SECTIONLIST = iamraw.Sections(content=[
@@ -47,7 +55,7 @@ MASTER155_SECTIONLIST = iamraw.Sections(content=[
 
 @utilatest.longrun
 def test_headlines_cluster_master155(master155pages50):
-    ptcns, pages = master155pages50
+    ptcns, _, __, pages = master155pages50
     # TODO: START END DOES NOT MATCH WITH CONTENT. IS THIS A PROBLEM?
     # SHOULD WE REMOVE THIS REDUNDANCY?
     result = words.headlines.machine.headlines(
