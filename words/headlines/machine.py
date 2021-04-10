@@ -51,8 +51,9 @@ def headlines(
     data = Data(ptcns, sectionlist, chapters, textsize, textdistance, fontstore,
                 magics, pages)
     # run strategies
+    # TODO: MOVE document strategy to separate method
     results = [
-        run(
+        strategy.document(data) if hasattr(strategy, 'document') else run(
             strategy=strategy,
             data=data,
             pages=pages,
