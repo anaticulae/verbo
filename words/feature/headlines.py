@@ -30,6 +30,7 @@ headline.
 """
 
 import collections
+import os
 import typing
 
 import iamraw.path
@@ -59,6 +60,7 @@ def work(  # pylint:disable=R0913,R0914
         sizeandborder: str,
         boxes: str,  # pylint:disable=W0613
         headerfooters: str,
+        magics: str = None,
         pages: tuple = None,
 ) -> typing.Tuple[str, str]:
     """Extract headlines out of data."""
@@ -70,6 +72,7 @@ def work(  # pylint:disable=R0913,R0914
         font_content,
         sizeandborder,
         headerfooters,
+        magics,
         pages=pages,
     )
     extracted = words.headlines.judge.run(results)
@@ -82,6 +85,7 @@ def work(  # pylint:disable=R0913,R0914
         oneline_font_content,
         sizeandborder,
         headerfooters,
+        magics,
         pages=pages,
     )
     oneline_extracted = words.headlines.judge.run(oneline_results)
@@ -162,6 +166,7 @@ def extract_headlines(
         fontcontent,
         sizeandborder,
         headerfooters,
+        magics=None,
         pages: tuple = None,
 ):
     ptcns = serializeraw.create_pagetextcontentnavigators_fromfile(
@@ -174,11 +179,24 @@ def extract_headlines(
         pages=pages,
     )
     sectionlist = serializeraw.load_sections(sections_, pages=pages)
+    fontstore = serializeraw.create_fontstore(
+        fontheader,
+        fontcontent,
+        pages=pages,
+    )
+
+    if magics is not None:
+        if os.path.exists(magics):
+            magics = serializeraw.load_magic_types(magics)
+        else:
+            magics = None
 
     result = words.headlines.machine.headlines(
         ptcns,
         sectionlist,
+        fontstore=fontstore,
         chapters=None,
+        magics=magics,
         pages=pages,
     )
     return result

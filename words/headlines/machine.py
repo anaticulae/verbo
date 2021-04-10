@@ -28,7 +28,7 @@ STRATEGIES = [
 
 Data = collections.namedtuple(
     'Data',
-    'ptcns sectionlist chapters textsize textdistance',
+    'ptcns sectionlist chapters textsize textdistance fontstore magics pages',
 )
 
 
@@ -36,7 +36,9 @@ def headlines(
         ptcns: texmex.PageTextContentNavigators,
         sectionlist: iamraw.SectionsList,
         chapters: 'ChapterRanges' = None,
+        fontstore=None,
         strategies=None,
+        magics=None,
         pages: tuple = None,
 ) -> iamraw.Headlines:
     strategies = strategies if strategies else STRATEGIES
@@ -46,7 +48,8 @@ def headlines(
         navigators=ptcns,
         digits=0,
     )
-    data = Data(ptcns, sectionlist, chapters, textsize, textdistance)
+    data = Data(ptcns, sectionlist, chapters, textsize, textdistance, fontstore,
+                magics, pages)
     # run strategies
     results = [
         run(
