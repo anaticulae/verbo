@@ -67,3 +67,19 @@ def test_headlines_cluster_master155(master155pages50):
     )
     result = result[0]  # single strategy was used
     assert len(result) == 5  # five different chapter
+
+
+# @utilatest.longrun
+def test_headlines_magic_master155(master155pages50):
+    ptcns, fontstore, magics, pages = master155pages50
+    result = words.headlines.machine.headlines(
+        ptcns=ptcns,
+        sectionlist=MASTER155_SECTIONLIST,
+        chapters=[0, 1, 2, 3],
+        fontstore=fontstore,
+        strategies=[words.headlines.strategies.magic],
+        magics=magics,
+        pages=pages,
+    )
+    result = result[0]  # single strategy was used
+    assert len(result) == 7  # seven different chapter
