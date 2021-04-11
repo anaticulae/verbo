@@ -14,6 +14,7 @@ import texmex
 import utila
 
 import words.headlines.strategies.cluster
+import words.headlines.strategies.magic
 import words.headlines.strategies.multiline
 import words.headlines.strategies.nolevel
 import words.headlines.strategies.standard
@@ -24,6 +25,7 @@ STRATEGIES = [
     words.headlines.strategies.nolevel,
     words.headlines.strategies.standard,
     words.headlines.strategies.cluster,
+    words.headlines.strategies.magic,
 ]
 
 Data = collections.namedtuple(
