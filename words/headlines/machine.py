@@ -43,7 +43,8 @@ def headlines(
         magics=None,
         pages: tuple = None,
 ) -> iamraw.Headlines:
-    strategies = strategies if strategies else STRATEGIES
+    if not strategies:
+        strategies = STRATEGIES
     # prepare data
     textsize = texmex.document_textsize(navigators=ptcns)
     textdistance = words.headlines.utils.document_textdistance(
