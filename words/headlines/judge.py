@@ -23,12 +23,8 @@ def run(results):
         2. Compare result of 1. with StandardHeadlineExtractor
         3. Select best one one remaing strategies # TODO: VERIFY
     """
+    results = remove_invalids(results)
     report_results(results)
-    # remove invalid result
-    results = [
-        item if not (invalid_extraction(item) or too_many_error(item)) else []
-        for item in results
-    ]
 
     best = results[1]
     if any([len(item) for item in results[0]]):
@@ -58,9 +54,22 @@ def report_results(results: list):
     for strategy, result in zip(words.headlines.machine.STRATEGIES, results):
         utila.debug(strategy.__name__)
         for item in utila.flatten(result):
-            utila.debug(item.raw)
+            utila.debug(item.raw.strip())
         utila.debug('')
         utila.debug('')
+
+
+def remove_invalids(items: list) -> list:
+    result = []
+    for item in items:
+        if too_many_error(item):
+            result.append([])
+            continue
+        if invalid_extraction(item):
+            result.append([])
+            continue
+        result.append(item)
+    return result
 
 
 def score_headlines(items) -> int:
