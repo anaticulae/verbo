@@ -129,11 +129,23 @@ def patch(raw: str) -> int:
 
 MAX_LEVELONE_IN_A_ROW = configo.HV_INT_PLUS(4).value
 
+INVALID_ENDING_MAX = configo.HolyTable(
+    [
+        (0, 1),
+        (10, 2),
+        (50, 7),
+        (120, 10),
+    ],
+    strategy=utila.Strategy.LINEARISE,
+    right_outranges_none=False,
+)
+
 
 def invalid_extraction(headlines) -> bool:
     """Judge extracted strategy and decide if result can be valid.
 
     1. Strategy: Check longest sequence of level one headlines.
+    2. Strategy: Check headline ends with awkward characters.
     """
     headlines = utila.flatten(headlines)
     # too many level ones in a row
@@ -141,6 +153,13 @@ def invalid_extraction(headlines) -> bool:
     grouped = utila.groupby_diff(levels, diff=0, sort=False)
     longest_levelone = utila.longest([item for item in grouped if item[0] == 1])
     if len(longest_levelone) > MAX_LEVELONE_IN_A_ROW:  # TODO: HOLY VALUE
+        utila.debug(f'skip invalid extraction, too many first levels in a row')
+        return True
+    # too many invalid characters at title end
+    titles = [item.title.lower().strip() for item in headlines]
+    invalid_endings = len([item for item in titles if item[-1] in ',./;:)-'])
+    if invalid_endings > INVALID_ENDING_MAX(len(titles)):
+        utila.debug(f'skip invalid extraction: {invalid_endings} {len(titles)}')
         return True
     return False
 
