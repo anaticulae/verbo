@@ -21,7 +21,7 @@ def run(results):
     """\
         1. Compare Multiline and NoLevel - prefer multiline over NoLevel
         2. Compare result of 1. with StandardHeadlineExtractor
-        3. Select best one one remaing strategies # TODO: VERIFY
+        3. Select best one one remaining strategies # TODO: VERIFY
     """
     results = remove_invalids(results)
     report_results(results)
