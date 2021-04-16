@@ -291,7 +291,7 @@ Anhang"""
 @utilatest.nightly
 def test_headlines_validate(source, expected, testdir, monkeypatch):
     source = power.link(source)
-    tests.run(f'-i {source} --headlines', monkeypatch=monkeypatch)
+    tests.run(f'-i {source} --headlines -VVV', monkeypatch=monkeypatch)
 
     headlines = words.path.headlines(testdir.tmpdir)
     parsed = serializeraw.load_headlines(headlines)
