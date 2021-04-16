@@ -163,7 +163,7 @@ def parse_headline(raw: str, before=None):  # pylint:disable=R0911
     return None
 
 
-def filter_headlines(result: iamraw.PagesHeadlineList) -> int:
+def filter_headlines(result: iamraw.PagesHeadlineList) -> dict:
     """Convert chapter level based on text distances to logical level
     (1,2,3,4,...).
 

@@ -11,7 +11,7 @@ import iamraw
 import utila
 
 
-def cluster_headline_level(items: iamraw.PagesHeadlineList):
+def cluster_headline_level(items: iamraw.PagesHeadlineList) -> dict:
     headlines = []
     for chapter in items.values():
         if not chapter:
@@ -56,7 +56,7 @@ def could_not_cluster(items: iamraw.PagesHeadlineList):
     return items
 
 
-def update_level(items: iamraw.PagesHeadlineList, border, diff):
+def update_level(items: iamraw.PagesHeadlineList, border, diff) -> dict:
     for chapter in items.values():
         if not chapter:
             continue
