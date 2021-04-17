@@ -170,34 +170,3 @@ HEADLINE = re.compile(
 def parse_headline(line):
     line = line.strip()
     return re.match(HEADLINE, line)
-
-
-HEADLINE_CHAPTER = re.compile(
-    r"""
-    ^
-    (?P<rawlevel>
-        (KAPITEL|CHAPTER|ANHANG|APPENDIX)
-        [ ]{0,5}
-        \d{1,2}
-    [ ]{0,5}
-    \:
-    )
-    [ ]{0,5}
-    (?P<title>.+)
-""",
-    re.VERBOSE | re.I,
-)
-
-
-def parse_chapter_level(raw: str) -> tuple:
-    """\
-    >>> parse_chapter_level('KAPITEL 1: EINLEITUNG')
-    ('EINLEITUNG', 'KAPITEL 1:')
-    >>> parse_chapter_level('KAPITEL 5: FÜR EINE BÜRGERNAHE UND DEMOKRATISCH LEGITIMIERTE EUROPÄISCH')
-    ('FÜR EINE BÜRGERNAHE UND DEMOKRATISCH LEGITIMIERTE EUROPÄISCH', 'KAPITEL 5:')
-    """
-    parsed = HEADLINE_CHAPTER.match(raw)
-    if not parsed:
-        return None
-    title, rawlevel = parsed['title'], parsed['rawlevel']
-    return title, rawlevel

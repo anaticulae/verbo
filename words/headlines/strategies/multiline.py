@@ -142,7 +142,7 @@ def parse_headline(raw: str, before=None):  # pylint:disable=R0911
         if level is False:
             return None
         return title, level, rawlevel
-    parsed = words.headlines.utils.parse_chapter_level(raw)
+    parsed = elements.headline.parse_chapter_level(raw)
     if parsed:
         title, rawlevel = parsed
         level = 1  # pylint:disable=R0204
