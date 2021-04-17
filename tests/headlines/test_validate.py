@@ -260,38 +260,34 @@ Literaturverzeichnis
 Anhang"""
 
 
-@pytest.mark.parametrize('source, expected', [
-    pytest.param(power.BACHELOR037_PDF, BACHELOR037_HEADLINES, id='bachelor37'),
-    pytest.param(power.MASTER098_PDF, MASTER98_HEADLINES, id='master98'),
-    pytest.param(
-        power.MASTER155_PDF,
-        MASTER155_HEADLINES,
-        id='master155',
+# yapf:disable
+@pytest.mark.parametrize('source, pages, expected', [
+    pytest.param(power.BACHELOR037_PDF, None, BACHELOR037_HEADLINES, id='bachelor37'),
+    pytest.param(power.MASTER098_PDF, None, MASTER98_HEADLINES, id='master98'),
+    pytest.param(power.MASTER155_PDF, MASTER155_HEADLINES, None, id='master155',
         marks=pytest.mark.xfail(reason='upgrading utila?'),
     ),
-    pytest.param(power.BACHELOR090_PDF, BACHELOR090_HEADLINES, id='bachelor90'),
-    pytest.param(
-        power.DISS264_PDF,
-        DISS264_HEADLINES,
-        id='diss264',
+    pytest.param(power.BACHELOR090_PDF, None, BACHELOR090_HEADLINES, id='bachelor90'),
+    pytest.param(power.DISS264_PDF, DISS264_HEADLINES, None, id='diss264',
         marks=pytest.mark.xfail,
     ),
-    pytest.param(power.BACHELOR063_PDF, BACHELOR063_HEADLINES, id='bachelor63'),
-    pytest.param(power.BACHELOR051_PDF, BACHELOR051_HEADLINES, id='bachelor51'),
-    pytest.param(power.DOCU27_PDF, DOCU027_HEADLINES, id='docu27'),
-    pytest.param(power.BACHELOR128_PDF, BACHELOR128_HEADLINES, id='bsc128'),
-    pytest.param(
-        power.MASTER110_PDF,
-        MASTER110_HEADLINES,
-        id='master110',
+    pytest.param(power.BACHELOR063_PDF, None, BACHELOR063_HEADLINES, id='bachelor63'),
+    pytest.param(power.BACHELOR051_PDF, None, BACHELOR051_HEADLINES, id='bachelor51'),
+    pytest.param(power.DOCU27_PDF, None, DOCU027_HEADLINES, id='docu27'),
+    pytest.param(power.BACHELOR128_PDF, None, BACHELOR128_HEADLINES, id='bsc128'),
+    pytest.param(power.MASTER110_PDF, None, MASTER110_HEADLINES, id='master110',
         marks=pytest.mark.xfail(reason='require ffi special char converter'),
     ),
-    pytest.param(power.DISS266_PDF, DISS266_HEADLINES, id='diss266'),
+    pytest.param(power.DISS266_PDF, '7:215', DISS266_HEADLINES, id='diss266'),
 ])
+# yapf:enable
 @utilatest.nightly
-def test_headlines_validate(source, expected, testdir, monkeypatch):
-    source = power.link(source)
-    tests.run(f'-i {source} --headlines -VVV', monkeypatch=monkeypatch)
+def test_headlines_validate(source, pages, expected, testdir, monkeypatch):
+    src, pages = power.link(source), pages if isinstance(pages, str) else ':'
+    tests.run(
+        f'-i {src} --headlines -VVV --pages={pages}',
+        monkeypatch=monkeypatch,
+    )
 
     headlines = words.path.headlines(testdir.tmpdir)
     parsed = serializeraw.load_headlines(headlines)
