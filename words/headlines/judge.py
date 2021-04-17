@@ -36,8 +36,12 @@ def run(results):
     best_flat = score_headlines(best)
     standard_flat = score_headlines(results[2])
     cluster_flat = score_headlines(results[3])
+    magic_flat = score_headlines(results[4])
 
     maxed = max(best_flat, standard_flat) * 2
+    if magic_flat > maxed:
+        # backup strategy
+        return results[4]
     if cluster_flat > maxed:
         # backup strategy
         return results[3]
@@ -173,6 +177,7 @@ ERROR_MAX = configo.HolyTable(
         (50, 6),
         (70, 7),
         (90, 9),
+        (100, 10),
         (120, 12),
     ],
     strategy=utila.Strategy.LOWER,
