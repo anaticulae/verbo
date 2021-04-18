@@ -78,6 +78,7 @@ def test_headlines_multiple_master72_extract_pages_38_42():
     assert headlines == expected
 
 
+@utilatest.longrun
 def test_headlines_multiple_diss266():
     path = power.link(power.DISS266_PDF)
     pages = utila.ranged_tuple(7, 266)
