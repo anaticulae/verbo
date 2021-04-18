@@ -159,7 +159,7 @@ def groupby_headlinelevel(chapters):
 # AND CONVERT TO SINGLE ONE.
 HEADLINE = re.compile(
     ('^'
-     r'(?P<level>(\d{1,2}\.?)+\d{0,2})'
+     r'(?P<level>((\d{1,2}\.?)+\d{0,2})|[abcdefg]\.)'
      r'[ ]{1,5}'
      r'(?P<text>.+?)'
      '$'),
@@ -168,5 +168,9 @@ HEADLINE = re.compile(
 
 
 def parse_headline(line):
+    """\
+    >>> parse_headline('c. Gesamtbewertung')
+    <re.Match object; span=(0, 18), match='c. Gesamtbewertung'>
+    """
     line = line.strip()
     return re.match(HEADLINE, line)
