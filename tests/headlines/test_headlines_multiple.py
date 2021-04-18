@@ -78,7 +78,16 @@ def test_headlines_multiple_master72_extract_pages_38_42():
     assert headlines == expected
 
 
-def parse_multiline(path: str, pages: tuple):
+def test_headlines_multiple_diss266():
+    path = power.link(power.DISS266_PDF)
+    pages = utila.ranged_tuple(7, 266)
+    headlines = parse_multiline(path, pages, prefix='oneline')
+    assert headlines[0] == ('', 'VORWORT', 1)
+    assert headlines[-1] == ('ANHANG 8:', 'LEBENSLAUF', 2)
+    assert len(headlines) == 77
+
+
+def parse_multiline(path: str, pages: tuple, prefix: str = ''):
     sections_ = sections.feature.section.load_section_likelihood_frompath(
         path,
         pages=pages,
@@ -86,6 +95,7 @@ def parse_multiline(path: str, pages: tuple):
     loaded = serializeraw.create_pagetextcontentnavigators_frompath(
         path,
         pages=pages,
+        prefix=prefix,
     )
     result = words.headlines.machine.headlines(
         ptcns=loaded,
