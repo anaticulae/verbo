@@ -66,7 +66,8 @@ def report_results(results: list):
 
 def remove_invalids(items: list) -> list:
     result = []
-    for item in items:
+    for item, strategy in zip(items, words.headlines.machine.STRATEGIES):
+        utila.debug(strategy.__name__)
         if too_many_error(item):
             result.append([])
             continue
