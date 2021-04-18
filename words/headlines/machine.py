@@ -56,7 +56,7 @@ def headlines(
     # run strategies
     # TODO: MOVE document strategy to separate method
     results = [
-        strategy.document(data) if hasattr(strategy, 'document') else run(
+        strategy.document(data) if hasattr(strategy, 'document') else run(  # pylint:disable=E1120
             strategy=strategy,
             data=data,
             pages=pages,

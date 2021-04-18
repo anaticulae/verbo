@@ -296,12 +296,12 @@ def test_headlines_validate(source, pages, expected, testdir, monkeypatch):
     expected = str(expected)
 
     oneline = serializeraw.load_headlines(words.path.oneline_headlines(testdir.tmpdir))  # yapf:disable
-    oneline = raw_headlines(oneline)
+    oneline: str = raw_headlines(oneline)
 
     normal = serializeraw.load_headlines(words.path.headlines(testdir.tmpdir))
-    normal = raw_headlines(normal)
+    normal: str = raw_headlines(normal)
 
-    assert oneline == expected or normal == expected
+    assert expected in (oneline, normal)
 
 
 def raw_headlines(parsed) -> str:

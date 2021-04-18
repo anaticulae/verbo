@@ -54,7 +54,7 @@ MASTER155_SECTIONLIST = iamraw.Sections(content=[
 
 
 @utilatest.longrun
-def test_headlines_cluster_master155(master155pages50):
+def test_headlines_cluster_master155(master155pages50):  # pylint:disable=W0621
     ptcns, _, __, pages = master155pages50
     # TODO: START END DOES NOT MATCH WITH CONTENT. IS THIS A PROBLEM?
     # SHOULD WE REMOVE THIS REDUNDANCY?
@@ -70,7 +70,7 @@ def test_headlines_cluster_master155(master155pages50):
 
 
 @utilatest.longrun
-def test_headlines_magic_master155(master155pages50):
+def test_headlines_magic_master155(master155pages50):  # pylint:disable=W0621
     ptcns, fontstore, magics, pages = master155pages50
     result = words.headlines.machine.headlines(
         ptcns=ptcns,
