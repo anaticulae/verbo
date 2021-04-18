@@ -8,6 +8,7 @@
 # =============================================================================
 
 import contextlib
+import re
 
 import configo
 import elements
@@ -120,14 +121,25 @@ def patch(raw: str) -> int:
     0
     >>> patch('1.')
     1
+    >>> patch('d.')
+    4
+    >>> patch('Kapitel 6:')
+    6
     """
     if not raw:
         return None
+    if 'KAPITEL' in raw.upper():
+        matched = re.match(r'KAPITEL (\d)', raw, re.IGNORECASE)
+        if matched:
+            return int(matched[1])
     splitted = [item for item in raw.rsplit('.') if item]
     if not splitted:
         return None
     with contextlib.suppress(ValueError):
-        return int(splitted[-1])
+        last = splitted[-1]
+        for index, char in enumerate('abcdefgh', start=1):
+            last = last.replace(char, str(index))
+        return int(last)
     return 0
 
 
