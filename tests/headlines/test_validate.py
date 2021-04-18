@@ -276,7 +276,7 @@ Anhang"""
         marks=pytest.mark.xfail,
     ),
     pytest.param(power.BACHELOR063_PDF, None, BACHELOR063_HEADLINES, id='bachelor63'),
-    pytest.param(power.BACHELOR051_PDF, None, BACHELOR051_HEADLINES, id='bachelor51'),
+    pytest.param(power.BACHELOR051_PDF, '0:48', BACHELOR051_HEADLINES, id='bachelor51'),
     pytest.param(power.DOCU27_PDF, None, DOCU027_HEADLINES, id='docu27'),
     pytest.param(power.BACHELOR128_PDF, None, BACHELOR128_HEADLINES, id='bsc128'),
     pytest.param(power.MASTER110_PDF, None, MASTER110_HEADLINES, id='master110',
@@ -295,11 +295,13 @@ def test_headlines_validate(source, pages, expected, testdir, monkeypatch):
     # ensure that lazy file is loaded
     expected = str(expected)
 
-    headlines = words.path.headlines(testdir.tmpdir)
-    parsed = serializeraw.load_headlines(headlines)
+    oneline = serializeraw.load_headlines(words.path.oneline_headlines(testdir.tmpdir))  # yapf:disable
+    oneline = raw_headlines(oneline)
 
-    raw = raw_headlines(parsed)
-    assert raw == expected
+    normal = serializeraw.load_headlines(words.path.headlines(testdir.tmpdir))
+    normal = raw_headlines(normal)
+
+    assert oneline == expected or normal == expected
 
 
 def raw_headlines(parsed) -> str:
