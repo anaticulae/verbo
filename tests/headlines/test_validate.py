@@ -32,12 +32,16 @@ class LazyFile:
 
     def lazy(self):
         if self.content is not None:
-            return
+            return self.content
         self.content = utila.file_read(self.path).strip()
+        return self.content
 
     def __eq__(self, value):
         self.lazy()
         return self.content == value
+
+    def __str__(self):
+        return self.lazy()
 
 
 file_read = lambda x: LazyFile(os.path.join(EXPECTED, x))  # pylint:disable=C0103
@@ -288,6 +292,8 @@ def test_headlines_validate(source, pages, expected, testdir, monkeypatch):
         f'-i {src} --headlines -VVV --pages={pages}',
         monkeypatch=monkeypatch,
     )
+    # ensure that lazy file is loaded
+    expected = str(expected)
 
     headlines = words.path.headlines(testdir.tmpdir)
     parsed = serializeraw.load_headlines(headlines)
