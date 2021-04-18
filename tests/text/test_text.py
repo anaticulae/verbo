@@ -23,6 +23,7 @@ import words.text
 import words.undefined
 
 
+@utilatest.longrun
 def test_text_work():
     headlines = tests.fixtures.restruct.restructured_headlines()
     result = words.feature.text.work(
@@ -39,6 +40,7 @@ def test_text_work():
     assert len(result) > 6000, str(result)
 
 
+@utilatest.longrun
 def test_text_extractor_titles():
     result = tests.fixtures.restruct.restructured_textexample(
         require_headlinelevel=

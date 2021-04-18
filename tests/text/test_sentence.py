@@ -60,6 +60,7 @@ def test_merge_sentences_before_headline_regression():
     assert len(text.splitlines()) == 12
 
 
+@utilatest.longrun
 def test_merge_sentences_list_detection_regression():
     text = master72_text((9,))
     # no list starter in text
@@ -70,6 +71,7 @@ def test_merge_sentences_list_detection_regression():
     assert '27u' in text
 
 
+@utilatest.longrun
 def test_merge_sentences_footer_regression():
     text = master72_text((21,))
     # ensure that footer is not parsed as text
@@ -77,6 +79,7 @@ def test_merge_sentences_footer_regression():
     assert 'www.spiegel.de' not in text
 
 
+@utilatest.longrun
 def test_merge_sentences_table_regression():
     text = bachelor51_text((21,))
     assert 'Tab. 2: Untersuchungsplan' in text  # TODO: CHANGE AFTER SUPPORTING CAPTION
@@ -84,6 +87,7 @@ def test_merge_sentences_table_regression():
     assert 'Probandenstichprobe' not in text
 
 
+@utilatest.longrun
 def test_merge_sentences_figure_regression():
     text = bachelor51_text((31,))
     # exclude figure from sentence detection

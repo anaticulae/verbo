@@ -12,6 +12,7 @@ import os
 import power
 import pytest
 import utila
+import utilatest
 
 import words
 import words.feature
@@ -25,6 +26,7 @@ def load_expected(name) -> str:
 
 
 @pytest.mark.xfail(reason='require some little changes')
+@utilatest.longrun
 def test_validate_master072_text():
     source = power.MASTER072_PDF
     pages = utila.ranged_tuple(3, 64)
@@ -42,6 +44,7 @@ def test_validate_master072_text():
     pytest.param(power.DISS266_PDF, utila.ranged_tuple(7, 213), 'diss266', id='diss266'),
 ])
 # yapf:enable
+@utilatest.longrun
 def test_text_validate(source, pages, expected):
     raw = load_current(source, pages)
     expected = load_expected(expected)

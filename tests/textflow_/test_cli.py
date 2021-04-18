@@ -20,6 +20,7 @@ def test_textflow_cli(monkeypatch):
     tests.textflow_.run('--help', monkeypatch=monkeypatch)
 
 
+@utilatest.longrun
 def test_textflow_alignments_restruct(testdir, monkeypatch):
     """Ensure that document with empty page is parsed correctly."""
     source = power.link(power.DOCU27_PDF)
@@ -38,6 +39,7 @@ def test_textflow_alignments(source, testdir, monkeypatch):
     tests.textflow_.run(f'-i {source}', monkeypatch=monkeypatch)
 
 
+@utilatest.longrun
 def test_textflow_wordspace_bachelor56page4(testdir, monkeypatch):
     source = power.link(power.BACHELOR056_PDF)
     tests.textflow_.run(

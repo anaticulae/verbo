@@ -91,6 +91,7 @@ def test_headlines_extract_headlines():
     assert extracted == EXPECTED
 
 
+@utilatest.longrun
 def test_headlines_work():
     sections_ = tests.fixtures.restruct.restructured_sections()
     src = power.link(power.DOCU27_PDF)

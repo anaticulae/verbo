@@ -66,6 +66,7 @@ def test_page_linealignment_homework40_page4():
     assert linealignments[-1] == TextAlignment.RIGHT
 
 
+@utilatest.longrun
 def test_page_linealignment_master72_page4():
     navigators = serializeraw.create_pagetextnavigators_frompath(
         power.link(power.MASTER072_PDF),
@@ -85,6 +86,7 @@ def test_page_linealignment_master72_page4():
     assert linealignments[-1] == TextAlignment.RIGHT
 
 
+@utilatest.longrun
 def test_page_linealignment_master72_page15():
     navigators = serializeraw.create_pagetextnavigators_frompath(
         power.link(power.MASTER072_PDF),

@@ -11,10 +11,12 @@ import power
 import pytest
 import serializeraw
 import utila
+import utilatest
 
 import textflow.alignment.style
 
 
+@utilatest.longrun
 def test_page_linealignments_expected_master72_page4():
     source = power.link(power.MASTER072_PDF)
     pages = (4,)
@@ -35,6 +37,7 @@ def test_page_linealignments_expected_master72_page4():
 
 
 @pytest.mark.xfail(reason='enable later')
+@utilatest.longrun
 def test_page_linealignments_expected_master72_page6():
     source = power.link(power.MASTER072_PDF)
     pages = (6,)
