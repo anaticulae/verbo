@@ -41,7 +41,8 @@ def test_validate_master072_text():
 @pytest.mark.parametrize('source, pages, expected', [
     pytest.param(power.BACHELOR051_PDF, utila.ranged_tuple(3, 42), 'bachelor051', id='bachelor051',
     marks=pytest.mark.xfail(reason='not ready yet')),
-    pytest.param(power.DISS266_PDF, utila.ranged_tuple(7, 213), 'diss266', id='diss266'),
+    pytest.param(power.DISS266_PDF, utila.ranged_tuple(7, 213), 'diss266', id='diss266',
+    marks=pytest.mark.xfail(reason='not ready yet')),
 ])
 # yapf:enable
 @utilatest.longrun
