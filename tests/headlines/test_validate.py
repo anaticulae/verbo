@@ -68,6 +68,7 @@ BACHELOR128_HEADLINES = file_read('bachelor128')
 
 MASTER98_HEADLINES = file_read('master098')
 MASTER110_HEADLINES = file_read('master110')
+MASTER116_HEADLINES = file_read('master116')
 MASTER155_HEADLINES = file_read('master155')
 
 DISS264_HEADLINES = file_read('diss264')
@@ -85,6 +86,7 @@ DISS264_HEADLINES = file_read('diss264')
     pytest.param(power.MASTER110_PDF, None, MASTER110_HEADLINES, id='master110',
         marks=pytest.mark.xfail(reason='require ffi special char converter'),
     ),
+    pytest.param(power.MASTER116_PDF, None, MASTER116_HEADLINES, id='master116'),
     pytest.param(power.MASTER155_PDF, MASTER155_HEADLINES, None, id='master155',
         marks=pytest.mark.xfail(reason='upgrading utila?'),
     ),
