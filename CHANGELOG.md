@@ -2,6 +2,36 @@
 
 Every noteable change is logged here.
 
+## v0.28.0
+
+### Feature
+
+* extend debugging information (e0d89930bbf8)
+* extend patch pattern (fdce369c8a55)
+* add character level pattern (998218d1b0ff)
+* add magic strategy to result selection (f29b03332194)
+* extend headline level error table (4fef4140bfe5)
+* add method to detect too many invalid headline endings (7850d8a2893c)
+* add more debugging information (692f04faf4ab)
+* add enable magic strategy (042890a2e2e6)
+* add magic strategy which use doctextstyle clustering (7306372a25ca)
+* add document machine strategy (2527e1740fc6)
+* add fonts and magics to headline extractor (7005569f1ba2)
+* load headlines from generated content (485419173f5f)
+* extend content type detector (8c7a7cef29fe)
+* handle undefined sentences (06fdd85ba4ed)
+* skip table content (23e204f11917)
+
+### Fix
+
+* handle empty strings correctly (53875c1ff8fc)
+* headline is already in content coordinates (1b62215a1e18)
+* skip invalid list access (2e853bccb69f)
+
+### Documentation
+
+* extend interface documentation (febbf5a98b8a)
+
 ## v0.27.6
 
 ### Fix
