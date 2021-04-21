@@ -35,7 +35,7 @@ def process_text(texts):
 
 def process_chunk(sentence):
     result = []
-    hyperlinks = german.hyperlink(sentence, position=True)  # pylint:disable=unexpected-keyword-arg
+    hyperlinks = german.hyperlink(sentence, position=True)
     if hyperlinks:
         hyperlinks = try_merge(sentence)
     for hyperlink, starting in hyperlinks:
@@ -47,7 +47,7 @@ def process_chunk(sentence):
             after=30,
         )
         date = date[0] if date else None
-        result.append(iamraw.ExtractedHyperLink(href=hyperlink, visited=date))  # pylint:disable=E1101
+        result.append(iamraw.ExtractedHyperLink(href=hyperlink, visited=date))
     return result
 
 
@@ -80,7 +80,7 @@ def try_merge(sentence: str) -> list:
     """
     # TODO: SUPPORT MORE THAN ONE FORWARD MERGE
     result = []
-    hyperlinks = german.hyperlink(sentence, position=True)  # pylint:disable=unexpected-keyword-arg
+    hyperlinks = german.hyperlink(sentence, position=True)
     for hyperlink, starting in hyperlinks:
         index = starting + len(hyperlink)
         try:
