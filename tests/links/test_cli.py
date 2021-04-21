@@ -15,10 +15,13 @@ import words.path
 
 
 def test_links_master75(testdir, monkeypatch):
-    # TODO: MASTER&% TEXT SECTION EXTRACTION IS BROKEN
-    cmd = f'-i {power.link(power.MASTER075_PDF)} --links'
-    tests.run(cmd, monkeypatch=monkeypatch)
-
-    loaded = serializeraw.load_hyperlinks(words.path.links(testdir.tmpdir))  # pylint:disable=E1101
-
+    # TODO: MASTER75 TEXT SECTION EXTRACTION IS BROKEN
+    loaded = hyperlinks(power.MASTER075_PDF, testdir, monkeypatch)
     assert len(loaded) == 22
+
+
+def hyperlinks(source, testdir, monkeypatch, pages=':'):
+    cmd = f'-i {power.link(source)} --links --pages={pages}'
+    tests.run(cmd, monkeypatch=monkeypatch)
+    loaded = serializeraw.load_hyperlinks(words.path.links(testdir.tmpdir))  # pylint:disable=e1101
+    return loaded
