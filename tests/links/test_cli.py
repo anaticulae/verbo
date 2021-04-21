@@ -20,6 +20,15 @@ def test_links_master75(testdir, monkeypatch):
     assert len(loaded) == 22
 
 
+def test_links_master75_pages15(testdir, monkeypatch):
+    loaded = hyperlinks(power.MASTER075_PDF, testdir, monkeypatch, 15)
+    assert len(loaded) == 1
+    hyperlink = loaded[0].href
+    assert hyperlink.startswith('https')
+    assert hyperlink.endswith('index.html')
+    assert loaded[0].visited
+
+
 def hyperlinks(source, testdir, monkeypatch, pages=':'):
     cmd = f'-i {power.link(source)} --links --pages={pages}'
     tests.run(cmd, monkeypatch=monkeypatch)

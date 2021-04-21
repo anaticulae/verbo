@@ -75,7 +75,7 @@ def lookaround(
 def try_merge(sentence: str) -> list:
     """\
     >>> try_merge('(Quelle: https://www.menschen _und_gesellschaft/'
-    ... 'bevoelkerung/_geschlecht/index.html - aufgerufen am 15.03.2017)')
+    ... ' bevoelkerung/_geschlecht/index.html - aufgerufen am 15.03.2017)')
     [('https://www.menschen_und_gesellschaft/bevoelkerung/_geschlecht/index.html', 9)]
     """
     # TODO: SUPPORT MORE THAN ONE FORWARD MERGE
@@ -83,23 +83,37 @@ def try_merge(sentence: str) -> list:
     hyperlinks = german.hyperlink(sentence, position=True)
     for hyperlink, starting in hyperlinks:
         index = starting + len(hyperlink)
-        try:
-            connector, _ = sentence[index:].split(maxsplit=1)
-        except ValueError:
-            result.append((hyperlink, starting))
+        raw_sentence = sentence[index:]
+        merged = merge_forward(hyperlink, raw_sentence)
+        if merged:
+            # TODO: SUPPORT MORE THAN ONE HYPERLINK IN ONE SENTENCE
+            assert len(merged) == 1, str(merged)
+            result.append((merged[0], starting))
             continue
-        if plain_word(connector):
+        if plain_word(raw_sentence):
             # next word seams not content of hyperlink
             result.append((hyperlink, starting))
-            continue
-        mixed = hyperlink + connector
-        parsed = german.hyperlink(mixed)
-        if parsed:
-            result.append((parsed[0], starting))
             continue
         # connecting is not possible
         result.append((hyperlink, starting))
     return result
+
+
+def merge_forward(before, text) -> list:
+    splitted = text.split()
+    current = None
+    joined = before
+    for item in splitted:
+        current = german.hyperlink(joined)
+        if item == '-':
+            break
+        joined = joined + item
+        parsed = german.hyperlink(joined)
+        if not parsed:
+            break
+        if parsed[0] != joined:
+            break
+    return current
 
 
 def plain_word(text: str) -> bool:
