@@ -29,7 +29,7 @@ class AlignmentInfo:
             result = [selected.content[index] for index, _ in inside]
         except IndexError:
             # TODO: INVESTIGATE HOW THIS CAN HAPPEN
-            utila.error(f'out of bounds: {page}; {inside}')
+            utila.debug(f'alignment, out of bounds: {page}; {inside}')
             return []
         return result
 
