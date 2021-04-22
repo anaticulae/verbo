@@ -102,6 +102,8 @@ def valid(item: str):
 
 
 PATTERN = (
+    '([We05], S. 48)',
+    '([WIZ12])',
     '[Hof11, S. 309-311]',
     '[Hof11, S. 314f]',
     '[Mag13]',
