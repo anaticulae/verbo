@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v0.28.1
+
+### Feature
+
+* merge links over more than two lines (4823ff388a2b)
+
+### Fix
+
+* decrease verbosity (4c225e8e77c8)
+
 ## v0.28.0
 
 ### Feature
