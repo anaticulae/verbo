@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-utila>=2.26.0<3.0.0
+utila>=2.27.0<3.0.0
 iamraw>=4.14.2<5.0.0
 sections>=1.0.1<2.0.0
 
