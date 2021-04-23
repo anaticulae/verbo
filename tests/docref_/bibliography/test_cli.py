@@ -38,6 +38,18 @@ def test_docref_bibliography_master116(testdir, monkeypatch):
     assert len(bibliography) == 98  # NOT VALIDATED YET
 
 
+def test_docref_bibliography_master91b(testdir, monkeypatch):
+    """Do not parse overlapping words. Do not detect overlapping words
+    twice. Some pattern are part of other pattern."""
+    bibliography = extract_label(
+        power.MASTER091B_PDF,
+        testdir,
+        monkeypatch,
+        pages='9',
+    )
+    assert len(bibliography) == 2
+
+
 @utilatest.nightly
 def test_docref_bibliography_master98(testdir, monkeypatch):
     bibliography = extract_label(power.MASTER098_PDF, testdir, monkeypatch)
