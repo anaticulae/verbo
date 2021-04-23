@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v0.28.3
+
+### Feature
+
+* remove duplicated findings (e111403c9800)
+* add more pattern (37a4ebf8f305)
+
 ## v0.28.2
 
 ### Feature
