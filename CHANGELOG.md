@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.28.2
+
+### Feature
+
+* add more valid bib pattern (818dda1a0113)
+
 ## v0.28.1
 
 ### Feature
