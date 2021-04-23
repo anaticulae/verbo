@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.28.4
+
+### Feature
+
+* extend possible pattern (b82f4fa53d56)
+
 ## v0.28.3
 
 ### Feature
