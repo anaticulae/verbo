@@ -72,7 +72,7 @@ WORKPLAN = [
             ResultFile('rawmaker', 'boxes_boxes'),
             ResultFile('groupme', 'footer_footerheader'),
         ] + [
-            ResultFile('magic', 'content_content_normal', optional=True),
+            ResultFile('magic', 'content_content', optional=True),
         ],
         output=('headlines', 'oneline'),
     ),
@@ -99,7 +99,7 @@ WORKPLAN = [
     utila.create_step(
         'text',
         inputs=TEXTINPUT + [
-            ResultFile('magic', 'content_content_normal', optional=True),
+            ResultFile('magic', 'content_content', optional=True),
         ],
         output=('text',),
     ),
