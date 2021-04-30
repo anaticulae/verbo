@@ -127,8 +127,14 @@ def validate_master99(extracted):
     # assert len(page80[0]) == 3
 
 
+def validate_master155(extracted):
+    page24 = utila.select_content(extracted, page=24)
+    assert len(page24) == 1
+
+
 @pytest.mark.parametrize('source, validator', [
     pytest.param(power.MASTER099_PDF, validate_master99, id='master99'),
+    pytest.param(power.MASTER155_PDF, validate_master155, id='master155'),
 ])
 @utilatest.longrun
 def test_list_validate(source, validator, testdir, monkeypatch):
