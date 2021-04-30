@@ -55,7 +55,9 @@ def parse_quardo_list(content: str) -> utila.Strings:
 
 
 def parse_dotted_list(content: str) -> utila.Strings:
-    return parse_general_list(content, ['•', '\x88'])
+    # TODO: ADD SPECIAL CHAR CONVERTER TO RAWMAKER
+    # 61623: dot
+    return parse_general_list(content, ['•', '\x88', chr(61623)])
 
 
 def parse_plus_list(content: str) -> utila.Strings:
