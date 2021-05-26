@@ -172,7 +172,7 @@ def filter_headlines(result: iamraw.PagesHeadlineList) -> dict:
     """
     utila.call('convert_level')
     if (not result or not any(result.values()) or
-            not any([item for item in result.values()])):
+            not any(item for item in result.values())):
         # check that result pages are empty
         utila.info('empty PageHeadlineList')
         return {}

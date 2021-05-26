@@ -29,7 +29,7 @@ import words.headlines.strategies.multiline
 
 
 def filter_headlines(parsed) -> dict:  # pylint:disable=R0914
-    flat = utila.flatten([item for item in parsed.values()])
+    flat = utila.flatten(parsed.values())
     flat = doctextstyle.utils.flatten(flat)
     headlines = doctextstyle.features.headline.headlines(
         flat,

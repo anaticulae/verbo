@@ -161,8 +161,7 @@ def test_features_headlines_filter_headlines():
     example = tests.fixtures.headlines.EXAMPLE
 
     filtered = words.headlines.strategies.filter_headlines(example)
-
-    filtered = [item for item in filtered.values()]  # dict to list
+    filtered: list = list(filtered.values())  # dict to list
 
     subsections = [item[1:] for item in filtered]
     subsections_count = [len(item) for item in subsections]

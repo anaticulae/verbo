@@ -108,8 +108,7 @@ def fix_lastone(items):
     for item in splitted[1:]:
         if len(item) > (len(connected[-1]) * 1.1):  # TODO: HOLY VALUE
             break
-        else:
-            connected.append(item)
+        connected.append(item)
     # update last one
     updated = '\n'.join(connected)
     if isinstance(items[-1], tuple):

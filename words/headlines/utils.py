@@ -79,7 +79,7 @@ def determine_contentrange(items) -> 'words.headlines.ChapterRanges':
 
     if not chapters and contents:
         # no chapter is present - create `virtual chapter`
-        chapters = [[item for item in content.content] for content in contents]
+        chapters = list(list(content.content) for content in contents)
         chapters = utila.flatten(chapters)
     if not chapters:
         # TODO: INVESTIGATE HERE
@@ -94,7 +94,7 @@ def determine_contentrange(items) -> 'words.headlines.ChapterRanges':
             result.append((current.start, after.start - 1))
     result.append((chapters[-1].start, contents[-1].end))
     # ensure ascending page numbers
-    assert all([start <= end for start, end in result]), str(result)
+    assert all(start <= end for start, end in result), str(result)
     return result
 
 
@@ -135,8 +135,7 @@ def items_before_firstchapter(chapters, contents):
 
 
 def groupby_headlinelevel(chapters):
-    extracted = [item for item in chapters.values()]
-
+    extracted = list(chapters.values())
     flatten = utila.flatten(extracted)
     grouped = []
     if flatten:

@@ -28,7 +28,7 @@ def run(results):
     report_results(results)
 
     best = results[1]
-    if any([len(item) for item in results[0]]):
+    if any(len(item) for item in results[0]):
         # if any item is detected with multiline strategy, choose
         # multiline over NoLevelheadline
         best = results[0]
@@ -170,7 +170,7 @@ def invalid_extraction(headlines) -> bool:
     grouped = utila.groupby_diff(levels, diff=0, sort=False)
     longest_levelone = utila.longest([item for item in grouped if item[0] == 1])
     if len(longest_levelone) > MAX_LEVELONE_IN_A_ROW:  # TODO: HOLY VALUE
-        utila.debug(f'skip invalid extraction, too many first levels in a row')
+        utila.debug('skip invalid extraction, too many first levels in a row')
         return True
     # too many invalid characters at title end
     titles = [item.title.lower().strip() for item in headlines]

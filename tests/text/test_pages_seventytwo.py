@@ -72,10 +72,10 @@ def test_text_seventytwo_visit_sentences_merge_page_endstart():
         'Nutzerverhalten vor allem in Bezug auf die Privatheitsthematik.')
 
     # ensure that every sentence has a headline
-    assert all([item.headline is not None for item in merged])
+    assert all(item.headline is not None for item in merged)
 
     # ensure that every sentence has content
-    assert all([item.sentence is not None for item in merged])
+    assert all(item.sentence is not None for item in merged)
 
 
 @utilatest.longrun
@@ -132,7 +132,7 @@ def test_text_seventytwo_extract_textsections_page5_6_7():
     assert len(chapters) == 3
 
     headlines = [headline for headline, _ in chapters]
-    assert all([item.title is not None for item in headlines])
+    assert all(item.title is not None for item in headlines)
 
     sentences = [sentence for _, sentence in chapters]
     count = [len(item) for item in sentences]

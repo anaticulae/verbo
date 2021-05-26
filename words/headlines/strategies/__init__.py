@@ -42,7 +42,7 @@ def headline_decoration(navigator, containerid: int) -> int:
 
 def filter_headlines(items: iamraw.PagesHeadlineList):
     if isinstance(items, list):
-        items = {index: value for index, value in enumerate(items)}
+        items = dict(enumerate(items))
     result = collections.defaultdict(list)
     for chapter, content in items.items():
         chapter_headlines = []

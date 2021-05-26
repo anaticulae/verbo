@@ -29,7 +29,7 @@ def cluster_headline_level(items: iamraw.PagesHeadlineList) -> dict:
         # to less data to cluster
         return could_not_cluster(items)
 
-    groups = [item.center for item in clustered]
+    groups = list(item.center for item in clustered)
     groups = sorted(groups, key=lambda x: x['after'], reverse=True)
     groups = sorted(groups, key=lambda x: x['textsize'], reverse=True)
 

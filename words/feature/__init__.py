@@ -86,7 +86,7 @@ def load_resources(  # pylint:disable=R0914,R0913
             utila.log(f'skip loading magic: {magics}')
             magics = None
     else:
-        utila.log(f'skip loading magic')
+        utila.log('skip loading magic')
 
     fontstore = serializeraw.create_fontstore(fontheader, fontcontent)
     border = {navigator.page: navigator.content for navigator in ptcns}
