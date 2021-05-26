@@ -16,8 +16,8 @@ import words.text
 
 
 def extract_undefined(
-        pages: words.text.PageContentPageTextDetectedList,
-        ptcns: texmex.PageTextContentNavigators,
+    pages: words.text.PageContentPageTextDetectedList,
+    ptcns: texmex.PageTextContentNavigators,
 ):
     """Fill `undefined items` with TextContent and BoundingBox.
     Returns replaced pages with grouped replaced undefined items
@@ -32,9 +32,11 @@ def extract_undefined(
             splitted_paragraph = splitter(paragraph)
             # fill undefined groups with text content
             try:
-                paragraph_items = [(uindex, [
-                    ptcn[intindex(item)] for item in undefineds
-                ]) for (uindex, undefineds) in enumerate(splitted_paragraph)]
+                paragraph_items = [
+                    (uindex, [ptcn[intindex(item)]
+                              for item in undefineds])
+                    for (uindex, undefineds) in enumerate(splitted_paragraph)
+                ]
             except IndexError:
                 utila.error('IndexError')
                 paragraph_items = []

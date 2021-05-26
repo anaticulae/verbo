@@ -35,13 +35,13 @@ Data = collections.namedtuple(
 
 
 def headlines(
-        ptcns: texmex.PageTextContentNavigators,
-        sectionlist: iamraw.SectionsList,
-        chapters: 'ChapterRanges' = None,
-        fontstore=None,
-        strategies=None,
-        magics=None,
-        pages: tuple = None,
+    ptcns: texmex.PageTextContentNavigators,
+    sectionlist: iamraw.SectionsList,
+    chapters: 'ChapterRanges' = None,
+    fontstore=None,
+    strategies=None,
+    magics=None,
+    pages: tuple = None,
 ) -> iamraw.Headlines:
     if not strategies:
         strategies = STRATEGIES

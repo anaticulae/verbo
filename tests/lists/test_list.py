@@ -217,49 +217,46 @@ def test_merge_overlapping_lists():
             36,
             [
                 (0, 0,
-                 iamraw.PageList(
-                     data=[
-                         ('1.', 'A'),
-                         ('-', 'AA'),
-                         ('-', 'AAA'),
-                         ('2.', 'B'),
-                         ('-', 'BB'),
-                         ('3.', 'C'),
-                         ('-', 'CC'),
-                         ('-', 'CCC'),
-                     ],
-                     area=[6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
-                     paragraph=None,
-                     merged=None)),
+                 iamraw.PageList(data=[
+                     ('1.', 'A'),
+                     ('-', 'AA'),
+                     ('-', 'AAA'),
+                     ('2.', 'B'),
+                     ('-', 'BB'),
+                     ('3.', 'C'),
+                     ('-', 'CC'),
+                     ('-', 'CCC'),
+                 ],
+                                 area=[6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+                                 paragraph=None,
+                                 merged=None)),
             ], 17
         ],
         [
             41,
             [
                 (0, 0,
-                 iamraw.PageList(
-                     data=[
-                         ('-', 'A'),
-                         ('-', 'B'),
-                         ('-', 'C'),
-                     ],
-                     area=[2, 3, 4],
-                     paragraph=None,
-                     merged=None)),
+                 iamraw.PageList(data=[
+                     ('-', 'A'),
+                     ('-', 'B'),
+                     ('-', 'C'),
+                 ],
+                                 area=[2, 3, 4],
+                                 paragraph=None,
+                                 merged=None)),
                 (0, 0,
-                 iamraw.PageList(
-                     data=[
-                         ('+', 'www.Freebus.org'),
-                         ('+', 'www.eib-home.de'),
-                         ('+', 'www.knx.de'),
-                         ('+', 'First'),
-                         ('+', 'Second'),
-                         ('+', 'Third'),
-                         ('+', 'Fourth'),
-                     ],
-                     area=[6, 7, 8, 9, 10, 11, 12],
-                     paragraph=None,
-                     merged=None)),
+                 iamraw.PageList(data=[
+                     ('+', 'www.Freebus.org'),
+                     ('+', 'www.eib-home.de'),
+                     ('+', 'www.knx.de'),
+                     ('+', 'First'),
+                     ('+', 'Second'),
+                     ('+', 'Third'),
+                     ('+', 'Fourth'),
+                 ],
+                                 area=[6, 7, 8, 9, 10, 11, 12],
+                                 paragraph=None,
+                                 merged=None)),
             ], 13
         ],
     ]
@@ -274,29 +271,29 @@ def test_merge_overlapping_lists_two_pages():
         [
             9,
             [(0, 0,
-              iamraw.PageList(
-                  data=[(None, 'Blogs  gelten  als  die  fr▒heste  '),
-                        (None, 'Wikis  sind  Gemeinschaftsproduktio'),
-                        (None, 'Social  Network  Sites  widmen  sic'),
-                        (None, 'Microblogs  erm▒glichen  das  Versc'),
-                        (None, 'Social-Sharing-Plattformen  bzw.  C')],
-                  area=[
-                      12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,
-                      26, 27
-                  ],
-                  paragraph=None,
-                  merged=None))],
+              iamraw.PageList(data=[
+                  (None, 'Blogs  gelten  als  die  fr▒heste  '),
+                  (None, 'Wikis  sind  Gemeinschaftsproduktio'),
+                  (None, 'Social  Network  Sites  widmen  sic'),
+                  (None, 'Microblogs  erm▒glichen  das  Versc'),
+                  (None, 'Social-Sharing-Plattformen  bzw.  C')
+              ],
+                              area=[
+                                  12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22,
+                                  23, 24, 25, 26, 27
+                              ],
+                              paragraph=None,
+                              merged=None))],
             28,
         ],
         [
             10,
             [(0, 0,
-              iamraw.PageList(
-                  data=[(None, 'Virtual  Social  Worlds  ('),
-                        (None, 'Chats und Diskussionsforen')],
-                  area=[0, 1, 2, 3, 4],
-                  paragraph=None,
-                  merged=None))],
+              iamraw.PageList(data=[(None, 'Virtual  Social  Worlds  ('),
+                                    (None, 'Chats und Diskussionsforen')],
+                              area=[0, 1, 2, 3, 4],
+                              paragraph=None,
+                              merged=None))],
             27,
         ],
     ]

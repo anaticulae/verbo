@@ -93,9 +93,9 @@ BLOCK_EUQAL_BORDER_MAX_DIFF = 5.0
 
 
 def page_linealignments(
-        navigator,
-        left_alignment,
-        right_alignment,
+    navigator,
+    left_alignment,
+    right_alignment,
 ) -> TextAlignments:
     result = []
     border_left, border_right = leftright(

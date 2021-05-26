@@ -23,8 +23,8 @@ def dump_quotations(quotations) -> str:
 
 
 def load_quotations(
-        content: str,
-        pages: tuple = None,
+    content: str,
+    pages: tuple = None,
 ) -> textflow.quotation.data.ExtractedQuotations:
     loaded = utila.yaml_from_raw_or_path(content, safe=False)
     result = []
@@ -41,9 +41,9 @@ def load_quotations(
 
 # TODO: REPLACE WITH SERIALZIERAW?
 def load_text(
-        content: str,
-        headlines: iamraw.PagesHeadlineList = None,
-        pages=None,
+    content: str,
+    headlines: iamraw.PagesHeadlineList = None,
+    pages=None,
 ) -> iamraw.ChapterTextList:
     """Load text and replace headline reference with current headline
 
@@ -55,10 +55,8 @@ def load_text(
         loaded text with replaced headlines
     """
     loaded = utila.yaml_from_raw_or_path(content, safe=False)
-
     # convert page index to global index
     headlines = utila.flatten(headlines) if headlines else None
-
     result = []
     for line in loaded:
         page, content = int(line['page']), line['content']
@@ -74,8 +72,8 @@ def load_text(
                     level=None,
                     raw_level=None,
                     page=page,
-                    container=section['fc'])
+                    container=section['fc'],
+                )
             pagecontent.append((headline, section_content))
-
         result.append((page, pagecontent))
     return result

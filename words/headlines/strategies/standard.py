@@ -17,13 +17,13 @@ import words.headlines.strategies
 
 
 def extract_headline(
-        textinfo,
-        textdistances,
-        textfeeds,
-        ptcn: texmex.PageTextContentNavigator,
-        containerid: int,
-        skipper=None,
-        **kwargs,
+    textinfo,
+    textdistances,
+    textfeeds,
+    ptcn: texmex.PageTextContentNavigator,
+    containerid: int,
+    skipper=None,
+    **kwargs,
 ):  # pylint:disable=R0914
     text = textinfo.text
     fontdistance = textdistances[containerid + 1]

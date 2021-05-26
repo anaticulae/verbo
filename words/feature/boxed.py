@@ -25,14 +25,14 @@ PageContentBoxed = collections.namedtuple('PageContentBoxed', 'page content')
 
 @utila.checkdatatype
 def work(
-        extracted_text: str,
-        text: str,
-        text_position: str,
-        headlines: str,
-        border: str,
-        boxes: str,
-        headerfooters: str,
-        pages: tuple = None,
+    extracted_text: str,
+    text: str,
+    text_position: str,
+    headlines: str,
+    border: str,
+    boxes: str,
+    headerfooters: str,
+    pages: tuple = None,
 ) -> str:
     """Combine `extracted_text` and check the `undefined` fields for lists
 

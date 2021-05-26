@@ -163,9 +163,9 @@ def parse_general_list(content: str, selector: str) -> utila.Strings:
 
 
 def extract_lists(  # pylint:disable=R0914
-        page: texmex.PageTextNavigator,
-        pagesize: iamraw.Border,  # pylint:disable=W0613
-        uindex=None,
+    page: texmex.PageTextNavigator,
+    pagesize: iamraw.Border,  # pylint:disable=W0613
+    uindex=None,
 ) -> typing.List[iamraw.PageList]:
     """Extract lists out of document page. There are different types of Lists.
 

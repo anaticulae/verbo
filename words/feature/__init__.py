@@ -41,17 +41,17 @@ class TextRequiredResources:
 
 @functools.lru_cache(configo.CACHE_SMALL)
 def load_resources(  # pylint:disable=R0914,R0913
-        text: str,
-        textposition: str,
-        fontheader: str,
-        fontcontent: str,
-        headlines: str,
-        pagesizes: str,
-        boxes: str,
-        lists: str,
-        headerfooters: str,
-        magics: str = None,
-        pages=None,
+    text: str,
+    textposition: str,
+    fontheader: str,
+    fontcontent: str,
+    headlines: str,
+    pagesizes: str,
+    boxes: str,
+    lists: str,
+    headerfooters: str,
+    magics: str = None,
+    pages=None,
 ) -> TextRequiredResources:
     """Load content from path and create required object"""
 
@@ -104,8 +104,8 @@ def load_resources(  # pylint:disable=R0914,R0913
 
 @functools.lru_cache(configo.CACHE_SMALL)
 def load_resources_frompath(  # pylint:disable=R0914
-        path: str,
-        pages: tuple = None,
+    path: str,
+    pages: tuple = None,
 ) -> TextRequiredResources:
     text = iamraw.path.text(path)
     textposition = iamraw.path.textposition(path)
@@ -141,9 +141,9 @@ def load_resources_frompath(  # pylint:disable=R0914
 
 @functools.lru_cache(configo.CACHE_SMALL)
 def load_extracted(
-        extracted_text,
-        headlines,
-        pages=None,
+    extracted_text,
+    headlines,
+    pages=None,
 ) -> typing.Tuple[typing.List, iamraw.Border]:
     headlines = serializeraw.load_headlines(headlines, pages=pages)
     extracted_text = serializeraw.load_text(

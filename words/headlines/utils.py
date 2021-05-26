@@ -17,8 +17,8 @@ import utila
 
 
 def document_textdistance(
-        navigators: texmex.PageTextContentNavigators,
-        digits: int = 1,
+    navigators: texmex.PageTextContentNavigators,
+    digits: int = 1,
 ) -> float:
     """Determine the most common text distance"""
     result = []

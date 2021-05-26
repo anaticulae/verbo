@@ -52,12 +52,12 @@ def process_chunk(sentence):
 
 
 def lookaround(
-        text: str,
-        start: int,
-        end: int,
-        collector: callable,
-        before: int = 0,
-        after: int = 0,
+    text: str,
+    start: int,
+    end: int,
+    collector: callable,
+    before: int = 0,
+    after: int = 0,
 ):
     """Try to parse pattern `collector` before and or after parsed item.
     Check the neighborhood."""

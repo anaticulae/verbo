@@ -26,13 +26,13 @@ import words.loader
 
 @utila.checkdatatype
 def work(  # pylint:disable=R0914
-        text: str,
-        textpositions: str,
-        border: str,
-        headlines: str,
-        headerfooters: str,
-        magic: str = None,
-        pages: tuple = None,
+    text: str,
+    textpositions: str,
+    border: str,
+    headlines: str,
+    headerfooters: str,
+    magic: str = None,
+    pages: tuple = None,
 ) -> str:
     """Combine `extracted_text` and check the `undefined` fields for lists.
 

@@ -27,16 +27,16 @@ import words.text.sentence
 
 
 def work(
-        text: str,
-        textposition: str,
-        fontheader: str,
-        fontcontent: str,
-        headlines: str,
-        pagesizes: str,
-        headerfooters: str,
-        boxes: str,
-        lists: str,
-        pages: tuple = None,
+    text: str,
+    textposition: str,
+    fontheader: str,
+    fontcontent: str,
+    headlines: str,
+    pagesizes: str,
+    headerfooters: str,
+    boxes: str,
+    lists: str,
+    pages: tuple = None,
 ) -> str:
     """Extract highnotes out of words.
 
@@ -73,8 +73,9 @@ def work(
     return dumped
 
 
-def extract_highnotes(loaded: words.feature.TextRequiredResources,
-                     ) -> words.text.PageContentPageTextDetectedList:
+def extract_highnotes(
+    loaded: words.feature.TextRequiredResources,
+) -> words.text.PageContentPageTextDetectedList:
     """Iterate thrue document via headline and process the content
     between the headlines. Extract highnotes to find links to footer.
 

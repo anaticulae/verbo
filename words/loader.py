@@ -22,13 +22,13 @@ import words.undefined
 
 @functools.lru_cache(configo.CACHE_SMALL)
 def load_resources(
-        extracted_text,
-        text,
-        textpositions,
-        border,
-        headlines,
-        headerfooters,
-        pages=None,
+    extracted_text,
+    text,
+    textpositions,
+    border,
+    headlines,
+    headerfooters,
+    pages=None,
 ) -> typing.Tuple[typing.List, iamraw.Border]:
     headlines = serializeraw.load_headlines(headlines, pages=pages)
     extracted_text = serializeraw.load_text(

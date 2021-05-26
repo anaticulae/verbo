@@ -24,8 +24,8 @@ import words.text.sentence
 
 
 def extract_texts(
-        loaded: words.feature.TextRequiredResources,
-        require_headlinelevel: bool = True,
+    loaded: words.feature.TextRequiredResources,
+    require_headlinelevel: bool = True,
 ) -> words.text.PageContentPageTextDetectedList:
     """Iterate thrue document via headline and process the content
     between the headlines. Split Chapter into paragraphs and paragraphs
@@ -148,13 +148,13 @@ def split(loaded: words.feature.TextRequiredResources) -> words.text.PageTextWit
 
 
 def analyze_page(
-        headlines,
-        fontstore: iamraw.FontStore,
-        textnavigators: texmex.PageTextNavigators,
-        border: iamraw.Border,
-        boxes: words.boxed.BoxedChecker,
-        lists: 'ListLookUp',
-        magics: iamraw.PageContentContentTypes = None,
+    headlines,
+    fontstore: iamraw.FontStore,
+    textnavigators: texmex.PageTextNavigators,
+    border: iamraw.Border,
+    boxes: words.boxed.BoxedChecker,
+    lists: 'ListLookUp',
+    magics: iamraw.PageContentContentTypes = None,
 ) -> words.text.PageTextWithHeadlines:
     assert headlines, 'empty `headlines`'
     # Seek pagetextnavigator to correct positon
@@ -205,10 +205,10 @@ def analyze_page(
 
 
 def prepare_analyze_page(
-        headlines,
-        textnavigators,
-        fontstore,
-        borders,
+    headlines,
+    textnavigators,
+    fontstore,
+    borders,
 ) -> words.text.PageAnalyzeResources:
     """Add dummy headline if required.
 
@@ -257,8 +257,8 @@ def prepare_analyze_page(
 
 
 def insert_empty_pages(
-        headlines: iamraw.Headlines,
-        maxpage: int,
+    headlines: iamraw.Headlines,
+    maxpage: int,
 ) -> iamraw.Headlines:
     """Add pages with content but without any headlines.
 

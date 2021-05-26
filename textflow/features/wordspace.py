@@ -14,13 +14,13 @@ import textflow.wordspace
 
 
 def work(
-        text: str,
-        textpositions: str,
-        sizeandborderpath: str,
-        headerfooterpath: str,
-        magic: str,
-        wordspaces: str,
-        pages: tuple,
+    text: str,
+    textpositions: str,
+    sizeandborderpath: str,
+    headerfooterpath: str,
+    magic: str,
+    wordspaces: str,
+    pages: tuple,
 ) -> str:
     ptcns = serializeraw.create_pagetextcontentnavigators_fromfile(
         text,

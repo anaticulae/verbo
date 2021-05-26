@@ -34,8 +34,8 @@ def work(word: str, lists: str, pages: tuple = None) -> str:
 
 
 def collect_quotations(
-        word,
-        lists: iamraw.PageContentLists = None,
+    word,
+    lists: iamraw.PageContentLists = None,
 ) -> textflow.quotation.data.ExtractedQuotations:
     result = []
     for page, index, sentence, splitted in sentences(word, lists):
@@ -59,8 +59,8 @@ def collect_quotations(
 
 
 def sentences(  # pylint:disable=R1260
-        word,
-        lists: iamraw.PageContentLists = None,
+    word,
+    lists: iamraw.PageContentLists = None,
 ) -> textflow.quotation.data.ExtractedQuotations:
     for page, pagecontent in word:  # pylint:disable=too-many-nested-blocks
         sentence_index = 0

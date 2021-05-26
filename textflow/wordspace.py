@@ -26,9 +26,9 @@ import utila
 
 
 def extract(
-        ptcns: texmex.PageTextContentNavigators,
-        magics: iamraw.PageContentContentTypes,
-        wordspaces,
+    ptcns: texmex.PageTextContentNavigators,
+    magics: iamraw.PageContentContentTypes,
+    wordspaces,
 ) -> iamraw.PageContents:
     result = []
     for page, (ptcn, magic, wordspace) in utila.sync_pages(

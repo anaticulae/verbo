@@ -85,8 +85,8 @@ MAX_AFTER_DIFF = 0.15
 
 
 def equal_headline_cluster(
-        todo,
-        min_elements: int = 2,
+    todo,
+    min_elements: int = 2,
 ):
 
     def classificator(candidat, clusteritem):

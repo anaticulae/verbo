@@ -24,11 +24,11 @@ MAX_BLOCK_QUOTE_LINE_LENGTH = 15  # TODO: HOLY VALUE
 
 
 def work(
-        text: str,
-        textpositions: str,
-        sizeandborderpath: str,
-        headerfooterpath: str,
-        pages: tuple,
+    text: str,
+    textpositions: str,
+    sizeandborderpath: str,
+    headerfooterpath: str,
+    pages: tuple,
 ) -> str:
     ptcns = serializeraw.create_pagetextcontentnavigators_fromfile(
         text,
@@ -48,8 +48,8 @@ def work(
 
 
 def analyze_page(
-        ptcn: texmex.PageTextContentNavigator,
-        textsize: float,
+    ptcn: texmex.PageTextContentNavigator,
+    textsize: float,
 ) -> iamraw.PageContentBlockQuotes:
     grouped = texmex.group_linedistances_complex(ptcn)
 

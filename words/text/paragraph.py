@@ -18,13 +18,13 @@ import words.headlines
 
 
 def collect_paragraph(
-        first: iamraw.Headline,
-        second: iamraw.Headline,
-        page: int,
-        pcn: texmex.PageTextContentNavigator,
-        boxes: words.boxed.BoxedChecker,
-        lists: 'ListLookUp',
-        magics: iamraw.PageContentContentTypes = None,
+    first: iamraw.Headline,
+    second: iamraw.Headline,
+    page: int,
+    pcn: texmex.PageTextContentNavigator,
+    boxes: words.boxed.BoxedChecker,
+    lists: 'ListLookUp',
+    magics: iamraw.PageContentContentTypes = None,
 ) -> iamraw.ChapterText:
     """Extract paragraphs between defined headlines.
 
@@ -68,13 +68,13 @@ def collect_paragraph(
 
 
 def content_type(
-        boxed: words.boxed.BoxedChecker,
-        lists: words.feature.word.ListLookUp,
-        page: int,
-        bounding: iamraw.BoundingBox,
-        index: int,
-        content: str,
-        magics: iamraw.PageContentContentTypes = None,
+    boxed: words.boxed.BoxedChecker,
+    lists: words.feature.word.ListLookUp,
+    page: int,
+    bounding: iamraw.BoundingBox,
+    index: int,
+    content: str,
+    magics: iamraw.PageContentContentTypes = None,
 ) -> iamraw.PageContentType:
     matched_list = lists.search(page, None, undefined=index)
     if matched_list is not None:

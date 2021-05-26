@@ -48,20 +48,20 @@ PageContentBoxed = collections.namedtuple('PageContentBoxed', 'page content')
 
 @utila.checkdatatype
 def work(  # pylint:disable=R0913,R0914
-        sectionlist: str,
-        text: str,
-        text_position: str,
-        font_header: str,
-        font_content: str,
-        oneline_text: str,
-        oneline_text_position: str,
-        oneline_font_header: str,
-        oneline_font_content: str,
-        sizeandborder: str,
-        boxes: str,  # pylint:disable=W0613
-        headerfooters: str,
-        magics: str = None,
-        pages: tuple = None,
+    sectionlist: str,
+    text: str,
+    text_position: str,
+    font_header: str,
+    font_content: str,
+    oneline_text: str,
+    oneline_text_position: str,
+    oneline_font_header: str,
+    oneline_font_content: str,
+    sizeandborder: str,
+    boxes: str,  # pylint:disable=W0613
+    headerfooters: str,
+    magics: str = None,
+    pages: tuple = None,
 ) -> typing.Tuple[str, str]:
     """Extract headlines out of data."""
     results = extract_headlines(
@@ -159,15 +159,15 @@ def merge_levelfour(extracted, levelfour):
 
 
 def extract_headlines(
-        sections_,
-        text,
-        textposition,
-        fontheader,
-        fontcontent,
-        sizeandborder,
-        headerfooters,
-        magics=None,
-        pages: tuple = None,
+    sections_,
+    text,
+    textposition,
+    fontheader,
+    fontcontent,
+    sizeandborder,
+    headerfooters,
+    magics=None,
+    pages: tuple = None,
 ):
     ptcns = serializeraw.create_pagetextcontentnavigators_fromfile(
         text,

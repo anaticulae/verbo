@@ -25,10 +25,10 @@ import elements
 
 
 def groupby_level(  # pylint:disable=R1260
-        items,
-        selector=None,
-        determine_level=elements.level_numbered,
-        subgroups: bool = True,
+    items,
+    selector=None,
+    determine_level=elements.level_numbered,
+    subgroups: bool = True,
 ):
     if not items:
         return []

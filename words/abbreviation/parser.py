@@ -15,8 +15,8 @@ import utila
 
 
 def parses(
-        content: iamraw.PageContentTexts,
-        lookup: groupme.abbreviation.lists.AbbreviationListLookup = None,
+    content: iamraw.PageContentTexts,
+    lookup: groupme.abbreviation.lists.AbbreviationListLookup = None,
 ) -> iamraw.ExtractedTextAbbreviations:
     if lookup is None:
         lookup = groupme.abbreviation.lists.AbbreviationListLookup()
@@ -30,8 +30,8 @@ def parses(
 
 
 def parse_page(  # pylint:disable=R0914
-        content: iamraw.PageContentText,
-        lookup: groupme.abbreviation.lists.AbbreviationListLookup,
+    content: iamraw.PageContentText,
+    lookup: groupme.abbreviation.lists.AbbreviationListLookup,
 ) -> iamraw.ExtractedTextAbbreviation:
     collected = []
     page = content.page

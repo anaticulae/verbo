@@ -17,8 +17,8 @@ import words.lists.strategies.regex
 
 
 def process_page(
-        pagecontent,
-        contentborder: iamraw.Border,
+    pagecontent,
+    contentborder: iamraw.Border,
 ) -> iamraw.PageContentList:
     """Merges parameter  according due `pagecontent`
 

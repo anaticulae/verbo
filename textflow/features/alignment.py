@@ -17,9 +17,9 @@ import textflow.serialize
 
 
 def work(
-        text: str,
-        textpositions: str,
-        pages: tuple = None,
+    text: str,
+    textpositions: str,
+    pages: tuple = None,
 ) -> typing.Tuple[str, str]:
     navigators = serializeraw.create_pagetextnavigators_fromfile(
         text,

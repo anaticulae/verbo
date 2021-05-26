@@ -38,17 +38,17 @@ import words.text.chapter
 
 
 def work(  # pylint:disable=R0913
-        text: str,
-        textposition: str,
-        fontheader: str,
-        fontcontent: str,
-        headlines: str,
-        pagesizes: str,
-        headerfooters: str,
-        boxes: str,
-        lists: str,
-        magics: str = None,
-        pages: tuple = None,
+    text: str,
+    textposition: str,
+    fontheader: str,
+    fontcontent: str,
+    headlines: str,
+    pagesizes: str,
+    headerfooters: str,
+    boxes: str,
+    lists: str,
+    magics: str = None,
+    pages: tuple = None,
 ) -> str:
     """Extract textual structure out of document. A text is structured
     in chapter, sections, paragraphs, sentences and words.

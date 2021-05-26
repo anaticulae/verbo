@@ -70,11 +70,11 @@ def visit_sections(page: words.text.PageTextWithHeadlines):
 
 
 def visit_sentences(
-        page: words.text.PageTextWithHeadlines,
-        *,
-        skip_undefined: bool = False,
-        merge_divis: bool = True,
-        normalize_spaces: bool = True,
+    page: words.text.PageTextWithHeadlines,
+    *,
+    skip_undefined: bool = False,
+    merge_divis: bool = True,
+    normalize_spaces: bool = True,
 ) -> typing.Tuple[iamraw.Headline, str]:
     """Yield tuple of Headline and extracted sentence."""
     result = []
@@ -109,10 +109,10 @@ def visit_sentences(
 
 
 def merge_sentences(  # pylint:disable=R0912,R1260
-        pages: words.text.PageTextWithHeadlines,
-        skip_undefined: bool = False,
-        merge_divis: bool = True,
-        normalize_spaces: bool = True,
+    pages: words.text.PageTextWithHeadlines,
+    skip_undefined: bool = False,
+    merge_divis: bool = True,
+    normalize_spaces: bool = True,
 ) -> HeadlinedSentences:
     result = []
     lastheadline = None
@@ -201,10 +201,10 @@ def merge_sentences(  # pylint:disable=R0912,R1260
 
 
 def extract_textsections(
-        pagedata: words.feature.TextRequiredResources,
-        *,
-        merge_headlines: bool = True,
-        require_headlinelevel: bool = True,
+    pagedata: words.feature.TextRequiredResources,
+    *,
+    merge_headlines: bool = True,
+    require_headlinelevel: bool = True,
 ) -> words.text.TextSections:
     """Extract `TextSections out of chapters based on extracted headline
     definition.

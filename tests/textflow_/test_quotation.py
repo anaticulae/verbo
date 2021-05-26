@@ -114,10 +114,10 @@ def test_textflow_validate_quotation_bachelor76_page8(testdir, monkeypatch):
 
 
 def extract_quotations(
-        source,
-        pages: str,
-        testdir,
-        monkeypatch,
+    source,
+    pages: str,
+    testdir,
+    monkeypatch,
 ) -> textflow.quotation.data.ExtractedQuotation:
     source = power.link(source)
     # run words

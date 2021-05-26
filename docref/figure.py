@@ -29,9 +29,9 @@ PATTERN = (
 
 
 def parse_text(
-        text,
-        pattern=PATTERN,
-        compare_content: bool = True,
+    text,
+    pattern=PATTERN,
+    compare_content: bool = True,
 ) -> iamraw.DocRefs:
     result = []
     for page, number, sentence in words.utils.sentences(text, numbers=True):

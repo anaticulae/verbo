@@ -42,11 +42,11 @@ PATTERN = re.compile(r'^[0-9]+u$')
 
 @utila.checkdatatype
 def work(
-        text: str,
-        headlines: str,
-        lists: str,
-        boxed: str,
-        pages: tuple = None,
+    text: str,
+    headlines: str,
+    lists: str,
+    boxed: str,
+    pages: tuple = None,
 ) -> str:
     text, listlookup, boxlookup = load_resources(
         headlines,
@@ -166,11 +166,11 @@ class BoxLookUp:
 
 @functools.lru_cache(configo.CACHE_SMALL)
 def load_resources(
-        headlines: str,
-        text: str,
-        boxed: str,
-        lists: str,
-        pages=None,
+    headlines: str,
+    text: str,
+    boxed: str,
+    lists: str,
+    pages=None,
 ):
     headlines = serializeraw.load_headlines(headlines, pages=pages)
     text = serializeraw.load_text(text, headlines=headlines, pages=pages)
