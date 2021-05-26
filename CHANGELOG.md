@@ -2,6 +2,17 @@
 
 Every noteable change is logged here.
 
+## v0.28.5
+
+### Feature
+
+* extend list parser (bff89b5d6a6f)
+* add another possible dot (7103a3da7ddd)
+
+### Fix
+
+* adjust to new magic API (d1f79a43f9b4)
+
 ## v0.28.4
 
 ### Feature
