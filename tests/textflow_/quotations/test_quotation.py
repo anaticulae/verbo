@@ -12,33 +12,20 @@ import utila
 import utilatest
 
 import tests
-import tests.textflow_
-import textflow.features.quotation
-import textflow.path
+import tests.textflow_.quotations.utils
 import textflow.quotation.serialize
-
-
-def extract_quotation(source, pages, testdir, monkeypatch):
-    # run words
-    tests.run(f'-i {source} {pages}', monkeypatch=monkeypatch)
-    tests.textflow_.run(
-        f'-i {source} -i {testdir.tmpdir} {pages} --quotation',
-        monkeypatch=monkeypatch,
-    )
-    outpath = textflow.path.quotation(testdir.tmpdir)
-    extracted = textflow.quotation.serialize.load_quotations(outpath)
-    return extracted
 
 
 @utilatest.nightly
 def test_textflow_quotation_master72_pages10_20(testdir, monkeypatch):
-    pages = '--pages=10:21'
-    source = power.link(power.MASTER072_PDF)
-
-    current = extract_quotation(source, pages, testdir, monkeypatch)
+    current = tests.textflow_.quotations.utils.extract_quotations(
+        power.MASTER072_PDF,
+        '10:21',
+        testdir,
+        monkeypatch,
+    )
     assert current
     assert len(current) >= 30, str(current)
-
     dumped = textflow.quotation.serialize.dump_quotations(current)
     loaded = textflow.quotation.serialize.load_quotations(dumped)
     assert loaded == current
@@ -46,10 +33,12 @@ def test_textflow_quotation_master72_pages10_20(testdir, monkeypatch):
 
 @utilatest.nightly
 def test_textflow_quotation_bachelor76(testdir, monkeypatch):
-    pages = '--pages=4,5'
-    source = power.link(power.BACHELOR076_PDF)
-    quotations = extract_quotation(source, pages, testdir, monkeypatch)
-
+    quotations = tests.textflow_.quotations.utils.extract_quotations(
+        power.BACHELOR076_PDF,
+        '4,5',
+        testdir,
+        monkeypatch,
+    )
     expected = 5
     assert len(quotations) == expected
 
@@ -88,7 +77,7 @@ zur Reduktion von Schnittstellen , zur funktionsübergreifenden Vernetzung und\
 
 @utilatest.longrun
 def test_textflow_validate_quotation_bachelor76_page4_10(testdir, monkeypatch):
-    quotations = extract_quotations(
+    quotations = tests.textflow_.quotations.utils.extract_quotations(
         power.BACHELOR076_PDF,
         '4:10',
         testdir,
@@ -102,28 +91,10 @@ def test_textflow_validate_quotation_bachelor76_page4_10(testdir, monkeypatch):
 
 @utilatest.longrun
 def test_textflow_validate_quotation_bachelor76_page8(testdir, monkeypatch):
-    quotations = extract_quotations(
+    quotations = tests.textflow_.quotations.utils.extract_quotations(
         power.BACHELOR076_PDF,
         '8',
         testdir,
         monkeypatch,
     )
     assert len(quotations) == 2
-
-
-def extract_quotations(
-    source,
-    pages: str,
-    testdir,
-    monkeypatch,
-) -> textflow.quotation.data.ExtractedQuotation:
-    source = power.link(source)
-    # run words
-    tests.run(f'-i {source} --pages={pages}', monkeypatch=monkeypatch)
-    tests.textflow_.run(
-        f'-i {source} -i {testdir.tmpdir} --pages={pages} --quotation',
-        monkeypatch=monkeypatch,
-    )
-    path = textflow.path.quotation(testdir.tmpdir)
-    result = textflow.quotation.serialize.load_quotations(path)
-    return result
