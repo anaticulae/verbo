@@ -94,10 +94,8 @@ def test_textflow_validate_quotation_bachelor76_page4_10(testdir, monkeypatch):
         testdir,
         monkeypatch,
     )
-
     expected = len(BACHELOR76_EXPECTED.split('\n\n'))
     assert len(quotations) == expected
-
     raw = (2 * utila.NEWLINE).join([item.sentence for item in quotations])
     assert raw == BACHELOR76_EXPECTED
 
