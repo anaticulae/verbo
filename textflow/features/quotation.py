@@ -9,6 +9,7 @@
 
 import german
 import iamraw
+import knlp
 import serializeraw
 import utila
 
@@ -39,19 +40,17 @@ def collect_quotations(
 ) -> textflow.quotation.data.ExtractedQuotations:
     result = []
     for page, index, sentence, splitted in sentences(word, lists):
-        extracted = german.extract_quotes(sentence)
+        lang = german.lang(splitted).language
+        extracted = german.extract_quotes(sentence, lang=lang)
         if not extracted:
             continue
-
         for item in extracted:
             if item[0] is None or item[1] is None:
                 utila.error(f'not fully closed quotation {splitted}')
-
         extracted = [
             item for item in extracted
             if item[0] is not None and item[1] is not None
         ]
-
         quote = german.raw_quotation(splitted, extracted)
         for item in quote:
             result.append((page, index, item))
@@ -82,9 +81,9 @@ def sentences(  # pylint:disable=R1260
                         continue
                     for _, listitem in extracted_list:
                         # list items must not be a full sentence
-                        splitted = german.word_tokenize(
+                        splitted = knlp.word_tokenize(
                             listitem,
-                            validate_sentences=False,
+                            # validate_sentences=False,
                         )
                         yield page, sentence_index, listitem, splitted
                         sentence_index = sentence_index + 1
@@ -92,7 +91,7 @@ def sentences(  # pylint:disable=R1260
                 undefined = words.undefined.intindex(sentence)
                 if undefined is not None:
                     continue
-                splitted = german.word_tokenize(sentence)
+                splitted = knlp.word_tokenize(sentence)
                 if splitted:
                     yield page, sentence_index, sentence, splitted
                 sentence_index = sentence_index + 1
