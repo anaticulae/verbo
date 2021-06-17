@@ -69,7 +69,7 @@ def test_headlines_cluster_master155(master155pages50):  # pylint:disable=W0621
     assert len(result) == 5  # five different chapter
 
 
-@utilatest.longrun
+@utilatest.nightly
 def test_headlines_magic_master155(master155pages50):  # pylint:disable=W0621
     ptcns, fontstore, magics, pages = master155pages50
     result = words.headlines.machine.headlines(

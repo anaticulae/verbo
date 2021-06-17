@@ -45,7 +45,7 @@ def test_validate_master072_text():
     marks=pytest.mark.xfail(reason='not ready yet')),
 ])
 # yapf:enable
-@utilatest.longrun
+@utilatest.nightly
 def test_text_validate(source, pages, expected):
     raw = load_current(source, pages)
     expected = load_expected(expected)
