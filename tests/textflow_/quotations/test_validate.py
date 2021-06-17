@@ -21,6 +21,7 @@ import textflow
 
 @pytest.mark.parametrize('source, expected', [
     pytest.param(power.MASTER072_PDF, 'master072', id='master072'),
+    pytest.param(power.MASTER083_PDF, 'master083', id='master083'),
 ])
 @utilatest.longrun
 def test_validate_quotations_x(source, expected, testdir, monkeypatch):
