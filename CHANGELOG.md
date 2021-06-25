@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v0.28.6
+
+### Feature
+
+* use improved quotation parser (51765fb75ace)
+
+### Fix
+
+* skip empty pages (430b048bfcf0)
+
 ## v0.28.5
 
 ### Feature
