@@ -35,7 +35,8 @@ def extract(
             iterators=[ptcns, magics, wordspaces],
             numbers=True,
     ):
-        wordspace = wordspace.content
+        # white pages do not have any word space or magic content
+        wordspace = wordspace.content if wordspace else []
         magic = magic.content if magic else {}
         extracted = extract_page(ptcn, magic, wordspace)
         result.append(iamraw.PageContent(page=page, content=extracted))
