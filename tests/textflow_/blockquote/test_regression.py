@@ -9,6 +9,7 @@
 
 import power
 import serializeraw
+import utilatest
 
 import tests.textflow_
 import textflow.path
@@ -25,6 +26,7 @@ def test_noblockquote_bachelor51page21(testdir, monkeypatch):
 
 
 def run_blockquote(source, testdir, monkeypatch, pages=':'):
+    utilatest.fixture_requires(source)
     source = power.link(source)
     tests.textflow_.run(
         f'-i {source} --blockquote --pages={pages}',

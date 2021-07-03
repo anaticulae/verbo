@@ -41,6 +41,7 @@ TextAlignment = textflow.alignment.style.TextAlignment
 ])
 @utilatest.longrun
 def test_document_alignment(source, expected):
+    utilatest.fixture_requires(source, folder='oneline')
     content_navigators = serializeraw.create_pagetextnavigators_frompath(
         source,
         prefix='oneline',
@@ -49,6 +50,7 @@ def test_document_alignment(source, expected):
     assert alignment == expected, alignment
 
 
+@utilatest.requires(power.HOME040_PDF)
 def test_page_linealignment_homework40_page4():
     navigators = serializeraw.create_pagetextnavigators_frompath(
         power.link(power.HOME040_PDF),
@@ -67,6 +69,7 @@ def test_page_linealignment_homework40_page4():
 
 
 @utilatest.longrun
+@utilatest.requires(power.MASTER072_PDF, folder='oneline')
 def test_page_linealignment_master72_page4():
     navigators = serializeraw.create_pagetextnavigators_frompath(
         power.link(power.MASTER072_PDF),
@@ -87,6 +90,7 @@ def test_page_linealignment_master72_page4():
 
 
 @utilatest.longrun
+@utilatest.requires(power.MASTER072_PDF, folder='oneline')
 def test_page_linealignment_master72_page15():
     navigators = serializeraw.create_pagetextnavigators_frompath(
         power.link(power.MASTER072_PDF),

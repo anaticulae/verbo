@@ -51,7 +51,7 @@ WORKER = 6
 
 @pytest.mark.usefixtures('session')
 def pytest_sessionstart():
-    power.run([power.generated()])
+    power.run()
 
 
 def extract(resources):

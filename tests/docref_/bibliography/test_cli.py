@@ -27,6 +27,7 @@ def extract_label(source, testdir, monkeypatch, pages=':'):
 
 
 @utilatest.nightly
+@utilatest.requires(power.MASTER116_PDF)
 def test_docref_bibliography_master116(testdir, monkeypatch):
     # TODO: Changes after support more tech label
     bibliography = extract_label(
@@ -38,6 +39,7 @@ def test_docref_bibliography_master116(testdir, monkeypatch):
     assert len(bibliography) == 98  # NOT VALIDATED YET
 
 
+@utilatest.requires(power.MASTER091B_PDF)
 def test_docref_bibliography_master91b(testdir, monkeypatch):
     """Do not parse overlapping words. Do not detect overlapping words
     twice. Some pattern are part of other pattern."""
@@ -51,6 +53,7 @@ def test_docref_bibliography_master91b(testdir, monkeypatch):
 
 
 @utilatest.nightly
+@utilatest.requires(power.MASTER098_PDF)
 def test_docref_bibliography_master98(testdir, monkeypatch):
     bibliography = extract_label(power.MASTER098_PDF, testdir, monkeypatch)
     assert len(bibliography) == 273  # NOT VALIDATED YET

@@ -9,12 +9,14 @@
 
 import power
 import serializeraw
+import utilatest
 
 import words.feature.abbreviation
 import words.path
 
 
 def bachelor37():
+    utilatest.fixture_requires(power.BACHELOR037_PDF)
     source = power.link(power.BACHELOR037_PDF)
     pages = tuple(range(6, 10))
     text = words.path.text(source)

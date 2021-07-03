@@ -10,11 +10,13 @@
 import power
 import serializeraw
 import utila
+import utilatest
 
 import tests
 import words.path
 
 
+@utilatest.requires(power.BACHELOR241_PDF)
 def test_nolist_bachelor241_page81(testdir, monkeypatch):
     """This test was designed cause on this page table content was
     parsed as lists."""
@@ -24,7 +26,7 @@ def test_nolist_bachelor241_page81(testdir, monkeypatch):
     loaded = serializeraw.load_lists(words.path.lists(testdir.tmpdir))
     assert not loaded
 
-
+@utilatest.requires(power.DOCU27_PDF)
 def test_list_docu_restructured_page4(testdir, monkeypatch):
     """This test was designed cause on this page table content was
     parsed as lists."""

@@ -73,6 +73,7 @@ EXPECTED = [
 ]
 
 
+@utilatest.requires(power.DOCU27_PDF)
 def test_headlines_extract_headlines():
     path = power.link(power.DOCU27_PDF)
     section = tests.fixtures.restruct.restructured_sections_manual()

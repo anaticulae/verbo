@@ -20,6 +20,7 @@ import sections.feature.section
 import sections.feature.toc
 import sections.feature.whitepage
 import serializeraw
+import utilatest
 
 import words.feature
 import words.feature.boxed
@@ -32,6 +33,7 @@ import words.text.chapter
 
 
 def restructured_sections():
+    utilatest.fixture_requires(power.DOCU27_PDF)
     source = power.link(power.DOCU27_PDF)
     extracted = sections.feature.section.extract_sections_frompath(source)
     dumped = serializeraw.dump_sections(extracted)
@@ -104,6 +106,7 @@ def restructured_sections_manual() -> iamraw.sections.Sections:
 
 
 def restruct_resources():
+    utilatest.fixture_requires(power.DOCU27_PDF)
     headlines = restructured_headlines()
     source = power.link(power.DOCU27_PDF)
     loaded = words.feature.load_resources(

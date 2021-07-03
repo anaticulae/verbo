@@ -9,17 +9,20 @@
 
 import power
 import serializeraw
+import utilatest
 
 import tests
 import words.path
 
 
+@utilatest.requires(power.MASTER075_PDF)
 def test_links_master75(testdir, monkeypatch):
     # TODO: MASTER75 TEXT SECTION EXTRACTION IS BROKEN
     loaded = hyperlinks(power.MASTER075_PDF, testdir, monkeypatch)
     assert len(loaded) == 22
 
 
+@utilatest.requires(power.MASTER075_PDF)
 def test_links_master75_pages15(testdir, monkeypatch):
     loaded = hyperlinks(power.MASTER075_PDF, testdir, monkeypatch, 15)
     assert len(loaded) == 1

@@ -9,11 +9,13 @@
 
 import power
 import serializeraw
+import utilatest
 
 import docref.path
 import tests.docref_
 
 
+@utilatest.requires(power.MASTER075_PDF)
 def test_figure_master75_pages6(testdir, monkeypatch):
     source = power.link(power.MASTER075_PDF)
     cmd = f'-i {source} --figure --pages=7:21'

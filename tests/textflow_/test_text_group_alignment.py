@@ -17,6 +17,7 @@ import textflow.alignment.style
 
 
 @utilatest.longrun
+@utilatest.requires(power.MASTER072_PDF)
 def test_page_linealignments_expected_master72_page4():
     source = power.link(power.MASTER072_PDF)
     pages = (4,)
@@ -38,6 +39,7 @@ def test_page_linealignments_expected_master72_page4():
 
 @pytest.mark.xfail(reason='enable later')
 @utilatest.longrun
+@utilatest.requires(power.MASTER072_PDF)
 def test_page_linealignments_expected_master72_page6():
     source = power.link(power.MASTER072_PDF)
     pages = (6,)
@@ -65,6 +67,7 @@ def test_page_linealignments_expected_master72_page6():
     assert current == expected, expected
 
 
+@utilatest.requires(power.HOME040_PDF)
 def test_page_linealignments_expected_homework40_page3():
     source = power.link(power.HOME040_PDF)
     navigators = serializeraw.create_pagetextnavigators_frompath(source,)
@@ -89,6 +92,7 @@ def test_page_linealignments_expected_homework40_page3():
     assert current[0:9] == expected, expected
 
 
+@utilatest.requires(power.HOME040_PDF)
 def test_page_linealignments_expected_homework40_page4():
     source = power.link(power.HOME040_PDF)
     navigators = serializeraw.create_pagetextnavigators_frompath(source)
