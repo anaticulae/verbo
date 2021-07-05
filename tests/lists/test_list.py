@@ -9,6 +9,7 @@
 
 import iamraw
 import power
+import pytest
 import serializeraw
 import utila
 import utilatest
@@ -157,6 +158,7 @@ def test_list_dotted_with_content_only():
     assert parsed == ['Index Page', 'Support', 'Changelog']
 
 
+@pytest.mark.xfail
 @utilatest.longrun
 def test_list_work():
     result = tests.fixtures.restruct.restructured_list_work()

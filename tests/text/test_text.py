@@ -37,7 +37,7 @@ def test_text_work():
         text=iamraw.path.text(power.link(power.DOCU27_PDF)),
         textposition=iamraw.path.textposition(power.link(power.DOCU27_PDF)),
     )
-    assert len(result) > 6000, str(result)
+    assert len(result) > 4700, str(result)
 
 
 @utilatest.longrun

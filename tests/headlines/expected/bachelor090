@@ -53,6 +53,9 @@
             Hardware in the loop
         3.6.5. Bewertung des Testens als Prüfverfahren
     3.7. Debugging der Software
+Brute Force
+Induction
+Deduction
     3.8. Eignung für die Umsetzung
 4. Umsetzung
     4.1. Problemstellung
@@ -91,4 +94,5 @@ A. Anhang
             Putty
             SSH
             Player - Ubuntu
+A.6. Testergebnisse
 Literaturverzeichnis

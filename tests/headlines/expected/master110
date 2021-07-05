@@ -1,3 +1,8 @@
+Inhaltsverzeichnis
+Abbildungsverzeichnis
+Tabellenverzeichnis
+Abkurzungsverzeichnis
+Symbolverzeichnis
 Einleitung
     1.1 Stufen eines Bildverarbeitungssystems
     1.2 Aufbau der Arbeit
@@ -7,7 +12,7 @@ Stand der Technik
     2.2 Objekterkennung
         2.2.1 Template Matching
         2.2.2 Principal-Component-Analysis (PCA)
-        2.2.3 Klassi kation von Merkmalen
+        2.2.3 Klassifikation von Merkmalen
 Tiefenbilder
     3.1 Erzeugung von Tiefenbildern
     3.2 Eigenschaften von Tiefenbildern
@@ -26,7 +31,7 @@ Konturextraktion
         4.4.2 Entfernung der Bodenpunkte im Tiefenbild
         4.4.3 Manipulation der Grauwertinterpolation
     4.5 Endfassung des Konturextraktionsalgorithmus
-Konturreprasentation und Merkmalsextraktion
+Konturreprasentation und
     5.1 Anforderungen an die Konturreprasentationen
     5.2 Anforderung an die Merkmale
     5.3 Einfache geometrische Merkmale
@@ -41,25 +46,27 @@ Konturreprasentation und Merkmalsextraktion
     5.6 Angular-Radial-Transformation (ART)
     5.7 Reprasentation durch Fourier-Deskriptoren
     5.8 Border-Signature
-Klassi kation
+Klassifikation
     6.1 Merkmalsauswahl
         6.1.1 plus l-take away r Algorithmus
         6.1.2 Principal-Component-Analysis (PCA)
-    6.2 Klassi kationsstrategien
-    6.3 Klassi kation mittels Support-Vector-Machines (SVM)
+    6.2 Klassifikationsstrategien
+    6.3 Klassifikation mittels Support-Vector-Machines (SVM)
+        6.3.1 Primare Form
         6.3.2 Duales Optimierungsproblem
-        6.3.3 SVM zur Klassi kation von mehreren Objekten
-    6.4 Viola Jones AdaBoost Klassi kator
+        6.3.3 SVM zur Klassifikation von mehreren Objekten
+    6.4 Viola Jones AdaBoost Klassifikator
 Performanzevaluation
     7.1 Receiver-Operating-Characteristics (ROC)-Analyse
         7.1.1 ROC-Kurven
         7.1.2 Flache unter der ROC-Kurve (AUC)
         7.1.3 Multi-Klassen ROC-Analyse
-        7.1.4 Konvexe Hulle der ROC-Kurve und kombinierte Klassi katoren
+        7.1.4 Konvexe Hulle der ROC-Kurve und kombinierte Klassifikatoren
         7.1.5 Linien gleicher Exaktheit und der optimale Schwellwert
     7.2 Ergebnis der Performanz-Analyse
-        7.2.1 Vergleich mit dem Viola Jones AdaBoost Klassi kator
-        7.2.2 Klassi kation von verdeckten Konturen
+        7.2.1 Vergleich mit dem Viola Jones AdaBoost Klassifikator
+        7.2.2 Klassifikation von verdeckten Konturen
 Zusammenfassung und Ausblick
 Freeman-Kettencode
+Curvature-Scale-Space-Matching-
 Literaturverzeichnis

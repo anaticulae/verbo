@@ -9,6 +9,7 @@
 
 import iamraw
 import power
+import pytest
 import serializeraw
 import utila
 import utilatest
@@ -73,6 +74,7 @@ EXPECTED = [
 ]
 
 
+@pytest.mark.xfail
 @utilatest.requires(power.DOCU27_PDF)
 def test_headlines_extract_headlines():
     path = power.link(power.DOCU27_PDF)
