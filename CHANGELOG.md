@@ -2,6 +2,14 @@
 
 Every noteable change is logged here.
 
+## v1.0.0
+
+### Feature
+
+* add backup strategy to use two lines (df16c59dc878)
+* move docref and textflow to texas (bbb0493af349)
+* log selected judgement (ce7bf0f273c6)
+
 ## v0.28.7
 
 ## v0.28.6
