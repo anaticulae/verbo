@@ -25,7 +25,6 @@ RESOURCES = [
     power.MASTER116_PDF,
     power.MASTER155_PDF,
     power.MASTER110_PDF,
-    power.MASTER083_PDF,
     power.MASTER072_PDF,
     power.BACHELOR090_PDF,
     power.MASTER099_PDF,
@@ -37,13 +36,9 @@ RESOURCES = [
     power.BACHELOR063_PDF,
     power.MASTER098_PDF,
     power.MASTER075_PDF,
-    (power.BACHELOR056_PDF, '0:20'),
-    power.HOME040_PDF,
     power.BACHELOR037_PDF,
-    power.DOCU07_PDF,
     power.DOCU09_PDF,
     power.DOCU27_PDF,
-    (power.MASTER091B_PDF, '0:20'),
 ]
 
 WORKER = 6

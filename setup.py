@@ -42,14 +42,6 @@ if __name__ == "__main__":
             'Programming Language :: Python :: 3.8',
         ],
         packages=[
-            'docref',
-            'docref.features',
-            'docref.bibliography',
-            'docref.bibliography.strategies',
-            'textflow',
-            'textflow.alignment',
-            'textflow.features',
-            'textflow.quotation',
             'words',
             'words.abbreviation',
             'words.feature',
@@ -62,10 +54,6 @@ if __name__ == "__main__":
             'words.utils',
         ],
         entry_points={
-            'console_scripts': [
-                'docref = docref.cli:main',
-                'textflow = textflow.cli:main',
-                'words = words.cli:main',
-            ],
+            'console_scripts': ['words = words.cli:main',],
         },
     )
