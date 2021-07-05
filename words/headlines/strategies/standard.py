@@ -23,10 +23,20 @@ def extract_headline(
     ptcn: texmex.PageTextContentNavigator,
     containerid: int,
     skipper=None,
+    double: bool = False,
     **kwargs,
 ):  # pylint:disable=R0914
+    """\
+    double - parse two line as possible headline(backup strategy)
+
+    TODO: INTRODUCE TRIPPLE
+    """
+    look_forward = containerid + 2 if double else 1
     text = textinfo.text
-    fontdistance = textdistances[containerid + 1]
+    try:
+        fontdistance = textdistances[look_forward]
+    except IndexError:
+        return None
     if containerid:
         # for non page start check distance before and after
         fontdistance += textdistances[containerid]
@@ -42,7 +52,7 @@ def extract_headline(
         **kwargs,
     )
 
-    lastitem = (containerid + 1) == len(ptcn)
+    lastitem = look_forward == len(ptcn)
     if len(text) < words.headlines.strategies.HEADLINE_MIN_LENGTH:
         return None
 
@@ -62,7 +72,10 @@ def extract_headline(
         return None
 
     dist_top = textdistances[containerid]
-    dist_bottom = None if lastitem else textdistances[containerid + 1]
+    try:
+        dist_bottom = None if lastitem else textdistances[look_forward]
+    except IndexError:
+        return None
 
     style = dict(
         textsize=textsize,

@@ -143,6 +143,18 @@ def extract_page(strategy, data, page):
             containerid=containerid,
         )
         if not headline:
+            # try again with double line extractor
+            headline = strategy.extract_headline(
+                textinfo=item,
+                textdistances=textdistances,
+                textfeeds=textfeeds,
+                textsize=data.textsize,
+                textdistance=data.textdistance,
+                ptcn=pagecontent,
+                containerid=containerid,
+                double=True,
+            )
+        if not headline:
             continue
         result.append(headline)
     return result
