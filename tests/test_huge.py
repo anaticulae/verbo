@@ -10,13 +10,12 @@
 import contextlib
 import os
 
+import genex
 import power
 import pytest
 import serializeraw
 import utila
 import utilatest
-
-import words.path
 
 # TODO: Reduce list of unsupported documents
 # this documents does not passes the current implementation
@@ -103,91 +102,28 @@ def params():
     return result
 
 
-@pytest.fixture(params=params())
-def rawresult(request, testdir):
-    tocpath = os.path.join(testdir.tmpdir, 'toc')
-    generalpath = os.path.join(testdir.tmpdir, 'general')
-    for item in [tocpath, generalpath]:
-        os.makedirs(item)
-
-    pdf, toccmd, generalcmd = request.param
-    rawtoc = f'rawmaker -i {pdf} -j=8 --images! --pages=0:60 -o {tocpath} --prefix=oneline {toccmd}'
-    rawgeneral = f'rawmaker -i {pdf} -j=8 --images! --pages=0:60 -o {generalpath} {generalcmd}'
-    linero = f'linero -i {tocpath} -o {generalpath}'
-
-    utila.log(rawtoc)
-    utila.log(rawgeneral)
-    utila.run_parallel([rawtoc, rawgeneral])
-    utila.log(linero)
-    utila.run(linero)
-
-    return (testdir.tmpdir, tocpath, generalpath)
-
-
-@pytest.fixture
-def groupme(rawresult):  # pylint:disable=W0621
-    tmpdir, tocpath, generalpath = rawresult
-
-    groupmepath = os.path.join(tmpdir, 'groupme')
-    os.makedirs(groupmepath)
-
-    runme = f'groupme --toc! -i {generalpath} -i {tocpath} -o {groupmepath} -j8'
-    # TODO: USE VERBOSE FLAG
-    utila.log(runme)
-    utila.run(runme)
-
-    runme = f'groupme --toc -i {generalpath} -i {tocpath} -o {groupmepath} --pages=0:10'
-    utila.log(runme)
-    utila.run(runme)
-
-    return (tmpdir, tocpath, generalpath, groupmepath)
-
-
-@pytest.fixture
-def sections_result(groupme):  # pylint:disable=W0621
-    tmpdir, tocpath, generalpath, groupmepath = groupme
-
-    sectionspath = os.path.join(tmpdir, 'sections')
-    os.makedirs(sectionspath)
-
-    runme = f'sections -i {generalpath} -i {tocpath} -i {groupmepath} -o {sectionspath} -j=8'
-    utila.log(runme)
-    utila.run(runme)
-    return (tmpdir, tocpath, generalpath, sectionspath, groupmepath)
-
-
-@pytest.fixture
-def words_result(sections_result):  # pylint:disable=W0621
-    tmpdir, tocpath, generalpath, sectionspath, groupmepath = sections_result
-
-    wordspath = os.path.join(tmpdir, 'words')
-    os.makedirs(wordspath)
-
-    runme = f'words -i {generalpath} -i {tocpath} -i {sectionspath} -i {groupmepath} -o {wordspath} -j=8'
-    utila.log(runme)
-    utila.run(runme)
-
-    files = [
-        ('words__word_result.yaml', 2000),
-        ('words__headlines_headlines.yaml', 380),
-    ]
-    for item, expected_length in files:
-        path = os.path.join(wordspath, item)
-        content = utila.file_read(path)
-        assert len(content) > expected_length, content
-
-    return (tmpdir, tocpath, generalpath, sectionspath, wordspath)
-
-
 @utilatest.nightly
-def test_huge_running_words(words_result, request):  # pylint:disable=W0621
+@pytest.mark.parametrize('source', params())
+def test_huge_running_words(source, testdir, request):  # pylint:disable=W0621
     """Run rawmaker -> sections -> words. Ensure that this chain works for
     huge pdf example provided by power tool."""
     testfile = request.node.name.split('[')[1].split(']')[0]
     expected_headlines = HEADLINE_COUNT.get(testfile, 0)
 
-    headlines = words.path.headlines(words_result[4])
-    headlines = serializeraw.load_headlines(headlines)
+    source, _, __, = source
+
+    genex.extract(
+        files=[source],
+        destination=testdir.tmpdir,
+        groupme=True,
+        sections=True,
+        words=True,
+    )
+
+    filename = utila.file_name(power.link(source))
+    directory = os.path.join(testdir.tmpdir, filename)
+
+    headlines = serializeraw.load_headlines(directory)
     headlines = utila.flatten(headlines)
 
     if expected_headlines:
