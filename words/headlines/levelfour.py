@@ -85,7 +85,7 @@ def tomany_headlines_perpage(result: list) -> bool:
     pages = sorted([item.page for item in result])
     if not pages:
         return False
-    pages = utila.groupby_diff(pages, diff=0)
+    pages = utila.groupby_diff(pages, maxdiff=0)
     maxpage = len(utila.longest(pages, number=1))
     if maxpage > MAX_LEVELFOUR_PER_PAGE:
         return True
