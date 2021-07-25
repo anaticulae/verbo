@@ -16,7 +16,6 @@ import configo
 import iamraw
 import iamraw.path
 import magic.path
-import sections.path
 import serializeraw
 import texmex
 import utila

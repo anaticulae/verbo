@@ -34,7 +34,6 @@ import os
 import typing
 
 import iamraw.path
-import sections.path
 import serializeraw
 import utila
 
@@ -203,7 +202,7 @@ def extract_headlines(
 
 
 def headlines_frompath(path: str, prefix: str = '', pages: tuple = None):
-    sections_ = sections.path.sections_(path, prefix=prefix)
+    sections_ = iamraw.path.sections_(path, prefix=prefix)
     text = iamraw.path.text(path, prefix=prefix)
     textposition = iamraw.path.textposition(path, prefix=prefix)
     fontheader = iamraw.path.fontheader(path, prefix=prefix)

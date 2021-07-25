@@ -7,8 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import iamraw.path
 import power
-import sections.feature.section
 import serializeraw
 import utila
 import utilatest
@@ -89,8 +89,8 @@ def test_headlines_multiple_diss266():
 
 
 def parse_multiline(path: str, pages: tuple, prefix: str = ''):
-    sections_ = sections.feature.section.load_section_likelihood_frompath(
-        path,
+    sections_ = serializeraw.load_sections(
+        iamraw.path.sections_(path),
         pages=pages,
     )
     loaded = serializeraw.create_pagetextcontentnavigators_frompath(

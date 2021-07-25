@@ -78,7 +78,7 @@ EXPECTED = [
 @utilatest.requires(power.DOCU27_PDF)
 def test_headlines_extract_headlines():
     path = power.link(power.DOCU27_PDF)
-    section = tests.fixtures.restruct.restructured_sections_manual()
+    section = serializeraw.load_sections(iamraw.path.sections_(path))
     content = serializeraw.create_pagetextcontentnavigators_frompath(path)
     result = words.headlines.machine.headlines(
         ptcns=content,
