@@ -50,7 +50,7 @@ def file_read(name):
     pytest.param(power.MASTER110_PDF, None, 'master110', id='master110'),
     pytest.param(power.MASTER116_PDF, None, 'master116', id='master116'),
     pytest.param(power.MASTER155_PDF,  None, 'master155', id='master155'),
-    pytest.param(power.DISS264_PDF, None,'diss264' , id='diss264',),
+    pytest.param(power.DISS264_PDF, None, 'diss264', id='diss264'),
     pytest.param(power.DISS266_PDF, '7:215', 'diss266', id='diss266'),
 ])
 # yapf:enable
