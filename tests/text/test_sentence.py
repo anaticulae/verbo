@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import power
 import utila
 import utilatest
 
@@ -33,6 +34,7 @@ def test_merge_sentences_merge_divis():
 
 
 def master72_text(pages: tuple) -> str:
+    utilatest.fixture_requires(power.MASTER072_PDF)
     required = fseventytwo.textrequired(pages)
     pages = words.text.chapter.split(required)
     assert pages
@@ -44,6 +46,7 @@ def master72_text(pages: tuple) -> str:
 
 
 def bachelor51_text(pages: tuple = None) -> str:
+    utilatest.fixture_requires(power.BACHELOR051_PDF)
     required = tests.fixtures.text.bachelor051_textrequired(pages=pages)
     pages = words.text.chapter.split(required)
     # merge sentences
