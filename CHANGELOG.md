@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.0.1
+
+### Fix
+
+* fix loader after sections changes (be33d64585ec)
+
 ## v1.0.0
 
 ### Feature
