@@ -29,7 +29,9 @@ def headlines(ptns):  # pylint:disable=R0914
     parsed = doctextstyle.parser.parses(ptns)
     flat = doctextstyle.utils.flatten(parsed)
     text = doctextstyle.features.text(flat)
-
+    if not text or len(text) < 2:
+        utila.error('could not parse headlines, require more text')
+        return []
     textsize, textfont = text[0], text[1]
 
     # remove too small text size
