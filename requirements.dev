@@ -7,12 +7,12 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-utilatest==0.7.1
+utilatest==0.8.4
 
 # reference to test data
-power==1.6.0
+power==1.7.0
 
 # ensure that test data is generated with the right version of rawmaker
-rawmaker==2.21.1
+rawmaker==2.24.5
 
-genex==0.12.1
+genex==0.16.0

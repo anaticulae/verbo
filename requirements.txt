@@ -7,22 +7,22 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-utila>=2.41.3<3.0.0
-iamraw>=4.22.2<5.0.0
-sections>=1.4.0<2.0.0
+utila>=2.45.2<3.0.0
+iamraw>=4.25.3<5.0.0
+sections>=1.5.0<2.0.0
 
 # split sentences and determine language of written sentence
-german>=1.8.0<2.0.0
+german>=1.9.1<2.0.0
 # some constants
 konrad>=0.7.0<1.0.0
 
 geostrat>=1.1.12<2.0.0
-hey>=5.11.7<6.0.0
+hey>=5.11.8<6.0.0
 
 # determine headline level
-groupme>=0.14.1<1.0.0
+groupme>=0.15.0<1.0.0
 
 # parse bib tech labels [FHK2016]
-detector>=0.23.0<1.0.0
+detector>=0.24.0<1.0.0
 
-elements>=0.7.0<1.0.0
+elements>=0.8.0<1.0.0

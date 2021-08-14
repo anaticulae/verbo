@@ -45,10 +45,9 @@ def test_run_words(command, monkeypatch, capsys):
 def test_feature_words_work_pages0_10(testdir, monkeypatch):
     root = str(testdir)
     cmd = f'-i {root} -o {root} --pages=0:10'
-
     utila.copy_content(
-        source=power.link(power.MASTER072_PDF),
-        destination=root,
+        src=power.link(power.MASTER072_PDF),
+        dest=root,
         pattern='(rawmaker|sections|groupme)__*.yaml',
     )
     tests.run(cmd, monkeypatch=monkeypatch)
