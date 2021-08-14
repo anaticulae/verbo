@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.0.2
+
+### Fix
+
+* skip headline parsing for too few text data (60bf223f801d)
+
 ## v1.0.1
 
 ### Fix
