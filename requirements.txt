@@ -17,7 +17,7 @@ german>=1.9.1<2.0.0
 konrad>=0.7.0<1.0.0
 
 geostrat>=1.1.12<2.0.0
-hey>=5.11.8<6.0.0
+hey>=5.11.9<6.0.0
 
 # determine headline level
 groupme>=0.15.0<1.0.0
