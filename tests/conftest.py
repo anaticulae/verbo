@@ -37,8 +37,8 @@ RESOURCES = [
     power.MASTER098_PDF,
     power.MASTER075_PDF,
     power.BACHELOR037_PDF,
-    power.DOCU09_PDF,
-    power.DOCU27_PDF,
+    power.DOCU009_PDF,
+    power.DOCU027_PDF,
 ]
 
 WORKER = 6

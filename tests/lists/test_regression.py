@@ -27,11 +27,11 @@ def test_nolist_bachelor241_page81(testdir, monkeypatch):
     assert not loaded
 
 
-@utilatest.requires(power.DOCU27_PDF)
+@utilatest.requires(power.DOCU027_PDF)
 def test_list_docu_restructured_page4(testdir, monkeypatch):
     """This test was designed cause on this page table content was
     parsed as lists."""
-    source = power.link(power.DOCU27_PDF)
+    source = power.link(power.DOCU027_PDF)
     tests.run(f'-i {source} --pages=4 --list', monkeypatch=monkeypatch)
 
     loaded = serializeraw.load_lists(words.path.lists(testdir.tmpdir))

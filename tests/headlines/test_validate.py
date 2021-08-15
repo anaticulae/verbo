@@ -38,7 +38,7 @@ def file_read(name):
 
 # yapf:disable
 @pytest.mark.parametrize('source, pages, expected', [
-    pytest.param(power.DOCU27_PDF, None, 'docu027', id='docu27',
+    pytest.param(power.DOCU027_PDF, None, 'docu027', id='docu27',
         marks=pytest.mark.xfail,
     ),
     pytest.param(power.BACHELOR037_PDF, None, 'bachelor037', id='bachelor37'),

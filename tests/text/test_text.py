@@ -25,17 +25,18 @@ import words.undefined
 
 @utilatest.longrun
 def test_text_work():
+    source = power.link(power.DOCU027_PDF)
     headlines = tests.fixtures.restruct.restructured_headlines()
     result = words.feature.text.work(
-        boxes=iamraw.path.boxed(power.link(power.DOCU27_PDF)),
-        lists=words.path.lists(power.link(power.DOCU27_PDF)),
-        fontcontent=iamraw.path.fontcontent(power.link(power.DOCU27_PDF)),
-        fontheader=iamraw.path.fontheader(power.link(power.DOCU27_PDF)),
-        headerfooters=iamraw.path.headerfooters(power.link(power.DOCU27_PDF)),
+        boxes=iamraw.path.boxed(source),
+        lists=words.path.lists(source),
+        fontcontent=iamraw.path.fontcontent(source),
+        fontheader=iamraw.path.fontheader(source),
+        headerfooters=iamraw.path.headerfooters(source),
         headlines=headlines,
-        pagesizes=iamraw.path.sizeandborder(power.link(power.DOCU27_PDF)),
-        text=iamraw.path.text(power.link(power.DOCU27_PDF)),
-        textposition=iamraw.path.textposition(power.link(power.DOCU27_PDF)),
+        pagesizes=iamraw.path.sizeandborder(source),
+        text=iamraw.path.text(source),
+        textposition=iamraw.path.textposition(source),
     )
     assert len(result) > 4700, str(result)
 
@@ -110,7 +111,7 @@ def test_text_convert_undefined_to_text():
     dumped = serializeraw.dump_text(textexample)
     loaded = serializeraw.load_text(dumped, headlines)
 
-    source = power.link(power.DOCU27_PDF)
+    source = power.link(power.DOCU027_PDF)
     ptcns = serializeraw.create_pagetextcontentnavigators_frompath(source)
 
     undefined = words.undefined.extract_undefined(loaded, ptcns)

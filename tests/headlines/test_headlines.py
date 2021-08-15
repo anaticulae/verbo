@@ -75,9 +75,9 @@ EXPECTED = [
 
 
 @pytest.mark.xfail
-@utilatest.requires(power.DOCU27_PDF)
+@utilatest.requires(power.DOCU027_PDF)
 def test_headlines_extract_headlines():
-    path = power.link(power.DOCU27_PDF)
+    path = power.link(power.DOCU027_PDF)
     section = serializeraw.load_sections(iamraw.path.sections_(path))
     content = serializeraw.create_pagetextcontentnavigators_frompath(path)
     result = words.headlines.machine.headlines(
@@ -97,7 +97,7 @@ def test_headlines_extract_headlines():
 @utilatest.longrun
 def test_headlines_work():
     sections_ = tests.fixtures.restruct.restructured_sections()
-    src = power.link(power.DOCU27_PDF)
+    src = power.link(power.DOCU027_PDF)
     dumped, _ = words.feature.headlines.work(
         text=iamraw.path.text(src),
         text_position=iamraw.path.textposition(src),

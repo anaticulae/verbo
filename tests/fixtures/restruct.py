@@ -27,8 +27,8 @@ import words.text.chapter
 
 
 def restructured_sections():
-    utilatest.fixture_requires(power.DOCU27_PDF)
-    source = iamraw.path.sections_(power.link(power.DOCU27_PDF))
+    utilatest.fixture_requires(power.DOCU027_PDF)
+    source = iamraw.path.sections_(power.link(power.DOCU027_PDF))
     extracted = serializeraw.load_sections(source)
     dumped = serializeraw.dump_sections(extracted)
     return dumped
@@ -36,7 +36,7 @@ def restructured_sections():
 
 def restructured_headlines():
     sections_ = restructured_sections()
-    src = power.link(power.DOCU27_PDF)
+    src = power.link(power.DOCU027_PDF)
     dumped, _ = words.feature.headlines.work(
         sectionlist=sections_,
         text=iamraw.path.text(src),
@@ -55,9 +55,9 @@ def restructured_headlines():
 
 
 def restruct_resources():
-    utilatest.fixture_requires(power.DOCU27_PDF)
+    utilatest.fixture_requires(power.DOCU027_PDF)
     headlines = restructured_headlines()
-    source = power.link(power.DOCU27_PDF)
+    source = power.link(power.DOCU027_PDF)
     loaded = words.feature.load_resources(
         text=iamraw.path.text(source),
         textposition=iamraw.path.textposition(source),
@@ -83,7 +83,7 @@ def restructured_textexample(require_headlinelevel: bool = True):
 
 
 def restructured_boxed():
-    source = power.link(power.DOCU27_PDF)
+    source = power.link(power.DOCU027_PDF)
     headlines = restructured_headlines()
     undefined = serializeraw.dump_text(restructured_textexample())
     extracted, _ = words.loader.load_resources(
@@ -100,7 +100,7 @@ def restructured_boxed():
 
 
 def restructured_list_work():
-    source = power.link(power.DOCU27_PDF)
+    source = power.link(power.DOCU027_PDF)
     headlines = restructured_headlines()
     undefined = restructured_textexample()
     undefined = serializeraw.dump_text(undefined)

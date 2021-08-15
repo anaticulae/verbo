@@ -19,19 +19,19 @@ import tests
     pytest.param(['--help'], id='help'),
     pytest.param(['--version'], id='version'),
     pytest.param(
-        ['-i', power.link(power.DOCU27_PDF), '-o', '.'],
+        ['-i', power.link(power.DOCU027_PDF), '-o', '.'],
         id='restructured',
     ),
     pytest.param(
-        ['-i', power.link(power.DOCU27_PDF), '-o', '.', '--pages', '0:9'],
+        ['-i', power.link(power.DOCU027_PDF), '-o', '.', '--pages', '0:9'],
         id='pages',
     ),
     pytest.param(['-i', power.link(power.MASTER072_PDF)], id='master72'),
-    pytest.param(['-i', power.link(power.DOCU09_PDF)], id='pyporting'),
+    pytest.param(['-i', power.link(power.DOCU009_PDF)], id='pyporting'),
 ])
 @pytest.mark.usefixtures('testdir')
-@utilatest.requires(power.DOCU09_PDF)
-@utilatest.requires(power.DOCU27_PDF)
+@utilatest.requires(power.DOCU009_PDF)
+@utilatest.requires(power.DOCU027_PDF)
 @utilatest.requires(power.MASTER072_PDF)
 @utilatest.nightly
 def test_run_words(command, monkeypatch, capsys):
