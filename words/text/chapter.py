@@ -167,7 +167,6 @@ def analyze_page(
     if prepared is None:
         # Skip analyzing empty pages
         return None
-
     call = functools.partial(
         words.text.paragraph.collect_paragraph,
         page=prepared.number,
@@ -191,7 +190,6 @@ def analyze_page(
             ),
         ) for (first, second) in zipped
     ]
-
     # clear result, remove empty content
     result = []
     for item in sections:
@@ -220,12 +218,10 @@ def prepare_analyze_page(
     contentborder = utila.select_page(borders, page=page)
     if contentborder is None:
         return None
-
     pcn = utila.select_page(textnavigators, page=page)
     if pcn.offset == (None, None):
         # empty page
         return None
-
     fontstore = iamraw.FontContentStore(fontstore, pcn, page)
     # pcn.offset[0] - 1: the "virtual" headline is one container element before
     # the first content.
@@ -247,7 +243,6 @@ def prepare_analyze_page(
     else:
         # normal headline
         pass
-
     return words.text.PageAnalyzeResources(
         number=page,
         headlines=headlines,
