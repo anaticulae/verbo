@@ -43,6 +43,7 @@ def test_validate_master072_text():
     marks=pytest.mark.xfail(reason='not ready yet')),
     pytest.param(power.DISS266_PDF, utila.ranged_tuple(7, 213), 'diss266', id='diss266',
     marks=pytest.mark.xfail(reason='not ready yet')),
+    pytest.param(power.DISS205_PDF, utila.ranged_tuple(0, 20), 'diss205', id='diss205'),
 ])
 # yapf:enable
 @utilatest.nightly

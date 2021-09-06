@@ -1,0 +1,74 @@
+
+
+:::: Einführung ::::
+
+
+
+
+:::: Entwurfsentscheidungen in Bauwerksmodellen ::::
+
+
+Die voranschreitende Implementierung digitaler Prozesse in der Planung im Bauwesen geht einher mit der Entwicklung komplexer Datenstrukturen.
+Eine Form dieser Datenstrukturen stellt das digitale Bauwerksmodell dar, welches den Kern der modellbasierten Arbeitsweise (englisch: Building Information Modeling; Abk. BIM) darstellt.
+Dabei stellt das Modell die Datenbasis für den aktuellen und alle folgenden Prozessschritte dar und bildet, so weit wie nötig, das real existierende oder zu erschaffende Bauwerk ab.
+Ein solches Modell umfasst geometrische Daten zur Beschreibung der geometrischen Form, sowie nicht-geometrische Daten zur Beschreibung semantischer, physikalischer oder anderer Inhalte.
+Der Umfang und die sich daraus ergebende Komplexität solcher Modelle lässt sich nur beherrschen, indem sie sinnvoll strukturiert werden.
+Mit dem Repräsentationscharakter des digitalen Bauwerksmodells ergibt sich die Strukturierung anhand aller relevanten Einzelteile des abgebildeten Gebäudes, wie zum Beispiel Bauteile und durch sie begrenzte Räume.
+Das eigentliche Ziel des Modells, als Quelle für die Generierung aller für die Umsetzung relevanter Informationen zu dienen, folgt dem Grundsatz, dass das digitale Bauen vor dem realen Bauen zu erfolgen hat.
+Die modellbasierte Arbeitsweise bringt es mit sich, dass das Modell datentechnisch konsistent sein soll, gleichzeitig aber auch die Anforderungen des realen Bauwerks, soweit es digital möglich ist, erfüllt werden müssen.
+Da das Modell entsprechend der üblichen iterativen Arbeitsweise beim Entwurf eines Bauwerks erstellt und verändert wird, stellt dies eine komplexe Aufgabe dar.
+Dies umfasst das Erstellen von Varianten, wie auch das Zurücknehmen von Entscheidungen.
+Sämtliche Arbeitsschritte Die Entscheidungen im Entwurfsprozess gehen auf Überlegungen der verantwortlichen Experten zurück und bilden die Synthese aus ihnen bekannten Annahmen und Anforderungen an das Bauwerk.
+Die Anforderungen an das Bauwerk sind vielfältig und haben ihren Ursprung in Vorschriften und Normen, baupraktischen Überlegungen, individuellen Projektanforderungen, ästhetischen Ansprüchen, aber auch in den Erfahrungen der Experten.
+Das digitale Modell hat dabei bestimmte Anforderungen zwingend – und andere wenn möglich – zu erfüllen.
+Der Experte hat die Aufgabe, aus diesem Spannungsfeld zwischen zwingenden und möglichen Anforderungen die Randbedingungen abzuleiten und auf deren Basis die Entwurfsentscheidungen zu treffen.
+Er hat diese so im Modell umzusetzen, dass sie – nach seiner Einschätzung – zum gewünschten Ergebnis führen.
+Dieses Prinzip existiert ebenso bei der Entwicklung digitaler Software (vgl. Berg u. a., 2009).
+
+
+:::: Motivation ::::
+
+
+Das digitale Bauwerksmodell selbst wird nach heutigem Stand der Technik, hauptsächlich als aktueller Planungsstand bzw. als das Produkt der durch einen Menschen getroffenen Entscheidungen, betrachtet.
+Die darüberhinausgehende Integration des Wissens und der Überlegungen, welche hinter den Entscheidungen steckt, spielen bisher nur eine begrenzte Rolle, obwohl sich Wissen und Überlegungen aus den Anforderungen als mehr oder weniger exakt formulierte Zwänge und Regeln ergeben.
+Eine typische Form solcher Regeln im Bauwesen ist die Festlegung von Mindest- oder Höchstmaßen unter gegebenen Bedingungen.
+Beispielsweise hat die lichte Breite der Fluchtwege bei bis zu 20 Personen im Einzugsgebiet entsprechend der technischen Regeln mindestens 1,00 m zu betragen (entnommen aus Bundesanstalt für Arbeitsschutz und Arbeitsmedizin: Ausschuss für Arbeitsstätten (ASTA), 2007, Tabelle 1).
+Wird nun die lichte Breite als Parameter zwischen begrenzenden Bauteilen des Fluchtwegs aufgefasst, so ist es in aktuell verfügbaren Softwareprodukten zwar möglich, einen konkreten Wert für jeden solchen Parameter der lichten Breite festzulegen, die Information über den möglichen Wertebereich des Parameters wird dadurch nicht abgebildet.
+Dazu kommt zwar die Umsetzung des Prinzips des parametrischen Modellierens, bei dem der Entwurf in Abhängigkeit von bestimmten Parametern beschrieben wird, doch führt dies auf Grund eines fest definierten Konstruktionsplans zu einem steifen Korsett.
+Dieses ist insofern unflexibel, als dass bestimmte Parameter nicht direkt veränderbar sind und nur indirekt über andere Parameter gesteu- Fällen das beste bzw. optimale Ergebnis, welches möglich wäre.
+Ein solches Vorgehen steht der Idee des Baus eines unter aktuellen Randbedingungen möglichst optimalen Gebäudes entgegen.
+Bei der aktuellen Entwicklung, von einer steigenden Anzahl zu berücksichtigender Anforderungen durch umfangreichere und strengere Bauvorschriften, sowie der Berücksichtigung zusätzlicher Interessen, stellt es eine komplexer werdende Aufgabe dar.
+Dazu machen nachträgliche Änderungen des Entwurfs teure Umplanungen notwendig.
+Aus diesem Grund ist es zu prüfen, in wie weit die Bauwerksmodelle erweitert werden können, dass sie den Menschen bei solchen Aufgaben unterstützen.
+Dies beinhaltet zum einen, dass Entwurfsentscheidungen und die ihnen zugrunde liegenden begründbaren Überlegungen nachvollziehbar im Modell zu finden sind, und zum anderen, dass die Randbedingungen und Zusammenhänge direkt in das Modell integriert werden.
+Beides umfasst die Integration von Entwurfswissen in das Modell auf eine formalisierte Art und Weise und würde es ermöglichen, den Spielraum der möglichen Änderungen eines Modells algorithmisch zu berechnen.
+Es existieren sinnvolle Argumente für die Integration der Überlegungen und Entwurfsentscheidungen.
+Ihre digitale Repräsentation würde zu einer verbesserten Kommunikation und einem verbesserten Arbeiten am digitalen Modell führen (vgl. Otey u. a., 2018), da eine erhöhte Nachvollziehbarkeit der Absichten hinter den Entscheidungen möglich wäre (vgl. Shum u. a., 1994).
+Die Randbedingungen und Zusammenhänge könnten dazu genutzt werden, Änderungen direkt im Modell umzusetzen, solange alle Zwänge erfüllt wären.
+Auch wiederholt auftretende Muster in Form von wiederauftretenden Anforderungen ließen sich über Projekte hinweg nutzen.
+Insgesamt würde sich die Anzahl der Iterationsschritte im Prozess reduzieren, da direkt bei Ausführung von Änderungen und nicht am Ende eines Iterationsschritts die Einhaltung aller Randbedingungen geprüft würden.
+Die Möglichkeit, das Entwurfswissen in das Modell zu integrieren, zu verarbeiten und auszulesen, würde schlussendlich die Produktivität deutlich erhöhen (vgl. Pena-Mora u. a., 1993).
+Die Anforderungen an solche Systeme und die Gründe für ihren sinnvollen Einsatz wurden bereits beschrieben.
+G. Lee u. a. (2006) bezeichnen die Integration von Entwurfsund Ingenieurwissen als Voraussetzung für leistungsfähige Softwaresysteme.
+Ein solches System nennt Galle (1995) „intelligent“, da es damit möglich ist, bei dem sich weiterentwickelnden Entwurf die semantische Integrität des Modells konsistent zu erhalten.
+Darüber hinaus nennt er die Möglichkeit, dass ein solches „intelligentes“ System Lösungen zu verschiedenen Aspekten des Entwurfsproblems generieren und vorschlagen durchgeführt werden kann.
+Die benötigte Zeit und die Anzahl der gemachten Fehler wäre zu groß.
+Sie fordern daher die Entwicklung geeigneter Softwareprodukte, die den Entwurfsprozess unterstützen.
+Valdes u. a. (2016) schlagen dazu einen neuartigen Ansatz des Bauwerksentwurfs vor.
+Kern des Ganzen ist eine Systemumgebung, in der Gebäudeanforderungen und Entwurfsspezifikationen definiert und anschließend ausgewertet werden können.
+Dies soll mit der geometrischen Konstruktion gekoppelt werden.
+Der sich ergebende Vorteil wäre die Reduzierung von Fehlern und Erhöhung der Konsistenz der Modelle.
+Auch Bettig, Bapat u. a. (2005) erkennen, dass aktuelle Softwaresysteme kaum Entwurfswissen integrieren und beschreiben die Vision eines interaktiven Entwurfssystems.
+In diesem könnten die Anforderungen an das Modell während des Entwurfsprozesses durch den Menschen spezifiziert und durch eine Wissensdatenbank ergänzt werden.
+Dabei könnte – bei Änderungen – ein Algorithmus auftretende Probleme unter Berücksichtigung der implementierten Anforderungen lösen.
+Nach Bettig, Bapat u. a. (eigene Übersetzung 2005, Seite 8) würde dies zu einem neuen Paradigma für die menschlichen Experten, hier genannt „Designer“, beim Entwurf der Modelle führen: „Designer könnten die Anzahl und Varianten von Entwürfen durch das Hinzufügen, Entfernen und Verändern der Entwurfsanforderungen kontrollieren.
+Designer könnten die Entwurfsalternativen untersuchen und durch aktives Anpassen die Grenzen erkennen.“
+(eigene Übersetzung Bettig, Bapat u. a., 2005, Seite 8)
+Die aufgeführten Veröffentlichungen enthalten alle die Forderung nach wissensintegrierenden Systemen für Bauwerksmodelle und machen Vorschläge, wie diese umgesetzt werden könnten.
+Es existiert aber aktuell keine Software, welche die Forderungen weder für einen Teilbereich noch für ein Gesamtsystem ermöglicht.
+
+
+:::: Ziel und Abgrenzung ::::
+
+
+Das Ziel dieser Arbeit ergibt sich aus den im vorangegangenen Abschnitt aufgezählten Forderungen an Softwaresysteme bzw. Bauwerksmodelle und die zugehörigen Visionen: Ziel ist die Entwicklung eines Bauwerksmodells mit Fokus auf die Geometrie, welches neben dem konkreten Entwurf das den einzelnen Entwurfsentschei-
