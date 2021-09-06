@@ -22,10 +22,3 @@ backlog
 * Block-Zitate benötigen keine Anführungszeichen
 
 * docref: add math ref parser, siehe Formel
-
-BEFORE RELEASE
---------------
-
-* remove:
-
-    loaded = utila.yaml_from_raw_or_path(raw, safe=False)
