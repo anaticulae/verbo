@@ -128,8 +128,8 @@ def flat_lookup(items):
     """
     result = []
     for page, content in items:
-        if isinstance(content, list) and not \
-                               all((isinstance(item, int) for item in content)):
+        islist = isinstance(content, list)
+        if islist and not all((isinstance(item, int) for item in content)):
             for number, pagecontent in enumerate(content, start=page):
                 result.extend(flat_lookup([(number, pagecontent)]))
         else:
