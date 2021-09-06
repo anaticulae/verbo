@@ -227,8 +227,8 @@ def prepare_analyze_page(
     # the first content.
     if headlines[0].container is None:
         # start with None-Container
-        headlines[0].container = pcn.offset[0] - 1  # absolute coordinate
-    elif headlines[0].end > pcn.offset[0]:
+        headlines[0].container = -1  # we use ptcn
+    elif headlines[0].end > 0:  # we use ptcn
         # the page does not start with a headline, without inserting an empty
         # line the starting content of the page is ignored
         # -> add starting container
@@ -237,7 +237,8 @@ def prepare_analyze_page(
             level=None,
             raw_level=None,
             page=page,
-            container=pcn.offset[0] - 1,  # absoulte coordinate
+            # container=pcn.offset[0] - 1,  # absoulte coordinate
+            container=-1,  # we use ptcn
         )
         headlines = [headline] + headlines
     else:
