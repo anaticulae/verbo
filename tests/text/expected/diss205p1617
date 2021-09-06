@@ -1,0 +1,39 @@
+
+
+:::: Einführung ::::
+
+
+
+
+:::: Entwurfsentscheidungen in Bauwerksmodellen ::::
+
+
+Die voranschreitende Implementierung digitaler Prozesse in der Planung im Bauwesen geht einher mit der Entwicklung komplexer Datenstrukturen.
+Eine Form dieser Datenstrukturen stellt das digitale Bauwerksmodell dar, welches den Kern der modellbasierten Arbeitsweise (englisch: Building Information Modeling; Abk.
+BIM) darstellt.
+Dabei stellt das Modell die Datenbasis für den aktuellen und alle folgenden Prozessschritte dar und bildet, so weit wie nötig, das real existierende oder zu erschaffende Bauwerk ab.
+Ein solches Modell umfasst geometrische Daten zur Beschreibung der geometrischen Form, sowie nicht-geometrische Daten zur Beschreibung semantischer, physikalischer oder anderer Inhalte.
+Der Umfang und die sich daraus ergebende Komplexität solcher Modelle lässt sich nur beherrschen, indem sie sinnvoll strukturiert werden.
+Mit dem Repräsentationscharakter des digitalen Bauwerksmodells ergibt sich die Strukturierung anhand aller relevanten Einzelteile des abgebildeten Gebäudes, wie zum Beispiel Bauteile und durch sie begrenzte Räume.
+Das eigentliche Ziel des Modells, als Quelle für die Generierung aller für die Umsetzung relevanter Informationen zu dienen, folgt dem Grundsatz, dass das digitale Bauen vor dem realen Bauen zu erfolgen hat.
+Die modellbasierte Arbeitsweise bringt es mit sich, dass das Modell datentechnisch konsistent sein soll, gleichzeitig aber auch die Anforderungen des realen Bauwerks, soweit es digital möglich ist, erfüllt werden müssen.
+Da das Modell entsprechend der üblichen iterativen Arbeitsweise beim Entwurf eines Bauwerks erstellt und verändert wird, stellt dies eine komplexe Aufgabe dar.
+Dies umfasst das Erstellen von Varianten, wie auch das Zurücknehmen von Entscheidungen.
+Sämtliche Arbeitsschritte werden auf Grund von Entscheidungen menschlicher Experten, wie Ingenieure oder Architekten, getroffen.
+Die Entscheidungen im Entwurfsprozess gehen auf Überlegungen der verantwortlichen Experten zurück und bilden die Synthese aus ihnen bekannten Annahmen und Anforderungen an das Bauwerk.
+Die Anforderungen an das Bauwerk sind vielfältig und haben ihren Ursprung in Vorschriften und Normen, baupraktischen Überlegungen, individuellen Projektanforderungen, ästhetischen Ansprüchen, aber auch in den Erfahrungen der Experten.
+Das digitale Modell hat dabei bestimmte Anforderungen zwingend – und andere wenn möglich – zu erfüllen.
+Der Experte hat die Aufgabe, aus diesem Spannungsfeld zwischen zwingenden und möglichen Anforderungen die Randbedingungen abzuleiten und auf deren Basis die Entwurfsentscheidungen zu treffen.
+Er hat diese so im Modell umzusetzen, dass sie – nach seiner Einschätzung – zum gewünschten Ergebnis führen.
+Dieses Prinzip existiert ebenso bei der Entwicklung digitaler Software (vgl. Berg u. a., 2009).
+
+
+:::: Motivation ::::
+
+
+Das digitale Bauwerksmodell selbst wird nach heutigem Stand der Technik, hauptsächlich als aktueller Planungsstand bzw. als das Produkt der durch einen Menschen getroffenen Entscheidungen, betrachtet.
+Die darüberhinausgehende Integration des Wissens und der Überlegungen, welche hinter den Entscheidungen steckt, spielen bisher nur eine begrenzte Rolle, obwohl sich Wissen und Überlegungen aus den Anforderungen als mehr oder weniger exakt formulierte Zwänge und Regeln ergeben.
+Eine typische Form solcher Regeln im Bauwesen ist die Festlegung von Mindest- oder Höchstmaßen unter gegebenen Bedingungen.
+Beispielsweise hat die lichte Breite der Fluchtwege bei bis zu 20 Personen im Einzugsgebiet entsprechend der technischen Regeln mindestens 1,00 m zu betragen (entnommen aus Bundesanstalt für Arbeitsschutz und Arbeitsmedizin: Ausschuss für Arbeitsstätten (ASTA), 2007, Tabelle 1).
+Wird nun die lichte Breite als Parameter zwischen begrenzenden Bauteilen des Fluchtwegs aufgefasst, so ist es in aktuell verfügbaren Softwareprodukten zwar möglich, einen konkreten Wert für jeden solchen Parameter der lichten Breite festzulegen, die Information über den möglichen Wertebereich des Parameters wird dadurch nicht abgebildet.
+Dazu kommt zwar die Umsetzung des Prinzips des parametrischen Modellierens, bei dem der Entwurf in Abhängigkeit von bestimmten Parametern beschrieben wird, doch führt dies auf Grund eines fest definierten Konstruktionsplans zu einem steifen Korsett.
