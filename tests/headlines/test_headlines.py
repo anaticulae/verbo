@@ -79,7 +79,7 @@ EXPECTED = [
 def test_headlines_extract_headlines():
     path = power.link(power.DOCU027_PDF)
     section = serializeraw.load_sections(iamraw.path.sections_(path))
-    content = serializeraw.create_pagetextcontentnavigators_frompath(path)
+    content = serializeraw.ptcn_frompath(path)
     result = words.headlines.machine.headlines(
         ptcns=content,
         sectionlist=section,

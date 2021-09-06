@@ -36,7 +36,7 @@ def load_resources(
         headlines,
         pages=pages,
     )
-    ptcns = serializeraw.create_pagetextcontentnavigators_fromfile(
+    ptcns = serializeraw.ptcn_fromfile(
         text,
         textpositions,
         border,

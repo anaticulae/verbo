@@ -13,7 +13,7 @@ import serializeraw
 
 
 def headlines_frompath(path: str, pages=None, prefix='oneline'):
-    loaded = serializeraw.create_pagetextcontentnavigators_frompath(
+    loaded = serializeraw.ptcn_frompath(
         path,
         pages=pages,
         prefix=prefix,

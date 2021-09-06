@@ -55,7 +55,7 @@ def load_resources(  # pylint:disable=R0914,R0913
     """Load content from path and create required object"""
 
     # TODO: CHECK REALY REQUIRED RESOURCES AND REMOVE NON REQUIRED
-    ptcns = serializeraw.create_pagetextcontentnavigators_fromfile(
+    ptcns = serializeraw.ptcn_fromfile(
         text=text,
         textpositions=textposition,
         sizeandborderpath=pagesizes,

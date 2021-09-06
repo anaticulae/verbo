@@ -203,7 +203,7 @@ def test_list_master72_page39_one_list(testdir):
     pages = (39,)
     source = power.link(power.MASTER072_PDF)
 
-    ptcn = serializeraw.create_pagetextcontentnavigators_frompath(
+    ptcn = serializeraw.ptcn_frompath(
         source,
         pages=pages,
     )

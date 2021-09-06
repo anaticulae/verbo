@@ -24,7 +24,7 @@ import words.headlines.strategies.magic
 def master155pages50():
     source = power.link(power.MASTER155_PDF)
     pages = utila.ranged_tuple(1, 86)
-    ptcns = serializeraw.create_pagetextcontentnavigators_frompath(
+    ptcns = serializeraw.ptcn_frompath(
         source,
         pages=pages,
         prefix='oneline',

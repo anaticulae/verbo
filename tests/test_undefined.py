@@ -30,7 +30,7 @@ def test_extract_undefined():
     textexample = tests.fixtures.restruct.restructured_textexample()
 
     source = power.link(power.DOCU027_PDF)
-    ptcns = serializeraw.create_pagetextcontentnavigators_frompath(source)
+    ptcns = serializeraw.ptcn_frompath(source)
 
     extracted = words.undefined.extract_undefined(textexample, ptcns)
     assert extracted

@@ -112,7 +112,7 @@ def test_text_convert_undefined_to_text():
     loaded = serializeraw.load_text(dumped, headlines)
 
     source = power.link(power.DOCU027_PDF)
-    ptcns = serializeraw.create_pagetextcontentnavigators_frompath(source)
+    ptcns = serializeraw.ptcn_frompath(source)
 
     undefined = words.undefined.extract_undefined(loaded, ptcns)
 

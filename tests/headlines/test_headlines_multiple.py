@@ -93,7 +93,7 @@ def parse_multiline(path: str, pages: tuple, prefix: str = ''):
         iamraw.path.sections_(path),
         pages=pages,
     )
-    loaded = serializeraw.create_pagetextcontentnavigators_frompath(
+    loaded = serializeraw.ptcn_frompath(
         path,
         pages=pages,
         prefix=prefix,

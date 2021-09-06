@@ -39,7 +39,7 @@ def work(  # pylint:disable=R0914
     extracted_text(str): document with `undefined fields` from `text`
                          module of `words`
     """
-    ptcns = serializeraw.create_pagetextcontentnavigators_fromfile(
+    ptcns = serializeraw.ptcn_fromfile(
         text=text,
         textpositions=textpositions,
         sizeandborderpath=border,

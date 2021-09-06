@@ -21,7 +21,7 @@ def test_merge_pages():
     # TODO: WHAT SHOULD WE CHECK?
     source = power.link(power.MASTER072_PDF)
     pages = utila.ranged_tuple(35, 40)
-    ptcns = serializeraw.create_pagetextcontentnavigators_frompath(
+    ptcns = serializeraw.ptcn_frompath(
         path=source,
         pages=pages,
     )
@@ -58,7 +58,7 @@ def test_extract_multiple_lists_master72():
 
 
 def extract_multiple_lists(source, pages):
-    ptcns = serializeraw.create_pagetextcontentnavigators_frompath(
+    ptcns = serializeraw.ptcn_frompath(
         path=source,
         pages=pages,
     )

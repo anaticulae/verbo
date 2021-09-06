@@ -48,7 +48,7 @@ Player - Ubuntu"""
 @utilatest.longrun
 def test_extract_levelfour_bachelor90():
     source = power.link(power.BACHELOR090_PDF)
-    navigators = serializeraw.create_pagetextcontentnavigators_frompath(
+    navigators = serializeraw.ptcn_frompath(
         path=source,
         prefix='oneline',
         pages=utila.ranged_tuple(11, 90),
@@ -93,7 +93,7 @@ Vergleich der Methodik"""
 @utilatest.longrun
 def test_extract_levelfour_master116():
     source = power.link(power.MASTER116_PDF)
-    navigators = serializeraw.create_pagetextcontentnavigators_frompath(
+    navigators = serializeraw.ptcn_frompath(
         path=source,
         prefix='oneline',
         pages=utila.ranged_tuple(7, 87),

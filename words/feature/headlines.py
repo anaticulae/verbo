@@ -90,7 +90,7 @@ def work(  # pylint:disable=R0913,R0914
     oneline_extracted = words.headlines.judge.run(oneline_results)
 
     if not has_levelfour(extracted):
-        textnavigators = serializeraw.create_pagetextcontentnavigators_fromfile(
+        textnavigators = serializeraw.ptcn_fromfile(
             text=text,
             textpositions=text_position,
             sizeandborderpath=sizeandborder,
@@ -168,7 +168,7 @@ def extract_headlines(
     magics=None,
     pages: tuple = None,
 ):
-    ptcns = serializeraw.create_pagetextcontentnavigators_fromfile(
+    ptcns = serializeraw.ptcn_fromfile(
         text,
         textposition,
         sizeandborder,
