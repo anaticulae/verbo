@@ -26,7 +26,6 @@ confidence of the abbreviation parser. The improvements are especially
 reached in short lower-case words.
 """
 
-import groupme.abbreviation
 import groupme.abbreviation.lists
 import serializeraw
 
