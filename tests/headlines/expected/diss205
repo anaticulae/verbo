@@ -1,0 +1,25 @@
+Einführung
+    1.1 Entwurfsentscheidungen in Bauwerksmodellen
+    1.2 Motivation
+    1.3 Ziel und Abgrenzung
+    1.4 Einbezogene Forschungsgebiete
+    1.5 Eigene zugehörige Veröffentlichungen
+    1.6 Eindeutigkeit der Begriffe
+    1.7 Verwendete Fachterminologie und Zahlendarstellung
+    1.8 Aufbau der Arbeit
+Grundlagen und Definitionen
+    2.1 Grundsätzliche Modell-Klassifikation
+    2.2 Regeln und Constraints
+    2.3 Constraint-Satisfaction-Problem
+    2.4 Constraint-Graph
+    2.5 Solid Modeling
+Wissensrepräsentation und Modellierung digitaler Bauwerksmodelle
+    3.1 Wissen und wissensbasierte Modellierung
+    3.2 Wissensrepräsentation in Expertensystemen
+    3.3 Definition eines digitalen Bauwerksmodells
+    3.4 Der Modellcharakter eines digitalen Bauwerksmodells
+    3.5 Objektorientierung in einem digitalen Bauwerksmodell
+        3.5.1 Zerlegung des Bauwerksmodells
+        3.5.2 Abstraktion zur Strukturierung
+        3.5.3 Hierarchische Strukturierung
+    3.6 Aspekte eines digitalen Bauwerksmodells
