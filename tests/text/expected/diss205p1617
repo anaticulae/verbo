@@ -25,7 +25,7 @@ Die Anforderungen an das Bauwerk sind vielfältig und haben ihren Ursprung in Vo
 Das digitale Modell hat dabei bestimmte Anforderungen zwingend – und andere wenn möglich – zu erfüllen.
 Der Experte hat die Aufgabe, aus diesem Spannungsfeld zwischen zwingenden und möglichen Anforderungen die Randbedingungen abzuleiten und auf deren Basis die Entwurfsentscheidungen zu treffen.
 Er hat diese so im Modell umzusetzen, dass sie – nach seiner Einschätzung – zum gewünschten Ergebnis führen.
-Dieses Prinzip existiert ebenso bei der Entwicklung digitaler Software (vgl. Berg u. a., 2009).
+Dieses Prinzip existiert ebenso bei der Entwicklung digitaler Software (vgl. Berg u.a., 2009).
 
 
 :::: Motivation ::::
@@ -37,3 +37,4 @@ Eine typische Form solcher Regeln im Bauwesen ist die Festlegung von Mindest- od
 Beispielsweise hat die lichte Breite der Fluchtwege bei bis zu 20 Personen im Einzugsgebiet entsprechend der technischen Regeln mindestens 1,00 m zu betragen (entnommen aus Bundesanstalt für Arbeitsschutz und Arbeitsmedizin: Ausschuss für Arbeitsstätten (ASTA), 2007, Tabelle 1).
 Wird nun die lichte Breite als Parameter zwischen begrenzenden Bauteilen des Fluchtwegs aufgefasst, so ist es in aktuell verfügbaren Softwareprodukten zwar möglich, einen konkreten Wert für jeden solchen Parameter der lichten Breite festzulegen, die Information über den möglichen Wertebereich des Parameters wird dadurch nicht abgebildet.
 Dazu kommt zwar die Umsetzung des Prinzips des parametrischen Modellierens, bei dem der Entwurf in Abhängigkeit von bestimmten Parametern beschrieben wird, doch führt dies auf Grund eines fest definierten Konstruktionsplans zu einem steifen Korsett.
+Dieses ist insofern unflexibel, als dass bestimmte Parameter nicht direkt veränderbar sind und nur indirekt über andere Parameter gesteu-
