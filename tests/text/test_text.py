@@ -14,7 +14,6 @@ import utila
 import utilatest
 
 import tests.fixtures.restruct
-import tests.resources
 import words.feature
 import words.feature.text
 import words.headlines

@@ -14,7 +14,6 @@ import utilatest
 
 # pylint:disable=W0611
 import tests.fixtures.restruct
-import tests.resources
 import words.headlines
 import words.undefined
 
