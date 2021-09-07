@@ -47,10 +47,12 @@ def test_validate_master072_text():
 ])
 # yapf:enable
 @utilatest.nightly
-def test_text_validate(source, pages, expected):
+def test_text_validate(source, pages, expected, testdir):
     raw = load_current(source, pages)
     expected = load_expected(expected)
-    utila.log(raw)
+    if raw != expected:
+        utila.log(raw)
+        utila.file_create(os.path.join(testdir.tmpdir, 'baseline'), raw)
     assert raw == expected
 
 
