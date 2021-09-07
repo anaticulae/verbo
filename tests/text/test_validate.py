@@ -70,5 +70,5 @@ def load_current(source, pages) -> str:
         if item.sentence:
             # skip None-Sentence between two headlines without content
             collected.append(item.sentence)
-    result = utila.NEWLINE.join(collected)
+    result = utila.NEWLINE.join(collected) + utila.NEWLINE
     return result
