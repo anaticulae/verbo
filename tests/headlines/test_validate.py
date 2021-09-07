@@ -77,6 +77,13 @@ def test_headlines_validate(source, pages, expected, testdir, monkeypatch):
     normal = serializeraw.load_headlines(words.path.headlines(testdir.tmpdir))
     normal: str = raw_headlines(normal)
 
+    if expected not in (oneline, normal):
+        utila.log('NORMAL')
+        utila.log(oneline)
+        utila.log('ONELINE')
+        utila.log(normal)
+        utila.log('EXPECTED')
+        utila.log(expected)
     assert expected in (oneline, normal)
 
 
