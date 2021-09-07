@@ -13,7 +13,6 @@ import typing
 import german
 import iamraw
 import texmex
-import utila
 
 import words.feature
 import words.text
@@ -34,7 +33,7 @@ def find_sentences(page: words.text.PageTextWithHeadlines) -> words.text.TextSec
         for seq in section.content:
             if not isinstance(seq, iamraw.Paragraph):
                 if current:
-                    lines.extend(german.sentence_tokenize(' '.join(current)))
+                    lines.extend(german.sentence_tokenize(text=current))
                     current = []
                 lines.append('%du' % seq.container)
                 continue
@@ -43,10 +42,9 @@ def find_sentences(page: words.text.PageTextWithHeadlines) -> words.text.TextSec
             if seq.content is None:
                 continue
             text = texmex.remove_highnotes(seq.content)
-            text = text.replace(utila.NEWLINE, ' ').strip()
             current.append(text)
         if current:
-            lines.extend(german.sentence_tokenize(' '.join(current)))
+            lines.extend(german.sentence_tokenize(text=current))
             current = []
         result.append(
             words.text.TextSection(
@@ -87,7 +85,7 @@ def visit_sentences(
             if not isinstance(seq, iamraw.Paragraph):
                 if current:
                     for sentence in german.sentence_tokenize(
-                            ''.join(current),
+                            text=current,
                             merge_divis=merge_divis,
                             normalize_spaces=normalize_spaces,
                     ):
@@ -100,7 +98,7 @@ def visit_sentences(
             current.append(text)
         if current:
             for sentence in german.sentence_tokenize(
-                    ''.join(current),
+                    text=current,
                     merge_divis=merge_divis,
                     normalize_spaces=normalize_spaces,
             ):
