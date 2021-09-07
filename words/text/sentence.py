@@ -39,7 +39,7 @@ def find_sentences(page: words.text.PageTextWithHeadlines) -> words.text.TextSec
                 lines.append('%du' % seq.container)
                 continue
             # skip here to ensure that Undefined Container is added which
-            # does not have any content, see commit.
+            # does not have any content, see commit XXX:commit,haha.
             if seq.content is None:
                 continue
             text = texmex.remove_highnotes(seq.content)
