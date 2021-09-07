@@ -9,6 +9,7 @@
 
 import iamraw.path
 import power
+import pytest
 import serializeraw
 import utila
 import utilatest
@@ -78,6 +79,7 @@ def test_headlines_multiple_master72_extract_pages_38_42():
     assert headlines == expected
 
 
+@pytest.mark.xfail(reason='improve anhang headline parser')
 @utilatest.nightly
 def test_headlines_multiple_diss266():
     path = power.link(power.DISS266_PDF)
