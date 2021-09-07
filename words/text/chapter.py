@@ -38,7 +38,6 @@ def extract_texts(
         list of text pages with textutal content definition
     """
     result = split(loaded)
-
     if result:
         chapters = words.text.sentence.extract_textsections(
             result,
@@ -50,16 +49,15 @@ def extract_texts(
         # document is to short or the headlines are not parsed correctly.
         utila.error('could not merge empty pages')
         chapters = []
-
     grouped = groupby_page(chapters)
-
+    # prepare result
     result = []
-    for page, item in grouped.items():
-        item = sorted(item, key=container_start)
+    for page, content in grouped.items():
+        content = sorted(content, key=container_start)
         result.append(
             words.text.PageContentPageTextDetected(
                 page=page,
-                content=item,
+                content=content,
             ))
     return result
 
@@ -128,7 +126,7 @@ def split(loaded: words.feature.TextRequiredResources) -> words.text.PageTextWit
         ] for page in range(start, end + 1)]
     result = []
     # ensure to preserve correct page order when having pages without headline
-    headlines = insert_empty_pages(headlines, max(pages))
+    headlines = insert_empty_pages(headlines, maxpage=max(pages))
     # start analyzing
     for headline in headlines:
         analyzed = analyze_page(
@@ -148,9 +146,9 @@ def split(loaded: words.feature.TextRequiredResources) -> words.text.PageTextWit
 
 
 def analyze_page(
-    headlines,
+    headlines: list,
     fontstore: iamraw.FontStore,
-    textnavigators: texmex.PageTextNavigators,
+    textnavigators: texmex.PageTextContentNavigators,
     border: iamraw.Border,
     boxes: words.boxed.BoxedChecker,
     lists: 'ListLookUp',
@@ -191,15 +189,16 @@ def analyze_page(
         ) for (first, second) in zipped
     ]
     # clear result, remove empty content
-    result = []
+    content = []
     for item in sections:
         if item.headline.container == -1 and not item.content:
             continue
-        result.append(item)
-    return words.text.PageTextWithHeadlines(
+        content.append(item)
+    result = words.text.PageTextWithHeadlines(
         page=prepared.number,
-        content=result,
+        content=content,
     )
+    return result
 
 
 def prepare_analyze_page(
