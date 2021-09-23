@@ -182,7 +182,7 @@ def test_headlines_container_logical_indexing():
     headlines = words.feature.headlines.headlines_frompath(source)
     headlines = utila.flatten(headlines)
     first = headlines[0]
-    assert first.container == 0, first.container
+    assert first.container == 0, first.container  # pylint:disable=C2001
 
     source = power.link(power.BACHELOR090_PDF)
     headlines = words.feature.headlines.headlines_frompath(source)

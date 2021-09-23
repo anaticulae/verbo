@@ -76,7 +76,7 @@ def merge_overlapping_lists(items):
         pageplus = words.lists.utils.pagerange(lastlist.area)
 
         currentpage, currentlist = item[0], item[1][0][2]
-        pagestart = currentlist.area[0] == 0
+        pagestart = utila.iszero(currentlist.area[0])
         connected = all((
             ((lastpage + pageplus) == currentpage),
             ((lastlength - 1) == lastlist.area[-1]),
