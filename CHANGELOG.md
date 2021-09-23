@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.0.4
+
+### Fix
+
+* adjust index after using ptcn (86f9735c5c85)
+
 ## v1.0.3
 
 ## v1.0.2
