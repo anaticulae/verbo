@@ -65,6 +65,7 @@ def file_read(name):
 # yapf:enable
 @utilatest.nightly
 def test_headlines_validate(source, pages, expected, testdir, monkeypatch):
+    utilatest.fixture_requires(source)
     expected = file_read(expected).strip()
     src, pages = power.link(source), pages if isinstance(pages, str) else ':'
     tests.run(

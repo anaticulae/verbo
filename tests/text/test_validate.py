@@ -49,6 +49,7 @@ def test_validate_master072_text():
 # yapf:enable
 @utilatest.nightly
 def test_text_validate(source, pages, expected, testdir):
+    utilatest.fixture_requires(source)
     raw = load_current(source, pages)
     expected = load_expected(expected)
     if raw != expected:

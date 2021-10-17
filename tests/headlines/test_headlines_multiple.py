@@ -82,6 +82,7 @@ def test_headlines_multiple_master72_extract_pages_38_42():
 @pytest.mark.xfail(reason='improve anhang headline parser')
 @utilatest.nightly
 def test_headlines_multiple_diss266():
+    utilatest.requires(power.DISS266_PDF)
     path = power.link(power.DISS266_PDF)
     pages = utila.ranged_tuple(7, 266)
     headlines = parse_multiline(path, pages, prefix='oneline')
