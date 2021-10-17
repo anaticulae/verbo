@@ -26,7 +26,8 @@ confidence of the abbreviation parser. The improvements are especially
 reached in short lower-case words.
 """
 
-import groupme.abbreviation.lists
+import iamraw
+import konrad
 import serializeraw
 
 import words.abbreviation.parser
@@ -37,7 +38,8 @@ def work(text: str, headlines: str, pages: tuple = None) -> str:
 
     loaded = serializeraw.load_text(text, headlines, pages=pages)
     # TODO: Load parsed data from abbreviation table
-    lookup = groupme.abbreviation.lists.AbbreviationListLookup.fromparsed()
+    other = [iamraw.AbbreviationList(data=konrad.ABBREVIATION_LOWER)]
+    lookup = iamraw.AbbreviationListLookup.fromparsed(other=other)
 
     parsed = words.abbreviation.parser.parses(loaded, lookup)
 
