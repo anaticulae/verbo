@@ -8,17 +8,13 @@
 # =============================================================================
 
 import collections
-import re
-import statistics
 
 import configo
 import elements
 import elements.headline
 import iamraw
-import texmex
 
-import words.headlines
-import words.headlines.utils as whu
+import words.headlines.utils
 
 SMALLEST_HEADLINE_DISTANCE = 1.05  # TODO: HOLY VALUE
 SMALLEST_HEADLINE_TEXTSIZE = 1.0
@@ -50,7 +46,7 @@ def filter_headlines(items: iamraw.PagesHeadlineList):
             if headline.title.count('.') > 5 or '. .' in headline.title:
                 # Skip toc line entries
                 continue
-            parsed = whu.parse_headline(headline.title)
+            parsed = words.headlines.utils.parse_headline(headline.title)
             if parsed:
                 raw_level = parsed['level']
                 headline.level = elements.level_numbered(raw_level)
