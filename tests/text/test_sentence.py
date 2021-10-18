@@ -85,7 +85,8 @@ def test_merge_sentences_footer_regression():
 @utilatest.longrun
 def test_merge_sentences_table_regression():
     text = bachelor51_text((21,))
-    assert 'Tab. 2: Untersuchungsplan' in text  # TODO: CHANGE AFTER SUPPORTING CAPTION
+    assert 'Tab. 2:' not in text
+    assert 'Tab. 2: Untersuchungsplan' not in text
     # exclude table content from sentence matcher
     assert 'Probandenstichprobe' not in text
 
@@ -96,4 +97,5 @@ def test_merge_sentences_figure_regression():
     # exclude figure from sentence detection
     assert 'Präwert' not in text
     assert 'Postwert' not in text
-    assert 'Abb. 4: Skalawerte' in text  # TODO: CHANGES LATER
+    assert 'Abb. 4:' not in text
+    assert 'Abb. 4: Skalawerte' not in text
