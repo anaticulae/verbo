@@ -60,7 +60,7 @@ def bachelor51_text(pages: tuple = None) -> str:
 def test_merge_sentences_before_headline_regression():
     text = master72_text((14,))
     assert 'Ausgewählte Positionen hierzu werden im Folgenden dargestellt.' in text
-    assert len(text.splitlines()) == 12
+    assert len(text.splitlines()) == 11  # TODO: 10 is better
 
 
 @utilatest.longrun
