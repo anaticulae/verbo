@@ -11,7 +11,6 @@ import re
 
 import iamraw
 import iamraw.sections
-import sections.feature.section
 import texmex
 import utila
 
@@ -38,18 +37,30 @@ def document_textdistance(
     return mode
 
 
-def prepare_chapter_and_content(sections_, chapter):
-    assert isinstance(sections_, iamraw.Sections), type(sections_)
-    assert sections_, f'no sections provided: {sections_}'
+def prepare_chapter_and_content(sectionx, chapter):
+    utila.asserts(sectionx, iamraw.Sections)
+    assert sectionx, f'no sections provided: {sectionx}'
     if chapter is None:
         # process all chapter
         # TODO: clearify code
-        content = determine_contentrange(sections_)
+        content = determine_contentrange(sectionx)
         chapter = list(range(len(content)))
     else:
-        content = sections.feature.section.chapters(sections_)
+        content = determine_chapters(sectionx)
         chapter = [chapter] if isinstance(chapter, int) else chapter
     return chapter, content
+
+
+def determine_chapters(root: iamraw.Sections):
+    content = [item for item in root if isinstance(item, iamraw.MainPart)]
+    if not content:
+        # no content in document
+        return []
+    result = []
+    for area in content:
+        for chapter in area:
+            result.append((chapter.start, chapter.end))
+    return result
 
 
 def determine_contentrange(items) -> 'words.headlines.ChapterRanges':
