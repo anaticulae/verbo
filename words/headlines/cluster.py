@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import configo
 import iamraw
 import utila
 
@@ -80,8 +81,9 @@ def update_level(items: iamraw.PagesHeadlineList, border, diff) -> dict:
     return items
 
 
-MAX_TEXTSIZE_DIFF = 1.5  # TODO: HOLY VALUE
-MAX_AFTER_DIFF = 0.15
+MAX_TEXTSIZE_DIFF = configo.HV_FLOAT_PLUS(default=1.5)
+
+MAX_AFTER_DIFF = configo.HV_FLOAT_PLUS(default=0.15)
 
 
 def equal_headline_cluster(
@@ -110,14 +112,23 @@ def equal_headline_cluster(
     )
 
 
+LEFT_FEED_MAX = configo.HV_FLOAT_PLUS(default=15.0)
+
+RIGHT_FEED_MIN = configo.HV_FLOAT_PLUS(default=200.0)
+
+
 def equal_feed(candidat, clusteritem) -> bool:
-    feed_left_candiat = candidat['feed'] < 15.0  # TODO: HOLY VALUE
-    feed_right_candiat = candidat['feed'] >= 200.0  # TODO: HOLY VALUE
+    feed_left_candiat = candidat['feed'] < LEFT_FEED_MAX
+    feed_right_candiat = candidat['feed'] >= RIGHT_FEED_MIN
 
-    feed_left_cluster = clusteritem['feed'] < 15.0  # TODO: HOLY VALUE
-    feed_right_cluster = clusteritem['feed'] >= 200.0  # TODO: HOLY VALUE
+    feed_left_cluster = clusteritem['feed'] < LEFT_FEED_MAX
+    feed_right_cluster = clusteritem['feed'] >= RIGHT_FEED_MIN
 
-    return feed_left_candiat == feed_left_cluster and feed_right_candiat == feed_right_cluster
+    if feed_left_candiat != feed_left_cluster:
+        return False
+    if feed_right_candiat != feed_right_cluster:
+        return False
+    return True
 
 
 def equal_fontsize(candidat, clusteritem) -> bool:

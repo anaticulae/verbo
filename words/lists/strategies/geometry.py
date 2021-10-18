@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import configo
 import geostrat
 import iamraw
 import utila
@@ -52,6 +53,11 @@ def extract_list(possible_list, indexes):
     return result
 
 
+FEEDED_DIFF_MAX = configo.HV_FLOAT_PLUS(default=5.0)
+
+NOT_FEEDED_DIFF_MAX = configo.HV_FLOAT_PLUS(default=20.0)
+
+
 def groupby_textfeed(ptcn, headlines, textfeed):
     result = []
     for index, line in enumerate(sync_headlines(ptcn, headlines)):
@@ -71,11 +77,11 @@ def groupby_textfeed(ptcn, headlines, textfeed):
             utila.near(x0, textfeed, diff=5.0),
             utila.near(before, textfeed, diff=5.0),
         ))
-        maxdiff = 5.0 if feeded else 20.0  # TODO: HOLY VALUE
+        maxdiff = FEEDED_DIFF_MAX if feeded else NOT_FEEDED_DIFF_MAX
         if before is None:
             # After headline of first item on page
             result.append([(index, line)])
-        elif not utila.near(x0, before, diff=maxdiff):
+        elif not utila.near(x0, before, diff=maxdiff.value):
             # textfeed changes
             result.append([(index, line)])
         else:

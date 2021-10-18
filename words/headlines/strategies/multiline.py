@@ -27,7 +27,7 @@ MAX_HEADLINE_TOKEN_LENGTH = configo.HV_INT_PLUS(default=20)
 # assume that headlines does not contain many numbers
 MAX_NUMBERS_IN_HEADLINE = configo.HV_INT_PLUS(default=5)
 
-HEADLINE_MEDIAN = configo.HolyTable(  # TODO: HOLY VALUE
+HEADLINE_MEDIAN = configo.HolyTable(
     items=[
         (10, 40),
         (12, 35),
@@ -99,12 +99,10 @@ def invalid_headline_group(items) -> bool:
     if len(words_) >= MAX_HEADLINE_TOKEN_LENGTH:
         # maybe a sentence cause headlines are not so long
         return True
-
     number_count = len([item for item in words_ if utila.isnumber(item)])
-    if number_count >= MAX_NUMBERS_IN_HEADLINE:  # TODO: HOLY VALUE
+    if number_count >= MAX_NUMBERS_IN_HEADLINE:
         # assume that headlines does not contain many numbers
         return True
-
     if len(items) >= 2:  # multiline
         # In general, multiline headlines fill the whole line. If this
         # does not happen, it is other content which is false positive
@@ -116,9 +114,12 @@ def invalid_headline_group(items) -> bool:
     return False
 
 
+WRONG_POSITION_X0_MAX = configo.HV_FLOAT_PLUS(default=200.0)
+
+
 def wrong_position(
-        items,
-        max_x0: float = 200.0,  # HOLY VALUE
+    items,
+    max_x0: float = WRONG_POSITION_X0_MAX,
 ) -> bool:
     """We assume that headlines start on the left side of the document.
     This should skip false possitive headline extraction.

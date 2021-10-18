@@ -16,6 +16,7 @@ Hint: THIS STRATGY INVOCATION IS A HACK TO PASS THE STRATEGY. WE MUST
 
 import collections
 
+import configo
 import doctextstyle.features
 import doctextstyle.features.headline
 import doctextstyle.parser
@@ -27,7 +28,7 @@ import utila
 import words.headlines.strategies
 import words.headlines.strategies.multiline
 
-HEADLINE_WORDCOUT_MAX = 20
+HEADLINE_WORDCOUT_MAX = configo.HV_INT_PLUS(default=20)
 
 
 def filter_headlines(parsed) -> dict:  # pylint:disable=R0914
@@ -79,12 +80,14 @@ def filter_headlines(parsed) -> dict:  # pylint:disable=R0914
 
 NO_HEADLINE_CHARS = '+_'
 
+SPECIAL_RATE_MAX = configo.HV_PERCENT_PLUS(default=25.0)
+
 
 def valid_cluster(cluster) -> bool:
     content = {item.hashed for item in cluster}
     # unique = len(content)
     special = special_char_rate(content, specials=NO_HEADLINE_CHARS)
-    if special > 0.25:  # TODO: HOLY VALUE
+    if special > SPECIAL_RATE_MAX:
         return False
     return True
 

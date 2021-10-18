@@ -185,7 +185,7 @@ def invalid_extraction(headlines) -> bool:
     levels = [item.level for item in headlines if item.level is not None]
     grouped = utila.groupby_diff(levels, maxdiff=0, sort=False)
     longest_levelone = utila.longest([item for item in grouped if item[0] == 1])
-    if len(longest_levelone) > MAX_LEVELONE_IN_A_ROW:  # TODO: HOLY VALUE
+    if len(longest_levelone) > MAX_LEVELONE_IN_A_ROW:
         utila.debug('skip invalid extraction, too many first levels in a row')
         return True
     # too many invalid characters at title end

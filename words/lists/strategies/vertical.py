@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import configo
 import iamraw
 import texmex
 import utila
@@ -79,6 +80,9 @@ def create_lists(lists) -> list:
     return result
 
 
+LAST_ONE_DISTANCE_MAX = configo.HV_PERCENT_PLUS(default=10)
+
+
 def fix_lastone(items):
     """Workaround to ensure that last list item is not expanded into the
     text.
@@ -91,7 +95,7 @@ def fix_lastone(items):
     splitted = last.splitlines()
     connected = [splitted[0]]
     for item in splitted[1:]:
-        if len(item) > (len(connected[-1]) * 1.1):  # TODO: HOLY VALUE
+        if len(item) > (len(connected[-1]) * (1.0 + LAST_ONE_DISTANCE_MAX)):
             break
         connected.append(item)
     # update last one
@@ -103,6 +107,9 @@ def fix_lastone(items):
     return items
 
 
+DIFF_MAX = configo.HV_FLOAT_PLUS(default=0.6)
+
+
 def group_indexes(group, parsed, offset: int) -> tuple:
     # TODO: O^2 RUNTIME
     # TODO: BUGGY
@@ -112,7 +119,11 @@ def group_indexes(group, parsed, offset: int) -> tuple:
         for parse in parsed:
             parse = parse if isinstance(parse, str) else parse[0]  # HACK:
             # TODO: HOLY VALUE
-            if utila.similar(item, parse, maxdiff=0.6) or item in parse:
+            if utila.similar(
+                    item,
+                    parse,
+                    maxdiff=DIFF_MAX,
+            ) or item in parse:
                 result.append(index + offset)
     result = utila.make_unique(result)
     result = utila.longest(utila.groupby_diff(result))

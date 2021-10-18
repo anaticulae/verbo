@@ -10,6 +10,7 @@
 import re
 import typing
 
+import configo
 import iamraw
 import texmex
 import utila
@@ -162,6 +163,9 @@ def parse_general_list(content: str, selector: str) -> utila.Strings:
     return result
 
 
+LISTS_MERGE_Y_MAX = configo.HV_FLOAT_PLUS(default=15.0)
+
+
 def extract_lists(  # pylint:disable=R0914
     page: texmex.PageTextNavigator,
     pagesize: iamraw.Border,  # pylint:disable=W0613
@@ -175,7 +179,7 @@ def extract_lists(  # pylint:disable=R0914
 
     page, merged = texmex.merge_content(
         page,
-        max_y_merge=15,  # TODO: HOLY VALUE
+        max_y_merge=LISTS_MERGE_Y_MAX,
         uindex=uindex,
     )
     text_bounds = texmex.merge_content_join(page)

@@ -9,14 +9,11 @@
 
 import collections
 
-import configo
 import elements
 import elements.headline
 import iamraw
 
 import words.headlines.utils
-
-MAX_HEADLINE_TEXTFEED = 0.0  # TODO: HOLY VALUE
 
 
 def headline_decoration(navigator, containerid: int) -> int:
