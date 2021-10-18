@@ -19,9 +19,9 @@ import elements
 import iamraw
 import utila
 
-HEADLINES_COUNT_MIN = configo.HV_INT_PLUS(5).value
+HEADLINES_COUNT_MIN = configo.HV_INT_PLUS(default=5)
 
-MAX_LEVELFOUR_PER_PAGE = configo.HV_INT_PLUS(4).value
+MAX_LEVELFOUR_PER_PAGE = configo.HV_INT_PLUS(default=4)
 
 
 def headlines(ptns):  # pylint:disable=R0914
@@ -94,8 +94,9 @@ def tomany_headlines_perpage(result: list) -> bool:
     return False
 
 
-MIN_LEVELFOUR_WORD_COUNT_DIFF = configo.HV_FLOAT_PLUS(0.7).value
-MAX_LEVELFOUR_WORD_COUNT_DIFF = configo.HV_FLOAT_PLUS(1.3).value
+MIN_LEVELFOUR_WORD_COUNT_DIFF = configo.HV_FLOAT_PLUS(default=0.7)
+
+MAX_LEVELFOUR_WORD_COUNT_DIFF = configo.HV_FLOAT_PLUS(default=1.3)
 
 
 def valid_levelfour(extracted, levelfour) -> bool:

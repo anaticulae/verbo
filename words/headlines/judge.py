@@ -160,7 +160,7 @@ def patch(raw: str) -> int:
     return 0
 
 
-MAX_LEVELONE_IN_A_ROW = configo.HV_INT_PLUS(4).value
+MAX_LEVELONE_IN_A_ROW = configo.HV_INT_PLUS(default=4)
 
 INVALID_ENDING_MAX = configo.HolyTable(
     [

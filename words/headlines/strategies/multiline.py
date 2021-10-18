@@ -23,9 +23,9 @@ import words.headlines.strategies
 import words.headlines.utils
 
 # longer word chains may be a sentence or something else
-MAX_HEADLINE_TOKEN_LENGTH = configo.HV_INT_PLUS(20).value
+MAX_HEADLINE_TOKEN_LENGTH = configo.HV_INT_PLUS(default=20)
 # assume that headlines does not contain many numbers
-MAX_NUMBERS_IN_HEADLINE = configo.HV_INT_PLUS(5).value
+MAX_NUMBERS_IN_HEADLINE = configo.HV_INT_PLUS(default=5)
 
 HEADLINE_MEDIAN = configo.HolyTable(  # TODO: HOLY VALUE
     items=[
