@@ -62,7 +62,8 @@ def extract_page(data, page) -> iamraw.Headlines:
                 continue
         if elements.noheadline(
                 title,
-                wordcount_max=words.headlines.strategies.HEADLINE_WORDCOUT_MAX,
+                wordcount_max=words.headlines.strategies.cluster.
+                HEADLINE_WORDCOUT_MAX,
         ):
             continue
         headline = iamraw.Headline(

@@ -27,6 +27,8 @@ import utila
 import words.headlines.strategies
 import words.headlines.strategies.multiline
 
+HEADLINE_WORDCOUT_MAX = 20
+
 
 def filter_headlines(parsed) -> dict:  # pylint:disable=R0914
     flat = utila.flatten(parsed.values())
@@ -54,8 +56,7 @@ def filter_headlines(parsed) -> dict:  # pylint:disable=R0914
                     continue
                 if elements.noheadline(
                         line,
-                        wordcount_max=words.headlines.strategies.
-                        HEADLINE_WORDCOUT_MAX,
+                        wordcount_max=HEADLINE_WORDCOUT_MAX,
                 ):
                     continue
                 parsed = words.headlines.strategies.multiline.parse_headline(line) # yapf:disable
