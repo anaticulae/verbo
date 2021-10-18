@@ -132,10 +132,14 @@ def validate_master155(extracted):
     assert len(page24) == 1
 
 
+# yapf:disable
 @pytest.mark.parametrize('source, validator', [
-    pytest.param(power.MASTER099_PDF, validate_master99, id='master99'),
+    pytest.param(power.MASTER099_PDF, validate_master99, id='master99',
+                        marks=pytest.mark.xfail(reason='broken table extractor'),
+    ),
     pytest.param(power.MASTER155_PDF, validate_master155, id='master155'),
 ])
+# yapf:enable
 @utilatest.longrun
 def test_list_validate(source, validator, testdir, monkeypatch):
     source = power.link(source)
