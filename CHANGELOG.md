@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.1.0
+
+### Feature
+
+* use holy values (4a127c343877)
+
 ## v1.0.4
 
 ### Fix
