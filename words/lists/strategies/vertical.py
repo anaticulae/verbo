@@ -118,7 +118,6 @@ def group_indexes(group, parsed, offset: int) -> tuple:
     for index, item in enumerate(group):
         for parse in parsed:
             parse = parse if isinstance(parse, str) else parse[0]  # HACK:
-            # TODO: HOLY VALUE
             if utila.similar(
                     item,
                     parse,
