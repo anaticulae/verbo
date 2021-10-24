@@ -7,6 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import os
+
 import power
 import pytest
 import serializeraw
@@ -15,6 +17,12 @@ import utilatest
 
 import tests
 import words.path
+
+
+def load_expected(name) -> str:
+    source = os.path.join(words.ROOT, f'tests/lists/expected/{name}')
+    content = utila.file_read(source)
+    return content
 
 
 def extract_lists(source, pages: tuple, testdir, monkeypatch):
@@ -127,23 +135,39 @@ def validate_master99(extracted):
     # assert len(page80[0]) == 3
 
 
-def validate_master155(extracted):
-    page24 = utila.select_content(extracted, page=24)
-    assert len(page24) == 1
-
-
 # yapf:disable
-@pytest.mark.parametrize('source, validator', [
-    pytest.param(power.MASTER099_PDF, validate_master99, id='master99',
+@pytest.mark.parametrize('source, validator, pages', [
+    pytest.param(power.MASTER099_PDF, validate_master99, ':', id='master99',
                         marks=pytest.mark.xfail(reason='broken table extractor'),
     ),
-    pytest.param(power.MASTER155_PDF, validate_master155, id='master155'),
+    pytest.param(power.MASTER155_PDF, 'master155', ':', id='master155'),
 ])
 # yapf:enable
 @utilatest.longrun
-def test_list_validate(source, validator, testdir, monkeypatch):
+def test_list_validate(source, validator, pages, testdir, monkeypatch):
     source = power.link(source)
     # run extraction
-    extracted = extract_lists(source, ':', testdir, monkeypatch=monkeypatch)
-    # run validator
+    extracted = extract_lists(source, pages, testdir, monkeypatch=monkeypatch)
+    # run validation
+    if isinstance(validator, str):
+        expected = load_expected(validator)
+        current = make_raw(extracted)
+        if current != expected:
+            utila.file_create('baseline', current)
+        assert current == expected
+        return
     validator(extracted)
+
+
+def make_raw(extracted) -> str:
+    result = []
+    for page in extracted:
+        result.append(f'################### {page.page} ###################')
+        for lists in page.content:
+            for number, data in lists.data:
+                data = utila.normalize_whitespaces(data)
+                result.append(f'{number} {data}')
+            if len(page.content) > 1:
+                result.append('---------------------------------------------')
+    raw = utila.NEWLINE.join(result)
+    return raw

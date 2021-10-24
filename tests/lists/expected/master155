@@ -1,0 +1,78 @@
+################### 12 ###################
+1. (x0) { | , „mindestens so gut wie“ Set
+2. (x0) { | , „nicht besser als“ Set
+3. (x0) { | , „schlechter als“ Set
+4. (x0) { | , „präferiert gegenüber“ Set
+5. (x0) { | , „indifferent“ Set (Katzner 2006)
+################### 19 ###################
+1. Die angebotenen Güter sind physisch gleich.
+2. Es bestehen keine Vorteile durch persönliche Beziehungen zwischen den Marktteilnehmern.
+3. Es gibt keine räumliche Preisdiskriminierung; wird an verschiedenen Orten gehandelt, liegt der Preisunterschied nur im Transportkostenunterschied.
+4. Es gibt keine zeitliche Preisdiskriminierung; zu verschiedenen Zeiten gelten dieselben Preise.
+5. Es existiert vollständige Markttransparenz; alle Marktteilnehmer sind über marktrelevante Sachverhalte informiert (Schöler 2011).
+################### 20 ###################
+1. Physische Gleichartigkeit der Güter: Brote und Fische bieten dieselben partiellen Nutzenfunktionen und sind gleichartig gegeneinander substituierbar. Eine Einheit eines jeden Produktes stiftet jeweils denselben Nutzen.
+2. Keine persönlichen Präferenzen: Es kann nicht ausgeschlossen werden, dass sich die Teilnehmer untereinander kannten.
+3. Keine räumlichen Differenzierungen: Da das Experiment in einem abgeschlossenen Raum durchgeführt wurde, kann diese Eigenschaft als erfüllt betrachtet werden.
+4. Keine zeitlichen Differenzierungen: Diese Eigenschaft ist bedingt erfüllt, weil die Preise durch Verhandlungen entstehen. Es gibt zwar keine saisonalen Einflüsse, hat jedoch zum Beispiel ein Produzent gegen Ende einer Runde noch viel zu verkaufen, kann nicht ausgeschlossen werden, dass er den Preis während der Verhandlung senkt.
+5. Vollständige Markttransparenz: Alle Teilnehmer erhielten vor Beginn des Experiments dieselben Informationen. Es ist jedoch möglich, dass die Preise der Produzenten voneinander abweichen oder dass die einzelnen Produzenten zu unterschiedlichen Preisen an verschiedene Konsumenten verkaufen. Während einer Verhandlungsrunde werden das vermutlich nicht alle Teilnehmer erfahren.
+################### 23 ###################
+0 Es gibt 15 weitere Bäcker/Fischer, die auch verkaufen wollen und dieselben Kostentabellen haben.
+1 Die Konsumenten haben ein Budget von 400 Talern je Runde. Wenn Brote und Fische gleich teuer sind pro Stück, ist es optimal für die Konsumenten gleich viele Brote und Fische zu kaufen. Taler, die die Konsumenten in einer Runde nicht verbrauchen, können die Konsumenten zurückgeben. Alle Konsumenten erhalten dieselben Experimentvorgaben.
+2 Nach der ökonomischen Theorie und den Experimentvorgaben sollten die Produzenten als Richtwert für die Verhandlungen je verkauften Fisch/verkauftes Brot einen Preis von 20 Talern beachten.
+################### 24 ###################
+0 Taler des Budgets, die nicht ausgegeben wurden, werden am Ende einer Runde zurückgegeben. Jeder Taler zählt eine Nutzeneinheit.
+1 Alle Konsumenten erhalten dieselben Vorgaben.
+2 Nach der ökonomischen Theorie und den Experimentvorgaben sollte jeder Fisch und jedes Brot etwa 20 Taler kosten.
+################### 37 ###################
+0 Die Suche nach Informationen verursacht Kosten. In dem Fall des durchgeführten Marktexperiments können die Kosten als
+1 Je mehr Verkäufer der Käufer aufsucht, desto größer ist die Wahrscheinlichkeit, dass der erwartete Preis niedrig ist. Der Grenznutzen der Suche besteht dabei in der erwarteten Preisreduktion und nimmt mit fortlaufender Suche ab.
+2 Kosten und Nutzen der Preissuche verlaufen gegenläufig. Daher ermittelt der Käufer die Anzahl der aufgesuchten Verkäufer durch den Ausgleich
+---------------------------------------------
+0 Suchverfahren: Es gibt Modelle, bei denen zu Beginn die Anzahl der aufzusuchenden Verkäufer festgelegt wird, und welche, bei denen über die Größe der Stichprobe während des Suchvorgangs entschieden wird.
+1 Preisverteilung: Die Modelle werden an Hand der Information, die der Käufer hat, unterschieden. Die Preisverteilung kann vor Beginn der Suche bekannt oder unbekannt sein.
+2 Preisbereitschaft: Die Preisbereitschaft drückt den Preis aus, den ein einzelner Nachfrager maximal zu zahlen bereit ist. Dabei vergleicht der Käufer Kosten und Nutzen. Die Preisbereitschaft der Käufer kann in das Modell aufgenommen werden. Unterschieden wird dabei zwischen einer
+---------------------------------------------
+################### 44 ###################
+0 Linearer Zusammenhang zwischen unabhängigen und der abhängigen Variablen: Bei der Veränderung einer unabhängigen Variablen um eine Einheit ändert sich der Wert der abhängigen Variablen um die durch den entsprechenden Regressionskoeffizienten geschätzte Zahl von Einheiten.
+1 Vollständigkeit des Modells: Alle unabhängigen Variablen, die an Hand der theoretischen Überlegungen die abhängige Variable beeinflussen, sind im Modell enthalten.
+2 Keine perfekte Multikollinearität bei unabhängigen Variablen: Unabhängige Variablen sollen miteinander nicht hoch korreliert sein.
+3 Der Erwartungswert der Residuen ist Null
+4 Normalverteilung der Residuen: F- und t-Tests liegt die Normalverteilungsannahme zu Grunde
+5 Homoskedastizität der Residuen: Gleiche Varianz bei allen Residuen
+6 Keine Autokorrelation: Keine Korrelation unter den Residuen, andernfalls sind die Abweichungen der geschätzten Werte systematisch und nicht mehr zufällig.
+7 Kein wesentlicher Einfluss von Ausreißern
+################### 45 ###################
+0 Alter: Das durchschnittliche Alter lag zum Zeitpunkt der Erhebung bei 24 Jahren. Der jüngste Teilnehmer war 20 Jahre alt, der älteste 43. Ein Teilnehmer hat sein Geburtsjahr nicht angegeben.
+1 Anzahl richtiger Verständnisfragen: Bei den Konsumenten betrug die Anzahl der Verständnisfragen neun. Durchschnittlich wurden 4,3 Fragen richtig beantwortet, das Minimum lag bei keiner richtig beantworteten Frage, das Maximum bei acht richtigen Antworten. Die Produzenten konnten maximal sieben Fragen richtig beantworten. Der Durchschnitt lag bei 4,4 richtig beantworteten Fragen, das Minimum betrug null, das Maximum waren sieben korrekte Antworten.
+2 Anzahl der Transaktionen: Im ersten Experiment fanden 1702 Transaktionen statt. Bei einer Transaktion gab es keine zugeordnete Konsumentennummer zu dem entsprechenden Verkäufer. Diese wurde im Protokoll nicht dokumentiert.
+################### 46 ###################
+0 Alter: Das durchschnittliche Alter lag ebenso wie im ersten Experiment bei etwa 24 Jahren. Der jüngste Teilnehmer war 19 Jahre alt, der älteste 35 Jahre.
+1 Anzahl richtiger Verständnisfragen: Die Konsumenten beantworteten im Schnitt 4,6 Fragen richtig. Das Minimum lag bei einer richtigen Frage, das Maximum bei acht. Bei den Produzenten wurden durchschnittlich 3,9 Aufgaben korrekt gelöst.
+2 Ausprägung der Risikoeinstellung: Die Ausprägung der Risikoeinstellung lag im Mittel mit 8,5 knapp unter der des ersten Experiments. Die niedrigste Ausprägung betrug vier.
+3 Risikoaversion: 15 Probanden verhielten sich bei der Auswahl der Lotterie entsprechend des Erwartungswertes strikt risikoavers. Folglich waren 69 Teilnehmer bei mindestens einer der zehn Lotterien nicht risikoavers.
+4 Anzahl der Transaktionen: Es wurden 1893 Transaktionen getätigt. Dabei fehlt bei einer Transaktion die Konsumentennummer, diese war im Protokoll nicht angegeben.
+################### 88 ###################
+0 Ihr Budget wird in jeder Runde 400 Taler betragen. Taler, die Sie in einer Runde nicht verbrauchen können oder wollen, sollten Sie am Ende der Runde den Hiwis zurückgeben. Jeder Taler zählt dann als eine Nutzeneinheit für Sie.
+1 Sie können auch über halbe und viertel Brote und Fische mit den Anbietern verhandeln und kaufen. Allerdings gibt es keine halben Taler oder ähnliches.
+2 Alle Konsumenten erhalten dieselben Vorgaben wie Sie.
+3 Die Vorgaben für die Fischanbieter und für die Brotanbieter sind identisch, d.h. z.B. fünf Fische verursachen dieselben Produktionskosten bei den Fischanbietern wie fünf Brote bei den Brotanbietern. Es gibt genauso viele Brotanbieter wie Fischanbieter.
+4 Als grobe Richtschnur für Ihre Preisverhandlungen können wir Ihnen sagen, dass nach der ökonomischen Theorie jedes Brot und jeder Fisch ungefähr 20 Taler kosten sollte nach unseren Experimentvorgaben.
+5 In späteren Runden gibt es eine kleine Modifikation. Fischer und Bäcker müssen dann 10% ihrer Taler-Verkaufserlöse – ähnlich einer Mehrwertsteuer – an das ‚Finanzamt‘ abführen.
+6 Je mehr Nutzeneinheiten Sie in jeder Runde erzielt haben, desto mehr Euro werden wir Ihnen nach dem Experiment überweisen. 20 € Mindestverdienst erhalten Sie garantiert. Wenn Sie in einer Runde zu den vier Konsumenten mit dem niedrigsten Nutzen gehören, erhalten Sie für diese Runde keine zusätzlichen Euro Auszahlung. Wenn Sie aber in einer Runde 20 Nutzeneinheiten mehr erreicht haben als der Konsument mit dem viertniedrigsten Nutzen, werden Sie doppelt soviel Euro für diese Runde ausbezahlt bekommen als ein Konsument, der nur 10 Nutzeneinheiten besser ist. Kleine Unterschiede im Nutzen können also große Unterschiede im Verdienst bedeuten.
+################### 95 ###################
+0 Es gibt 15 weitere Fischer wie Sie, die auch genau solche Fische anbieten wie Sie und dieselben Kostentabellen haben wie Sie.
+1 Die Konsumenten sollen in jeder Experimentrunde 400 Taler auf den Kauf von Broten und Fischen verteilen. Wenn Brote und Fische gleich teuer sind pro Stück, ist es optimal für die Konsumenten gleich viele Brote und Fische zu kaufen. Taler, die die Konsumenten in einer Runde nicht verbrauchen, können die Konsumenten zurückgeben. Alle Konsumenten erhalten dieselben Experimentvorgaben.
+2 Sie können mit den Konsumenten auch über halbe und viertel Fische verhandeln und solche verkaufen. Allerdings gibt es keine halben Taler oder ähnliches.
+3 Die Verkäufer der Brote haben dieselben Kostentabellen wie Sie, außer dass ein Brot einem Fisch entspricht. Es gibt genauso viele Anbieter von Fischen wie es Bäcker gibt.
+4 Als grobe Richtschnur für Ihre Preisverhandlungen können wir Ihnen sagen, dass nach der ökonomischen Theorie jedes Brot und jeder Fisch ungefähr 20 Taler kosten sollte nach unseren Experimentvorgaben.
+5 In späteren Runden gibt es eine kleine Modifikation. Fischer und Bäcker müssen dann 10% ihrer Taler-Verkaufserlöse – ähnlich einer Mehrwertsteuer – an das ‚Finanzamt‘ abführen.
+6 Ihre Überweisung in Euro nach dem Spiel ist umso höher je mehr Gewinn Sie in jeder Runde erzielt haben – gemessen in Talern. 20 € Mindestverdienst erhalten Sie garantiert. Wenn Sie in einer Runde zu den
+################### 102 ###################
+0 Es gibt 15 weitere Bäcker wie Sie, die auch genau solche Brote anbieten wie Sie und dieselben Kostentabellen haben wie Sie.
+1 Die Konsumenten sollen in jeder Experimentrunde 400 Taler auf den Kauf von Broten und Fischen verteilen. Wenn Brote und Fische gleich teuer sind pro Stück, ist es optimal für die Konsumenten gleich viele Brote und Fische zu kaufen. Taler, die die Konsumenten in einer Runde nicht verbrauchen, können die Konsumenten zurückgeben. Alle Konsumenten erhalten dieselben Experimentvorgaben.
+2 Sie können mit den Konsumenten auch über halbe und viertel Brote verhandeln und solche verkaufen. Allerdings gibt es keine halben Taler oder ähnliches.
+3 Die Verkäufer der Fische haben dieselben Kostentabellen wie Sie, außer dass ein Brot einem Fisch entspricht. Es gibt genauso viele Anbieter von Fischen wie es Bäcker gibt.
+4 Als grobe Richtschnur für Ihre Preisverhandlungen können wir Ihnen sagen, dass nach der ökonomischen Theorie jedes Brot und jeder Fisch ungefähr 20 Taler kosten sollte nach unseren Experimentvorgaben.
+5 In späteren Runden gibt es eine kleine Modifikation. Fischer und Bäcker müssen dann 10% ihrer Taler-Verkaufserlöse – ähnlich einer Mehrwertsteuer – an das ‚Finanzamt‘ abführen.
+6 Ihre Überweisung in Euro nach dem Spiel ist umso höher je mehr Taler- Gewinn Sie in jeder Runde erzielt haben. 20 € Mindestverdienst erhalten Sie garantiert. Wenn Sie in einer Runde zu den zwei Anbietern
