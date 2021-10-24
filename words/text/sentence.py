@@ -33,7 +33,7 @@ def find_sentences(page: words.text.PageTextWithHeadlines) -> words.text.TextSec
         for seq in section.content:
             if not isinstance(seq, iamraw.Paragraph):
                 if current:
-                    lines.extend(german.sentence_tokenize(text=current))
+                    lines.extend(german.sentence_tokenize(''.join(current)))
                     current = []
                 lines.append('%du' % seq.container)
                 continue
@@ -44,7 +44,7 @@ def find_sentences(page: words.text.PageTextWithHeadlines) -> words.text.TextSec
             text = texmex.remove_highnotes(seq.content)
             current.append(text)
         if current:
-            lines.extend(german.sentence_tokenize(text=current))
+            lines.extend(german.sentence_tokenize(''.join(current)))
             current = []
         result.append(
             words.text.TextSection(
@@ -85,7 +85,7 @@ def visit_sentences(
             if not isinstance(seq, iamraw.Paragraph):
                 if current:
                     for sentence in german.sentence_tokenize(
-                            text=current,
+                            text=''.join(current),
                             merge_divis=merge_divis,
                             normalize_spaces=normalize_spaces,
                     ):
@@ -98,7 +98,7 @@ def visit_sentences(
             current.append(text)
         if current:
             for sentence in german.sentence_tokenize(
-                    text=current,
+                    text=''.join(current),
                     merge_divis=merge_divis,
                     normalize_spaces=normalize_spaces,
             ):
