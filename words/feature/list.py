@@ -23,6 +23,11 @@ import utila
 import words.lists.runtime
 import words.loader
 
+LIST_VALID = {
+    iamraw.PageContentType.LIST,
+    iamraw.PageContentType.TEXT,
+}
+
 
 @utila.checkdatatype
 def work(  # pylint:disable=R0914
@@ -47,20 +52,17 @@ def work(  # pylint:disable=R0914
         pages=pages,
     )
     headlines = serializeraw.load_headlines(headlines, pages=pages)
-    magic = serializeraw.load_types(
-        magic,
-        pages=pages,
-    ) if utila.exists(magic) else []  # pylint:disable=E1101
-    if magic is None:
+    if utila.exists(magic):
+        magic = serializeraw.load_magic_types(
+            magic,
+            pages=pages,
+        )
+        ptcns = skip_magic(ptcns, magic, valid=LIST_VALID)
+    else:
         utila.error('list: no magic data')
-
-    valid = {
-        iamraw.PageContentType.LIST,
-        iamraw.PageContentType.TEXT,
-    }
-    ptcns = skip_magic(ptcns, magic, valid)
-
+    # run extractor
     result = words.lists.runtime.extract_lists(ptcns, headlines)
+    # dump result
     dumped = serializeraw.dump_lists(result)
     return dumped
 
