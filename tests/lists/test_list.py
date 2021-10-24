@@ -48,9 +48,7 @@ Text
 
 def test_list_numbered_regex():
     parsed = words.lists.strategies.regex.parse_numbered_list(NUMBERED_LIST)
-
     assert len(parsed) == NUMBERED_LIST_SAMPLE_SIZE, parsed
-
     # Final example is very important!
     last_content, last_title = parsed[-1]
     assert last_title == '8.'
@@ -65,7 +63,6 @@ def test_list_numbered_regex_single_item():
         "8. Consider using optional static type checking to make sure your "
         "type usage works in both Python 2 &\n3 (e.g. use mypy to check your "
         "typing under both Python 2 & Python 3).")
-
     parsed = words.lists.strategies.regex.parse_numbered_list(raw)
     assert len(parsed) == 1
     level = parsed[0][1]
@@ -163,7 +160,6 @@ def test_list_dotted_with_content_only():
 def test_list_work():
     result = tests.fixtures.restruct.restructured_list_work()
     assert len(result) == 3, str(result)
-
     first_items = [
         item[1] for item in utila.select_page(result, 8).content[0].data
     ]
@@ -173,7 +169,6 @@ def test_list_work():
     last_items = [
         item[1] for item in utila.select_page(result, 24).content[0].data
     ]
-
     assert len(first_items) == 15, str(first_items)
     assert first_items == [
         'Code: Block', 'Code: Inline', 'Emphasis: Italics', 'Emphasis: Strong',
@@ -202,12 +197,10 @@ def test_list_dump_and_load_lists():
 def test_list_master72_page39_one_list(testdir):
     pages = (39,)
     source = power.link(power.MASTER072_PDF)
-
     ptcn = serializeraw.ptcn_frompath(
         source,
         pages=pages,
     )
-
     listinstance = words.lists.strategies.vertical.analyze_page(ptcn[0], [])
     assert len(listinstance) == 1
     assert len(listinstance[0]) == 2
@@ -301,7 +294,6 @@ def test_merge_overlapping_lists_two_pages():
     ]
     merged = words.lists.strategies.bestpage.merge_overlapping_lists(pages)
     single = merged[0][1][0][2]
-
     marker = [item[0] for item in single]
     # ensure that list separator is None
     assert not any(marker), str(marker)
