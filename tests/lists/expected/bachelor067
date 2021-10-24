@@ -1,0 +1,10 @@
+################### 53 ###################
+1. Da selbst ein einzelner Knoten für die Analyse des Datenstroms mehr als ausreichend ist, lassen sich aus dem Experiment keine Aussagen über das Skalierungsverhalten der entsprechenden Komponente treffen.
+2. Bei der Exploration mehrerer zehntausend Tweets wurde kein einziger mit einem plau- siblen Bezug zu den in der Spark-Mailingliste diskutierten Themen gefunden. Eine empirische Bewertung der funktionalen Qualitäten der Implementation ist damit nicht ohne Weiteres möglich.
+################### 54 ###################
+1. Message Queues: Für die robuste Verbindung zur asynchronen Kommunikation zwi- schen Batch- und Realtime-Komponente käme eine Erweiterung mit Messagequeues oder auch (NoSQL-)Datenbanken in Frage.
+2. Umfangreichere Datenquellen: Um die Skalierbarkeit der Streaming-Komponente unabhängig vom dem hier behandelten Anwendungsfall zu betrachten, könnte man einen eigenen speziellen Receiver implementieren und diesen mit einer kontrollierbaren Datenquelle verbinden. Kontrollierbar heißt hier, dass die erzeugte Last flexibel erhöht werden kann, um die Kapazität des empfangenden Knotens zu übertreffen und eine verteilte Verarbeitung zu erzwingen.
+3. Clustermanagement: Die Konfiguration der Knoten und der verteilten Komponenten wurde für diesen Versuch überwiegend manuell durchgeführt. Um auch eine höhere Anzahl von Knoten verwalten zu können wären Werkzeuge zur Automatisierung von Konfiguration (z.B. Chef1, Puppet2) oder Provisionierung (z.B. Docker3, Rocket4, Kuber- netes5) notwendig. Für ein komfortables Monitoring könnte man den Cluster mit Tools zur dauerhaften Überwachung ausstatten (z.B. Nagios/Icinga6, Ganglia7).
+################### 55 ###################
+2. Ähnlichkeitsmaß: Das Scoring könnte darüber hinaus durch leistungsfähigere Verfah- ren verbessert werden - etwa durch Ähnlichkeitsmaße ([Hua08]), die auch Synonyme erkennen.
+3. Grafische Benutzeroberfläche: Damit die gefilterten Nachrichten ihren Weg zum Be- nutzer finden, gibt es eine Vielzahl an Möglichkeiten. Naheliegend wäre ein Webinterface (z.B. über den MEAN-Stack10 oder das Play-Framework11 für Scala/Java).
