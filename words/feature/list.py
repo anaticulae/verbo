@@ -23,11 +23,6 @@ import utila
 import words.lists.runtime
 import words.loader
 
-LIST_VALID = {
-    iamraw.PageContentType.LIST,
-    iamraw.PageContentType.TEXT,
-}
-
 
 @utila.checkdatatype
 def work(
@@ -44,6 +39,31 @@ def work(
     extracted_text(str): document with `undefined fields` from `text`
                          module of `words`
     """
+    ptcns, headlines = create_data(
+        text,
+        textpositions,
+        border,
+        headlines,
+        headerfooters,
+        magic,
+        pages=pages,
+    )
+    # run extractor
+    result = words.lists.runtime.extract_lists(ptcns, headlines)
+    # dump result
+    dumped = serializeraw.dump_lists(result)
+    return dumped
+
+
+def create_data(
+    text: str,
+    textpositions: str,
+    border: str,
+    headlines: str,
+    headerfooters: str,
+    magic: str = None,
+    pages: tuple = None,
+):
     ptcns = serializeraw.ptcn_fromfile(
         text=text,
         textpositions=textpositions,
@@ -57,21 +77,23 @@ def work(
             magic,
             pages=pages,
         )
-        ptcns = skip_magic(ptcns, magic, valid=LIST_VALID)
+        ptcns = skip_magic(ptcns, magic)
     else:
         utila.error('list: no magic data')
-    # run extractor
-    result = words.lists.runtime.extract_lists(ptcns, headlines)
-    # dump result
-    dumped = serializeraw.dump_lists(result)
-    return dumped
+    return ptcns, headlines
 
 
-def skip_magic(ptcns, magics, valid):
+LIST_VALID = {
+    iamraw.PageContentType.LIST,
+    iamraw.PageContentType.TEXT,
+}
+
+
+def skip_magic(ptcns, magics):
     for page in ptcns:
         magic = utila.select_content(magics, page.page)
         if magic:
-            invalid = [item[0] for item in magic if item[1] not in valid]
+            invalid = [item[0] for item in magic if item[1] not in LIST_VALID]
         else:
             invalid = {}
         data = [item for index, item in enumerate(page) if index not in invalid]
