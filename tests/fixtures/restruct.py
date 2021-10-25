@@ -7,8 +7,6 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import functools
-
 import iamraw
 import iamraw.path
 import iamraw.sections
@@ -20,7 +18,6 @@ import words.feature
 import words.feature.boxed
 import words.feature.headlines
 import words.headlines
-import words.lists.pager
 import words.loader
 import words.text
 import words.text.chapter
@@ -96,28 +93,4 @@ def restructured_boxed():
     )
     boxes = serializeraw.load_boxes(iamraw.path.boxed(source))
     result = words.feature.boxed.process_content(extracted, boxes)
-    return result
-
-
-def restructured_list_work():
-    source = power.link(power.DOCU027_PDF)
-    headlines = restructured_headlines()
-    undefined = restructured_textexample()
-    undefined = serializeraw.dump_text(undefined)
-    extracted, contentborder = words.loader.load_resources(
-        undefined,
-        iamraw.path.text(source),
-        iamraw.path.textposition(source),
-        headlines=headlines,
-        border=iamraw.path.sizeandborder(source),
-        headerfooters=iamraw.path.headerfooters(source),
-    )
-    worker = functools.partial(
-        words.lists.pager.process_page,
-        contentborder=contentborder,
-    )
-    result = words.loader.process_input(
-        extracted,
-        worker,
-    )
     return result

@@ -9,12 +9,9 @@
 
 import iamraw
 import power
-import pytest
 import serializeraw
-import utila
 import utilatest
 
-import tests.fixtures.restruct
 import words.lists.runtime
 import words.lists.strategies.bestpage
 import words.lists.strategies.regex
@@ -153,44 +150,6 @@ def test_list_dotted_with_content_only():
     parsed = words.lists.strategies.regex.parse_dotted_list(
         DOTTED_EXAMPLE_CONTENT_ONLY)
     assert parsed == ['Index Page', 'Support', 'Changelog']
-
-
-@pytest.mark.xfail
-@utilatest.longrun
-def test_list_work():
-    result = tests.fixtures.restruct.restructured_list_work()
-    assert len(result) == 3, str(result)
-    first_items = [
-        item[1] for item in utila.select_page(result, 8).content[0].data
-    ]
-    second_items = [
-        item[1] for item in utila.select_page(result, 14).content[0].data
-    ]
-    last_items = [
-        item[1] for item in utila.select_page(result, 24).content[0].data
-    ]
-    assert len(first_items) == 15, str(first_items)
-    assert first_items == [
-        'Code: Block', 'Code: Inline', 'Emphasis: Italics', 'Emphasis: Strong',
-        'Headers', 'Horizontal rules', 'Images: Inline', 'Line Return',
-        'Links: Inline', 'Links: Inline with title', 'Links: Reference',
-        'Lists: Simple', 'Lists: Nested', 'Paragraphs', 'Images: Reference'
-    ]
-    assert len(second_items) == 6, str(second_items)
-    assert second_items == [
-        'Index Page', 'Support', 'Installation', 'Cookbook/Examples',
-        'Command Line Options', 'Changelog'
-    ]
-    assert len(last_items) == 3, str(last_items)
-    assert last_items == ['genindex', 'modindex', 'search']
-
-
-@utilatest.longrun
-def test_list_dump_and_load_lists():
-    result = tests.fixtures.restruct.restructured_list_work()
-    dumped_list = serializeraw.dump_lists(result)
-    loaded = serializeraw.load_lists(dumped_list)
-    assert loaded == result
 
 
 @utilatest.longrun
