@@ -109,7 +109,7 @@ DOTTED_LIST_EXPECTED = [
 ]
 
 
-def test_list_dotted():
+def test_list_dotted_simple():
     parsed = words.lists.strategies.regex.parse_dotted_list(DOTTED_LIST)
     assert parsed == DOTTED_LIST_EXPECTED
 
