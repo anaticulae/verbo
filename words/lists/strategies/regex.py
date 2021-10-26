@@ -126,7 +126,8 @@ def parse_general_list(content: str, selector: str) -> utila.Strings:
     ]
     # find first empty item to merge last item
     end = [
-        index for index, item in enumerate(data, start=starts[-1]) if not item
+        index for index, item in enumerate(data[starts[-1]:], start=starts[-1])
+        if not item
     ]
     if end:
         end = end[0]
