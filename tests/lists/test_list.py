@@ -43,7 +43,7 @@ Text
 """
 
 
-def test_list_numbered_regex():
+def test_list_numbered_regex_last_item():
     parsed = words.lists.strategies.regex.parse_numbered_list(NUMBERED_LIST)
     assert len(parsed) == NUMBERED_LIST_SAMPLE_SIZE, parsed
     # Final example is very important!
