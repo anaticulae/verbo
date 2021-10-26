@@ -120,6 +120,7 @@ def parse_general_list(
 
 
 def regex_prepare(items):
+    # TODO: MOVE TO UTILA
     if isinstance(items, str):
         items = re.escape(items)
     if utila.iterable(items):
