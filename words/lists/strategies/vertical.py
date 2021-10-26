@@ -44,10 +44,8 @@ def group_and_parse(ptcn):
         if not content.strip():
             collected.append(None)
             continue
-
         parsed = words.lists.strategies.regex.parse_single(content)
-        parsed = fix_lastone(parsed)
-
+        # parsed = fix_lastone(parsed)
         if parsed:
             # TODO: GROUP DOES NOT REPRESENT THE COLLECTED LINES, GROUPS
             # CONTAINS THE WHOLE CONTENT CHUNK
@@ -89,6 +87,7 @@ def fix_lastone(items):
 
     NOTE: this is only a first approach.
     """
+    # TODO: DO WE REALY REQUIRE THIS?
     if not items:
         return items
     last = items[-1][0] if isinstance(items[-1], tuple) else items[-1]
