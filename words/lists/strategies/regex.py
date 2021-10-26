@@ -46,14 +46,14 @@ NUMBERED_LIST_PATTERN = r"""
 
 # ''
 QUARDO = chr(61607)
+PLUS = '+'
+MINUS = '-'
+# 61623: dot
+DOTTED = {'•', '\x88', '\x99', chr(61623)}
 
 
 def parse_quardo_list(content: str) -> utila.Strings:
     return parse_general_list(content, QUARDO)
-
-
-# 61623: dot
-DOTTED = {'•', '\x88', '\x99', chr(61623)}
 
 
 def parse_dotted_list(content: str) -> utila.Strings:
@@ -61,39 +61,17 @@ def parse_dotted_list(content: str) -> utila.Strings:
     return parse_general_list(content, DOTTED)
 
 
-PLUS = '+'
-
-
 def parse_plus_list(content: str) -> utila.Strings:
     return parse_general_list(content, PLUS)
 
 
 def parse_minus_list(content: str) -> utila.Strings:
-    r"""Hidden token is required that regex parser works with hidden
-    listing list sign in list content.
-
+    r"""\
     >>> parse_minus_list(('- Bezugsbetreuung im Wohn- und Lebensumfeld\n'
     ... '- bei Wohnungslosigkeit Möglichkeit Trägerbestand\n\n'))
     ['Bezugsbetreuung im Wohn- und Lebensumfeld', 'bei Wohnungslosigkeit Möglichkeit Trägerbestand']
     """
-    # TODO: THINK ABOUT A BETTER PLAN
-    # HACK Y
-    # wrap token inside hidden pattern
-    hidden_token = [
-        (r'-\n', '-\n', '$_$_$_$_$_$_$_$_$_$_$'),
-        (r'\b\-', '-', '$*$*$*$*$*$*$*$*$'),
-    ]
-    for pattern, _, hidden in hidden_token:
-        content = re.sub(pattern, hidden, content)
-
-    parsed = parse_general_list(content, '-')
-
-    for index, item in enumerate(parsed):
-        # remove hidden token
-        for _, origin, hidden in hidden_token:
-            item = item.replace(hidden, origin)
-        parsed[index] = item
-    return parsed
+    return parse_general_list(content, MINUS)
 
 
 def parse_numbered_list(content: str) -> list:
