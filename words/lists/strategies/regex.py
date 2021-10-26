@@ -44,13 +44,6 @@ NUMBERED_LIST_PATTERN = r"""
     (?=[0-9]+\.\s?|$)                      # new list start or final newline
     """
 
-# Double Newline must end this list item.
-GENERAL = r"""
-    ^\s*
-    {selector}\s*
-    (?P<TEXT>([^{selector}]+\n))      # list item content
-"""
-
 # ''
 QUARDO = chr(61607)
 
