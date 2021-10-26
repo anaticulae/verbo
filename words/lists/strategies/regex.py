@@ -51,19 +51,28 @@ GENERAL = r"""
     (?P<TEXT>([^{selector}]+\n))      # list item content
 """
 
+# ''
+QUARDO = chr(61607)
+
 
 def parse_quardo_list(content: str) -> utila.Strings:
-    return parse_general_list(content, '')
+    return parse_general_list(content, QUARDO)
+
+
+# 61623: dot
+DOTTED = {'•', '\x88', '\x99', chr(61623)}
 
 
 def parse_dotted_list(content: str) -> utila.Strings:
     # TODO: ADD SPECIAL CHAR CONVERTER TO RAWMAKER
-    # 61623: dot
-    return parse_general_list(content, ['•', '\x88', '\x99', chr(61623)])
+    return parse_general_list(content, DOTTED)
+
+
+PLUS = '+'
 
 
 def parse_plus_list(content: str) -> utila.Strings:
-    return parse_general_list(content, '+')
+    return parse_general_list(content, PLUS)
 
 
 def parse_minus_list(content: str) -> utila.Strings:
