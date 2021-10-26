@@ -153,7 +153,7 @@ def test_list_dotted_with_content_only():
 
 
 @utilatest.longrun
-def test_list_master72_page39_one_list(testdir):
+def test_list_master72page39_one_list(testdir):
     pages = (39,)
     source = power.link(power.MASTER072_PDF)
     ptcn = serializeraw.ptcn_frompath(

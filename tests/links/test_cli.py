@@ -23,7 +23,7 @@ def test_links_master75(testdir, monkeypatch):
 
 
 @utilatest.requires(power.MASTER075_PDF)
-def test_links_master75_pages15(testdir, monkeypatch):
+def test_links_master75pages15(testdir, monkeypatch):
     loaded = hyperlinks(power.MASTER075_PDF, testdir, monkeypatch, 15)
     assert len(loaded) == 1
     hyperlink = loaded[0].href

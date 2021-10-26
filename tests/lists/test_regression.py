@@ -17,7 +17,7 @@ import words.path
 
 
 @utilatest.requires(power.BACHELOR241_PDF)
-def test_nolist_bachelor241_page81(testdir, monkeypatch):
+def test_nolist_bachelor241page81(testdir, monkeypatch):
     """This test was designed cause on this page table content was
     parsed as lists."""
     source = power.link(power.BACHELOR241_PDF)

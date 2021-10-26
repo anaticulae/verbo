@@ -39,7 +39,7 @@ def extract_lists(source, pages: tuple, testdir, monkeypatch):
 
 
 @utilatest.longrun
-def test_list_bachelor76_page4(testdir, monkeypatch):
+def test_list_bachelor76page4(testdir, monkeypatch):
     pages = (4,)
     source = power.link(power.BACHELOR076_PDF)
 
@@ -49,7 +49,7 @@ def test_list_bachelor76_page4(testdir, monkeypatch):
 
 
 @utilatest.longrun
-def test_list_bachelor76_page5_10(testdir, monkeypatch):
+def test_list_bachelor76page5_10(testdir, monkeypatch):
     pages = (5, 6, 7, 8, 9, 10)
     source = power.link(power.BACHELOR076_PDF)
 
@@ -69,7 +69,7 @@ def test_list_master72_page9_10(testdir, monkeypatch):
 
 
 @utilatest.longrun
-def test_list_master72_page39_40_41(testdir, monkeypatch):
+def test_list_master72page39_40_41(testdir, monkeypatch):
     pages = (39, 40, 41, 42)
     source = power.link(power.MASTER072_PDF)
 
@@ -88,7 +88,7 @@ def test_list_master72_page39_40_41(testdir, monkeypatch):
     pytest.param(':', id='all'),
 ])
 @utilatest.longrun
-def test_list_bachelor128_page36_42(pages, testdir, monkeypatch):
+def test_list_bachelor128page36_42(pages, testdir, monkeypatch):
     """Use pages to ensure that extracting works when extraction uses
     more than one chunk."""
     source = power.link(power.BACHELOR128_PDF)
