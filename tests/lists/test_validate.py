@@ -26,6 +26,7 @@ def load_expected(name) -> str:
 
 
 def extract_lists(source, pages: tuple, testdir, monkeypatch):
+    source = power.link(source)
     pages = utila.from_tuple(pages, separator=',')
     # run words
     tests.run(
@@ -41,9 +42,7 @@ def extract_lists(source, pages: tuple, testdir, monkeypatch):
 @utilatest.longrun
 def test_list_bachelor76page4(testdir, monkeypatch):
     pages = (4,)
-    source = power.link(power.BACHELOR076_PDF)
-
-    lists = extract_lists(source, pages, testdir, monkeypatch)
+    lists = extract_lists(power.BACHELOR076_PDF, pages, testdir, monkeypatch)
     # 1 pages with list content
     assert len(lists) == 1
 
@@ -51,9 +50,7 @@ def test_list_bachelor76page4(testdir, monkeypatch):
 @utilatest.longrun
 def test_list_bachelor76page5_10(testdir, monkeypatch):
     pages = (5, 6, 7, 8, 9, 10)
-    source = power.link(power.BACHELOR076_PDF)
-
-    lists = extract_lists(source, pages, testdir, monkeypatch)
+    lists = extract_lists(power.BACHELOR076_PDF, pages, testdir, monkeypatch)
     # 1 pages with list content
     assert len(lists) == 1
 
@@ -61,7 +58,7 @@ def test_list_bachelor76page5_10(testdir, monkeypatch):
 @utilatest.longrun
 def test_list_master72page9_10(testdir, monkeypatch):
     pages = (9, 10)
-    source = power.link(power.MASTER072_PDF)
+    source = power.MASTER072_PDF
     lists = extract_lists(source, pages, testdir, monkeypatch=monkeypatch)
     assert len(lists) == 1
     assert len(utila.select_page(lists, 9).content[0].data) == 7
@@ -70,11 +67,11 @@ def test_list_master72page9_10(testdir, monkeypatch):
 @utilatest.longrun
 def test_list_master72page39_40_41(testdir, monkeypatch):
     pages = (39, 40, 41, 42)
-    source = power.link(power.MASTER072_PDF)
-
+    source = power.MASTER072_PDF
+    # extract
     lists = extract_lists(source, pages, testdir, monkeypatch=monkeypatch)
+    # validate
     assert len(lists) == 1
-
     page39 = utila.select_page(lists, page=39).content
     assert len(page39) == 1
     first_list = page39[0]
@@ -90,15 +87,14 @@ def test_list_master72page39_40_41(testdir, monkeypatch):
 def test_list_bachelor128page36_42(pages, testdir, monkeypatch):
     """Use pages to ensure that extracting works when extraction uses
     more than one chunk."""
-    source = power.link(power.BACHELOR128_PDF)
+    source = power.BACHELOR128_PDF
     extracted = extract_lists(source, pages, testdir, monkeypatch=monkeypatch)
-    # assert len(extracted) == 1
+    # validate
     selected = utila.select_content(extracted, page=37)
     assert len(selected) == 1
     data = selected[0].data
     assert len(data) == 8
     area = selected[0].area
-
     expected = [
         (17, 18, 19, 20, 21),  # page 37
         utila.ranged_tuple(0, 30),  # page 38
@@ -145,7 +141,6 @@ def validate_master99(extracted):
 # yapf:enable
 @utilatest.longrun
 def test_list_validate(source, validator, pages, testdir, monkeypatch):
-    source = power.link(source)
     # run extraction
     extracted = extract_lists(source, pages, testdir, monkeypatch=monkeypatch)
     # run validation
