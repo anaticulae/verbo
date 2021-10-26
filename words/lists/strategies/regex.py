@@ -105,7 +105,11 @@ def parse_numbered_list(content: str) -> list:
     return result
 
 
-def parse_general_list(content: str, selector: str) -> utila.Strings:
+def parse_general_list(
+    content: str,
+    selector: str,
+    selector_skip: bool = True,
+) -> utila.Strings:
     r"""\
     >>> parse_general_list('\x88 Humus\n\x88 Bread', ['•', '\x88'])
     ['Humus', 'Bread']
@@ -140,7 +144,11 @@ def parse_general_list(content: str, selector: str) -> utila.Strings:
         end = starts[-1]
     result.append('\n'.join(data[starts[-1]:end + 1]))
     # strip selector
-    result = [item[1:].strip() for item in result]
+    if selector_skip:
+        result = [selector.sub('', item).strip() for item in result]
+    else:
+        result = [(selector.sub('', item).strip(), (selector.match(item)[0]))
+                  for item in result]
     return result
 
 
