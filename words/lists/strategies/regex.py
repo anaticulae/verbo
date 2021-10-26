@@ -8,17 +8,13 @@
 # =============================================================================
 
 import re
-import typing
 
-import configo
-import iamraw
-import texmex
 import utila
 
 
 def parse_single(content: str):
     r"""\
-    # last plus sign is an empty entree
+    last plus sign is an empty entree
     >>> parse_single('+ list item\n+ next item\n+\n')
     ['list item', 'next item', '']
     """
@@ -57,7 +53,6 @@ def parse_quardo_list(content: str) -> utila.Strings:
 
 
 def parse_dotted_list(content: str) -> utila.Strings:
-    # TODO: ADD SPECIAL CHAR CONVERTER TO RAWMAKER
     return parse_general_list(content, DOTTED)
 
 
@@ -145,70 +140,4 @@ def parse_general_list(content: str, selector: str) -> utila.Strings:
     result.append('\n'.join(data[starts[-1]:end + 1]))
     # strip selector
     result = [item[1:].strip() for item in result]
-    return result
-
-
-LISTS_MERGE_Y_MAX = configo.HV_FLOAT_PLUS(default=15.0)
-
-
-def extract_lists(  # pylint:disable=R0914
-    page: texmex.PageTextNavigator,
-    pagesize: iamraw.Border,  # pylint:disable=W0613
-    uindex=None,
-) -> typing.List[iamraw.PageList]:
-    """Extract lists out of document page. There are different types of Lists.
-
-    Numbered... 1.2.3, I. II. III., + + +, - - -, * * *.
-    """
-    # TODO: MAX_Y_MERGE IS VERY INSTABLE
-
-    page, merged = texmex.merge_content(
-        page,
-        max_y_merge=LISTS_MERGE_Y_MAX,
-        uindex=uindex,
-    )
-    text_bounds = texmex.merge_content_join(page)
-
-    result = []
-    enumerated = enumerate(zip(text_bounds, merged))
-    for paraindex, (paragraph, mergearea) in enumerated:  # pylint:disable=W0612
-        bounds, text = paragraph.bounds, paragraph.text  # pylint:disable=W0612
-        # ptextsize = fontsize_from_textbounds(bounds)
-        # if ptextsize != textsize:
-        #     # TODO: Hier gibt es noch ein Problem mit der Berechnung der
-        #     # Schriftgroesse, da der Zeilenabstand nicht beruecksichtigt wird
-        #     # Collect lists only in text, avoid collecting in headlines
-        #     continue
-        # TODO: FIX FEED
-        # feed = paragraph.bounds.xdist
-        # if feed <= 0.0:
-        #     # TODO: Improve this
-        #     # no text feed
-        #     continue
-        detected = []
-        for parser in [
-                parse_dotted_list,
-                parse_quardo_list,
-                parse_minus_list,
-                parse_numbered_list,
-                parse_plus_list,
-        ]:
-            detected = parser(text)
-            # TODO: parse all and compare
-            if detected:
-                break
-        # parsing was not succesfull
-        if not detected:
-            continue
-        pagelist = iamraw.PageList(area=mergearea)
-        # before, after = before_and_after(text, position[0], position[1])
-        for index, item in enumerate(detected):
-            # remove newline
-            if isinstance(item, str):
-                pagelist.append(item, index)
-            else:
-                content, level = item
-                pagelist.append(content, level)
-        if pagelist:
-            result.append(pagelist)
     return result
