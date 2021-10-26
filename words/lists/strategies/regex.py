@@ -18,8 +18,9 @@ import utila
 
 def parse_single(content: str):
     r"""\
-    >>> parse_single('+ list item\n+ next item\n+\n') # skip last plus sign
-    ['list item', 'next item']
+    # last plus sign is an empty entree
+    >>> parse_single('+ list item\n+ next item\n+\n')
+    ['list item', 'next item', '']
     """
     for method in [
             parse_numbered_list,
@@ -62,7 +63,7 @@ def parse_dotted_list(content: str) -> utila.Strings:
 
 
 def parse_plus_list(content: str) -> utila.Strings:
-    return parse_general_list(content, r'\+')
+    return parse_general_list(content, '+')
 
 
 def parse_minus_list(content: str) -> utila.Strings:
@@ -133,33 +134,33 @@ def parse_general_list(content: str, selector: str) -> utila.Strings:
     r"""\
     >>> parse_general_list('\x88 Humus\n\x88 Bread', ['•', '\x88'])
     ['Humus', 'Bread']
+    >>> parse_general_list('- no well detected + wuhu', selector='*')
+    []
     """
     assert isinstance(content, str), type(content)
-    if isinstance(selector, list):
-        # join multiple selector
-        selector = '(' + '|'.join(selector) + ')'
-    pattern = GENERAL.format(selector=selector)
-    # Workaround: Adding newline to content. The regex does not work, if the
-    # content ends with a newline. TODO: Improve regex
-    content = content + utila.NEWLINE
-    parsed = re.finditer(
-        pattern,
-        content,
-        flags=re.MULTILINE | re.VERBOSE,
-    )
-    result = []
-    for item in parsed:
-        # TODO: IMPROVE REGEX
-        text = item['TEXT'].split('\n\n')
-        text = text[0]
-        text = text.strip()
-        if not text:
-            # newlines where parsed as content. If we ignore newlines in
-            # regex, it is not possible to parse multiple lists items.
-            # Therefore we strip the result and check if result does
-            # contain any content.
-            continue
-        result.append(text)
+    data = [item.strip() for item in content.splitlines()]
+    starts = [
+        index for index, item in enumerate(data) if item and item[0] in selector
+    ]
+    if not starts:
+        # could not detect any list
+        return []
+    result = [
+        '\n'.join(data[current:after])
+        for current, after in zip(starts[:-1], starts[1:])
+    ]
+    # find first empty item to merge last item
+    end = [
+        index for index, item in enumerate(data, start=starts[-1]) if not item
+    ]
+    if end:
+        end = end[0]
+    else:
+        # last item is a content item
+        end = starts[-1]
+    result.append('\n'.join(data[starts[-1]:end + 1]))
+    # strip selector
+    result = [item[1:].strip() for item in result]
     return result
 
 
