@@ -96,7 +96,7 @@ DOTTED_LIST_EXPECTED = [
     'Emphasis: Italics',
     'Emphasis: Strong',
     'Headers',
-    'Horizontal rules\n  more than one line\n  futher more lines',
+    'Horizontal rules\nmore than one line\nfuther more lines',
     'Images: Inline',
     'Line Return',
     'Links: Inline',

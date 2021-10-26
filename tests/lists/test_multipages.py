@@ -48,10 +48,8 @@ def test_extract_multiple_lists_master72():
     lists = extract_multiple_lists(source, pages)
     # TODO: REPLACE AFTER CHANGING DATA STRUCTURE
     # lists = utila.flatten(lists)
-
     # lists on 4 starting pages
     assert len(lists) == 4
-
     listinstances = utila.flatten([item.content for item in lists])
     # number of lists
     assert len(listinstances) == 4

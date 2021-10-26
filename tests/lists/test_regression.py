@@ -33,8 +33,7 @@ def test_list_docu_restructured_page4(testdir, monkeypatch):
     parsed as lists."""
     source = power.link(power.DOCU027_PDF)
     tests.run(f'-i {source} --pages=4 --list', monkeypatch=monkeypatch)
-
     loaded = serializeraw.load_lists(words.path.lists(testdir.tmpdir))
     assert len(loaded) == 1
     area = utila.select_content(loaded, page=4)[0].area
-    assert area == [5, 6, 7, 8]  # remove 8 after fixing parser
+    assert area == [5, 6, 7]

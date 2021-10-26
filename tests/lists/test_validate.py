@@ -59,10 +59,9 @@ def test_list_bachelor76page5_10(testdir, monkeypatch):
 
 
 @utilatest.longrun
-def test_list_master72_page9_10(testdir, monkeypatch):
+def test_list_master72page9_10(testdir, monkeypatch):
     pages = (9, 10)
     source = power.link(power.MASTER072_PDF)
-
     lists = extract_lists(source, pages, testdir, monkeypatch=monkeypatch)
     assert len(lists) == 1
     assert len(utila.select_page(lists, 9).content[0].data) == 7
