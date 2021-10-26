@@ -112,11 +112,11 @@ def parse_general_list(content: str, selector: str) -> utila.Strings:
     >>> parse_general_list('- no well detected + wuhu', selector='*')
     []
     """
+    if not isinstance(selector, re.Pattern):
+        selector = utila.compiles(f'^{regex_prepare(selector)}')
     assert isinstance(content, str), type(content)
     data = [item.strip() for item in content.splitlines()]
-    starts = [
-        index for index, item in enumerate(data) if item and item[0] in selector
-    ]
+    starts = [index for index, item in enumerate(data) if selector.match(item)]
     if not starts:
         # could not detect any list
         return []
@@ -141,3 +141,12 @@ def parse_general_list(content: str, selector: str) -> utila.Strings:
     # strip selector
     result = [item[1:].strip() for item in result]
     return result
+
+
+def regex_prepare(items):
+    if isinstance(items, str):
+        items = re.escape(items)
+    if utila.iterable(items):
+        items = [re.escape(item) for item in items]
+        items = f"({'|'.join(items)})"
+    return items
