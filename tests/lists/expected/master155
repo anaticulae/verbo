@@ -25,13 +25,13 @@
 1 Alle Konsumenten erhalten dieselben Vorgaben.
 2 Nach der ökonomischen Theorie und den Experimentvorgaben sollte jeder Fisch und jedes Brot etwa 20 Taler kosten.
 ################### 37 ###################
-0 Die Suche nach Informationen verursacht Kosten. In dem Fall des durchgeführten Marktexperiments können die Kosten als
+0 Die Suche nach Informationen verursacht Kosten. In dem Fall des durchgeführten Marktexperiments können die Kosten als Opportunitätskosten (Zeit, die für die Suche verwendet wird, hätte auch für intensivere Verhandlungen genutzt werden können) und psychische Kosten aufgefasst werden.
 1 Je mehr Verkäufer der Käufer aufsucht, desto größer ist die Wahrscheinlichkeit, dass der erwartete Preis niedrig ist. Der Grenznutzen der Suche besteht dabei in der erwarteten Preisreduktion und nimmt mit fortlaufender Suche ab.
-2 Kosten und Nutzen der Preissuche verlaufen gegenläufig. Daher ermittelt der Käufer die Anzahl der aufgesuchten Verkäufer durch den Ausgleich
+2 Kosten und Nutzen der Preissuche verlaufen gegenläufig. Daher ermittelt der Käufer die Anzahl der aufgesuchten Verkäufer durch den Ausgleich von Grenzsuchkosten und Grenzsuchnutzen (van Baal 2011).
 ---------------------------------------------
 0 Suchverfahren: Es gibt Modelle, bei denen zu Beginn die Anzahl der aufzusuchenden Verkäufer festgelegt wird, und welche, bei denen über die Größe der Stichprobe während des Suchvorgangs entschieden wird.
 1 Preisverteilung: Die Modelle werden an Hand der Information, die der Käufer hat, unterschieden. Die Preisverteilung kann vor Beginn der Suche bekannt oder unbekannt sein.
-2 Preisbereitschaft: Die Preisbereitschaft drückt den Preis aus, den ein einzelner Nachfrager maximal zu zahlen bereit ist. Dabei vergleicht der Käufer Kosten und Nutzen. Die Preisbereitschaft der Käufer kann in das Modell aufgenommen werden. Unterschieden wird dabei zwischen einer
+2 Preisbereitschaft: Die Preisbereitschaft drückt den Preis aus, den ein einzelner Nachfrager maximal zu zahlen bereit ist. Dabei vergleicht der Käufer Kosten und Nutzen. Die Preisbereitschaft der Käufer kann in das Modell aufgenommen werden. Unterschieden wird dabei zwischen einer statischen und einer dynamischen Preisbereitschaft (van Baal 2011).
 ---------------------------------------------
 ################### 44 ###################
 0 Linearer Zusammenhang zwischen unabhängigen und der abhängigen Variablen: Bei der Veränderung einer unabhängigen Variablen um eine Einheit ändert sich der Wert der abhängigen Variablen um die durch den entsprechenden Regressionskoeffizienten geschätzte Zahl von Einheiten.
@@ -43,15 +43,19 @@
 6 Keine Autokorrelation: Keine Korrelation unter den Residuen, andernfalls sind die Abweichungen der geschätzten Werte systematisch und nicht mehr zufällig.
 7 Kein wesentlicher Einfluss von Ausreißern
 ################### 45 ###################
-0 Alter: Das durchschnittliche Alter lag zum Zeitpunkt der Erhebung bei 24 Jahren. Der jüngste Teilnehmer war 20 Jahre alt, der älteste 43. Ein Teilnehmer hat sein Geburtsjahr nicht angegeben.
-1 Anzahl richtiger Verständnisfragen: Bei den Konsumenten betrug die Anzahl der Verständnisfragen neun. Durchschnittlich wurden 4,3 Fragen richtig beantwortet, das Minimum lag bei keiner richtig beantworteten Frage, das Maximum bei acht richtigen Antworten. Die Produzenten konnten maximal sieben Fragen richtig beantworten. Der Durchschnitt lag bei 4,4 richtig beantworteten Fragen, das Minimum betrug null, das Maximum waren sieben korrekte Antworten.
-2 Anzahl der Transaktionen: Im ersten Experiment fanden 1702 Transaktionen statt. Bei einer Transaktion gab es keine zugeordnete Konsumentennummer zu dem entsprechenden Verkäufer. Diese wurde im Protokoll nicht dokumentiert.
+0 Geschlecht: Am ersten Experiment nahmen 38 Frauen (42%) und 52 Männer (58%) teil. Davon waren 26 Frauen (43%) Konsumenten, 12 Produzenten (40%). Bei den Männern waren 34 Teilnehmer Konsumenten (57%) und 12 Produzenten (60%).
+1 Alter: Das durchschnittliche Alter lag zum Zeitpunkt der Erhebung bei 24 Jahren. Der jüngste Teilnehmer war 20 Jahre alt, der älteste 43. Ein Teilnehmer hat sein Geburtsjahr nicht angegeben.
+2 Anzahl richtiger Verständnisfragen: Bei den Konsumenten betrug die Anzahl der Verständnisfragen neun. Durchschnittlich wurden 4,3 Fragen richtig beantwortet, das Minimum lag bei keiner richtig beantworteten Frage, das Maximum bei acht richtigen Antworten. Die Produzenten konnten maximal sieben Fragen richtig beantworten. Der Durchschnitt lag bei 4,4 richtig beantworteten Fragen, das Minimum betrug null, das Maximum waren sieben korrekte Antworten.
+3 Ausprägung der Risikoeinstellung (risk_total)10: Die Risikoeinstellung wurde auf einer Skala von 0 bis 10 gemessen. 0 bedeutet wenig risikoavers, 10 steht für sehr risikoavers. Im Mittel lag die Risikoausprägung bei 8,4. Das Minimum betrug 4, das Maximum 10.
+4 Risikoaversion (risikoavers): Diese Variable misst, ob sich die Probanden an Hand der erwarteten Auszahlung risikoavers entschieden oder nicht. 18 der Teilnehmer entschieden sich immer risikoavers, die anderen 72 entschieden sich mindestens einmal gegen die risikoaverse Lotterie.
+5 Anzahl der Transaktionen: Im ersten Experiment fanden 1702 Transaktionen statt. Bei einer Transaktion gab es keine zugeordnete Konsumentennummer zu dem entsprechenden Verkäufer. Diese wurde im Protokoll nicht dokumentiert.
 ################### 46 ###################
-0 Alter: Das durchschnittliche Alter lag ebenso wie im ersten Experiment bei etwa 24 Jahren. Der jüngste Teilnehmer war 19 Jahre alt, der älteste 35 Jahre.
-1 Anzahl richtiger Verständnisfragen: Die Konsumenten beantworteten im Schnitt 4,6 Fragen richtig. Das Minimum lag bei einer richtigen Frage, das Maximum bei acht. Bei den Produzenten wurden durchschnittlich 3,9 Aufgaben korrekt gelöst.
-2 Ausprägung der Risikoeinstellung: Die Ausprägung der Risikoeinstellung lag im Mittel mit 8,5 knapp unter der des ersten Experiments. Die niedrigste Ausprägung betrug vier.
-3 Risikoaversion: 15 Probanden verhielten sich bei der Auswahl der Lotterie entsprechend des Erwartungswertes strikt risikoavers. Folglich waren 69 Teilnehmer bei mindestens einer der zehn Lotterien nicht risikoavers.
-4 Anzahl der Transaktionen: Es wurden 1893 Transaktionen getätigt. Dabei fehlt bei einer Transaktion die Konsumentennummer, diese war im Protokoll nicht angegeben.
+0 Geschlecht: Die Verteilung lag bei 42 Männern (50%) und 42 Frauen (50%). Ebenso waren jeweils 28 beziehungsweise 14 Männer und Frauen Konsumenten beziehungsweise Produzenten.
+1 Alter: Das durchschnittliche Alter lag ebenso wie im ersten Experiment bei etwa 24 Jahren. Der jüngste Teilnehmer war 19 Jahre alt, der älteste 35 Jahre.
+2 Anzahl richtiger Verständnisfragen: Die Konsumenten beantworteten im Schnitt 4,6 Fragen richtig. Das Minimum lag bei einer richtigen Frage, das Maximum bei acht. Bei den Produzenten wurden durchschnittlich 3,9 Aufgaben korrekt gelöst.
+3 Ausprägung der Risikoeinstellung: Die Ausprägung der Risikoeinstellung lag im Mittel mit 8,5 knapp unter der des ersten Experiments. Die niedrigste Ausprägung betrug vier.
+4 Risikoaversion: 15 Probanden verhielten sich bei der Auswahl der Lotterie entsprechend des Erwartungswertes strikt risikoavers. Folglich waren 69 Teilnehmer bei mindestens einer der zehn Lotterien nicht risikoavers.
+5 Anzahl der Transaktionen: Es wurden 1893 Transaktionen getätigt. Dabei fehlt bei einer Transaktion die Konsumentennummer, diese war im Protokoll nicht angegeben.
 ################### 88 ###################
 0 Ihr Budget wird in jeder Runde 400 Taler betragen. Taler, die Sie in einer Runde nicht verbrauchen können oder wollen, sollten Sie am Ende der Runde den Hiwis zurückgeben. Jeder Taler zählt dann als eine Nutzeneinheit für Sie.
 1 Sie können auch über halbe und viertel Brote und Fische mit den Anbietern verhandeln und kaufen. Allerdings gibt es keine halben Taler oder ähnliches.
@@ -67,7 +71,7 @@
 3 Die Verkäufer der Brote haben dieselben Kostentabellen wie Sie, außer dass ein Brot einem Fisch entspricht. Es gibt genauso viele Anbieter von Fischen wie es Bäcker gibt.
 4 Als grobe Richtschnur für Ihre Preisverhandlungen können wir Ihnen sagen, dass nach der ökonomischen Theorie jedes Brot und jeder Fisch ungefähr 20 Taler kosten sollte nach unseren Experimentvorgaben.
 5 In späteren Runden gibt es eine kleine Modifikation. Fischer und Bäcker müssen dann 10% ihrer Taler-Verkaufserlöse – ähnlich einer Mehrwertsteuer – an das ‚Finanzamt‘ abführen.
-6 Ihre Überweisung in Euro nach dem Spiel ist umso höher je mehr Gewinn Sie in jeder Runde erzielt haben – gemessen in Talern. 20 € Mindestverdienst erhalten Sie garantiert. Wenn Sie in einer Runde zu den
+6 Ihre Überweisung in Euro nach dem Spiel ist umso höher je mehr Gewinn Sie in jeder Runde erzielt haben – gemessen in Talern. 20 € Mindestverdienst erhalten Sie garantiert. Wenn Sie in einer Runde zu den zwei Anbietern (Fischverkäufer und Bäcker zusammengenommen) mit dem niedrigsten Gewinn gehören, erhalten Sie für diese Runde keine zusätzlichen Euro Auszahlung. Wenn Sie aber in einer Runde 20 Taler mehr Gewinn erreicht haben als der Konsument mit dem zweitniedrigsten Gewinn, werden Sie doppelt soviel Euro für diese Runde ausbezahlt bekommen als ein anderer Anbieter C, der nur 10 Taler Gewinn mehr erreicht hat. Kleine Unterschiede im Gewinn können also große Unterschiede im Verdienst bedeuten. Reizen Sie Ihre Gewinnmöglichkeiten aus!
 ################### 102 ###################
 0 Es gibt 15 weitere Bäcker wie Sie, die auch genau solche Brote anbieten wie Sie und dieselben Kostentabellen haben wie Sie.
 1 Die Konsumenten sollen in jeder Experimentrunde 400 Taler auf den Kauf von Broten und Fischen verteilen. Wenn Brote und Fische gleich teuer sind pro Stück, ist es optimal für die Konsumenten gleich viele Brote und Fische zu kaufen. Taler, die die Konsumenten in einer Runde nicht verbrauchen, können die Konsumenten zurückgeben. Alle Konsumenten erhalten dieselben Experimentvorgaben.
@@ -75,4 +79,4 @@
 3 Die Verkäufer der Fische haben dieselben Kostentabellen wie Sie, außer dass ein Brot einem Fisch entspricht. Es gibt genauso viele Anbieter von Fischen wie es Bäcker gibt.
 4 Als grobe Richtschnur für Ihre Preisverhandlungen können wir Ihnen sagen, dass nach der ökonomischen Theorie jedes Brot und jeder Fisch ungefähr 20 Taler kosten sollte nach unseren Experimentvorgaben.
 5 In späteren Runden gibt es eine kleine Modifikation. Fischer und Bäcker müssen dann 10% ihrer Taler-Verkaufserlöse – ähnlich einer Mehrwertsteuer – an das ‚Finanzamt‘ abführen.
-6 Ihre Überweisung in Euro nach dem Spiel ist umso höher je mehr Taler- Gewinn Sie in jeder Runde erzielt haben. 20 € Mindestverdienst erhalten Sie garantiert. Wenn Sie in einer Runde zu den zwei Anbietern
+6 Ihre Überweisung in Euro nach dem Spiel ist umso höher je mehr Taler- Gewinn Sie in jeder Runde erzielt haben. 20 € Mindestverdienst erhalten Sie garantiert. Wenn Sie in einer Runde zu den zwei Anbietern (Fischverkäufer und Bäcker zusammengenommen) mit dem niedrigsten Gewinn gehören, erhalten Sie für diese Runde keine zusätzlichen Euro Auszahlung. Wenn Sie aber in einer Runde 20 Taler mehr Gewinn erreicht haben als der Konsument mit dem zweitniedrigsten Gewinn, werden Sie doppelt soviel Euro für diese Runde ausbezahlt bekommen als ein anderer Anbieter C, der nur 10 Taler Gewinn mehr erreicht hat. Kleine Unterschiede im Gewinn können also große Unterschiede im Verdienst bedeuten. Reizen Sie Ihre Gewinnmöglichkeiten aus!
