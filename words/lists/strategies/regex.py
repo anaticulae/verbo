@@ -32,20 +32,13 @@ def parse_single(content: str):
     return []
 
 
-# TODO: Merge both pattern!
-NUMBERED_LIST_PATTERN = r"""
-    ^(?P<LEVEL>[0-9]+\.[0-9]{0})           # list level e.g. 1. 4. 5.
-    \s                                     # whitespace
-    (?P<TEXT>(?:.+\s){1,}?)               # list item content
-    (?=[0-9]+\.\s?|$)                      # new list start or final newline
-    """
-
 # ''
 QUARDO = chr(61607)
 PLUS = '+'
 MINUS = '-'
 # 61623: dot
 DOTTED = {'•', '\x88', '\x99', chr(61623)}
+NUMBER = utila.compiles(r'^[0-9]{1,2}\.(?!\d)')
 
 
 def parse_quardo_list(content: str) -> utila.Strings:
@@ -76,33 +69,7 @@ def parse_numbered_list(content: str) -> list:
         list with (text, level) of list items
         None if nothing no list is parsed
     """
-    content = str(content)
-    assert content
-    # TODO: WORKAROUND: Single line does not parse without NEWLINE
-    if not content.endswith(utila.NEWLINE):
-        content += utila.NEWLINE
-
-    parsed = re.finditer(
-        NUMBERED_LIST_PATTERN,
-        content,
-        flags=re.MULTILINE | re.VERBOSE,
-    )
-    if not parsed:
-        return []
-    result = []
-    for item in parsed:
-        start, _ = item.span()
-        if start > 0:
-            before = content[start - 1]
-            if before != utila.NEWLINE:
-                # item is not located at the start of the text
-                continue
-        level, text = item[1], item[2]
-        result.append((
-            text.strip(),
-            level,
-        ))
-    return result
+    return parse_general_list(content, NUMBER, selector_skip=False)
 
 
 def parse_general_list(
