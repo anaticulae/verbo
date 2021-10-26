@@ -78,6 +78,22 @@ def test_list_master72page39_40_41(testdir, monkeypatch):
     assert len(first_list) == 4
 
 
+# @utilatest.longrun
+def test_list_master155page23(testdir, monkeypatch):
+    pages = (23,)
+    source = power.MASTER155_PDF
+    # extract
+    lists = extract_lists(source, pages, testdir, monkeypatch=monkeypatch)
+    # validate
+    assert len(lists) == 1
+    page23 = utila.select_page(lists, page=23).content
+    assert len(page23) == 1
+    singlelist = page23[0]
+    assert len(singlelist) == 3
+    utila.log(singlelist)
+    assert singlelist[1][1].endswith('Experimentvorgaben.')
+
+
 @pytest.mark.parametrize('pages', [
     pytest.param((36, 37, 38, 39, 40, 41, 42), id='with_offset'),
     pytest.param(utila.ranged_tuple(0, 42), id='no_offset'),

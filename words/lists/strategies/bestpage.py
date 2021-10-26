@@ -43,7 +43,6 @@ def extract_best_page(navigator, headlines, textfeed):
         item for item in geo if words.lists.utils.valid_area(item.area) and
         words.lists.utils.valid_list_content(item.data)
     ]
-
     vertical = words.lists.strategies.vertical.analyze_page(
         navigator,
         headlines,
@@ -52,13 +51,11 @@ def extract_best_page(navigator, headlines, textfeed):
         item for item in vertical if words.lists.utils.valid_area(item.area) and
         words.lists.utils.valid_list_content(item.data)
     ]
-
     selected = utila.zip_optimizer(  # pylint:disable=E1101
         geo,
         vertical,
         selector=lambda x: x.area,
     )
-
     result = []
     for lists in selected:
         # TODO: REPLACE 0,0 with correct one

@@ -27,3 +27,20 @@ Psychologen.  Zusätzlich  verfügen  einige  Mitarbeiter  über  sozialpsychiat
 def test_list_parse_regex():
     parsed = words.lists.strategies.regex.parse_single(CONTENT)
     assert len(parsed) == 6
+
+
+RAW = """\
++ Die  Konsumenten  haben  ein  Budget  von  400  Talern  je  Runde.  Wenn
+Brote  und  Fische  gleich  teuer  sind  pro  Stück,  ist  es  optimal  für  die
+Konsumenten  gleich  viele  Brote  und  Fische  zu  kaufen.  Taler,  die  die
+Konsumenten  in  einer  Runde  nicht  verbrauchen,  können  die
+Konsumenten  zurückgeben.  Alle  Konsumenten  erhalten  dieselben
+Experimentvorgaben.
+"""
+
+
+def test_list_parse_regex_regression():
+    parsed = words.lists.strategies.regex.parse_single(RAW)
+    assert len(parsed) == 1
+    end = parsed[0]
+    assert end.endswith('Experimentvorgaben.')

@@ -164,6 +164,10 @@ def parse_general_list(content: str, selector: str) -> utila.Strings:
     ]
     if end:
         end = end[0]
+    elif len(starts) == 1:
+        # only one startpoint and no ending, therefore collect from start
+        # till end of content.
+        end = len(data)
     else:
         # last item is a content item
         end = starts[-1]
