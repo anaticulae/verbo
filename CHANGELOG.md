@@ -2,6 +2,20 @@
 
 Every noteable change is logged here.
 
+## v1.2.0
+
+### Feature
+
+* add option to return list separator (809ab0c2bc83)
+* use regex to match list item start (d65cb695bc11)
+* use improved list splitter (cb5bfc493d50)
+
+### Fix
+
+* adjust start correctly (2853e7e1fabf)
+* disable last one fixer (93746c107319)
+* adjust single content item (75cd98deba11)
+
 ## v1.1.1
 
 ### Fix
