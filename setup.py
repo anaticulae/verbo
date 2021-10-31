@@ -51,7 +51,6 @@ if __name__ == "__main__":
             'words.lists',
             'words.lists.strategies',
             'words.text',
-            'words.utils',
         ],
         entry_points={
             'console_scripts': ['words = words.cli:main',],

@@ -11,8 +11,6 @@ import german
 import iamraw
 import serializeraw
 
-import words.utils
-
 
 def work(text: str, headlines: str, pages: tuple = None) -> str:
     headlines = serializeraw.load_headlines(headlines, pages=pages)
@@ -25,7 +23,7 @@ def work(text: str, headlines: str, pages: tuple = None) -> str:
 
 def process_text(texts):
     result = []
-    for page, sentence in words.utils.sentences(texts):
+    for page, sentence in sentences(texts):
         extracted = process_chunk(sentence)
         for item in extracted:
             item.page = page
@@ -126,3 +124,19 @@ def plain_word(text: str) -> bool:
     False
     """
     return all(item.isalpha() for item in text.split())
+
+
+def sentences(texts, numbers: bool = False):
+    number, current = 0, None
+    for chunk in texts:
+        for section in chunk.content:
+            for page, sentence in zip(section.pages, section.content):
+                if not numbers:
+                    yield page, sentence
+                else:
+                    if current != page:
+                        number = 0
+                        current = page
+                    else:
+                        number += 1
+                    yield page, number, sentence
