@@ -75,7 +75,8 @@ def process_words(text, listlookup, boxlookup):
                     undefined,
                 )
                 if searched is not None:
-                    headlinecontent[index] = f'{searched}l'
+                    raw = f'{searched[0]}l{searched[1]}'
+                    headlinecontent[index] = raw
                     continue
                 searched = boxlookup.search(item.page, undefined)
                 if searched is not None:
@@ -98,25 +99,37 @@ class ListLookUp:
 
     def load(self, lists):
         # rewrite input data
-        lists = [
-            [(page, item.area) for item in content] for page, content in lists
-        ]
-        lists = utila.flatten(lists)
-        lists = flat_lookup(lists)
-        data = collections.defaultdict(list)
-        for page, content in lists:
-            listnumber = len(data[page])
-            data[page].append((content, listnumber))
-        # enable KeyError
-        self.data = dict(data)
+        constructed = collections.defaultdict(dict)
+        for page in lists:
+            listnumber = 0
+            for list_single in page.content:
+                instance_areas = areas(
+                    list_single.area,
+                    area_length=list_single.area_length,
+                )
+                for item, pos in zip(list_single.area, instance_areas):
+                    constructed[page.page][item] = (listnumber, pos[0])
+                listnumber += 1
+        self.data = dict(constructed)
 
     def search(self, page, headline, undefined):  # pylint:disable=W0613
         with contextlib.suppress(KeyError):
-            current = self.data[page]
-            for (content, index) in current:
-                if undefined in content:
-                    return index
+            return self.data[page][undefined]
         return None
+
+
+def areas(area, area_length) -> list:
+    """\
+    >>> areas((1, 2, 3, 4, 5, 6, 7), (3, 1, 3))
+    [(0, 0), (0, 1), (0, 2), (1, 0), (2, 0), (2, 1), (2, 2)]
+    """
+    current = 0
+    result = []
+    for index, length in enumerate(area_length):
+        for pos, _ in enumerate(area[current:current + length]):
+            result.append((index, pos))
+        current = +length
+    return result
 
 
 def flat_lookup(items):
