@@ -41,14 +41,13 @@ def extract_list(possible_list, indexes):
         content = utila.NEWLINE.join([item.text.strip() for item in listitem])
         parsed = words.lists.strategies.regex.parse_single(content)
         if not parsed:
-            # utila.error(f'could not extract list step:\n{content}')
             continue
         for item in parsed:
             if isinstance(item, str):
-                result.append(item, index)
+                item_content, item_level = item, index
             else:
-                content, level = item
-                result.append(content, level)
+                item_content, item_level = item
+            result.append(item_content, item_level)
             index = index + 1
     return result
 
