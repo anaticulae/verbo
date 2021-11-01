@@ -37,7 +37,7 @@ import utila
 
 import words.undefined
 
-PATTERN = re.compile(r'^[0-9]+u$')
+PATTERN = re.compile(r'^[0-9]{1,3}u$')
 
 
 @utila.checkdatatype
