@@ -44,7 +44,6 @@ import words.lists.strategies.bestpage
 
 def run(ptcns, headlines) -> iamraw.PageContentLists:
     textfeed = texmex.document_textfeed(ptcns, count=1)
-
     merged = merge(ptcns)
     extracted = words.lists.strategies.bestpage.extract_best_page(
         merged,
@@ -52,7 +51,6 @@ def run(ptcns, headlines) -> iamraw.PageContentLists:
         textfeed,
     )
     pages, local = lookup_table(ptcns)
-
     adjusted = adjust_pagenumbers(extracted, pages, local)
     return adjusted
 
@@ -67,21 +65,27 @@ def lookup_table(ptcns):
     return pages, local
 
 
-def adjust_pagenumbers(extracted, lookup, local) -> iamraw.PageContentLists:
-    """Add pagenumber to extracted lists. The lists does not have the
-    correct page number, cause there extracted with big connected page
-    chunk."""
+def adjust_pagenumbers(
+    extracted,
+    lookup: list,
+    local: list,
+) -> iamraw.PageContentLists:
+    """Add pagenumber to extracted lists.
+
+    The lists does not have the correct page number, cause there where
+    extracted with big connected page chunk.
+    """
     matched = collections.defaultdict(list)
-    for paragraph, merged_, listi in extracted:
-        listi.paragraph = paragraph
-        listi.merged = merged_
-        first_area = listi.area[0]
+    for paragraph, merged_, list_single in extracted:
+        list_single.paragraph = paragraph
+        list_single.merged = merged_
+        first_area = list_single.area[0]
         starting_page = lookup[first_area]
         # convert to local content navigator area
-        area = [local[relativ] for relativ in listi.area]
+        area = [local[relativ] for relativ in list_single.area]
         splitted = utila.groupby_ascending(area)
-        listi.area = splitted
-        matched[starting_page].append(listi)
+        list_single.area = splitted
+        matched[starting_page].append(list_single)
     pages = [
         iamraw.PageContentList(page=page, content=content)
         for page, content in matched.items()

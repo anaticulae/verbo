@@ -57,9 +57,10 @@ def extract_best_page(navigator, headlines, textfeed):
         selector=lambda x: x.area,
     )
     result = []
-    for lists in selected:
+    # single: iamraw.PageList
+    for single in selected:
         # TODO: REPLACE 0,0 with correct one
-        result.append((0, 0, lists))
+        result.append((0, 0, single))
     return result
 
 
