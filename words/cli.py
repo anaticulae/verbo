@@ -16,10 +16,10 @@ ResultFile = utila.ResultFile
 DESCRIPTION = 'TODO'
 
 TEXTINPUT = [
-    ResultFile('rawmaker', 'text_text'),
-    ResultFile('rawmaker', 'text_positions'),
-    ResultFile('rawmaker', 'fonts_header'),
-    ResultFile('rawmaker', 'fonts_content'),
+    ResultFile('rawmaker', 'oneline_text_text'),
+    ResultFile('rawmaker', 'oneline_text_positions'),
+    ResultFile('rawmaker', 'oneline_fonts_header'),
+    ResultFile('rawmaker', 'oneline_fonts_content'),
     ResultFile('words', 'headlines_headlines'),
     ResultFile('rawmaker', 'border_pages'),
     ResultFile('groupme', 'footer_footerheader'),
