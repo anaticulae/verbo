@@ -50,25 +50,14 @@ def run(ptcns, headlines) -> iamraw.PageContentLists:
         headlines,
         textfeed,
     )
-    pages, local = lookup_table(ptcns)
-    adjusted = adjust_pagenumbers(extracted, pages, local)
+    from_area = lookup_table(ptcns)
+    adjusted = adjust_pagenumbers(extracted, from_area)
     return adjusted
-
-
-def lookup_table(ptcns):
-    pages = []
-    local = []
-    for navigator in ptcns:
-        for index, _ in enumerate(navigator):
-            pages.append(navigator.page)
-            local.append(index)
-    return pages, local
 
 
 def adjust_pagenumbers(
     extracted,
-    lookup: list,
-    local: list,
+    from_area,
 ) -> iamraw.PageContentLists:
     """Add pagenumber to extracted lists.
 
@@ -80,9 +69,9 @@ def adjust_pagenumbers(
         list_single.paragraph = paragraph
         list_single.merged = merged_
         first_area = list_single.area[0]
-        starting_page = lookup[first_area]
+        starting_page = from_area[first_area].pdf_page
         # convert to local content navigator area
-        area = [local[relativ] for relativ in list_single.area]
+        area = [from_area[relativ].page_line for relativ in list_single.area]
         splitted = utila.groupby_ascending(area)
         list_single.area = splitted
         matched[starting_page].append(list_single)
@@ -91,6 +80,19 @@ def adjust_pagenumbers(
         for page, content in matched.items()
     ]
     return pages
+
+
+PageLocal = collections.namedtuple('PageLocal', 'pdf_page, page_line')
+
+
+def lookup_table(ptcns) -> dict:
+    collected = collections.defaultdict(PageLocal)
+    for navigator in ptcns:
+        for index, _ in enumerate(navigator):
+            area = len(collected)
+            collected[area] = PageLocal(navigator.page, index)
+    result = dict(collected)
+    return result
 
 
 def merge(navigators: texmex.PageTextNavigators) -> texmex.PageTextNavigator:
