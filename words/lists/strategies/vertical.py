@@ -57,6 +57,12 @@ def group_and_parse(ptcn):
     return lists
 
 
+# skip list if more empty items are parsed
+EMPTY_ITEM_RATE_MAX = configo.HV_PERCENT_PLUS(default=20)
+# disable empty rate check for fewer empty items
+EMPTY_ITEM_LENGTH_MIN = configo.HV_INT_PLUS(default=5)
+
+
 def create_lists(lists) -> list:
     result = []
     for listgroup in lists:
@@ -74,8 +80,21 @@ def create_lists(lists) -> list:
             # TODO: THINK ABOUT SMARTER CONCEPT TO COVER SINGLE ITEM LIST
             # TODO: IS SINGLE ITEM LIST NECESSARY?
             continue
+        rate = empty_list_rate(current)
+        if rate > EMPTY_ITEM_RATE_MAX:
+            continue
         result.append(current)
     return result
+
+
+def empty_list_rate(list_single: iamraw.PageList) -> float:
+    empty = len([item for item in list_single if not item[1]])
+    if not empty:
+        return 0.0
+    if empty < EMPTY_ITEM_LENGTH_MIN:
+        return 0.0
+    rate = empty / len(list_single)
+    return rate
 
 
 LAST_ONE_DISTANCE_MAX = configo.HV_PERCENT_PLUS(default=10)

@@ -29,11 +29,19 @@ def test_nolist_bachelor241page81(testdir, monkeypatch):
 
 @utilatest.requires(power.DOCU027_PDF)
 def test_list_docu_restructured_page4(testdir, monkeypatch):
-    """This test was designed cause on this page table content was
-    parsed as lists."""
+    """This test was designed cause table content was parsed as lists."""
     source = power.link(power.DOCU027_PDF)
     tests.run(f'-i {source} --pages=4 --list', monkeypatch=monkeypatch)
     loaded = serializeraw.load_lists(words.path.lists(testdir.tmpdir))
     assert len(loaded) == 1
     area = utila.select_content(loaded, page=4)[0].area
     assert area == [5, 6, 7]
+
+
+@utilatest.requires(power.MASTER110_PDF)
+def test_reg_list_master110p89(testdir, monkeypatch):
+    """This test was designed cause table content was parsed as lists."""
+    source = power.link(power.MASTER110_PDF)
+    tests.run(f'-i {source} --pages=89 --list', monkeypatch=monkeypatch)
+    loaded = serializeraw.load_lists(testdir.tmpdir)
+    assert not loaded
