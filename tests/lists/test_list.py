@@ -12,6 +12,7 @@ import power
 import serializeraw
 import utilatest
 
+import tests
 import words.lists.runtime
 import words.lists.strategies.bestpage
 import words.lists.strategies.regex
@@ -258,3 +259,17 @@ def test_merge_overlapping_lists_two_pages():
     marker = [item[0] for item in single]
     # ensure that list separator is None
     assert not any(marker), str(marker)
+
+
+def test_list_area_tuple_master110pages67(testdir, monkeypatch):
+    """Ensure that area-attribute is splitted by list content.
+
+    Example: 0l_0, 0l_0; 0l_1; 0l_2
+    """
+    source = power.link(power.MASTER110_PDF)
+    cmd = f'--list --page=67 -i {source} -o {testdir.tmpdir}'
+    tests.run(cmd, monkeypatch=monkeypatch)
+    lists = serializeraw.load_lists(testdir.tmpdir, pages=67)[0].content[0]
+    expected = [2, 1, 2, 1, 1, 2]
+    area_length = lists.area_length
+    assert area_length == expected
