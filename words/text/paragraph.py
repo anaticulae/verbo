@@ -57,7 +57,6 @@ def collect_paragraph(
             page,
             item.bounding,
             index,
-            item.text,
             magics,
         )
         if contenttype == iamraw.PageContentType.TEXT:  # TODO: AND BLOCKQUOTE?
@@ -73,14 +72,11 @@ def content_type(
     page: int,
     bounding: iamraw.BoundingBox,
     index: int,
-    content: str,
     magics: iamraw.PageContentContentTypes = None,
 ) -> iamraw.PageContentType:
     matched_list = lists.search(page, None, undefined=index)
     if matched_list is not None:
         return iamraw.ContentType.LIST
-    if texmex.DOT in content:  # TODO: SUPPORT OTHER DOTS
-        return iamraw.PageContentType.LIST
     if boxed.contains(page, bounding):
         return iamraw.PageContentType.BOXED
     if magics:
