@@ -12,7 +12,7 @@ import re
 import utila
 
 
-def parse_single(content: str):
+def parse_single(content: str) -> list:
     r"""\
     last plus sign is an empty entree
     >>> parse_single('+ list item\n+ next item\n+\n')
