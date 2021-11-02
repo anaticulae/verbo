@@ -24,6 +24,7 @@ import words.boxed
 import words.feature.headlines
 import words.feature.word
 import words.headlines
+import words.lookup
 import words.path
 
 
@@ -74,19 +75,10 @@ def load_resources(  # pylint:disable=R0914,R0913
         utila.log(f'skip loading lists: {lists}')
         lists = []
     lists = words.feature.word.ListLookUp(lists)  # pylint:disable=R0204
-
-    if magics:
-        if os.path.exists(magics):
-            magics = serializeraw.load_magic_types(
-                magics,
-                pages=pages,
-            )
-        else:
-            utila.log(f'skip loading magic: {magics}')
-            magics = None
-    else:
-        utila.log('skip loading magic')
-
+    magics = words.lookup.magics_frompath(
+        path=magics,
+        pages=pages,
+    )
     fontstore = serializeraw.create_fontstore(fontheader, fontcontent)
     border = {navigator.page: navigator.content for navigator in ptcns}
     result = TextRequiredResources(

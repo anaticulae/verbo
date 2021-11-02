@@ -30,7 +30,6 @@ headline.
 """
 
 import collections
-import os
 import typing
 
 import iamraw.path
@@ -41,6 +40,7 @@ import words.headlines
 import words.headlines.judge
 import words.headlines.levelfour
 import words.headlines.machine
+import words.lookup
 
 PageContentBoxed = collections.namedtuple('PageContentBoxed', 'page content')
 
@@ -183,13 +183,10 @@ def extract_headlines(
         fontcontent,
         pages=pages,
     )
-
-    if magics is not None:
-        if os.path.exists(magics):
-            magics = serializeraw.load_magic_types(magics)
-        else:
-            magics = None
-
+    magics = words.lookup.magics_frompath(
+        path=magics,
+        pages=pages,
+    )
     result = words.headlines.machine.headlines(
         ptcns,
         sectionlist,

@@ -18,6 +18,7 @@ import utilatest
 import words.headlines.machine
 import words.headlines.strategies.cluster
 import words.headlines.strategies.magic
+import words.lookup
 
 
 @pytest.fixture
@@ -30,8 +31,8 @@ def master155pages50():
         prefix='oneline',
     )
     fontstore = serializeraw.create_fontstore_frompath(source)
-    magics = serializeraw.load_magic_types(
-        magic.path.content_oneline(source),
+    magics = words.lookup.magics_frompath(
+        path=magic.path.content_oneline(source),
         pages=pages,
     )
     return ptcns, fontstore, magics, pages

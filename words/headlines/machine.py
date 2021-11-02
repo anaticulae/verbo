@@ -51,6 +51,7 @@ def headlines(
         navigators=ptcns,
         digits=0,
     )
+    magics = magics.pages if magics else []  # TODO: REMOVE LATER
     data = Data(ptcns, sectionlist, chapters, textsize, textdistance, fontstore,
                 magics, pages)
     # run strategies

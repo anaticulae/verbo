@@ -21,7 +21,7 @@ import serializeraw
 import utila
 
 import words.lists.runtime
-import words.loader
+import words.lookup
 
 
 @utila.checkdatatype
@@ -72,14 +72,11 @@ def create_data(
         pages=pages,
     )
     headlines = serializeraw.load_headlines(headlines, pages=pages)
-    if utila.exists(magic):
-        magic = serializeraw.load_magic_types(
-            magic,
-            pages=pages,
-        )
-        ptcns = skip_magic(ptcns, magic)
-    else:
-        utila.error('list: no magic data')
+    magic = words.lookup.magics_frompath(
+        path=magic,
+        pages=pages,
+    )
+    ptcns = skip_magic(ptcns, magic)
     return ptcns, headlines
 
 
@@ -90,12 +87,15 @@ LIST_VALID = {
 
 
 def skip_magic(ptcns, magics):
+    if isinstance(magics, words.lookup.LookupEmpty):
+        return ptcns
     for page in ptcns:
-        magic = utila.select_content(magics, page.page)
-        if magic:
-            invalid = [item[0] for item in magic if item[1] not in LIST_VALID]
-        else:
-            invalid = {}
-        data = [item for index, item in enumerate(page) if index not in invalid]
+        data = [
+            item for index, item in enumerate(page) if magics(
+                page=page.page,
+                line=index,
+                default=iamraw.PageContentType.TEXT,
+            ) in LIST_VALID
+        ]
         page.data = data
     return ptcns

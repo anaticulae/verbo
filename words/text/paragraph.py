@@ -9,7 +9,6 @@
 
 import iamraw
 import texmex
-import utila
 
 import words.boxed
 import words.feature
@@ -79,11 +78,7 @@ def content_type(
         return iamraw.ContentType.LIST
     if boxed.contains(page, bounding):
         return iamraw.PageContentType.BOXED
-    if magics:
-        # TODO: DIRTY
-        magiccontent = utila.select_content(magics, page=page)
-        if magiccontent:
-            for idx, item in magiccontent:
-                if idx == index:
-                    return item
+    magic = magics(page=page, line=index)
+    if magic:
+        return magic
     return iamraw.PageContentType.TEXT
