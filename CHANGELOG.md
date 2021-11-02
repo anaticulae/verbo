@@ -2,6 +2,24 @@
 
 Every noteable change is logged here.
 
+## v1.3.0
+
+### Feature
+
+* add improved magics lookup mechanism (49fff69068b0)
+* use oneline content to parse text (58788f434888)
+* skip too many empty list items (9a79f8da251a)
+* use improved list lookup to distinguish list item content (cc430f3e9000)
+* split area by list item content (0a0e36d59eef)
+
+### Fix
+
+* do not analyze text content (a1714e787114)
+
+### Documentation
+
+* extend interface documentation (12c16ae3cf9c)
+
 ## v1.2.0
 
 ### Feature
