@@ -80,10 +80,14 @@ def listindex(index: str) -> int:
 
     >>> listindex('10l')
     10
+    >>> listindex('5l17')
+    (5, 17)
     """
-    with contextlib.suppress(ValueError):
-        if index[-1] == 'l':
-            return int(index[:-1])
+    with contextlib.suppress(ValueError, IndexError):
+        splitted = index.split('l')
+        if not splitted[1]:
+            return int(splitted[0])
+        return int(splitted[0]), int(splitted[1])
     return None
 
 
