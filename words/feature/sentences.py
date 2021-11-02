@@ -35,7 +35,7 @@ def prepare_lists(
             pagelist = utila.select_content(lists, page=page.page)
             if not pagelist:
                 continue
-            textsection.content = list_insert(
+            textsection.content, textsection.pages = list_insert(
                 textsection,
                 lists,
             )
@@ -43,21 +43,22 @@ def prepare_lists(
 
 
 def list_insert(textsection, lists):
-    content, pages = textsection.content, textsection.pages
     done = set()
-    result = []
-    for item, page in zip(content, pages):
+    result, pages = [], []
+    for item, page in zip(textsection.content, textsection.pages):
         listindex = words.undefined.listindex(item)
         if listindex is None:
             result.append(item)
+            pages.append(page)
             continue
         if listindex in done:
             continue
         list_onpage = utila.select_content(lists, page=page)
         listdata = prepare_listitem(item, list_onpage)
         result.append(listdata)
+        pages.append(page)
         done.add(listindex)
-    return result
+    return result, pages
 
 
 def prepare_listitem(item, list_onpage) -> str:
