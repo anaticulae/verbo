@@ -19,6 +19,6 @@ def test_sentences_master110pages67(testdir, monkeypatch):
     cmd = f'--sentences --page=67 -i {source} -o {testdir.tmpdir}'
     tests.run(cmd, monkeypatch=monkeypatch)
     output = utila.file_read('words__sentences_sentences.yaml')
-    counted = output.count(words.feature.sentences.PREFIX_LIST)
+    counted = output.count(words.feature.sentences.LIST_SEPA)
     # 6 list items in generated sentences
     assert counted == 6

@@ -14,8 +14,8 @@ import utila
 
 import words.undefined
 
-PREFIX_LIST = '#$@LIST@$#:'
-SENTENCE_SEPARATOR = '#$@STOP@$#'
+LIST_SEPA = '#$@LIST_SEPA@$#:'
+LIST_ITEM = '#$@LIST_ITEM@$#:'
 
 
 def work(word: str, lists: str, pages: tuple = None) -> str:
@@ -54,20 +54,22 @@ def list_insert(textsection, lists):
         if listindex in done:
             continue
         list_onpage = utila.select_content(lists, page=page)
-        listdata = prepare_listitem(item, list_onpage)
-        result.append(listdata)
-        pages.append(page)
+        listdata, listpages = prepare_listitem(item, list_onpage, page=page)
+        result.extend(listdata)
+        pages.extend(listpages)
         done.add(listindex)
     return result, pages
 
 
-def prepare_listitem(item, list_onpage) -> str:
+def prepare_listitem(item, list_onpage, page) -> str:
     listnumber, position = words.undefined.listindex(item)
     listitem = list_onpage[listnumber].data[position]
     sentences = sentence_split(listitem[1])
-    raw = SENTENCE_SEPARATOR.join(sentences)
-    result = f'{PREFIX_LIST}{raw}'
-    return result
+    content, pages = [f'{LIST_SEPA}{sentences[0]}'], [page]
+    for sentence in sentences[1:]:
+        content.append(f'{LIST_ITEM}{sentence}')
+        pages.append(page)
+    return content, pages
 
 
 def sentence_split(item: str) -> list:
@@ -75,12 +77,23 @@ def sentence_split(item: str) -> list:
     return result
 
 
-def islistitem(item: str) -> bool:
+def is_list_separator(item: str) -> bool:
     """\
-    >>> islistitem('#$@LIST@$#:Hände waschen')
+    >>> is_list_separator('#$@LIST_SEPA@$#:Hände waschen')
     True
     """
     item = item.strip()
-    if item.startswith(PREFIX_LIST):
+    if item.startswith(LIST_SEPA):
+        return True
+    return False
+
+
+def is_list_item(item: str) -> bool:
+    """\
+    >>> is_list_item('#$@LIST_ITEM@$#:Content')
+    True
+    """
+    item = item.strip()
+    if item.startswith(LIST_ITEM):
         return True
     return False
