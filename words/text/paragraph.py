@@ -9,6 +9,7 @@
 
 import iamraw
 import texmex
+import utila
 
 import words.boxed
 import words.feature
@@ -49,7 +50,13 @@ def collect_paragraph(
     # collect content after headline
     result = []
     for index in range(start, end):
-        item = pcn[index]
+        try:
+            item = pcn[index]
+        except IndexError:
+            # TODO: REMOVE LATER
+            error = (start, end, len(pcn), pcn.page)
+            utila.error(f'oneline-normal headline problem: {error}')
+            break
         contenttype = content_type(
             boxes,
             lists,
