@@ -2,6 +2,18 @@
 
 Every noteable change is logged here.
 
+## v1.4.0
+
+### Feature
+
+* add method to check if line is list chunk (716ba158ae79)
+* add sentences step to generate sentences directly (501d43c69aeb)
+* add option to parse more complex undefined data (117725bc2d4f)
+
+### Fix
+
+* do not fail when index and headlines does not fit together (bb1f98cadbcd)
+
 ## v1.3.0
 
 ### Feature
