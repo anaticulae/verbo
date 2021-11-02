@@ -114,6 +114,15 @@ WORKPLAN = [
         ],
         output=('result',),
     ),
+    utila.create_step(
+        'sentences',
+        inputs=[
+            ResultFile('words', 'word_result'),
+            ResultFile('words', 'list_list'),
+            # ResultFile('words', 'boxed_boxed'),
+        ],
+        output=('sentences',),
+    ),
 ]
 
 
