@@ -8,11 +8,13 @@
 # =============================================================================
 
 import power
+import pytest
 import serializeraw
 
 import tests
 
 
+@pytest.mark.xfail(reason='improve oneline/normal indexing')
 def test_word_master110pages67(testdir, monkeypatch):
     """Ensure that area-attribute is splitted by list content.
 
