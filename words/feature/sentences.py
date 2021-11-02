@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import german
 import iamraw
 import serializeraw
 import utila
@@ -14,6 +15,7 @@ import utila
 import words.undefined
 
 PREFIX_LIST = '#$@LIST@$#:'
+SENTENCE_SEPARATOR = '#$@STOP@$#'
 
 
 def work(word: str, lists: str, pages: tuple = None) -> str:
@@ -52,11 +54,23 @@ def list_insert(textsection, lists):
         if listindex in done:
             continue
         list_onpage = utila.select_content(lists, page=page)
-        listnumber, position = words.undefined.listindex(item)
-        listitem = list_onpage[listnumber].data[position]
-        listdata = f'{PREFIX_LIST}{listitem[1]}'
+        listdata = prepare_listitem(item, list_onpage)
         result.append(listdata)
         done.add(listindex)
+    return result
+
+
+def prepare_listitem(item, list_onpage) -> str:
+    listnumber, position = words.undefined.listindex(item)
+    listitem = list_onpage[listnumber].data[position]
+    sentences = sentence_split(listitem[1])
+    raw = SENTENCE_SEPARATOR.join(sentences)
+    result = f'{PREFIX_LIST}{raw}'
+    return result
+
+
+def sentence_split(item: str) -> list:
+    result = german.sentence_tokenize(item)
     return result
 
 
