@@ -62,7 +62,7 @@ def list_insert(textsection, lists):
 
 def islistitem(item: str) -> bool:
     """\
-    >>> islistitem('#$@LIST@$#:Händer waschen')
+    >>> islistitem('#$@LIST@$#:Hände waschen')
     True
     """
     item = item.strip()
