@@ -58,3 +58,14 @@ def list_insert(textsection, lists):
         result.append(listdata)
         done.add(listindex)
     return result
+
+
+def islistitem(item: str) -> bool:
+    """\
+    >>> islistitem('#$@LIST@$#:Händer waschen')
+    True
+    """
+    item = item.strip()
+    if item.startswith(PREFIX_LIST):
+        return True
+    return False
