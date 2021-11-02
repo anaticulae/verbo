@@ -97,3 +97,12 @@ def is_list_item(item: str) -> bool:
     if item.startswith(LIST_ITEM):
         return True
     return False
+
+
+def list_split(item: str):
+    start = item[0:16]
+    if start == LIST_SEPA:
+        return item[16:], LIST_SEPA
+    if start == LIST_ITEM:
+        return item[16:], LIST_ITEM
+    return item
