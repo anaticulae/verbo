@@ -42,23 +42,22 @@ def prepare_lists(
     return word
 
 
-def list_insert(textsection, lists):
-    done = set()
-    result, pages = [], []
+def list_insert(textsection, lists) -> tuple:
+    contents, pages = [], []
+    single = utila.Single()
     for item, page in zip(textsection.content, textsection.pages):
         listindex = words.undefined.listindex(item)
         if listindex is None:
-            result.append(item)
+            contents.append(item)
             pages.append(page)
             continue
-        if listindex in done:
+        if single.contains(listindex):
             continue
         list_onpage = utila.select_content(lists, page=page)
         listdata, listpages = prepare_listitem(item, list_onpage, page=page)
-        result.extend(listdata)
+        contents.extend(listdata)
         pages.extend(listpages)
-        done.add(listindex)
-    return result, pages
+    return contents, pages
 
 
 def prepare_listitem(item, list_onpage, page) -> str:
