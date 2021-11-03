@@ -19,7 +19,7 @@ import words.headlines.strategies.multiline
 
 
 @utilatest.longrun
-def test_headlines_multiple_master72_extract_pages_5_7():
+def test_headlines_multiple_extract_master72pages5_7():
     path = power.link(power.MASTER072_PDF)
     pages = utila.ranged_tuple(5, 7)
     headlines = parse_multiline(path, pages)
@@ -36,7 +36,7 @@ def test_headlines_multiple_master72_extract_pages_5_7():
 
 
 @utilatest.longrun
-def test_headlines_multiple_master72_extract_pages_13_14():
+def test_headlines_multiple_extract_master72pages13_14():
     path = power.link(power.MASTER072_PDF)
     pages = utila.ranged_tuple(13, 15)
     headlines = parse_multiline(path, pages)
@@ -50,7 +50,7 @@ def test_headlines_multiple_master72_extract_pages_13_14():
 
 
 @utilatest.nightly
-def test_headlines_multiple_master72_extract_pages_20_22():
+def test_headlines_multiple_extract_master72pages20_22():
     """The headline extractor strategy extracts footnotes as headlines."""
     path = power.link(power.MASTER072_PDF)
     pages = utila.ranged_tuple(20, 23)
@@ -66,7 +66,7 @@ def test_headlines_multiple_master72_extract_pages_20_22():
 
 
 @utilatest.longrun
-def test_headlines_multiple_master72_extract_pages_38_42():
+def test_headlines_multiple_extract_master72pages38_42():
     """The headline extractor strategy extracts list with sentences."""
     path = power.link(power.MASTER072_PDF)
     pages = utila.ranged_tuple(38, 43)
