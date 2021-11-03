@@ -22,6 +22,7 @@ def work(word: str, lists: str, pages: tuple = None) -> str:
     word = serializeraw.load_text(word, pages=pages)
     lists = serializeraw.load_lists(lists, pages=pages)
     word = prepare_lists(word, lists=lists)
+    word = undefined_remove(word)
     dumped = serializeraw.dump_text(word)
     return dumped
 
@@ -39,6 +40,20 @@ def prepare_lists(
                 textsection,
                 lists,
             )
+    return word
+
+
+def undefined_remove(word: iamraw.PageContentTexts) -> iamraw.PageContentTexts:
+    for wordpage in word:
+        for textsection in wordpage.content:
+            contents, pages = [], []
+            for item, page in zip(textsection.content, textsection.pages):
+                undefined = words.undefined.intindex(item)
+                if undefined is not None:
+                    continue
+                contents.append(item)
+                pages.append(page)
+            textsection.content, textsection.pages = contents, pages
     return word
 
 
