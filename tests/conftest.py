@@ -48,7 +48,14 @@ RESOURCES = [
     power.MASTER098_PDF,
     power.MASTER075_PDF,
     power.BACHELOR037_PDF,
-    (power.BACHELOR067_PDF, '50:60'),
+    genex.todo(
+        power.BACHELOR067_PDF,
+        pages='40:60',
+        figureo=True,
+        tablero=True,
+        rawmaker_cleanup=True,
+        caption=True,
+    ),
     power.DOCU027_PDF,
     power.DOCU009_PDF,
 ]
