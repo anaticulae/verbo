@@ -21,7 +21,7 @@ import words.path
 
 def load_expected(name) -> str:
     source = os.path.join(words.ROOT, f'tests/lists/expected/{name}')
-    content = utila.file_read(source)
+    content = utila.file_read(source).strip()
     return content
 
 
@@ -180,5 +180,5 @@ def make_raw(extracted) -> str:
                 result.append(f'{number} {data}')
             if len(page.content) > 1:
                 result.append('---------------------------------------------')
-    raw = utila.NEWLINE.join(result)
+    raw = utila.NEWLINE.join(result).strip()
     return raw

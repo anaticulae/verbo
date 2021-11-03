@@ -1,3 +1,27 @@
+################### 40 ###################
+None Email-Bodies7 werden jeweils als Dokumente verarbeitet
+None Das Archiv aller Email-Bodies ist der Textkorpus
+################### 43 ###################
+1. Extrahieren des Textinhaltes (Metadaten werden ignoriert)
+2. Zerlegen des Textes in einzelne Wörter
+3. Normalisieren der Wörter durch Umwandeln in Kleinbuchstaben und Entfernen von Sonderzeichen
+4. Index der einzelnen Wörter im TF-IDF-Vektor berechnen und dem eingetragenen Score zuweisen (Map)
+5. Scores aller Wörter eines Tweets summieren (Reduce)
+6. Normalisieren des Scores per Division durch die Anzahl aller Wörter des Tweets
+7. Zzurückgeben des Tupels (Score, Status)
+################### 45 ###################
+1. Systemgrößen auf jedem aktiven Knoten (1 Messpunkt pro Sekunde) CPU Nutzung (User, Idle, System, ...) IO Festplatte (Lesen, Schreiben) Swap (Benutzt, Frei) Speicher (Benutzt, Frei, Cached, ...) IO Netzwerk (Gesendet, Empfangen)
+2. Sparkspezifische Größen (1 Messpunkt alle zwei Sekunden) genutzte Cores aktive Stages parallele Receiver (bei Streaming) u.a.10
+---------------------------------------------
+1. die Blockgröße des Hadoop-Dateisystems HDFS (32MB, 64MB, 128MB)
+2. der Replikationsfaktor der Blöcke auf HDFS (1, 2, 3, 4)
+3. die Anzahl der Worker (1, 2, 4)
+1. Größe des Textkorpus: 1,5 GB
+2. Fenstergröße des TF-IDF Vektors: 500 Nachrichten
+3. Erlaubte Cores Pro Executor: 4
+4. Erlaubter Arbeitsspeicher pro Executor: 384 MB
+5. Zeitintervall für die Diskretisierung des Datenstroms (Streaming-Komponente): 5 Se- kunden
+---------------------------------------------
 ################### 53 ###################
 1. Da selbst ein einzelner Knoten für die Analyse des Datenstroms mehr als ausreichend ist, lassen sich aus dem Experiment keine Aussagen über das Skalierungsverhalten der entsprechenden Komponente treffen.
 2. Bei der Exploration mehrerer zehntausend Tweets wurde kein einziger mit einem plau- siblen Bezug zu den in der Spark-Mailingliste diskutierten Themen gefunden. Eine empirische Bewertung der funktionalen Qualitäten der Implementation ist damit nicht ohne Weiteres möglich.
@@ -5,6 +29,8 @@
 1. Message Queues: Für die robuste Verbindung zur asynchronen Kommunikation zwi- schen Batch- und Realtime-Komponente käme eine Erweiterung mit Messagequeues oder auch (NoSQL-)Datenbanken in Frage.
 2. Umfangreichere Datenquellen: Um die Skalierbarkeit der Streaming-Komponente unabhängig vom dem hier behandelten Anwendungsfall zu betrachten, könnte man einen eigenen speziellen Receiver implementieren und diesen mit einer kontrollierbaren Datenquelle verbinden. Kontrollierbar heißt hier, dass die erzeugte Last flexibel erhöht werden kann, um die Kapazität des empfangenden Knotens zu übertreffen und eine verteilte Verarbeitung zu erzwingen.
 3. Clustermanagement: Die Konfiguration der Knoten und der verteilten Komponenten wurde für diesen Versuch überwiegend manuell durchgeführt. Um auch eine höhere Anzahl von Knoten verwalten zu können wären Werkzeuge zur Automatisierung von Konfiguration (z.B. Chef1, Puppet2) oder Provisionierung (z.B. Docker3, Rocket4, Kuber- netes5) notwendig. Für ein komfortables Monitoring könnte man den Cluster mit Tools zur dauerhaften Überwachung ausstatten (z.B. Nagios/Icinga6, Ganglia7).
-################### 55 ###################
+---------------------------------------------
+1. Textkorpus: Als Textkorpus für das TF-IDF-Verfahren wurde für diesen Proof of Concept der vervielfachte Inhalt von Nachrichten aus der Spark-User-Mailingliste verwendet (etwa 13000 Emails). Eine schärfere Abgrenzung relevanter Begriffe lässt sich wahr- scheinlich durch einen unabhängigen Korpus erreichen (beispielsweise Wikipedia8 oder der klassische Reuters-Nachrichtenkorpus9).
 2. Ähnlichkeitsmaß: Das Scoring könnte darüber hinaus durch leistungsfähigere Verfah- ren verbessert werden - etwa durch Ähnlichkeitsmaße ([Hua08]), die auch Synonyme erkennen.
 3. Grafische Benutzeroberfläche: Damit die gefilterten Nachrichten ihren Weg zum Be- nutzer finden, gibt es eine Vielzahl an Möglichkeiten. Naheliegend wäre ein Webinterface (z.B. über den MEAN-Stack10 oder das Play-Framework11 für Scala/Java).
+---------------------------------------------
