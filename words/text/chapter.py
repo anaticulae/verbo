@@ -18,6 +18,7 @@ import utila
 import words.boxed
 import words.feature
 import words.headlines
+import words.lookup
 import words.text
 import words.text.paragraph
 import words.text.sentence
@@ -152,7 +153,7 @@ def analyze_page(
     border: iamraw.Border,
     boxes: words.boxed.BoxedChecker,
     lists: 'ListLookUp',
-    magics: iamraw.PageContentContentTypes = None,
+    magics: words.lookup.PageLineLookup = None,
 ) -> words.text.PageTextWithHeadlines:
     assert headlines, 'empty `headlines`'
     # Seek pagetextnavigator to correct positon

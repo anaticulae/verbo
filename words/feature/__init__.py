@@ -36,7 +36,7 @@ class TextRequiredResources:
     fontstore: iamraw.FontStore
     headlines: iamraw.PagesHeadlineList
     textnavigators: texmex.PageTextContentNavigators
-    magics: iamraw.PageContentContentTypes = None
+    magics: words.lookup.PageLineLookup = None
 
 
 @functools.lru_cache(configo.CACHE_SMALL)
