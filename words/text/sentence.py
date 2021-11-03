@@ -35,7 +35,7 @@ def find_sentences(page: words.text.PageTextWithHeadlines) -> words.text.TextSec
                 if current:
                     lines.extend(german.sentence_tokenize(''.join(current)))
                     current = []
-                lines.append('%du' % seq.container)
+                lines.append(undefined_tostr(seq))
                 continue
             # skip here to ensure that Undefined Container is added which
             # does not have any content, see commit XXX:commit,haha.
@@ -52,6 +52,16 @@ def find_sentences(page: words.text.PageTextWithHeadlines) -> words.text.TextSec
                 content=lines,
             ))
     return result
+
+
+def undefined_tostr(item: iamraw.Undefined) -> str:
+    """\
+    >>> undefined_tostr(iamraw.Undefined(10, 'cap'))
+    'cap10'
+    """
+    if not item.content:
+        return f'{item.container}u'
+    return f'{item.container}{item.content}'
 
 
 def visit_sections(page: words.text.PageTextWithHeadlines):
