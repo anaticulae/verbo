@@ -57,7 +57,7 @@ def collect_paragraph(
             error = (start, end, len(pcn), pcn.page)
             utila.error(f'oneline-normal headline problem: {error}')
             break
-        contenttype = content_type(
+        chunktype = content_type(
             boxes,
             lists,
             page,
@@ -65,7 +65,7 @@ def collect_paragraph(
             index,
             magics,
         )
-        if contenttype == iamraw.PageContentType.TEXT:  # TODO: AND BLOCKQUOTE?
+        if chunktype == iamraw.PageContentType.TEXT:  # TODO: AND BLOCKQUOTE?
             result.append(iamraw.Paragraph(content=item))
         else:
             result.append(iamraw.Undefined(container=index))
