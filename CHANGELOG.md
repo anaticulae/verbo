@@ -2,6 +2,22 @@
 
 Every noteable change is logged here.
 
+## v1.5.0
+
+### Feature
+
+* remove undefined (de06a47085dd)
+* add option to dump different undefined types (33e65527c1b8)
+* add method to split lists if necessary (fe2160e1001c)
+* split sentences inside list items (006290dfcfdc)
+* update pages attribute also (6cf036f3c69d)
+* split list items into sentences (8481675447d0)
+
+### Documentation
+
+* adjust interface documentation (9a3110c3b019)
+* extend interface documentation (4aa9328266ea)
+
 ## v1.4.0
 
 ### Feature
