@@ -29,7 +29,7 @@ def work(word: str, lists: str, pages: tuple = None) -> str:
 def prepare_lists(
     word: iamraw.PageContentTexts,
     lists: iamraw.PageContentLists,
-):
+) -> iamraw.PageContentTexts:
     for page in word:
         for textsection in page.content:
             pagelist = utila.select_content(lists, page=page.page)
@@ -60,7 +60,7 @@ def list_insert(textsection, lists) -> tuple:
     return contents, pages
 
 
-def prepare_listitem(item, list_onpage, page) -> str:
+def prepare_listitem(item, list_onpage, page) -> tuple:
     listnumber, position = words.undefined.listindex(item)
     listitem = list_onpage[listnumber].data[position]
     sentences = sentence_split(listitem[1])
