@@ -167,7 +167,6 @@ def analyze_page(
         return None
     call = functools.partial(
         words.text.paragraph.collect_paragraph,
-        page=prepared.number,
         pcn=prepared.pagetextcontentnavigator,
         boxes=boxes,
         lists=lists,

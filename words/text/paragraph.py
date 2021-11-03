@@ -20,7 +20,6 @@ import words.headlines
 def collect_paragraph(
     first: iamraw.Headline,
     second: iamraw.Headline,
-    page: int,
     pcn: texmex.PageTextContentNavigator,
     boxes: words.boxed.BoxedChecker,
     lists: 'ListLookUp',
@@ -48,6 +47,18 @@ def collect_paragraph(
         # no content between headlines, skip range(start, end)
         end = start
     # collect content after headline
+    result = determine_chunktypes(
+        pcn,
+        start,
+        end,
+        magics,
+        lists,
+        boxes,
+    )
+    return result
+
+
+def determine_chunktypes(pcn, start, end, magics, lists, boxes) -> list:
     result = []
     for index in range(start, end):
         try:
@@ -60,7 +71,7 @@ def collect_paragraph(
         chunktype = content_type(
             boxes,
             lists,
-            page,
+            pcn.page,
             item.bounding,
             index,
             magics,
