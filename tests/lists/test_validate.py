@@ -153,6 +153,7 @@ def validate_master99(extracted):
     ),
     pytest.param(power.MASTER155_PDF, 'master155', ':', id='master155'),
     pytest.param(power.BACHELOR067_PDF, 'bachelor067', ':', id='bachelor067'),
+    pytest.param(power.MASTER099_PDF, 'master099', ':', id='master099'),
 ])
 # yapf:enable
 @utilatest.longrun
