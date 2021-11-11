@@ -12,9 +12,9 @@ import iamraw
 import serializeraw
 
 
-def work(text: str, headlines: str, pages: tuple = None) -> str:
-    headlines = serializeraw.load_headlines(headlines, pages=pages)
-    texts = serializeraw.load_text(text, headlines, pages=pages)
+def work(textx: str, headliner: str, pages: tuple = None) -> str:
+    headlines = serializeraw.load_headlines(headliner, pages=pages)
+    texts = serializeraw.load_text(textx, headlines, pages=pages)
 
     processed = process_text(texts)
     dumped = serializeraw.dump_hyperlinks(processed)  # pylint:disable=E1101

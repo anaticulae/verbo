@@ -26,9 +26,9 @@ PageContentBoxed = collections.namedtuple('PageContentBoxed', 'page content')
 @utila.checkdatatype
 def work(
     extracted_text: str,
-    text: str,
+    textx: str,
     text_position: str,
-    headlines: str,
+    headliner: str,
     border: str,
     boxes: str,
     headerfooters: str,
@@ -36,15 +36,15 @@ def work(
 ) -> str:
     """Combine `extracted_text` and check the `undefined` fields for lists
 
-    extracted_text(str): document with `undefined fields` from `text`
+    extracted_textx(str): document with `undefined fields` from `text`
                          module of `words`
     """
     extracted, _ = words.loader.load_resources(
         extracted_text,
-        text,
+        textx,
         text_position,
         border,
-        headlines=headlines,
+        headlines=headliner,
         headerfooters=headerfooters,
         pages=pages,
     )

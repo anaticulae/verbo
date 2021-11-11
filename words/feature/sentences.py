@@ -18,10 +18,10 @@ LIST_SEPA = '#$@LIST_SEPA@$#:'
 LIST_ITEM = '#$@LIST_ITEM@$#:'
 
 
-def work(word: str, lists: str, pages: tuple = None) -> str:
-    word = serializeraw.load_text(word, pages=pages)
+def work(wordo: str, lists: str, pages: tuple = None) -> str:
+    wordo = serializeraw.load_text(wordo, pages=pages)
     lists = serializeraw.load_lists(lists, pages=pages)
-    word = prepare_lists(word, lists=lists)
+    word = prepare_lists(wordo, lists=lists)
     word = undefined_remove(word)
     dumped = serializeraw.dump_text(word)
     return dumped

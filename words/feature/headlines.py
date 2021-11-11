@@ -48,7 +48,7 @@ PageContentBoxed = collections.namedtuple('PageContentBoxed', 'page content')
 @utila.checkdatatype
 def work(  # pylint:disable=R0913,R0914
     sectionlist: str,
-    text: str,
+    textx: str,
     text_position: str,
     font_header: str,
     font_content: str,
@@ -65,7 +65,7 @@ def work(  # pylint:disable=R0913,R0914
     """Extract headlines out of data."""
     results = extract_headlines(
         sectionlist,
-        text,
+        textx,
         text_position,
         font_header,
         font_content,
@@ -91,7 +91,7 @@ def work(  # pylint:disable=R0913,R0914
 
     if not has_levelfour(extracted):
         textnavigators = serializeraw.ptcn_fromfile(
-            text=text,
+            text=textx,
             textpositions=text_position,
             sizeandborderpath=sizeandborder,
             headerfooterpath=headerfooters,

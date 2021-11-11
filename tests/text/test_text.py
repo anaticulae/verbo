@@ -33,9 +33,9 @@ def test_text_work():
         fontcontent=iamraw.path.fontcontent(source),
         fontheader=iamraw.path.fontheader(source),
         headerfooters=iamraw.path.headerfooters(source),
-        headlines=headlines,
+        headliner=headlines,
         pagesizes=iamraw.path.sizeandborder(source),
-        text=iamraw.path.text(source),
+        textx=iamraw.path.text(source),
         textposition=iamraw.path.textposition(source),
     )
     assert len(result) > 4700, str(result)

@@ -99,7 +99,7 @@ def test_headlines_work():
     sections_ = tests.fixtures.restruct.restructured_sections()
     src = power.link(power.DOCU027_PDF)
     dumped, _ = words.feature.headlines.work(
-        text=iamraw.path.text(src),
+        textx=iamraw.path.text(src),
         text_position=iamraw.path.textposition(src),
         font_content=iamraw.path.fontcontent(src),
         font_header=iamraw.path.fontheader(src),

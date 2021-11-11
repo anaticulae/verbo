@@ -26,24 +26,24 @@ import words.lookup
 
 @utila.checkdatatype
 def work(
-    text: str,
+    textx: str,
     textpositions: str,
     border: str,
-    headlines: str,
+    headliner: str,
     headerfooters: str,
     magic: str = None,
     pages: tuple = None,
 ) -> str:
     """Combine `extracted_text` and check the `undefined` fields for lists.
 
-    extracted_text(str): document with `undefined fields` from `text`
+    extracted_textx(str): document with `undefined fields` from `text`
                          module of `words`
     """
     ptcns, headlines = create_data(
-        text,
+        textx,
         textpositions,
         border,
-        headlines,
+        headliner,
         headerfooters,
         magic,
         pages=pages,

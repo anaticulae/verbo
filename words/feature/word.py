@@ -42,16 +42,16 @@ PATTERN = re.compile(r'^[0-9]{1,3}u$')
 
 @utila.checkdatatype
 def work(
-    text: str,
-    headlines: str,
+    textx: str,
+    headliner: str,
     lists: str,
-    boxed: str,
+    boxes: str,
     pages: tuple = None,
 ) -> str:
     text, listlookup, boxlookup = load_resources(
-        headlines,
-        text,
-        boxed,
+        headliner,
+        textx,
+        boxes,
         lists,
         pages=pages,
     )

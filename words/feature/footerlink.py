@@ -27,11 +27,11 @@ import words.text.sentence
 
 
 def work(
-    text: str,
+    textx: str,
     textposition: str,
     fontheader: str,
     fontcontent: str,
-    headlines: str,
+    headliner: str,
     pagesizes: str,
     headerfooters: str,
     boxes: str,
@@ -41,11 +41,11 @@ def work(
     """Extract highnotes out of words.
 
     Args:
-        text(str): path to text extraction from rawmaker
+        textx(str): path to text extraction from rawmaker
         textposition(str): path to textposition matching with text-extraction
         fontheader(str): table with all fonts in document
         fontcontent(str): font definition for every word
-        headlines(str): path to extracted headlines from words
+        headliner(str): path to extracted headlines from words
         pagesizes(str): path to size and border
         boxes(str): definition of boxed rectangles
         lists(str): path to extracted lists
@@ -60,9 +60,9 @@ def work(
         fontcontent=fontcontent,
         fontheader=fontheader,
         headerfooters=headerfooters,
-        headlines=headlines,
+        headlines=headliner,
         pagesizes=pagesizes,
-        text=text,
+        text=textx,
         textposition=textposition,
         pages=pages,
     )
