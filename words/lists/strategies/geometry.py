@@ -35,20 +35,47 @@ def analyze_page(ptcn, headlines, textfeed):
 
 
 def extract_list(possible_list, indexes):
-    result = iamraw.PageList(area=indexes)
+    result = iamraw.PageList()
+    start = 0
     index = 0
-    for listitem in possible_list:
-        content = utila.NEWLINE.join([item.text.strip() for item in listitem])
+    for group in possible_list:
+        content = utila.NEWLINE.join([item.text.strip() for item in group])
         parsed = words.lists.strategies.regex.parse_single(content)
         if not parsed:
+            # TODO: START NEW LIST HERE?
+            start += len(group)
             continue
-        for item in parsed:
-            if isinstance(item, str):
-                item_content, item_level = item, index
+        for listitemx in parsed:
+            if isinstance(listitemx, str):
+                item_content, item_level = listitemx, index
             else:
-                item_content, item_level = item
+                item_content, item_level = listitemx
+            areas = find_area(group, item_content, startindex=start)
+            result.area.extend([indexes[it] for it in areas])
             result.append(item_content, item_level)
             index = index + 1
+        start += len(group)
+    return result
+
+
+def find_area(items: list, detected: str, startindex: int) -> list:
+    # TODO: CHANGE TO AREA_AFTERWARDS VALIDATION, USE START AND END OF
+    # CONTENT, NOT PREFECT, BUT OK FOR NOW.
+    # TODO: REPLACE WITH UTILA CODE?
+    splitted = detected.splitlines()
+    if len(splitted) == 1:
+        start, end = splitted[0], splitted[0]
+    else:
+        start, end = splitted[0], splitted[-1]
+    for index, item in enumerate(items):
+        if utila.verysimilar(item.text, start):
+            start = index
+            break
+    for index, item in enumerate(items):
+        if utila.verysimilar(item.text, end):
+            end = index + 1
+            break
+    result = utila.ranged_list(start + startindex, end + startindex)
     return result
 
 
