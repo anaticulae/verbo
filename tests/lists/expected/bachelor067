@@ -1,3 +1,18 @@
+################### 8 ###################
+None Daten, die in hoher Frequenz entstehen und schnell verarbeitet werden sollen, erfordern häufiges Neustarten von Map-Reduce-Jobs. Die Folge ist kostspieliger Overhead durch die Verwaltung der Jobs und gegebenenfalls wiederholtes Einlesen von Daten.
+None Algorithmen die während ihrer Ausführung iterativ Zwischenergebnisse erzeugen und
+None Anfragen an ein solches Map-Reduce-System erfolgen imperativ in Form von kleinen Programmen. Dieses Verfahren ist nicht so intuitiv und leicht erlernbar wie deklarative Abfragesprachen klassischer Datenbanken (z.B. SQL).
+################### 10 ###################
+None den Entwurf und die Implementation einer hybriden Anwendung mit einer Echtzeit- Komponente (Spark Streaming Library) und einer Batch-Komponente (Spark Machine Learning Library).
+None den Betrieb dieser Anwendung auf einem Cluster mit Hardware am unteren Ende des Leistungsspektrums.
+---------------------------------------------
+1. einen einheitlichen Stil und Vergleichbarkeit zwischen Quellcode-Auszügen und eigenen Beispielen zu gewährleisten.
+2. Ausdrücke in kurzer, prägnanter Form darzustellen.
+---------------------------------------------
+################### 12 ###################
+1. Clientknoten Auf Nutzerseite greift die Anwendung (Treiberprogramm) auf die API eines lokalen Spark-Kontextes zu, der die Kontaktdaten eines Clustermanagers sowie verschiedene Konfigurationseinstellungen enthält.
+2. Masterknoten Der Masterknoten betreibt den Clustermanager und ist der Einstiegspunkt in den Rech- nercluster. Hier werden Ressourcenanforderungen des Treiberprogramms an die Ar- beitsknoten verteilt und der Betrieb der Worker überwacht.
+3. Workerknoten Die Workerknoten beherbergen die Spark Workerprozesse. Diese melden verfügbare Ressourcen und erzeugen bei Bedarf Executors. Executors sind die ausführenden Elemente der Aktionen und Transformationen im Rahmen einer Sparkanwendung. Die Executors können untereinander Zwischenergebnisse austauschen und Nachrichten und Ergebnisse an das Treiberprogramm senden.
 ################### 40 ###################
 None Email-Bodies7 werden jeweils als Dokumente verarbeitet
 None Das Archiv aller Email-Bodies ist der Textkorpus
@@ -11,7 +26,7 @@ None Das Archiv aller Email-Bodies ist der Textkorpus
 7. Zzurückgeben des Tupels (Score, Status)
 ################### 45 ###################
 1. Systemgrößen auf jedem aktiven Knoten (1 Messpunkt pro Sekunde) CPU Nutzung (User, Idle, System, ...) IO Festplatte (Lesen, Schreiben) Swap (Benutzt, Frei) Speicher (Benutzt, Frei, Cached, ...) IO Netzwerk (Gesendet, Empfangen)
-2. Sparkspezifische Größen (1 Messpunkt alle zwei Sekunden) genutzte Cores aktive Stages parallele Receiver (bei Streaming) u.a.10
+2. Sparkspezifische Größen (1 Messpunkt alle zwei Sekunden) genutzte Cores aktive Stages parallele Receiver (bei Streaming)
 ---------------------------------------------
 1. die Blockgröße des Hadoop-Dateisystems HDFS (32MB, 64MB, 128MB)
 2. der Replikationsfaktor der Blöcke auf HDFS (1, 2, 3, 4)
