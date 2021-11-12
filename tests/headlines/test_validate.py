@@ -74,9 +74,9 @@ def test_headlines_validate(source, pages, expected, testdir, monkeypatch):
 
     if expected not in (oneline, normal):
         utila.log('NORMAL')
-        utila.log(oneline)
-        utila.log('ONELINE')
         utila.log(normal)
+        utila.log('ONELINE')
+        utila.log(oneline)
         utila.log('EXPECTED')
         utila.log(expected)
     assert expected in (oneline, normal)
