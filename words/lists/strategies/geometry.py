@@ -67,16 +67,25 @@ def find_area(items: list, detected: str, startindex: int) -> list:
         start, end = splitted[0], splitted[0]
     else:
         start, end = splitted[0], splitted[-1]
-    for index, item in enumerate(items):
-        if utila.verysimilar(item.text, start):
-            start = index
-            break
-    for index, item in enumerate(items):
-        if utila.verysimilar(item.text, end):
-            end = index + 1
-            break
+    start = find_withbackup(items, start)
+    end = find_withbackup(items, end)
+    if not isinstance(start, int):
+        utila.error(f'could not find {start} in: {items}')
+        return []
+    if not isinstance(end, int):
+        utila.error(f'could not find {end} in: {items}')
+        return []
+    end = end + 1  # ranged list
     result = utila.ranged_list(start + startindex, end + startindex)
     return result
+
+
+def find_withbackup(items, find):
+    for similar in (utila.verysimilar, utila.similar):
+        for index, item in enumerate(items):
+            if similar(item.text, find):
+                return index
+    return None
 
 
 FEEDED_DIFF_MAX = configo.HV_FLOAT_PLUS(default=5.0)
