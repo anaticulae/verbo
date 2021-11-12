@@ -45,3 +45,14 @@ def test_reg_list_master110p89(testdir, monkeypatch):
     tests.run(f'-i {source} --pages=89 --list', monkeypatch=monkeypatch)
     loaded = serializeraw.load_lists(testdir.tmpdir)
     assert not loaded
+
+
+@utilatest.requires(power.BACHELOR067_PDF)
+def test_reg_list_bachelor67page10(testdir, monkeypatch):
+    source = power.link(power.BACHELOR067_PDF)
+    tests.run(f'-i {source} --pages=10 --list', monkeypatch=monkeypatch)
+    loaded = serializeraw.load_lists(testdir.tmpdir)[0].content
+    assert len(loaded) == 3
+    assert loaded[0].area_length == [1, 2]
+    assert loaded[1].area_length == [3, 2]
+    assert loaded[2].area_length == [2, 1]
