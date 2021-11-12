@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v1.6.0
+
+### Feature
+
+* make find start and end less strict (fff5e2d85489)
+* improved parsed area of geometry list (fa7af77d2cfd)
+
 ## v1.5.1
 
 ### Fix
