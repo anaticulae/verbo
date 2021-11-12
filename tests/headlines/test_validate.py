@@ -51,6 +51,7 @@ def file_read(name):
     pytest.param(power.MASTER116_PDF, None, 'master116', id='master116'),
     pytest.param(power.MASTER155_PDF,  None, 'master155', id='master155'),
     pytest.param(power.DISS205_PDF,  None, 'diss205', id='diss205'),
+    pytest.param(power.BACHELOR067_PDF,  None, 'bachelor067', id='bachelor067'),
     pytest.param(power.DISS264_PDF, None, 'diss264', id='diss264',
         marks=pytest.mark.xfail(reason='first level headlines'),
     ),
