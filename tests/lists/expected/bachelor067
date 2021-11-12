@@ -13,6 +13,55 @@ None den Betrieb dieser Anwendung auf einem Cluster mit Hardware am unteren Ende
 1. Clientknoten Auf Nutzerseite greift die Anwendung (Treiberprogramm) auf die API eines lokalen Spark-Kontextes zu, der die Kontaktdaten eines Clustermanagers sowie verschiedene Konfigurationseinstellungen enthält.
 2. Masterknoten Der Masterknoten betreibt den Clustermanager und ist der Einstiegspunkt in den Rech- nercluster. Hier werden Ressourcenanforderungen des Treiberprogramms an die Ar- beitsknoten verteilt und der Betrieb der Worker überwacht.
 3. Workerknoten Die Workerknoten beherbergen die Spark Workerprozesse. Diese melden verfügbare Ressourcen und erzeugen bei Bedarf Executors. Executors sind die ausführenden Elemente der Aktionen und Transformationen im Rahmen einer Sparkanwendung. Die Executors können untereinander Zwischenergebnisse austauschen und Nachrichten und Ergebnisse an das Treiberprogramm senden.
+################### 15 ###################
+None filter Erstellen eines neuen RDD, das nur die Elemente enthält die einen übergebenen bool- schen Ausdruck erfüllen
+None join
+################### 16 ###################
+None reduce Paarweises Zusammenführen der Elemente eines RDD und Rückgabe eines Elementes mit dem Typ der verknüpften Elemente ( dabei muss ein zweiwertiger, assoziativer und kommutativer Operator übergeben werden, der je zwei Elemente verknüpft und auf ein drittes abbildet)
+None count Zählen der Elemente eines RDD
+None collect Überführen des RDD in ein lokales Array mit dessen Elementen
+None foreach Ausführung einer beliebigen Prozedur pro Element eines RDD (der Typ des Rückgabe- werts ist dabei beliebig)
+################### 20 ###################
+1. Übermittlung des Treibers an einen Wrapper für den Spark-Class-Loader als kompilier- tes Package (z.B. als jarfile) mit statischer Verlinkung aller erforderlichen Bibliotheken (Ausnahmen sind Bibliotheken die auf allen Knoten bereits verfügbar sind, z.B. Spark, Hadoop, etc.). Klassenpfade zu Standardbibliotheken von Spark und weitere Konfigu- rationseinstellungen wie z.B. die Angabe des Clustermanagers können zur Startzeit des Treibers durch das Submission-Skript festgelegt werden.
+2. Start eines eigenständig lauffähigen Treibers mit vollständig konfigurierter und verlinkter Spark-Umgebung und expliziter Angabe eines Clustermanagers.
+---------------------------------------------
+1. Client-Modus Der Treiber wird direkt auf dem Host (Gateway-Rechner) ausgeführt, auf dem der Treiber übermittelt wurde (Abb. 2.7). Tatsächlich wird er sogar innerhalb des Submission-Skript-Prozesses gestartet.
+2. Cluster-Modus Der Treiber wird von dem Gateway-Rechner an einen Worker des Clusters übertragen und dort ausgeführt (Abb. 2.8).
+---------------------------------------------
+################### 23 ###################
+1. Jobs: Ein Job ist die Ausführung einer Aktion auf einem RDD.
+2. Tasks: Ein Task ist die kleinste Einheit eines Jobs, die noch zentralem Scheduling unter- liegt. Ein Task bezieht sich immer auf eine Partition eines RDD.
+3. Stages: Stages sind eine Menge von Tasks, die zu demselben Job gehören und unabhängig voneinander ausgeführt werden können.
+1. DAGScheduler: Der DAGScheduler analysiert einen Job vor der Ausführung auf dem Cluster und teilt dessen Tasks in Stages auf.
+2. RessourceScheduler: Der Ressourcescheduler weist einem Treiberprogramm Ressour- cen des Clusters in Form von Executorn zu.
+3. TaskScheduler: Der TaskScheduler nimmt Mengen von Tasks entgegen und verteilt diese zur Ausführung an verfügbare Executor.
+---------------------------------------------
+None Die Partitionierung der Elemente über verschiedene Rechner
+None Die Vorgänger eines RDDs bezüglich dessen Lineage
+None Die Funktion, mit der ein RDD aus einem oder mehreren direkten Vorgängern berechnet wird
+---------------------------------------------
+################### 24 ###################
+None Solche, deren einzelne Partitionen höchstens eine Vorgängerpartition haben
+None Solche, bei denen mindestens eine Partition mehr als eine Vorgängerpartition hat
+################### 28 ###################
+1. Catalyst: Eine Optimierungsengine für relationale Ausdrücke
+2. Core: Die Benutzer-API und Ausführungsumgebung für optimierte Catalyst-Ausdrücke auf dem Spark-Applikationskern
+3. Hive: Ein Adapter für die Datawarehouse-Software Apache Hive8
+4. Thriftserver: Eine Portierung des Hive-Servers auf Apache Spark
+################### 29 ###################
+None Transformer sind zustandslose Objekte, die mit einer transform-Methode DataFra- mes verändern.
+None Estimator erzeugen Transformer aus einem Eingangsdatensatz (DataFrame). Sie sind ebenfalls zustandslos und können als Abstraktion eines Lernalgorithmus verstanden werden.
+None Pipelines sind in der MLlib eine Abstraktion der Verknüpfung von Transformern und Estimatorn. Ähnlich wie bei den Transformationen eines RDD werden auch dies „lazy“ initialisiert und in Stages aufgeteilt.
+################### 36 ###################
+None CPU: 900MHz Quad-Core ARM Cortex A7
+None RAM: 1GB SDRAM
+None Ethernet: 100MBit/s
+None Festspeicher: SDHC Class 4 Speicherkarte 16GB
+################### 37 ###################
+None CPU: 1,2 GHz Core2 Duo U2500
+None RAM: 2GB DDR2 SDRAM
+None Ethernet: 100MBit/s
+None Festspeicher: 60GB 4200RPM Hard Drive
 ################### 40 ###################
 None Email-Bodies7 werden jeweils als Dokumente verarbeitet
 None Das Archiv aller Email-Bodies ist der Textkorpus
@@ -26,7 +75,7 @@ None Das Archiv aller Email-Bodies ist der Textkorpus
 7. Zzurückgeben des Tupels (Score, Status)
 ################### 45 ###################
 1. Systemgrößen auf jedem aktiven Knoten (1 Messpunkt pro Sekunde) CPU Nutzung (User, Idle, System, ...) IO Festplatte (Lesen, Schreiben) Swap (Benutzt, Frei) Speicher (Benutzt, Frei, Cached, ...) IO Netzwerk (Gesendet, Empfangen)
-2. Sparkspezifische Größen (1 Messpunkt alle zwei Sekunden) genutzte Cores aktive Stages parallele Receiver (bei Streaming)
+2. Sparkspezifische Größen (1 Messpunkt alle zwei Sekunden) genutzte Cores aktive Stages parallele Receiver (bei Streaming) u.a.10
 ---------------------------------------------
 1. die Blockgröße des Hadoop-Dateisystems HDFS (32MB, 64MB, 128MB)
 2. der Replikationsfaktor der Blöcke auf HDFS (1, 2, 3, 4)
