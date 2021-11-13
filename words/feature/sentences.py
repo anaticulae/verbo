@@ -17,6 +17,8 @@ import words.undefined
 LIST_SEPA = '#$@LIST_SEPA@$#:'
 LIST_ITEM = '#$@LIST_ITEM@$#:'
 
+FORMULA = '#$@FORMULA@$#:'
+
 
 def work(wordo: str, lists: str, pages: tuple = None) -> str:
     wordo = serializeraw.load_text(wordo, pages=pages)
@@ -109,6 +111,17 @@ def is_list_item(item: str) -> bool:
     """
     item = item.strip()
     if item.startswith(LIST_ITEM):
+        return True
+    return False
+
+
+def is_formula(item: str) -> bool:
+    """\
+    >>> is_formula('#$@FORMULA@$#:5')
+    True
+    """
+    item = item.strip()
+    if item.startswith(FORMULA):
         return True
     return False
 

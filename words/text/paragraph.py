@@ -9,6 +9,7 @@
 
 import iamraw
 import texmex
+import texmex.navigator
 import utila
 
 import words.boxed
@@ -73,8 +74,18 @@ def insert_formulas(
     content: list,
     formulas: iamraw.PageContentRawFormula,
 ) -> list:
-    result = []
-    result.extend(content)
+    result = list(content)
+    if not formulas:
+        return result
+    for index, item in enumerate(formulas.content):
+        position = texmex.navigator.insert_position(
+            item.bounding,
+            result,
+        )
+        result.insert(
+            position,
+            iamraw.DFormula(bounding=item.bounding, content=index),
+        )
     return result
 
 

@@ -77,7 +77,7 @@ def visit_sections(page: words.text.PageTextWithHeadlines):
             yield section.headline, seq.content
 
 
-def visit_sentences(
+def visit_sentences(  # pylint:disable=R1260
     page: words.text.PageTextWithHeadlines,
     *,
     skip_undefined: bool = False,
@@ -102,7 +102,13 @@ def visit_sentences(
                         result.append((section.headline, sentence))
                     current = []
                 if not skip_undefined:
-                    result.append((section.headline, f'{seq.container}u'))
+                    if isinstance(seq, iamraw.DFormula):
+                        result.append((
+                            section.headline,
+                            f'#$@FORMULA@$#:{seq.content}',
+                        ))
+                    else:
+                        result.append((section.headline, f'{seq.container}u'))
                 continue
             text = texmex.remove_highnotes(seq.content)
             current.append(text)
@@ -116,7 +122,7 @@ def visit_sentences(
     return result
 
 
-def merge_sentences(  # pylint:disable=R0912,R1260
+def merge_sentences(  # pylint:disable=R0912,R1260,R0914
     pages: words.text.PageTextWithHeadlines,
     skip_undefined: bool = False,
     merge_divis: bool = True,
@@ -154,7 +160,8 @@ def merge_sentences(  # pylint:disable=R0912,R1260
                     ))
                 lastsentence = None
             isundefined = words.undefined.intindex(sentence) is not None
-            if isundefined and lastsentence:
+            isformula = words.feature.sentences.is_formula(sentence)
+            if (isundefined or isformula) and lastsentence:
                 result.append(
                     HeadlinedSentence(
                         headline=lastheadline,
@@ -182,8 +189,9 @@ def merge_sentences(  # pylint:disable=R0912,R1260
                     ))
             else:
                 isundefined = words.undefined.intindex(sentence) is not None
+                isformula = words.feature.sentences.is_formula(sentence)
                 issentence = german.is_sentence_closed(sentence.split())
-                if issentence or isundefined:
+                if issentence or isundefined or isformula:
                     assert not lastsentence
                     result.append(
                         HeadlinedSentence(
