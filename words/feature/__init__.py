@@ -37,6 +37,7 @@ class TextRequiredResources:
     headlines: iamraw.PagesHeadlineList
     textnavigators: texmex.PageTextContentNavigators
     magics: words.lookup.PageLineLookup = None
+    formulas: iamraw.PageContentRawFormulas = None
 
 
 @functools.lru_cache(configo.CACHE_SMALL)
@@ -51,6 +52,7 @@ def load_resources(  # pylint:disable=R0914,R0913
     lists: str,
     headerfooters: str,
     magics: str = None,
+    formulas: str = None,
     pages=None,
 ) -> TextRequiredResources:
     """Load content from path and create required object"""
@@ -74,6 +76,11 @@ def load_resources(  # pylint:disable=R0914,R0913
     else:
         utila.log(f'skip loading lists: {lists}')
         lists = []
+    if utila.exists(formulas):
+        formulas = serializeraw.load_rawformulas(formulas, pages=pages)
+    else:
+        utila.log(f'skip loading formulas: {formulas}')
+        formulas = []
     lists = words.feature.word.ListLookUp(lists)  # pylint:disable=R0204
     magics = words.lookup.magics_frompath(
         path=magics,
@@ -89,6 +96,7 @@ def load_resources(  # pylint:disable=R0914,R0913
         headlines=headlines,
         textnavigators=ptcns,
         magics=magics,
+        formulas=formulas,
     )
     return result
 

@@ -48,6 +48,7 @@ def work(  # pylint:disable=R0913
     boxes: str,
     lists: str,
     magics: str = None,
+    formulas: str = None,
     pages: tuple = None,
 ) -> str:
     """Extract textual structure out of document. A text is structured
@@ -64,6 +65,7 @@ def work(  # pylint:disable=R0913
         lists(str): definition of lists path
         headerfooters(str): path to extracted footer and header
         magics(str): path to optional magic file
+        formulas(str): path to optional rawmaker formula file
         pages: list of page numbers to process
     Returns:
         dumped paragraphs
@@ -79,10 +81,9 @@ def work(  # pylint:disable=R0913
         text=textx,
         textposition=textposition,
         magics=magics,
+        formulas=formulas,
         pages=pages,
     )
-
     extracted = words.text.chapter.extract_texts(resources)
-
     dumped = serializeraw.dump_text(extracted)
     return dumped

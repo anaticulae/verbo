@@ -100,6 +100,7 @@ WORKPLAN = [
         'text',
         inputs=TEXTINPUT + [
             ResultFile('magic', 'content_content', optional=True),
+            ResultFile('rawmaker', 'formula_formula', optional=True),
         ],
         output=('text',),
     ),

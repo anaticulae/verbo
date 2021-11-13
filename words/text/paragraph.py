@@ -25,6 +25,7 @@ def collect_paragraph(
     boxes: words.boxed.BoxedChecker,
     lists: 'ListLookUp',
     magics: words.lookup.PageLineLookup = None,
+    formulas: iamraw.PageContentRawFormulas = None,
 ) -> iamraw.ChapterText:
     """Extract paragraphs between defined headlines.
 
@@ -56,6 +57,24 @@ def collect_paragraph(
         lists,
         boxes,
     )
+    if formulas:
+        result = insert_formulas(
+            result,
+            formulas=utila.select_page(
+                formulas,
+                page=pcn.page,
+                default=[],
+            ),
+        )
+    return result
+
+
+def insert_formulas(
+    content: list,
+    formulas: iamraw.PageContentRawFormula,
+) -> list:
+    result = []
+    result.extend(content)
     return result
 
 
