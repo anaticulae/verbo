@@ -57,6 +57,13 @@ RESOURCES = [
         caption=True,
         codero=True,
     ),
+    genex.todo(
+        power.DISS143_PDF,
+        figureo=True,
+        formulero=True,
+        rawmaker_cleanup=True,
+        pages='18:35',
+    ),
     power.DOCU027_PDF,
     power.DOCU009_PDF,
 ]
