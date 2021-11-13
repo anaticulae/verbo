@@ -122,66 +122,102 @@ def visit_sentences(  # pylint:disable=R1260
     return result
 
 
-def merge_sentences(  # pylint:disable=R0912,R1260,R0914
+def merge_sentences(
     pages: words.text.PageTextWithHeadlines,
     skip_undefined: bool = False,
     merge_divis: bool = True,
     normalize_spaces: bool = True,
 ) -> HeadlinedSentences:
-    result = []
-    lastheadline = None
-    lastsentence = None
-    lastpage = None
-    for page in pages:
-        if lastpage is not None:
-            if lastpage + 1 != page.page:
+    merger = SentenceMerge(
+        skip_undefined=skip_undefined,
+        merge_divis=merge_divis,
+        normalize_spaces=normalize_spaces,
+    )
+    result = merger.process_pages(pages)
+    return result
+
+
+class SentenceMerge:
+
+    def __init__(
+        self,
+        skip_undefined: bool = False,
+        merge_divis: bool = True,
+        normalize_spaces: bool = True,
+    ):
+        self.skip_undefined = skip_undefined
+        self.merge_divis = merge_divis
+        self.normalize_spaces = normalize_spaces
+
+        self.result = []
+        self.lastheadline = None
+        self.lastsentence = None
+        self.lastpage = None
+
+    def process_pages(self, pages):
+        for page in pages:
+            self.process_page(page)
+        # headline
+        if self.lastsentence:
+            # non added headline on the end of the document
+            self.result.append(
+                HeadlinedSentence(
+                    headline=self.lastheadline,
+                    page=self.lastpage,
+                    sentence=self.lastsentence,
+                ))
+        return self.result
+
+    def process_page(self, page):
+        if self.lastpage is not None:
+            if self.lastpage + 1 != page.page:
                 # TODO: Figurepage between sentences?
                 # Do not merge sentence if empty page is between?
-                lastsentence = None
+                self.lastsentence = None
                 # TODO: THIS SENTENCE IS LOST, WE MUST MERGE IT?
         current = visit_sentences(
             page,
-            skip_undefined=skip_undefined,
-            merge_divis=merge_divis,
-            normalize_spaces=normalize_spaces,
+            skip_undefined=self.skip_undefined,
+            merge_divis=self.merge_divis,
+            normalize_spaces=self.normalize_spaces,
         )
         for headline, sentence in current:
-            if headline.title and headline != lastheadline and lastsentence:
+            if headline.title and headline != self.lastheadline and self.lastsentence:
                 # headline does not contains a complete sentence and
                 # follows by a headline with text and not with text is
                 # None, which indicates that this is a new page.
                 # HINT: lastpage can be None if no page was processed
-                pagenr = lastpage if lastpage is not None else page.page
-                result.append(
+                pagenr = self.lastpage if self.lastpage is not None else page.page
+                self.result.append(
                     HeadlinedSentence(
-                        headline=lastheadline,
+                        headline=self.lastheadline,
                         page=pagenr,
-                        sentence=lastsentence,
+                        sentence=self.lastsentence,
                     ))
-                lastsentence = None
+                self.lastsentence = None
             isundefined = words.undefined.intindex(sentence) is not None
             isformula = words.feature.sentences.is_formula(sentence)
-            if (isundefined or isformula) and lastsentence:
-                result.append(
+            if (isundefined or isformula) and self.lastsentence:
+                self.result.append(
                     HeadlinedSentence(
-                        headline=lastheadline,
-                        page=lastpage,
-                        sentence=lastsentence,
+                        headline=self.lastheadline,
+                        page=self.lastpage,
+                        sentence=self.lastsentence,
                     ))
-                lastsentence = None
+                self.lastsentence = None
             if headline.title:
-                lastheadline = headline
+                self.lastheadline = headline
             else:
-                headline = lastheadline
+                headline = self.lastheadline
             pagenr = page.page
-            if lastsentence:
+            if self.lastsentence:
                 # merge with sentence of page before
-                sentence = f'{lastsentence} {sentence}'.strip()
-                lastsentence = None
-                pagenr = lastpage
-                headline = lastheadline
+                sentence = f'{self.lastsentence} {sentence}'.strip()
+                self.lastsentence = None
+                pagenr = self.lastpage
+                headline = self.lastheadline
             if not sentence:
-                result.append(
+                self.result.append(
                     HeadlinedSentence(
                         headline=headline,
                         page=page.page,
@@ -192,28 +228,18 @@ def merge_sentences(  # pylint:disable=R0912,R1260,R0914
                 isformula = words.feature.sentences.is_formula(sentence)
                 issentence = german.is_sentence_closed(sentence.split())
                 if issentence or isundefined or isformula:
-                    assert not lastsentence
-                    result.append(
+                    assert not self.lastsentence
+                    self.result.append(
                         HeadlinedSentence(
                             headline=headline,
                             page=pagenr,
                             sentence=sentence,
                         ))
                 else:
-                    lastsentence = sentence
+                    self.lastsentence = sentence
                     # merging on the same page is also possible
-                    lastpage = page.page
-        lastpage = page.page
-    # headline
-    if lastsentence:
-        # non added headline on the end of the document
-        result.append(
-            HeadlinedSentence(
-                headline=lastheadline,
-                page=lastpage,
-                sentence=lastsentence,
-            ))
-    return result
+                    self.lastpage = page.page
+        self.lastpage = page.page
 
 
 def extract_textsections(
