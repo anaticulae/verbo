@@ -15,6 +15,7 @@ import iamraw
 import texmex
 
 import words.feature
+import words.feature.sentences
 import words.text
 import words.undefined
 
