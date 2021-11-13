@@ -2,6 +2,14 @@
 
 Every noteable change is logged here.
 
+## v1.7.0
+
+### Feature
+
+* integrate parse raw formulas (507373fd98d3)
+* add bounding to document type item (c0466e69ad93)
+* load formulas data (cde9e13a39cd)
+
 ## v1.6.0
 
 ### Feature
