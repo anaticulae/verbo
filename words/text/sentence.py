@@ -56,7 +56,7 @@ def find_sentences(page: words.text.PageTextWithHeadlines) -> words.text.TextSec
 
 def undefined_tostr(item: iamraw.Undefined) -> str:
     """\
-    >>> undefined_tostr(iamraw.Undefined(10, 'cap'))
+    >>> undefined_tostr(iamraw.Undefined(content=10, container='cap'))
     'cap10'
     """
     if not item.content:
