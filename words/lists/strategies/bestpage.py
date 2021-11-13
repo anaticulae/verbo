@@ -68,23 +68,6 @@ def extract_best_page(navigator, headlines, textfeed):
     return result
 
 
-def splitby_count(items, counts) -> tuple:
-    """\
-    >>> splitby_count('hello my friend this is smart', (3, 5, 9))
-    ['hel', 'lo my', ' friend t', 'his is smart']
-    """
-    result = []
-    index = 0
-    for count in counts:
-        selected = items[index:index + count]
-        result.append(selected)
-        index += count
-    rest = items[index:]
-    if rest:
-        result.append(rest)
-    return result
-
-
 def merge_overlapping_lists(items):
     if not items:
         return []
