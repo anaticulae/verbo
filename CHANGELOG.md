@@ -223,8 +223,6 @@ Every noteable change is logged here.
 
 ## v0.27.4
 
-## v0.27.3
-
 ## v0.27.2
 
 ### Feature
@@ -359,8 +357,6 @@ Every noteable change is logged here.
 
 ## v0.20.3
 
-## v0.20.2
-
 ## v0.20.1
 
 ### Fix
@@ -437,8 +433,6 @@ Every noteable change is logged here.
 * extend interface documentation (1ca1f9aff9ad)
 
 ## v0.17.2
-
-## v0.17.1
 
 ## v0.17.0
 
@@ -535,10 +529,6 @@ Every noteable change is logged here.
 * fix alignment loader (7efd5be62d25)
 
 ## v0.13.6
-
-## v0.13.5
-
-## v0.13.4
 
 ## v0.13.3
 
@@ -640,22 +630,6 @@ Every noteable change is logged here.
 
 ## v0.9.9
 
-## v0.9.8
-
-## v0.9.7
-
-## v0.9.6
-
-## v0.9.5
-
-## v0.9.4
-
-## v0.9.3
-
-## v0.9.2
-
-## v0.9.1
-
 ## v0.9.0
 
 ## v0.8.2
@@ -726,14 +700,6 @@ Every noteable change is logged here.
 
 ## v0.5.11
 
-## v0.5.10
-
-## v0.5.9
-
-## v0.5.8
-
-## v0.5.7
-
 ## v0.5.6
 
 ### Fix
@@ -746,17 +712,11 @@ Every noteable change is logged here.
 
 * adjust toc extractor range (c70ac159ca34)
 
-## v0.5.4
-
 ## v0.5.3
 
 ### Fix
 
 * do not overwrite detected level (9ff7f0be723a)
-
-## v0.5.2
-
-## v0.5.1
 
 ## v0.5.0
 
@@ -768,14 +728,6 @@ Every noteable change is logged here.
 * add check to exclude miss parsed footnotes as headline (bd21836e6467)
 
 ## v0.4.8
-
-## v0.4.7
-
-## v0.4.6
-
-## v0.4.5
-
-## v0.4.4
 
 ## v0.4.3
 
@@ -859,8 +811,6 @@ Every noteable change is logged here.
 
 ## v0.2.2
 
-## v0.2.1
-
 ## v0.2.0
 
 ### Feature
@@ -884,21 +834,11 @@ Every noteable change is logged here.
 
 ## v0.1.7
 
-## v0.1.6
-
-## v0.1.5
-
-## v0.1.4
-
 ## v0.1.3
 
 ### Fix
 
 * remove disabled yaml formatter (2dea308f98d6)
-
-## v0.1.2
-
-## v0.1.1
 
 ## v0.1.0
 
@@ -911,4 +851,3 @@ Every noteable change is logged here.
 * generate required test data (6fdba6c77c23)
 
 ## v0.0.0 Initial release
-
