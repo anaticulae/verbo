@@ -177,19 +177,7 @@ class SentenceMerge:
             normalize_spaces=self.normalize_spaces,
         )
         for headline, sentence in current:
-            if headline.title and headline != self.lastheadline and self.lastsentence:
-                # headline does not contains a complete sentence and
-                # follows by a headline with text and not with text is
-                # None, which indicates that this is a new page.
-                # HINT: lastpage can be None if no page was processed
-                pagenr = self.lastpage if self.lastpage is not None else page.page
-                self.result.append(
-                    HeadlinedSentence(
-                        headline=self.lastheadline,
-                        page=pagenr,
-                        sentence=self.lastsentence,
-                    ))
-                self.lastsentence = None
+            self.incomplete_sentence_headline_changed(headline, page)
             isundefined = words.undefined.intindex(sentence) is not None
             isformula = words.feature.sentences.is_formula(sentence)
             if (isundefined or isformula) and self.lastsentence:
@@ -248,6 +236,27 @@ class SentenceMerge:
             # TODO: THIS SENTENCE IS LOST, WE MUST MERGE IT?
             return True
         return False
+
+    def incomplete_sentence_headline_changed(self, headline, page) -> bool:
+        if not headline.title:
+            return False
+        if headline == self.lastsentence:
+            return False
+        if not self.lastsentence:
+            return False
+        # headline does not contains a complete sentence and follows by a
+        # headline with text and not with text is None, which indicates
+        # that this is a new page.
+        # HINT: lastpage can be None if no page was processed
+        pagenr = self.lastpage if self.lastpage is not None else page.page
+        self.result.append(
+            HeadlinedSentence(
+                headline=self.lastheadline,
+                page=pagenr,
+                sentence=self.lastsentence,
+            ))
+        self.lastsentence = None
+        return True
 
 
 def extract_textsections(
