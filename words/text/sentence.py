@@ -169,12 +169,7 @@ class SentenceMerge:
         return self.result
 
     def process_page(self, page):
-        if self.lastpage is not None:
-            if self.lastpage + 1 != page.page:
-                # TODO: Figurepage between sentences?
-                # Do not merge sentence if empty page is between?
-                self.lastsentence = None
-                # TODO: THIS SENTENCE IS LOST, WE MUST MERGE IT?
+        self.whitepage_before(page)
         current = visit_sentences(
             page,
             skip_undefined=self.skip_undefined,
@@ -240,6 +235,19 @@ class SentenceMerge:
                     # merging on the same page is also possible
                     self.lastpage = page.page
         self.lastpage = page.page
+
+    def whitepage_before(self, page):
+        """Does white page is before current page and there is some
+        incomplete sentence left."""
+        if self.lastpage is None:
+            return False
+        if self.lastpage + 1 != page.page:
+            # TODO: Figurepage between sentences?
+            # Do not merge sentence if empty page is between?
+            self.lastsentence = None
+            # TODO: THIS SENTENCE IS LOST, WE MUST MERGE IT?
+            return True
+        return False
 
 
 def extract_textsections(
