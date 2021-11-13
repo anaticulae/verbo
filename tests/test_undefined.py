@@ -26,7 +26,7 @@ RESTRUCTURED_NON_TEXTUAL_PAGE = 10
 def test_extract_undefined():
     """Text replacing the undefined items with content"""
     # TODO: Move to hey
-    textexample = tests.fixtures.restruct.restructured_textexample()
+    textexample = tests.fixtures.restruct.docu27textexample()
 
     source = power.link(power.DOCU027_PDF)
     ptcns = serializeraw.ptcn_frompath(source)

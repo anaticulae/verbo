@@ -23,7 +23,7 @@ import words.text
 import words.text.chapter
 
 
-def restructured_sections():
+def docu27sections():
     utilatest.fixture_requires(power.DOCU027_PDF)
     source = iamraw.path.sections_(power.link(power.DOCU027_PDF))
     extracted = serializeraw.load_sections(source)
@@ -31,8 +31,8 @@ def restructured_sections():
     return dumped
 
 
-def restructured_headlines():
-    sections_ = restructured_sections()
+def docu27headlines():
+    sections_ = docu27sections()
     src = power.link(power.DOCU027_PDF)
     dumped, _ = words.feature.headlines.work(
         sectionlist=sections_,
@@ -51,9 +51,9 @@ def restructured_headlines():
     return dumped
 
 
-def restruct_resources():
+def docu27resources():
     utilatest.fixture_requires(power.DOCU027_PDF)
-    headlines = restructured_headlines()
+    headlines = docu27headlines()
     source = power.link(power.DOCU027_PDF)
     loaded = words.feature.load_resources(
         text=iamraw.path.text(source),
@@ -69,28 +69,11 @@ def restruct_resources():
     return loaded
 
 
-def restructured_textexample(require_headlinelevel: bool = True):
-    loaded = restruct_resources()
+def docu27textexample(require_headlinelevel: bool = True):
+    loaded = docu27resources()
     extracted = words.text.chapter.extract_texts(
         loaded,
         require_headlinelevel=require_headlinelevel,
     )
     assert extracted is not None
     return extracted
-
-
-def restructured_boxed():
-    source = power.link(power.DOCU027_PDF)
-    headlines = restructured_headlines()
-    undefined = serializeraw.dump_text(restructured_textexample())
-    extracted, _ = words.loader.load_resources(
-        undefined,
-        iamraw.path.text(source),
-        iamraw.path.textposition(source),
-        border=iamraw.path.sizeandborder(source),
-        headlines=headlines,
-        headerfooters=iamraw.path.headerfooters(source),
-    )
-    boxes = serializeraw.load_boxes(iamraw.path.boxed(source))
-    result = words.feature.boxed.process_content(extracted, boxes)
-    return result

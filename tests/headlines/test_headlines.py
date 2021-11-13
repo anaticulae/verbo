@@ -96,7 +96,7 @@ def test_headlines_extract_headlines():
 
 @utilatest.longrun
 def test_headlines_work():
-    sections_ = tests.fixtures.restruct.restructured_sections()
+    sections_ = tests.fixtures.restruct.docu27sections()
     src = power.link(power.DOCU027_PDF)
     dumped, _ = words.feature.headlines.work(
         textx=iamraw.path.text(src),

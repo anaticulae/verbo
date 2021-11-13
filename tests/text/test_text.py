@@ -25,7 +25,7 @@ import words.undefined
 @utilatest.longrun
 def test_text_work():
     source = power.link(power.DOCU027_PDF)
-    headlines = tests.fixtures.restruct.restructured_headlines()
+    headlines = tests.fixtures.restruct.docu27headlines()
     result = words.feature.text.work(
         boxes=iamraw.path.boxed(source),
         lists=words.path.lists(source),
@@ -42,7 +42,7 @@ def test_text_work():
 
 @utilatest.longrun
 def test_text_extractor_titles():
-    result = tests.fixtures.restruct.restructured_textexample(
+    result = tests.fixtures.restruct.docu27textexample(
         require_headlinelevel=
         False,  # TODO: SET TO TRUE TO IMPROVE HEADLINE PARSER
     )
@@ -103,8 +103,8 @@ def test_text_extractor_titles():
 @utilatest.longrun
 def test_text_convert_undefined_to_text():
     """Test to replace undefined `uindex` on last page."""
-    headlines = tests.fixtures.restruct.restructured_headlines()
-    textexample = tests.fixtures.restruct.restructured_textexample()
+    headlines = tests.fixtures.restruct.docu27headlines()
+    textexample = tests.fixtures.restruct.docu27textexample()
 
     headlines = serializeraw.load_headlines(headlines)
     dumped = serializeraw.dump_text(textexample)
