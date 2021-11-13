@@ -97,9 +97,16 @@ def determine_chunktypes(pcn, start, end, magics, lists, boxes) -> list:
             magics,
         )
         if chunktype == iamraw.PageContentType.TEXT:  # TODO: AND BLOCKQUOTE?
-            result.append(iamraw.Paragraph(content=item))
+            container = iamraw.Paragraph(
+                content=item,
+                bounding=item.bounding,
+            )
         else:
-            result.append(iamraw.Undefined(container=index))
+            container = iamraw.Undefined(
+                container=index,
+                bounding=item.bounding,
+            )
+        result.append(container)
     return result
 
 
