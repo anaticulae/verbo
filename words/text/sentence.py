@@ -178,16 +178,7 @@ class SentenceMerge:
         )
         for headline, sentence in current:
             self.incomplete_sentence_headline_changed(headline, page)
-            isundefined = words.undefined.intindex(sentence) is not None
-            isformula = words.feature.sentences.is_formula(sentence)
-            if (isundefined or isformula) and self.lastsentence:
-                self.result.append(
-                    HeadlinedSentence(
-                        headline=self.lastheadline,
-                        page=self.lastpage,
-                        sentence=self.lastsentence,
-                    ))
-                self.lastsentence = None
+            self.incomplete_sentence_before_symbol_line(sentence)
             if headline.title:
                 self.lastheadline = headline
             else:
@@ -253,6 +244,22 @@ class SentenceMerge:
             HeadlinedSentence(
                 headline=self.lastheadline,
                 page=pagenr,
+                sentence=self.lastsentence,
+            ))
+        self.lastsentence = None
+        return True
+
+    def incomplete_sentence_before_symbol_line(self, sentence) -> bool:
+        if not self.lastsentence:
+            return False
+        isundefined = words.undefined.intindex(sentence) is not None
+        isformula = words.feature.sentences.is_formula(sentence)
+        if not any((isundefined, isformula)):
+            return False
+        self.result.append(
+            HeadlinedSentence(
+                headline=self.lastheadline,
+                page=self.lastpage,
                 sentence=self.lastsentence,
             ))
         self.lastsentence = None
