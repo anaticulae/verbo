@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v1.7.1
+
+### Fix
+
+* do not add formulas twice (c7aa606b6af7)
+* add missing import (ec4f875a0379)
+
 ## v1.7.0
 
 ### Feature
