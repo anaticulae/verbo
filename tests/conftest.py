@@ -42,6 +42,7 @@ RESOURCES = [
         tablero=True,
         rawmaker_cleanup=True,
         caption=True,
+        codero=True,
     ),
     power.BACHELOR128_PDF,
     power.BACHELOR063_PDF,
