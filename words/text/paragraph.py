@@ -59,14 +59,12 @@ def collect_paragraph(
         boxes,
     )
     if formulas:
-        result = insert_formulas(
-            result,
-            formulas=utila.select_page(
-                formulas,
-                page=pcn.page,
-                default=[],
-            ),
-        )
+        formulas_paragraph = select_formulas(formulas, first, second, pcn)
+        if formulas_paragraph:
+            result = insert_formulas(
+                result,
+                formulas=formulas_paragraph,
+            )
     return result
 
 
@@ -77,7 +75,7 @@ def insert_formulas(
     result = list(content)
     if not formulas:
         return result
-    for index, item in enumerate(formulas.content):
+    for index, item in enumerate(formulas):
         position = texmex.navigator.insert_position(
             item.bounding,
             result,
@@ -87,6 +85,33 @@ def insert_formulas(
             iamraw.DFormula(bounding=item.bounding, content=index),
         )
     return result
+
+
+def select_formulas(formulas, first, second, pcn):
+    formulas = utila.select_page(
+        formulas,
+        page=pcn.page,
+        default=[],
+    )
+    if not formulas:
+        return []
+    # all formuals valid from page start
+    start = 0
+    if first and first.container not in (0, -1):
+        start = pcn[first.container].bounding[1]
+    # all formuals valid till page end
+    end = 2048  # LARGE NUMBER
+    if second and second.container not in (0, -1):
+        end = pcn[second.container].bounding[3]
+    # select formulas between headlines "inside paragraph"
+    formulas = [
+        item for item in formulas.content if utila.isinside(
+            value=(item.bounding[1] + item.bounding[3]) / 2,
+            left=start,
+            right=end,
+        )
+    ]
+    return formulas
 
 
 def determine_chunktypes(pcn, start, end, magics, lists, boxes) -> list:
