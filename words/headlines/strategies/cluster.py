@@ -84,7 +84,7 @@ def headline_level(line, clusters) -> int:
     return current
 
 
-def check_surrounding(headlines, ptcns):
+def check_surrounding(headlines: dict, ptcns):
     for headline in utila.flatten(headlines.values()):
         headline_expand(
             headline,
