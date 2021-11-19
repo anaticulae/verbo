@@ -93,7 +93,9 @@ def run(strategy, data: Data, pages: tuple = None):
     if hasattr(strategy, 'filter_headlines'):
         # do not use AttributeError to avoid hiding strategy errors
         results = strategy.filter_headlines(results)
-
+    # support multiline headlines
+    if hasattr(strategy, 'check_surrounding'):
+        results = strategy.check_surrounding(results, data.ptcns)
     grouped = words.headlines.utils.groupby_headlinelevel(results)
     return grouped
 
