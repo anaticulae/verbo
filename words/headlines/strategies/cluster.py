@@ -49,13 +49,8 @@ def filter_headlines(parsed) -> dict:
     for number, chapter in parsed.items():
         for page in chapter:
             for containerid, line in enumerate(page.hashed):
-                current = search_level(line, clusters)
-                if current == -1:
-                    continue
-                if elements.noheadline(
-                        line,
-                        wordcount_max=HEADLINE_WORDCOUT_MAX,
-                ):
+                current = headline_level(line, clusters)
+                if current is None:
                     continue
                 parsed = words.headlines.strategies.multiline.parse_headline(line) # yapf:disable
                 if parsed:
@@ -73,6 +68,19 @@ def filter_headlines(parsed) -> dict:
                 result[number].append(headline)
     result: dict = dict(result)
     return result
+
+
+def headline_level(line, clusters) -> int:
+    current = search_level(line, clusters)
+    if current == -1:
+        return None
+    # TODO: MOVE TO doctextstyle.features
+    if elements.noheadline(
+            line,
+            wordcount_max=HEADLINE_WORDCOUT_MAX,
+    ):
+        return None
+    return current
 
 
 NO_HEADLINE_CHARS = '+_'
