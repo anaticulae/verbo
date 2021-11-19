@@ -16,17 +16,6 @@ import iamraw
 import words.headlines.utils
 
 
-def headline_decoration(navigator, containerid: int) -> int:
-    if not navigator:
-        # HACK
-        return None
-    before = navigator[containerid - 1] if containerid > 0 else None
-    # after = navigator[containerid + 1] if containerid + 1 < len(navigator) else None
-    if before and elements.headline.noheadline_pattern(before.text):
-        return containerid - 1
-    return None
-
-
 def filter_headlines(items: iamraw.PagesHeadlineList):
     if isinstance(items, list):
         items = dict(enumerate(items))
