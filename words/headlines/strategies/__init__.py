@@ -57,9 +57,3 @@ def filter_headlines(items: iamraw.PagesHeadlineList):
     # require KeyError
     result = dict(result)  # pylint:disable=R0204
     return result
-
-
-def issentence(line: str):
-    # TODO: IMPROVE THIS
-    # TODO: USE BIG FIVE FEATURES
-    return line.strip().endswith('.')
