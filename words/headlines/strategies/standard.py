@@ -15,7 +15,7 @@ import texmex
 
 import words.headlines.strategies
 
-HEADLINE_MIN_LENGTH = configo.HV_INT_PLUS(default=7)
+HEADLINE_LENGTH_MIN = configo.HV_INT_PLUS(default=7)
 
 
 def extract_headline(
@@ -55,7 +55,7 @@ def extract_headline(
     )
 
     lastitem = look_forward == len(ptcn)
-    if len(text) < HEADLINE_MIN_LENGTH:
+    if len(text) < HEADLINE_LENGTH_MIN:
         return None
 
     skipper = should_skip if skipper is None else skipper

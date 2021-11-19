@@ -21,7 +21,7 @@ import utila
 
 HEADLINES_COUNT_MIN = configo.HV_INT_PLUS(default=5)
 
-MAX_LEVELFOUR_PER_PAGE = configo.HV_INT_PLUS(default=4)
+LEVELFOUR_PER_PAGE_MAX = configo.HV_INT_PLUS(default=4)
 
 
 def headlines(ptns):  # pylint:disable=R0914
@@ -89,14 +89,14 @@ def tomany_headlines_perpage(result: list) -> bool:
         return False
     pages = utila.groupby_diff(pages, maxdiff=0)
     maxpage = len(utila.longest(pages, number=1))
-    if maxpage > MAX_LEVELFOUR_PER_PAGE:
+    if maxpage > LEVELFOUR_PER_PAGE_MAX:
         return True
     return False
 
 
-MIN_LEVELFOUR_WORD_COUNT_DIFF = configo.HV_FLOAT_PLUS(default=0.7)
+LEVELFOUR_WORD_COUNT_DIFF_MIN = configo.HV_FLOAT_PLUS(default=0.7)
 
-MAX_LEVELFOUR_WORD_COUNT_DIFF = configo.HV_FLOAT_PLUS(default=1.3)
+LEVELFOUR_WORD_COUNT_DIFF_MAX = configo.HV_FLOAT_PLUS(default=1.3)
 
 
 def valid_levelfour(extracted, levelfour) -> bool:
@@ -115,8 +115,8 @@ def valid_levelfour(extracted, levelfour) -> bool:
     mean_levelfour = statistics.mean(levelfour_words)
 
     # valid range
-    lower_bound = mean * MIN_LEVELFOUR_WORD_COUNT_DIFF
-    upper_bound = mean * MAX_LEVELFOUR_WORD_COUNT_DIFF
+    lower_bound = mean * LEVELFOUR_WORD_COUNT_DIFF_MIN
+    upper_bound = mean * LEVELFOUR_WORD_COUNT_DIFF_MAX
     return lower_bound <= mean_levelfour <= upper_bound
 
 

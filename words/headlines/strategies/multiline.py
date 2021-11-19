@@ -23,9 +23,9 @@ import words.headlines.strategies
 import words.headlines.utils
 
 # longer word chains may be a sentence or something else
-MAX_HEADLINE_TOKEN_LENGTH = configo.HV_INT_PLUS(default=20)
+HEADLINE_TOKEN_LENGTH_MAX = configo.HV_INT_PLUS(default=20)
 # assume that headlines does not contain many numbers
-MAX_NUMBERS_IN_HEADLINE = configo.HV_INT_PLUS(default=5)
+NUMBERS_IN_HEADLINE_MAX = configo.HV_INT_PLUS(default=5)
 
 HEADLINE_MEDIAN = configo.HolyTable(
     items=[
@@ -96,11 +96,11 @@ def headline_range(items):
 def invalid_headline_group(items) -> bool:
     text = ' '.join([item.text for item in items])
     words_ = german.word_tokenize(text, validate_sentences=False)
-    if len(words_) >= MAX_HEADLINE_TOKEN_LENGTH:
+    if len(words_) >= HEADLINE_TOKEN_LENGTH_MAX:
         # maybe a sentence cause headlines are not so long
         return True
     number_count = len([item for item in words_ if utila.isnumber(item)])
-    if number_count >= MAX_NUMBERS_IN_HEADLINE:
+    if number_count >= NUMBERS_IN_HEADLINE_MAX:
         # assume that headlines does not contain many numbers
         return True
     if len(items) >= 2:  # multiline

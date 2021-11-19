@@ -81,9 +81,9 @@ def update_level(items: iamraw.PagesHeadlineList, border, diff) -> dict:
     return items
 
 
-MAX_TEXTSIZE_DIFF = configo.HV_FLOAT_PLUS(default=1.5)
+TEXTSIZE_DIFF_MAX = configo.HV_FLOAT_PLUS(default=1.5)
 
-MAX_AFTER_DIFF = configo.HV_FLOAT_PLUS(default=0.15)
+AFTER_DIFF_MAX = configo.HV_FLOAT_PLUS(default=0.15)
 
 
 def equal_headline_cluster(
@@ -135,7 +135,7 @@ def equal_fontsize(candidat, clusteritem) -> bool:
     return utila.near(
         candidat['textsize'],
         clusteritem['textsize'],
-        MAX_TEXTSIZE_DIFF,
+        TEXTSIZE_DIFF_MAX,
     )
 
 
@@ -149,7 +149,7 @@ def equal_after(candidat, clusteritem) -> bool:
     if not utila.near(
             clusteritem['after'],
             candidat['after'],
-            clusteritem['after'] * MAX_AFTER_DIFF,
+            clusteritem['after'] * AFTER_DIFF_MAX,
     ):
         return False
     return True
