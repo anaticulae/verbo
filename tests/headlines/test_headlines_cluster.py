@@ -95,11 +95,11 @@ def test_bachelor67_cluster_headlines_expand():
         sectionlist=section,
         strategies=[words.headlines.strategies.cluster],
     )[0]
-    data = utila.flatten(result)
+    headlines = utila.flatten(result)
     merged_headlines = [
-        item for item in data if not isinstance(item.container, int)
+        item for item in headlines if not isinstance(item.container, int)
     ]
     assert len(merged_headlines) == 3  # VALIDATED
-    assert len(data) == 50  # NOT VALIDATED
-    pages = [item.page for item in data]
+    assert len(headlines) == 50  # NOT VALIDATED
+    pages = [item.page for item in headlines]
     assert pages == sorted(pages)

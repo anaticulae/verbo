@@ -95,7 +95,11 @@ def run(strategy, data: Data, pages: tuple = None):
         results = strategy.filter_headlines(results)
     # support multiline headlines
     if hasattr(strategy, 'check_surrounding'):
-        results = strategy.check_surrounding(results, data.ptcns)
+        results = utila.pass_required(
+            strategy.check_surrounding,
+            headlines=results,
+            ptcns=data.ptcns,
+        )
     # second strategy
     if hasattr(strategy, 'second_try'):
         results = utila.pass_required(
