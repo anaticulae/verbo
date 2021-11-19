@@ -52,11 +52,12 @@ RESOURCES = [
     genex.todo(
         power.BACHELOR067_PDF,
         pages=':',
-        figureo=True,
-        tablero=True,
-        rawmaker_cleanup=True,
         caption=True,
         codero=True,
+        figureo=True,
+        formulero=True,
+        rawmaker_cleanup=True,
+        tablero=True,
     ),
     genex.todo(
         power.HOME050_PDF,
