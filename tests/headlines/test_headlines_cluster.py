@@ -84,3 +84,19 @@ def test_headlines_magic_master155(master155pages50):  # pylint:disable=W0621
     )
     result = result[0]  # single strategy was used
     assert len(result) == 7  # seven different chapter
+
+
+def test_bachelor67_cluster_headlines_expand():
+    path = power.link(power.BACHELOR067_PDF)
+    section = serializeraw.load_sections(iamraw.path.sections_(path))
+    content = serializeraw.ptcn_frompath(path)
+    result = words.headlines.machine.headlines(
+        ptcns=content,
+        sectionlist=section,
+        strategies=[words.headlines.strategies.cluster],
+    )[0]
+    data = utila.flatten(result)
+    merged_headlines = [
+        item for item in data if not isinstance(item.container, int)
+    ]
+    assert len(merged_headlines) == 3  # VALIDATED
