@@ -31,7 +31,7 @@ import words.headlines.strategies.multiline
 HEADLINE_WORDCOUT_MAX = configo.HV_INT_PLUS(default=20)
 
 
-def filter_headlines(parsed) -> dict:  # pylint:disable=R0914
+def filter_headlines(parsed) -> dict:
     flat = utila.flatten(parsed.values())
     flat = doctextstyle.utils.flatten(flat)
     headlines = doctextstyle.features.headline.headlines(
@@ -43,11 +43,8 @@ def filter_headlines(parsed) -> dict:  # pylint:disable=R0914
     if not headlines:
         utila.error('empty headlines for strategy cluster')
         return {}
-
-    _, clusters = headlines
-    clusters = [cluster for cluster in clusters if valid_cluster(cluster)]
+    clusters = [cluster for cluster in headlines[1] if valid_cluster(cluster)]
     clusters = [{item.hashed for item in level} for level in clusters]
-
     result = collections.defaultdict(list)
     for number, chapter in parsed.items():
         for page in chapter:
@@ -74,7 +71,7 @@ def filter_headlines(parsed) -> dict:  # pylint:disable=R0914
                     container=containerid,
                 )
                 result[number].append(headline)
-    result = dict(result)  # pylint:disable=R0204
+    result: dict = dict(result)
     return result
 
 
