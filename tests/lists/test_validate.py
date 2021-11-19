@@ -152,7 +152,9 @@ def validate_master99(extracted):
                         marks=pytest.mark.xfail(reason='broken table extractor'),
     ),
     pytest.param(power.MASTER155_PDF, 'master155', ':', id='master155'),
-    pytest.param(power.BACHELOR067_PDF, 'bachelor067', ':', id='bachelor067'),
+    pytest.param(power.BACHELOR067_PDF, 'bachelor067', ':', id='bachelor067',
+                        marks=pytest.mark.xfail(reason='broken formulero parser'),
+    ),
     pytest.param(power.MASTER099_PDF, 'master099', ':', id='master099'),
 ])
 # yapf:enable
