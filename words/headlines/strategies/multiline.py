@@ -173,18 +173,18 @@ def filter_headlines(result: iamraw.PagesHeadlineList) -> dict:
     TODO: copy items
     """
     utila.call('convert_level')
-    if (not result or not any(result.values()) or
-            not any(item for item in result.values())):
+    # TODO: VERIFY THIS
+    empty = not result or not any(result.values()) or not any(
+        item for item in result.values())
+    if empty:
         # check that result pages are empty
         utila.info('empty PageHeadlineList')
         return {}
     assert isinstance(result, dict), type(result)
-
     nolevel = []
     for item in result.values():
         nolevel.extend(item)
     level = [item for item in nolevel if isinstance(item.level, int)]
-
     if not level:
         result = words.headlines.cluster.cluster_headline_level(result)
     return result
