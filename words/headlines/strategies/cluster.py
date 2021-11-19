@@ -66,6 +66,7 @@ def filter_headlines(parsed) -> dict:
                     container=containerid,
                 )
                 result[number].append(headline)
+    # enable KeyError
     result: dict = dict(result)
     return result
 

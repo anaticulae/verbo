@@ -121,14 +121,12 @@ def extract_chapter(strategy, data, chapter_range):
 
 def extract_page(strategy, data, page):
     pagecontent = utila.select_page(data.ptcns, page)
-    result = []
     bounds = texmex.textbounds(pagecontent, pagecontent.content)
     without_content = [item.bounds for item in bounds]
     # PageContentNavigator, the header and footer is ignored
     textdistances = texmex.fontdistance_textbounds(without_content)
-
     textfeeds = [item.bounds.leftdist for item in bounds]
-
+    result = []
     for containerid, item in enumerate(pagecontent):
         splitted = item.text.splitlines()
         if len(splitted) > 1:
