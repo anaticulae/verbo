@@ -84,6 +84,31 @@ def headline_level(line, clusters) -> int:
     return current
 
 
+def check_surrounding(headlines, ptcns):
+    for headline in utila.flatten(headlines.values()):
+        headline_expand(
+            headline,
+            ptcn=utila.select_page(ptcns, page=headline.page),
+        )
+    return headlines
+
+
+def headline_expand(headline, ptcn):
+    container = headline.container
+    current = ptcn[container]
+    # before = ptcn[container - 1] if container > 0 else None
+    after = ptcn[container + 1] if container - 1 < len(ptcn) else None
+    merge_after = after and (utila.near(
+        current=after.bounding_mean,
+        expected=current.bounding_mean,
+        diff=2.0,
+    )) and current.style.fontid == after.style.fontid
+    if merge_after:
+        headline.title = f'{headline.title} {after.text}'
+        headline.raw = f'{headline.raw} {after.text}'
+        headline.container = (headline.container, container + 1)
+
+
 NO_HEADLINE_CHARS = '+_'
 
 SPECIAL_RATE_MAX = configo.HV_PERCENT_PLUS(default=25.0)
