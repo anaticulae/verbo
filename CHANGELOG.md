@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v1.8.0
+
+### Feature
+
+* use single page strategy to extend cluster (14bb8950b37c)
+* add method to run second strategy (8baf021e2f65)
+* add single page headline extractor (9a949bced26b)
+* merge line after to detected headline (0695f1f450fd)
+* add method to detect multiline headlines (77bd35ff4c6f)
+
 ## v1.7.1
 
 ### Fix
