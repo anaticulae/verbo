@@ -100,3 +100,6 @@ def test_bachelor67_cluster_headlines_expand():
         item for item in data if not isinstance(item.container, int)
     ]
     assert len(merged_headlines) == 3  # VALIDATED
+    assert len(data) == 50  # NOT VALIDATED
+    pages = [item.page for item in data]
+    assert pages == sorted(pages)

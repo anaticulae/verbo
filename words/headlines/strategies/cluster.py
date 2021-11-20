@@ -27,6 +27,7 @@ import utila
 
 import words.headlines.strategies
 import words.headlines.strategies.multiline
+import words.headlines.strategies.singlepage
 
 HEADLINE_WORDCOUT_MAX = configo.HV_INT_PLUS(default=20)
 
@@ -91,6 +92,31 @@ def check_surrounding(headlines: dict, ptcns):
             ptcn=utila.select_page(ptcns, page=headline.page),
         )
     return headlines
+
+
+def second_try(headlines: dict, ptcns):
+    singlepage = words.headlines.strategies.singlepage.pagewise(ptcns=ptcns)
+    for headline in singlepage:
+        for chapter in headlines.values():
+            if headline_insert(chapter, headline):
+                break
+    return headlines
+
+
+def headline_insert(chapter: list, headline: iamraw.Headline) -> bool:
+    if not chapter:
+        return False
+    if headline in chapter:
+        utila.debug(f'already detected: {headline}')
+        return True
+    start, end = chapter[0].page, chapter[-1].page
+    if start <= headline.page <= end:
+        chapter.append(headline)
+        # sort by container and page
+        chapter.sort(key=lambda x: x.start)
+        chapter.sort(key=lambda x: x.page)
+        return True
+    return False
 
 
 def headline_expand(headline, ptcn):
