@@ -10,7 +10,6 @@
 import collections
 
 import elements
-import elements.headline
 import iamraw
 
 import words.headlines.utils
