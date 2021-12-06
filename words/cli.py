@@ -33,8 +33,7 @@ WORKPLAN = [
     utila.create_step(
         'abbreviation',
         inputs=[
-            ResultFile('words', 'text_text'),
-            ResultFile('words', 'headlines_headlines'),
+            ResultFile('words', 'sentences_sentences'),
         ],
         output=('detected',),
     ),

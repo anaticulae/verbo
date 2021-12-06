@@ -11,6 +11,8 @@ import german
 import iamraw
 import utila
 
+import words.feature.sentences
+
 
 def parses(
     content: iamraw.PageContentTexts,
@@ -19,8 +21,8 @@ def parses(
     if lookup is None:
         lookup = iamraw.AbbreviationListLookup()
     result = []
-    for page in content:
-        parsed = parse_page(page, lookup)
+    for textsection in content:
+        parsed = parse_page(textsection.content, lookup)
         if not parsed[1]:
             continue
         result.append(parsed)
@@ -28,36 +30,36 @@ def parses(
 
 
 def parse_page(  # pylint:disable=R0914
-    content: iamraw.PageContentText,
+    textsections: iamraw.PageContentText,
     lookup: iamraw.AbbreviationListLookup,
 ) -> iamraw.ExtractedTextAbbreviation:
     collected = []
-    page = content.page
+    pagenumber = -1
     page_sentence, page_word = 0, 0
-    for _, headline_content in content.content:  # pylint:disable=unused-variable
-        for paragraph in headline_content:
-            sentences = german.sentence_tokenize(paragraph)
-            for sentence in sentences:
-                items = german.word_tokenize(sentence)
-                if items is None:
-                    utila.info(f'incomplete sentence: {sentence}')
-                    continue
-                for word in items:
-                    if word in lookup or isabbreviation(word):
-                        position = iamraw.AbbreviationPosition(
-                            page=page,
-                            sentence=page_sentence,
-                            word=page_word,
-                        )
-                        parsed = iamraw.Abbreviation(
-                            short=word,
-                            position=position,
-                        )
-                        collected.append(parsed)
-                    page_word += 1
-                page_sentence += 1
+    for textsection in textsections:
+        for sentence, pagenumber in zip(textsection.content, textsection.pages):
+            if words.feature.sentences.nosentence(sentence):
+                continue
+            wordx = german.word_tokenize(sentence, validate_sentences=False)
+            if wordx is None:
+                utila.info(f'incomplete sentence: {sentence}')
+                continue
+            for word in wordx:
+                if word in lookup or isabbreviation(word):
+                    position = iamraw.AbbreviationPosition(
+                        page=pagenumber,
+                        sentence=page_sentence,
+                        word=page_word,
+                    )
+                    parsed = iamraw.Abbreviation(
+                        short=word,
+                        position=position,
+                    )
+                    collected.append(parsed)
+                page_word += 1
+            page_sentence += 1
     result = iamraw.ExtractedTextAbbreviation(
-        page=content.page,
+        page=pagenumber,
         content=collected,
     )
     return result
@@ -81,7 +83,6 @@ def isabbreviation(item: str):
 def abbreviation(items):
     # remove special signs
     items = [item for item in items if isinstance(item, str)]
-
     # make unique
     items = list(set(items))
     items = [item for item in items if 2 <= len(item) <= 5]

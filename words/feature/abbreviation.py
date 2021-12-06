@@ -33,15 +33,11 @@ import serializeraw
 import words.abbreviation.parser
 
 
-def work(textx: str, headliner: str, pages: tuple = None) -> str:
-    headlines = serializeraw.load_headlines(headliner, pages=pages)
-
-    loaded = serializeraw.load_text(textx, headlines, pages=pages)
+def work(sentencer: str, pages: tuple = None) -> str:
+    sentences = serializeraw.load_text(sentencer, pages=pages)
     # TODO: Load parsed data from abbreviation table
     other = [iamraw.AbbreviationList(data=konrad.ABBREVIATION_LOWER)]
     lookup = iamraw.AbbreviationListLookup.fromparsed(other=other)
-
-    parsed = words.abbreviation.parser.parses(loaded, lookup)
-
+    parsed = words.abbreviation.parser.parses(sentences, lookup)
     dumped = serializeraw.dump_text_abbreviations(parsed)
     return dumped
