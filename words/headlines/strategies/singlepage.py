@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import configo
 import elements
 import iamraw
 
@@ -23,8 +24,12 @@ def pagewise(ptcns):
     return headlines
 
 
+SINGLEPAGE_LINES_MAX = configo.HV_INT_PLUS(default=3)
+
+
 def parse_page(ptcn) -> iamraw.Headlines:
-    if len(ptcn) > 4:
+    if len(ptcn) > SINGLEPAGE_LINES_MAX:
+        # TODO: MAKE THIS COUNT SIZE DEPENDENT?
         return None
     result = []
     for container, line in enumerate(ptcn):
