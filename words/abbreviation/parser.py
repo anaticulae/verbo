@@ -74,6 +74,7 @@ def isabbreviation(word: str, lookup) -> bool:
     return False
 
 
+@utila.cacheme
 def isabbr(item: str):  # pylint:disable=R0911
     """\
     F( T( MB PM SD M= MDHF \u2212MD HF M) MD Z=
@@ -104,13 +105,14 @@ INVALIDS = '.-='
 
 
 def chars_invalid(item):
-    # A-B
-    # B.
     if any(char for char in item if char in INVALIDS):
+        # A-B
+        # B.
         return True
     return False
 
 
+@utila.cacheme
 def unbalanced(item):
     if item.count('(') != item.count(')'):
         return True
