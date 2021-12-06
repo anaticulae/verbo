@@ -98,11 +98,11 @@ def select_formulas(formulas, first, second, pcn):
     # all formuals valid from page start
     start = 0
     if first and first.container not in (0, -1):
-        start = pcn[first.container].bounding[1]
+        start = pcn[inrange(first.container, pcn)].bounding[1]
     # all formuals valid till page end
     end = 2048  # LARGE NUMBER
     if second and second.container not in (0, -1):
-        end = pcn[second.container].bounding[3]
+        end = pcn[inrange(second.container, pcn)].bounding[3]
     # select formulas between headlines "inside paragraph"
     formulas = [
         item for item in formulas.content if utila.isinside(
@@ -112,6 +112,15 @@ def select_formulas(formulas, first, second, pcn):
         )
     ]
     return formulas
+
+
+def inrange(index, pcn):
+    # TODO: REMOVE AFTER FIXING ONELINE NORMAL CONVERTING
+    if index >= len(pcn):
+        error = (index, len(pcn), pcn.page)
+        utila.error(f'~oneline-normal headline problem: {error}')
+        index = len(pcn) - 1
+    return index
 
 
 def determine_chunktypes(pcn, start, end, magics, lists, boxes) -> list:
