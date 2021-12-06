@@ -23,7 +23,7 @@ def parses(
     result = []
     for textsection in content:
         parsed = parse_page(textsection.content, lookup)
-        if not parsed[1]:
+        if not parsed.content:
             continue
         result.append(parsed)
     return result
@@ -42,10 +42,11 @@ def parse_page(  # pylint:disable=R0914
                 continue
             wordx = german.word_tokenize(sentence, validate_sentences=False)
             if wordx is None:
+                # TODO: REMOVE LATER?
                 utila.info(f'incomplete sentence: {sentence}')
                 continue
             for word in wordx:
-                if word in lookup or isabbreviation(word):
+                if isabbreviation(word, lookup):
                     position = iamraw.AbbreviationPosition(
                         page=pagenumber,
                         sentence=page_sentence,
@@ -65,7 +66,15 @@ def parse_page(  # pylint:disable=R0914
     return result
 
 
-def isabbreviation(item: str):
+def isabbreviation(word: str, lookup) -> bool:
+    if word in lookup:
+        return True
+    if isabbr(word):
+        return True
+    return False
+
+
+def isabbr(item: str):
     if not isinstance(item, str):
         return False
     if len(item) <= 1:
