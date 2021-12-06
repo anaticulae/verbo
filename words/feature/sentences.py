@@ -126,6 +126,16 @@ def is_formula(item: str) -> bool:
     return False
 
 
+def nosentence(text: str) -> bool:
+    if is_list_separator(text):
+        return True
+    if is_list_item(text):
+        return True
+    if is_formula(text):
+        return True
+    return False
+
+
 def list_split(item: str):
     start = item[0:16]
     if start == LIST_SEPA:
