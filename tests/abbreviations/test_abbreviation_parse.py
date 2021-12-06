@@ -29,9 +29,8 @@ def abbr(source, pages, testdir, monkeypatch, flat: bool = False):
     return result
 
 
-BACHELOR37 = ('PFC al. IAPS US FMRI s. bzw. ENBP EN BP SAM SD= I) II III RS CX '
-              'EKG etc. PASW SPSS IL USA ANOVA SA SEM AG CD MATLAB MA BPM ca. '
-              'F( T( MB PM SD M= MDHF \u2212MD HF M) MD Z= PET')
+BACHELOR37 = ('PFC al. IAPS US FMRI s. bzw. ENBP EN BP SAM RS CX EKG etc. PASW '
+              'SPSS IL USA ANOVA SA SEM AG CD MATLAB MA BPM ca. SD MDHF PET')
 
 
 def test_bachelor37abbr(testdir, monkeypatch):
