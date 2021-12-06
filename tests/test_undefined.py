@@ -13,7 +13,7 @@ import serializeraw
 import utilatest
 
 # pylint:disable=W0611
-import tests.fixtures.restruct
+import tests.fixtures.docu27
 import words.headlines
 import words.undefined
 
@@ -26,7 +26,7 @@ RESTRUCTURED_NON_TEXTUAL_PAGE = 10
 def test_extract_undefined():
     """Text replacing the undefined items with content"""
     # TODO: Move to hey
-    textexample = tests.fixtures.restruct.docu27textexample()
+    textexample = tests.fixtures.docu27.textexample()
 
     source = power.link(power.DOCU027_PDF)
     ptcns = serializeraw.ptcn_frompath(source)

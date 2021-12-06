@@ -13,7 +13,7 @@ import serializeraw
 import utila
 import utilatest
 
-import tests.fixtures.restruct
+import tests.fixtures.docu27
 import words.feature
 import words.feature.text
 import words.headlines
@@ -25,7 +25,7 @@ import words.undefined
 @utilatest.longrun
 def test_text_work():
     source = power.link(power.DOCU027_PDF)
-    headlines = tests.fixtures.restruct.docu27headlines()
+    headlines = tests.fixtures.docu27.headlines()
     result = words.feature.text.work(
         boxes=iamraw.path.boxed(source),
         lists=words.path.lists(source),
@@ -42,7 +42,7 @@ def test_text_work():
 
 @utilatest.longrun
 def test_text_extractor_titles():
-    result = tests.fixtures.restruct.docu27textexample(
+    result = tests.fixtures.docu27.textexample(
         require_headlinelevel=
         False,  # TODO: SET TO TRUE TO IMPROVE HEADLINE PARSER
     )
@@ -103,8 +103,8 @@ def test_text_extractor_titles():
 @utilatest.longrun
 def test_text_convert_undefined_to_text():
     """Test to replace undefined `uindex` on last page."""
-    headlines = tests.fixtures.restruct.docu27headlines()
-    textexample = tests.fixtures.restruct.docu27textexample()
+    headlines = tests.fixtures.docu27.headlines()
+    textexample = tests.fixtures.docu27.textexample()
 
     headlines = serializeraw.load_headlines(headlines)
     dumped = serializeraw.dump_text(textexample)

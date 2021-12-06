@@ -23,7 +23,7 @@ import words.text
 import words.text.chapter
 
 
-def docu27sections():
+def sections():
     utilatest.fixture_requires(power.DOCU027_PDF)
     source = iamraw.path.sections_(power.link(power.DOCU027_PDF))
     extracted = serializeraw.load_sections(source)
@@ -31,8 +31,8 @@ def docu27sections():
     return dumped
 
 
-def docu27headlines():
-    sections_ = docu27sections()
+def headlines():
+    sections_ = sections()
     src = power.link(power.DOCU027_PDF)
     dumped, _ = words.feature.headlines.work(
         sectionlist=sections_,
@@ -51,16 +51,16 @@ def docu27headlines():
     return dumped
 
 
-def docu27resources():
+def resources():
     utilatest.fixture_requires(power.DOCU027_PDF)
-    headlines = docu27headlines()
+    headliner = headlines()
     source = power.link(power.DOCU027_PDF)
     loaded = words.feature.load_resources(
         text=iamraw.path.text(source),
         textposition=iamraw.path.textposition(source),
         fontheader=iamraw.path.fontheader(source),
         fontcontent=iamraw.path.fontcontent(source),
-        headlines=headlines,
+        headlines=headliner,
         pagesizes=iamraw.path.sizeandborder(source),
         headerfooters=iamraw.path.headerfooters(source),
         boxes=iamraw.path.boxed(source),
@@ -69,8 +69,8 @@ def docu27resources():
     return loaded
 
 
-def docu27textexample(require_headlinelevel: bool = True):
-    loaded = docu27resources()
+def textexample(require_headlinelevel: bool = True):
+    loaded = resources()
     extracted = words.text.chapter.extract_texts(
         loaded,
         require_headlinelevel=require_headlinelevel,

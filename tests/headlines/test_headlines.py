@@ -15,8 +15,8 @@ import utila
 import utilatest
 
 import tests
+import tests.fixtures.docu27
 import tests.fixtures.headlines
-import tests.fixtures.restruct
 import words.feature
 import words.feature.headlines
 import words.headlines
@@ -96,7 +96,7 @@ def test_headlines_extract_headlines():
 
 @utilatest.longrun
 def test_headlines_work():
-    sections_ = tests.fixtures.restruct.docu27sections()
+    sections_ = tests.fixtures.docu27.sections()
     src = power.link(power.DOCU027_PDF)
     dumped, _ = words.feature.headlines.work(
         textx=iamraw.path.text(src),
