@@ -74,16 +74,48 @@ def isabbreviation(word: str, lookup) -> bool:
     return False
 
 
-def isabbr(item: str):
+def isabbr(item: str):  # pylint:disable=R0911
+    """\
+    F( T( MB PM SD M= MDHF \u2212MD HF M) MD Z=
+    >>> isabbr('F(')
+    False
+    >>> isabbr('M=')
+    False
+    """
     if not isinstance(item, str):
         return False
     if len(item) <= 1:
         return False
+    if unbalanced(item):
+        return False
+    if item.lower() in NOABBR:
+        return False
     if item.isupper():
-        if any((char in item for char in ['.', '-'])):
-            # A-B
-            # B.
+        if chars_invalid(item):
             return False
         return True
+    return False
 
+
+NOABBR = utila.splititems("""\
+I II III IV V
+""")
+INVALIDS = '.-='
+
+
+def chars_invalid(item):
+    # A-B
+    # B.
+    if any(char for char in item if char in INVALIDS):
+        return True
+    return False
+
+
+def unbalanced(item):
+    if item.count('(') != item.count(')'):
+        return True
+    if item.count('[') != item.count(']'):
+        return True
+    if item.count('{') != item.count('}'):
+        return True
     return False
