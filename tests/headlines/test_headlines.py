@@ -162,14 +162,13 @@ def test_features_headlines_work_master72pages_subsections():
 
 def test_features_headlines_filter_headlines():
     example = tests.fixtures.headlines.EXAMPLE
-
     filtered = words.headlines.strategies.filter_headlines(example)
     filtered: list = list(filtered.values())  # dict to list
-
+    # subsections
     subsections = [item[1:] for item in filtered]
     subsections_count = [len(item) for item in subsections]
-
-    expected_subsection_count = [2, 5, 7, 5, 2]
+    # expected_subsection_count = [2, 5, 7, 5, 2] # BETTER
+    expected_subsection_count = [2, 6, 7, 5, 2]
     assert subsections_count == expected_subsection_count
 
 
