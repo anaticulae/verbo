@@ -42,3 +42,7 @@ def lists(path: str, prefix: str = '') -> str:
 
 def links(path: str, prefix: str = '') -> str:
     return utila.pathconnector(path, 'words', 'links_links', prefix)
+
+
+def abbr(path: str, prefix: str = '') -> str:
+    return utila.pathconnector(path, 'words', 'abbreviation_detected', prefix)
