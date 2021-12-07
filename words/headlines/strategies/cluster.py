@@ -123,7 +123,7 @@ def headline_expand(headline, ptcn):
     container = headline.container
     current = ptcn[container]
     # before = ptcn[container - 1] if container > 0 else None
-    after = ptcn[container + 1] if container - 1 < len(ptcn) else None
+    after = ptcn[container + 1] if container + 1 < len(ptcn) else None
     merge_after = after and (utila.near(
         current=after.bounding_mean,
         expected=current.bounding_mean,
