@@ -98,7 +98,7 @@ def select_formulas(formulas, first, second, pcn):
     # all formuals valid from page start
     start = 0
     if first and first.container not in (0, -1):
-        start = pcn[inrange(first.container, pcn)].bounding[1]
+        start = pcn[inrange(first.container, pcn, maxi=False)].bounding[1]
     # all formuals valid till page end
     end = 2048  # LARGE NUMBER
     if second and second.container not in (0, -1):
@@ -114,8 +114,15 @@ def select_formulas(formulas, first, second, pcn):
     return formulas
 
 
-def inrange(index, pcn):
+def inrange(index, pcn, maxi: bool = True):
+    # maxi: use start or end
     # TODO: REMOVE AFTER FIXING ONELINE NORMAL CONVERTING
+    if isinstance(index, tuple):
+        utila.error(f'tuple {index}')
+        if maxi:
+            index = index[-1]
+        else:
+            index = index[0]
     if index >= len(pcn):
         error = (index, len(pcn), pcn.page)
         utila.error(f'~oneline-normal headline problem: {error}')
