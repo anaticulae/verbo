@@ -2,6 +2,23 @@
 
 Every noteable change is logged here.
 
+## v1.9.0
+
+### Feature
+
+* use cache to reduce computation time (96c18841d2bd)
+* extend invalid abbr pattern (43c52587f674)
+* use sentence as parsing source (6a6ab69f0524)
+* add method to determine that line is a internal line (4bc6c63781ef)
+* add abbr path (b956799b8775)
+* use improved no headline checker (6fd9e9647c77)
+
+### Fix
+
+* ensure that index is in bounds (70df6b3f891b)
+* reduce numbers of lines for a single page (ed2605be5a27)
+* adjust imports after upgrading elements (95ad9e381104)
+
 ## v1.8.0
 
 ### Feature
