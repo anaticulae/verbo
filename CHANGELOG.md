@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v1.9.1
+
+### Fix
+
+* fix index accessing (c6388948b750)
+* do not fail on tuple index (9f4bcb6bddef)
+
 ## v1.9.0
 
 ### Feature
