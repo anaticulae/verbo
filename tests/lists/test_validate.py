@@ -158,7 +158,7 @@ def validate_master99(extracted):
     pytest.param(power.MASTER099_PDF, 'master099', ':', id='master099'),
 ])
 # yapf:enable
-@utilatest.longrun
+@utilatest.nightly
 def test_list_validate(source, validator, pages, testdir, monkeypatch):
     # run extraction
     extracted = extract_lists(source, pages, testdir, monkeypatch=monkeypatch)
