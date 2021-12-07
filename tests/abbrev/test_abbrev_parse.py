@@ -12,7 +12,6 @@ import serializeraw
 import utila
 
 import tests
-import words.feature.abbreviation
 import words.path
 
 
