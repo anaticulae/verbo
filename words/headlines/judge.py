@@ -76,8 +76,8 @@ def report_results(results: list):
         utila.debug(strategy.__name__)
         for item in utila.flatten(result):
             utila.debug(item.raw.strip())
-        utila.debug('')
-        utila.debug('')
+        utila.debug()
+        utila.debug()
 
 
 def remove_invalids(items: list) -> list:
@@ -225,7 +225,9 @@ def too_many_error(headlines) -> bool:
         return False
     error = score_levelerror(headlines)
     error_max = ERROR_MAX(headline_count)
-    if error > error_max:
-        utila.debug('skip invalid, too many error: '
-                    f'{error}/{error_max}:{headline_count}')
-    return error > error_max
+    if error <= error_max:
+        # valid extraction
+        return False
+    utila.debug('skip invalid, too many error: '
+                f'{error}/{error_max}:{headline_count}')
+    return True
