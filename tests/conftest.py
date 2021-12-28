@@ -22,6 +22,14 @@ power.setup(words.ROOT)
 
 RESOURCES = [
     power.DISS266_PDF,
+    genex.todo(
+        power.DISS172_PDF,
+        figureo=True,
+        tablero=True,
+        rawmaker_cleanup=True,
+        caption=True,
+        codero=True,
+    ),
     power.MASTER116_PDF,
     power.MASTER155_PDF,
     power.MASTER110_PDF,
