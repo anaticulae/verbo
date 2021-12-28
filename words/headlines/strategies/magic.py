@@ -18,7 +18,7 @@ import words.headlines.utils
 
 
 @utila.selbstwirksamkeit
-def document(ptcns, fontstore, magics) -> dict:
+def document(ptcns, fontstore, magics) -> list:
     headlines = doctextstyle.headlines_fromdata(
         navigators=ptcns,
         fontstore=fontstore,
@@ -51,7 +51,7 @@ def document(ptcns, fontstore, magics) -> dict:
                 container=containerid,
             )
             result[number].append(headline)
-    result = dict(result).values()
+    result: list = list(result.values())
     return result
 
 
