@@ -29,7 +29,6 @@ headline level out of these information. Use further text information out of
 headline.
 """
 
-import collections
 import typing
 
 import iamraw.path
@@ -41,8 +40,6 @@ import words.headlines.judge
 import words.headlines.levelfour
 import words.headlines.machine
 import words.lookup
-
-PageContentBoxed = collections.namedtuple('PageContentBoxed', 'page content')
 
 
 @utila.checkdatatype

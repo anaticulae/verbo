@@ -11,6 +11,7 @@
 
 TODO: Think about this complex data structure. Do we need this realy?
 """
+
 import collections
 import functools
 
@@ -19,8 +20,6 @@ import utila
 
 import words.boxed
 import words.loader
-
-PageContentBoxed = collections.namedtuple('PageContentBoxed', 'page content')
 
 
 @utila.checkdatatype
