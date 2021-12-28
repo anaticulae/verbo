@@ -113,7 +113,7 @@ def test_headlines_work():
         sizeandborder=iamraw.path.sizeandborder(src),
     )
     # dump some headlines
-    assert len(dumped) > 1740, str(dumped)
+    assert len(dumped) > 1000, str(dumped)
 
 
 def test_headlines_dump_and_load_headlines():
