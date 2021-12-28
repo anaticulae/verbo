@@ -40,7 +40,12 @@ def run(results):
         2. Compare result of 1. with StandardHeadlineExtractor
         3. Select best one one remaining strategies # TODO: VERIFY
     """
-    results = remove_invalids(results)
+    removed = remove_invalids(results)
+    if not any(removed):
+        # if no results are left, try with higher accepted error rate
+        removed = remove_invalids(results, second=True)
+    results = removed
+
     report_results(results)
 
     best = results[1]
@@ -80,11 +85,11 @@ def report_results(results: list):
         utila.debug()
 
 
-def remove_invalids(items: list) -> list:
+def remove_invalids(items: list, second: bool = False) -> list:
     result = []
     for item, strategy in zip(items, words.headlines.machine.STRATEGIES):
         utila.debug(strategy.__name__)
-        if too_many_error(item):
+        if too_many_error(item, second=second):
             result.append([])
             continue
         if invalid_extraction(item):
@@ -215,7 +220,7 @@ ERROR_MAX = configo.HolyTable(
 )
 
 
-def too_many_error(headlines) -> bool:
+def too_many_error(headlines, second: bool = False) -> bool:
     if not headlines:
         return False
     headline_count = len(utila.flatten(headlines))
@@ -225,9 +230,12 @@ def too_many_error(headlines) -> bool:
         return False
     error = score_levelerror(headlines)
     error_max = ERROR_MAX(headline_count)
+    if second:
+        # increase max error rate
+        error_max = int(error_max * 1.5)  # TODO: HOLY VALUE
     if error <= error_max:
         # valid extraction
         return False
     utila.debug('skip invalid, too many error: '
-                f'{error}/{error_max}:{headline_count}')
+                f'{error}/{error_max}:{headline_count}:second:{second}')
     return True
