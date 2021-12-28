@@ -106,4 +106,6 @@ def extract_boxed_content(contentblock, boxed: words.boxed.BoxedChecker):  # pyl
         return None
     assert len(result) == 1, len(result)
     for key, value in result.items():
+        # TODO: CHECK THIS!
+        # THIS FOR RUNS ONLY ONCES
         return (key, value)
