@@ -56,6 +56,7 @@ def file_read(name):
         marks=pytest.mark.xfail(reason='first level headlines'),
     ),
     pytest.param(power.DISS266_PDF, '7:215', 'diss266', id='diss266'),
+    pytest.param(power.DISS172_PDF, None, 'diss172', id='diss172'),
 ])
 # yapf:enable
 @utilatest.nightly
