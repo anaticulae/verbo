@@ -55,10 +55,11 @@ def run(results):
     maxed = max(best_flat, standard_flat) * 2
     # select best result
     if magic_flat > maxed:
-        # backup strategy
+        # TODO: CLARIFY DOCS
+        # backup strategy???
         return results[4]
     if cluster_flat > maxed:
-        # backup strategy
+        # backup strategy???
         return results[3]
     return best if best_flat > standard_flat else results[2]
 
