@@ -61,7 +61,8 @@ def run(results):
     if cluster_flat > maxed:
         # backup strategy???
         return results[3]
-    return best if best_flat > standard_flat else results[2]
+    result = best if best_flat > standard_flat else results[2]
+    return result
 
 
 def prepare_results(results: list) -> list:
