@@ -17,6 +17,7 @@ import words.headlines.strategies.cluster
 import words.headlines.strategies.magic
 import words.headlines.strategies.multiline
 import words.headlines.strategies.nolevel
+import words.headlines.strategies.numberlarge
 import words.headlines.strategies.standard
 import words.headlines.utils
 
@@ -26,6 +27,7 @@ STRATEGIES = [
     words.headlines.strategies.standard,
     words.headlines.strategies.cluster,
     words.headlines.strategies.magic,
+    words.headlines.strategies.numberlarge,
 ]
 
 Data = collections.namedtuple(
