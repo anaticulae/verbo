@@ -191,6 +191,9 @@ def invalid_extraction(headlines) -> bool:
     2. Strategy: Check headline ends with awkward characters.
     """
     headlines = utila.flatten(headlines)
+    if all(item.level == 1 for item in headlines):
+        # level one extraction strategy
+        return False
     # too many level ones in a row
     levels = [item.level for item in headlines if item.level is not None]
     grouped = utila.groupby_diff(levels, maxdiff=0, sort=False)
