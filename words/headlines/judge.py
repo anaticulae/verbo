@@ -40,27 +40,20 @@ def run(results):
         2. Compare result of 1. with StandardHeadlineExtractor
         3. Select best one one remaining strategies # TODO: VERIFY
     """
-    removed = remove_invalids(results)
-    if not any(removed):
-        # if no results are left, try with higher accepted error rate
-        removed = remove_invalids(results, second=True)
-    results = removed
-
-    report_results(results)
-
+    results = prepare_results(results)
+    # run selection
     best = results[1]
     if any(len(item) for item in results[0]):
         # if any item is detected with multiline strategy, choose
         # multiline over NoLevelheadline
         best = results[0]
-
     # longest common text selection
     best_flat = score_headlines(best)
     standard_flat = score_headlines(results[2])
     cluster_flat = score_headlines(results[3])
     magic_flat = score_headlines(results[4])
-
     maxed = max(best_flat, standard_flat) * 2
+    # select best result
     if magic_flat > maxed:
         # backup strategy
         return results[4]
@@ -70,13 +63,23 @@ def run(results):
     return best if best_flat > standard_flat else results[2]
 
 
+def prepare_results(results: list) -> list:
+    removed = remove_invalids(results)
+    if not any(removed):
+        # if no results are left, try with higher accepted error rate
+        removed = remove_invalids(results, second=True)
+    report_results(removed)
+    return removed
+
+
 def report_results(results: list):
+    # print score
     for strategy, result in zip(words.headlines.machine.STRATEGIES, results):
         utila.debug(strategy.__name__)
         utila.debug(f'score: {score_headlines(result)}')
         utila.debug(f'error: {score_levelerror(result)}')
         utila.debug()
-
+    # print result
     for strategy, result in zip(words.headlines.machine.STRATEGIES, results):
         utila.debug(strategy.__name__)
         for item in utila.flatten(result):

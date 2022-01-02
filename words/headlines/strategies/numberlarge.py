@@ -19,13 +19,13 @@ import utila
 
 
 @utila.selbstwirksamkeit
-def document(ptcns) -> list:
+def document(ptcns) -> dict:
     result = []
     for page in ptcns:
         headline = headline_frompage(page)
         if not headline:
             continue
-        result.append(headline)
+        result.append([headline])
     return result
 
 
@@ -46,7 +46,7 @@ def headline_frompage(page) -> iamraw.Headline:
                 continue
         isheadline = utila.issinglechar(text)
         if isheadline:
-            headlines.append(text)
+            headlines.append(text.replace(' ', ''))
             continue
     if not headlines or len(headlines) > 1:
         return None
@@ -60,6 +60,7 @@ def headline_frompage(page) -> iamraw.Headline:
         container=1,  # title
         decoration=0,  # big number
         raw=f'{pagenumber} {headline}',
-        raw_level=pagenumber,
+        # raw_level=pagenumber,
+        raw_level=f'{pagenumber}.',
     )
     return result
