@@ -46,14 +46,7 @@ def headlines(
     if not strategies:
         strategies = STRATEGIES
     # prepare data
-    textsize = texmex.document_textsize(navigators=ptcns)
-    textdistance = words.headlines.utils.document_textdistance(
-        navigators=ptcns,
-        digits=0,
-    )
-    magics = magics.pages if magics else []  # TODO: REMOVE LATER
-    data = Data(ptcns, sectionlist, chapters, textsize, textdistance, fontstore,
-                magics, pages)
+    data = create_data(ptcns, sectionlist, chapters, fontstore, magics, pages)
     # run strategies
     # TODO: MOVE document strategy to separate method
     results = [
@@ -88,7 +81,6 @@ def run(strategy, data: Data, pages: tuple = None):
             data,
             chapter_ranges[chapter],
         )
-
     # filter result
     if hasattr(strategy, 'filter_headlines'):
         # do not use AttributeError to avoid hiding strategy errors
@@ -170,3 +162,15 @@ def extract_page(strategy, data, page):
             continue
         result.append(headline)
     return result
+
+
+def create_data(ptcns, sectionlist, chapters, fontstore, magics, pages):
+    textsize = texmex.document_textsize(navigators=ptcns)
+    textdistance = words.headlines.utils.document_textdistance(
+        navigators=ptcns,
+        digits=0,
+    )
+    magics = magics.pages if magics else []  # TODO: REMOVE LATER
+    data = Data(ptcns, sectionlist, chapters, textsize, textdistance, fontstore,
+                magics, pages)
+    return data
