@@ -2,6 +2,20 @@
 
 Every noteable change is logged here.
 
+## v1.10.0
+
+### Feature
+
+* use second try if no headline detection is possible (2dc991d6afe7)
+
+### Fix
+
+* adjust return value (76928568bdaa)
+
+### Documentation
+
+* Happy New Year! (a5b73df5a377)
+
 ## v1.9.1
 
 ### Fix
