@@ -8,6 +8,7 @@
 # =============================================================================
 
 import contextlib
+import itertools
 import re
 
 import configo
@@ -15,6 +16,7 @@ import elements
 import utila
 
 import words.headlines.machine
+import words.headlines.strategies
 import words.headlines.visitor
 
 
@@ -61,11 +63,25 @@ def run(results):
     if cluster_flat > maxed:
         # backup strategy???
         return results[3]
-    result = best if best_flat > standard_flat else results[2]
-    return result
+    if best_flat > standard_flat:
+        return best
+    return results[2]
 
 
 def prepare_results(results: list) -> list:
+    largenumber = results[5]
+    if largenumber:
+        # multiline
+        results[0] = merge_ifrequired(results[0], largenumber)
+        # nolevel
+        # !no_merge!
+        # standard
+        results[2] = merge_ifrequired(results[2], largenumber)
+        # cluster
+        results[3] = merge_ifrequired(results[3], largenumber)
+        # cluster
+        results[4] = merge_ifrequired(results[4], largenumber)
+
     removed = remove_invalids(results)
     if not any(removed):
         # if no results are left, try with higher accepted error rate
@@ -88,6 +104,35 @@ def report_results(results: list):
             utila.debug(item.raw.strip())
         utila.debug()
         utila.debug()
+
+
+def merge_ifrequired(result: list, largenumber: list) -> list:
+    """If chapter does not contain any first level headlines and
+    largenumber extraction delivers first level headlines, merge them to
+    improve extraction.
+    """
+    if not largenumber:
+        # no append is possible
+        return result
+    firstlevel = any(
+        words.headlines.strategies.isfirstlevel(item[0]) for item in result)
+    if firstlevel:
+        # no first level append is required
+        return result
+    flat = utila.flatten(result)
+    # copy list to avoid changing
+    merged = [list(headliner) for headliner in largenumber]
+    for current, after in itertools.zip_longest(merged, merged[1:]):
+        firstpage = current[0].page
+        lastpage = after[0].page if after else utila.INF
+        for item in flat:
+            # TODO: lastpage expect that largenumber starts on a new page
+            if firstpage <= item.page < lastpage:
+                current.append(item)
+    # give debug information
+    utila.debug('merge firstlevel into extraction without firstlevel')
+    utila.debug(largenumber)
+    return merged
 
 
 def remove_invalids(items: list, second: bool = False) -> list:
