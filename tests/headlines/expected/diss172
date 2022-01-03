@@ -1,8 +1,8 @@
-1 introduction
+1. INTRODUCTION
     1.1 problem definition
     1.2 contributions
     1.3 outline of the thesis
-2 background
+2. BACKGROUND
     2.1 system dependability
     2.2 distributed system observability
         2.2.1 Metrics
@@ -20,15 +20,14 @@
             2.4.4.4 Autoencoders
             2.4.4.5 Self-supervised learning
         2.4.5 Evaluation scores for anomaly detection methods
-3 challenges and overview
-    3.1 Anomaly detection challenges in distributed software systems
+3. CHALLENGESANDOVERVIEW
         3.1.1 Metric data
         3.1.2 Log data
         3.1.3 Distributed tracing data
         3.1.4 Complex anomalies
         3.1.5 Assumptions
     3.2 conceptual overview
-4 anomaly detection in metric data
+4. ANOMALYDETECTIONINMETRICDATA
     4.1 metano: anomaly detection and classification in metrics
         4.1.1 Time series preprocessing
         4.1.2 Network architecture
@@ -42,7 +41,7 @@
             4.2.2.1 Performance evaluation
     4.3 related work
     4.4 chapter summary
-5 anomaly detection in log data
+5. ANOMALYDETECTIONINLOGDATA
     5.1 log parsing
     5.2 nulog: neural log parsing
         5.2.1 Parsing with Transformers
@@ -72,7 +71,7 @@
         5.7.1 Log parsing
         5.7.2 Log anomaly detection
     5.8 chapter summary
-6 anomaly detection in distributed tracing data
+6. ANOMALYDETECTIONINDISTRIBUTEDTRACING
     6.1 sequence learning for trace anomaly detection
         6.1.2 Autoregressive LSTM-based method for anomaly detection
         6.1.3 Limitations of autoregressive approaches
@@ -85,14 +84,11 @@
         6.3.5 Explanation of decisions
     6.4 related work
     6.5 chapter summary
-7 multi-source detection of complex anomalies
+7. MULTI-SOURCEDETECTIONOFCOMPLEXANOMALIES
     7.1 complex anomalies in distributed systems
     7.2 triano: integration of the anomaly detectors
     7.3 evaluation
         7.3.3 Results summary
     7.4 related work
     7.5 chapter summary
-8 conclusion
-a appendix
-    a.1 Multimodal anomaly detection by learning joint representations
-    a.2 Results
+8. CONCLUSION
