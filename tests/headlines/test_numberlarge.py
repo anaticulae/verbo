@@ -31,3 +31,27 @@ def test_diss172_headlines():
     )
     headlines = utila.flatten(result)
     assert len(headlines) == 8  # TODO: MAY INCREASE TO 9
+
+
+def test_diss172_headlines_content_headline():
+    """Ensure that false detected first level headline `CONTENTS` is
+    removed by first level duplicated mechanism."""
+    path = power.link(power.DISS172_PDF)
+    pages = utila.ranged_tuple(20, 70)
+    section = serializeraw.load_sections(
+        iamraw.path.sections_(path),
+        pages=pages,
+    )
+    content = serializeraw.ptcn_frompath(path, pages=pages)
+    result = words.headlines.machine.headlines(
+        ptcns=content,
+        sectionlist=section,
+        strategies=[words.headlines.strategies.standard],
+        pages=pages,
+    )
+    headlines = utila.flatten(utila.flatten(result))
+    firstlevels = [
+        item for item in headlines
+        if words.headlines.strategies.isfirstlevel(item)
+    ]
+    assert not firstlevels

@@ -160,7 +160,7 @@ def test_features_headlines_work_master72pages_subsections():
     assert subsections_count == expected_subsection_count
 
 
-def test_features_headlines_filter_headlines():
+def test_filter_headlines():
     example = tests.fixtures.headlines.EXAMPLE
     filtered = words.headlines.strategies.filter_headlines(example)
     filtered: list = list(filtered.values())  # dict to list
