@@ -195,7 +195,7 @@ def patch(raw: str) -> int:
     1
     >>> patch('d.')
     4
-    >>> patch('Kapitel 6:')
+    >>> patch('Kapitel 6:') # TODO: SHOULD RETURN 1?
     6
     """
     if not raw:
