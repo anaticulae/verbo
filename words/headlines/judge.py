@@ -111,6 +111,8 @@ def merge_ifrequired(result: list, largenumber: list) -> list:
     largenumber extraction delivers first level headlines, merge them to
     improve extraction.
     """
+    # TODO: WE DO NOT MERGE IF LARGE NUMBER IS NOT DETECTED IN CHAPTER
+    # WHERE OTHER HEADLINES ARE EXTRACTED.
     if not largenumber:
         # no append is possible
         return result
