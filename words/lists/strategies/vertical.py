@@ -18,10 +18,10 @@ import words.lists.strategies.regex
 
 def analyze_page(ptcn, headlines):
     # TODO: RUN GROUPING A FEW TIMES AND SELECT "BEST" ONE?
+    if not ptcn:
+        return []
     remove_headline_content(ptcn, headlines)
-
     lists = group_and_parse(ptcn)
-
     result = create_lists(lists)
     return result
 
