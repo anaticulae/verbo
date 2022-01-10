@@ -11,10 +11,12 @@ import iamraw
 import power
 import serializeraw
 import utila
+import utilatest
 
 import words.headlines.strategies.numberlarge
 
 
+@utilatest.longrun
 def test_diss172_headlines():
     path = power.link(power.DISS172_PDF)
     pages = None
@@ -33,6 +35,7 @@ def test_diss172_headlines():
     assert len(headlines) == 8  # TODO: MAY INCREASE TO 9
 
 
+@utilatest.longrun
 def test_diss172_headlines_content_headline():
     """Ensure that false detected first level headline `CONTENTS` is
     removed by first level duplicated mechanism."""
