@@ -56,6 +56,7 @@ RESOURCES = [
     power.BACHELOR063_PDF,
     power.MASTER098_PDF,
     power.MASTER075_PDF,
+    (power.DISS178_PDF, '16:70'),
     genex.todo(
         power.BACHELOR037_PDF,
         formulero=True,
