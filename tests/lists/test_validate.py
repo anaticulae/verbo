@@ -156,6 +156,7 @@ def validate_master99(extracted):
                         marks=pytest.mark.xfail(reason='broken formulero parser'),
     ),
     pytest.param(power.MASTER099_PDF, 'master099', ':', id='master099'),
+    pytest.param(power.DISS178_PDF, 'diss178p17', utila.ranged_list(15,20), id='diss178p17'),
 ])
 # yapf:enable
 @utilatest.nightly
