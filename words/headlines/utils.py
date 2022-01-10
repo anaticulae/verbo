@@ -63,7 +63,7 @@ def determine_chapters(root: iamraw.Sections):
     return result
 
 
-def determine_contentrange(items) -> 'words.headlines.ChapterRanges':
+def determine_contentrange(items) -> 'ChapterRanges':
     """Iterate thrue `sections` and search for `Chapter` to determine
     section start and end.
 

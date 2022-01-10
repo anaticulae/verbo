@@ -9,7 +9,7 @@
 
 import words.headlines.strategies.multiline
 import words.headlines.strategies.standard
-import words.headlines.utils as whu
+import words.headlines.utils
 
 
 def filter_headlines(items):  # pylint:disable=R0201
@@ -18,7 +18,10 @@ def filter_headlines(items):  # pylint:disable=R0201
     result = {}
     for number, chapter in items.items():
         # skip `normal` headlines, we want to analyze NoLevelHeadlines
-        items = [item for item in chapter if not whu.parse_headline(item.title)]
+        items = [
+            item for item in chapter
+            if not words.headlines.utils.parse_headline(item.title)
+        ]
         result[number] = items
     # TODO: USE DICT CONVERTER HERE
     result = words.headlines.strategies.multiline.filter_headlines(result)

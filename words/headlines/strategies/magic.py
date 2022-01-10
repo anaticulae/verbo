@@ -14,7 +14,6 @@ import iamraw
 import utila
 
 import words.headlines.strategies.multiline
-import words.headlines.utils
 
 
 @utila.selbstwirksamkeit
