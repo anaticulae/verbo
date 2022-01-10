@@ -98,6 +98,7 @@ def lookup_table(ptcns) -> dict:
 def merge(navigators: texmex.PageTextNavigators) -> texmex.PageTextNavigator:
     """Merge more than one pagenavigators to a single huge navigator to
     detect multi page lists."""
+    # TODO: MOVE TO TEXMEX
     if not navigators:
         return None
     if navigators[0]:
