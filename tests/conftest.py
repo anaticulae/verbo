@@ -88,6 +88,7 @@ RESOURCES = [
         pages='18:35',
     ),
     power.DOCU027_PDF,
+    (power.MASTER063_PDF, '20:30'),
     power.DOCU009_PDF,
 ]
 
