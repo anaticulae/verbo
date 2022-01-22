@@ -273,6 +273,8 @@ ERROR_MAX = configo.HolyTable(
     left_outranges_none=False,
     right_outranges_none=False,
 )
+# give some tolerance if first appraoch was not good enough
+ERROR_MAX_PLUS = configo.HV_PERCENT_PLUS(default=150)
 
 
 def too_many_error(headlines, second: bool = False) -> bool:
@@ -287,7 +289,7 @@ def too_many_error(headlines, second: bool = False) -> bool:
     error_max = ERROR_MAX(headline_count)
     if second:
         # increase max error rate
-        error_max = int(error_max * 1.5)  # TODO: HOLY VALUE
+        error_max = int(error_max * ERROR_MAX_PLUS)
     if error <= error_max:
         # valid extraction
         return False

@@ -14,6 +14,7 @@ Detect first level headline with a large Chapter Number.
 C O N C L U S I O N         8
 """
 
+import configo
 import iamraw
 import utila
 
@@ -29,7 +30,7 @@ def document(ptcns) -> dict:
     return result
 
 
-BEFORE = 0.20  # TODO: HOLY VALUE
+BEFORE = configo.HV_PERCENT_PLUS(default=20)
 
 
 def headline_frompage(page) -> iamraw.Headline:
