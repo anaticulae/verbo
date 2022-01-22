@@ -22,6 +22,7 @@ power.setup(words.ROOT)
 
 RESOURCES = [
     power.DISS266_PDF,
+    power.DISS218_PDF,
     genex.todo(
         power.DISS172_PDF,
         figureo=True,
