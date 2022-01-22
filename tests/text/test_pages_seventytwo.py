@@ -9,7 +9,6 @@
 
 import re
 
-import german
 import utila
 import utilatest
 
@@ -168,15 +167,6 @@ def test_text_seventytwo_extract_textsections_complete():
     assert headlines[0].title == 'Einleitung'
     assert headlines[-3].raw == '5.  Schlussbetrachtung und Fazit'
     assert headlines[-1].raw == 'Eidesstattliche Erklärung'
-
-
-def test_text_seventytwo_extract_sentences():
-    # TODO MOVE TEST TO GERMAN
-    expected = fseventytwo.firstpage_sentences()
-    raw = ' '.join(expected)
-    splitted = german.sentence_tokenize(raw)
-    assert len(splitted) == len(expected)
-    assert splitted == expected
 
 
 @utilatest.longrun
