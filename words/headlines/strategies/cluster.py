@@ -32,7 +32,7 @@ import words.headlines.strategies.singlepage
 HEADLINE_WORDCOUT_MAX = configo.HV_INT_PLUS(default=20)
 
 
-def filter_headlines(parsed) -> dict:
+def filter_headlines(parsed) -> dict:  # pylint:disable=R0914
     flat = utila.flatten(parsed.values())
     flat = doctextstyle.utils.flatten(flat)
     headlines = doctextstyle.features.headline.headlines(
@@ -44,7 +44,8 @@ def filter_headlines(parsed) -> dict:
     if not headlines:
         utila.error('empty headlines for strategy cluster')
         return {}
-    clusters = [cluster for cluster in headlines[1] if valid_cluster(cluster)]
+    clustered = headlines[1]  # style, clustered = headlines
+    clusters = [cluster for cluster in clustered if valid_cluster(cluster)]
     clusters = [{item.hashed for item in level} for level in clusters]
     result = collections.defaultdict(list)
     for number, chapter in parsed.items():
@@ -129,10 +130,11 @@ def headline_expand(headline, ptcn):
         expected=current.bounding_mean,
         diff=2.0,
     )) and current.style.fontid == after.style.fontid
-    if merge_after:
-        headline.title = f'{headline.title} {after.text}'
-        headline.raw = f'{headline.raw} {after.text}'
-        headline.container = (headline.container, container + 1)
+    if not merge_after:
+        return
+    headline.title = f'{headline.title} {after.text}'
+    headline.raw = f'{headline.raw} {after.text}'
+    headline.container = (headline.container, container + 1)
 
 
 NO_HEADLINE_CHARS = '+_'
