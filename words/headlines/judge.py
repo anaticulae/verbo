@@ -116,8 +116,11 @@ def merge_ifrequired(result: list, largenumber: list) -> list:
     if not largenumber:
         # no append is possible
         return result
+    # remove empty headline level
     firstlevel = any(
-        words.headlines.strategies.isfirstlevel(item[0]) for item in result)
+        words.headlines.strategies.isfirstlevel(item[0])
+        for item in result
+        if item)
     if firstlevel:
         # no first level append is required
         return result

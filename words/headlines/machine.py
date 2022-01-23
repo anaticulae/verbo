@@ -8,7 +8,9 @@
 # =============================================================================
 
 import collections
+import statistics
 
+import configo
 import iamraw
 import texmex
 import utila
@@ -102,7 +104,22 @@ def run(strategy, data: Data, pages: tuple = None):
             ptcns=data.ptcns,
         )
     grouped = words.headlines.utils.groupby_headlinelevel(results)
+    grouped = [group if headlines_valid(group) else [] for group in grouped]
     return grouped
+
+
+HEADLINES_LENGTH_MEAN_MAX = configo.HV_INT_PLUS(default=70)
+
+
+def headlines_valid(level):
+    if not level:
+        return True
+    lengths = [len(headline.title) for headline in level]
+    mean = statistics.mean(lengths)
+    if mean > HEADLINES_LENGTH_MEAN_MAX:
+        utila.debug(f'invalid headlines, mean length: {mean}\n{level}\n')
+        return False
+    return True
 
 
 def extract_chapter(strategy, data, chapter_range):
