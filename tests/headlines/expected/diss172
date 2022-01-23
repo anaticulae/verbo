@@ -58,6 +58,7 @@
         5.5.2 Objective function
         5.5.3 Anomaly score and detection of anomalies
         5.5.4 Learning with an additional expert input
+        5.5.5 Vector representations of the logs
     5.6 evaluation
         5.6.1 Experimental setup
         5.6.2 Baselines
@@ -73,6 +74,7 @@
     5.8 chapter summary
 6. ANOMALYDETECTIONINDISTRIBUTEDTRACING
     6.1 sequence learning for trace anomaly detection
+        6.1.1 Trace preprocessing
         6.1.2 Autoregressive LSTM-based method for anomaly detection
         6.1.3 Limitations of autoregressive approaches
         6.2.1 Detecting anomalies
@@ -88,7 +90,11 @@
     7.1 complex anomalies in distributed systems
     7.2 triano: integration of the anomaly detectors
     7.3 evaluation
+        7.3.1 Experimental testbed
+            7.3.1.1 Anomaly scenarios
+        7.3.2 Results
         7.3.3 Results summary
     7.4 related work
     7.5 chapter summary
 8. CONCLUSION
+A. APPENDIX
