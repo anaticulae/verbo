@@ -24,8 +24,8 @@ def file_read(name: str) -> str:
     expected = os.path.join(words.ROOT, 'tests/headlines/expected')
     path = os.path.join(expected, name)
     if not utila.exists(path):
-        return ''
-    return utila.file_read(path).strip()
+        return '', path
+    return utila.file_read(path).strip(), path
 
 
 # TODO: 5.2 Die ´Demenzkampagne Ostfildern „Wir sind Nachbarn!“`: Oktober 2007 – Juni 2008
@@ -67,7 +67,7 @@ def file_read(name: str) -> str:
 @utilatest.nightly
 def test_headlines_validate(source, pages, expected, testdir, monkeypatch):
     utilatest.fixture_requires(source)
-    expected = file_read(expected)
+    expected, paths = file_read(expected)
     src, pages = power.link(source), pages if isinstance(pages, str) else ':'
     tests.run(
         f'-i {src} --headlines -VVV --pages={pages}',
@@ -88,6 +88,15 @@ def test_headlines_validate(source, pages, expected, testdir, monkeypatch):
         utila.log(oneline)
         utila.log('EXPECTED')
         utila.log(expected)
+        # ease debugging: if the result is not correct take the assumption
+        # that the bigger file may the better file
+        if normal or oneline:
+            content = normal if len(normal) >= len(oneline) else oneline
+            content = content.rstrip() + utila.NEWLINE
+            utila.file_replace(
+                paths,
+                content,
+            )
     assert expected in (oneline, normal)
 
 
