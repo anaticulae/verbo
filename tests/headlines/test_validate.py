@@ -58,6 +58,7 @@ def file_read(name):
     pytest.param(power.DISS266_PDF, '7:215', 'diss266', id='diss266'),
     pytest.param(power.DISS172_PDF, None, 'diss172', id='diss172'),
     pytest.param(power.MASTER072_PDF, None, 'master072', id='master072'),
+    pytest.param(power.MASTER099_PDF, None, 'master099', id='master099'),
 ])
 # yapf:enable
 @utilatest.nightly
