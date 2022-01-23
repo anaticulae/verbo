@@ -19,10 +19,17 @@ import words.headlines.strategies.multiline
 
 
 @utilatest.longrun
-def test_headlines_multiple_extract_master72pages5_7():
+def test_headlines_multiple_extract_master72pages5_7(monkeypatch):
     path = power.link(power.MASTER072_PDF)
     pages = utila.ranged_tuple(5, 7)
-    headlines = parse_multiline(path, pages)
+
+    with monkeypatch.context() as context:
+        context.setattr(
+            words.headlines.machine,
+            'HEADLINES_LENGTH_MEAN_MAX',
+            100,
+        )
+        headlines = parse_multiline(path, pages)
 
     expected = [
         ('1.2', 'Aufbau der Arbeit', 2),
