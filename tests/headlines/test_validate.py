@@ -20,9 +20,12 @@ import words
 import words.path
 
 
-def file_read(name):
+def file_read(name: str) -> str:
     expected = os.path.join(words.ROOT, 'tests/headlines/expected')
-    return utila.file_read(os.path.join(expected, name))
+    path = os.path.join(expected, name)
+    if not utila.exists(path):
+        return ''
+    return utila.file_read(path).strip()
 
 
 # TODO: 5.2 Die ´Demenzkampagne Ostfildern „Wir sind Nachbarn!“`: Oktober 2007 – Juni 2008
@@ -64,7 +67,7 @@ def file_read(name):
 @utilatest.nightly
 def test_headlines_validate(source, pages, expected, testdir, monkeypatch):
     utilatest.fixture_requires(source)
-    expected = file_read(expected).strip()
+    expected = file_read(expected)
     src, pages = power.link(source), pages if isinstance(pages, str) else ':'
     tests.run(
         f'-i {src} --headlines -VVV --pages={pages}',
