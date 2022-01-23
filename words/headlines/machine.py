@@ -108,7 +108,7 @@ def run(strategy, data: Data, pages: tuple = None):
     return grouped
 
 
-HEADLINES_LENGTH_MEAN_MAX = configo.HV_INT_PLUS(default=70)
+HEADLINES_LENGTH_MEAN_MAX = configo.HV_INT_PLUS(default=80)
 
 
 def headlines_valid(level):
