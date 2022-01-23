@@ -2,6 +2,27 @@
 
 Every noteable change is logged here.
 
+## v1.11.0
+
+### Feature
+
+* increase possible headline mean length (0654ac1a9ced)
+* add extra headline validation step (ecab1d50fc3d)
+* add support for roman number (c691121b327d)
+* merge first level headlines if required (7afb8978b343)
+* remove multiple detected first level headlines (b0812ab85053)
+* enable number large pattern (a9dd0e181438)
+* add first level with number pattern (05bfcfc19ddd)
+
+### Fix
+
+* do not fail on empty ptn (2d421808eafe)
+* do not skip level one only (73d5a5a82715)
+
+### Documentation
+
+* adjust modules (68228319fd89)
+
 ## v1.10.0
 
 ### Feature
