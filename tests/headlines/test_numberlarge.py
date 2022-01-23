@@ -16,7 +16,7 @@ import utilatest
 import words.headlines.strategies.numberlarge
 
 
-@utilatest.longrun
+@utilatest.nightly
 def test_diss172_headlines():
     path = power.link(power.DISS172_PDF)
     pages = None

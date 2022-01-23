@@ -26,7 +26,7 @@ def load_expected(name) -> str:
 
 
 @pytest.mark.xfail(reason='require some little changes')
-@utilatest.longrun
+@utilatest.nightly
 def test_validate_master072_text():
     source = power.MASTER072_PDF
     pages = utila.ranged_tuple(3, 64)

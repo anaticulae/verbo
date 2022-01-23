@@ -91,7 +91,7 @@ def test_text_extractor_titles():
     assert page18.content[0].headline.title == 'Sphinx Guide'
 
 
-@utilatest.longrun
+@utilatest.nightly
 def test_text_convert_undefined_to_text():
     """Test to replace undefined `uindex` on last page."""
     headlines = tests.fixtures.docu27.headlines()

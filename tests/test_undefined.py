@@ -22,7 +22,7 @@ RESTRUCTURED_NON_TEXTUAL_PAGE = 10
 
 
 @pytest.mark.xfail
-@utilatest.longrun
+@utilatest.nightly
 def test_extract_undefined():
     """Text replacing the undefined items with content"""
     # TODO: Move to hey

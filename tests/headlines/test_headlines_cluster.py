@@ -54,7 +54,7 @@ MASTER155_SECTIONLIST = iamraw.Sections(content=[
 ])
 
 
-@utilatest.longrun
+@utilatest.nightly
 def test_headlines_cluster_master155(master155pages50):  # pylint:disable=W0621
     ptcns, _, __, pages = master155pages50
     # TODO: START END DOES NOT MATCH WITH CONTENT. IS THIS A PROBLEM?
