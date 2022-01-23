@@ -41,28 +41,28 @@ def file_read(name: str) -> str:
 
 # yapf:disable
 @pytest.mark.parametrize('source, pages, expected', [
-    pytest.param(power.DOCU027_PDF, None, 'docu027', id='docu27',
-        marks=pytest.mark.xfail,
-    ),
     pytest.param(power.BACHELOR037_PDF, None, 'bachelor037', id='bachelor37'),
     pytest.param(power.BACHELOR051_PDF, '0:48', 'bachelor051', id='bachelor51'),
     pytest.param(power.BACHELOR063_PDF, None, 'bachelor063', id='bachelor63'),
+    pytest.param(power.BACHELOR067_PDF,  None, 'bachelor067', id='bachelor067'),
+    pytest.param(power.BACHELOR076_PDF, None, 'bachelor076', id='bachelor076'),
     pytest.param(power.BACHELOR090_PDF, None, 'bachelor090', id='bachelor90'),
     pytest.param(power.BACHELOR128_PDF, None, 'bachelor128', id='bachelor128'),
+    pytest.param(power.DISS172_PDF, None, 'diss172', id='diss172'),
+    pytest.param(power.DISS205_PDF,  None, 'diss205', id='diss205'),
+    pytest.param(power.DISS266_PDF, '7:215', 'diss266', id='diss266'),
+    pytest.param(power.MASTER072_PDF, None, 'master072', id='master072'),
     pytest.param(power.MASTER098_PDF, None, 'master098', id='master98'),
+    pytest.param(power.MASTER099_PDF, None, 'master099', id='master099'),
     pytest.param(power.MASTER110_PDF, None, 'master110', id='master110'),
     pytest.param(power.MASTER116_PDF, None, 'master116', id='master116'),
     pytest.param(power.MASTER155_PDF,  None, 'master155', id='master155'),
-    pytest.param(power.DISS205_PDF,  None, 'diss205', id='diss205'),
-    pytest.param(power.BACHELOR067_PDF,  None, 'bachelor067', id='bachelor067'),
     pytest.param(power.DISS264_PDF, None, 'diss264', id='diss264',
         marks=pytest.mark.xfail(reason='first level headlines'),
     ),
-    pytest.param(power.DISS266_PDF, '7:215', 'diss266', id='diss266'),
-    pytest.param(power.DISS172_PDF, None, 'diss172', id='diss172'),
-    pytest.param(power.MASTER072_PDF, None, 'master072', id='master072'),
-    pytest.param(power.MASTER099_PDF, None, 'master099', id='master099'),
-    pytest.param(power.BACHELOR076_PDF, None, 'bachelor076', id='bachelor076'),
+    pytest.param(power.DOCU027_PDF, None, 'docu027', id='docu27',
+        marks=pytest.mark.xfail,
+    ),
 ])
 # yapf:enable
 @utilatest.nightly
