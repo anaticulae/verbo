@@ -1,11 +1,11 @@
 
 
+:::: Abkürzungen und Symbole ::::
+
+
+
+
 :::: Einführung ::::
-
-
-
-
-:::: Entwurfsentscheidungen in Bauwerksmodellen ::::
 
 
 Die voranschreitende Implementierung digitaler Prozesse in der Planung im Bauwesen geht einher mit der Entwicklung komplexer Datenstrukturen.
@@ -28,10 +28,10 @@ Er hat diese so im Modell umzusetzen, dass sie – nach seiner Einschätzung –
 Dieses Prinzip existiert ebenso bei der Entwicklung digitaler Software (vgl. Berg u.a., 2009).
 
 
-:::: Motivation ::::
+:::: Entwurfsentscheidungen in Bauwerksmodellen ::::
 
 
-Das digitale Bauwerksmodell selbst wird nach heutigem Stand der Technik, hauptsächlich als aktueller Planungsstand bzw. als das Produkt der durch einen Menschen getroffenen Entscheidungen, betrachtet.
+Das digitale Bauwerksmodell selbst wird nach heutigem Stand der Technik, hauptsächlich als aktueller Planungsstand bzw.als das Produkt der durch einen Menschen getroffenen Entscheidungen, betrachtet.
 Die darüberhinausgehende Integration des Wissens und der Überlegungen, welche hinter den Entscheidungen steckt, spielen bisher nur eine begrenzte Rolle, obwohl sich Wissen und Überlegungen aus den Anforderungen als mehr oder weniger exakt formulierte Zwänge und Regeln ergeben.
 Eine typische Form solcher Regeln im Bauwesen ist die Festlegung von Mindest- oder Höchstmaßen unter gegebenen Bedingungen.
 Beispielsweise hat die lichte Breite der Fluchtwege bei bis zu 20 Personen im Einzugsgebiet entsprechend der technischen Regeln mindestens 1,00 m zu betragen (entnommen aus Bundesanstalt für Arbeitsschutz und Arbeitsmedizin: Ausschuss für Arbeitsstätten (ASTA), 2007, Tabelle 1).
