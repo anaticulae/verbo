@@ -1,0 +1,1491 @@
+
+
+:::: Einleitung ::::
+
+
+In vielen Industriezweigen werden Innovationen erst durch Embedded Systems möglich.
+Embedded Systems befinden sich in Haushaltselektronik, Unterhaltungselektronik, Büroanwendungen, Transportsystemen, Fabriken, medizinischen Anwendungen und in weiteren Bereichen.
+Dabei werden diese immer komplexer und erfordern ein hohes Maß an Sicherheit.
+Das Eisenbahnwesen ist ein sehr weit entwickelter Industriezweig.
+Neuerungen werden hier erst durch elektronische und softwaretechnische Innovationen ermöglicht.
+Dies wird in der Zustandsdiagnose von Fahrzeugen deutlich.
+Zur Zeit wird dies durch feste Wartungszyklen gelöst.
+Dadurch ist keine zustandsabhängige Wartung und Instandsetzung möglich.
+Das CargoCBM-Projekt soll die periodische Wartung in eine zustandsabhängige Wartung überführen.
+Hierzu werden Bauteile durch Sensoren überwacht.
+Durch Algorithmen können die Zustände der Fahrzeuge bestimmt werden.
+Die Instandhaltung und Verfügbarkeit der Wagen kann damit optimiert werden.
+Ermöglicht wird dies durch embedded Systems.
+Diese ermöglichen die Fernwartung durch Kommunikation mit den Fahrzeugen über das Mobilfunknetz.
+Diese Systeme sind sehr komplex und müssen kontinuierlich erweitert werden.
+Dies ist nur durch eine moderne, effiziente, embedded Entwicklung möglich.
+
+
+:::: Motivation ::::
+
+
+Skriptsprachen benötigen zur Ausführung eine Laufzeitumgebung und ermöglichen eine komfortable Entwicklung.
+Die Laufzeitumgebung ist auf vielen Zielplattformen nicht vorhanden.
+In dieser Ausgangssituation ist auch das CargoCBM-Projekt an der Technischen Universität Berlin.
+Dabei sind die Algorithmen zur Fahrzeugdiagnose, die in Mat- lab umgesetzt sind, weit fortgeschritten.
+Die verwendete Hardware erfordert jedoch C/C++-Quellcode mit festem Typsystem, welcher ohne Matlab-Umgebung ausgeführt werden kann.
+Die Algorithmen können manuell in die Zielsprache C portiert werden.
+Dies ist sehr arbeitsaufwändig, fehleranfällig und entspricht nicht dem Stand der Technik.
+Weiterhin werden die Algorithmen konstant weiterentwickelt.
+Dies ist auf Änderungen der Sensorik sowie weitere Projektfortschritte zurückzuf ühren.
+Die Algorithmen der OBU sollen den allgemeinen Entwicklungsstand widerspiegeln und mit der Entwicklung synchronisiert werden.
+Eine verstärkte allgemeine Nutzung und Entwicklung von Embedded Systems motiviert zusätzlich die Forschung nach modernen Ansätzen in der embedded Softwareentwicklung.
+
+
+:::: Zielsetzung und Aufbau der Arbeit ::::
+
+
+Als Ziel der Arbeit sollen Methoden zur Entwicklung von Software für Embedded Systems entstehen.
+Als Teilziel sollen bereits entwickelte Algorithmen auf ein Embedded System portiert werden.
+Daf ür sollen zunächst verschiedene Strategien angewandt und bewertet werden.
+Weiterhin soll ein allgemeines Muster zur Umsetzung von Softwaremodulen entstehen.
+Dies beinhaltet das technische Vorgehen der Entwicklung und des Testes sowie ein allgemeines Architekturmuster zur Softwarearchitektur.
+Zunächst werden in Kapitel zwei die Grundlagen zur Entwicklung von embedded Software dargestellt.
+Ein Schwerpunkt dieser Entwicklung ist die Automatisierung und Standardisierung dieses Prozesses.
+Dabei werden die embedded Standards AUTOSAR und MISRA-C dargestellt.
+Aufbauend auf den Grundlagen des zweiten Kapitels werden im dritten Kapitel Methodiken zur embedded Softwareentwicklung aufgezeigt.
+Ein Schwerpunkt dieser Arbeit ist ein innovatives Verfahren, die modellgetriebene Softwareentwicklung (Model-Driven Software Development - MDSD).
+Im Zentrum der praktischen Arbeit steht die Verwendung des MDSD-Tools Simulink.
+Dieses ermöglicht die Simulation von Softwarekomponenten.
+Zusätzlich können diese in verschiedene Zielsprachen exportiert werden.
+Ein weiterer Schwerpunkt liegt in der Verifikation der erzeugten Software.
+Dabei wird auf die Verifikation in Simulink und in der erzeugten Zielsprache eingegangen.
+Weiterhin wird das methodische Vorgehen zur Teilung von Gesamtproblemen dargestellt.
+Kapitel vier behandelt die exemplarische Umsetzung der Theorie.
+Dazu werden bereits existierende Algorithmen auf die Zielsprache transformiert sowie fehlende Komponenten erstellt.
+Weiterhin werden Verfahren zur Integration von Softwarekomponenten dargelegt.
+In Folge der Tests werden Methoden zur Fehlersuche und deren Korrektur angewendet und dargestellt.
+Abschließend findet eine allgemeine Diskussion statt und es wird ein Ausblick auf weitere mögliche Forschungsziele getätigt.
+Der Anhang enthält konkrete Handlungsanweisungen zur praktischen Entwicklung.
+Weiterhin sind konkrete Konfigurationen von Software und Entwicklungsumgebung dargestellt.
+Abschließend enthält dieser eine Übersicht zum beigelegte Datenspeicher.
+Dieser Datenträger enthält die digitale Bachelorarbeit, deren Aufgabenstellung und die konkreten Ergebnisse.
+
+
+:::: Grundlagen eingebetteter Systeme ::::
+
+
+Dieses Kapitel vermittelt theoretisch Grundlagen zur embedded Softwareentwicklung.
+Dabei werden das Embedded System, der Systembegriff, Entwicklungen im embedded Bereich und die Programmierstandars AUTOSAR und MISRA-C betrachtet.
+
+
+:::: Embedded System ::::
+
+
+Ein Embedded System (eingebettetes System) beschreibt ein informationsver- ” arbeitendes System“ [Mar07, Seite 1].
+Dieses ist in einen gr ößeren Gesamtkontext eingebunden.
+Dem Anwender bleibt das eingebettete System häufig verborgen [Ibr04, Seite 1].
+Durch Sensoren oder manuelle Eingaben kann das eingebettete System Informationen erhalten und diese verarbeiten.
+Das System kann, wenn vorhanden, durch Aktuatoren steuern.
+Infolge der großen Verbreitung von Embedded Systems ergeben sich spezifische Anforderungen.
+Echtzeitanforderungen unterscheiden sich in hard (hart), firm (fest) und soft (weich).
+Harte Sicherheitsanforderungen erfordern das Einhalten der Frist.
+Abweichungen können zu Schäden am Embedded System und der Umgebung führen.
+Das Überschreiten einer festen Anforderung führt zur Nutzlosigkeit der Ergebnisse, jedoch nicht zur Beschädigung des Systems.
+Die Nichteinhaltung weicher Anforderungen führt zur Reduzierung der Qualität der Anwendung.
+Sicherheitskritische Folgen sind jedoch ausgeschlossen.
+[But11, Seite 9] Eingebettete Systeme müssen verlässlich sein.
+Dies schließt eine hohe Zuverlässigkeit, gute Wartbarkeit, hohe Verfügbarkeit und die Sicherheit gegenüber der Umwelt ein.
+Als Voraussetzung f ür hohe Mobilität müssen eingebettete Systeme effizient sein.
+Dies wird durch eine hohe Laufzeit-Effizienz ermöglicht.
+
+
+:::: Systembegriff ::::
+
+
+Ein System ist eine Menge sich gegenseitig beeinflussender, in Wechselbeziehung stehender, voneinander abhängiger Komponenten um ein spezifisches Ziel zu erreichen.
+Das System ist von der Umwelt abgegrenzt, steht dabei aber im Austausch mit dieser.
+Ein System wird im Allgemeinen als Gesamtstück betrachtet.
+Es besteht aus verschiedenen Komponenten, die voneinander abhängig sind und miteinander agieren.
+Zusätzlich besteht ein System aus beliebigen Untersystemen.
+In Folge des Systemprozesses erfüllt jedes System ein spezifisches Ziel.
+Ein Systemprozess stellt eine Transformation des Eingangszustandes in den Endzustand dar.
+Dieser muss dabei gesteuert werden.
+Die Steuerung umfasst das Planen, die Analyse (feedback) und die Kontrolle der Transformation.
+Ziel einer Transformation ist das Erreichen eines Endzustandes.
+[Fos10, Seite 4]
+
+
+:::: Computersysteme ::::
+
+
+Computersysteme können in drei Kategorien unterteilt werden.
+Es wird zwischen transformationellen, reaktiven und interaktiven Systemen unterschieden [Sch05].
+Grundlegend für transformationelle Systeme sind vollständige Eingabedaten beim Rechenbeginn.
+Dies gilt ebenso für die Resultate der Berechnungen.
+Diese stehen erst am Rechenende zur Verfügung.
+Ein Zugriff auf Zwischenergebnisse ist nicht möglich.
+[Sch05, Seite 3-4] Reaktive Systeme stehen im ständigen Kontakt zur Umgebung.
+Dabei wird die Häufigkeit und Geschwindigkeit der Interaktion durch die Umwelt vorgegeben.
+Die meisten Industrie-Echtzeitsysteme sind reaktive Kontroll- und Steuerungssysteme.
+Interaktive System sind dauerhaft mit der Umwelt verbunden.
+Dabei reagieren diese auf Abweichungen des Sollzustand des Systems.
+Die Interaktion wird dabei vom System bestimmt.
+Systemzustände können jederzeit abgefragt werden.
+[Hal93, Seite 1].
+
+
+:::: Entwicklungen im Embedded-Bereich ::::
+
+
+Der Anteil elektronischer Teilsysteme im Embedded-Bereich nimmt zu.
+Digitale Teilsysteme und deren Softwaretechnik bilden den Großteil des Wachstums.
+Infolge der gestiegenen Möglichkeiten steigt der Vernetzungsgrad sowie die Intelligenz der Embedded-Systems.
+Die gestiegenen Anforderungen erfordern leistungsfähigere Hardware.
+Beim Entwurf dieser ist ein Kompromiss zwischen teurer Spezialhardware und kostengünstigen Standardkomponenten zu finden.
+[Sch05, Seite 2]
+
+
+:::: Standards in der eingebetteten Softwareentwicklung ::::
+
+
+Dieser Abschnitt beschäftigt sich mit standardisierten Verfahren der Softwareentwicklung im Embedded-Bereich.
+Diese umfassen die Architekturentwicklung sowie konkrete Regeln zur Softwareimplementierung.
+AUTOSAR beschreibt einen allgemeinen Prozess zur Architekturentwicklung.
+Die Softwareimplementierung wird beispielhaft durch Misra-C beschrieben.
+Misra-C beschreibt dabei Regeln zum sichereren Umgang mit der Programmiersprache C.
+Durch Misra-C sollen allgemeine Programmierfehler vermieden werden.
+
+
+:::: AUTOSAR ::::
+
+
+AUTOSAR (AUTomotive Open System ARchitecture) bezeichnet einen internationalen Standard zur Standardisierung von Softwarearchitekturen in der Automobilindustrie.
+AUTOSAR definiert gemeinsame Ziele, deren Erfüllung den involvierten Unternehmen einen Innovationsvorteil verschaffen soll.
+Der gemeinsame Ansatz Coopperate on standards.
+Compete on implementation.“ beschreibt die- ” sen Schwerpunkt.
+[Ste12] AUTOSAR definiert drei Schwerpunkte.
+Architektur (Unabhängigkeit von benutzter Hardware), Methodik (einheitliche Formate, Workflow) und Anwendungsschnittstellen.
+[NN09, Seite 2-4] Gemeinsame Standards sind nötig um die Wiederverwendbarkeit und Interoperabilität von Komponenten zu erhöhen.
+Speziell der Bereich der Basissoftware ist durch unstrukturiertes Vorgehen geprägt.
+[Rei12, Seite 52] Um Redundanzen zu vermeiden wird das DRY-Prinzip verwendet.
+Dabei wird redundante Software vermieden.
+Softwarekomponenten mit der selben Aufgabe befinden sich nur an einer Stelle im Projekt.
+Um dies zur erreichen, wird die Aufmerksamkeit für das Erstellen der Softwarearchitektur erhöht.
+Struktur ist dabei das wesentliche Element.
+Die Softwarearchitektur ist dabei die oberste Strukturebene eines Softwaresystems.
+AUTOSAR fördert hardwareunabhängige Lösungen.
+Dies geschieht durch das OSI-Schichtenmodell.
+Eine Vermischung von Funktions- und Strukturcode wird vermieden (siehe Abbildung 2.2.1).
+Der AUTOSAR-Standard enthält keine Aussagen zur Mechanik und Hardware der Geräte.
+Lediglich zur Softwarearchitektur werden Aussagen getroffen.
+[OK09] Die Basis Software (BSW) und das Run-Time-Environment (RTE) definieren die Kommunikation und Treiber für Ein- und Ausgabe der Daten [NN09, Seite 2-8].
+Anwendungen befinden sich in der Anwendungs-Schicht und benötigen daher keine Informationen zur Kommunikation, Struktur und Verwaltung der Daten auf Hardwareebene [NN09, Seite 2-4].
+Zur Erhöhung der Lokalität verwendet AUTOSAR einen modellgetriebenen Ansatz.
+[NN09][2-4] Die Modelle enthalten Eingangsports (”required port”) und stellen Ausgangsports (”provided port”) zur Verfügung.
+[NN09, 2-4] AUTOSAR eignet sich potenziell für einen größeren Einsatzbereich.
+Dieser ist in der Automatisierungstechnik, Schienenfahrzeugtechnik und im Verteidigungswesen zu finden.
+Rechtliche Richtlinien schließen dies bisher aus.
+[OK09, Seite 63-64] Abbildung 2.1.: Verknüpfung klassisches und AUTOSAR-Steuergerät nach [OK09, Seite 41]
+
+
+:::: MISRA-C ::::
+
+
+MISRA-C (Motor Industry Software Reliability Association) ist ein Softwarestandard in der Automobilindustrie.
+Ziel ist die Vermeidung von Fehlern in der Programmierung.
+Diese entstehen durch semantische Fehler und Sprachmittel, die nicht 100% standardisiert sind.
+Diese Fehler sollen durch Einhaltung der MISRA-Regeln vermieden werden.
+Die Regeln werden zwischen verpflichtend (required) und diesen, die in Ausnahmefällen mit Begründung übergangen werden d ürfen (advisory), unterschieden.
+[mis98] Die Verwendung der C-Programmierung im Embedded-Bereich nimmt zu.
+Dies ist auf die Hardwarenähe und den effektiv erzeugten Maschinencode zurückzuführen.
+Es existieren eine große Anzahl an C-Compilern.
+Die Entwickler besitzen große Erfahrung in der C-Entwicklung.
+Weiterhin macht die steigende Komplexität die Verwendung von Assembler unmöglich.
+[Dor10, Seite 32] Seit 2004 ist MISRA-C allgemeiner Standard für sicherheitskritische Software und wird unter der Bezeichnung Guidelines for the Use of the C Language in Criti- ” cal Systems“ veröffentlicht.
+[Hof08, Seite 74-76] Der erzeugte C-Quellcode muss konform zur ISO/IEC 9899:1990 sein [mis98, Seite 67].
+
+
+:::: Controller Area Network - CAN ::::
+
+
+Der CAN-Bus (Controller Area Network) wurde zu Beginn der 80er-Jahre von der Firma Bosch entwickelt.
+Dieser stellt ein flexibles Bussystem zur Vernetzung der Fahrzeugelektronik dar.
+Dieses wird durch die steigenden informationstechnischen Anforderungen an Automobile benötigt.
+[WL11, siehe Einleitung] Der VW Phaeton (2002) enthält bereits über 11.000 elektrische Komponenten.
+Dabei sind 35 ECUs durch 3 CAN-Busse verbunden.
+Diese tauschen über 2500 Signale in 250 CAN-Nachrichten untereinander aus [ Ju04].
+CAN-Bussysteme werden zur seriellen Datenübertragung verwendet.
+Die Datenübertragungsrate ist von der Entfernung zwischen den Komponenten abhängig.
+Diese beträgt 1 Mbit s (40m)-50 kbit s s (1km).
+In einem Datenframe werden zwischen 0 und 8 Byte Nutzdaten übertragen.
+[WL11, Seite 13] Die Datenübertragung auf dem CAN-Bus erfolgt nach dem multi-master priority-based bus access“-Prinzip. Jeder Knoten kann das Senden ” von Daten beginnen.
+Sollte es auf dem Bus zu Kollisionen kommen, werden diese durch die Arbitrierungsphase (Schiedsverfahren) aufgelöst [WL11, Seite 9].
+Diese erfolgt nach der Priorität der einzelnen Nachrichten durch bitweisen Ausschluss.
+Als Folge der Zuweisung durch Prioritäten, ist das Zeitverhalten der Nachrichten von den Prioritäten und dem Datenverkehr auf dem Bus abhängig.
+Für die Terminierung einer Nachricht kann keine scharfe Zeitschranke angegeben werden.
+Somit ist der CAN-Bus nur für Soft-Realtime-Systeme geeignet.
+[WL11, Seite 13] Der CAN-Standard enthält keinen Zeitsynchronisation-Service.
+Wenn dieser benötigt wird, muss dieser auf Programmebene eingef ügt werden.
+Durch feste Identifikatoren der Knoten wird die Flexibilität des Systems eingeschränkt.
+Die Reihenfolge der Nachrichten und das Verhalten des Systems sind so statisch festgelegt.
+[NN09, Seite 6-7]
+
+
+:::: Topologie ::::
+
+
+CAN wird in unterschiedlichen Topologien ausgeführt.
+Diese unterscheiden sich nach Anwendungsfeld in Einzelstern, Doppelstern, lineare oder hybride Anordnung.
+Der Einzelstern ermöglicht eine hohe Flexibilität bei der Anzahl der CAN-Knoten.
+Im Einzelstern sind Teillängen von 30 cm bis 9 m möglich.
+Insgesamt wird sehr schnell die maximale Leitungslänge von 32 m erreicht.
+Die maximale Datenübertragungsrate betragt 500 KBaud.
+Ein linearer Bus ist bei vielen Verzweigungsstellen nötig.
+Dieser ermöglicht Datenraten von bis zu 1 MBaud.
+[WL11, Seite 60-61] Abbildung 2.2.: linearer Bus und ein Einzelstern nach [WL11]
+
+
+:::: Datenübertragung ::::
+
+
+Die Datenübertragung auf dem CAN-Bus erfolgt nach dem NRZ-Prinzip (konstante Leitungszuständen).
+Dabei werden für die binären Zustände 0 und 1 Pegel festgelegt, deren Spannung größer als 0 Volt ist (siehe Abbildung 2.3.2).
+[NN09, Seite 4-7].
+Abbildung 2.3.: Pegel bei der NRZ-Datenübertragung
+
+
+:::: Abitrierungsphase ::::
+
+
+Die Abitrierung regelt den Datenverkehr auf dem Bus.
+Durch bitweises Senden des Identifiers wird die Kollision aufgelöst.
+Die Abitrierung erfolgt verlustfrei.
+Abbildung 2.4.: Nominelle Potentiale nach [WR10, Seite 214] Das Senden beginnt mit dem Senden des SOF-Bits auf einem dominanten Pegel.
+Darauf wird der Identifiers gesendet.
+Dabei vergleicht der Sender, durch ihn gesendete Bit mit dem Zustand des Bus.
+Wenn dieser überein stimmt, wird das nächste Identifier-Bit übertragen.
+Sollte der Pegel abweichen, beendet der Teilnehmer den Sendeversuch und wechselt in den Empfangsmodus.
+Die Busabitierung war nicht erfolgreich.
+Eine andere Nachricht hat eine höhere Priorität.
+Der Klient wartet.
+[WL11, Seite 10-11] Der Klient mit dem kleinsten Identifier hat die höchste Priorität und darf senden.
+[ISO03].
+Abbildung 2.5.: Buszugriff Abitrierungsphase nach [WR10, Seite 216]
+
+
+:::: Bitstromkompressor ::::
+
+
+Der Bitstromkrompressor führt protokollarische Operationen des Knotens aus.
+Beim Senden übernimmt der Bitstromkompressor die Busabitrierung.
+Darauf folgt die Serialisierung der Nachricht.
+Es werden Stuff-, CRC-Bits und alle weitere Protokollbits eingefügt.
+Beim Empfangen von Nachrichten erfolgt die Deserialisierung.
+Die Stuff- und CRC-Bits sowie weitere Protokollbits werden entfernt.
+Weiterhin übernimmt der Bitstromkompressor die Fehlerbehandlung und Fehlereinschränkung.
+[WL11, Seite 191]
+
+
+:::: CAN-Nachricht ::::
+
+
+Das Startbit (SOF) kennzeichnet den Nachrichtenanfang.
+Nach einem Leerlaufzeitraum auf dem Bus dient es zur Synchronisation der einzelnen Knoten.
+Diesem folgt der der Nachrichtenidentifikator.
+Je niedriger dieser Wert ist, desto höher liegt die Nachrichtenpriorität auf dem Bus.
+Durch das RTR-Bit wird die Nachricht zwischen Datennachricht und Datenanforderungsnachricht unterschieden.
+Es bildet den Abschluss der Abitrierungsphase.
+Auf das Abitrierungsfeld folgt das Kontrollfeld.
+Dieses beinhaltet IDE (Identifier Extension), r0 (reserviert) und das DLC-Feld welches die Länge der folgenden Nachricht beinhaltet.
+Das Daten-Feld besteht aus 0-8 Bit und beinhaltet den eigentlich Nachrichtenteil.
+Die CRC-Prüfsumme wird zur Fehlererkennung verwendet.
+Das verwendete CRC-Polynom hat eine Hamming-Distanz von 6, somit können bis zu 6 Bitfehler erkannt werden.
+Das ACK-Feld dient der Kontrolle der korrekten Datenübertragung.
+Der Sender sendet dieses Bit dominant.
+Der Empfänger überschreibt, bei korrekt empfangener Nachricht, dieses Bit rezessiv.
+Das EOF-Feld beendet den Sendevorgang.
+[WR10, Seite 214-216] Start Identifier RTR IDE r0 DLC Data CRC ACK EOF+IFS 1Bit 11 Bit 1 Bit 1 Bit 1 Bit 1 Bit 0..8 * 8 Bits 15 + 1 Bits 1+1Bit 7+3 Bit Abbildung 2.6.: CAN-Nachricht nach [WL11, Seite 19]
+
+
+:::: Methodik ::::
+
+
+Dieses Kapitel beinhaltet die methodischen Grundlagen zur Umsetzung von Algorithmen auf Embedded Systems.
+Insbesondere Betrachtung findet die modellgetriebene Softwareentwicklung.
+Modelle ermöglichen komplexe Zusammenhänge strukturiert und übersichtlich darzustellen.
+Dabei können definierte Eigenschaften des Systems am Modell analysiert und verdeutlicht werden [Rum05, Seite 54].
+Modelle bilden eine verkürzte Abbildung natürlicher oder künstlicher Objekte.
+Diese können wiederum Modelle sein.
+Die Modellierung ist ein gerichteter Vorgang, indem für einen Adressaten ein Modell erstellt wird.
+Die Modellierung erfasst nur relevante Attribute des Ausgangsobjekts.
+Allgemein muss ein Modell nicht direkt seinem Original zugeordnet werden können.
+[Sta73, Seite 129-132]
+
+
+:::: Modellgetriebene Softwareentwicklung ::::
+
+
+Die modellgetriebene Softwareentwicklung ist ein Teilbereich der Softwareentwicklung.
+Ziel der MDSD ist die domänenspezifische Abstraktion um Software in einer formalen Modellierung zu realisieren.
+Aus diesen Modellen kann automatisiert ausführbare Software erstellt werden.
+[VG06] Die Automatisierung des Fertigungsprozess ermöglicht eine Qualitätssteigerung der Software.
+Als Folge des Automatisierungsprozess sind Architektur und Module einheitlich dokumentiert und getestet.
+Dies führt zur Erhöhung der Wiederverwendbarkeit, Wartbarkeit und zur Steigerung der Entwicklungseffizienz.
+[TS07, Seite 4 und 14] Weiterhin können Kosten durch die Automatisierung eingespart werden [Dor10, Seite 47].
+Wesentlich ist die Einbindung von Modellen in den Entwicklungsprozess.
+Durch beliebig granulare Aufteilung der Modelle in Module, Komponenten und Quelltextblöcke wird die Übersicht im Entwicklungsprozess gesteigert.
+In Folge dessen können komplexe Problemstellungen übersichtlich dargestellt werden.
+[VG06] Module bilden Sammlungen von Komponenten, die eine gemeinsame logische Aufgabe erfüllen.
+Quellcode und Modell, somit auch die Dokumentation, befinden sich auf einer Ebene.
+Durch diesen Schritt bleiben Dokumentation und Codebasis synchron.
+[TS07, Seite 14] Die Modelltransformation ist eine zentrale Komponente in der modernen, modellgetriebenen Softwareentwicklung.
+Deren Hauptaufgabe ist der Nachweis, dass der Transformationsprozess keinen Einfluss auf das Modell hat.
+[Hue10, Seite 183].
+
+
+:::: Entwicklungswerkzeuge ::::
+
+
+Im Bereich der MDSD existieren verschiedenen Entwicklungswerkzeuge, die spezifisch auf die Problemstellungen zugeschnitten sind.
+Das Eclipse Modelling Framework (EMF) ermöglicht durch das Ecore-Metamodell“ die automatische Quell- ” codeerzeugung [Ole10, Seite 78].
+Dabei wird entschieden, für welche Komponente welcher Code erzeugt wird [BKL+09, Seite 81].
+Der Enterprise Architect (EA) ermöglicht die Erzeugung von Quelltext aus UML-Diagrammen.
+Weiterhin bietet das Frameworkdie M öglichkeit den erzeugten Quelltext auf Konsistenz mit dem Modell zu prüfen.
+[Ole10, Seite 88] [emf12] SCM-Werkzeuge ermöglichen verschiedene Softwarekonfigurationen zu verwalten.
+Dies erm öglicht Softwarekomponenten in einheitlichen Konfigurationen auszuführen.
+Weiterhin wird eine zentrale Konfiguration ermöglicht, die Änderungen erleichtert und eine Erhöhung der Übersicht ermöglicht.
+PDM-Software erm öglicht Produktdaten (Spezifikationen, Quellcode, Tests und allgemeine Dokumente) zu versionieren.
+Weiterhin ermöglichen verschiedene Benutzerrechte den Zugriff zu begrenzen.
+Über Austauschformate, wie die Extensible Markup Language (XML), wird die Interoperabilität und der Datenaustausch zwischen den Werkzeugen realisiert.
+[NN09, Seite 10-29] Im Rahmen dieser Arbeit wurde Simulink von ”The MathWorks”verwendet.
+Insbesondere die Integration von StateflowTM und dem Embedded Coder ermöglicht
+
+
+:::: Stand der Technik im Automobilbereich ::::
+
+
+Auf Systemebene ist die Verwendung von MDSD-Werkzeugen in der Automobilindustrie begrenzt.
+Die Entwicklungskette beinhaltet eine lose Verbindung von Entwicklungswerkzeugen, die unterschiedlich stark verbunden sind.
+Die Verwendung der modellbasierten Informationsverwaltung nimmt zu.
+Es findet eine Transformation von textuellen zu modellbasierten Anforderungen statt.
+Dies wird durch PDM- und SCM-Werkzeuge unterst ützt.
+Viele Entwickler dokumentieren die Anforderungen noch in Texteditoren.
+Die erfolgte Integration der modellbasierten Entwicklung unterscheidet sich von Domain zu Domain.
+[NN09, Seite 10-31] Es werden verschiedene Modellierungs- und Analysetechniken verwendet.
+Die Systementwicklung, Fahrsimmulationen, frühe HMI-Modelle und Sicherheitsanalysen finden häufig in getrennten Modellen statt.
+Ein Schwerpunkt der Forschung und Entwicklung liegt in der Vernetzung dieser Anwendungen.
+Dabei wird UML nur partiell verwendet, jedoch steigt die Nutzung.
+[NN09, Seite 10-32] Umfangreiche Tests erfordern den Ausbau systematischer Tests.
+Diese werden direkt durch SCM-Werkzeuge ermöglicht und unterstützt.
+Modellbasiertes Testen in Form von Model in the Loop (MiL), Software in the Loop (SiL) und Hardware in the Loop (HiL) wird immer häufiger verwendet.
+[NN09, Seite 10-33] Die Nutzung von Modellierungssprachen zur Entwicklung, Verwaltung und Integration von Embedded Systems wird im Entwicklungsprozess fokussiert.
+[NN09, Seite 10-34/35]
+
+
+:::: Automatische Codegenerierung aus Modellen ::::
+
+
+Die Quellcodegenerierung ist die Transformation einer Modellierungssprache in eine Zielsprache [Rum05, Seite 68].
+Durch automatisiertes Erzeugen aus Modellen soll die Konsistenz zwischen Modell und Implementierung verbessert werden [Rum05, Seite 49].
+Um Systemcode zu erzeugen, leistet der Generator mehrere Arbeitsschnitte.
+Die Modelle werden eingelesen, verlinkt, validiert, transformiert und als Quellcode exportiert.
+[TS07, Seite 139] Anwendungsentwickler müssen die Modelle gut lesen, schreiben und verstehen können [TS07, Seite 115].
+Die automatische Quellcodegenerierung ist eine wesentliche Verbesserung des Rapid Prototyping.
+Dadurch werden schnelle Resultate und Testergebnisse ermöglicht.
+Weiterhin kann ein System kompakter als mit reiner textueller Programmierung beschrieben werden.
+[Rum05, Seite 49] Automatisierte Quellcodegenerierung erm öglicht einheitlichen Quellcode und die dazugehörige Dokumentation.
+Dies ist eine Voraussetzung, die für die Zertifizierung von Software benötigt wird.
+[Rum05, Seite 49]
+
+
+:::: Konzept ::::
+
+
+Im Gegensatz zur objektorientierten Methoden kann das Programmverhalten im Endstadium der Softwareentwicklung festgelegt werden.
+Die Optimierung auf das Zielsystem (Codegröße, Analysierbarkeit, Laufzeit) bieten besondere Möglichkeiten bei der Embedded-Entwicklung.
+[TS07, Seite 141] Generierter und manueller Code müssen getrennt verwaltet werden.
+Dabei soll gut strukturierter Code erzeugt werden.
+Dies wird durch Schichtenbildung zwischen manuellem und erzeugtem Code verbessert.
+[TS07, Seite 158-159] Wird die Generierung des Zielcodes darüber hinaus als korrekt angenommen und auf eine manuelle Nachbearbeitung oder Inspektion verzichtet, so ist die Schichtenbildung im generierten Code nicht essentiell.
+Stattdessen kann bei der Generierung die Laufzeiteffizienz erhört werden.
+Vergleichbar mit den Optimierungstechniken von Compilern kann eine Verknüpfung des plattformunabhängigen und plattformspezifischen Code erfolgen.
+[Rum05, Seite 62]
+
+
+:::: Geschützte Bereiche ::::
+
+
+Bei der Verwendung von geschützten Bereichen befinden sich manueller und generierter Code in den selben Klassen.
+Der generierte Quellcode wird durch den Entwickler in den geschützten Bereichen vervollständigt.
+Die Versionsverwaltung von Quellcode wird erschwert.
+Nach Änderungen am Modell muss der Quellcode erneut erzeugt werden.
+Da der Generator die manuellen Bereiche erkennen muss, wird die Komplexität der Implementierung deutlich erhöht.
+Bei unsachgemäßer Nutzung kann Quellcode verloren gehen.
+[TS07, Seite 158-159]
+
+
+:::: Generierung für eine abstrakte Schnittstelle ::::
+
+
+Die Quellcodeerzeugung, gegen eine abstrakte Schnittstelle, ermöglicht es hardware- und plattformunabhängigen Quellcode zu erzeugen.
+Die Schnittstelle kapselt dabei die Hardware der Plattform für den erzeugten Quellcode.
+Dieser kann auf verschiedenen Plattformen wiederverwendet werden.
+Die abstrakte Schnittstelle bietet standardisierte Funktionalitäten an.
+Resultierend aus der Schnittstelle kann kein Einfluss auf die Ausführungsgeschwindigkeit der Anwendung genommen werden.
+Aus Gründen der Plattformunabhängigkeit sind keine speziellen Optimierungen für verschiedene Plattformen möglich.
+Weiterhin können nur Operationen der Schnittstelle genutzt werden.
+Individuelle Anpassungen sind nicht möglich.
+Ein Beispiel für die abstrakte Schnittstelle ist die Java-Plattform.
+Diese kann Bytecode auf jeder unterstützen Plattform ausf ühren.
+[Rum05, Seite 61] Abbildung 3.1.: Generierung für abstrakte Schnittstelle nach [Rum05, Seite 61]
+
+
+:::: Parametrisierte Codegenerierung ::::
+
+
+Die parametrisierte Quellcodegenerierung erzeugt für eine Plattform spezifizierten Code.
+Die Transformation wird dabei durch Parameter spezifiziert.
+Plattformunabhängiger und plattformspezifischer Code werden dabei verwoben (vgl. Abbildung 3.6).
+Die Schichtenbildung im erzeugten Code wird aufgehoben (vgl. Ab- bildung 2.2.1 - klassisches Steuergerät) und ist auch nicht essentiell.
+Dabei entsteht schwer wartbarer Anwendungscode.
+Manuelle Inspektionen und Korrekturen sind ausgeschlossen.
+Besonders der Aspekt der Modelländerung und erneuten Generierung verhindert manuelle Korrekturen.
+[Rum05, Seite 62] Abbildung 3.2.: Parametrisierte Codegenerierung nach [Rum05, Seite 62]
+
+
+:::: Probleme beim Erzeugen von Quellcode ::::
+
+
+Einfache Werkzeuge verwenden oft starre Quellcodemuster.
+Diese beinhalten weder die spezifischen Bedürfnisse eines Projekts noch ist eine parametrisierte Quellcodegenerierung möglich.
+Diese wird bei der Verwendung von verschiedenen Plattformen benötigt.
+Weiterhin ermöglicht eine parametrisierte Erzeugung die Verwendung von Frameworks, Speicher- und Kommunikationstechniken und die Optimierung von Modellelementen.
+[Rum05, Seite 51] Dies ermöglicht individuelle Versionen für verschiedene Endgeräte zu erzeugen.
+
+
+:::: Validierung der Ergebnisse ::::
+
+
+Der Quellcodegenerator kann durch das Erzeugen von Tests aus dem Modell und dem generierten Quellcode getestet werden.
+Sollten diese Tests voneinander abweichen, sind Quellcode und Modell inkonsistent.
+Somit ist der Implementierung des Quellcodegenerators fehlerhaft.
+Aus dieser Überlegung ergibt sich die Schlussfolgerung, dass Testmodelle nicht aus dem konstruktiven Modell zur Erzeugung des Quellcodes erzeugt werden können.
+Testmodell und konstruktives Modell sind separat zu erzeugen.
+[Rum05, Seite 60 ]
+
+
+:::: Strategien zur Zerlegung der Probleme ::::
+
+
+Dieser Abschnitt beinhaltet Strategien zur Zerlegung von Problemen in weniger komplexe Teilprobleme.
+Dabei werden die Randbedingungen zur Zerlegung diskutiert.
+Weiterhin wird die Vernetzung der Modelle sowie deren Integrationsgrad erläutert.
+
+
+:::: Randbedingungen ::::
+
+
+Die Randbedingungen zur L ösung der Probleme werden durch das Embedded-System definiert.
+Dabei sind Speicherplatz, Rechenzeit und Ressourcenaufwand vorgegeben.
+Weiterhin ist die Realisierung des Softwareprojektes von den verwendeten Entwicklungsumgebungen sowie der Erfahrung der Entwickler abhängig.
+Das Lösen der Problemstellung findet in diesem Rahmen statt.
+
+
+:::: Modularisierung ::::
+
+
+Modularisierung ist ein Vorgang zur Erhöhung der Flexibilität und Verständlichkeit eines Systems.
+[Dav72, Seite 1053] Durch Modularisierung wird es möglich, Module mit geringem Wissen über andere Module zu entwerfen.
+Die hohe Flexibilität der Teilmodule ermöglicht Teilmodule auszutauschen ohne Änderungen der Softwarearchitektur durchzuführen.
+Durch Verbergen der innen Funktion der Module wird die Komplexität weiter gesenkt.
+Die Modularisierung muss vor der Umsetzung der Module abgeschlossen sein.
+[Dav72, Seite 1054] Module können nach Aufgabengebieten klassifiziert werden.
+Es gibt funktionale Module , Datenobjekt- und Datentypmodule.
+Funktionale Module dienen der Berechnung.
+Diese enthalten keine Zustände.
+Daher ist eine hohe Parallelisierung möglich.
+Datenobjektmodule ermöglichen die Kapselung von Daten und eignen sich besonders für die Synchronisation und den parallelen Zugriff auf diese.
+Datentypmodule bilden komplexe Datentypen ab.
+[JL07, Seite 385] Die Modularisierung ist ein Qualitätsmerkmal.
+Eine gute Modularisierung ermöglicht die parallele Entwicklung der Teilmodule durch verschiedene Entwicklergruppen.
+Diese Aufteilung der Probleme erhöht die Entwicklungsgeschwindigkeit.
+Weiterhin bestimmt die Güte der Modularisierung die Testfähigkeit eines Softwaresystems.
+Die Testfähigkeit eines Systems kann durch spezielle Testschnittstellen erhöht werden.
+[JL07, Seite 418]
+
+
+:::: Information Hiding ::::
+
+
+In der Datenverwaltung wird das Prinzip der gekapselten Daten (Information Hiding) verwendet.
+Das Softwaremodul erhält nur die Daten die es benötigt.
+Weiterhin soll dem Kundenmodul möglichst viel Funktionalität des Moduls verborgen bleiben.
+Der Benutzer soll nicht mit unn ötigen Wissen und einer erhöhten Komplexität konfrontiert werden.
+[PP04, Seite 135] Dies ermöglicht es, das Modul leichter zu verstehen.
+Die Zugriffe auf die Daten sind über Schnittstellen gekapselt (siehe Abbildung 3.3).
+Dabei erhält das Kundenmodul keinen Zugriff auf die Daten, sondern erhält lediglich eine Kopie der Wertparameter (pass by value).
+Durch Information Hiding wird die Lokalität des Programms erhöht.
+Eine hohe Lokalität ermöglicht die flexible Anpassung der Datenstrukturen.
+[JL07, Seite 388-390] Abbildung 3.3.: Kapselung der Zugriffe nach [JL07, Seite 389]
+
+
+:::: Kopplung ::::
+
+
+Kopplung bezeichnet die Verknüpfung von Modulen.
+Durch Kopplung wird die Kommunikation von Softwareeinheiten erm öglicht.
+Es wird zwischen verschiedenen Arten der Kopplung unterschieden.
+Eine Kopplung kann durch einen Aufruf, durch Erzeugen oder durch Daten und Datenstrukturen entstehen.
+Ein Aufruf kann durch ein Modul, das eine Funktion aufruft, erfolgen.
+Eine Kopp- lung durch Erzeugen entsteht, wenn ein Modul eine Datenstruktur erzeugt.
+Eine Abhängigkeit durch Daten kann durch einen Konfigurationsparameter entstehen.
+Insgesamt wird auf der Modulebene eine lose Kopplung angestrebt.
+Dies unterstützt die Wandlungsfähigkeit eines Softwaresystems.
+[Sta09, Seite 163-164] Bei der Zerlegung von Problemen wird in Modulen ein starker innerer Zusammenhalt angestrebt.
+Die Unterroutinen eines Moduls weisen die stärkste Kopplung auf.
+Die Kopplung unter Modulen muss gering sein.
+Eine geringe Kopplung der Module ermöglicht eine einfache Änderung und Wartung dieser.
+[JL07, Seite 386]
+
+
+:::: Umsetzung des Softwaresystems ::::
+
+
+Im Entwicklungsprozess von Software existieren verschiedene Ebenen der Automatisierung.
+Diese umfassen die manuelle Codierung, die modulare Quellcodeerzeugung mit handgeschriebenen Komponenten und die vollständige Integration in einem Modell.
+
+
+:::: Manuell erzeugter Quellcode ::::
+
+
+Das Schreiben von Programmen durch Entwickler bietet eine sehr flexible Möglichkeit, eine Problemlösung zu implementieren.
+Dieser Vorteil ergibt sich besonders bei sehr hardwarespezifischen Implementierungen.
+[BKL+09, Seite 81] Dort werden die Grenzen der modellgetriebenen Entwicklung erreicht.
+Besonders bei kleinen Programmteilen, die sehr stark optimiert werden, ist eine händische Entwicklung vorzuziehen.
+Diese sind zum Beispiel in der Speicherverwaltung von Betriebssystemen zu finden.
+Auch für Konsumelektronikprodukte ist eine händische Entwicklung häufig praktischer, da die Software auf sehr eingeschränkten Bauteilen eingesetzt wird.
+Weiterhin sind meist keine großen Entwicklungswerkzeuge vorhanden.
+[Bae08, Seite 138-139] In der manuellen Entwicklung sind Quellcode und Dokumentation, im Gegensatz zur MDSD, selten synchron [BKL+09, Seite 80].
+Änderungen in der Spezifikation bzw.an der Architektur des Systems sind sehr teuer und kompliziert umzusetzen [Bus98, Seite 194].
+Im Gegensatz zur MDSD k önnen Fehler im Modell während der Implementierung, durch die Anwendungsentwickler, entdeckt werden.
+In der MDSD werden Fehler aus dem Modell in die Software übernommen.
+[BKL+09, Seite 81] Die Kommunikation der Softwarekomponente mit dem System kann aus jeder Komponente heraus erfolgen (siehe Abbildung 3.4).
+Dies mindert die Übersicht und verletzt das DRY-Prinzip.
+Allgemein wird eine Kommunikationsschnittstelle benötigt.
+Abbildung 3.4.: Handgeschriebenes System
+
+
+:::: Modulweise Automatisierung, manuelle Verknüpfung ::::
+
+
+Das Komplettsystem (siehe Abbildung 3.5) wird aus generiertem Code und manuell geschriebenen Algorithmen zusammengesetzt.
+Die Kommunikation der Module erfolgt durch manuell integrierten Code.
+Dies ermöglicht die Datenströme zwischen den Modulen zu überwachen und das Verhalten des Gesamtsystems zu dokumentieren.
+Die Kommunikation findet sowohl zwischen den Modulen als auch über die Kommunikationsschnittstelle mit dem System statt.
+Dabei ist auf die korrekte Verbindung der Modelle zu achten.
+Die Kommunikation kann durch falsch definierte Ports gestört sein.
+Die Modularisierung ermöglicht den Austausch der Softwarekomponenten.
+Diese Flexibilität bietet sehr gute M öglichkeiten zum Testen und Debuggen der Module.
+
+
+:::: Vollständige Automatisierung ::::
+
+
+Die komplette Integration endet in einem eingewebten Modell“ (Weaving Mo- ” del).
+Dieses verbindet die einzelnen Domänender Module und ermöglicht die Kommunikation dieser.
+Es wird das Softwaresystem bzw.eine Gesamtdomäne gebildet.
+[Mat09, Seite 353] Abbildung 3.6.: Komplett integriertes System Die MDSD erm öglicht die stetige Synchronisation von Modell und Dokumentation.
+Der Einsatz von Modellen erm öglicht leichtere Architekturänderungen im System.
+[TS07] Da der Systemquellcode durch Transformation des gebildeten Modells entsteht, hat der Anwendungsentwickler wenig Einfluss auf den erzeugten Code.
+Fehler im Transformationsalgorithmus können nur schwer vom Anwendungsentwickler gefunden werden.
+Eine Änderung im Modell erfordert immer die Ersetzung des Gesamtsystems.
+Fehlende Transformationen muss der Anwendungsentwickler durch eigenständige Implementierungen ersetzen.
+Die Anbindung des erzeugten Quellcodes kann durch Treiber erfolgen.
+Diese definieren die Schnittstelle zwischen dem Anwendungscode und der Systemgrenze (siehe Abbildung 3.7).
+Abbildung 3.7.: Umsetzung des Treiberkonzepts in Simulink nach [mat12a]
+
+
+:::: Zusammenfassung der Umsetzung ::::
+
+
+Die Auswahl der Integrationsstufe ist durch die Rahmenbedingungen gegeben.
+Neue Technologien erfordern geschulte Entwickler und Einarbeitungszeiten im Projekt.
+Für kleine, hardwarespezifische Projekte, genügt häufig die manuelle Codierung.
+Große Projekte der Automobilindustrie erfordern jedoch den Einsatz von abstrakteren Methoden und Werkzeugen.
+Diese sind mit zunehmenden Projekt- umfang essentiell.
+Bei der Verwendung neuer Technologien ist ausgereifte Software n ötig.
+Dies trifft besonders im Bereich der automatisierten Softwarefertigung zu.
+Da der Anwendungsentwickler begrenzten Einfluss auf Fehler im Transformationsprozess hat, müssen diese vermieden werden.
+Die komplette Integration eines Projektes ermöglicht die Wiederverwendung von Komponenten und erhöht die Verbindung der separaten Anwendungsdomänen.
+
+
+:::: Simulink ::::
+
+
+Simulink ist eine Entwicklunsumgebung zur Simulation von Systemen.
+Dabei können Modelle integriert, getestet und als C-Code zu exportiert werden.
+Diese Arbeiten können in einem Modell erledigt werden.
+
+
+:::: Embedded Coder ::::
+
+
+Der Embedded Coder ermöglicht das automatische generieren von C/C++-Code.
+Der Code kann für verschiedenen Embedded Systems, AUTOSAR-, MPC5XX-, xPC-Plattformen und Mikroprozessoren erzeugt werden.
+Dabei wird dieser C90konform erzeugt.
+[ZSM11, Seite 580] Durch den Einsatz von Treibern k önnen weitere Plattformen unterstützt werden.
+Der erzeugte Code kann für die manuelle Inspektion nach den Aspekten der Lesbarkeit und Größe optimiert werden.
+Der Embedded Coder ermöglicht außerdem die Begrenzung des RAM, ROM und der CPU-Rechenzeit.
+Dies ermöglicht optimierte Programme für hardwarebegrenzte Embedded Systems zu erzeugen.
+Weiterhin wird der erzeugte Code auf die Prozessorarchitektur und die Wortbreite des Systems angepasst.
+[Güe06, Seite 541-543] Zusätzlich ist es möglich die Wortbreite der einzelnen Datentypen separat anzupassen.
+Dies erhöht das Optimierungspotenzial der Algorithmen.
+
+
+:::: Verwendung von S-Funktionen ::::
+
+
+S-Funktionen(system-function) ermöglichen externen Matalb-, C/C++-, oder Fortrancode in Simulink zu verwenden.
+Dies wird insbesondere für SiL- und HiL-Tests verwendet.
+Simulink bietet drei Möglichkeiten S-Funktionen zu erzeugen.
+Über die Simulink-Oberfläche können S-Funktionen mit dem S-Function-Builder erzeugt werden.
+Das Legacy-Tool wird über die Konsole verwendet.
+Weiterhin k önnen S-Funktionen auch manuell als C/C++-Quellcode erzeugt werden und durch Mex kompiliert werden.
+In dieser Arbeit wurden S-Funktionen manuell oder über den S-Function-Builder erzeugt.
+Die Vorgehensweise ist in Tabelle A. 9 dokumentiert.
+Erzeugte S-Funktionen bzw.deren Mex-Dateien werden über den S-Function“- ” Block in die Simulationen eingebunden (siehe Tabelle A.10).
+Abbildung 3.8.: S-Function Builder mit vier Eingangsports und einem Ausgangsports sowie ein S-Funktion-Block
+
+
+:::: Erzeugen des Simulinkmodells ::::
+
+
+Das Verhalten der Simulation wird über Modelle definiert.
+Aus diesen Modellen wird das Softwaresystem exportiert.
+F ür diesen Vorgang sind weitere Konfigurationen des Modells notwendig.
+Dies betrifft Simulationsparameter, die Hardwarekonfiguration, die Kommunikation der Modelle und einzelne Funktionen in den Modellen.
+
+
+:::: Konfiguration des Simulinkmodells ::::
+
+
+Das Verhalten der Modelle wird durch die Konfigurationen bestimmt.
+Es können verschiedene Konfigurationen bestimmt werden.
+Für die Simulation, das Testen oder den Export in die Zielsprache werden verschiedene Konfigurationen benötigt.
+Einheitliche Konfigurationen erleichtern diese Arbeit mit mehreren Modellen.
+Speziell die Integration des Gesamtmodells erfordert das häufige Wechseln der Konfiguration.
+SCM-Programme ermöglichen diese Verwaltung (vgl. Abschnitt 3.1.1).
+Das weitere Vorgehen zur Verwendung von Konfigurationen ist in Tabelle A. 8
+erläutert.
+
+
+:::: Anpassen der Simulation ::::
+
+
+Beim Entwickeln und Testen erm öglicht Simulink schnelle Umsetzungen (Rapid Prototyping).
+Diese werden nicht nach dem Standpunkt der Codeerzeugung ausgewählt.
+Somit werden Operationen und Funktionen von Simulink genutzt, für die eine Codeerzeugung nicht integriert ist.
+Um C-Code zu erzeugen, sind diese Funktionen zu ersetzen.
+Mathematische Operationen k önnen nachgebildet werden.
+IO-Operationen f ür Mikrocontroller und verschiedene Bussysteme sind bereits integriert.
+Das Lesen und Schreiben von Dateien muss manuell integriert werden.
+Dies kann durch manuelles C/C++ erfolgen und durch S-Funktionen eingebunden werden.
+Da die S-Funktionen als standardisierte Simulink-Blöcke eingebunden werden, ist es komfortabel m öglich, die erzeugten Ergebnisse zu testen.
+Dabei wird der erzeugte Block in das Hauptmodell eingebunden.
+Darauf wird die Simulation wiederholt und die Ergebnisse werden, mit den bereits vorhandenen, verglichen.
+Dies ist notwendig, da beim Ersetzen Fehler entstehen können.
+Bevor die Codeerzeugung beginnt, muss die entsprechende Zielplattform und Zielsprache ausgewählt werden.
+
+
+:::: Kommunikation durch Ports ::::
+
+
+Ports definieren die Schnittstellen (Interface) der Modelle und Module.
+Sie ermöglichen die Kapselung der Daten, Operationen und das Verbergen der inneren Logik (vgl. Abschnitt 3.3.3).
+Nur durch Ports dürfen Nachrichten über die Modellgrenze ausgetauscht werden.
+Das ermöglicht eine klare Übersicht über den Informationsfluss im Modell.
+Durch die Auswahl des optimalen Datentyps und der Begrenzung der Elementzahl bieten Ports die M öglichkeit, das Model zu optimieren.
+Die Verbindung von unterteilten Modellen wird über Ports realisiert.
+Um die Kommunikation über Ports zu ermöglichen, muss in der Konfiguration der Modelle Parameter-Inlining ausgewählt werden.
+Ohne aktives Parameter-Inlinig ist die Verknüpfung verschiedener Modelle in den einzelnen Integrationsebenen nicht möglich.
+Parameter-Inlinig erm öglicht, referenzierte Parameter durch numerische Parameter zu ersetzten.
+Dies reduziert die RAM-Belegung, da die Parameter nicht global
+
+
+:::: Testen der Software ::::
+
+
+Ein Teil der Qualitätssicherung ist das Testen der Software [JL07, Seite 253].
+Dabei werden Unterprogramme, Subroutinen, Klassen oder Methoden überprüft.
+Beim Testen wird nicht die Korrektheit des Abschnitts bewiesen, sondern es wird aufgezeigt, dass der Abschnitt der Spezifikation nicht widerspricht.
+[CJM12, Seite 85] Das Testen umfasst das Erstellten und Durchführen von Testfällen.
+Die Spezifikation beschreibt Eingaben, das erwartete Verhalten und die daraus resultierenden Ausgaben.
+Die erwarteten Ergebnisse müssen präzise analysiert werden.
+Dabei ist es gleichwertig, Testfälle für korrekte oder inkorrekte Eingabedaten zu definieren.
+Falsche Eingaben erhöhen die Möglichkeit, Fehler zu finden.
+Bei der Erzeugung von Testfällen sollten Wegwerftests“vermieden werden. Wegwerftests beschrei- ” ben manuell gestartete Tests, die ein aktuelles Problem überprüfen.
+In der Testdurchführung wird ein hoher Automatisierungsgrad angestrebt.
+Dies ist mit manuellen Tests nicht möglich und muss daher vermieden werden.
+Die Wahrscheinlichkeit für Fehler im Quellcode steigt proportional zur Anzahl der gefunden Fehler im Quellcodeabschnitt.
+Fehlerhafte Abschnitte sind verstärkt zu testen.
+[CJM12] Das Beenden der Testphase ist durch zwei Anwendungsfälle möglich.
+Alle Testfälle enden negativ oder das Auslaufen der geplanten Testzeit f ühren zur Beendigung der Testphase.
+[CJM12, Seite 135] Testen analysieren ausführen statistische Prüfung dynamische Prüfung Prüfung gegen quantitative Konsistenzprüfung Regeln Untersuchung Abbildung 3.9.: Möglichkeiten des Testens nach [JL07, Seite 253]
+
+
+:::: Softwarespezifikation ::::
+
+
+Die Softwarespezifikation enthält einen System überblick, Systemkomponenten und System- und Umgebungsbedingungen.
+In den Systemkomponenten sind die weiteren Schnittstellen definiert.
+Die Leistungsfähigkeit definiert detaillierte Anforderungen an Speicher und Rechenleistung.
+[Fos10, Seite 73] Das Erstellen der Spezifikation findet nach der Analysephase und am Beginn der Designphase statt.
+Fehler in der Spezifikation können im späteren Entwicklungsprozess nur sehr schwer korrigiert werden.
+Besonders die Qualitätssicherung durch Testen kann mit einer falschen Spezifikation nicht gewährleistet werden.
+[Fos10, Seite 71]
+
+
+:::: Grundprinzip der Prüfung ::::
+
+
+In der Softwareentwicklung wird die Qualität einer Software durch Pr üfung sichergestellt.
+Dabei beschreibt die Qualität die Relation zwischen geforderter und gegebener Beschaffenheit der Software [DIN08, Seite 11].
+Testfälle werden dabei implizit aufgerufen.
+Die Prüfung beginnt mit der Spezifikation der Testdaten.
+Das Testobjekt wird mit diesen ausgeführt.
+Dann werden die Istwerte des Testobjekts mit den Sollwerten der Spezifikation verglichen.
+Weichen diese ab, ist der Testfall positiv und die Software erreicht nicht die geforderte Qualität.
+[TS07, Seite 249] Getestet werden können nur spezifizierte Module, da nur gegen die Spezifikation geprüft werden kann.
+Dabei wird mindestens ein Vergleichsresultat benötigt.
+Um eine gute Reproduzierbarkeit zu erreichen, muss die Pr üfung geplant werden.
+Dies wird durch eine einheitliche Dokumentation erreicht.
+Sie wird durch die Konfigurationsverwaltung für Tests ermöglicht (siehe Tabelle A.8) [JL07, Seite 261].
+Tests werden indiziert, um eine Verwaltung zu ermöglichen.
+Eine eindeutige Kennzeichnung ermöglicht, Querverweise zu weiteren Tests anzugeben und Tests gegebenenfalls zu wiederholen.
+[DRP01, Seite 358] Abbildung 3.10.: Testfall durchführen nach [JL07, Seite 258] Als Voraussetzung für die Prüfung sollten keine vorsätzlich falschen Programme in die Pr üfung gegeben werden.
+Jeder Entwickler sollte vorher die grundlegende Funktionalität gewährleisten.
+Die Korrektur erfolgt separat vom Testprozess und sollte nicht von den Testern umgesetzt werden.
+Änderungen während des Tests verfälschen den Test.
+Die Prüfung würde nicht mehr den Ausgangszustand betreffen.
+Am Ende des Tests würde kein deutliches Testergebnis entstehen.
+Weiterhin würden grundsätzliche Mängel im Ablauf oder der Spezifikation nicht deutlich werden.
+[JL07, Seite 261] Da es nicht möglich ist, dass komplette Programm zu testen, ist das Erstellen der Testfälle sehr wichtig.
+Denn das Testen mit Zufallsdaten stellt die ineffektivste Methode da.
+[CJM12, Seite 41] Um Testfälle zu erstellen, werden zwei Typen von Informationen ben ötigt.
+Die Spezifikation mit den Eingabe- und Ausgabedaten sowie die Funktionsweise des Softwareabschnitts samt Quellcode.
+[CJM12, Seite 86].
+Regressionstests dienen der Erkennung von Fehlern in Softwaremodifikationen.
+Durch Erweiterung der Software oder durch Beheben von Fehlern, können neue Fehler in das Softwaresystem eingefügt werden.
+Diese sollen durch automatisierte Regressionstest verhindert werden.
+[JL07, Seite 450] Die Regressionstests werden nicht gegen die Spezifikation gepr üft.
+Es findet ein Vergleich mit den dokumentierten Ergebnissen statt.
+Falls keine Unterschiede auftreten, ist der Regressionstest erfolgreich.
+Sollten Abweichungen zu den dokumentierten Ergebnissen auftreten, ist zu prüfen, ob diese gewünscht sind.
+Wenn die Abweichungen gewollt sind, werden diese als neue Referenz definiert.
+[Lig09, Seite 192] Abbildung 3.11.: Ablauf Regressionstest nach [Lig09, Seite 194]
+
+
+:::: Klassifikation der Tests nach Komplexität ::::
+
+
+Tests können nach ihrer Komplexität klassifiziert werden.
+Dabei wird zwischen Komponenten-, Modul-, Integrations-, System- und Abnahmetests unterschieden.
+Auf der untersten Ebene, dem Komponententest, beginnt der Test.
+[JL07, Seite 457].
+Einzel- und Modultests umfassen Funktionstests auf Klassen- und Modulebene.
+Es werden Programmteile isoliert als Blackbox getestet.
+Für jeden Test werden Test- schnittstellen benötigt, die den Anwendungsfall mit realen Eingaben ausführen.
+Der Einzeltest validiert jedoch nicht das Systemverhalten.
+Hierfür sind weitere Systemtests nötig.
+[FLS07, Seite 77] Erweiterte Tests validieren das globale Verhalten des Softwaresystems.
+Diese umfassen den Integrationstest, den Systemtest und zum Abschluss den Abnahmetest.
+[CJM12, 113] Die Bottom-Up-Integration erfolgt vom Kleinen zum Großen.
+Zuerst werden die Komponenten ohne Abhängigkeiten umgesetzt.
+Jede Komponente darf erst erstellt werden, wenn die Voraussetzungen erfüllt sind.
+Wenn zyklische Abhängigkeiten vorliegen, werden diese durch Platzhalter ersetzt.
+Das Hauptprogramm entsteht erst im letzten Integrationsschritt.
+Eine Gesamtprüfung ist erst zum Schluss möglich.
+[JL07, Seite 508] Da die Integration in den Basiselementen beginnt, können Fehler meist im neu hinzugefügten Teil lokalisiert werden.
+Das Testen der Zwischenintegration ist kompliziert, da für diese keine Spezifikationen existieren.
+Allgemein kann nicht auf das Systemverhalten geschlossen werden.
+Die einzelnen Komponenten können gut getestet werden.
+Dabei ist der Integrationsaufwand gering, da jeder Schritt nur einen Testtreiber benötigt.
+[FLS07, Seite 77] Die Top-Down-Integration beginnt mit der hierarchisch höchsten Struktur der Architektur.
+Dabei entsteht sehr früh ein ausführbares Gesamtsystem.
+Für das Testen der Zwischenschritte müssen viele Testtreiber erzeugt werden.
+In Folge der nicht vorhandenen Basisstruktur müssen sehr viele Platzhalter erzeugt werden.
+Um früh eine Funktion zu ermöglichen, müssen die Platzhalter eine rudimentäre Funktion besitzen.
+Als Folge der vielen Platzhalter ist es nur begrenzt m öglich, Testfälle zu erstellen.
+[CJM12, Seite 107-109]
+
+
+:::: Testen eingebetteter Systeme ::::
+
+
+Im Embedded-Bereich werden Testmuster zum Testen der Geräte und der Software verwendet.
+Diese Vorgehensweise umfasst das Erzeugen und Anwenden von Testmustern.
+Die Testmuster werden an den Eingängen angelegt.
+Das Systemverhalten wird beobachtet und die Resultate werden mit den erwarten Ergebnissen verglichen.
+Weiterhin dienen formale Methoden zur Verifikation von Software durch mathematische Methoden.
+[DDG09, Seite 255] Zum frühzeitigen Testen ohne vorhandene Sensoren und Aktuatoren eignen sich MiL-, SiL, HiL-Verfahren [TZ10, Seite 237].
+Da eingebettete Systeme weit verbreitet sind, existieren verschiedene Normen zum Test und zur Verifikation von eingebetteten System.
+Verschiedene Normen spezifizieren verschiedene Teilbereiche.
+Zum Beispiel existieren zur Sicherheit von Maschinen (EN 62061), die funktionale Sicherheit (ISO 26262), die Verifikation von Medizintechnik (ISO 11073) sowie Richtlinien zur Entwicklung von Software im Flugzeugbau (DO178B guidelines for development of aviation software “). ”
+[Mar07, Seite 236]
+
+
+:::: Model in the loop ::::
+
+
+Model in the loop“-Tests ermöglichen die Testdurchführung in frühen Entwick- ” lungsstadien.
+Diese können durchgef ührt werden, obwohl einige physikalische Komponenten noch nicht vorhanden sind.
+Als Voraussetzung müssen nur die physikalischen Komponenten getestet werden, deren Verhalten unbekannt ist.
+Die Simulation des Models ermöglicht verschiedene Konfigurationen des Systems zu testen.
+Das Model interagiert mit dem realen System, welches durch die Umwelt gespeist wird.
+In der Umwelt ist die Real-Time-Simulation enthalten.
+Das Modell repräsentiert dabei den Controller.
+[Plu06, Seite 2] Extern (virtuell) Model Real-Time System Extern (real) Abbildung 3.12.: MiL-Prinzip nach [Plu06, Seite 3] Software in the loop Ein Software in the loop“-Test bezeichnet die Verifikation von Softwarekompo-
+
+
+:::: Software in the loop ::::
+
+
+nenten in einer simulierten Umgebung.
+Dabei wird die implementierte Software auf einer virtuellen Maschine (z.B. PC) ausgeführt.
+Die Simulation muss dabei keinen Echtzeitanforderungen genügen.
+Mit SiL-Tests kann Software ohne vorhandene Hardware frühzeitig getestet werden.
+Diese ermöglichen Komponententests zur Softwareabdeckung.
+[TZ10, Seite 281] Extern (virtuell) Software Real-Time System Extern (real) Abbildung 3.13.: SiL-Prinzip Hardware in the loop Hardware in the loop (HiL) beschreibt Methoden und Werkzeuge zur Verifikation
+
+
+:::: Hardware in the loop ::::
+
+
+teilweise in einer realen und teilweise virtuellen Umgebung erfolgen.
+HiL-Tests ermöglichen die Geschwindigkeit der Software auf dem Endgerät zu validieren.
+Im Gegensatz zu MiL und SiL sind hierbei die Echtzeitanforderungen zu gewährleisten.
+Im Blick auf Steuergeräte sind Aspekte der Onboard- und Offboardkommunikation, das Kommunikationsverhalten im Netzwerk, die Regelungs- und Steuertechnik und Überwachungsfunktionen zu betrachten.
+[TZ10, Seite 283] 3.6.5.
+Bewertung des Testens als Prüfverfahren Testen ist ein natürliches Prüfverfahren zur Verifikation der Spezifikation.
+Diese
+
+
+:::: Bewertung des Testens als Prüfverfahren ::::
+
+
+den.
+Dafür wird eine gute Automatisierung und Dokumentation ben ötigt.
+Der investierte Aufwand lässt sich in Regressionstest mehrfach nutzen.
+In Folge des Testens wird das Systemverhalten sichtbar und Mängel in der Anwendung können schnell entdeckt werden.
+MiL-,SiL und HiL-Test ermöglichen es, früh in der Entwicklung das Systemverhalten zu ermitteln und wahrzunehmen.
+Ein Korrektheitsbeweis kann durch das Testen nicht erfolgen.
+Es kann nie das komplette Systemverhalten getestet werden.
+Deswegen ist das Erstellen der Testfälle so wichtig.
+Testen prüft nicht die Wartbarkeit des erzeugten Codes.
+Da sich Tests am Quellcode orientieren, bleiben Spezifikation und andere Dokumente ungeprüft.
+Wenn Testfälle positiv sind, ist die Fehlerursache meist nicht ermittelt.
+Diese muss mit Hilfe von Debugging lokalisiert werden.
+Testen ist ein praktisches Mittel um die Qualität im Softwareprozess zu sichern.
+Softwaretests haben allerdings nur eine unterstützende Funktion.
+Die zentrale Verantwortung besitzen die Architektur- und Anwendungsentwickler.
+
+
+:::: Debugging der Software ::::
+
+
+Debugging als Vorgang zur Fehlerbehebung ist ein zentraler Bestandteil der Korrektur.
+Es wird bei positiven Testfällen ben ötigt.
+Das Verhalten des Programms widerspricht der Spezifikation.
+Darauf erfolgt das Debugging in zwei Schritten.
+Der Fehler wird lokalisiert und behoben.
+Ein folgender negativer Testbefund schließt den Prozess ab.
+[CJM12, Seite 157] Debugging kann durch Brute-Force “, Induc- ” tion (beim Fehler starten und dann gründlicher werden), Deduction (eine Fehlerliste erarbeiten und diese dann durch Ausschluss lösen) oder Backtracking erfolgen.
+[CJM12, Seite 162] Abbildung 3.14.: Allgemeine Einordnung des Debuggings in den Testprozess nach [AT09, Abschnitt 8.2.3]
+
+
+:::: Brute Force ::::
+
+
+Beim Debugging mit Speicherabbild erfolgt das Debuggen über einen Speicherauszug.
+Dieser enthält eine Liste aller Speicherorte im Hexadezimalsystem.
+[CJM12, Seite 158] Dies ist eine Methode, die bei sehr langen Rechenzeiten zur Anwendung kommt.
+[AT09, Abschnitt 8.2.2 ]
+
+
+:::: Induction ::::
+
+
+Zunächst werden die gesamten relevanten Daten betrachtet.
+Es wird zwischen funktionsfähigen und defekten Abschnitten unterschieden.
+Darauf folgend wird das Problem vom Fehler zum Allgemeinen zurückgeführt.
+Es wird dabei nach Widersprüchen gesucht.
+Es werden die Fragestellungen was, wo und wann geklärt.
+Zusätzlich werden die erwarteten Resultate aus diesen Fragestellungen betrachtet und aus diesen eine Hypothese gebildet.
+Sollte keine Hypothese gebildet werden können, werden zusätzliche Daten benötigt.
+Diese Daten können durch weitere Testfälle erzeugt werden.
+Die gestellte Hypothese wird überprüft.
+Sollte der Fehler ermittelt worden sein, kann dieser korrigiert werden.
+Abschließend folgt der Regressionstest zum Ausschluss von neu erzeugten Fehlern.
+[CJM12, Seite 161-162]
+
+
+:::: Deduction ::::
+
+
+Es wird eine Liste erstellt, die Ursachen für die Fehler enthält.
+Ausgehend von vielen Möglichkeiten werden diese nach und nach reduziert.
+Die Fehlerliste wird so lange reduziert, bis eine mögliche Hypothese verbleibt.
+Sollte keine Hypothese verbleiben, werden weitere Fehler gesucht.
+Als Ergebnis dieses Vorgangs verbleibt die wahrscheinlichste Hypothese.
+Die Hauptthese kann weiter verfeinert werden.
+Darauf folgend wird geprüft, ob die Hypothese wirklich die Fehlerursache ist.
+Der Fehler kann nun behoben und durch Regressionstests überprüft werden.
+[CJM12, Seite 163-164]
+
+
+:::: Eignung für die Umsetzung ::::
+
+
+Im Bereich der Embedded-Sytems können die Methoden der nicht eingebetteten Softwareentwicklung verwendet werden.
+Die MDSD bietet neue Möglichkeiten, immer komplexere Softwaresysteme effizienter zu entwickeln.
+Dies erfolgt durch bessere Übersicht, gr ößerer Softwareunterstützung, der automatischen Codegenerierung und der steigenden Teststandardisierung.
+Die Umsetzung von Softwaresystemen kann auf verschiedenen Automatisierungsstufen erfolgen.
+Dabei wird der manuell erstellte Quellcode in zukünftigen Projekten immer weiter reduziert.
+Besonders in sehr komplexen Domänen, die eine saubere und synchrone Dokumentation benötigen, wird die Verbreitung der MDSD ansteigen.
+Mit Simulink existiert ein Werkzeug, das viele Aufgabenbereiche bereits abdeckt.
+Besonders die Codeerzeugung für verschiedene Plattformen und integrierte Treiber vereinfachen diese Arbeit.
+Die Qualitätssicherung der wachsenden Softwarekomponenten kann nur durch eine hohe Testabdeckung gewährleistet werden.
+Fehler in der ausgelieferten Software können nur durch umfangreiche Tests und eine hohe Testabdeckung minimiert werden.
+
+
+:::: Umsetzung ::::
+
+
+Dieses Kapitel beschreibt die praktische Umsetzung von Algorithmen auf der OBU.
+Exemplarisch erfolgt dies anhand des MinMax-Algorithmus und der Kreuzkorrelation.
+Diese dienen zur Bestimmung von Raddurchmessern an Schienenfahrzeugen.
+Zunächst werden die Integrationsschritte und -stufen aufgezeigt und die Umsetzung dokumentiert.
+Abschließend werden die entstandenen Probleme bei der Portierung dargestellt und deren Lösungen aufgezeigt.
+
+
+:::: Problemstellung ::::
+
+
+Als Ziel des Cargo-CBM Projekts soll die zeitabhängige Wartung von Schienenfahrzeugen in eine zustandsabhängige Wartung überführt werden.
+Dazu ist es notwendig, Zustandsparameter automatisiert zu bestimmen.
+Dies wird exemplarisch an der Raddurchmesser-Berechnung umgesetzt.
+Zur Bestimmung der Raddurchmesser und somit eines Parameters des Schienenfahrzeuges, wird der MinMax-Algorithmus bzw.die Kreuzkorrelation verwendet.
+Der MinMax-Algorithmus zeichnet sich durch Ressourcenschonung aus und liefert weiterhin gute Näherungen der Raddurchmesser.
+Die Kreuzkorrelation benötigt durch die Verwendung der mathematischen Integration wesentlich mehr Rechenkapazität.
+Diese Algorithmen sind als Matlab-Skript vorhanden und sollen nach C übersetzt werden.
+Pro Drehgestell stehen 4 Sensorblöcke zur Verfügung (siehe Abbildung 4.1), die über zwei CAN-Busse mit der OBU verbunden sind.
+Es werden 20.000 Messwerte pro Sekunde durch die OBU aufgezeichnet.
+Jedes Radsatzlager enthält einen Beschleunigungs-, Temperatur- und Drehzahlsensor (siehe Abbildung 4.1).
+[BAU11] Abbildung 4.1.: Drehgestell Sensorverteilung Als Folge der hohen Datenraten durch die 4 Sensoren können die aufgezeichneten Daten nicht vollständig übertragen werden.
+Die einzelnen CAN-Busse sind als Thread implementiert.
+Die Daten werden abgeholt, wenn der Thread auf der OBU ausreichend hohe Priorität erhält.
+Weiterhin werden noch weitere Prozesse für GPS, GSM STM33 etc.auf der OBU ausgeführt.
+Diese benötigen Rechenzeit.
+Ein CAN-Buffer umfasst 5 Nachrichten und ist direkt im Prozessor integriert.
+Eine erhöhte Systemlast verhindert das regelmäßige Abrufen der Daten aus den Buffern.
+Dies führt zu Bufferüberläufen, die einen Nachrichtenverlust zur Folge haben.
+Dieses Problem wird bereits durch einen optimierten Taskwechsel minimiert.
+Der Datenverlust kann jedoch nicht vollständig ausgeschlossen werden.
+In einer folgenden Version sollen nur die Messdaten von einem CAN-Bus ausgewertet werden.
+Gleichzeitig befinden sich die weiteren CAN-Busse im Wartezustand.
+Dies soll zur Reduzierung der Datenlast führen und Nachrichtenverluste komplett vermeiden.
+Zum Zeitpunkt der Umsetzung sind die Messdaten noch fehlerhaft und müssen durch das Buffermodul überprüft werden.
+Die Nachrichten werden zwischen Beschleunigungs-, Temperatur- und Umdrehungsnachrichten unterschieden.
+Ein Beschleunigungspaket besteht aus 64 Bit.
+Der Zeitstempel besteht aus einer vorzeichenlosen Zahl die 20 Bit beinhaltet.
+Darauf folgen 4 Beschleunigungswerte des Sensors zu je 8 Bit.
+Die Zeitstempel der Beschleunigungswerte 2-4 werden mit der Formel 4.1 berechnet.ti = t0 + i ∗ 50µs (4.1) Ein Radimpuls und die Temperatur der Lager werden mit jeder Radumdrehung übertragen.
+Diese enthalten zusätzlich einen Zeitstempel von 4*8 Bit.
+Die gesamten Zahlen werden im Zweierkomplement als Big-Endian übertragen.
+[BAU11] Sämtliche CAN-Nachrichten werden f ür die Messung gepuffert und als unsigned-8Bit “in einer Datei abgelegt. Diese Dateien bilden die Grundlage für ” die weiteren Berechnungen.
+4.2.
+Vorgehen um Code zu erzeugen
+
+
+:::: Vorgehen um Code zu erzeugen ::::
+
+
+aus Abbildung 4.2 durchgeführt.
+Die Software wird in Simulink entworfen.
+Dabei sind die Eingabedaten und die erwarteten Ergebnisse vorhanden.
+Diese werden als Spezifikation für das Testen definiert.
+Zur Überprüfung des Modells werden während der Entwicklung verschiedene Testfälle erstellt.
+Änderungen am Modell, werden durch Regressionstests validiert.
+Die Ergebnisse der negativen Tests werden gespeichert, da diese für weitere Tests als Referenz benötigt werden.
+Sind die Testergebnisse negativ, d.h. es konnten keine Fehler gefunden werden, wird das Modell zum Exportieren angepasst.
+Dabei werden die Eingangs- und Ausgangsports definiert und das C-Interface angepasst.
+Abschließend wird das Modell in C-Code exportiert.
+Um die Funktionalität des C-Codes zu überprüfen, wird dieser als S-Funktion in Simulink eingebunden.
+Die Simulation wird als SiL-Test mit der eingebundenen S-Funktion wiederholt.
+Dabei werden die Ergebnisse des SiL-Tests mit den vorher gespeicherten Resultaten verglichen.
+Sollten diese Abweichen, sind bei der Exportanpassung Fehler entstanden.
+Daraus folgt, dass die Entwicklung in der Exportphase fortgesetzt wird.
+Nachdem der SiL-Test erfolgreich beendet wurde, werden die HiL-Tests durchgeführt.
+Dazu wird der Code auf der OBU ausgeführt.
+Sollten Fehler in den HiL-Tests entdeckt werden, sind Fehler in der Konfiguration des Modells vorhanden.
+Die gewählten Einstellungen für die Zielplattform müssen überprüft werden.
+Die Entwicklung, wird erneut in der MiL-Phase fortgesetzt.
+Negative HiL-Tests beenden diesen Entwicklungsschritt.
+Die neue Softwareversion kann zur Nutzung verwendet werden.
+Abbildung 4.2.: Softwareentwicklung Übersicht
+
+
+:::: Übersicht der praktischen Entwicklung ::::
+
+
+Der C-Code wird durch Simulink bzw.manuell erzeugt und in das Ubuntu-System geladen welches auf einer virtuellen Maschine betrieben wird.
+Der vorhandene Code wird kompiliert und als OBU-Programm zusammengefügt.
+Das erzeugte Programm wird durch einen SFTP-Klienten auf die OBU geladen.
+Nachdem die Programme auf die OBU kopiert sind, werden diese durch eine Terminalsoftware aufgerufen und gesteuert.
+Abbildung 4.3.: Allgemeiner Ablauf der Entwicklung
+
+
+:::: Entwicklungsumgebung Ubuntu ::::
+
+
+Die Verwendung einer virtuellen Maschine ermöglicht eine betriebssystemunabhängige Entwicklung.
+Auf sämtlichen Betriebssystemen, die die virtuelle Maschine unterstützen, kann die Algorithmenentwicklung durchgeführt werden.
+Dies ermöglicht eine einheitliche Entwicklung, da diese als System vorkonfiguriert ist und an alle Entwickler verteilt wird.
+Weiterhin vermeidet die standardisierte Struktur Fehler in der Konfiguration der Entwicklungsumgebung.
+Die Programmerzeugung wird durch ptxdist “ durchgeführt und gewährleistet standardisier- ” te Programme.
+
+
+:::: Programm anlegen3 ::::
+
+
+Zur besseren Übersicht und Trennung der Funktionalitäten sind diese als eigenständige Programme auf der OBU realisiert.
+In Folge der Verwendung von C++ wird ein QT-Paket benötigt.
+Durch das Terminalprogramm in Ubuntu kann die ptxdist “-Umgebung gesteuert werden. Die Erzeugung neuer Programme er- ” folgt durch die folgende Vorgehensweise.
+Zunächst wird ein neues Programm angelegt.
+Dies wird über ./p newpackage Ordnername“ begonnen. Nachfolgend ” müssen der Paketname, die Versionsnummer, der Autor, die Art des Programms (Standard ist project-specific) angeben werden.
+Die Aufforderung zum anlegen des Programms, wird bestätigt.
+Das erzeugte Programm ist im Verzeichnis ptx- ” dist/local src“ verfügbar.
+Nachfolgend muss das Projekt im PTXDist-Menü aktiviert werden.
+Dies erfolgt durch die Anweisungen ./p menuconfig“. Dabei ist Project Specific Configura- ” ” tion“ auszuwählen.
+Darauf wird eine Liste der Programme angezeigt.
+Hierbei ist das neue Programm anzuwählen und durch Betätigen der Leertaste, ein Stern (*) zu setzten.
+Das Menü wird verlassen und die Konfiguration dabei gespeichert.
+Weiterhin muss das Programm installiert und somit erstmals kompiliert werden.
+Dies erfolgt durch die Eingabe ./p targetinstall ’Programmname’“. Nun wird ” ebenfalls Project Specific Configuration“ angewählt. Der Stern wird gesetzt und ” die Konfiguration verlassen und gespeichert. Das erzeugte Programm wird in den Programmordner root/usr/bin“ der OBU ” kopiert.
+
+
+:::: Programm verwalten ::::
+
+
+Im Prozess der Entwicklung werden Änderungen der Algorithmen durchgeführt.
+Dadurch m üssen diese erneut kompiliert werden.
+Dies erfolgt ebenfalls durch die PTXDist “-Umgebung. Das veraltete kompilierte Programm wird durch ./p clean ” ” <Programmname>“ gelöscht.
+Sehr wichtig ist die Angabe des Programmnamens.
+Erfolgt dies nicht, wird die ganze Entwicklungsumgebung neu kompiliert.
+Dies erfordert mehrere Stunden Kompilierzeit.
+Nachdem das alte Programm entfernt ist, wird das Programm durch ./p compile <Programmname>“ erneut kompiliert. ” Änderungen im Programm werden durch ./p go <Programmname>“ abge- ” schlossen.
+
+
+:::: Arbeit auf der OBU ::::
+
+
+Die Arbeit auf der OBU unterscheidet sich nicht wesentlich von der Arbeit auf einem Standard-Personalcomputer.
+Die Pins sind nach Tabelle A. 4
+zu belegen.
+Über das Adapterkabel wird die OBU mit MPC-Power on “ eingeschaltet. Eine Verbindung wird über die Terminalsoft- ” ware Putty “ nach Tabelle A. 2 hergestellt. ” Änderungen der Programmbasis werden über WinSCP “ (siehe Tabelle A.3) vor- ” genommen.
+Dies benötigt eine aktive LAN-Verbindung.
+Die Programmübersicht befindet sich in root/usr/bin “. Benutzerdaten, die den ” jeweiligen Programmen zur Verfügung stehen, werden in /home/“abgelegt. ”
+Den installierten Programmen müssen Ausführungsrechte zugewiesen werden.
+Dies ist über die Terminalsoftware oder den SFTP-Klienten möglich.
+Fehlende Ausführungsrechte erzeugen beim Ausführen des Programms die Fehlermeldung Permission denied “. ”
+
+
+:::: Allgemeiner Aufbau der Algorithmen ::::
+
+
+Folgende Softwarearchitektur wird für die allgemeine Umsetzung der Algorithmen verwendet.
+Diese ist im Verlauf der Entwicklung entstanden.
+Als Grundlage für allgemeine Berechnungen muss eine Ressource bereit gestellt werden.
+Diese kann direkt vom CAN-Bus bereitgestellt oder aus einer Datei auf der Festplatte gelesen werden.
+Allgemein kann die Implementierung, durch ein Treiberkonzept wie z.B. in Simulink verwendet, abstrahiert werden.
+Zusätzlich reduziert dies Kopplung.
+Darauffolgend müssen die Daten in einem Modul für die weitere Berechnung aufbereitet werden.
+Da die Daten im Allgemeinen von Sensoren erzeugt werden, müssen diese auf Plausibilität überprüft werden.
+Weiterhin muss deren Konsistenz sichergestellt werden.
+Es können durch äußere Einflüsse und Störungen Fehler in den Daten enthalten sein.
+Die Daten müssen fortlaufend sein.
+Fehlende Datenfragmente führen zum Ausschluss der Datenserie.
+Nachdem die Daten aufbereitet sind, werden diese im Algorithmus zur Berechnung verwendet.
+Die Algorithmen sollten in separaten Prozessen durchgeführt werden.
+Dies senkt die allgemeine Systemlast, erm öglicht die Parallelisierung von Berechnungen und verhindert dass Daten infolge von Bufferüberläufen verloren gehen (vgl. Abschnitt 4.1).
+Nachdem die Berechnungen der Algorithmen durchgeführt sind, sind deren Resultate auf Plausibilität zu prüfen.
+Dies kann durch statische Auswertungen oder Grenzwerte erfolgen.
+Abschließend werden die verifizierten Daten serialisiert und auf einem Datenträger gespeichert oder zurück auf den Bus übertragen.
+Dies sollte ebenfalls durch ein Treiberkonzept realisiert werden.
+Speziell durch Modularisierung ist es möglich, die Komponenten parallelisiert aufzurufen und Berechnungen, bei Ressourcenbedarf, gegebenenfalls auch ohne Resultate zu beenden.
+Ressource Einlese Aufbereiten Algorithmus Auswertung Serialisierung Resultat Abbildung 4.4.: Allgemeiner Aufbau der Algorithmen
+
+
+:::: Umsetzung der Algorithmen ::::
+
+
+Dieser Abschnitt dokumentiert die konkrete Umsetzung der Algorithmen zur Zustandsdiagnose für die OBU.
+Es werden auftretende Probleme und deren Lösung aufgezeigt.
+
+
+:::: Algorithmus zur Durchmesserberechnung ::::
+
+
+Das Softwaremodul erhält die Datei mit den beinhalteten Nachrichten.
+Zunächst wird die Datei in der Komponente Einlesen in zwei Schritten verarbeitet.
+Als erstes werden die Daten vom Speichermedium im ubit8“-Format gelesen. Danach ” werden die Nachrichten anhand ihres Identifikators als Nachricht abgelegt.
+Diese werden dann im Buffer auf Nachrichtenverlust überprüft.
+Die Durchmesserberechnung findet auf Grundlage der geprüften Daten statt.
+Dazu stehen der MinMax-Algorithmus und die Kreuzkorrelation zur Verfügung.
+Der gewählte Algorithmus ermittelt mehrere Durchmesser, die der statischen Auswertung übergeben werden.
+Diese ermittelt einen Durchmesser für das führende und nachlaufende Rad.ubit8-Array Logdatei Einlese Buffer Durchmesser Auswertung Durchmesser Abbildung 4.5.: Allgemeiner Ablauf des Algorithmus
+
+
+:::: Moduldefinition ::::
+
+
+Dieser Abschnitt beschreibt die Module detaillierter und geht auf deren Besonderheiten ein.
+Sämtliche verwendeten Simulink-Modelle sind nach Tabelle A. 1
+konfiguriert.
+Das Programm ist nach Abschnitt 3.4.2 in modulweiser Automatisierung mit manueller Verknüpfung erzeugt.
+Die Dateioperationen vom Einlesen und eine Version des Buffers, sind in C++ implementiert.
+Alle weiteren Module sind in Simulink umgesetzt.
+
+
+:::: Einlesen ::::
+
+
+Grundlage für das Einlesen ist ein Bit-Stream.
+Dieser enthält die Daten vom CAN-Bus.
+Die Nachricht setzt sich aus Header und Payload zusammen.
+Im Header ist der Sensoridentifikator und Nachrichtenidentifikator abgelegt.
+Anhand des Nachrichtenidentifikator wird zwischen Beschleunigungs-, Temperatur und Drehzahlnachricht unterschieden.
+... Info(8 Bit) Payload(64 Bit) ... Abbildung 4.6.: Nachrichtenformat Der Payload einer Beschleunigungsnachricht besteht aus einem Zeitstempel (20 Bit) und vier Beschleunigungswerten (je 11 Bit).
+Diese werden extrapoliert (Buffer kann noch optimiert werden) und dem Buffer übergeben.
+Abbildung 4.7.: Deserialisierung der Nachrichten
+
+
+:::: Buffer ::::
+
+
+Der Buffer dient der Aufarbeitung der Sensordaten.
+Durch fehlende Nachrichten (vgl. Abschnitt 4.1) werden Sequenzen der Daten unbrauchbar und von der Berechnung ausgeschlossen.
+Es wird je Sensor ein Datenblock gebildet.
+Dies erfolgt parallel für zwei Sensoren.
+Dabei muss jeder Block eine innere, durch den Abstand der Beschleunigungsnachrichten definierte, Konsistenz erreichen.
+Die optimale Zeitdifferenz zweier Nachrichten beträgt 200 µs.Dabei darf die zulässige Abweichung von 5µs nicht überschritten werden.
+Zusätzlich zur inneren Konsistenz erzeugt der Buffer Blöcke, die zueinander synchron sind.
+Dies bedeutet, dass die jeweiligen Startzeiten zueinander um maximal 205µs abweichen dürfen.
+Zusätzlich wird jedem Nachrichtenblock die durchschnittliche Drehzahl seines jeweiligen Rades zugeordnet.
+Dazu wird das arithmetische Mittel der Umdrehungsnachrichten zwischen der Start- und Endzeit der Blöcke gebildet.
+Der Buffer übergibt der Durchmesserberechnung zwei Drehzahlen und die dazu gehörigen Blöcke der Beschleunigungsnachrichten.
+
+
+:::: Durchmesser ::::
+
+
+Das Durchmesser-Model ist komplett in Simulink integriert.
+Ein Embedded-Matlab-Block enthält die Funktionalität.
+Über drei Eingangsports werden Drehzahl, Beschleunigung der vorderen und die Beschleunigung der hinteren Räder übergeben.
+Der Durchmesser wird über die verwendete Drehzahl bestimmt.
+Wird die vordere Drehzahl übergeben, wird der vordere Durchmesser berechnet.
+Für die hintere Drehzahl wird der hintere Durchmesser berechnet.
+Der berechnete Durchmesser wird dabei über den Ausgangsport übergeben.
+
+
+:::: Statistische Auswertung ::::
+
+
+Die statistische Auswertung wird für eine große Anzahl an Durchmessern durchgeführt.
+Dabei wird durch ein Histogramm der Durchmesser bestimmt.
+Das Histogramm besitzt eine untere und obere Schranke.
+Zusätzlich kann die Granularität durch die Schrittweite definiert werden.
+Die Daten werden als Array übergeben.
+Das Histogramm ermittelt den häufigsten Wert.
+Abbildung 4.9.: Histogramm zur Durchmesserbestimmung
+
+
+:::: Komponententest ::::
+
+
+Dieser Abschnitt beschreibt den Komponententest der in Abschnitt 4.5 aufgeführten Komponenten.
+Zunächst wurden die Komponenten separat in MiL-Tests verifiziert.
+Auf Grundlage der verifizierten Modelle erfolgt die weitere Codegenerierung zur Umsetzung von SiL- und HiL-Tests.
+In dieser Arbeit wurden die drei skizzierten Arbeitsweisen zur Umsetzung eines Softwaresystems verwendet.
+Manuell erzeugt wurden nur das Lesen vom Speicher und eine Version des Buffers.
+Die weiteren Komponenten wurden in Simulink umgesetzt und als Plattformcode exportiert.
+Diese Teilfragmente sind durch manuellen Code zusammengesetzt.
+In der abschließenden Version ist eine vollständige Umsetzung in Simulink entstanden.
+Die manuellen Fragmente wurden über S-Funktionen eingebunden.
+Das Gesamtsystem wurde über eine MiL-Simulation verifiziert.
+
+
+:::: Testen der Komponente Einlesen ::::
+
+
+Das Einlesen besteht aus zwei Teilbereichen.
+Zuerst werden ubit8-Character von der Festplatte in den RAMgelesen.
+Dies ist manuell implementiert und wird in das Modell durch eine S-Funktion eingebunden.
+Durch ein in Simulink integriertes Modell wird darauf die Deserialisierung der Nachtrichten durchgeführt.
+
+
+:::: Lesen vom Speicher ::::
+
+
+Die Funktion readFromFile“setzt als eingehende Ports einen Dateinamen und die ” Anzahl der zu lesenden Zeichen voraus.
+Am Ausgangsport wird ein Array mit dem Inhalt der gelesenen Zeichen zurückgegeben.
+Die Funktion liest solange Bytes, bis die geforderte Anzahl erreicht ist.
+Sollte die Dateilänge kleiner als die geforderte Anzahl sein, bleiben die restlichen Felder mit Null belegt.
+Dies f ührt zu Problemen, wenn das komplette Array mit Nullen belegt ist.
+Der Buffer kann dann keine, der Spezifikation entsprechenden Datenblöcke, bilden.
+Die Spezifikation definiert nicht vorhandene Dateinamen und negative Zeichenlängen als Fehler.
+Fehlerhafte Zustände werden durch den Rückgabewert NULLgekennzeichnet.
+Dieses Verhalten ist durch Tests abgedeckt und wurde mit SiL- und HiL-Test bestätigt (siehe Test A.6).
+Abbildung 4.10.: Einlesen vom Speicher Bei dieser Umsetzung wird die Wichtigkeit der Tests deutlich.
+Eine erste Implementierung in C lieferte durch den nichtbinären Lesezustand für die ersten ca. 200 Werte die erwarteten Ergebnisse.
+Die weiteren Werte wurden falsch bzw.nicht ausgegeben.
+Umfangreiches Testen und Debugging entdeckte diese Spezifikationsabweichung.
+
+
+:::: Deserialisierung der Nachrichten ::::
+
+
+Die Deserialisierung der Daten erfolgt durch das vorgegebene Modell A.6.
+Einige Änderungen waren nötig um dieses nach Simulink zu portieren.
+Über eine Si- mulation der vorhandenen Vorlage (Matlabcode) und den aufgezeichneten Messdaten wird das erwartete Ergebnis für den portierten Algorithmus spezifiziert.
+Dies schließt Fehler in der Portierung aus.
+Über einen MiL-Test wird das portierte Simulink-Model gegen die spezifizierten Ergebnisse validiert.
+Die erwarteten Ergebnisse werden ebenfalls f ür den SiL- und HiL-Test, der exportierten C-Funktion, verwendet.
+
+
+:::: Testen des Buffers ::::
+
+
+In der Entwicklung vom Buffer wurden Assertion-Testsverwendet.
+Diese können über die Zustandsvariable debug“gesteuert werden. ”
+Ein Fehler des Buffers wurde durch Testen ermittelt.
+Das Füllen des Buffers mit 0-Daten führt diesen in eine Endlosschleife.
+Um den Buffer auf der Hardware zu verifizieren, werden SiL- und HiL-Tests verwendet.
+Die Ausgabedaten des Buffers werden nach der Spezifikation(Toleranz zwischen den Blöcken, Toleranz zwischen den Nachrichten) überprüft.
+Allgemein kann der Buffer weiter optimiert werden.
+Zu jeder CAN-Nachricht werden vier Messwerte interpoliert.
+Diese müssen nicht zusätzlich überprüft werden (vgl. Abschnitt 4.1).
+
+
+:::: Testen der Durchmesserberechnung ::::
+
+
+Die Simulation wurde als MiL-Test durchgeführt.
+Diese Ergebnisse bilden die Referenzdaten für den SiL- und HiL-Test.
+Die Komponente der Durchmesserberechung wurde manuell und separat als SiL- und HiL-Test auf dem lokalen Rechner und auf der OBU verifiziert (siehe Anhang A.6).
+Abbildung A. 1
+dokumentiert die Ausgabe des Terminals.
+
+
+:::: Verifikation des Histogramms ::::
+
+
+Das Histogramm wurde in Matlab umgesetzt.
+Der MiL-Test (siehe Anhang A.6) prüft die Funktionalität.
+Dazu wird die obere und untere Schranke sowie die Schrittweite getestet.
+Dabei ist die Verteilung durch den Parameter Gewünschtes ” Ergebnis“anzupassen.
+Dieser Parameter definiert den Wert mit der höchsten Verteilung.
+Abbildung 4.11.: MiL-Test für das Histogramm
+
+
+:::: Integration und Integrationstest der entwickelten Komponenten ::::
+
+
+Nachdem die Komponenten durch den Komponententest verifiziert sind, müssen diese integriert werden.
+Dabei werden zwei Vorgehen angewendet.
+Der Abschnitt manuelle Integration “beschreibt die Botton-Up“-Integration des C-Codes. Der ” ” vollständige Integration“beschreibt den Integrationsprozess zweite Abschnitt ” in Simulink.
+Die bereits als Modelle vorliegenden Komponenten können über Modell-Felder eingebunden werden.
+Besonders das Verwenden von den selben Modellen an verschiedenen Stellen ermöglicht eine nichtredundante Verwaltung der Modelle.
+Da das Gesamtsystem in Simulink bereits verifiziert ist, ist nur die Anpassungen der Konfiguration zur Codeerzeugung nötig.
+Im zweiten Abschnitt werden die in den Grundlagen beschriebenen Vorteile angewendet.
+Abschließend werden die Hardwareeinstellungen auf das Zielsystem angepasst.
+
+
+:::: Manuelle Integration ::::
+
+
+Die Komponenten liegen als C- oder C++-Code vor.
+Es werden systematisch die Datentypen überprüft.
+Da jedes automatisch erzeugte Modul separate Datentypen in Header-Dateien verwendet, müssen diese vereinheitlicht werden.
+Optimal erfolgt dies in einer zentralen Header-Datei.
+Im Regressionstest muss das Modul Lesen vom Speicher überprüft werden.
+Da hier eine Verwebung von C und C++-Code stattfindet, ist die korrekte Verwendung der Datentypen entscheidend.
+In Folge der Anpassung der Datentypen können nun die weiteren Komponenten integriert werden.
+Es folgen das Einlesen, der Buffer, die Durchmesserberechnung und der Statistikteil.
+Mit jeder hinzugef ügten Komponente werden sämtliche Tests wiederholt und weitere hinzugefügt.
+Nachdem die SiL-Tests zur Integration abschlossen sind, wird das Softwarepaket auf der OBU installiert.
+Ein weiterer Durchlauf der erstellen Tests beendet den Integrationstest.
+Als Ergebnis der Integration wird die Datei Intergration.cpp“erzeugt. Diese im- ” portiert die Typdefinitionen der Header-Datei rtwtypes.h“. Die Berechnung kann ” über die Zustandsvariablen MAX READ (maximale Anzahl an gelesenen Zeichen), fileName (Name der auszuwertenden Logdatei) und über debug (Fehleranalyse und sonstige Meldungen) gesteuert werden.
+Die Grundlage des Algorithmus bildet eine Schleife, welche die Daten vom Speicher liest.
+Die Nachrichtendeserialisierung wird durchgef ührt.
+Die erzeugten Nachrichten werden für Sensor 1 und Sensor 2 ausgelesen.
+Dies ist in Einlesen.c“ ” implementiert. Diese Daten werden dem manuell implementierten Buffer (Buffer.cpp) durch den Funktionsaufruf buffer()“ zugewiesen. Die erzeugten Blöcke ” und Durchschnittsdrehzahlen werden durch den Algorithmus in MinMax.c “ be- ” rechnet. Die folgenden Durchmesser werden durch die implementierte Statistik in Statik.c“ ausgewertet. ”
+Die Durchmesserberechnung wurde erfolgreich manuell auf die OBU portiert.
+Abbildung 4.12.: Manuelle Integration der Durchmesserberechnung
+
+
+:::: Vollständige Integration in Simulink ::::
+
+
+Die Komponenten sind als Simulink-Modelle und C- bzw. C++-Code vorhanden.
+Der manuell erzeugte Quellcode (readFromFile.cpp) wird durch eine S-Funktion gekapselt.
+Die Komponenten sind durch MiL-,SiL- und HiL-Tests verifiziert.
+Dies reduziert Fehler in der Integration.
+Das Modell wird komplett in Simulink integriert werden.
+Somit wird die MiL-Funktionalität sichergestellt.
+Es werden Hardware-, Laufzeit- und Speicheroptimierungen zur Transformation vorgenommen.
+
+
+:::: Integrationstest Einlesen ::::
+
+
+Das Systemverhalten der Einlesenmodule wird getestet.
+Dabei werden die Nachrichten für zwei Sensoren eingelesen.
+Zur Sicherstellung der Einlesefunktionen wird der Eingangsport untersucht.
+Der korrekte Dateneingang ermöglicht erst die weitere Verarbeitung der Daten.
+Es werden die Ergebnisse des ersten Sensors dokumentiert und validiert.
+Die Ergebnisse des zweiten Sensors werden nicht betrachtet.
+Diese werden in einem Terminator-Block verworfen.
+Abbildung 4.13.: Integrationstest Einlesen
+
+
+:::: Manueller Einzeltest der Gesamtintegration ::::
+
+
+Beim Testen werden die Vorteile von Simulink umgesetzt.
+Das gesamte System, der Durchmesserberechnung, ist in einen Block zusammengefasst.
+Der Eingang des Modells (Dateiname der Logdatei), wird variiert.
+Dies ermöglicht den Test verschiedener Logdateien.
+Die Durchmesser der Simulation werden nach Plausibilität geprüft, gespeichert und werden in einem zusätzlichen Test im Histogramm ausgewertet.
+Diese Durchmesser bilden die Grundlage zum Testen des Histogramms.
+Abbildung 4.14.: Manueller Test der Gesamtintegration
+
+
+:::: Test der Gesamtintegration mit Histogramm ::::
+
+
+Das Histogramm wird mit mehren Daten getestet.
+Dazu werden aus 2 Logdateien die Durchmesser berechnet.
+Die Logdateien können durch die Parameter festgelegt werden.
+Die Ergebnisse der Berechnung werden verknüpft und als ganzes dem Histogramm übergeben.
+Dieses wertet separat die Durchmesser für das führende und nachlaufende Rad aus.
+Die Ergebnisse werden auf dem Workspace gespeichert.
+Die Granularität der Histogramms kann über die Parameterblöcke gesteuert werden.
+
+
+:::: Ergebnis der Integration ::::
+
+
+Der Embedded Coder erzeugt den Plattformcode.
+Der erzeugte Code enthält Abhängigkeiten zur Simulink-Umgebung, die nicht reduziert werden können.
+Diese Abhängigkeiten sind auf die unvollständige Codeerzeugung durch Simulink zurückzuführen.
+Die Anwendung auf der Zielplattform kann nicht erfolgen.
+Eine vollständige korrekte Automatisierung des Fertigungsprozess konnte nicht umgesetzt werden.
+
+
+:::: Bewertung ::::
+
+
+Das manuelle Integrieren mit automatisierten Komponenten weist viele manuelle Arbeitschritte auf.
+Besonders das manuelle Erzeugen von Datentypdefinitionen erfordert viel Arbeitsaufwand und muss durch Automatisierung ersetzt werden.
+Diese Softwarearchitektur besitzt den Vorteil, dass Komponenten beliebig ausgetauscht werden k önnen.
+Dies wird bei der Durchmesserberechnung verwendet.
+Dabei wird das MinMax-Verfahren und die Kreuzkorrelation angewandt.
+Dabei verwenden beide Algorithmen die selbe Schnittstelle.
+Durch Austauschen der C-Datei kann der Algorithmus ausgetauscht werden.
+Ein weiterer Kompiliervorgang und der Austausch des Programms, ermöglicht die sofortige Nutzung auf der OBU.
+In Simulink kann aus beiden Richtungen integriert werden.
+Der Nachteil der Top-Down-Integration mit vielen Funktionshülsen wird durch die grafische Oberfläche vermieden.
+Die erzeugten Strukturmodelle können direkt verwendet werden.
+Der Kommunikationscode zwischen den Modulen wird automatisch erzeugt und erfordert keinen Mehraufwand.
+In Simulink wird das Systemverhalten aus wenigen Komponenten sehr schnell deutlich.
+Die Integration von manuellem Code sollte reduziert werden.
+Die Anbindung, speziell von vielen Ports, ist sehr aufwändig.
+Da dies über Pointer realisiert ist, führen Fehler zu Zugriffsverletzungen, die einen Komplettabsturz der Simulinkumgebung erzeugen.
+Die Dynamik der Ports wird reduziert.
+Dynamische Dimensionen und Datentypen können nicht mehr verwendet werden, da diese durch die festgelegte Header-Datei definiert werden.
+Schnelle Änderungen der Schnittstellen und Softwarearchitektur sind in diesen Teilbereichen nicht mehr möglich.
+Weiterhin sollte die frühzeitige Optimierung von Datentypen und Strukturen vermieden werden.
+Die Festlegung von Dateitypen reduziert die dynamischen Vorteile des Matlab-Codes.
+Durch die Festlegung des Datentyps muss dieser in jeder weiteren Zuweisung bestätigt werden.
+Dies ist bei nachträglichen Spezifikationsänderungen sehr zeitintensiv.
+Änderungen der Schnittstellen führen zu komplexen Anpassungen.
+Weiterhin sind die Schnittstellen zwischen den Komponenten sehr statisch.
+Die Länge der verwendeten Log-Dateien ist durch den Beginn der Entwicklung festgelegt und kann nur mit gr ößerem Aufwand geändert werden.
+Eine dynamische Übergabe wird durch die starren C-Header ausgeschlossen.
+Dynamische Dateilängen können durch eine Parametrisierung der Codeerzeugung umgesetzt werden.
+Diese können über den Parameter Filelength“festgelegt werden (siehe Abbildung 4.16). ”
+Das Verknüpfen der Softwarekomponenten in der manuellen Integration, minimiert die erzielten Erfolge der automatischen Codegenerierung.
+Somit sollten die erzeugten Funktionsblöcke eine umfangreiche Funktionalität aufweisen um diesen Aufwand zu rechtfertigen.
+Der erzeugte Code scheint, nach aktuellem Kenntnisstand, das Modell fehlerfrei abzubilden.
+Fehler im Code waren immer auf bereits im Modell vorhandene Fehler zurückzuführen.
+Die Komplette Integration in Simulink ermöglicht eine sehr gute MiL-Verifikation.
+Die Signale zwischen den Komponenten können sehr leicht abgefragt und gespeichert werden.
+Nach den Umsetzungen dieser Arbeit eignet sich Simulink zum Rapid-Prototyping.
+Ein Problem stellte die Verwaltung der separaten Konfigurationen der Modelle dar.
+Die internen Debug-Fähigkeiten von Simulink konnten den Arbeitsaufwand reduzieren und überzeugen im Vergleich zur rudimentären C- und C++-Unterstützung.
+Allgemein sollte die Verwendung von manuellem Code in Verbindung mit Simulink, soweit wie möglich, vermieden werden.
+
+
+:::: Diskussion und Ausblick ::::
+
+
+Es konnte gezeigt werden, wie aus einem simuliertem Modell mit Simulink Systemcode erzeugt wurde.
+Dies konnte für zwei Algorithmen exemplarisch dargestellt werden.
+Durch Simulink wurde es möglich, mit Hilfe der modellgetriebenen Entwicklung sowie der grafischen Oberfläche, die Komplexität der Algorithmen zu reduzieren.
+Dies ist bei steigender Komplexität der Aufgabenstellung nötig.
+Es erm öglicht dem Anwendungsentwickler, sich auf die konkrete Problemstellung zu konzentrieren.
+Durch das automatische Erzeugen des Quellcodes werden besonders Speicherzugriffsverletzungen und das umständliche Verbinden der Module vermieden.
+Insgesamt kann die allgemeine Codierungszeit reduziert werden.
+Dies ist besonders bei der Verwendung von manuell erzeugtem Code deutlich geworden.
+Dessen Einbindung und Entwicklung benötigte überproportional viel Zeit.
+Besonders die Systemabstürze und die mangelhafte Fehlerdokumentation von Simulink erschwerten diese Aufgabe.
+Die Verwendung von manuell erstellten Softwareteilen sollte soweit wie möglich reduziert werden.
+Da diese die Fehleranfällig erhöht, die Fehlerdiagnose erschwert und allgemein die Dynamik im Entwicklungsprozess reduziert.
+Im Gegensatz dazu konnte der Matlab-Code sehr gut entwickelt werden.
+Simulink enthält eine gute Fehlererkennung sowie Möglichkeiten zur Fehlersuche.
+Es ist möglich, das Programmverhalten zu analysieren und die Ausführung beliebig zu unterbrechen.
+Änderungen in Algorithmen konnten schnell umgesetzt werden.
+Durch Austausch der Funktionalität in den Blöcken konnte sehr komfortabel ein neues System erzeugt und getestet werden Simulink bietet eine gute Unterst ützung zum Testen der Komponenten.
+Es ist sehr komfortabel, Daten zu Serialisieren und bei erneuter Nutzung in die Modelle zu laden.
+Durch die Verwendung des modellbasierten Ansatzes konnte eine gute Kapselung der Module erreicht werden.
+Das aufwendige Definieren von Schnittstellen entfällt.
+Es ist möglich den Port einmal zu definieren.
+Diese Definition kann durch die weiteren Modelle automatisch wiederverwendet werden.
+Allgemein können Modelle oder deren Teile sehr gut wiederverwendet werden.
+Der signalbasierte Ansatz vermeidet eine große Kopplung der Module untereinander.
+Modelle erhalten nur den Zugriff auf benötigte Daten.
+Um Modelle zu exportieren waren weitere Anpassungen der Simulationen nötig.
+Dabei wurden einige Probleme deutlich.
+Dies betrifft besonders die Matlab-Skriptsprache.
+Deren vollständiger Funktionsumfang wird beim Exportieren nicht unterstützt.
+Simulink unterstützt die Verwendung von 64-Bit-Datentypen.
+Das Exportieren dieser ist jedoch noch nicht in der Version R2012a“ möglich. ”
+Fehler in diesen Prozessen konnten durch das allgemeine Verfahren aus dem dritten Kapitel reduziert werden.
+Weiterhin wurden im dritten Kapitel Methoden zur Softwareimplementierung erarbeitet.
+Dabei konnte das allgemeine Vorgehen von der Konzeption bis zur Integration in einem Ablaufdiagramm dargestellt werden.
+Die erzielten Erfahrungen, durch die Umsetzung der Algorithmen, sind in diesem Diagramm dargestellt.
+Die verwendete Vorgehensweise sollte eine teamorientierte Arbeitsweise ermöglichen und unter dieser Zielstellung optimiert werden.
+Fehler im Ersetzungsprozess (fehlende Transformationen manuell ersetzten) werden durch das erzeugte Verfahren reduziert bzw.durch Tests aufgezeigt.
+Es erhöht außerdem die Erkennung von Fehlern im Transformationsprozess durch weitere Tests.
+Weiterhin konnte ein allgemeines Architekturmuster in Kapitel drei entwickelt werden.
+Dies kann für die weitere Entwicklung verschiedener Algorithmen verwendet werden.
+Allgemein konnte durch die Automatisierung des Fertigungsprozess eine einheitliche Codierung und Dokumentation erreicht werden.
+Dies wurde durch Konfigurationen in Simulink unterstützt.
+Es konnte eine allgemeine Fehlerreduzierung feststellt werden.
+Die vollständige Automatisierung ist in der Simulation gelungen.
+Eine fehlerfreie Transformation des Quellcodes war nicht möglich.
+Es wurde Quellcode erzeugt, der Abhängigkeiten zu Simulink aufweist, die nicht aufgelöst werden konnten.
+Dies erfordert weitere Forschungstätigkeiten, die diesen Mangel beheben.
+In Kapitel vier konnten zwei Algorithmen erfolgreich auf der OBU umgesetzt werden.
+Weiterhin wurden in Kapitel vier einige Aspekte des Testens in der Entwicklung darstellt.
+Es wurden dabei Softwaretests betrachtet.
+Die Verwendung der OBU, dem Embedded-Linux und der CAN-Nachrichten als Ressource in Form einer Textdatei, ermöglichte eine komfortable Entwicklung.
+Die Verwendung von Treibern zu direkten Kommunikation mit dem CAN-Bus können in weiteren Arbeiten untersucht werden.
+Der Bereich der Optimierungen von generierter Software bildet einen weiteren Teilbereich, der Potentiale für Embedded Systems ermöglicht.

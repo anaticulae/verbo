@@ -1,0 +1,704 @@
+
+
+:::: Einführung ::::
+
+
+
+
+:::: Motivation ::::
+
+
+Die Entwicklung und Verbesserung von Frameworks zur Verarbeitung großer Datenmengen ist zur Zeit hochaktuell und im Fokus von Medien und Unternehmen angekommen [BB+14].
+Verschiedene Programme und Paradigmen konkurrieren um die schnellste, bequemste und stabilste Art großen Datenmengen einen geschäftsfördernden Nutzen abzuringen [SR14].
+Mit dem Begriff„große Datenmengen“ oder „Big Data“ werden in dieser Arbeit solche Datenmengen zusammengefasst, die die Kriterien Volume, Velocity und Variety [Lan01] erfüllen oder „Datenmengen, die nicht mehr unter Auflage bestimmter Service Level Agreements auf einzelnen Maschinen verarbeitet werden können“ (Vgl. [SW14]).
+Als Unternehmen, das früh mit zeitkritischen Aufgaben (u.a. Indizierung von Webseiten und PageRank [Pag01]) auf solchen Datenmengen konfrontiert war, implementierte Google das Map-Reduce Paradigma [DG04] als Framework zur Ausnutzung vieler kostengünstiger Rechner für verschiedene Aufgaben.
+In Folge der Veröffentlichung dieser Idee im Jahr 2004 wurde Map-Reduce in Form der OpenSource Implementation Hadoop (gemeinsam mit einer Implementation des Google File Systems GFS, u.a.) [GGL03] zum De-facto-Standard für Big-Data-Analyseaufgaben.
+Reines Map-Reduce (in der ursprünglichen Implemenation von Hadoop) als Berechnungsparadigma zur Verarbeitung großer Datenmengen zeigt jedoch in vielen Anwendungsfällen Schwächen: • Daten, die in hoher Frequenz entstehen und schnell verarbeitet werden sollen, erfordern
+21u
+22u
+0u
+auf vorherige Zwischenergebnisse angewiesen sind (häufig bei Maschinenlernalgorithmen), können nur durch persistentes Speichern der Daten und wiederholtes Einlesen zwischen allen Iterationsschritten implementiert werden.
+• Anfragen an ein solches Map-Reduce-System erfolgen imperativ in Form von kleinen
+5u
+6u
+In Folge dieser Probleme entstanden viele Ansätze dieses Paradigma zu ersetzen, zu ergänzen oder durch übergeordnete Ebenen und High-Level-APIs zu vereinfachen [SR14].
+Eine Alternative zu der klassischen Map-Reduce-Komponente in Hadoop ist die „general engine for large-scale data processing“ Apache Spark.
+Apache Spark hat innerhalb relativ kurzer Zeit stark an Aufmerksamkeit gewonnen.
+Ein Indiz für das steigende Interesse an diesem Produkt liefert unter anderem ein Vergleich des Interesses an Hadoop und Spark auf Google:
+#$@FORMULA@$#:0
+
+
+:::: Ziel dieser Arbeit ::::
+
+
+Das Ziel dieser Arbeit ist es den Betrieb einer realitätsnahen Spark-Anwendung auf einem Cluster mit Hardware am unteren Ende des Leistungsspektrums zu demonstrieren und zu begutachten.
+Dabei wird zunächst ein umfassender Überblick der grundlegenden Konzepte von Spark gegeben.
+Anschließend wird ein Anwendungsfall aus dem Bereich des Text-Mining vorgestellt und dessen Realisierung vom Entwurf bis zum Betrieb erläutert.
+Der theoretische Teil dieser Arbeit umfasst • eine Einführung in die grundlegenden Konzepte von Apache Spark • einen Überblick der High-Level-Application Programming Interfaces (APIs) in den Standardbibliotheken von Spark Der praktische Teil dieser Arbeit umfasst
+8u
+9u
+10u
+11u
+12u
+Apache Spark ist überwiegend in der Programmiersprache Scala1 geschrieben.
+Die Beispiele in dieser Arbeit werden ebenfalls in Scala verfasst um
+15u
+16u
+17u
+
+
+:::: Vorstellung und Architekturübersicht ::::
+
+
+von Spark Aus Sicht eines Nutzers ist Apache Spark eine API zum Zugriffauf Daten und deren Verarbeitung.
+Diese API (wahlweise für die Programmiersprachen Scala, Java und Python verfügbar), kann im einfachsten Fall über eine eigene Spark Konsole mit Read Evaluate Print Loop ([HKK99]) verwendet werden.
+Die Zählung von Wortvorkommen in einem Text - das „Hello World“ der Big Data Szene - lässt sich dort mit zwei Befehlen realisieren (Listing 2.1).
+#$@FORMULA@$#:1
+#$@FORMULA@$#:5
+#$@FORMULA@$#:2
+#$@FORMULA@$#:3
+#$@FORMULA@$#:4
+#$@FORMULA@$#:0
+Aus Sicht eines Administrators oder Softwarearchitekten ist Apache Spark eine Applikation auf einem Rechnercluster, die sich in der Anwendungsschicht befindet und charakteristische Anforderungen insbesondere an Lokalität des Storages und die Netzwerkperformance stellt.
+Was das in der konkreten Umsetzung beudeutet und welche Mechanismen und Konzepte dahinterstehen, wird in den folgenden Abschnitten dieses Kapitels beleuchtet.
+
+
+:::: Überblick ::::
+
+
+Im Allgemeinen Fall läuft eine Spark-Anwendung auf drei Arten von Rechnern (s. Abb. 2.1):
+7u
+8u
+9u
+10u
+11u
+12u
+13u
+14u
+15u
+16u
+17u
+18u
+19u
+20u
+Um die Architektur und Optimierungskonzepte eines verteilten Systems bewerten zu können, ist es wichtig, welche Eigenschaften der unterliegenden Hardware angenommen werden.
+Spark ist explizit für den Betrieb innerhalb eines Hadoop/YARN Rechnerclusters geeignet.
+Hadoop/YARN wiederum ist für den Betrieb auf einem Rechnercluster auf Mittelklasse-Mehrzweckmaschinen (Commodity Hardware) optimiert ([AM14]).
+Für Spark kann daher von einer vergleichbaren Hardwarekonfiguration ausgegangen werden.
+0u
+Der Vergleich von drei aktuellen Rack Servern der 2000-Euro-Klasse in der Grundausstattung - hier als Mittelklasse-Geräte bezeichnet - liefert die folgenden Verhältnisse der wesentlichen Schnittstellen zueinander (Siehe Anhang 3.1).
+Netzwerk Festspeicher Arbeitsspeicher 0,125 GB/s 1 GB/s 17 GB/s Tabelle 2.1: Theoretische Spitzenleistungen bei Mittelklasse-Servern Bei den folgenden Bewertungen der Kernkonzepte ist es wichtig, sich die aus Tabelle 2.1 abgeleiteten Größenordnungen des Durchsatzes (D) der verschiedenen Datenkanäle zu vergegenwärtigen: DN etzwerk < DF estspeicher < DArbeitsspeicher Für eine effzieinte Verarbeitung von Daten ist es - ganz allgemein - also wünschenswert, den größten Anteil des Datentransfers im Arbeitsspeicher zu haben, einen kleineren Anteil auf der Festplatte und einen noch kleineren Anteil auf Netzwerkverbindungen.
+Es ist das wichtigste Ziel der folgenden Kernkonzepte von Apache Spark unter diesen Bedingungen, die effzieinte und stabile Verarbeitung großer Datenmengen ([SW14]) zu gewährleisten.
+
+
+:::: Kernkonzepte und Komponenten ::::
+
+
+
+
+:::: Resilient Distributed Datasets ::::
+
+
+Die universelle Einheit mit der Daten auf Spark repräsentiert werden ist eine verteilte Datenstruktur, ein sogenanntes Resilient Distributed Dataset (RDD)[ZC+12].
+Ein Beispiel für ein solches RDD wurde bereits erwähnt, nämlich das in Listing 2.1 erzeugte Objekt text:
+#$@FORMULA@$#:1
+RDDs entstehen nicht nur durch Einlesen externer Datenquellen, sondern können auch explizit von einem Treiberprogramm erzeugt werden:
+#$@FORMULA@$#:0
+Die gesamte operative Kern-API dreht sich um die Steuerung dieser Datenstruktur.
+Insbesondere sind auch die in den Standardbibliotheken verfügbaren „höheren“ APIs auf diesen RDDs implementiert.
+Sie sind damit die wichtigste Abstraktion des Applikationskerns.
+In erster Näherung können RDDs als eine Variante von Distributed Shared Memory (DSM) ([NL91], [ZC+12]) verstanden werden.
+Sie haben allerdings sehr charakteristische Einschränkungen und Erweiterungen, die in diesem Kapitel erläutert werden.
+Verteilungssicht Aus Verteilungssicht ist ein RDD ein Datensatz, der über den Arbeitsspeicher mehrerer Maschinen partitioniert ist (Abb. 2.2).
+0u
+Laufzeitsicht RDDs sind nicht veränderbar.
+Es ist nicht möglich, Operationen gezielt auf einzelnen Elementen eines RDD anzuwenden.
+Stattdessen ist es nur möglich, ein einmal definiertes RDD durch globale Anwendung von Operationen in ein anderes zu überführen.
+Solche globalen - auf sämtlichen Partitionen des RDD durchgeführten - Operationen können zwar ihren Effekt auf einzelne Elemente eines RDD beschränken, die Ausführung erfolgt jedoch in jedem Fall auf allen Partitionen.
+Eine Folge von Operationen op1op2op3... wird als Lineage eines RDD bezeichnet.
+Die Lineage kann als das „Rezept“ zur Erstellung eines Datensatzes verstanden werden.
+Dabei gibt es zwei grundsätzlich verschiedene Operationen, nämlich Transformationen und Aktionen.
+Transformationen sind Operationen, die ein RDD auf ein anderes abbilden: T ransf ormation : RDD × RDD −→ RDD oder T ransf ormation : RDD −→ RDD Es wird also - grob gesagt - nur die abstrakte Repräsentation des Datensatzes geändert, ohne tatsächlich dessen Datenelemente für den Programmfluss im Treiberprogramm abzurufen.
+Beispiele für solche Operationen sind: • filter
+19u
+20u
+0u
+Zusammenfassen von zwei RDDs zu einem neuen.
+Die Partitionen bleiben dabei erhalten Aktionen sind Operationen, die RDDs in eine andere Domäne abbilden:
+#$@FORMULA@$#:0
+Beispiele für Aktionen sind die Methoden: • reduce
+5u
+6u
+7u
+8u
+• count
+10u
+• collect
+12u
+• foreach
+14u
+15u
+Den meisten dieser Operationen wird im Sinne des Command-Patterns ([BL13]) eine Funktion bzw.ein Funktionsobjekt übergeben, das die gewählte Operation spezifiziert.
+Solange nur Transformationen auf einem RDD ausgeführt werden, ist dieses noch ein bloßes „Rezept“ zur Erstellung eines Datensatzes.
+Tatsächlich wurde noch kein Speicher reserviert und der Cluster wurde noch nicht aktiv ([ZC+12]):
+21u
+Sobald die erste Aktion aufgerufen wird, werden die Transformationen nach der vorgegebenen Reihenfolge ausgeführt und schließlich die geforderte Aktion.
+Die Initialisierung des RDD erfolgt also „lazy“:
+1u
+Wie in Abb. 2.4 dargestellt ist, werden während der Transformationsvorgänge keine Zwischenergebnisse gespeichert.
+Möchte man Zwischenergebnisse zu einem späteren Zeitpunkt oder in anderem Zusammenhang wiederverwenden, kann man dies explizit über das Kommando persist() oder cache() anweisen:
+6u
+Realisiert ist das Konzept der Lineage und der „Lazy Initialization“ von RDDs durch Transformations-Methoden, die eine Variante des Factory-Pattern ([BL13]) implementieren.
+Die erzeugten Objekte sind dabei wiederum Unterklassen von RDDs: Jedes RDD-Objekt führt eine Liste von Vorgängern mit.
+Aus dieser lässt sich auch die Art der Berechnung des jeweiligen Nachfolgers ableiten.
+Jede weitere Transformations-Methode konstruiert nun lediglich ein neues RDD-Referenzobjekt.
+Dieses basiert auf dem aktuellen Objekt und der jeweiligen Transformation.
+Ein Beispiel für solch eine Transformation auf einem RDD ist die Methode map1 (Listing 2.2).
+In den Zeilen 7 und 8 ist zu sehen, wie ein neues RDD erzeugt wird und diesem das aktuelle RDD zusammen mit der Funktion f (bzw.cleanF) übergeben wird.
+Diese Funktion beschreibt die Erzeugung der Elemente des neuen RDDs aus den Elementen des aktuellen.
+#$@FORMULA@$#:0
+#$@FORMULA@$#:2
+#$@FORMULA@$#:1
+0u
+1u
+2 aufgeführt (Listing 2.3).
+Beispiel hierfür sei die Methode foreach In Zeile 6 wird auf dem Spark-Context die Methode runJob aufgerufen, die die Aufgabe wiederum an einen Scheduler delegiert.
+Dort werden dann die rekursiven Abhängigkeiten des aktuellen RDD aufgelöst und - je nach Konfiguration - die Tasks verteilt.
+#$@FORMULA@$#:3
+#$@FORMULA@$#:0
+7u
+8u
+verloren - beispielsweise durch Defekt eines Knotens - ist das „Rezept“ zur Erstellung des Datensatzes in der Lineage des RDD-Objektes weiterhin vorhanden und die Partition kann gezielt wiederhergestellt werden.
+Ein weiterer Vorteil dieser Art von Arbeitsdatensatz wird ebenfalls sofort deutlich: Im optimalen Fall sind die zu ladenden Daten von jedem der Worker auf unabhängigen Kanälen erreichbar (z.B. auf dem lokalen Festspeicher) und gleichmäßig auf diesen Kanälen partitioniert
+#$@FORMULA@$#:4
+#$@FORMULA@$#:5
+0u
+Im diesem Fall ergäbe sich mit einer Anzahl Worker n und einem Durchsatz δ zu der jeweiligen Datenquelle also ein idealer Gesamtdurchsatz beim Einlesen von Daten von:
+#$@FORMULA@$#:0
+Kommen in einem Anwendungsfall RDDs zum Einsatz, deren Elemente einzeln über eine oder mehrere Operationen untereinander verknüpft werden, kann es sinnvoll sein diese schon im Vorfeld der Verarbeitung entsprechend erwarteter Cluster zu partitionieren.
+Cluster sind hierbei Teilmengen des RDD, die mit besonders hoher Wahrscheinlichkeit oder besonders häufig untereinander verknüpft werden.
+Dadurch kann ein größerer Teil der Operationen auf den einzelnen Datensätzen bereits lokal auf dem Knoten der jeweiligen Partition durchgeführt werden.
+Die Netzwerklast bei dem anschließenden Shuffe dler Daten (siehe Abschnitt 2.2.3) fällt dann geringer aus.
+Solch eine Partitionierung kann - entsprechende Erwartung über das Verhalten der Verarbeitung vorausgesetzt - mit einem maßgeschneiderten Partitionierer erreicht werden (Abb. 2.4), der dann dem betroffenen RDD übergeben wird. 1 /* 2 * Beispiel fuer einen minimalen Partitionierer. 3 * Ueber selbstdefinierte Hash Codes kann hier eine 4 * massgeschneiderte Verteilung ueber die 5 * Knoten erreicht werden.
+#$@FORMULA@$#:0
+#$@FORMULA@$#:1
+
+
+:::: Anwendungsdeployment ::::
+
+
+Eine Anwendung, die über ein SparkContext-Objekt von der Spark API Gebrauch macht, wird in der Spark-Terminologie als Treiberprogramm bezeichnet.
+Es gibt grundsätzlich zwei verschiedene Arten solch ein Treiberprogramm zu deployen:
+5u
+6u
+7u
+8u
+9u
+10u
+11u
+12u
+Der zweite Fall ist eher exotisch, weil eine derart enge Kopplung zwischen dem Treiber und der Konfiguration des Clusters aus Wartungsgründen nicht wünschenswert ist.
+Im ersten Fall ergeben sich zwei weitere Möglichkeiten zum Ort der Ausführung des Treibers:
+16u
+17u
+18u
+0u
+1u
+2u
+3u
+Die Lokalität eines Treibers (der mit den Executors auf den Workern kommunizieren muss) kann Einfluss auf Laufzeit und Latenzverhalten des Programms haben.
+Im Fall eines clusterfernen Gateway-Rechners kann also Treiberdeployment im Clustermodus sinnvoll sein, die Standardeinstellung ist jedoch der Clientmodus (siehe auch [Spa]).
+Abb. 2.9 zeigt das Sequenzdiagramm eines typischen Deploymentprozesses, wie er auch im praktischen Teil dieser Arbeit zum Einsatz kommt.
+6u
+
+
+:::: Scheduling und Shuffling ::::
+
+
+In Spark gibt es drei Scheduler und drei wesentliche Laufzeit-Elemente einer Sparkanwendung.
+Die Laufzeitelemente sind
+3u
+4u
+5u
+6u
+7u
+Die Scheduler sind
+9u
+10u
+11u
+12u
+13u
+14u
+Abbildung 2.10 stellt die Beziehung dieser sechs Elemente in einem Aktivitätsdiagramm dar.
+Von den beschriebenen Schedulern kann ein Spark-Treiberprogramm vor allem Einfluss auf die Stages des DAGSchedulers nehmen.
+Um zu erläutern, inwiefern durch diese Aufteilung von Tasks Geschwindigkeit und Fehlertoleranz erreicht werden kann, wird im Folgenden das Erzeugen von Stages aus Transformationsfolgen (d.h. Jobs) auf RDDs vertieft.
+Bei den RDDs wurden bisher insbesondere drei Aspekte behandelt:
+21u
+22u
+23u
+24u
+0u
+Betrachtet man nur die Vorgänger-Beziehung, dann erhält man zunächst eine einfache Baumstruktur für die Berechnung eines RDD (Abb. 2.11).
+Betrachtet man zusätzlich die Partitionierung und die Funktion mit der RDDs transformiert werden, sieht man einen wichtigen Unterschied zwischen verschiedenen Vorgängerbeziehun-
+#$@FORMULA@$#:0
+5u
+6u
+Wird eine Partition aus höchstens einer anderen erzeugt, lässt sich diese direkt auf dem selben Knoten berechnen.
+Werden jedoch verschiedene Partitionen benötigt um eine Folgepartition zu erzeugen, stellt sich die Frage auf welchen Knoten das am Besten geschieht.
+Spark unterteilt diese beiden Fälle in narrow dependencies (erster Fall) und wide dependencies
+0u
+#$@FORMULA@$#:0
+Der Abhängigkeitsgraph eines RDD wird nun in sogenannte Stages zerlegt (Abb. 2.13).
+Eine Stage ist dabei ein Untergraph, dessen Elemente (von den Blättern in Richtung Wurzel betrachtet) auf eine gemeinsame wide dependency stoßen.
+Elemente innerhalb einer Stage können nach dieser Konstruktion unabhängig auf den Knoten berechnet werden, die die jeweilige Partition vorhalten.
+Ein Datenelement xi,j sei dabei Element eines RDD j und Element einer lokalen Partition Pi,j (d.h. es existiert auf einem Knoten i): xi,j ∈ P artitioni,j ⊆ RDDj Weil nach Definition der narrow dependencies innerhalb einer Stage die Elemente einer Partition Pi,j aus den Elementen genau einer Vorgängerpartition Pi,j−1 berechnet werden können, lässt sich jedes Element xi,j des Nachfolger-RDD über eine Komposition lokaler
+0u
+Transformationen transi,k, k = 0..j berechnen:
+#$@FORMULA@$#:0
+Für den Übergang zwischen Stages ist die Berechnung der Nachfolger etwas aufwändiger.
+Hier stammen - nach Definition der wide dependencies - die direkten Vorgänger eines Elementes nicht alle aus der selben Partition.
+Um eine neue Partition aus mehreren Vorgänger-Partitionen zu erzeugen, werden zunächst geeignete Ausführungsorte3 ermittelt, von denen dann jeder per geeignetem Partitionierer mindestens einen Bucket4 von Elementen verarbeitet.
+Diese Elemente stammen dann in der Regel aus verschiedenen Vorgängerpartitionen.
+Das so neupartitionierte und -verarbeitete RDD wird so zum Ausgangspunkt des folgenden
+0u
+RDDs. 5 Eine Schlüsselrolle kommt bei diesem Prozess der Methode runTask in der Klasse ShuffleMapTasks aus org.apache.spark.scheduler.ShuffeMlapTask zu.
+
+
+:::: Standardbibliotheken ::::
+
+
+Die vier Standardbibliotheken erweitern die Kern-API für bestimmte, häufig genutzte Aufgaben aus Bereichen der Datenanalyse.
+Dieser Abschnitt gibt einen Überblick der Bibliotheken und deren zentralen Konzepte zur Abstraktion von RDDs für die spezifischen Zwecke.
+#$@FORMULA@$#:0
+
+
+:::: SparkSQL ::::
+
+
+Die Spark SQL Bibliothek bietet Schnittstellen für den Zugriffauf strukturierte Daten.
+Dazu wird eine weitere zentrale abstrakte Datenstruktur neben den RDDs eingeführt.
+Diese Datenstruktur sind DataFrames, wie sie in ähnlicher Art auch aus der Programmiersprache R6 bekannt sind.
+DataFrames und die SparkSQL Bibliothek bilden einen Ansatz relationale Abfragen mit komplexen prozeduralen Algorithmen zu verknüpfen, um die Performance bei Abfragen auf großen Datenmengen zu optimieren (Vgl. [Arm+15]).
+Die Abfrage und Verarbeitung von Daten kann entweder über die Schnittstellen dieses Datentyps erfolgen (ähnlich wie bei RDDs) oder in Form von SQL-Syntax.
+Diese Form des Zugriffs ist beispielsweise über einen JDBC-Adapter möglich und bietet so anderen Anwendungen und Frameworks die Möglichkeit bestehende SQL-Schnittstellen mit Apache Spark zu verbinden.
+Ähnlich wie bei RDDs werden komplexe Folgen von Abfragen zunächst in dem DataFrame-Referenzobjekt gespeichert, und erst bei Initialisierung ausgewertet.
+Dabei wird eine Optimierungspipeline genutzt, die zunächst die relationalen Ausdrücke optimiert und ihn dann in Spark-Operationen auf RDDs übersetzt.
+Die SparkSQL-Bibliothek zerfällt dabei in vier Unterprojekte7.
+Die ersten beiden sind essentiell für den Mechnismus zum Prozessieren von Dataframes als ein Prozess auf RDDs:
+19u
+20u
+21u
+22u
+23u
+
+
+:::: MLlib ::::
+
+
+Die Spark Machine Learning Library bietet Implementationen bewährter Maschinenlernverfahren und Abstraktionen deren Einsatz.
+Dabei werden die Komponenten eines Maschinenlernprogramms in Transformer, Estimator und Pipelines aufgeteilt9.
+Als Abstraktion der verarbeiteten Datensätze werden DataFrames aus der SparkSQL-Bibliothek verwendet.
+Die Komponenten bezeichnen Folgendes:
+7u
+8u
+9u
+10u
+11u
+• Pipelines sind in der MLlib eine Abstraktion der Verknüpfung von Transformern und
+13u
+14u
+Teile der Spark MLlib werden im praktischen Teil dieser Arbeit noch näher erläutert.
+
+
+:::: Streaming ::::
+
+
+Die Spark Streaming Bibliothek ermöglicht die Verarbeitung von Datenströmen mit dem Konzept der RDDs.
+Dabei werden werden RDDs zu diskretisierten Datenströmen (sogenannte DStreams) erweitert.
+Ein oder mehrere Empfänger (Receiver) werden auf Workerknoten eines Sparkclusters gestartet, die anschließend eingehende Daten über ein vorgegebenes Zeitfenster puffern.
+Die Puffer können dabei verteilt auf mehreren verfügbaren Workerknoten angelegt werden.
+Nach Ablauf des Zeitfensters bilden diese Puffer die Partitionen eines RDD mit den empfangenen Datensätzen.
+Dieses RDD wiederum ist Teil einer Sequenz von RDDs die im Verlauf dieses Prozesses erzeugt werden.
+Mit diesem Verfahren wird ein Großteil der Operationen klassischer RDDs auch für Datenströme verfügbar.
+Eine Reihe von Empfängern für solche Datenströme sind bereits in der Spark Streaming Bibliothek enthalten (z.B. für Kafka10, Twitter, ZeroMQ11, ...)12.
+Weitere Empfänger können selbst implementiert und übergeben werden.
+Eine Beispielimplementation dieses Verfahrens wird im praktischen Teil durchgeführt.
+
+
+:::: GraphX ::::
+
+
+Die GraphX Bibliothek implementiert Graphstrukturen auf Grundlage von RDDs und bietet Methoden zu deren Verarbeitung.
+Die Graphstrukturen sind dabei sogenannte Property-Graphen.
+Property-Graphen (wie sie beispielsweise auch aus der Datenbank Neo4j13 bekannt sind) sind gerichtete Multigraphen, deren Kanten-Objekte mit Eigenschaften versehen werden können.
+Die Graphen der Spark GraphX-Bibliothek bilden dabei Tupel aus RDDs wobei das erste die Ecken und das zweite die Kanten des Graphen enthält.
+Die Zerteilung eines Graphen über mehrere Maschinen erfolgt nach dem sogenannten Edge Cut Verfahren ([Gon+14]).
+Dabei werden die Graphen - logisch gesehen - entlang der Kanten geteilt.
+Eine einzelne Ecke kann daraufhin auf mehreren Maschinen gleichzeitig liegen.
+Aus der ID jeder dieser Kopien, lässt sich jedoch die Partition (im Sinne des darunterliegenden RDD) einer Kante stets eindeutig berechnen.
+Die Attribute der Ecken werden ebenfalls in den Kanten gespeichert.
+Um Änderungen an alle Kopien einer Ecke zu propagieren wird zusätzlich zu den RDDs der Ecken und Kanten noch eine Routingtabelle geplegt.
+Über diese Routing Tabelle werden die Replikate von Ecken verfolgt und bei Änderungen einer Ecke alle inzidenten Kanten entspechend angepasst.
+
+
+:::: Entwicklergemeinschaft ::::
+
+
+Apache Spark begann als Entwicklung einer Gruppe von Forschern der University of California, Berkely.
+Spark basiert auf einer Implementation der von dieser Gruppe untersuchten RDDs[ZC+12].
+Als wesentlicher Meilenstein der Entwicklung von Apache Spark kann die Veröffentlichung eines gemeinsamen Papers der Forschungsgruppe um Matei Zaharia im Jahr 2012 gelten.
+Seit Februar 2014 ([apa]) ist Spark ein Top-Level Projekt der Apache Software Foundation ([Apaa]) und wird dort unter der Apache License 2.0 ([Apab]) weiterentwickelt.
+Eine Übersicht der verantwortlichen Entwickler kann unter [Com] eingesehen werden.
+Zum Zeitpunkt dieser Arbeit gehören u.a. Entwickler von Intel, Yahoo!
+und Alibaba zu den Stammentwicklern.
+Die Kommunikation innerhalb der Entwickler- und Anwendergemeinschaft findet wesentlich in den offzieillen Mailinglisten (Abb. 2.14) und dem Issue-Tracker ([Iss]) der Apache Software Foundation statt.
+
+
+:::: Übersicht verwandter Produkte ::::
+
+
+Um Spark besser im Bereich bestehender Lösungen einzuordnen, werden im Folgenden einige Produkte genannt, die häufig zusammen mit Spark verwendet werden oder ähnliche Aufgaben erfüllen.
+
+
+:::: Hadoop/YARN ::::
+
+
+Hadoop14 lässt sich als eine Art Betriebssystem für Cluster zur Datenanalyse beschreiben.
+Zu den wesentlichen Komponenten zählen ein Dateisystem (HDFS) ein Datenverarbeitungsmodell (MapReduce) und ein Scheduler (YARN).
+Alle genannten Komponenten sind für den fehlertole-
+0u
+ranten und skalierbaren Betrieb auf verteilten Hardware-Komponenten vorgesehen.
+Zwar wird mit MapReduce auch eine Komponente zur Verarbeitung von verteilt gespeicherten Daten zu Verfügung gestellt, andere Datenverarbeitungsmodelle können jedoch gleichberechtigt und unter Aufsicht des Ressourcenschedulers YARN betrieben werden.
+Spark liefert eine mögliche Implementation eines solchen alternativen Datenverarbeitungsmodells.
+
+
+:::: Mesos ::::
+
+
+Apache Mesos15 ist seit Beginn der Entwicklung von Spark ein optionaler Clustermanager für Spark-Applikationen [ZC+12].
+Als reiner Clustermanager ersetzt Mesos die Spark Master-Komponente in der Funktion des knotenübergreifenden Ressourcenmanagements.
+Wie bei YARN ermöglicht dies auch anderen Anwendungen, die über Mesos verwaltet werden, einen gleichberechtigten Betrieb auf dem selben Cluster.
+
+
+:::: Flink ::::
+
+
+Apache Flink16 ist mit seiner Funktionalität ein direkter Konkurrent zu Apache Spark.
+Flink ist ebenfalls in Java/Scala geschrieben und bietet mit drei Standardbibliotheken zur Graphprozessierung, zum Maschinenlernverfahren und zu SQL-artigen Abfragen auf strukturierten Datensätzen einen sehr ähnlichen Funktionsumfang.
+Der wesentliche Unterschied in der Architektur von Flink, verglichen mit Spark, liegt im Applikationskern.
+Flink bietet ein Streaming-Backend auf dem wiederum auch Batchprozesse implementiert werden können.
+Spark wiederum bietet ein Batch-Processing-Backend (Operationen auf RDDs) auf dem auch Streaming-Prozesse implementiert werden können.
+Auffällig ist weiterhin, dass im Flink-Applikationskern häufig auf Low-Level-Methoden zurückgegriffen wird und beispielsweise mit der Endianness17 auf verschiedenen Speicherarchitekturen umgegangen wird.
+Solche feingranularen Optimierungsbemühungen sind dem Autoren bei Spark nicht bekannt.
+
+
+:::: Open MPI ::::
+
+
+Open MPI18 ist die Implementation des Message Passing Interface19, eines Standards zum Nachrichtenaustausch zwischen Prozessen.
+Obwohl dieses Framework ebenfalls der Koordination unterschiedlicher Prozesse und einem gemeinsamen verteilten Speicherbereich dient, ist es völlig agnostisch bezüglich der ausgeführten Anwendung.
+Sparks Domäne dagegen ist „Large Scale Data Processing“, sämtliche Komponenten von Spark sind für diese Aufgaben optimiert.
+Überschneidungen der Anwendungsbereiche von Open MPI und Spark sind daher sehr unwahrscheinlich.
+
+
+:::: Entwicklung und Betrieb einer ::::
+
+
+Beispielanwendung In diesem Kapitel wird die Entwicklung einer Anwendung für Spark und der Betrieb auf einem Cluster mit leistungsschwacher Hardware demonstriert und untersucht.
+
+
+:::: Vorstellung der Beispielanwendung ::::
+
+
+Als Demonstration der Anwendungsentwicklung und des Anwendungsbetriebes mit Spark soll ein Backend zur Nachrichtenanalyse implementiert werden.
+Nachrichten sind in diesem Fall Tweets, die über die kostenlose Streaming-API1 von Twitter2 übertragen und anschließend bewertet werden sollen.
+Die Bewertung soll anhand inhaltlicher Ähnlichkeit mit aktuellen Diskussionen innerhalb der Mailingliste3 von Sparkbenutzern erfolgen.
+In Abbildung 3.1 wird der zugehörige Anwendungsfall dargestellt.
+Für die Beispielanwendung wird nur das Backend implementiert.
+Die grafische Benutzeroberfläche wird jedoch stellenweise erwähnt, um einen klaren Kontext zu setzen.
+Die Analyse der Tweets soll in Quasi-Echtzeit erfolgen und direkt anschließend an eine Datensenke weitergereicht werden (dort wäre beispielsweise eine Messagequeue oder Datenbank zur Weiterleitung an eine grafische Benutzeroberfläche).
+0u
+Bis zu zehn Sekunden Latenz vom Eingang der Nachricht bis zur Weiterleitung an die Senke seien hier als Quasi-Echtzeit akzeptabel.
+Als aktuelle Diskussionen in der Mailingliste der Sparkbenutzer gelten solche, die innerhalb der letzten etwa 500 Nachrichten geführt wurden.
+Bei der Bewertung neuer Nachrichten gibt es hier keine Echtzeit-Anforderung.
+Die Neubewertung bei Eintreffen neuer Nachrichten höchstens etwa alle 30 Minuten - soll genügen.
+
+
+:::: Hardwareumgebung ::::
+
+
+Als Versuchsumgebung dient ein Rechnercluster aus vier identischen Workern und einem
+#$@FORMULA@$#:0
+2u
+Dieser Cluster besteht aus ausschließlich aus leistungsschwacher Hardware.
+Mit leistungsschwach sind Geräte gemeint, deren Leistungsfähigkeit noch deutlich unter aktueller sogenannter Commodity Hardware liegt (Vgl. Anhang 3.1).
+Konkret kommen die folgenden Geräte zum Einsatz: Worker Rasperry Pi 2
+8u
+9u
+10u
+11u
+Als Betriebssystem wird das Debian-Derivat Raspbian[Ras] 32-Bit genutzt.
+Master Dell d420
+1u
+2u
+3u
+4u
+#$@FORMULA@$#:0
+Die Rechner sind mit RJ45 über einen TP-Link TL-SF1008D Switch mit theoretischem maximalem Durchsatz von 100MBit/s vernetzt.
+Als Basisdaten für die Leistungsfähigkeit der eingesetzten Hardware werden zusätzliche Tests durchgeführt, deren Ergebnisse in Tabelle 3.1, Tabelle 3.2 und Tabelle 3.2 aufgeführt sind.
+Worker → Worker Worker → Master 94,4 MBit/s 94,4 MBit/s Tabelle 3.1: Maximaler Netzwerkdurchsatz4
+12u
+4Gemessen mit iperf.
+Siehe Anhang Listing 2 5Gemessen mit dd.
+Siehe Anhang Listing 1
+
+
+:::: Lösungsskizze ::::
+
+
+
+
+:::: Wahl des Dateisystems ::::
+
+
+Für diesen Versuch wird das Hadoop Dateisystem HDFS in der Version 2.7.0 gewählt.
+Dieses Dateisystem gewährleistet die verteilte Speicherung von Blöcken auf dem Cluster und bietet Konfigurationsmöglichkeiten, die direkten Einfluss auf die Performance von Spark haben.
+Zu diesen Konfigurationsmöglichkeiten gehören insbesondere die Größe der Blöcke und die Anzahl der Replikate eines Blockes.
+
+
+:::: Wahl des Cluster-Managers ::::
+
+
+Spark läuft in diesem Versuch als alleinige Computeanwendung auf dem Cluster.
+Es ist also nicht nötig Konkurrenz um Ressourcen zu berücksichtigen.
+Für diesen Versuch wird daher der Standalone Clustermanager gewählt.
+
+
+:::: Architekturübersicht ::::
+
+
+Die Architektur der Beispielanwendung teilt die Anwendungslogik in drei Schichten auf.
+In einer Schicht findet die Verarbeitung eingehender Emails statt und es werden die Relevanz der Begriffe bewertet (Batch Layer).
+In einer zweiten Schicht werden die Tweets aus einem Datenstrom eingelesen und deren Relevanz anhand der Bewertungen aus der ersten Schicht bewertet (Streaming Layer).
+In der dritten Schicht werden die als relevant eingestuften Emails in einer grafischen Oberfläche dem Benutzer zur Verfügung gestellt (Presentation Layer).
+Diese Schicht gehört nicht zum Spark-Backend und wird für diese Demonstation nicht implementiert.
+4u
+
+
+:::: Batch Layer ::::
+
+
+In dieser Schicht wird die Verarbeitung von Emails aus der Spark-User-Mailingliste zu einem Modell von relevanten Wörtern geleistet.
+Dazu werden eingehende Emails zunächst archiviert und anschließend, mithilfe des Korpus aller bisher archivierten Emails und einer Untermenge von n zuletzt empfangenen Emails, eine Bewertung der vorkommenden Wörtern vorgenommen.
+Diese Bewertung soll das Maß für die Relevanz eines Wortes in der betrachteten Menge der letzten n Emails sein.
+Um das zu erreichen, wird in mehreren Schritten ein TF-IDF Vektor über die Wörter dieser Nachrichten erzeugt.
+TF-IDF steht für Term Frequency - Inverse Document Frequency ([SJ88]).
+Dieses Verfahren bewertet die Relevanz eines Wortes für einen Text nach der Häufigkeit dieses Wortes in dem Text (Term Frequency).
+Die Bewertung eines Wortes wird jedoch abgeschwächt je häufiger es in einem Textkorpus vorkommt (Inverse Document Frequency).
+0u
+Eine Implementation dieses Verfahrens ist in der Spark-Standardbibliothek MLLib in dem Bereich Feature Extraction verfügbar6.
+In diesem Anwendungsfall gilt:
+4u
+5u
+Die Prozedur beginnt mit dem Definieren eines RDDs aus der Textdatei aller Emailnachrich-
+#$@FORMULA@$#:1
+#$@FORMULA@$#:0
+Diese Textdatei wird durch ModelBuilder regelmäßig ergänzt, sofern der IMAP-Client neue Nachrichten aus der Mailingliste empfangen hat.
+Anschließend werden die Elemente des RDD documents von einer Sequenz von Wörtern auf einen Vektor der Worthäufigkeiten abgebildet:
+1 val tf: RDD[Vector] = hashingTF.transform(documents) Mit diesem RDD von Vektoren der Worthäufigkeiten wird nun ein Modell (IDF, Inverse Document Frequency) gebildet, dass die inversen Worthäufigkeiten berechnet.
+Dazu wird für jedes vorkommende Wort die Anzahl aller Dokumente ermittelt in denen es vorkommt.
+Dieses Modell wird dann genutzt um die bereits berechneten Wortvorkommen pro Dokument anzupassen (idf.transform(tf)).
+Es entstehen die TF-IDF Vektoren:
+#$@FORMULA@$#:0
+Der Relevanzvektor wird anschließend durch Aufsummieren der TF-IDF in der gewünschten Fenstergröße berechnet.
+Die Fenstergröße entspricht dem Bereich, dessen spezifische Wörter in der Streaming Layer für das Scoring der Tweets benutzt werden sollen.
+#$@FORMULA@$#:1
+4 addSparseVectors(vector1.asInstanceOf[SparseVector], 5 vector2.asInstanceOf[SparseVector])) 3.3.5 Streaming Layer
+
+
+:::: Streaming Layer ::::
+
+
+Dazu wird über die Spark-Komponente TwitterUtils8 eine Verbindung über HTTP zu einem Twitter-Endpunkt aufgebaut9.
+Über diese Verbindung werden - bei unpriveligiertem Zugriffetwa 40 Tweets pro Sekunde über einen dauerhaften Datenstrom zur Verfügung gestellt (siehe Abb. 3.11).
+In der Komponente RealtimeAnalyzer wurden vor dem Start des Datenstroms Funktionen zur Bewertung einzelner Tweets registriert.
+Die Funktion ScoreTweets zur Bewertung einzelner Tweets ScoreTweets : T weets −→ IR × Tweets
+0u
+#$@FORMULA@$#:2
+wird dabei wie in Listing 3.1 dargestellt implementiert:
+#$@FORMULA@$#:1
+#$@FORMULA@$#:3
+#$@FORMULA@$#:4
+#$@FORMULA@$#:0
+0u
+1u
+2u
+3u
+4u
+5u
+6u
+#$@FORMULA@$#:0
+7u
+8u
+9u
+Anschließend werden die erzeugten Tupel nach der Größe des erreichten Scores gefiltert und die verbleibenden Status-Texte an den TweetSink weitergegeben.
+
+
+:::: Hinweise zur Entwicklung ::::
+
+
+Die Komponenten werden in jeweils eigenen Projekten entwickelt, die sich einzeln auf dem Cluster deployen lassen.
+Das hat den Vorteil, dass eine einfache Continuous Deployment Pipeline (Abb. 3.7) eingesetzt werden kann, die Änderungen an den jeweiligen Projekten automatisiert auf dem Cluster deployt und so schnellstmögliches Feedback ermöglicht, sowie eine stets lauffähige Codebasis begünstigt.
+Diese Pipeline ist durch ein post-receive-Skript in den jeweiligen Repositories der Komponenten auf dem Gateway-Rechner realisiert (Beispiel im Anhang 1.3).
+
+
+:::: Ergebnisse und Bewertung ::::
+
+
+Zur Beurteilung des Laufzeitverhaltens wird die Anwendung in verschiedenen Konfigurationen des Raspberry-Pi-Clusters gestartet.
+Dabei wird jeweils das Verhalten der einzelnen
+0u
+Komponenten und des gesamten Systems erfasst und zur späteren Auswertung gespeichert.
+Die zur Laufzeit erfassten Daten sind 1.
+Systemgrößen auf jedem aktiven Knoten (1 Messpunkt pro Sekunde)
+#$@FORMULA@$#:1
+IO Festplatte (Lesen, Schreiben)
+#$@FORMULA@$#:3
+#$@FORMULA@$#:0
+IO Netzwerk (Gesendet, Empfangen) 2.
+Sparkspezifische Größen (1 Messpunkt alle zwei Sekunden) genutzte Cores aktive Stages parallele Receiver (bei Streaming) u.a. 10 Als Konfigurationsparameter für die Testläufe werden verwendet
+#$@FORMULA@$#:4
+12u
+#$@FORMULA@$#:2
+Um eine Vergleichbarkeit der Testläufe untereinander zu erreichen, werden folgende Größen festgelegt:
+0u
+1u
+2u
+3u
+4u
+5u
+Die Größe des Textkorpus ergibt sich aus der Überlegung eine Datei zu verarbeiten, die größer als der Arbeitsspeicher eines einzelnen Workers ist, theoretisch aber noch in den geteilten Speicher von vier Executor-Prozessen passt.
+Die Fenstergröße des TF-IDF Vektors ist willkürlich gewählt.
+Der Wert 500 entspricht der Anzahl von Email-Nachrichten aus der Spark-User-Mailingliste.
+Die erlaubten Cores pro Executor entsprechen genau den Verfügbaren Cores auf einem Worker.
+Damit ist eine volle Ausnutzung der verfügbaren Rechenleistung gewährleistet.
+Der erlaubte Arbeitsspeicher von 384MB pro Executor lässt bei 1000MB Gesamtspeicher pro Knoten noch Spielraum für das Betriebssystem, den Worker-Prozess und insbesondere den HDFS Data Node für Caching von Dateiblöcken.
+Das Zeitintervall für die Diskretisierung des Datenstroms richtet sich nach einem Wert, der für den behandelten Anwendungsfall noch als Echtzeit gelten kann.
+Ein höherer Wert würde den notwendigen Puffer erhöhen und vermutlich die Verarbeitungszeit pro Datenelement verringern.
+Ein niedrigerer Wert würde vermutlich den nötigen Puffer verringern und die relative Verarbeitungszeit eines Datenelementes erhöhen.
+In der folgenden Analyse der Laufzeitverhaltens wird jedoch deutlich, dass der tatsächliche Wert weitgehend unkritisch für die Stabilität der Komponente ist.
+Um die Testläufe unter möglichst kontrollierten Bedingungen zu starten, wurde bei jeder Änderung der Konfigurationsparameter das Hadoop-Dateisystem formatiert und der Spark-Cluster zurückgesetzt (inklusive Terminierung und Neustart aller zugehörigen Prozesse).
+
+
+:::: Batch-Komponente ::::
+
+
+Die Laufzeitmessung beginnt mit dem Start der ersten Aktion auf einem RDD und endet mit der Rückgabe des Relevanzvektors.
+Weil die Initialisierung erst zu diesem Zeitpunkt erfolgt, wird der gesamte Prozess von der Kontaktaufnahme zum Cluster und der Übermittlung der Tasks bis zur Rückgabe des Ergebnisses gemessen (siehe Listing 3.2).
+#$@FORMULA@$#:1
+#$@FORMULA@$#:3
+#$@FORMULA@$#:0
+#$@FORMULA@$#:2
+5u
+6u
+vollständig darzustellen.
+Der übrige Teil der Anwendung - insbesondere das Abrufen und Prozessieren neu eingegangener Emails - wird nicht berücksichtigt.
+Bei einem laufenden System sind die dort entstehenden Lasten so gering, dass kein Bedarf für Skalierung besteht.
+Tabelle 3.4 zeigt die Laufzeiten der Modelbuilderkomponente bei verschiedenen Konfigurationseinstellungen des Clusters.
+#$@FORMULA@$#:0
+0u
+1u
+Einen besonderen Einfluss auf die Laufzeit hat offenbar die Blockgröße.
+Bei gleicher Anzahl von Workern und Replikaten verschlechtert sich die Laufzeit in jedem Versuch bei zunehmender Größe.
+Diese Beobachtung deckt sich mit den in Tabelle 3.3 dargestellten Eigenschaften des Festspeichers auf den Workern: Im Gegensatz zu den Durchsatzraten der mechanischen Festplatte des Masters verschlechtert sich auf den SD-Karten des Workers der Durchsatz bei zunehmender Blockgröße.
+Ab einer Blockgröße von 128MB ist es zusätzlich nicht mehr möglich, vier Blöcke parallel im Arbeitsspeicher des Executor zu halten (384MB) und diese getrennt auf den 4 verfügbaren Cores verarbeiten zu lassen.
+11u
+Ein Hinweis auf den Flaschenhals bei der Verarbeitung auf einem einzigen Knoten ist in Abbildung 3.9 zu erkennen.
+Die CPU steht unter Volllast, während die Leistung beim Lesen von der SD-Karte mit durchschnittlich 4,3 MB/s deutlich unter dem möglichen Durchsatz bleibt
+#$@FORMULA@$#:1
+Netzwerkdurchsatz spielt hier - wie bei einem einzelnen Knoten zu erwarten - offenbar keine Rolle.
+5u
+6u
+Betrachtet man die Summe der IO-Durchsätze über sämtliche Knoten, lassen sich deutlich die verschiedenen Phasen der Feature-Extraction erkennen.
+Abbildung 3.10 zeigt das kommentierte Diagramm eines Testlaufs mit 4 Workern, 2 Replikaten und einer HDFS-Blockgröße von 64MB.
+Anmerkung: Die Methode treeAggregate 11 innerhalb der Methode IDF.fit() stellt einen Spezialfall unter den RDD-Transformationen dar.
+Sie besteht aus zwei Phasen, wobei in der ersten Phase lokal auf den Partitionen eine Aggregation von Datensätzen durchgeführt wird und anschließend über reduce die partitionsübergreifende Aggregation der bereits partiell aggregierten Datensätze durchgeführt wird.
+Aus dieser Implementation ergibt sich die Netzwerk-Lastspitze ab Sekunde 251
+#$@FORMULA@$#:0
+
+
+:::: Echtzeitkomponente ::::
+
+
+Einen ersten Blick auf den Zustand einer Spark-Anwendung ermöglicht die Weboberfläche des Treibers.
+Jede Spark-Applikation startet gemäß der Standardeinstellungen auf dem Host des Treibers einen HTTP-Server, über den verschiedene Daten verfolgt werden können.
+In Abb. 3.11 sind die Statistiken einer laufenden Realtime-Komponente dargestellt.
+In dem betrachteten Fall läuft die Realtime-Komponente mit einem einzelnen Worker, der den Empfänger für den Datenstrom von Twitter startet und das Scoring und Filtern der eingehenden Nachrichten ausführt.
+Um den Worker nicht für die Modellerzeugung der Batch-Komponente zu blockieren, wurde nur ein Executor mit 2 Cores gewährt.
+Zum Zeitpunkt des Schnappschusses wurden 6260 Tweets empfangen und verarbeitet.
+Der letzte Batch enthielt 178 Twitter-Nachrichten (im Durchschnitt sind es etwa 200) und der Median für die Verarbeitungszeit liegt bei 373 Millisekunden (Total Delay).
+Bei einem Zeitfenster von 5 Sekunden (Batch Interval) pro Batch gibt es also keinen Hinweis auf Performanceprobleme bei der Verarbeitung.
+0u
+Dieser Verdacht erhärtet sich bei einem Blick auf die CPU-Last des verarbeitenden Workers (Abb. 3.12).
+Die durchschnittliche Last über den beobachteten Zeitraum liegt bei 22,5%.
+Die Last des Master sogar nur bei 8,1%.
+4u
+Auch die Netzwerklast ist minimal (Abb. 3.13).
+Ab Sekunde 51 liegt die Last des Workers bei durchschnittlich 77 KByte/s.
+Über den beobachteten Zeitraum von knapp 7 Minuten wurden damit 31.4 Megabyte empfangen.
+Die Last des Masters liegt noch darunter.
+3u
+Betrachtet man den Speicherverbrauch (Abb. 3.14), sieht man, dass sich dieser nach wenigen Sekunden bei etwa 362MB stabilisiert.
+6u
+
+
+:::: Schlussbetrachtung ::::
+
+
+
+
+:::: Diskussion der Ergebnisse ::::
+
+
+Es wurde ein umfassender Einblick in die Konzepte und Komponenten von Apache Spark gegeben.
+Für dieses System wurde daraufhin eine Anwendung entworfen und implementiert, die einen Echtzeitdatenstrom nach vorgegebenen Kriterien analysiert und dabei dynamisch auf geänderte Vorgaben reagieren kann.
+Diese Anwendung wurde anschließend als Testfall für den Betrieb einer Apache Spark/Hadoop-Umgebung auf einem Low-End-Hardware-Cluster aus Raspberry Pis genutzt und das Laufzeitverhalten untersucht.
+Dieses Experiment war erfolgreich.
+Es ist möglich einen Spark/Hadoop-Cluster auf der beschriebenen Hardware zu installieren und die genannte Anwendung stabil zu betreiben.
+Dabei hat sich die Hardware sogar als leistungsfähiger als nötig erwiesen.
+Zwar profitiert insbesondere die Batch-Komponente deutlich von dem Hinzufügen weiterer Knoten, die Streaming-Komponente ist jedoch mit einem einzelnen Knoten bereits problemlos zu betreiben und erfährt durch verteilte Ausführung keine weitere Verbesserung der Performance.
+Die geringe Last des kostenlosen Twitterdatenstroms verursacht für die weitere Bewertung der Ergebnisse zwei Probleme:
+17u
+18u
+19u
+20u
+21u
+22u
+23u
+
+
+:::: Ausblick und offene Punkte ::::
+
+
+Der Betrieb eines Spark/Hadoop-Clusters ist komplex.
+In dieser Arbeit wurde die Anwendungsentwicklung mit Spark und die Machbarkeit des Betriebs auf Low-End-Hardware behandelt.
+Für einen produktiven Betrieb der hier vorgestellten Architektur gibt es eine Reihe von Maßnahmen, die im Rahmen der betrachteten Fragestellungen ausgeblendet wurden:
+5u
+6u
+7u
+8u
+9u
+10u
+11u
+12u
+13u
+14u
+15u
+16u
+17u
+18u
+19u
+20u
+Neben dem Betrieb der Anwendung, gibt es auch funktionale Aspekte die für eine produktive Anwendung erweitert werden könnten:
+23u
+24u

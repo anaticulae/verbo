@@ -27,10 +27,21 @@ param = pytest.param
 
 @pytest.mark.parametrize('source, pages, expected', [
     param(power.BACHELOR051_PDF, '3:42', 'bachelor051', id='bachelor051'),
-    param(power.MASTER072_PDF, '3:64', 'master072', id='master072'),
+    param(power.BACHELOR063_PDF, '4:43', 'bachelor063', id='bachelor063'),
+    param(power.BACHELOR067_PDF, '8:55', 'bachelor067', id='bachelor067'),
+    param(power.BACHELOR090_PDF, '11:76', 'bachelor090', id='bachelor090'),
+    param(power.BACHELOR128_PDF, '6:96', 'bachelor128', id='bachelor128'),
+    param(power.DISS172_PDF, '17:152', 'diss172', id='diss172'),
     param(power.DISS205_PDF, '16:18', 'diss205p1617', id='diss205p1617'),
     param(power.DISS205_PDF, None, 'diss205', id='diss205all'),
+    param(power.DISS218_PDF, '9:184', 'diss218', id='diss218'),
     param(power.DISS266_PDF, '7:213', 'diss266', id='diss266'),
+    param(power.MASTER072_PDF, '3:64', 'master072', id='master072'),
+    param(power.MASTER075_PDF, '5:69', 'master075', id='master075'),
+    param(power.MASTER098_PDF, '1:88', 'master098', id='master098'),
+    param(power.MASTER110_PDF, '19:104', 'master110', id='master110'),
+    param(power.MASTER116_PDF, '7:88', 'master116', id='master116'),
+    param(power.MASTER155_PDF, '8:77', 'master155', id='master155'),
 ])
 @utilatest.nightly
 def test_text_validate(source, pages, expected, testdir, monkeypatch):
@@ -42,6 +53,7 @@ def test_text_validate(source, pages, expected, testdir, monkeypatch):
         workdir=testdir.tmpdir,
         monkeypatch=monkeypatch,
     ).evaluate()
+    # TODO: USE SECTIONS TO SELECT PAGES
 
 
 class Evaluate(utilatest.BaseLiner):

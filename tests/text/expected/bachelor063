@@ -1,0 +1,752 @@
+
+
+:::: Einleitung ::::
+
+
+Die Messung des Blutdrucks hat in der Medizin eine große Bedeutung.
+Aus ihm können wichtige Rückschlüsse auf die physiologischen Vorgänge im Blutkreislauf bzw.auf die Strömungsmechanik des Bluts (Hämodynamik) gezogen werden.
+So ist der Blutdruck beispielsweise ein Indikator für die Versorgung von Organen und Geweben oder für das im Körper zirkulierende Blutvolumen [Elt01].
+Die Bestimmung des Blutdrucks kann zum einen durch eine punktuelle Ermittlung von Messwerten geschehen.
+Dadurch kann z.B. ein akut erhöhter Blutdruck erkannt werden.
+Des Weiteren können mit regelmäßigen Einzelmessungen chronische Veränderungen diagnostiziert und deren medikamentöse Therapie überwacht werden.
+Solche Einzelmessungen werden in der klinischen Medizin heutzutage meist mit einer Druckmanschette am Arm und einem Stethoskop durchgeführt (auskultatorische Methode, vgl. 2.1.2.1).
+Dieses Verfahren liefert zuverlässige Werte und ist mit wenig Aufwand anwendbar.
+Zudem kann eine kontinuierliche Blutdruckbestimmung erfolgen.
+Mit dem gewonnenen Blutdruckverlauf können hauptsächlich dynamische Vorgänge überwacht werden.
+Hierzu gehören vor allem die Kreislaufregulation und mögliche Störungen derselben.
+Die kontinuierliche Messung geschieht üblicherweise invasiv, das heißt mit einem Katheter direkt im Blutgefäß.
+Diese Methode birgt (vgl. 2.1.1) für die spontane Anwendung wesentliche Nachteile, weshalb ein nicht-invasives Verfahren zur kurzfristigen und einfachen Verwendung gesucht wird.
+Eine im klinischen Alltag nicht verbreitete, aber hierzu sehr interessante Methode stellt das Ultraschall-Doppler-Servo-Verfahren dar.
+Hierbei wird der arterielle Blutdruck nicht direkt gemessen, sondern mittels eines indirekten Messverfahrens nachgebildet.
+Ein Laborversuch zur Darstellung und Erklärung dieser Methode ist im Labor für Regelungstechnik an der Hochschule Ulm vorhanden.
+Er soll im Zuge dieser Bachelorarbeit optimiert und an den Stand der Technik angepasst werden.
+
+
+:::: Grundlagen ::::
+
+
+
+
+:::: Blutdruck ::::
+
+
+Der Blutdruck beschreibt den in den großen Arterien des Körperkreislaufs vorherrschenden Gefäßdruck.
+Dieser ist eine Funktion des Herzzeitvolumens (ausgeworfenes Volumen pro Herzschlag mal Herzfrequenz) und des Widerstands der Blutgefäße.
+Beim Auswurf des Bluts aus der linken Herzkammer (Systole) erfährt der Blutdruck durch diesen Druckstoß seinen Maximalwert, welcher auch als systolischer Druckwert (Psys) bezeichnet wird.
+Der während der Füllungsphase (Diastole) auftretende Minimalwert wird als diastolischer Druckwert (Pdia) bezeichnet.
+[Sil91] Die Normwerte des Blutdrucks betragen beim gesunden, jungen Erwachsenen Psys=120mmHg und Pdia=80mmHg [Elt01].
+Der zeitliche, geometrische Mittelwert des Blutdrucks einer Herzaktion wird als mittlerer arterieller Druck (MAD) bezeichnet.
+Da sowohl ein zu niedriger als auch ein konstant erhöhter Blutdruck schädlich für die Organe ist [Sil91], erfährt die Erfassung dieses Vitalparameters große Bedeutung.
+Weiter dienen die Werte zur Beurteilung der hämodynamischen Funktion des Kreislaufs.
+Die Messung des Blutdrucks kann durch verschiedene Systeme geschehen, deren zu Grunde liegende Methoden unterschiedlich sind.
+Die Wichtigsten sollen im Folgenden erläutert werden.
+
+
+:::: Invasive Messung des arteriellen Drucks ::::
+
+
+Die invasive Messung geschieht durch einen Katheter im Blutgefäß (typischerweise am Unterarm).
+Der Druck wird entweder direkt über einen Sensor an der Spitze des Katheters oder von einem Sensorsystem außerhalb des Körpers ermittelt.
+Im zweiten Fall befindet sich innerhalb der Arterie lediglich ein flüssigkeitsgefüllter Katheter, der den im Gefäß vorherrschenden Druck auf die Flüssigkeitssäule im Katheter und damit nach außen überträgt [Elt01].
+Die Vorteile der invasiven Messung sind die hohe Genauigkeit sowie die Möglichkeit, über einen langen Zeitraum den Verlauf des Blutdrucks zu überwachen.
+Deshalb wird dieses Verfahren oft zum Patientenmonitoring auf Intensivstationen eingesetzt.
+Der dazu benötigte chirurgische Eingriff stellt aufgrund der Blutungs- und Infektionsgefahr den wesentlichen Nachteil der Methode dar.
+
+
+:::: Nicht-invasive Messung des arteriellen Drucks ::::
+
+
+Die nicht-invasive Messung des Blutdrucks geschieht indirekt.
+Meist wird dazu ein externer Druck aufgebracht.
+Aus in diesem Zuge auftretenden Phänomenen kann auf den Blutdruck geschlossen werden [Elt01].
+Die beiden folgenden Methoden sind vor allem aufgrund ihrer unblutigen und einfachen Durchführung weit verbreitet.
+
+
+:::: Auskultatorische Methode ::::
+
+
+Zur auskultatorischen Messung wird mittels e iner Manschette am Oberarm ein Druck aufgebracht, der oberhalb des erwarteten systolischen Blutdruckwerts liegt.
+Dieser Druck wird kontinuierlich mit mäßiger Geschwindigkeit abgelassen (siehe Abb. 1).
+Mit einem Stethoskop oder einem Mikrofon werden distal der Manschette , meist in der Ellenbeuge, charakteristische Geräuschphänomene a bgehört.
+Diese sogenannten Korotkow -Töne (benannt nach ihrem Entdecker Nikolai Korotkow, russ ischer Arzt) entstehen durch die Blutströmung in der Arterie.
+Der Druckwert bei ihrem ersten Auftreten kann mit dem systolischen Blutdruck, der Druckwert bei ihrem Verschwinden mit dem diastol ischen Blutdruck gleichgesetzt werden (siehe Abb. 1).
+[Elt01] Abbildung 1: Korotkow-Geräusche bei der auskultatorischen Blutdruckmessung [Elt01]
+
+
+:::: Oszillometrische Methode ::::
+
+
+Zur oszillometrischen Messung wird mit einer Manschette ebenfalls ein Druck am Arm aufgebracht.
+Beim Ablassen des Drucks entstehen durch die Pulswelle in der Arterie unterhalb der Mansche tte minimale Änderungen des Manschettendrucks , sogenannte Oszillationen.
+Diese können aus dem Drucksignal herausgefiltert und in einer Kurve dargestellt werden (siehe Abb. 2).Während des Ablassens steigen die Amplituden der Oszillationen bis zu einem Maxi mum an und fallen anschließend wieder ab.
+Für den Zeitpunkt des Maximums wird der mittlere arterielle Druck angenommen.
+Aus dem Verlauf der Hüllkurve der registrierten Oszillationen können auch Rückschlüsse auf den systol ischen und diastolischen Blutdruckw ert gezogen werden.
+So wird der systolische Blutdruck mit dem Punkt gleichgesetzt, bei dem die Amplitude der Hüllkurve zum ersten Mal zwischen 40 -60% des Maximums beträgt.
+Beim zweiten Erreichen von 70 -90% des Maximums wird der diastolische Blu tdruckwert angenommen.
+Die oszillometrische Methode kommt heute in den meisten zur Selbstme ssung konzipierten Messgeräten zum Einsatz.
+[Elt01]
+
+
+:::: Volumenkompensationsmethode ::::
+
+
+Diese Methode zur nicht-invasiven Bestimmung des arteriellen Blutdrucks wurde von Penaz im Jahre 1973 entwickelt.
+Hierbei erhält der Patient, wie in Abbildung 3 ersichtlich, eine aufblasbare Fingermanschette, in die ein optisches Messsystem integriert ist.
+Dieses bestimmt kontinuierlich das im Finger vorhandene Blutvolumen.
+Wird dieses Volumen durch einen geregelten Druck in der Manschette ständig auf einem bestimmten Wert gehalten, ist die Gefäßwand entlastet (transmuraler Druck ist gleich Null).
+Somit sind der zu messende Druck innerhalb der Arterie und der in der Manschette anliegende Druck außerhalb der Arterie gleich.
+Das Prinzip wurde in den Gerätesystemen Finapres und Portapres realisiert.
+[Elt01] Um hier zahlenmäßig möglichst genaue Messwerte zu erhalten erfolgt regelmäßig eine Anpassung des Sollwerts der Regelung.
+Zu diesem Zweck wird in einem Abstand von 10-70 Sekunden (variabel je nach Stabilität der Eingangsgrößen) die kontinuierliche Regelung unterbrochen und ein Kalibrationsmanöver durchgeführt.
+[Ohm91] Abbildung 3: Volumenkompensationsmethode nach Penaz [Elt01] Von R. Aaslid und AO.
+Brubakk wurde die Methode im Jahre 1981 weiterentwickelt , die zugrunde liegende Idee der Penaz-Methode ist beibehalten.Das Blutvolumen, das nun indirekt über die G eschwindigkeit der Blutströmung bestimmt wird, soll ebenfalls auf einen kleinen Wert begrenzt werden (Referenzgeschwindigkeit 3cm/s).
+Der Aufbau ist in Abbildung 4 dargestellt: Die Fingermanschette wird durch eine Druckmanschette am Oberarm ersetzt.Die als Eingangssignal für die schnelle pneumatische Regelung benutzte Strömungsgeschwindigkeit wird mithilfe eines Ultraschall -Dopplers bestimmt.
+Zunächst wird bei normalem Fluss ein Druck durch die Manschette aufgebracht, der obe rhalb des angenommenen systolischen Werts liegt.
+Anschließend erfolgt die Reduktion des Drucks bis zum gewünschten Sollwert.
+Auch hier können theoretisch gleiche Druckverhältnisse innerhalb und außerhalb des Blutgefäßes angenommen werden.
+Das genannte Verfahren wird als weniger unang enehm empfunden als das Ablassen des Drucks bei der auskultatorischen Messmethode.
+Nach zwei Minuten soll jedoch eine 15 Sekun den andauernde Pause eingelegt werden, um die ausreichende Durchblutung des Arms sicherzustellen.
+Die festgestellten Probleme des Verfahrens sind die Instabil ität der Regelung bei einer Verschlechterung des Dopplersignals sowie die Tatsache, dass bei einem hohen Gefäßwiderstand des Probanden (patientenabhängig) eine Regelung des Blutflusses auf den erwünschten Wert nur schwer möglich ist.
+[Aas81] Abbildung 4: Messverfahren nach R. Aaslid und AO.
+Brubakk [Aas81]
+
+
+:::: Ultraschall-Doppler -Blutflussmessung ::::
+
+
+Die Strömungsgeschwindigkeit und das Strömungsprofil des Blutflusses in einem Blutgefäß können mittels Ultraschall-Doppler nicht -invasiv bestimmt werden.
+Hierzu wird von einem Sendekristall ein gepulstes Ultraschallsignal (PW) unter einem bestimmten Winkel ins Gewebe abgegeben.
+Zum Ei ndringen in die Haut muss der Schall mit einem Gel eingekoppelt werden um den großen Kontakt widerstand der Luft zu überwinden.
+Das eingebrachte Signal wird an den bewegten Blutteilchen z urückgestreut und kann vom Empfangskristall detektiert werden (siehe Abb. 5).
+Aufgrund der entstehenden Laufzeitdifferenzen bei einer konstanten Ausbreitungsgeschwindigkeit im Gewebe (ca. 1500m/s) wird die Geschwindigkeit in verschiedenen Gewebetiefen ermittelt.
+[Elt01] A us dem Spektrum kann ein analoges Spannungssignal berechnet und ausgegeben werden.
+Abbildung 5: Schematische Darstellung einer aufgesetzten Ultraschall -Doppler-Sonde [Pau11]
+
+
+:::: Digitale Regelung ::::
+
+
+In vielen Prozessen der Techni k und im alltäglichen Leben müssen veränderliche Größen während ihres zeitlichen Verlaufs automatisch angepasst oder korrigiert werden.
+Solche Größen sind be ispielsweise Temperatur, Druck, Drehzahl oder Geschwindigkeit.
+[Lun10]
+
+
+:::: Grundprinzip der Regelungste chnik ::::
+
+
+In den meisten Fällen werden Regelungen verwendet, um den Einfluss von Störungen, die auf ein System wirken, zu kompensieren.
+Das Grundprinzip (siehe Abb. 6) besteht aus der Messung eines aktuellen Istwertes (Regelgröße), welcher mit einem vorgegeben en Sollwert (Führungsgröße) vergl ichen wird.
+Aus der berechneten Differenz (Regelabweichung) wird durch eine Regeleinrichtung eine auf das System (Regelstrecke) übertragbare Größe (Stellgröße) berechnet.
+Diese beeinflusst das Sy stem und erzeugt einen neuen Istwert.
+[Lun10]
+
+
+:::: Besonderheiten der digitalen Regelung ::::
+
+
+Mit laufender technischer Entwicklung werden Regelungen heute häufig mittels programmierbarer Algorithmen auf dem Rechner durchgeführt.
+Hierbei ergeben sich geänderte Voraussetzungen zur analogen Regelung, da eine kontinuierliche Abgleichung und Anpassung von Regel - und Führungsgröße nicht möglich ist.
+Um diese Größen dem Rechner zur Verfügung zu stellen , müssen sie zunächst abgetastet und dadurch digitalisiert werden (siehe Abb. 7).
+Dadurch entsteht eine zeitliche Verzögerung.
+Somit werden nur zu bestimmten Zeitpunkten Werte berechnet, die Regelung funkti oniert also getaktet.
+Um eine möglichst kontinuierl iche und stabile Regelung zu erhalten , müssen diese Verzögerungen so klein wie möglich gehalten werden.
+Weiterhin müssen auch die im zu digitalisi erenden Signal auftretenden Frequenzen berücksichtigt werden.
+Diese müssen kleiner als die halbe Abtastfrequenz sein (Nyquist -Frequenz), um eine verfälschte Aufnahme des Signals zu vermeiden (Aliasing-Effekt).
+[Lun10] Abbildung 7: Digitalisierung mit Abtast -Halteglied [Reu08]
+
+
+:::: Der PI-Regler ::::
+
+
+Regler können nach verschiedenen Prinzipien aufgebaut sein und funktionieren.
+Der Proportionalre gler (P) verstärkt die Regeldifferenz mit einem Faktor K P.
+Die eingehende Regelgröße wird somit nur in der Amplitude verändert und als Stellgröße wie der ausgegeben.
+Der Integralregler (I) mit der chara kteristischen Zeitkonstante Ti integriert die Regelabweichung über die Zeit auf und passt so die Stel lgröße an.
+Der PI-Regler vereinigt die Eigenschaften von P - und I-Regler zu einem schnellen und g enauen Regler.
+Die Anteile können sowohl multiplikativ (Rei henschaltung) oder additiv (Parallelscha ltung) miteinander verknüpft werden.
+[Pau10] Die Antwort des PI-Reglers auf einen Sprung der Ei ngangsgröße von 0 auf 1 (Sprungantwort) ist in Abbildung 8 dargestellt.
+
+
+:::: Programmiersprache LabVIEW ::::
+
+
+Die von National Instruments entwickelte Software LabVIEW ( Laboratory Virtual Instrument Engineering Workbench) ist ein Hilfsmittel zur einfachen Erstellung von Messanwendungen.
+Sie folgt hierbei dem Ansatz der Datenflussprogrammierung, bei der technische Prozesse so abgebildet werden so llen, wie sie in der Realität vorkommen.
+LabVIEW ist hierbei Entwicklungsumgebung und grafische Programmiersprache zugleich.
+[Geo09] Die Vorteile lie gen in der großen Übersichtlichkeit der pro grammierten Abläufe sowie in der schnelleren Erlernbarkeit gegenüber konventionellen Programmie rsprachen.
+Abbildung 9: Einfache LabVIEW-Operation Ein Beispiel für die Datenflussprog rammierung bildet die einfache LabVIEW- Operation in Abbildung 10.
+Eine eingegebene Variable (Zahl_1) wird zunächst vom Wert 100 subtrahiert, anschließend wird eine zweite Variable (Zahl_2 ) zum Zwischenergebnis addiert.
+Das Resultat wird als neue Variable (Ergebnis) ausgegeben.
+Die durchzuführenden Operationen während des Programmablaufs werden , wie im Beispiel ersichtlich, durch Funktionsblöcke festgelegt.
+Diese werden VIs (Virtual Instruments) genannt.
+Viele gängige oder oft benutzte Funktionen sind zudem als Express -VIs realisiert, das heißt ein Assistent führt durch die Konfiguration der Optionen/Einstellmöglichkeiten.Die Sammlung ähnlicher oder thematisch zusammengehörender Blöcke wird als Palette bezeichnet.
+Zusätzlich zur Software bietet National In struments speziell auf das Programm abgestimmte Hardw arepakete zur Erfassung und Ausgabe von analogen und digitalen Signalen an.
+Diese sind zum Beispiel als USB-kompatible Module oder als PCI -Steckkarten aufgebaut.
+
+
+:::: Valsalva-Press-Versuch ::::
+
+
+Zur Beurteilung der hämodynamischen Funktion bzw.der Regulation des Kreislaufs kann ein Valsalva-Press-Versuch durchgeführt werden.
+Ein beispielhafter Blutdruckverlauf dieses physiologischen Tests ist in Abbildung 10 dargestellt.
+Durch eine spontane Ausatemanstrengung bei geschlossener Stimmritze, der sogenannten Bauchpresse (siehe Zeitmarke 1), wird ein Druck im Brustkorb aufgebaut.
+Hierbei entsteht ein Druckanstieg im Niederdrucksystem gewisser Thoraxabschnitte, wodurch der Blutrückstrom in den Brustkorb gestoppt wird.
+Dadurch fällt das Herzzeitvolumen rasch ab [Elt01].
+Beim Wiederausatmen (siehe Zeitmarke 2) ist eine erhöhte Vorlast am Herzen vorhanden, die Kreislaufregulation bewirkt eine gesteigerte Herzfrequenz und einen Anstieg des arteriellen Drucks.
+Abbildung 10: Blutdruckverlauf während eines Valsalva-Manövers
+
+
+:::: Aufgabenstellung ::::
+
+
+
+
+:::: Bestehender Versuchsaufbau ::::
+
+
+Der bestehende Versuchsaufbau entstand im Rahmen der Diplomarbeit von Thomas Eberhard an der Hochschule Ulm im Jahre 1996 [Ebe96].
+Ein gepulst-sendender Ultraschall-Doppler (PW) der Firma DWL gibt kontinuierlich die Hüllkurve des ermittelten Strömungssignals aus.
+Dieses wird als Regelgröße (Istwert) für die Einstellung des Manschettendrucks verwendet.
+Die Ultraschall-Doppler-Sonde ist über ein Kunststoff-Verbindungselement in ein handelsübliches Venenstauband integriert.
+Sie kann somit am Unterarm angebracht und festgezurrt werden.
+Wird ein größerer Anpressdruck auf der Haut benötigt, kann das Band auch während des laufenden Versuches nachgezogen werden.
+Im Gegensatz zum ursprünglichen Verfahren (vgl. 2.1.2.3) wird im bestehenden Versuchsaufbau eine Handgelenksmanschette verwendet.
+Diese ist im Gegensatz zur Oberarmmanschette kleiner und somit einfacher zu handhaben.
+Darüber hinaus ist die proximale Anbringung der Ultraschall-Sonde am Unterarm wesentlich leichter durchführbar.
+Die Druckregelung erfolgt mittels eines analog aufgebauten Reglers.
+Der einzustellende Sollwert weicht vom Referenzwert der Methode aufgrund der geänderten Komponentenanordnung ab und ist hauptsächlich erfahrungsbasiert.
+Der Manschettendruck wird durch eine speziell angefertigte Druckerzeugungseinheit, bestehend aus Kompressor, Vorratsbehälter und Proportionalventil, zur Verfügung gestellt.
+Die Anzeige der Doppler-Hüllkurve sowie der Verlaufskurve des Manschettendrucks ist am Computer realisiert.
+Die Signale werden mittels einer USB-Messkarte digitalisiert und in einer LABVIEW-Anwendung auf dem Bildschirm dargestellt.
+Abbildung 11: Bestehender Versuchsaufbau vor der Optimierung Es wird festgestellt, dass der Versuch bei der praktischen Bestimmung des Blutdrucks zwar den zeitlichen Verlauf gut darstellt, jedoch die ermittelten Werte tendenziell zu hoch sind.
+Weiterhin erscheint der bestehende Aufbau in vielen Punkten nicht mehr zeitgemäß.
+Zum einen sind einige Komponenten im sehr großen und sperrigen Geräteaufbau (siehe Abb. 11) überflüssig.
+Sie stammen, wie z.B. das Display und einige Platinen, aus früheren Versuchen einen eigenen Doppler zu entwickeln.
+Zum anderen sind die genutzten Komponenten nicht bedienerfreundlich ausgeführt.
+Hierzu zählen beispielsweise die Einstellmöglichkeiten der PID-Reglerkonstanten, welche nur stufenweise veränderbar sind.
+Die Festlegung des Sollwerts geschieht durch ein unübersichtliches und ungenau einstellbares Drehelement.
+Weiter sind alle Bedienelemente über einen sehr großen Bereich einstellbar, der weit über die für den Versuch verwendeten typischen Werte reicht.
+Zusätzlich haben Erfahrungen während der Nutzung des alten Aufbaus ergeben, dass der einstellbare Differential-Anteil (D) des Reglers für den gegebenen Fall nicht funktioniert.
+Auf ihn kann somit ebenfalls verzichtet werden.
+
+
+:::: Anforderungen an den neuen Versuchsaufbau ::::
+
+
+Die Aufgabe dieser Arbeit ist es, den bestehenden Laboraufbau zu optimieren und an den Stand der Technik anzupassen.
+Hierzu soll zunächst die Steuerung der Programmfunktionen sowie die Regelung des Blutflusses digitalisiert werden.
+Das wesentliche Ziel ist das Erreichen eines, im Vergleich zum alten Versuch, mindestens gleichwertig guten qualitativen Blutdruckverlaufs.
+Das quantitative Ergebnis, also die Genauigkeit der gemessenen Druckwerte, soll durch die Anwendung eines alternativen Messverfahrens verbessert werden.
+Bei allen Maßnahmen, besonders bei der Erstellung einer Bedienoberfläche, muss die Anwenderfreundlichkeit berücksichtigt werden.
+Dies gilt ebenso für die Ultraschall-Doppler-Sonde, deren Fixierung überarbeitet wird.
+Am Ende soll es möglich sein, den Versuch in den Lehrbetrieb der Fakultät Mechatronik und Medizintechnik zu integrieren.
+Studenten sollen, z.B. im Rahmen der Vorlesungen „Medizinische Regelungstechnik“ oder „Physiologische Regelmechanismen“, dieses Verfahren zur Messung des arteriellen Blutdrucks selbstständig erlernen und ausprobieren können.
+
+
+:::: Material und Methoden ::::
+
+
+Die im Rahmen der Aufgabe durchgeführten Arbeiten lassen sich in verschiedene, abgegrenzte Teile gliedern.
+Diese sollen nachfolgend erläutert und beschrieben werden.
+
+
+:::: Realisierung einer digitalen Steuerung/Regelung ::::
+
+
+Um dem Anwender eine möglichst einfache und verständliche Messung zu ermöglichen und um den bestehenden Versuchsaufbau zu miniaturisieren, soll eine digitale Steuerung bzw. Regelung realisiert werden.
+Als Entwicklungsumgebung wird die Software LabVIEW verwendet, mit der bereits die Anzeige der Messwerte/Kurven durchgeführt wird.
+
+
+:::: Programmierung ::::
+
+
+Zunächst muss festgestellt werden, ob die Geschwindigkeit, die eine getaktete Durchführung des Regelalgorithmus erreichen kann, für den Anwendungsfall ausreichend ist.
+Sowohl das Digitalisieren und Einlesen der Messwerte, als auch die Berechnung der Regelgrößen und die Ausgabe der Stellgröße nehmen eine bestimmte Zeit in Anspruch.
+Im Falle einer nicht ausreichenden Geschwindigkeit kann der Manschettendruck dem Dopplersignal nicht folgen.
+Somit kann die Blutflussgeschwindigkeit nicht geregelt werden, was eine Verfälschung der Messung zur Folge hat.
+Abbildung 12: Blockdiagramm des ersten Modellentwurfs Für den ersten Aufbau ergibt sich das Blockdiagramm in Abbildung 12.
+Die Basis der Software bildet eine zeitgesteuerte Schleife, welche den Regelalgorithmus zyklisch ausführen soll.
+Die Frequenz dieser Schleife wird auf 500Hz festgelegt, um eine Periodendauer von 2ms zu erreichen.
+In der Schleife werden mittels zweier DAQ-Express-VIs (Schnittstelle zur USB-Messkarte) das Dopplersignal sowie der aktuelle Manschettendruck eingelesen.
+Diese Signale werden mittels Funktionsgraphen auf dem Bildschirm dargestellt.
+Die Berechnung des Regelalgorithmus geschieht durch den PID-Block, einem von National Instruments vorbereiteten VI.
+Das errechnete Stellsignal wird durch einen weiteren DAQ-Block ausgegeben.
+Eine zusätzliche Funktion bildet die Einrichtung einer Timer-Struktur, welche bei jedem Durchlauf die seit dem Start abgelaufene Zeit in Millisekunden protokolliert.
+Somit können die Periodendauer und daraus die tatsächlich erreichte Frequenz der zeitgesteuerten Schleife ermittelt werden.
+Eine erste Testmessung ergibt eine Periodendauer zwischen 20 und 50ms.
+Deshalb wird versucht, die Performance durch verschiedene Maßnahmen zu verbessern: • Es wird festgestellt, dass beim Einlesen und Ausgeben der Signale unter Verwendung des DAQ-
+14u
+15u
+16u
+17u
+18u
+19u
+20u
+21u
+22u
+23u
+24u
+25u
+stellt.
+Dies hat zur Folge, dass beim Ausführen als Zeitbasis der interne Timer des Betriebssystems verwendet wird, was eine unregelmäßige Taktverzögerung oder -verschiebung nach sich zieht.
+Diese entsteht hauptsächlich aufgrund im Hintergrund ablaufender Prozesse.
+Durch die Verwendung eines externen Zählers, der die Schleifeniterationen steuert, kann der Takt regelmäßiger und schneller durchgeführt werden.
+Abbildung 13: Optimierung der Regelschleife - Zeitsteuerung Messschleife Um einen solchen Counter zu erhalten, muss die USB-Messkarte gegen eine PCI-Steckkarte getauscht werden, die nach Angaben im Datenblatt das Timing unterstützt.
+Abbildung 13 zeigt die Konfiguration der Zeitsteuerung beim Aufruf der Schleife.
+Im Zuge der Optimierung wird weiterhin nach den rechenintensivsten Prozessen im Programmablauf gesucht.
+Dabei stellt sich heraus, dass die grafische Anzeige (Signalverlaufskurve) die regelmäßig getaktete Ausführung der Schleife behindert.
+Auch Eingriffe in das Programm während der Ausführung im Zusammenhang mit dieser Verlaufskurve (Betätigen der Bildlaufleisten, Verschieben des Anzeigefensters, Änderung der Skalierung) haben eine Nichteinhaltung der angestrebten Periodendauer zur Folge.
+Zunächst werden deshalb diese Optionen deaktiviert bzw.gesperrt, eine Einstellung vor Beginn der Messungen wird als ausreichend bewertet.
+Um die grafische Anzeige weniger rechenintensiv zu gestalten, wird diese vom reinen Messvorgang abgekoppelt und in eine separate Schleife verlegt (Takt: 10Hz).
+Die Kommunikation zwischen den beiden zu Beginn jeder Messung synchronisierten Schleifen wird über einen Puffer nach dem „First-In First-Out“ (FIFO-) Prinzip eingerichtet.
+Während der Messung im möglichst schnellen Takt wird der Puffer gefüllt.
+Die langsamer laufende Anzeigeschleife stellt (mit niedriger Priorität als die Messung) mehrere Werte gleichzeitig im Verlaufsdiagramm dar und leert somit den Puffer wieder (siehe Abb. 14).
+Der Anzeigeschleife wird ein separater Counter der PCI-Karte zugewiesen.
+Abbildung 14: Optimierung der Regelschleife - Puffer nach dem „FIFO“-Prinzip • Ein weiterer Ansatzpunkt ist die Gestaltung des Regelalgorithmus.
+Der verwendete PID-Block wird als ungeeignet bewertet.
+Einerseits scheint er für den erwünschten Zweck überdimensioniert (Differentialanteil wird nicht benötigt), andererseits sind die intern ablaufenden Vorgänge schlecht zu überschauen und zu verstehen.
+Weiterhin werden die Anteile von Proportional- und Integralglied in multiplikativer Form miteinander verknüpft, weshalb ein Betrieb als reiner P- oder I-Regler nicht möglich ist.
+Dies wäre jedoch zur Ermittlung sinnvoller Einstellgrößen von Vorteil.
+Deshalb wird ein eigener, möglichst auf die Grundfunktionen reduzierter PI-Regelalgorithmus programmiert (siehe Abb. 15).
+Die Verknüpfung der Anteile erfolgt hierbei additiv.
+Zunächst wird durch Subtraktion die Regelabweichung gebildet.
+Die Multiplikation dieses Signals mit dem eingegebenen Proportionalfaktor ergibt das P-Glied.
+Zur Ermittlung des I-Glieds wird das Signal mit dem Kehrwert der Integral-Zeitkonstante Ti sowie der Diskretisierungszeit dt multipliziert und anschlie- ßend über die Zeit integriert.
+Am Ende werden die Anteile addiert, der Ausgangswert des Reglers begrenzt und das Ergebnis zur Übertragung auf die Regelstrecke invertiert.
+Als zusätzliche Funktion kann die Integralsumme per Knopfdruck zurückgesetzt werden.
+Abbildung 15: Optimierung der Regelschleife - Regelalgorithmus (PI) Somit ergibt sich ein verbessertes Blockdiagramm (vgl. 7.1.3).
+Die durch die Protokollierung ermittelten Periodendauern werden erneut analysiert.
+Mit den ergriffenen Maßnahmen wird erreicht, dass die Dauer einer Schleifeniteration nun in mehr als 98% der Durchläufe kleiner oder gleich 3ms ist.
+Somit kann der angestrebte Takt als erfüllt betrachtet werden.
+Um letztendlich eine Eignung des digitalen Aufbaus für die Aufgabe feststellen zu können, wird das Ergebnis mit der bestehenden analogen Regelung verglichen.
+Neben der subjektiven Einschätzung wird mit beiden Aufbauten eine Serie von Valsalva-Versuchen (vgl. 2.5) durchgeführt.
+Abbildung 16: Valsalva-Press-Versuch mit altem Aufbau Abbildung 17: Valsalva-Press-Versuch mit neuem Aufbau Wie die Abbildungen 16 und 17 zeigen, stimmen die von analoger und digitaler Regelung ermittelten Werte quantitativ nicht überein.
+Der qualitative Verlauf der Blutdruckkurve folgt jedoch sehr gut dem physiologisch stattfindenden Vorgang.
+Auch Veränderungen des hydrostatischen Drucks durch Aufund Ab-Bewegungen des Arms werden gut registriert.
+Somit kann der analoge Aufbau durch die digitale Regelung ersetzt werden.
+
+
+:::: Anpassung der Hardware ::::
+
+
+Zur Anpassung an die digitale Regelung muss der bestehende Hardwareaufbau geändert werden.
+Im bisherigen Gerät können mehrere Komponenten wie z.B. die Reglerplatine oder diverse Netzteile eingespart werden.
+Es wird ein kompaktes Gehäuse gesucht, das neben der Druckerzeugungseinheit eine 24V-Spannungsquelle und eine Anschlussmöglichkeit an das 230V-Stromnetz aufnehmen kann.
+Nach Montageversuchen und dem Aufbau einiger Raummodelle wird es als sinnvoll erachtet, das bestehende Gehäuse der Druckerzeugungseinheit zu verwenden.
+In diesem können die oben genannten Komponenten problemlos zusätzlich untergebracht werden.
+Hierzu wird eine Verteilerbox (siehe Abb. 18) angefertigt, in der die Anschlüsse der 230V-Spannungsversorgung von Netzteil und Kompressor/Druckschalter miteinander verbunden werden.
+Ebenfalls gehören ein Netzfilter mit Kaltgeräteanschluss, zwei Glättungskondensatoren, ein Kippschalter und eine Geräteschutzsicherung zum neuen Aufbau.
+Die Verbindung zwischen den Komponenten soll so gestaltet werden, dass zu Wartungszwecken die Anschlüsse leicht und schnell trennbar sind, zum Beispiel durch die Verwendung von Flachsteckern.
+Dennoch müssen alle Stellen, an denen später eine Spannung von 230V anliegt, so gestaltet werden, dass auch bei offenem Gehäuse keine elektrische Gefährdung besteht.
+Dies geschieht unter anderem durch die Verwendung von Kunststoff-Isolierhülsen oder das Vergie- ßen von offenen Anschlussstellen mit Heißkleber.
+Bei der Auswahl des Netzteils werden neben den elektrischen Kenngrößen (benötigt werden 12W bei 24V) vor allem die Einbaumaße berücksichtigt.
+Hierbei findet ein Bauteil Anwendung, welches normalerweise zum Betreiben von LEDs in der Beleuchtungstechnik verwendet wird.
+Es eignet sich aber durch eine Größe von nur 130x25x21mm sehr gut zur Integration in das bestehende Gehäuse (siehe Abb. 18).
+Zur Einspeisung des Dopplersignals wird eine BNC-Buchse vorgesehen.
+Damit kann zur Verbindung mit dem Ultraschallgerät ein Standardkabel verwendet werden.
+Der Anschluss des Computers erfolgt über eine neunpolige D-Sub Buchse.
+Zur Verteilung der Signale innerhalb des Gehäuses (zwischen 24V-Netzteil, Ventil und PC-Anschluss) wird eine kleine Platine erstellt.
+Hier ist auch ein analoger Tiefpass (RC-Glied) zur Filterung des eingehenden Dopplersignals realisiert.
+Die Platine ist in Abbildung 19 sichtbar, die Schalt- und Anschlusspläne sind der Arbeit angehängt (vgl. 7.2.1).
+12u
+13u
+Abbildung 18: Spannungsverteiler (1) und 24V-Netzteil (2) Zur mechanischen Anpassung des Gehäuses müssen lediglich die Frontplatte und die Rückwand angepasst werden.
+Die neue Frontplatte bildet aufgrund der weggefallenen, manuellen Drehregler eine einfache Aluminiumplatte, in die lediglich die Schraubenlöcher zur Montage am Gehäuse eingebracht werden müssen.
+Eine auf dieser Platte aufgebrachte Klebefolie kennzeichnet den Versuch und beschreibt mit einer Skizze die Anordnung der Komponenten am Unterarm.
+Die existierende Rückwand wird um die Lochgeometrie zum Einbau von Kaltgerätebuchse, Kippschalter, D-Sub- und BNC-Buchse erweitert.
+Die Bauteile werden durch die Werkstatt gefertigt.
+Nr. Komponente 1 Steckverbindung zum Ventil
+2u
+2 Steckverbindung zu den Gehäusebuchsen (D-SUB/BNC)
+5u
+3 RC-Glied als analoger Tiefpass zur Filterung des Dopplersignals (Eingang) 4 Anschluss für 24V-Versorgung Tabelle 1: Komponenten in Abb. 19
+10u
+11u
+Abbildung 19: Verteilerplatine
+
+
+:::: Anpassung der Messwerte mit alternativem Verfahren ::::
+
+
+Die theoretische Annahme, den Manschettendruck dem Druck innerhalb der Arterie gleichzusetzen, ist praktisch jedoch nicht ohne weiteres möglich.
+Hier werden oft andere (meist zu hohe) Werte ermittelt.
+Zum einen wird der Druck über den Arm übertragen, wodurch Verluste entstehen.
+Zum anderen wirkt bei diesem dynamischen Vorgang das System wie ein Tiefpassfilter.
+Um das quantitative Ergebnis der Blutdruckmessungen zu korrigieren soll das Ultraschall-Doppler-Verfahren, ähnlich der Servo-Korrektur im Penaz-Verfahren, durch eine alternative Messmethode angepasst werden.
+Hierzu stehen mehrere Messprinzipien, z.B. die auskultatorische Bestimmung, zur Auswahl.
+Diese scheiden jedoch fast alle aufgrund von zusätzlich benötigten Hardwarekomponenten aus.
+Mit dem bestehenden Aufbau aus Druckerzeugungseinheit, Proportionalventil mit Drucksensor und Handgelenksmanschette kann jedoch theoretisch eine oszillometrische Messung realisiert werden.
+Dazu wird ein externer Druck am Arm aufgebracht und langsam wieder abgelassen.
+Dabei werden die auftretenden Oszillationen ermittelt.
+Es soll untersucht werden, ob eine solche Messung zuverlässige Werte liefert.
+Die Programmierung wird als Sub-VI realisiert und im Hauptprogramm eingebettet.
+
+
+:::: Oszillometrische Bestimmung des mittleren arteriellen Blutdrucks ::::
+
+
+Das Unterprogramm soll folgende Abläufe durchführen: Dem Ventil soll ein Rampensignal vorgegeben werden, das in der Manschette zügig einen Druck von vorerst 200mmHg erzeugt und diesen dann mit mäßiger Geschwindigkeit (ca. 5mmHg/s) ablässt.
+Während des Ablassens sollen die vom Blutgefäß auf die Manschette übertragenen Oszillationen registriert, herausgefiltert und verstärkt werden.
+Aus diesen Schwingungen sollen dann Blutdruckwerte ermittelt werden.
+Das Sub-VI ist in zwei Sequenzen aufgeteilt.
+In der ersten Sequenz erfolgt in einer while-Schleife die Aufzeichnung der Druck- und Oszillationskurve, die zweite Sequenz analysiert die registrierten Signale.
+Für die Bestimmung des Blutdrucks wird hier eine Frequenz von 100Hz gewählt.
+Durch die Einbettung ins Hauptprogramm müssen die dort erzeugten Schnittstellenreferenzen (Tasks) verwendet werden, da ein zusätzliches Aufrufen der PCI-Karte einen Ressourcenkonflikt verursacht.
+Jedoch wird festgestellt, dass beim Lesevorgang (Read) vor dem zyklischen Auslesen der Spannungswerte die Aufzeichnungsmethode zu „kontinuierlich“ verändert werden muss, da dem ermittelten Signalverlauf nur so die für das Filter notwendige Zeitinformation hinzugefügt wird.
+Vor dem Rücksprung werden diese Einstellungen dann wieder zurückgesetzt.
+Das Rampensignal wird im dafür von LabVIEW bereitgestellten Editor erzeugt und die Werte pro Zeitschritt zum Ventil ausgegeben (Write).
+Das ermittelte Manschettendrucksignal wird zunächst mit einem Filter geglättet und anschließend aufgeteilt.
+Im ersten Vorgang wird ein Bandpassfilter angewendet.
+Aus einer vorigen Arbeit [Höf10], in der mit ähnlichen Komponenten bereits eine oszillometrische Messung realisiert wurde, können die Filtereinstellungen übernommen werden.
+So erfolgen bei diesem Filter 511 Abgriffe, der Durchlassbereich erstreckt sich von 0,8Hz bis 2Hz.
+Die hierdurch ermittelten Schwingungen während der Pulsschläge werden mit dem Faktor 2000 verstärkt und ein Offset hinzugefügt, so dass das Signal um den Wert von 150 schwingt.
+Da zu Beginn des Ablassvorganges die Oszillationskurve sehr empfindlich gegenüber Überschwingern ist, wird diese nur im Ablassbereich zwischen 180mmHg bis 5mmHg dargestellt.
+Im zweiten Vorgang wird das Manschettendrucksignal lediglich mit dem Faktor 30 auf die Einheit mmHg skaliert.
+Da das Oszillationsfilter eine zeitliche Verschiebung der Signale verursacht, wird eine Queue-Warteschleife eingebaut, um später direkt Zeitpunkte der Druck- und Oszillationskurve miteinander vergleichen zu können.
+Beide Kurven werden temporär in eine Datei zur weiteren Verarbeitung gespeichert.
+Die zweite Sequenz führt anschließend eine „peak detect analysis“ durch.
+Das heißt es werden alle Spitzen im Oszillationssignal, die einen festgelegten Schwellenwert überschreiten, registriert und in einem Array gespeichert.
+Aus diesem Array kann dann der maximale Peak ermittelt und einem Punkt auf der Manschettendruckkurve zugeordnet werden.
+Für diesen kann der mittlere arterielle Druck (MAD) angenommen werden [Höf10].
+Er wird auf den nächsten ganzzahligen Wert gerundet und dem Hauptprogramm übergeben (MAP_anp).
+Versuche, ausgehend von der Position des Maximums mithilfe von Faustformeln (vgl. 2.1.2.2) systolische und diastolische Werte zu berechnen haben sich als nicht durchführbar herausgestellt.
+Dies ist vor allem auf den Einfluss des Proportionalventils zurückzuführen.
+Dieses verursacht durch seine aktive Regelung dem physiologischen Oszillationssignal überlagerte Schwingungen, die wohl für die Bestimmung des Maximums nicht relevant, aber bei der Ermittlung anderer Werte störend sind.
+
+
+:::: Anpassung der Druckwerte ::::
+
+
+Der mit dem Ultraschall-Doppler-Servo-Verfahren ermittelte Blutdruckverlauf soll nun mithilfe des oszillometrisch ermittelten Wertes angepasst werden.
+Hierzu wird zunächst aus dem qualitativen Verlauf der Druckkurve durch Integration der mittlere Druck (MAD_servo) bestimmt.
+Anschließend wird ein Umrechnungsfaktor _ (. 1)
+· = _fi berechnet, mit dem die eingehenden Druckwerte fortan multipliziert werden.
+Der Zeitpunkt der Anpassung muss vom Benutzer gewählt werden, wenn ein konstanter, qualitativ geeigneter Verlauf der Druckkurve vorliegt.
+Nach der Anpassung dürfen die Regeleinstellungen (Verstärkungsfaktor KP, Zeitkonstante Ti, Sollwert) nicht mehr geändert werden.
+Die dazu vorhandenen Bedienelemente sind erst nach dem Zurücksetzen der Anpassung wieder aktiviert.
+
+
+:::: Manuelle Eingabe alternativer Werte ::::
+
+
+Mit umfangreichen Testmessungen (vgl. 5.2) soll ermittelt werden, ob mit der realisierten Anpassung der Blutdruckwerte sinnvolle Ergebnisse erreicht werden können.
+Hierbei wird festgestellt, dass die Anwendung des Umrechnungsfaktors für das Verfahren geeignet ist, jedoch die oszillometrische Messung der MAD-Werte in den meisten Fällen keine brauchbaren Werte liefert.
+Deshalb wird eine manuelle Eingabe realisiert, mit der der Anwender durch ein alternatives Verfahren seiner Wahl (z.B. auskultatorisch) bestimmte Blutdruckwerte (Systole/Diastole) eingeben kann.
+Hieraus wird nach der Formel ( − ß) + ß										(. 2)
+_	 	 = 3 der zur Berechnung des Umrechnungsfaktors (mit Gleichung 1) notwendige mittlere arterielle Druck (MAP_anp) bestimmt.
+Die Anpassung der Druckkurve erfolgt analog zur oszillometrischen Anpassung.
+Somit können nun in gewissen Grenzen betrachtet auch quantitativ geeignete Werte mit dem Ultraschall-Doppler-Servo-Verfahren ermittelt werden.
+
+
+:::: Erstellung einer Bedienoberfläche ::::
+
+
+Zur Steuerung der Programmfunktionen und zur Durchführung der eigentlichen Messung soll eine Bedienoberfläche realisiert werden.
+Als typische Benutzer werden Studenten angenommen, die selbstständig im Rahmen eines Laborversuchs mit dem Aufbau arbeiten.
+Aus diesem Grund muss die Bedienoberfläche möglichst einfach, selbsterklärend und im Umfang den gewünschten Funktionen angemessen sein.
+Eine Übersicht über die Programmfunktionen liefert neben der folgenden Beschreibung auch die Programmstruktur (vgl. 7.1).
+
+
+:::: Anforderungen an die Bedienoberfläche ::::
+
+
+Folgende Forderungen sollen erfüllt werden: • Durchführung der Blutdruckmessung
+26u
+27u
+28u
+29u
+30u
+31u
+32u
+33u
+34u
+35u
+
+
+:::: Hauptprogramm ::::
+
+
+Im Hauptprogramm werden die Steuerung der Programmfunktionen sowie die Wiedergabe einer gespeicherten Messung realisiert.
+Beim Starten werden für alle Einstellungen Standardwerte gesetzt, um auch ohne Eingaben eine schnelle und sinnvolle Messung durchführen zu können.
+Um die Anzeigefläche möglichst übersichtlich zu halten sind die anzuzeigenden Ein- und Ausgabefelder in eine Registerkartenstruktur eingebettet.
+Die Steuerung erfolgt über Bedienelemente, deren Betätigung ständig mithilfe einer Ereignisstruktur überwacht wird.
+Im Registerkartenfeld „Blutdruckwerte“ können vom Benutzer der alternativ ermittelte systolische und diastolische Wert eingegeben werden.
+Um den für die Wiedergabe bereits erwähnten Anpassungsfaktor zu berechnen (nach Gleichung 1), kann zusätzlich ein Wert für MAD_servo angegeben werden (vgl. 4.2.2).
+Im Feld „Dateiname“ wird der Titel der Protokolldatei festgelegt, welche das Programm im unter „Voreinstellungen“ definierten Verzeichnis abgelegt.
+In diesem Registerkartenfeld (siehe Abb. 20) können weiterhin die zeitliche Auflösung von Monitor- und Trendfenster (Auswahlfelder) sowie die Voreinstellungen des Reglers (Texteingabe) definiert werden.
+Abbildung 20: Registerkartenelement "Voreinstellungen" der Bedienoberfläche Beim Betätigen des Buttons „Wiedergabe“ werden die unter „Blutdruckwerte“ definierten Eingaben zum systolischen und diastolischen Druck der alternativen Messung eingelesen und der MAD_anp berechnet (vgl. 4.2.2).
+Sollten keine Werte vorhanden sein, wird im Folgenden auch keine Anpassung durchgeführt.
+Anschließend wird aus dem angegebenen Verzeichnis und dem Dateinamen der Dateipfad des Messprotokolls erstellt und geprüft, ob eine Datei mit diesem Pfad existiert.
+Sollte dies nicht der Fall sein, wird der Benutzer über einen Dialog zur Korrektur der Angaben aufgefordert.
+Existiert eine gültige Datei, wird diese zeilenweise ausgelesen und die Werte im Trendfenster der Wiedergabe dargestellt (siehe Abb. 21).
+Die zeitliche Auflösung wird bildschirmfüllend festgelegt.
+Bei einer Wiedergabe mit angepassten Werten wird der Faktor f berechnet, mit dem die ausgelesenen Werte jeweils multipliziert werden.
+Hierzu wird entweder der eingegebene Wert verwendet oder, falls keine manuelle Eingabe getätigt wurde, automatisch der MAD_servo genutzt, welcher während der Messung zum Zeitpunkt der Anpassung vorlag.
+Dieser wird in der letzten Zeile des Protokolls festgehalten und kann von dort ausgelesen werden.
+Der Zustand der Anpassung wird in einer Statuszeile unterhalb des Trendfensters ausgegeben, hier befindet sich auch die Grafikpalette des Diagramms, mit dem sich der Benutzer innerhalb der ausgegebenen Kurve bewegen kann (Zoom etc.).
+Der Button „Start“ ruft das Sub-VI „Messprogramm“ auf, welches nachfolgend separat beschrieben wird.
+Auch hier wird zunächst der MAD_anp berechnet, weiter werden Dateipfad, Regler- und Anzeigeeinstellungen ausgelesen und an das Unterprogramm übergeben.
+Abbildung 21: Registerkartenelement "Wiedergabe" der Bedienoberfläche mit gespeicherter Messung
+
+
+:::: Sub-VI „Messprogramm“ ::::
+
+
+Die vom Hauptprogramm übergebenen Parameter werden eingelesen und die betreffenden Einstellungen (Skalierung der Zeitachsen, Standard-Regeleinstellungen) angepasst.
+In einem eingebetteten Sub-VI wird die Protokolldatei vorbereitet (Überschreiben einer eventuellen alten Messung, Header erstellen etc.).
+Anschließend startet die Regel- und Anzeigeschleife (vgl. 4.1.1).
+Neben der bereits beschriebenen, per Knopfdruck gestarteten, kontinuierlichen Regelung werden in dieser zeitgesteuerten Schleife auch Vitalwerte ermittelt und angezeigt.
+Diese Berechnungen laufen parallel ab.
+Der mittlere arterielle Druck (MAD_servo) wird durch die Integration aller Druckwerte über den Zeitraum von fünf Sekunden bestimmt.
+Die eingehenden Werte werden außerdem in ein Array geschrieben, von dem am Ende des Zeitraumes Maximal- und Minimalwert (systolischer/diastolischer Wert) ausgelesen werden können.
+Die Bestimmung der Herzfrequenz wird mithilfe des Dopplersignals durchgeführt.
+Über einen Zeitraum von zirka zehn Sekunden werden die auftretenden Spitzen, die einen festgelegten Schwellwert überschreiten, registriert.
+Die Anzahl wird durch die verstrichene Zeit dividiert und mit einem Faktor auf die Einheit 1/min skaliert.
+In der Anzeigeschleife wird neben der Visualisierung des aktuellen Verlaufs von Doppler- und Drucksignal jede Sekunde ein gleitend gemittelter Wert des MAD_servo in das Trendfenster geschrieben.
+Dieser Zeitabstand wurde so ge- wählt, um sowohl den zeitlichen Verlauf im Minutenbereich, als aber auch dynamische Änderungen (z.B. im Rahmen eines Valsalva-Manövers) zu veranschaulichen.
+Die im Trendfenster angezeigten Werte werden gleichzeitig temporär gespeichert und nach der Messung im Messprotokoll dokumentiert.
+Die Messung kann per „Stop“-Button beendet werden.
+Eine auffällige Gestaltung dieses Bedienknopfes erscheint als sehr wichtig, da im Falle plötzlich auftretender Schmerzen oder Probleme die Regelung deaktiviert und die Manschette am Handgelenk des Probanden entlüftet wird.
+Diese Funktion ist zusätzlich über die Escape-Taste ausführbar.
+Während der laufenden Messung können, wie bereits beschrieben, die Messwerte an die alternative Messung angepasst werden.
+Sollten zu Beginn keine gültigen Druckwerte übergeben worden sein, sind die hierfür vorgesehenen Bedienknöpfe deaktiviert.
+Abbildung 22: Frontpanel des Messprogramms
+
+
+:::: Überarbeitung der Sondenfixierung ::::
+
+
+Im Zuge erster Testmessungen mit den optimierten Versuchskomponenten wird festgestellt, dass die Qualität des Dopplersignals einer der maßgeblichen Faktoren für das Erreichen einer stabilen Regelung und einer zur Auswertung geeigneten Druckkurve ist.
+Störend wirkt sich hierbei die am Venenstauband verwendete Verschlussschnalle aus.
+Durch ihr Gewicht und ihre im normalen Anwendungsfall in der Luft hängende Position verursacht sie eine Verschiebung der Sonde weg von der aufgesuchten Arterie.
+Dies hat ein schlechter werdendes Dopplersignal zur Folge.
+Daher soll eine alternative Fixierungsmöglichkeit gefunden werden.
+Für diese werden folgende Anforderungen erarbeitet:
+8u
+9u
+10u
+11u
+12u
+Ein wichtiger und zu berücksichtigender Aspekt ist der zu erwartende Fertigungsaufwand.
+Die neue Halterung soll möglichst schnell zur Verfügung stehen.
+Das für den bestehenden Versuch aufwendig gestaltete Kunststoff-Verbindungselement soll, wenn möglich, weiter verwendet werden.
+Es werden folgende Lösungsideen gefunden: • Gummi-Lochband (ähnlich EKG-Gurten) mit kleinem Lochabstand zur möglichst stufenlosen An-
+18u
+19u
+20u
+21u
+22u
+• Grundsätzliche Verwendung der bestehenden Lösung mit einem alternativen Verschluss und/oder
+24u
+25u
+26u
+• Gummiband mit fix eingesetzter Sonde; einfacher Verschlussmechanismus, ergänzt durch einen
+28u
+29u
+30u
+31u
+• Zwei parallele Rundschnüre zum Umspannen des Handgelenks; die bestehende Sondenaufnahme
+33u
+34u
+35u
+0u
+1u
+2u
+3u
+4u
+5u
+6u
+7u
+8u
+9u
+10u
+11u
+12u
+13u
+14u
+Abbildung 23: Optimierte Sondenfixierung
+
+
+:::: Ergebnisse ::::
+
+
+
+
+:::: Optimierter Versuchsaufbau ::::
+
+
+Im optimierten Versuchsaufbau wird die Flussgeschwindigkeit des Blutes mit dem DWL -Ultraschall-Doppler bestimmt.
+Die Hüllkurve des Strömungsprofils kann als analoges Spannungssignal über die Druckerzeugungseinheit an den Messcomputer übergeb en werden.
+Die Digitalisierung erfolgt durch eine PCI-Messkarte von National Instruments (NI PCI -6035E).
+Auf der Basis einer LabVIEW -Anwendung erfolgt mithilfe eines digitalen PI -Reglers die kontinuierliche Regelung des Manschette ndrucks.
+Dieser wird in der Druckerzeugungseinheit von einem Kompressor in einem Vorratsbehälter gespeichert und mithilfe eines Proportional ventils am Druckausgang bereitgestellt.
+D as in der Manschette gemessene Drucksignal wird an den Messcomputer weitergeleitet.
+Die Steuerung der Programmfunktionen, die Betrachtung der aktuellen und gespeicherten Messungen sowie das Ver ändern der Einstellungen we rden ebenfalls im LabVIEW-Programm durchgeführt.
+Weiter wird hier ein Protokoll zur Speicherung der ermittelten Werte erstellt.
+Es erg eben sich die in den Abbildungen 24 bis 27 dargestellten Struktur - und Signalflusspläne.
+Abbildung 24: Struktur- und Signalflussplan - Legende Abbildung 25: Struktur- und Signalflussplan - Übersicht Laboraufbau Abbildung 26: Struktur- und Signalflussplan - Detailansicht Druckerzeugungseinheit Abbildung 27: Struktur- und Signalflussplan - Detailansicht Mess-PC Mit dem Versuchsaufbau können folgende Messungen durchgeführt werden:
+3u
+4u
+5u
+6u
+7u
+
+
+:::: Testmessungen ::::
+
+
+Im Laufe der Entwicklung de s Messprogramms wird die Funktion einiger Komponenten getestet.
+Einerseits soll die Genauigkeit und Zuverlässigkeit der oszillometrischen Blutdruckmessung (vgl. 4.2.1) ermittelt, andererseits die Eignung der vorgesehenen Anpassung durch einen Berechnungsfa ktor (vgl. 4.2.2) beurteilt werden.
+Weiter gilt es festzustellen, ob der neue Aufbau gegenüber dem alten Versuch bessere Werte erzielt.
+
+
+:::: Durchführung ::::
+
+
+Die Testmessungen werden an zehn zufällig ausgewählten Probanden (Studenten der Hochschule Ulm) durchgeführt.
+Davon sind vier Personen weiblich und sechs Personen männlich.
+Die Testpersonen sind im Alter zwischen 21 und 27 Jahren.
+Es werden folgende Voraussetzungen definiert:
+4u
+5u
+6u
+7u
+8u
+9u
+10u
+Sollwert=0.07, KP=0.6, Ti=0.07 Die jeweils durchzuführenden Manöver bzw.der Ablauf der Messungen sollen bei jedem Probanden gleich sein und werden einheitlich festgelegt.
+Es wird ein Messprotokoll erstellt, welches zur Führung durch den Versuch und zur Dokumentation der Ergebnisse eingesetzt wird (vgl. 7.4.1).
+Die Versuche sollen folgende Fragestellungen beantworten: • Vergleich der ermittelten Werte für den mittleren arteriellen Druck durch verschiedene Metho-
+17u
+18u
+19u
+20u
+21u
+22u
+23u
+
+
+:::: Ergebnisse ::::
+
+
+Nach der Auswertung der Messwerte können folgende Aussagen getroffen werden: • Die oszillometrische Messung der für die Anpassung verwendeten Werte mit der im Versuchsauf-
+27u
+28u
+29u
+30u
+31u
+32u
+33u
+34u
+35u
+Abbildung 28: Auswertung der Testmessungen - Beispiel für oszillometrische Messung Abbildung 29: Auswertung der Testmessungen - Vergleich der ermittelten MAP-Werte • Die quantitative Anpassung durch den Berechnungsfaktor f ist für den Anwendungsfall geeignet.
+Für die Fälle, in denen der oszillometrische Wert dem auskultatorischen Wert ähnelt, werden nach der Anpassung auch durch die Servo-Methode physiologisch sinnvolle und den auskultatorischen Werten ähnliche Blutdruckwerte ermittelt.
+Beispiele hierfür sind die Messungen Nr. 1, 3, 4, 6 und 10.
+In Abbildung 29 liegen für diese Durchläufe der auskultatorisch bestimmte und der mit dem Versuchsaufbau gemessene MAP-Wert nahe beieinander.
+In diesen Fällen sind dann auch, in Abbildung 30 sichtbar, die gemessenen Blutdruckwerte (Systole/Diastole) annähernd gleich.
+Abbildung 30: Auswertung der Testmessungen - Qualität der oszillometrischen Anpassung
+8u
+9u
+10u
+• Bei länger andauernden Messungen kommt es teilweise zu einer Regelung des Manschetten-
+12u
+13u
+14u
+0u
+Verstärkungsfaktor KP=0.6, Zeitkonstante Ti=0.07) erweisen sich als gut geeignet für den Großteil der untersuchten Probanden.
+Es konnte in den meisten Fällen ohne eine Veränderung der Werte eine stabile Regelung erreicht werden.
+• Die entwickelte Fixierung der Ultraschall-Doppler-Sonde ist für die Anwendung im Versuchsauf-
+5u
+6u
+7u
+
+
+:::: Diskussion und Ausblick ::::
+
+
+Der bereits bestehende Versuchsaufbau zur nicht-invasiven Bestimmung des arteriellen Blutdrucks wurde in mehreren Schritten optimiert.
+Hierbei war es wichtig, dass die angestrebten Änderungen für die vorgesehene Verwendung zweckmäßig und sinnvoll gestaltet sind.
+Der Aufbau soll es Studenten ermöglichen, selbstständig oder mit Unterstützung dieses Blutdruckmessverfahren kennen zu lernen.
+Sie sollen es im Rahmen von Laborveranstaltungen auch selbst ausprobieren.
+Daher wurde großer Wert auf einen übersichtlichen und möglichst transparenten Aufbau der Komponenten gelegt, hauptsächlich bei der Gestaltung der Bedienoberfläche.
+Es stellte sich auch die Frage, ob der Nutzer eine Dokumentation des Versuchs erhalten soll, z.B. in Form eines Protokolls.
+Im Bezug auf die Verwendung als Laborversuch war es weiterhin sehr wichtig, sicherheitstechnische Aspekte zu bedenken und bei der Planung der Maßnahmen zu berücksichtigen.
+Es ist gelungen, den analog aufgebauten PID-Regler durch einen digitalen PI-Regler zu ersetzen.
+Auf den differentiellen Anteil wurde verzichtet, da dieser für die gegebene Regelstrecke nicht notwendig ist.
+Vorversuche und Erfahrungswerte zeigten, dass im alten Versuchsaufbau durch diesen Parameter keine wesentliche Beeinflussung der Regelung stattfand.
+Der digitale Regler besitzt eine für den gewünschten Zweck ausreichende Geschwindigkeit, welche durch Analyse der Zeitabstände zwischen den Durchläufen des Regelalgorithmus nachgewiesen wurde.
+Diese lässt sich allerdings mit den zur Verfügung stehenden Möglichkeiten nicht mehr weiter steigern.
+Durch die Programmierung und Steuerung mittels der Computersoftware LabVIEW ist die Einstellung des Reglers einfach und exakt möglich.
+Dem Benutzer können für den Betrieb und Anwendungsfall eingegrenzte Wertebereiche vorgegeben werden.
+Eine Optimierungsmöglichkeit besteht bei der Einstellung des Sollwerts der Regelung.
+Um die Transparenz des Aufbaus zu steigern könnte hier eine Eingabe in der physikalischen Einheit cm/s realisiert werden.
+Dabei muss jedoch berücksichtigt werden, dass dieser Wert einen korrekten Winkel und somit eine richtige Anbringung der Ultraschall-Sonde voraussetzt.
+In der frühen Planungsphase wurden auch alternative Ideen zur Optimierung der Regelung in Betracht gezogen.
+Denkbar war eine Überarbeitung bzw.ein Neuaufbau des analogen Reglers, was jedoch den Vorteil der einfachen softwarebasierten Änderungen ausgeschlossen hätte.
+Weiter wurde dieser Schritt als nicht zeitgemäß bewertet, auch wenn gewisse Teile, z.B. die Einstellung der Parameter digital realisiert worden wären.
+Eine weitere überlegte Möglichkeit war die Realsierung der Regelung mittels eines Mikrocontrollers.
+Hierdurch hätte der Regelalgorithmus eigenständig durch das Gerät ausgeführt werden können.
+Trotzdem wäre auch hier eine Möglichkeit zur Anzeige und Protokollierung der Messungen gewünscht gewesen, weswegen die zusätzliche Nutzung eines Computers notwendig geworden wäre.
+Letztendlich wurde der Nachteil der aufwändigeren Einarbeitung und Programmierung gewichtiger als die überlegten Vorteile bewertet.
+Der entwickelte Versuchsaufbau liefert Ergebnisse, die den zeitlichen Verlauf des arteriellen Blutdrucks qualitativ sehr gut beurteilen lassen.
+In Versuchen konnten sowohl dynamische Vorgänge (z.B. Valsalva-Press-Versuch) als auch ein längerfristiger Verlauf (Trend) dargestellt werden.
+Für die quantitative Anpassung der ermittelten Verlaufskurve wurde aufgrund der einfachen Implementierung die Berechnung und Anwendung eines Anpassungsfaktors verwendet.
+In diesen geht der mit einer alternativen Messmethode bestimmte Blutdruck ein.
+Die grundsätzliche Eignung dieser Vorgehensweise konnte mit Testmessungen nachgewiesen werden.
+Zwar wurde das verwendete Verfahren nicht klinisch getestet und mit Referenzwerten eines invasiv gemessenen Druck verglichen, jedoch sind die Ergebnisse der hier durchgeführten Messungen vor allem im Bezug auf den qualitativen Verlauf der Blutdruckkurve mit den im wissenschaftlichen Artikel von Aaslid und Brubakk [Aas81] gezeigten Ergebnissen vergleichbar.
+Weiter waren die Messwerte den kurz vorher alternativ bestimmten Blutdruckwerten ähnlich, was ebenfalls für eine gegebene Funktion spricht.
+Nicht realisiert werden konnte die oszillometrische Blutdruckmessung mithilfe des Versuchsaufbaus.
+Dies scheiterte an der schnellen Regelung des Proportionalventils, wodurch die Oszillationen nicht störungsfrei zu analysieren waren.
+Eine mögliche Lösung dieser Problematik wäre ein zusätzliches Ventil mit Drucksensor, welches ein präzises Ablassen des Drucks und eine Messung der Oszillationen ermöglicht.
+Alternativ dazu könnte ein Bauteil gesucht werden, das die beiden beschriebenen Betriebsmodi wahlweise ausführt.
+Auch bei der Wahl des Anpassungsverfahrens bestanden mehrere Lösungsmöglichkeiten.
+Neben der gewählten Methode wurde die Verwendung des im Penaz-Verfahren benutzten Anpassungswerkzeugs in Erwägung gezogen.
+Dabei würde die Kalibrierung durch die Variation des Sollwerts durchgeführt.
+Allerdings zeigte sich in Vorversuchen, dass der Regler des Servo-Aufbaus sehr empfindlich auf Änderungen des Sollwerts reagiert, was häufig eine Instabilität der Regelstrecke verursacht.
+Die entwickelten Berechnungsalgorithmen (z.B. für systolischen und diastolischen Blutdruck oder Herzfrequenz, vgl. 7.1.2) sind relativ einfach realisiert.
+Somit können wohl nur Messwerte in guter Näherung ermittelt werden, jedoch erscheint dies für den Anwendungsfall ausreichend.
+Aufgrund der Realisierung mittels LabVIEW bestehen bei der Verarbeitung der eingelesenen Daten beliebig viele Erweiterungsmöglichkeiten, wie zum Beispiel eine genaue Analyse des Dopplersignals.
+Somit könnte programmtechnisch eine Warnung bei nicht geeignetem oder schlechter werdendem Eingangssignal (Verhindern einer Regelung gegen 0) erfolgen.
+Denkbar wäre die Analyse der Kurvenform ähnlich zum Finapres-Gerät, wo das Eingangssignal ebenfalls auf charakteristische Muster (Finapres: Nullstellen bzw. Maxima) durchsucht wird.
+Kriterien für ein für die Regelung gut geeignetes Dopplersignal sind wohl durch Erfahrungswerte bekannt, müssten jedoch für eine Verwendung durch weitere Messungen bestätigt werden.
+Während der durchgeführten Arbeiten nicht zufriedenstellend bearbeitet werden konnte die Erstellung einer Protokolldatei.
+Zwar werden sekündlich die Verlaufswerte des mittleren arteriellen Drucks sowie die eingelesen Rohdaten aufgezeichnet, jedoch erfolgt die Speicherung bisher in zwei unterschiedlichen Dateien.
+Wünschenswert wäre das Ablegen in einer Datei.
+Diese könnte neben der übersichtlichen Darstellung der Werte auch eine Trendgrafik enthalten.
+Weiter muss sie so gestaltet sein, dass die Druckwerte zur Wiedergabe der Messung vom Programm ausgelesen werden können.
+Mit der Anpassung ist es gelungen, die Größe des Laboraufbaus deutlich zu reduzieren.
+Zum einen konnten nicht mehr benötigte Teile aus ehemals vorgesehenen Teilversuchen, wie z.B. das Display und das Netzteil des internen US-Dopplers, entfernt werden.
+Zum anderen wurden mit der Realisierung des digitalen Reglers die analogen Reglerplatinen samt ihrer Bedienelemente überflüssig.
+Weiter konnten Komponenten wie z.B. das Netzteil für den Betrieb des Proportionalventils durch Bauteile mit geringeren Abmessungen ersetzt werden.
+Die Integration aller Bauteile in das Gehäuse der Druckerzeugungseinheit schafft ein kompaktes Gerät.
+Auch hier steht die Sicherheit des Benutzers im Vordergrund.
+Neben dem schon bestehenden Überdruckventil wurde vor allem bei der Spannungsversorgung auf einen Ausschluss von möglichen Gefährdungen geachtet.
+Es ist im normalen Anwendungsfall wohl nicht vorgesehen, dass das Gerät während der Nutzung durch Studenten geöffnet ist.
+Es musste jedoch sichergestellt werden, dass auch in dieser Situation keine Berührung von Netzspannung führenden Teilen möglich ist.
+Durch z.B. die Verwendung von Isolationshülsen oder das Vergie- ßen der Anschlüsse konnte dies realisiert werden.
+Ein weiterer, anzustrebender Schritt ist die Prüfung des Aufbaus nach gängigen Medizinproduktevorschriften (Medizinproduktegesetz MPG, Richtlinie 93/42/EWG, EN ISO 19471, DIN EN 60601, CE-Konformität).
+Somit könnte der Aufbau auf zusätzliche Gefährdungen und somit auf seine Sicherheit untersucht werden.
+Neben der bereits erwähnten programmtechnischen Verbesserung des Ultraschallsignals konnte auch die mechanische Fixierung der Ultraschall-Doppler-Sonde verbessert werden.
+Dadurch wurde ein störungsfreieres Signal erreicht.
+Die während der Entwicklung gestellten Anforderungen sind vollständig erfüllt.
+Während der ausgeführten Testmessungen konnten bestehende Zweifel bezüglich einer Einschnürung und damit einer Beeinträchtigung des Probanden ausgeräumt werden.
+Zudem war die neue Halterung mit geringem Fertigungsaufwand und niedrigen Kosten zu realisieren.
+Der wesentliche Vorteil des Konzepts besteht in der guten Reinigbarkeit des Sondenaufbaus.
+Alle Komponenten sind hierzu vollständig demontierbar.
+Die Reinigung der Sonde ist durch Abwischen möglich, die restlichen Bauteile können unter fließendem Wasser gereinigt oder sogar im Desinfektionsbad eingelegt werden.
+Hierbei sollte jedoch zuvor eine Materialverträglichkeitsprüfung durchgeführt werden.
+Eine weitere mögliche Optimierung wäre die schon in der Diplomarbeit von Thomas Eberhard angedachte Entwicklung eines Sondenarrays [Ebe96].
+Durch mehrere Ultraschallsonden könnte aus den entstehenden Dopplersignalen das am besten geeignetste ausgewählt und zur Regelung verwendet werden.
+Hierzu wäre dann abermals eine Änderung des Fixierungsaufbaus notwendig.
+Ein Sondenarmband oder eine handschuhähnliche Kombination aus Dopplersonden und Druckmanschette wären in diesem Zusammenhang denkbare Lösungen.
+Insgesamt ist festzustellen, dass der optimierte Laborversuch funktioniert.
+Im Vergleich zum alten Gerät ist, mit Blick auf die Regelung, auf jeden Fall eine gleichwertige Funktion gegeben.
+Im Bezug auf die Verwendungsfähigkeit/den Bedienkomfort übertrifft der optimierte Aufbau den alten.
+Mit den durchgeführten Messungen konnte die grundsätzliche Eignung zur kontinuierlichen, nichtinvasiven Messung des arteriellen Blutdrucks festgestellt werden.
+Um die Frage der vollständigen Funktionsfähigkeit und Zuverlässigkeit beantworten zu können sind weitere Testmessungen notwendig.
+Bisher wurden nur Versuche mit Probanden zwischen 20 und 30 Jahren durchgeführt, bei denen allesamt normale Blutdruckwerte vorherrschten.
+Von Interesse wären jedoch auch Tests mit jüngeren oder älteren Personen oder mit Probanden, die einen durch Krankheit veränderten Blutdruck besitzen (z.B. Bluthochdruck, erhöhter Gefäßwiderstand etc.).
+Außerdem wären, nicht zuletzt zur Bewertung der entwickelten Sondenfixierung, Versuche bei Bewegung bzw.unter Belastung (z.B. auf dem Ergometer) zur Bewertung hilfreich.
+Dadurch könnten auch für eine breite Anzahl an Personen geeignete Standard-Reglereinstellungen gefunden bzw.die zurzeit verwendeten Parameter überprüft werden.
+Ziel könnte es sein, in Zukunft einen automatischen Messablauf zu realisieren.
+Dieser könnte selbstständig eine Alternativmessung durchführen, den Regler aktivieren und einstellen und zu einem Zeitpunkt oder wiederholt die Werte an den physiologisch vorliegenden Blutdruck anpassen.
