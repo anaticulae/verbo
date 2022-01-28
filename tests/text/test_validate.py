@@ -29,7 +29,7 @@ utila.exists_assert(ARCHIVE)
     pytest.param(power.MASTER072_PDF, '3:64', 'master072', id='master072', marks=pytest.mark.xfail(reason='requires little changes')),
     pytest.param(power.DISS205_PDF, '16:18', 'diss205p1617', id='diss205p1617'),
     pytest.param(power.DISS205_PDF, None, 'diss205', id='diss205all'),
-    # pytest.param(power.DISS266_PDF, utila.ranged_tuple(7, 213), 'diss266', id='diss266', marks=pytest.mark.xfail(reason='not ready yet')),
+    pytest.param(power.DISS266_PDF, '7:213', 'diss266', id='diss266', marks=pytest.mark.xfail(reason='not ready yet')),
 ])
 # yapf:enable
 @utilatest.nightly
