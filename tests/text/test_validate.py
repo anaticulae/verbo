@@ -30,21 +30,17 @@ def load_expected(name) -> str:
 def test_validate_master072_text():
     source = power.MASTER072_PDF
     pages = utila.ranged_tuple(3, 64)
-
     raw = load_current(source, pages)
     expected = load_expected('master072')
-
     assert raw == expected
 
 
 # yapf:disable
 @pytest.mark.parametrize('source, pages, expected', [
-    pytest.param(power.BACHELOR051_PDF, utila.ranged_tuple(3, 42), 'bachelor051', id='bachelor051',
-    marks=pytest.mark.xfail(reason='not ready yet')),
-    # pytest.param(power.DISS266_PDF, utila.ranged_tuple(7, 213), 'diss266', id='diss266',
-    # marks=pytest.mark.xfail(reason='not ready yet')),
-    pytest.param(power.DISS205_PDF, utila.ranged_tuple(16, 18), 'diss205p1617', id='diss205p1617'),
+    pytest.param(power.BACHELOR051_PDF, '3:42', 'bachelor051', id='bachelor051', marks=pytest.mark.xfail(reason='not ready yet')),
+    pytest.param(power.DISS205_PDF, '16:18', 'diss205p1617', id='diss205p1617'),
     pytest.param(power.DISS205_PDF, None, 'diss205', id='diss205all'),
+    # pytest.param(power.DISS266_PDF, utila.ranged_tuple(7, 213), 'diss266', id='diss266', marks=pytest.mark.xfail(reason='not ready yet')),
 ])
 # yapf:enable
 @utilatest.nightly
@@ -59,6 +55,7 @@ def test_text_validate(source, pages, expected, testdir):
 
 
 def load_current(source, pages) -> str:
+    pages = utila.parse_pages(pages) if pages else None
     resources = words.feature.load_resources_frompath(
         power.link(source),
         pages=pages,
