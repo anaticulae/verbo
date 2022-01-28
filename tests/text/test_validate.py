@@ -22,16 +22,16 @@ import words
 ARCHIVE = os.path.join(words.ROOT, 'tests/text/expected')
 utila.exists_assert(ARCHIVE)
 
+param = pytest.param
 
-# yapf:disable
+
 @pytest.mark.parametrize('source, pages, expected', [
-    pytest.param(power.BACHELOR051_PDF, '3:42', 'bachelor051', id='bachelor051'),
-    pytest.param(power.MASTER072_PDF, '3:64', 'master072', id='master072'),
-    pytest.param(power.DISS205_PDF, '16:18', 'diss205p1617', id='diss205p1617'),
-    pytest.param(power.DISS205_PDF, None, 'diss205', id='diss205all'),
-    pytest.param(power.DISS266_PDF, '7:213', 'diss266', id='diss266'),
+    param(power.BACHELOR051_PDF, '3:42', 'bachelor051', id='bachelor051'),
+    param(power.MASTER072_PDF, '3:64', 'master072', id='master072'),
+    param(power.DISS205_PDF, '16:18', 'diss205p1617', id='diss205p1617'),
+    param(power.DISS205_PDF, None, 'diss205', id='diss205all'),
+    param(power.DISS266_PDF, '7:213', 'diss266', id='diss266'),
 ])
-# yapf:enable
 @utilatest.nightly
 def test_text_validate(source, pages, expected, testdir, monkeypatch):
     utilatest.fixture_requires(source)
