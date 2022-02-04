@@ -151,9 +151,11 @@ def score_headlines(items) -> int:
 
 
 def score_levelerror(items: list) -> int:
-    """Determine holes in ascending headline level. This is may
-    indicated by user, but mostly by selecting the wrong headline
-    determination algorithm."""
+    """Determine holes in ascending headline level.
+
+    This is may indicated by user, but mostly by selecting the wrong
+    headline determination algorithm.
+    """
     flat = utila.flatten(items)
     flat = utila.flatten(flat, append=True)
     error = 0
