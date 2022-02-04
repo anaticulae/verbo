@@ -159,6 +159,7 @@ def validate_master99(extracted):
     pytest.param(power.DISS178_PDF, 'diss178p17', utila.ranged_list(15,20), id='diss178p17'),
     pytest.param(power.DISS178_PDF, 'diss178', utila.ranged_list(15,70), id='diss178'),
     pytest.param(power.MASTER063_PDF, 'master063', utila.ranged_list(20,30), id='master063'),
+    pytest.param(power.BOOK173_PDF, 'book173', utila.ranged_list(10,35), id='book173'),
 ])
 # yapf:enable
 @utilatest.nightly
