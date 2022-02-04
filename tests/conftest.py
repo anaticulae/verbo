@@ -44,6 +44,7 @@ RESOURCES = [
     (power.DISS264_PDF, '0:100'),
     (power.BACHELOR241_PDF, '70:90'),
     power.BACHELOR076_PDF,
+    (power.BOOK173_PDF, '0:100'),
     (power.DISS205_PDF, '0:50'),
     genex.todo(
         power.BACHELOR051_PDF,
