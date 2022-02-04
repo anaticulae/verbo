@@ -185,6 +185,10 @@ def patch(raw: str) -> int:
     0
     >>> patch('1.')
     1
+    >>> patch('b.')
+    2
+    >>> patch('c.')
+    3
     >>> patch('d.')
     4
     >>> patch('Kapitel 6:') # TODO: SHOULD RETURN 1?
