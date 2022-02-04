@@ -9,7 +9,6 @@
 
 import contextlib
 import itertools
-import re
 
 import configo
 import elements
@@ -177,6 +176,14 @@ def score_levelerror(items: list) -> int:
     return error
 
 
+CHAPTER = utila.compiles(r"""
+    ^
+    (KAPITEL|CHAPTER)
+    [ ]{0,3}
+    (\d{1,2})
+""")
+
+
 def patch(raw: str) -> int:
     """\
     >>> patch('1.4.2')
@@ -191,15 +198,15 @@ def patch(raw: str) -> int:
     3
     >>> patch('d.')
     4
-    >>> patch('Kapitel 6:') # TODO: SHOULD RETURN 1?
+    >>> patch('Kapitel 6:')
     6
+    >>> patch('CHAPTER 8:')
+    8
     """
     if not raw:
         return None
-    if 'KAPITEL' in raw.upper():
-        matched = re.match(r'KAPITEL (\d)', raw, re.IGNORECASE)
-        if matched:
-            return int(matched[1])
+    if matched := CHAPTER.match(raw):
+        return int(matched[2])
     splitted = [item for item in raw.rsplit('.') if item]
     if not splitted:
         return None
