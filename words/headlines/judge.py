@@ -20,22 +20,7 @@ import words.headlines.strategies
 import words.headlines.visitor
 
 
-def log_selection(func):
-
-    def logger(results):
-        # TODO: MOVE TO UTILA
-        before = results
-        selected = func(results)
-        try:
-            utila.debug(f'headlines, selected index: {before.index(selected)}')
-        except ValueError:
-            utila.error('headlines select is not possible')
-        return selected
-
-    return logger
-
-
-@log_selection
+@utila.log_return
 def run(results):
     """\
         1. Compare Multiline and NoLevel - prefer multiline over NoLevel
