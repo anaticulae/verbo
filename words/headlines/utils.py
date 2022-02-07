@@ -75,6 +75,7 @@ def determine_contentrange(items) -> 'ChapterRanges':
         list of `ChapterRange` (start, end)
     """
     # analyze all chapter of the document
+    # TODO: DO WE NEED PAPERSECTION HERE? ARE THERE SOME CHAPTER?
     contents = [
         item for item in items if isinstance(
             item,
