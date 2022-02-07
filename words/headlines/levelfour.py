@@ -89,6 +89,13 @@ def prepare_lines(ptns):
     # headlines often/always have a distance before and after
     flat = [item for item in flat if item.after is None or item.after >= 10.0]
     flat = [item for item in flat if item.before is None or item.before >= 10.0]
+    # remove no headlines
+    flat = [
+        item for item in flat if not elements.noheadline(
+            item.hashed,
+            length_min=0,
+        )
+    ]
     # remove numbered headlines
     levelfour, levels = utila.partition(
         items=flat,
