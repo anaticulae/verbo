@@ -12,7 +12,7 @@ import serializeraw
 import utila
 import utilatest
 
-import words.headlines.levelfour
+import words.headlines.improve.levelfour
 
 EXPECTED = """\
 Abitrierungsphase
@@ -53,7 +53,7 @@ def test_extract_levelfour_bachelor90():
         prefix='oneline',
         pages=utila.ranged_tuple(11, 90),
     )
-    headlines = words.headlines.levelfour.headlines(navigators)
+    headlines = words.headlines.improve.levelfour.headlines(navigators)
     current = '\n'.join(item.title for item in headlines)
     assert current == EXPECTED
 
@@ -98,6 +98,6 @@ def test_extract_levelfour_master116():
         prefix='oneline',
         pages=utila.ranged_tuple(7, 87),
     )
-    headlines = words.headlines.levelfour.headlines(navigators)
+    headlines = words.headlines.improve.levelfour.headlines(navigators)
     current = '\n'.join(item.title for item in headlines)
     assert current == MASTER116_EXPECTED

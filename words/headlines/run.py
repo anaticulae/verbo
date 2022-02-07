@@ -22,8 +22,8 @@ import serializeraw
 import utila
 
 import words.headlines
+import words.headlines.improve.levelfour
 import words.headlines.judge
-import words.headlines.levelfour
 import words.headlines.machine
 import words.lookup
 
@@ -105,8 +105,9 @@ def headlines_step(
         )
         # only extract level four headlines if result does not contain any
         # 4.1.2.3 levels.
-        levelfour = words.headlines.levelfour.headlines(textnavigators)
-        valid = words.headlines.levelfour.valid_levelfour(result, levelfour)
+        levelfour = words.headlines.improve.levelfour.headlines(textnavigators)
+        valid = words.headlines.improve.levelfour.valid_levelfour(
+            result, levelfour)
         if levelfour and valid:
             result = merge_levelfour(result, levelfour)
     return result
