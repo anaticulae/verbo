@@ -155,6 +155,7 @@ def has_levelfour(headlines):
 
 
 def merge_levelfour(extracted, levelfour):
+    utila.debug('merge_levelfour')
     result = [item[:] for item in extracted]
     levelfour = levelfour[:]
 
