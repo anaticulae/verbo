@@ -48,6 +48,7 @@ def file_read(name: str) -> str:
     pytest.param(power.BACHELOR076_PDF, None, 'bachelor076', id='bachelor076'),
     pytest.param(power.BACHELOR090_PDF, None, 'bachelor090', id='bachelor90'),
     pytest.param(power.BACHELOR128_PDF, None, 'bachelor128', id='bachelor128'),
+    pytest.param(power.BOOK173_PDF, None, 'book173', id='book173'),
     pytest.param(power.DISS172_PDF, None, 'diss172', id='diss172'),
     pytest.param(power.DISS205_PDF,  None, 'diss205', id='diss205'),
     pytest.param(power.DISS218_PDF,  None, 'diss218', id='diss218'),
