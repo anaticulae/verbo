@@ -23,6 +23,7 @@ import utila
 
 import words.headlines
 import words.headlines.improve.levelfour
+import words.headlines.improve.surround
 import words.headlines.judge
 import words.headlines.machine
 import words.lookup
@@ -119,6 +120,7 @@ def extract_headlines(
         )
         if levelfour and valid:
             result = merge_levelfour(result, levelfour)
+    result = words.headlines.improve.surround.before_and_after(result, ptcns)
     return result
 
 
