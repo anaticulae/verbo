@@ -85,7 +85,7 @@ def report_results(results: list):
     for strategy, result in zip(words.headlines.machine.STRATEGIES, results):
         utila.debug(strategy.__name__)
         for item in utila.flatten(result):
-            utila.debug(item.raw.strip())
+            utila.debug(f'{item.level} {item.raw.strip()}')
         utila.debug()
         utila.debug()
 
