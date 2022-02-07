@@ -79,8 +79,9 @@ def headlines_frompath(path: str, prefix: str = '', pages: tuple = None):
     fontcontent = iamraw.path.fontcontent(path, prefix=prefix)
     sizeandborder = iamraw.path.sizeandborder(path, prefix=prefix)
     headerfooters = iamraw.path.headerfooters(path, prefix=prefix)
+    magics = iamraw.path.magic_content(path, prefix=prefix)
     # run extraction
-    extracted = words.headlines.run.extract_headlines(
+    result = words.headlines.run.extract_headlines(
         sections_,
         text,
         textposition,
@@ -88,7 +89,7 @@ def headlines_frompath(path: str, prefix: str = '', pages: tuple = None):
         fontcontent,
         sizeandborder,
         headerfooters,
+        magics,
         pages=pages,
     )
-    result = words.headlines.judge.run(extracted)
     return result

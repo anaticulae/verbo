@@ -45,7 +45,7 @@ def run(  # pylint:disable=R0913,R0914
     pages: tuple = None,
 ) -> typing.Tuple[str, str]:
     """Extract headlines out of data."""
-    normal = headlines_step(
+    normal = extract_headlines(
         sectionlist,
         textx,
         text_position,
@@ -56,7 +56,7 @@ def run(  # pylint:disable=R0913,R0914
         magics,
         pages=pages,
     )
-    oneline = headlines_step(
+    oneline = extract_headlines(
         sectionlist,
         oneline_text,
         oneline_text_position,
@@ -70,70 +70,27 @@ def run(  # pylint:disable=R0913,R0914
     return normal, oneline
 
 
-def headlines_step(
-    sectionslist,
-    text,
-    textpositions,
-    fontheader,
-    fontcontent,
-    sizeandborder,
-    headersfooters,
-    magics,
-    pages,
-):
-    result = extract_headlines(
-        sectionslist,
-        text,
-        textpositions,
-        fontheader,
-        fontcontent,
-        sizeandborder,
-        headersfooters,
-        magics,
-        pages=pages,
-    )
-    result = words.headlines.judge.run(result)
-    if not has_levelfour(result):
-        textnavigators = serializeraw.ptcn_fromfile(
-            text=text,
-            textpositions=textpositions,
-            sizeandborderpath=sizeandborder,
-            headerfooterpath=headersfooters,
-            fontheader=fontheader,
-            fontcontent=fontcontent,
-            pages=pages,
-        )
-        # only extract level four headlines if result does not contain any
-        # 4.1.2.3 levels.
-        levelfour = words.headlines.improve.levelfour.headlines(textnavigators)
-        valid = words.headlines.improve.levelfour.valid_levelfour(
-            result, levelfour)
-        if levelfour and valid:
-            result = merge_levelfour(result, levelfour)
-    return result
-
-
 def extract_headlines(
-    sections_,
-    text,
-    textposition,
-    fontheader,
-    fontcontent,
-    sizeandborder,
-    headerfooters,
-    magics=None,
+    sectionslist: str,
+    text: str,
+    textpositions: str,
+    fontheader: str,
+    fontcontent: str,
+    sizeandborder: str,
+    headersfooters: str,
+    magics: str,
     pages: tuple = None,
 ):
     ptcns = serializeraw.ptcn_fromfile(
         text,
-        textposition,
+        textpositions,
         sizeandborder,
-        headerfooters,
+        headersfooters,
         fontheader,
         fontcontent,
         pages=pages,
     )
-    sectionlist = serializeraw.load_sections(sections_, pages=pages)
+    sectionslist = serializeraw.load_sections(sectionslist, pages=pages)
     fontstore = serializeraw.create_fontstore(
         fontheader,
         fontcontent,
@@ -142,15 +99,26 @@ def extract_headlines(
     magics = words.lookup.magics_frompath(
         path=magics,
         pages=pages,
-    )
+    ) if magics else None
     result = words.headlines.machine.headlines(
         ptcns,
-        sectionlist,
+        sectionslist,
         fontstore=fontstore,
         chapters=None,
         magics=magics,
         pages=pages,
     )
+    result = words.headlines.judge.run(result)
+    if not has_levelfour(result):
+        # only extract level four headlines if result does not contain any
+        # 4.1.2.3 levels.
+        levelfour = words.headlines.improve.levelfour.headlines(ptcns)
+        valid = words.headlines.improve.levelfour.valid_levelfour(
+            result,
+            levelfour,
+        )
+        if levelfour and valid:
+            result = merge_levelfour(result, levelfour)
     return result
 
 
