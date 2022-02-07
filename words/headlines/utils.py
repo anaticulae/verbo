@@ -88,7 +88,6 @@ def determine_contentrange(items) -> 'ChapterRanges':
         )
     ]
     chapters = flat_chapters(contents)
-
     if not chapters and contents:
         # no chapter is present - create `virtual chapter`
         chapters = list(list(content.content) for content in contents)
