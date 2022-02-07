@@ -20,26 +20,15 @@ Required resources:
     text
     font?
 
-TODO: DO NOT MIX STRATEGYS
-
-TODO: New concept:
-
-Collect all title, cluster them by size and font distance and derivate the
-headline level out of these information. Use further text information out of
-headline.
 """
 
 import typing
 
-import iamraw.path
+import iamraw
 import serializeraw
 import utila
 
-import words.headlines
-import words.headlines.judge
-import words.headlines.levelfour
-import words.headlines.machine
-import words.lookup
+import words.headlines.run
 
 
 @utila.checkdatatype
@@ -60,139 +49,26 @@ def work(  # pylint:disable=R0913,R0914
     pages: tuple = None,
 ) -> typing.Tuple[str, str]:
     """Extract headlines out of data."""
-    results = extract_headlines(
+    normal, oneline = words.headlines.run.run(
         sectionlist,
         textx,
         text_position,
         font_header,
         font_content,
-        sizeandborder,
-        headerfooters,
-        magics,
-        pages=pages,
-    )
-    extracted = words.headlines.judge.run(results)
-
-    oneline_results = extract_headlines(
-        sectionlist,
         oneline_text,
         oneline_text_position,
         oneline_font_header,
         oneline_font_content,
         sizeandborder,
+        boxes,
         headerfooters,
         magics,
         pages=pages,
     )
-    oneline_extracted = words.headlines.judge.run(oneline_results)
-
-    if not has_levelfour(extracted):
-        textnavigators = serializeraw.ptcn_fromfile(
-            text=textx,
-            textpositions=text_position,
-            sizeandborderpath=sizeandborder,
-            headerfooterpath=headerfooters,
-            fontheader=font_header,
-            fontcontent=font_content,
-            pages=pages,
-        )
-        # only extract level four headlines if result does not contain any
-        # 4.1.2.3 levels.
-        levelfour = words.headlines.levelfour.headlines(textnavigators)
-        valid = words.headlines.levelfour.valid_levelfour(extracted, levelfour)
-        if levelfour and valid:
-            extracted = merge_levelfour(extracted, levelfour)
     # dump
-    dumped = serializeraw.dump_headlines(extracted)
-    oneline_dumped = serializeraw.dump_headlines(oneline_extracted)
-    return dumped, oneline_dumped
-
-
-def has_levelfour(headlines):
-    flat = utila.flatten(headlines)
-    maxlevel = max(
-        [item.level for item in flat if item.level is not None],
-        default=0,
-    )
-    if maxlevel >= 4:
-        return True
-    # TODO: USE SMARTER DECIDER, MAY COLLECT HEADLINE DUPLICATON
-    # THIS STEP IS REQUIRED WHEN STRATEGY ALREADY PARSE LEVEL FOUR
-    # HEADLINES.
-    counted = 0
-    for headline in flat:
-        # Headline(title='A) Einführungsphase', level=3, raw='A)
-        # Einführungsphase', raw_level='', page=52, container=21,
-        # decoration=None)
-        if headline.level == 3 and not headline.raw_level:
-            counted += 1
-    if counted >= 3:
-        return True
-    return False
-
-
-def merge_levelfour(extracted, levelfour):
-    result = [item[:] for item in extracted]
-    levelfour = levelfour[:]
-
-    def insert(current, result):
-        for chapter in result:
-            for index, item in enumerate(chapter):
-                start = item.container
-                if isinstance(start, tuple):
-                    start = start[0]
-                if current.page > item.page:
-                    continue
-                if current.page == item.page and current.container > start:
-                    continue
-                chapter.insert(index, current)
-                return
-
-    while levelfour:
-        current = levelfour.pop()
-        insert(current, result)
-    return result
-
-
-def extract_headlines(
-    sections_,
-    text,
-    textposition,
-    fontheader,
-    fontcontent,
-    sizeandborder,
-    headerfooters,
-    magics=None,
-    pages: tuple = None,
-):
-    ptcns = serializeraw.ptcn_fromfile(
-        text,
-        textposition,
-        sizeandborder,
-        headerfooters,
-        fontheader,
-        fontcontent,
-        pages=pages,
-    )
-    sectionlist = serializeraw.load_sections(sections_, pages=pages)
-    fontstore = serializeraw.create_fontstore(
-        fontheader,
-        fontcontent,
-        pages=pages,
-    )
-    magics = words.lookup.magics_frompath(
-        path=magics,
-        pages=pages,
-    )
-    result = words.headlines.machine.headlines(
-        ptcns,
-        sectionlist,
-        fontstore=fontstore,
-        chapters=None,
-        magics=magics,
-        pages=pages,
-    )
-    return result
+    normal: str = serializeraw.dump_headlines(normal)
+    oneline: str = serializeraw.dump_headlines(oneline)
+    return normal, oneline
 
 
 def headlines_frompath(path: str, prefix: str = '', pages: tuple = None):
@@ -203,8 +79,8 @@ def headlines_frompath(path: str, prefix: str = '', pages: tuple = None):
     fontcontent = iamraw.path.fontcontent(path, prefix=prefix)
     sizeandborder = iamraw.path.sizeandborder(path, prefix=prefix)
     headerfooters = iamraw.path.headerfooters(path, prefix=prefix)
-
-    extracted = extract_headlines(
+    # run extraction
+    extracted = words.headlines.run.extract_headlines(
         sections_,
         text,
         textposition,

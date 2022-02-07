@@ -98,7 +98,7 @@ def test_headlines_extract_headlines():
 def test_headlines_work():
     sections_ = tests.fixtures.docu27.sections()
     src = power.link(power.DOCU027_PDF)
-    dumped, _ = words.feature.headlines.work(
+    normal, _ = words.feature.headlines.work(
         textx=iamraw.path.text(src),
         text_position=iamraw.path.textposition(src),
         font_content=iamraw.path.fontcontent(src),
@@ -113,14 +113,13 @@ def test_headlines_work():
         sizeandborder=iamraw.path.sizeandborder(src),
     )
     # dump some headlines
-    assert len(dumped) > 1000, str(dumped)
+    assert len(normal) > 1000, str(normal)
 
 
 def test_headlines_dump_and_load_headlines():
     """Dump and load the example above"""
     dumped = serializeraw.dump_headlines(EXPECTED)
     loaded = serializeraw.load_headlines(dumped)
-
     assert loaded == EXPECTED
 
 
