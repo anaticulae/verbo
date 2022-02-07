@@ -24,33 +24,10 @@ HEADLINES_COUNT_MIN = configo.HV_INT_PLUS(default=5)
 LEVELFOUR_PER_PAGE_MAX = configo.HV_INT_PLUS(default=4)
 
 
-def headlines(ptns):  # pylint:disable=R0914
-    # TODO: MOVE TO DOCTEXTSTYLE?
-    parsed = doctextstyle.parser.parses(ptns)
-    flat = doctextstyle.utils.flatten(parsed)
-    text = doctextstyle.features.text(flat)
-    if not text or len(text) < 2:
-        utila.error('could not parse headlines, require more text')
+def headlines(ptns) -> list:
+    if (prepared := prepare_lines(ptns)) is None:
         return []
-    textsize, textfont = text[0], text[1]
-
-    # remove too small text size
-    flat = [item for item in flat if item.size >= textsize]
-    # remove non textual items
-    flat = [item for item in flat if item.font != textfont]
-    # test if some data is left
-    if not flat:
-        return []
-    # left adjusted text
-    left = utila.mode([item.left for item in flat])
-    flat = [item for item in flat if utila.near(left, item.left, diff=5.0)]
-    # headlines often/always have a distance before and after
-    flat = [item for item in flat if item.after is None or item.after >= 10.0]
-    flat = [item for item in flat if item.before is None or item.before >= 10.0]
-    # remove numbered headlines
-    flat = [
-        item for item in flat if elements.level_numbered(item.hashed) is None
-    ]
+    parsed, flat = prepared
     clusters = doctextstyle.cluster.cluster(
         flat,
         selection=(
@@ -59,6 +36,14 @@ def headlines(ptns):  # pylint:disable=R0914
         ),
         minsize=HEADLINES_COUNT_MIN,
     )
+    result = headlines_select(clusters, parsed, ptns)
+    if too_many_headlines_perpage(result):
+        # disable feature if too many items detected
+        return []
+    return result
+
+
+def headlines_select(clusters, parsed, ptns) -> list:
     paged = grouped(parsed)
     best = select_best(clusters, paged)
     result = []
@@ -77,13 +62,39 @@ def headlines(ptns):  # pylint:disable=R0914
         )
         result.append(headline)
     result = sorted(result, key=operator.attrgetter('page', 'container'))
-    if tomany_headlines_perpage(result):
-        # disable feature if too many items detected
-        return []
     return result
 
 
-def tomany_headlines_perpage(result: list) -> bool:
+def prepare_lines(ptns):
+    # TODO: MOVE TO DOCTEXTSTYLE?
+    parsed = doctextstyle.parser.parses(ptns)
+    flat = doctextstyle.utils.flatten(parsed)
+    text = doctextstyle.features.text(flat)
+    if not text or len(text) < 2:
+        utila.error('could not parse headlines, require more text')
+        return None
+    textsize, textfont = text[0], text[1]
+    # remove too small text size
+    flat = [item for item in flat if item.size >= textsize]
+    # remove non textual items
+    flat = [item for item in flat if item.font != textfont]
+    # test if some data is left
+    if not flat:
+        return None
+    # left adjusted text
+    left = utila.mode([item.left for item in flat])
+    flat = [item for item in flat if utila.near(left, item.left, diff=5.0)]
+    # headlines often/always have a distance before and after
+    flat = [item for item in flat if item.after is None or item.after >= 10.0]
+    flat = [item for item in flat if item.before is None or item.before >= 10.0]
+    # remove numbered headlines
+    flat = [
+        item for item in flat if elements.level_numbered(item.hashed) is None
+    ]
+    return parsed, flat
+
+
+def too_many_headlines_perpage(result: list) -> bool:
     pages = sorted([item.page for item in result])
     if not pages:
         return False
