@@ -2,6 +2,25 @@
 
 Every noteable change is logged here.
 
+## v1.12.0
+
+### Feature
+
+* add headline surround improver (91d116602361)
+* add level four to oneline headlines (5640cb817250)
+* skip too many level four headlines (c509b434b61f)
+* increase debugging information (9de0512c65ad)
+* debug merge selection (5ad5009a3b97)
+* improve patch detector (a7a70eba2108)
+
+### Fix
+
+* skip noheadlines to improve result (cd386ff31039)
+
+### Documentation
+
+* increase interface documentation (b86f5fc43476)
+
 ## v1.11.0
 
 ### Feature
