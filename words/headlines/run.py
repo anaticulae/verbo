@@ -45,7 +45,7 @@ def run(  # pylint:disable=R0913,R0914
     pages: tuple = None,
 ) -> typing.Tuple[str, str]:
     """Extract headlines out of data."""
-    results = extract_headlines(
+    normal = headlines_step(
         sectionlist,
         textx,
         text_position,
@@ -56,9 +56,7 @@ def run(  # pylint:disable=R0913,R0914
         magics,
         pages=pages,
     )
-    normal = words.headlines.judge.run(results)
-
-    oneline_results = extract_headlines(
+    oneline = headlines_step(
         sectionlist,
         oneline_text,
         oneline_text_position,
@@ -69,25 +67,49 @@ def run(  # pylint:disable=R0913,R0914
         magics,
         pages=pages,
     )
-    oneline = words.headlines.judge.run(oneline_results)
+    return normal, oneline
 
-    if not has_levelfour(normal):
+
+def headlines_step(
+    sectionslist,
+    text,
+    textpositions,
+    fontheader,
+    fontcontent,
+    sizeandborder,
+    headersfooters,
+    magics,
+    pages,
+):
+    result = extract_headlines(
+        sectionslist,
+        text,
+        textpositions,
+        fontheader,
+        fontcontent,
+        sizeandborder,
+        headersfooters,
+        magics,
+        pages=pages,
+    )
+    result = words.headlines.judge.run(result)
+    if not has_levelfour(result):
         textnavigators = serializeraw.ptcn_fromfile(
-            text=textx,
-            textpositions=text_position,
+            text=text,
+            textpositions=textpositions,
             sizeandborderpath=sizeandborder,
-            headerfooterpath=headerfooters,
-            fontheader=font_header,
-            fontcontent=font_content,
+            headerfooterpath=headersfooters,
+            fontheader=fontheader,
+            fontcontent=fontcontent,
             pages=pages,
         )
         # only extract level four headlines if result does not contain any
         # 4.1.2.3 levels.
         levelfour = words.headlines.levelfour.headlines(textnavigators)
-        valid = words.headlines.levelfour.valid_levelfour(normal, levelfour)
+        valid = words.headlines.levelfour.valid_levelfour(result, levelfour)
         if levelfour and valid:
-            normal = merge_levelfour(normal, levelfour)
-    return normal, oneline
+            result = merge_levelfour(result, levelfour)
+    return result
 
 
 def extract_headlines(
