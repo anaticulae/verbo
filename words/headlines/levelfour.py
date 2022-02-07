@@ -23,6 +23,8 @@ HEADLINES_COUNT_MIN = configo.HV_INT_PLUS(default=5)
 
 LEVELFOUR_PER_PAGE_MAX = configo.HV_INT_PLUS(default=4)
 
+LEVELFOUR_RATE_MAX = configo.HV_PERCENT_PLUS(default=95)
+
 
 def headlines(ptns) -> list:
     if (prepared := prepare_lines(ptns)) is None:
@@ -88,10 +90,17 @@ def prepare_lines(ptns):
     flat = [item for item in flat if item.after is None or item.after >= 10.0]
     flat = [item for item in flat if item.before is None or item.before >= 10.0]
     # remove numbered headlines
-    flat = [
-        item for item in flat if elements.level_numbered(item.hashed) is None
-    ]
-    return parsed, flat
+    levelfour, levels = utila.partition(
+        items=flat,
+        key=lambda x: elements.level_numbered(x.hashed) is None,
+    )
+    if not levels or len(levelfour) > len(levels):
+        # levelfour only is not possible
+        return None
+    rate = len(levelfour) / len(levels)
+    if rate > LEVELFOUR_RATE_MAX:
+        return None
+    return parsed, levelfour
 
 
 def too_many_headlines_perpage(result: list) -> bool:
