@@ -90,7 +90,13 @@ def list_insert(textsection, lists) -> tuple:
 def prepare_listitem(item, list_onpage, page) -> tuple:
     listnumber, position = words.undefined.listindex(item)
     listitem = list_onpage[listnumber].data[position]
-    sentences = sentence_split(listitem[1])
+    list_text = listitem[1]
+    # TODO: RUN IN --WORD-Step?
+    list_text = utila.normalize_text(
+        list_text,
+        normalize_spaces=True,
+    )
+    sentences = sentence_split(list_text)
     content, pages = [f'{LIST_SEPA}{sentences[0]}'], [page]
     for sentence in sentences[1:]:
         content.append(f'{LIST_ITEM}{sentence}')
