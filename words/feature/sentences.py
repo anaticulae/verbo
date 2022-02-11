@@ -20,8 +20,18 @@ LIST_ITEM = '#$@LIST_ITEM@$#:'
 FORMULA = '#$@FORMULA@$#:'
 
 
-def work(wordo: str, lists: str, pages: tuple = None) -> str:
-    wordo = serializeraw.load_text(wordo, pages=pages)
+def work(
+    wordo: str,
+    lists: str,
+    headliner: str,
+    pages: tuple = None,
+) -> str:
+    headlines = serializeraw.load_headlines(headliner, pages=pages)
+    wordo = serializeraw.load_text(
+        wordo,
+        headlines=headlines,
+        pages=pages,
+    )
     lists = serializeraw.load_lists(lists, pages=pages)
     word = prepare_lists(wordo, lists=lists)
     word = undefined_remove(word)

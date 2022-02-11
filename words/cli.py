@@ -119,6 +119,7 @@ WORKPLAN = [
         inputs=[
             ResultFile('words', 'word_result'),
             ResultFile('words', 'list_list'),
+            ResultFile('words', 'headlines_headlines'),
             # ResultFile('words', 'boxed_boxed'),
         ],
         output=('sentences',),
