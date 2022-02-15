@@ -7,8 +7,6 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import re
-
 import utila
 import utilatest
 
@@ -66,7 +64,7 @@ def test_text_seventytwo_visit_sentences_merge_page_endstart():
     assert len(merged) == 26
 
     merged_middle_sentence = merged[14].sentence
-    assert normalize(merged_middle_sentence) == (
+    assert utila.normalize_whitespaces(merged_middle_sentence) == (
         'Kritisch beurteilt wird das '
         'Nutzerverhalten vor allem in Bezug auf die Privatheitsthematik.')
 
@@ -93,7 +91,7 @@ def test_text_seventytwo_visit_sentences_merge_page5_7():
         'Kommunikation, die für das Social Web von Bedeutung sind.')
     lastsentence = ('Es sind Anwendungen entstanden, welche die '
                     'soziale Komponente in den Vordergrund')
-    assert normalize(merged[-1].sentence) == lastsentence
+    assert utila.normalize_whitespaces(merged[-1].sentence) == lastsentence
 
 
 @utilatest.longrun
@@ -144,7 +142,7 @@ def test_text_seventytwo_extract_textsections_page5_6_7():
     assert count == [9, 2, 29], str(count)
 
     lastsentence = chapters[-1][1][-1]
-    assert normalize(lastsentence) == (
+    assert utila.normalize_whitespaces(lastsentence) == (
         'Es sind Anwendungen entstanden, '
         'welche die soziale Komponente in den Vordergrund')
 
@@ -182,7 +180,3 @@ def test_text_doubleequal_fontdistance():
         require_headlinelevel=False,
     )
     assert extracted
-
-
-def normalize(text: str) -> str:
-    return re.sub(r'\s+', ' ', text)
