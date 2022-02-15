@@ -61,7 +61,7 @@ def test_merge_sentences_before_headline_regression():
     text = master72_text((14,))
     assert 'Ausgewählte Positionen hierzu werden im Folgenden dargestellt.' in text
     sentences = text.splitlines()
-    tests.assert_length(sentences, 11)  # TODO: 10 is better
+    tests.assert_length(sentences, 15)  # TODO: 10 is better
 
 
 @utilatest.longrun

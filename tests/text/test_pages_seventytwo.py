@@ -26,7 +26,7 @@ def test_text_seventytwo_extract_texts_page3():
     firstsection = firstpage.content[0]
     sectioncontent = firstsection.content
 
-    tests.assert_length(sectioncontent, 15)
+    tests.assert_length(sectioncontent, 17)
 
 
 @utilatest.nightly
@@ -54,16 +54,18 @@ def test_text_seventytwo_visit_sentences():
 
 @utilatest.longrun
 def test_text_seventytwo_visit_sentences_merge_page_endstart():
-    """Merge the first two content pages to one sentence unit. Important
-    is to unite the last sentence of the first page with the first
-    sentence of the second page and merge them to one sentence."""
+    """Merge the first two content pages to one sentence unit.
+
+    Important is to unite the last sentence of the first page with the
+    first sentence of the second page and merge them to one sentence.
+    """
     required = fseventytwo.textrequired(pages=(3, 4))
     pages = words.text.chapter.split(required)
 
     merged = wts.merge_sentences(pages)
-    tests.assert_length(merged, 26)
+    tests.assert_length(merged, 30)
 
-    merged_middle_sentence = merged[14].sentence
+    merged_middle_sentence = merged[16].sentence
     assert utila.normalize_whitespaces(merged_middle_sentence) == (
         'Kritisch beurteilt wird das '
         'Nutzerverhalten vor allem in Bezug auf die Privatheitsthematik.')
@@ -80,12 +82,12 @@ def test_text_seventytwo_visit_sentences_merge_page5_7():
     required = fseventytwo.textrequired(pages=(5, 6, 7))
     pages = words.text.chapter.split(required)
     merged = wts.merge_sentences(pages)
-
-    assert merged[9].headline.raw == (
+    # verify
+    assert merged[10].headline.raw == (
         '2.  Das Social Web und die Privatsphäre – '
         'Selbstdarstellungsverhalten  der  Nutzer  aus  Sicht  von '
         'Massenmedien und Literatur')
-    assert merged[9].sentence == (
+    assert merged[10].sentence == (
         'Im Folgenden geht es zunächst um eine definitorische Einführung in '
         'den Bereich der Social Media sowie um die Eigenschaften netzbasierter '
         'Kommunikation, die für das Social Web von Bedeutung sind.')
@@ -139,7 +141,7 @@ def test_text_seventytwo_extract_textsections_page5_6_7():
     # is expanded. If we handle every list line as a sentence, there are
     # 31 "sentences".
     # TODO: THIS MAY CHANGES IF WE FIX AREA DEFINITION OF EXTRACTED LIST
-    assert count == [9, 2, 29], str(count)
+    assert count == [10, 2, 31], str(count)
 
     lastsentence = chapters[-1][1][-1]
     assert utila.normalize_whitespaces(lastsentence) == (
