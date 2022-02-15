@@ -115,13 +115,15 @@ Im Bereich der Höchstgeschwindigkeit muss die elektrische Fahrleistung direkt d
 Durch mechanische und elektrische Verluste im Antriebsstrang (aus Ladegruppe und elektrischem Fahrmotor) muss die Ladegruppe mehr Leistung als die maximale Fahrleistung zur Verfügung stellen.
 Aus der Auslesung nach der Höchstgeschwindigkeit folgt für geringe Geschwindigkeiten eine erhöhte Teillast, die zu einem schlechteren Wirkungsgrad führt.
 [Hof11, S.
-23f.] Abb. 2.1.: Topologie Serieller Hybrid - 1 Elektrischer Fahrmotor, 2 Kraftstofftank, 3 Leistungselektronik, 4 Batterie, 5 Generator, 6 Verbrennungsmotor nach [Tsc12, S. 4].
+23f.] Abb. 2.1.:
+Topologie Serieller Hybrid - 1 Elektrischer Fahrmotor, 2 Kraftstofftank, 3 Leistungselektronik, 4 Batterie, 5 Generator, 6 Verbrennungsmotor nach [Tsc12, S. 4].
 Parallele Hybridstruktur Der parallele Hybridantrieb ermöglicht eine direkte Kopplung zwischen Verbrennungsmotor und den angetriebenen Rädern.
 Der Antrieb kann parallel durch den elektrischen Antrieb erfolgen.
 Das Fahrzeug kann elektrisch, konventionell oder gemischt betrieben werden.
 Die Antriebsleistung kann durch Drehzahladdition (Planetengetriebe), Momentenaddition (direkte Kopplung) oder Zugkraftaddition (Verbrennungsmotor und Elektromotor wirken auf verschiedene Wellen) erfolgen.
 Die Entkopplung der Antriebssysteme wird durch einen Freilauf oder eine Kupplung realisiert.
-Die Auslegung der Komponenten kann freier Abb. 2.2.: Topologie Paralleler Hybrid - 1 Batterie, 2 Kraftstofftank, 3 Getriebe, 4 Generator/Fahrmotor, 5 Leistungselektronik, 6 Kupplung, 7 Verbrennungsmotor nach [Tsc12, S. 5].
+Die Auslegung der Komponenten kann freier Abb. 2.2.:
+Topologie Paralleler Hybrid - 1 Batterie, 2 Kraftstofftank, 3 Getriebe, 4 Generator/Fahrmotor, 5 Leistungselektronik, 6 Kupplung, 7 Verbrennungsmotor nach [Tsc12, S. 5].
 gestaltet werden.
 Die Höchstgeschwindigkeit wird durch den mechanischen Pfad realisiert.
 Der Teillastbereich erfolgt durch den elektrischen Fahrmotor.
@@ -134,8 +136,10 @@ Der Generator ist mit dem Sonnenrad des Planetengetriebes gekoppelt.
 Über die Drehzahl des Generators wird die Übersetzung zwischen Verbrennungsmotor und Abtrieb kontinuierlich verändert.
 Der Generator ermöglicht es, den Verbrennungsmotor im Bereich des besten Wirkungsgrades zu betreiben.
 Durch die Leistungsübertragung im elektrischen Pfad entstehen zusätzliche Wandlungsverluste (siehe Abbildung 2.4).
-Die leistungsverzweigte Hybridstruktur verbin-Abb. 2.3.: Topologie leistungsverzweigter Hybridantrieb - 1 Batterie, 2 Kraftstofftank, 3 elektrischer Fahrmotor, 4 Leistungselektronik, 5 Planetengetriebe, 6 Generator, 7 Verbrennungsmotor nach [Tsc12, S. 6].det die Vorteile des optimalen Betriebs des Verbrennungsmotors und des elektrischen Fahrens im Teillastbereich.
-[Hof11, S. 31-33] Abb. 2.4.: Leistungsfluss Leistungsverzweigung mit Wandlerverlusten [Hof11, S.33]
+Die leistungsverzweigte Hybridstruktur verbin-Abb. 2.3.:
+Topologie leistungsverzweigter Hybridantrieb - 1 Batterie, 2 Kraftstofftank, 3 elektrischer Fahrmotor, 4 Leistungselektronik, 5 Planetengetriebe, 6 Generator, 7 Verbrennungsmotor nach [Tsc12, S. 6].det die Vorteile des optimalen Betriebs des Verbrennungsmotors und des elektrischen Fahrens im Teillastbereich.
+[Hof11, S. 31-33] Abb. 2.4.:
+Leistungsfluss Leistungsverzweigung mit Wandlerverlusten [Hof11, S.33]
 
 
 :::: Betriebsstrategien für Hybridfahrzeuge ::::
@@ -190,13 +194,15 @@ Diese zeichnen sich durch geringere Kraftstoffkosten sowie reduzierte Lärm- und
 [Kac14] Railpower GG20B Greengoat Die Railpower GG20B Green Goat der Firma Railpower Technologies ist eine Hybridrangierlokomotive, die seit 2004 gebaut wird.
 Die Lokomotive verfügt über eine maximale Leistung von 1118 kW und ein maximales Traktionsmoment von 356 kN [Don04].
 Bisher wurden 55 Lokomotiven ausgeliefert [Kon13].
-Die Lokomotive verfügt über einen Abb. 2.5.: Hybridlokomotive Railpower GG20B Green Goat aus [Wik07]. 224 kW Sechs-Zylinder-Dieselmotor.
+Die Lokomotive verfügt über einen Abb. 2.5.:
+Hybridlokomotive Railpower GG20B Green Goat aus [Wik07]. 224 kW Sechs-Zylinder-Dieselmotor.
 Das Hybridsystem erzielt eine Kraftstoffeinsparung von 40 bis 60 %.
 [Don04] Alstom H3 Die Alstom H3 (siehe Abbildung 2.6) ist eine Modernisierung der diesel-hydraulischen Lokomotive der Baureihe V100.
 Der diesel-hydraulische 900 kW Antrieb wurde durch eine Kombination aus 240 kW Dieselmotor und 200 kW Generator ersetzt.
 Der erste Prototyp wurde 2006 produziert.
 [Mag14] [Dit13].
-Die Lokomotive verfügt über eine 6,5 t schwere Abb. 2.6.: Alstom H3 aus [Rö15] NiCd-Batterie mit einer Nennspannung von 600 V und einer Nennladung von 170 A h.
+Die Lokomotive verfügt über eine 6,5 t schwere Abb. 2.6.:
+Alstom H3 aus [Rö15] NiCd-Batterie mit einer Nennspannung von 600 V und einer Nennladung von 170 A h.
 Dies entspricht einer Energie von 102 kWh.
 [Mag14] Die Leistungsfähigkeit der Lokomotive entspricht einer konventionellen Diesellokomotive mit einer Nennleistung von 600 kW.
 Die Lokomotive befindet sich seit 2012 im Dauereinsatz bei Volkswagen in Wolfsburg.
@@ -206,7 +212,8 @@ Dies entspricht einer Verminderung von 45 bis 50 % gegenüber der Baureihe V 100
 Durch den elektrischen Fahrbetrieb wird ein schadstofffreier Betrieb in den Verladehallen ermöglicht.
 [Dit13] Toshiba HD300 Die Rangierlokomotive HD300, ist eine hybride dieselelektrische Lokomotive, die seit 2010 bei der Japan Freight Railway Company im Einsatz ist.
 Die Lokomotive wird von Toshiba Corporation gefertigt.
-[Kac14] Abb. 2.7.: Hybride Lokomotive Toshiba HD300 aus [Wik13] Die Lokomotive verfügt über Lithium-Ionen-Batterien mit einer Speicherfähigkeit von 67,4 kWh [Kac14].
+[Kac14] Abb. 2.7.:
+Hybride Lokomotive Toshiba HD300 aus [Wik13] Die Lokomotive verfügt über Lithium-Ionen-Batterien mit einer Speicherfähigkeit von 67,4 kWh [Kac14].
 Durch den zweiten Energiespeicher konnte ein kleinerer Verbrennungsmotor mit einer Leistung von 242 kW [Kac14] verwendet werden.
 Weiterhin verfügt das System über rekuperatives Bremsen [Tom12].
 Die Antriebsleistung erfolgt elektrisch durch Permanentmagnet-Synchronmaschinen.
@@ -219,11 +226,14 @@ Die Stickoxid-Emissionen konnten im Vergleich zu herkömmlichen diesel-elektrisc
 In Abhängigkeit der Dieselmotorleistung werden verschiedene, äquivalente Traktionsleistungen erzielt.
 Die maximal übertragbare Zugkraft ist durch den Rad-Schiene-Kontakt begrenzt.
 Für die leichteren Lokomotiven folgt aus dem geringeren Traktionsgewicht eine geringere Maximalleistung.
-Lokomotive Gewicht Topologie Motor Traktion t kW kW Raba Mk 48 Hybrid 17,6 parallel 204 364 Toshiba HD300 60 seriell 242 500 Rada 718,5 64 parallel 194 510 Alstorm H3 80 parallel 240 550 TEM9H Sinara H 90 - 639 895 Railpower GG20B 130 seriell 356 1118 Tab. 2.1.: Übersicht Hybridlokomotiven [Kon13].
+Lokomotive Gewicht Topologie Motor Traktion t kW kW Raba Mk 48 Hybrid 17,6 parallel 204 364 Toshiba HD300 60 seriell 242 500 Rada 718,5 64 parallel 194 510 Alstorm H3 80 parallel 240 550 TEM9H Sinara H 90 - 639 895 Railpower GG20B 130 seriell 356 1118 Tab. 2.1.:
+Übersicht Hybridlokomotiven [Kon13].
 2.1.4.
 Bewertungsmethoden von Schienenfahrzeugen Zur Untersuchung und Bewertung von Schienenfahrzeugen existieren zwei verschiedene Testmethoden.
 Es wird zwischen statischen und dynamischen Tests unterschieden.
-Abb. 2.8.: Dynamischer Verlauf der Drehzahl Abb. 2.9.: Dynamischer Verlauf des Drehmonach [Sko11].
+Abb. 2.8.:
+Dynamischer Verlauf der Drehzahl Abb. 2.9.:
+Dynamischer Verlauf des Drehmonach [Sko11].
 ments nach [Sko11].
 Beim dynamischen Test wird die Last dynamisch nach einem vorgegebenen Muster variiert (siehe Abbildung 2.8 und 2.9).
 Dabei werden die Emissionen und der Verbrauch während
@@ -236,12 +246,14 @@ der gesamten Laufzeit gemessen.
 Die Schrittweite der zeitlichen Variation beträgt ca.eine Sekunde.
 [Sko11] Der statische Test ist durch stationäre Lastpunkte charakterisiert.
 Diese werden separat angefahren und vermessen (siehe Abbildung 2.10).
-Abb. 2.10.: Statischer Leistungstest nach [Sko11].
+Abb. 2.10.:
+Statischer Leistungstest nach [Sko11].
 Prüfzyklen von Schienenfahrzeugen Zur Bewertung von Dieselmotoren in Schienenfahrzeugen werden in Europa der ISO-8178-F-Zyklus und in den USA der EPA-Zyklus verwendet.
 Die Anforderungen werden nach Rangier-, Güter- und Reisezugverkehr unterschieden.
 Sämtliche Tests werden auf einem Motorenprüfstand mit Lastbremse durchgeführt.
 Prüfzyklus nach ISO 8178 Der Prüfzyklus ISO-8178 definiert die Messung und Auswertung von gasförmigen und partikelförmigen Abgasemissionen in Verbrennungsmotoren.
-Abb. 2.11.: Statischer Zyklus ISO-F nach [Sko11].
+Abb. 2.11.:
+Statischer Zyklus ISO-F nach [Sko11].
 Dies gilt für Motoren zum Antrieb von Fahrzeugen, die nicht für den Betrieb auf öffentlichen Straßen zugelassen sind.
 Zur Zulassung von Schienenfahrzeugen muss dieser Test bestanden werden.
 Der Abschnitt ISO-8178-F beschäftigt sich speziell mit Dieselmotoren für Schienenfahrzeuge.
@@ -252,9 +264,11 @@ Nach einer Stabilisierungsphase beginnen die Messungen für die Emissionswerte.
 [Nit11] Prüfzyklus nach EPA Für Lokomotiven in den USA gilt der EPA(United States Environmental Protection Agency)-Referenzzyklus.
 In Tabelle 2.2 ist die Häufigkeitsverteilung des Lastzyklus für Rangierlokomotiven dargestellt.
 Dabei entsprechen die Stufen dem Fahrstufenregler der Lokomotive.
-Leerlauf 1 2 3 4 5 6 7 Volllast 59,8 12,4 12,3 5,8 3,6 3,6 1,5 0,2 0,8 Tab. 2.2.: Häufigkeiten der Laststufe im EPA-Zyklus [EPA98].
+Leerlauf 1 2 3 4 5 6 7 Volllast 59,8 12,4 12,3 5,8 3,6 3,6 1,5 0,2 0,8 Tab. 2.2.:
+Häufigkeiten der Laststufe im EPA-Zyklus [EPA98].
 Grundlage für den EPA-Zyklus bilden Messungen (siehe Abbildung 2.12) der EPA, die im realen Betrieb aufgenommen wurden.
-Abb. 2.12.: Gemessene Daten der EPA für Diesellokomotiven im Rangierdienst.
+Abb. 2.12.:
+Gemessene Daten der EPA für Diesellokomotiven im Rangierdienst.
 Die Daten umfassen 333 Betriebsstunden.
 [EPA98] Anforderungen an Referenzzyklen für Hybridfahrzeuge Die Verläufe der Lastprofile von Rangierlokomotiven sind zufällig und weisen eine hohe Anzahl an Lastwechseln auf.
 Dadurch erreicht das System keinen konstanten Betriebspunkt.
@@ -280,15 +294,21 @@ Die Zugkraft bei Schienenfahrzeugen wird durch Dampfmaschinen, Diesel- oder Elek
 Die Übertragung erfolgt durch Reibkräfte zwischen Rad und Schiene.
 Diese sind durch den Haftreibungskoeffzieint, die Fahrzeuggeschwindigkeit und das Gewicht, welches auf die angetriebenen Räder wirkt, begrenzt.
 In Abhängigkeit der Witterungsverhältnisse beträgt der Haftreibungskoeffzieint 𝜇𝑟𝑠 zwischen 0,1 bis 0,33 [Min13][S. 4].
-Das maximale Traktionsmoment 𝑇𝑇,𝑚𝑎𝑥 berechnet sich nach dem Modell Abb. 2.13.: Wirkung der Kräfte und Momente am angetriebenen Radsatz.
+Das maximale Traktionsmoment 𝑇𝑇,𝑚𝑎𝑥 berechnet sich nach dem Modell Abb. 2.13.:
+Wirkung der Kräfte und Momente am angetriebenen Radsatz.
 in Abbildung 2.13.
-Die Gewichtskraft der Lokomotive wirkt mit: 𝐹𝐺 = 𝑚𝑣 · 𝑔, (2.1) mit der Gravitationskonstante 𝑔 = 9,81 m/s2 und dem Traktionsgewicht 𝑚𝑣 = 70 t.
-Die maximal übertragbare Reibkraft ergibt sich mit dem Coulombschen-Reibgesetz zu: 𝐹𝑍,𝑚𝑎𝑥 = 𝐹𝐺 · 𝜇𝑟𝑠.
+Die Gewichtskraft der Lokomotive wirkt mit:
+𝐹𝐺 = 𝑚𝑣 · 𝑔, (2.1) mit der Gravitationskonstante 𝑔 = 9,81 m/s2 und dem Traktionsgewicht 𝑚𝑣 = 70 t.
+Die maximal übertragbare Reibkraft ergibt sich mit dem Coulombschen-Reibgesetz zu:
+𝐹𝑍,𝑚𝑎𝑥 = 𝐹𝐺 · 𝜇𝑟𝑠.
 (2.2) Der Raddurchmesser beträgt 𝑟𝑅𝑎𝑑 = 0,5 m.
-Der Zusammenhang zwischen Traktionsmoment 𝑇𝑇 und Zugkraft 𝐹𝑍 am Rad beträgt: 𝑇𝑇,𝑚𝑎𝑥 = 𝐹𝑍,𝑚𝑎𝑥 · 𝑟𝑅𝑎𝑑.
-(2.3) Um das Durchdrehen der Räder zu verhindern gilt: 𝑇𝑇,𝑚𝑎𝑥 ≤ 𝑚𝑣𝑔𝜇𝑟𝑠 · 𝑟𝑅𝑎𝑑.
+Der Zusammenhang zwischen Traktionsmoment 𝑇𝑇 und Zugkraft 𝐹𝑍 am Rad beträgt:
+𝑇𝑇,𝑚𝑎𝑥 = 𝐹𝑍,𝑚𝑎𝑥 · 𝑟𝑅𝑎𝑑.
+(2.3) Um das Durchdrehen der Räder zu verhindern gilt:
+𝑇𝑇,𝑚𝑎𝑥 ≤ 𝑚𝑣𝑔𝜇𝑟𝑠 · 𝑟𝑅𝑎𝑑.
 (2.4) Das maximale Traktionsmoment 𝑇𝑇,𝑚𝑎𝑥 ist in Abhängigkeit des Rad-Schiene-Kontakt ist in Abbildung 2.14 abgebildet.
-Abb. 2.14.: Maximales Traktionsmoment am Rad-Schiene-Kontakt.
+Abb. 2.14.:
+Maximales Traktionsmoment am Rad-Schiene-Kontakt.
 Begrenzt durch den Haftreibungskoeffzieint 𝜇𝑟𝑠 = 0,33, das Lokomotivgewicht 𝑚𝑣 = 70 t und die maximale Verbrennnungsmotorleistung 𝑃𝐼𝐶𝐸,𝑚𝑎𝑥 = 1000 kW.
 
 
@@ -299,7 +319,8 @@ Der Fahrwiderstand setzt sich aus einem stationären und instationären Anteil z
 Während der Fahrt mit konstanter Geschwindigkeit wirken die stationären Widerstandskräfte Rad-, Luft- und Steigungswiderstand.
 Der instationäre Anteil entsteht bei einer Änderung der Geschwindigkeit und resultiert aus den Massenträgheitsmomenten des Systems.
 Zur Gewährleistung des stationären Betriebszustands muss der Antrieb die Gesamtwiderstandskraft 𝐹𝑊 aufbringen.
-Diese ergibt sich nach [Bra11, S. 34-40]: 𝐹𝑊 = 𝐹𝐿 + 𝐹𝑅 + 𝐹𝑆𝑡 + 𝐹𝐴, (2.5) mit den Anteilen:
+Diese ergibt sich nach [Bra11, S. 34-40]:
+𝐹𝑊 = 𝐹𝐿 + 𝐹𝑅 + 𝐹𝑆𝑡 + 𝐹𝐴, (2.5) mit den Anteilen:
 9u
 10u
 11u
@@ -310,14 +331,17 @@ Da ein Schienenfahrzeug kein geschlossener Körper ist, tritt zusätzlich ein in
 Dieser entsteht durch Luftströmungen durch das Fahrzeug.
 Diese treten bei der Motorkühlung oder durch undichte Stellen auf.
 Durch die Fahrbewegung erzeugt das Fahrzeug Verwirbelungen in der Luft.
-[Hei13, S. 47] Für das Modell wird der Luftwiderstand mit: 𝐹𝐿 = 0.5𝜌𝐿𝑐𝑤𝐴𝑣𝑣𝑟 2, (2.6) angegeben.
-Die Dichte der Luft bei 20 ∘C beträgt [Spi05]: 𝜌𝐿 = 1,2041 kg/m3.
+[Hei13, S. 47] Für das Modell wird der Luftwiderstand mit:
+𝐹𝐿 = 0.5𝜌𝐿𝑐𝑤𝐴𝑣𝑣𝑟 2, (2.6) angegeben.
+Die Dichte der Luft bei 20 ∘C beträgt [Spi05]:
+𝜌𝐿 = 1,2041 kg/m3.
 (2.7) Der dimensionslose Luftwiderstandsbeiwert 𝑐𝑤 ergibt sich in Abhängigkeit der Anzahl der angehängten Wagen.
 Für eine einfache Lokomotive wird ein 𝑐𝑤-Wert von 1 angenommen.
 Für den ersten Wagen gilt 𝑐𝑤,anfang = 0,23.
 Die mittleren Wagen werden mit 𝑐𝑤,mitte = 0,14 angenommen.
 Für den letzten Wagen gilt 𝑐𝑤,ende = 0,3.
-[Spi05] Somit ergibt sich der 𝑐𝑤-Wert in Abhängigkeit der Wagen zu: ⎧ 1,0 𝑛 = 0, ⎪⎪⎨ 𝑐𝑤(𝑛) = (2.8) 1,3 𝑛 = 1, ⎪⎪⎩ 1,53 + (𝑛 − 2) · 0,14 𝑛 ≥ 2.
+[Spi05] Somit ergibt sich der 𝑐𝑤-Wert in Abhängigkeit der Wagen zu:
+⎧ 1,0 𝑛 = 0, ⎪⎪⎨ 𝑐𝑤(𝑛) = (2.8) 1,3 𝑛 = 1, ⎪⎪⎩ 1,53 + (𝑛 − 2) · 0,14 𝑛 ≥ 2.
 𝐴𝑣 bezeichnet die Stirnfläche des Fahrzeuges.
 Die Anströmgeschwindigkeit 𝑣𝑟 = 𝑣𝑣 + 𝑣𝑤 setzt sich aus den Komponenten Fahrzeuggeschwindigkeit 𝑣𝑣 und Windgeschwindigkeit 𝑣𝑤 zusammen.
 Rollwiderstand Der Rollwiderstand entsteht beim Abrollen eines Radsatzes auf einer idealen Fahrbahn (eben und trocken) und ist der Rollrichtung entgegen gerichtet.
@@ -326,20 +350,27 @@ Der Rollwiderstand ist proportional zur Gewichtskraft.
 Die Widerstandskraft entsteht durch elastische Verformungen des Radsatzes und des Fahrwegs während des Geradeauslaufs.
 Der Radsatzrollwiderstand hängt im Wesentlichen vom konstruktiven Aufbau und den Materialeigenschaften des Radsatzes ab.
 Der Rollwiderstandsbeiwert 𝑓𝑅 = 0.0015 kann für Schienenfahrzeuge als konstant angenommen werden [Spi05].
-Die Rollwiderstandskraft ergibt sich zu: 𝐹𝑅 = (𝑚𝑣 + 𝑚𝑧) · 𝑔 · 𝑓𝑅 · cos 𝛼𝑆𝑡.
+Die Rollwiderstandskraft ergibt sich zu:
+𝐹𝑅 = (𝑚𝑣 + 𝑚𝑧) · 𝑔 · 𝑓𝑅 · cos 𝛼𝑆𝑡.
 (2.9) Der Radwiderstand ist direkt von der Fahrzeugmasse 𝑚𝑣, Beladung 𝑚𝑧 und der Fahrbahnsteigung 𝛼𝑆𝑡 abhängig.
-Steigungswiderstand Durch Befahren von Steigungen und Gefällen wird ein Anteil der Gesamtgewichtskraft des Fahrzeugs 𝐹𝐺 = (𝑚𝑣 + 𝑚𝑧) · 𝑔, (2.10) zur Fahrwiderstandskraft: 𝐹𝑆𝑡 = 𝐹𝐺 · sin 𝛼𝑆𝑡.
+Steigungswiderstand Durch Befahren von Steigungen und Gefällen wird ein Anteil der Gesamtgewichtskraft des Fahrzeugs 𝐹𝐺 = (𝑚𝑣 + 𝑚𝑧) · 𝑔, (2.10) zur Fahrwiderstandskraft:
+𝐹𝑆𝑡 = 𝐹𝐺 · sin 𝛼𝑆𝑡.
 (2.11) Es handelt sich dabei um eine konservative Kraft.
 Die aufgewendete Energie kann zur Rekuperation verwendet werden.
 Beschleunigungswiderstand Zur Beschleunigung des Fahrzeugs mit der Masse 𝑚𝑣 und der Beladung 𝑚𝑧 von der Geschwindigkeit 𝑣1 bis 𝑣2 muss der Beschleunigungswiderstand 𝐹𝐴 überwunden werden.
-Dieser setzt sich aus rotatorischen und translatorischen Komponenten zusammen: 𝐹𝐴 = 𝐹𝐴,𝑡𝑟𝑎𝑛𝑠 + 𝐹𝐴,𝑟𝑜𝑡.
+Dieser setzt sich aus rotatorischen und translatorischen Komponenten zusammen:
+𝐹𝐴 = 𝐹𝐴,𝑡𝑟𝑎𝑛𝑠 + 𝐹𝐴,𝑟𝑜𝑡.
 (2.12) Die rotatorischen Anteile umfassen den Motor, das Getriebe und die Räder.
 Alle nicht rotierenden Massen werden dem translatorischen Anteil zugeordnet.
 Der Radradius wird mit 𝑟𝑅𝑎𝑑 bezeichnet.
-Das reduzierte Massenträgheitsmoment des translatorischen Anteils ergibt sich zu: 𝐽𝑇 𝑟𝑎𝑛𝑠 = 𝑟𝑅𝑎𝑑 · (𝑚𝑣 + 𝑚𝑧).
-(2.13) Das Gesamtmassenträgheitsmoment 𝐽𝐺𝑒𝑠 entsteht durch Addition des translatorischen und rotatorischen Anteils: 𝐽𝐺𝑒𝑠 = 𝐽𝑇 𝑟𝑎𝑛𝑠 + 𝐽𝑅𝑜𝑡.
-(2.14) Die Anteile an der Beschleunigungswiderstandskraft ergeben sich zu: 𝐹𝐴,𝑟𝑜𝑡 = 1/𝑟𝑅𝑎𝑑𝐽𝑅𝑜𝑡 𝜔˙W, (2.15) 𝐹𝐴,𝑡𝑟𝑎𝑛𝑠 = 1/𝑟𝑅𝑎𝑑𝐽𝑇 𝑟𝑎𝑛𝑠 𝜔˙W.
-(2.16) Die Gesamtbeschleunigungswiderstandskraft folgt dann: 𝐹𝐴 = 1/𝑟𝑅𝑎𝑑(𝐽𝑅𝑜𝑡 + 𝐽𝑇 𝑟𝑎𝑛𝑠).
+Das reduzierte Massenträgheitsmoment des translatorischen Anteils ergibt sich zu:
+𝐽𝑇 𝑟𝑎𝑛𝑠 = 𝑟𝑅𝑎𝑑 · (𝑚𝑣 + 𝑚𝑧).
+(2.13) Das Gesamtmassenträgheitsmoment 𝐽𝐺𝑒𝑠 entsteht durch Addition des translatorischen und rotatorischen Anteils:
+𝐽𝐺𝑒𝑠 = 𝐽𝑇 𝑟𝑎𝑛𝑠 + 𝐽𝑅𝑜𝑡.
+(2.14) Die Anteile an der Beschleunigungswiderstandskraft ergeben sich zu:
+𝐹𝐴,𝑟𝑜𝑡 = 1/𝑟𝑅𝑎𝑑𝐽𝑅𝑜𝑡 𝜔˙W, (2.15) 𝐹𝐴,𝑡𝑟𝑎𝑛𝑠 = 1/𝑟𝑅𝑎𝑑𝐽𝑇 𝑟𝑎𝑛𝑠 𝜔˙W.
+(2.16) Die Gesamtbeschleunigungswiderstandskraft folgt dann:
+𝐹𝐴 = 1/𝑟𝑅𝑎𝑑(𝐽𝑅𝑜𝑡 + 𝐽𝑇 𝑟𝑎𝑛𝑠).
 (2.17) 2.2.3.
 Energie- und Leistungsbedarf Zur Aufrechterhaltung des Fahrzustandes muss das Fahrzeug die Fahrwiderstandskraft 𝐹𝑊 aufbringen.
 Während der Fahrt legt das Fahrzeug einen Weg von 𝑠𝑥 zurück.
@@ -350,15 +381,19 @@ Dabei wird die Energie ˆ
 
 
 𝐸𝑊 = 𝐹𝑊 (𝑠) · 𝑑𝑠 (2.18) 0 umgesetzt.
-Die Fahrwiderstände 𝐹𝑊 setzen sich aus konservativen und dissipativen Kräften zusammen: ˆ 𝑠𝑥 𝐸𝑊,𝑘𝑜𝑛𝑠 = [𝐹𝑆𝑡(𝑠) + 𝐹𝐴(𝑠)] · 𝑑𝑠, (2.19) ˆ 0 𝑠𝑥 𝐸𝑊,𝑑𝑖𝑠𝑠 = [𝐹𝐿(𝑠) + 𝐹𝑅(𝑠)] · 𝑑𝑠.
+Die Fahrwiderstände 𝐹𝑊 setzen sich aus konservativen und dissipativen Kräften zusammen:
+ˆ 𝑠𝑥 𝐸𝑊,𝑘𝑜𝑛𝑠 = [𝐹𝑆𝑡(𝑠) + 𝐹𝐴(𝑠)] · 𝑑𝑠, (2.19) ˆ 0 𝑠𝑥 𝐸𝑊,𝑑𝑖𝑠𝑠 = [𝐹𝐿(𝑠) + 𝐹𝑅(𝑠)] · 𝑑𝑠.
 (2.20) 0 Das Fahrzeug muss auf dem Streckenabschnitt 𝑠𝑥 den Fahrwiderstand 𝐹𝑊 (𝑣𝑥) überwinden.
 Dies erfolgt mit der Geschwindigkeit 𝑣𝑥.
-Es folgt die benötigte Leistung: 𝑃𝑊 = 𝐹𝑊 (𝑣𝑥)𝑣𝑥, (2.21) [︂ 1 ]︂ = 0.5𝜌𝐿𝑐𝑤𝐴𝑣𝑣𝑥 3 + 𝑣𝑥 (𝑚𝑣 + 𝑚𝑧)𝑔𝑓𝑅 cos 𝛼𝑆𝑡 +.
-(2.22) 𝐽𝐺𝑒𝑠 𝑟𝑅𝑎𝑑 Für die Energie auf einem Fahrabschnitt folgt: ˆ ˆ 𝑠𝑥 𝑡𝑥 𝐸𝑊 = 𝐹𝑊 (𝑠) · 𝑑𝑠 = 𝑃𝑊 (𝑡) · 𝑑𝑡.
+Es folgt die benötigte Leistung:
+𝑃𝑊 = 𝐹𝑊 (𝑣𝑥)𝑣𝑥, (2.21) [︂ 1 ]︂ = 0.5𝜌𝐿𝑐𝑤𝐴𝑣𝑣𝑥 3 + 𝑣𝑥 (𝑚𝑣 + 𝑚𝑧)𝑔𝑓𝑅 cos 𝛼𝑆𝑡 +.
+(2.22) 𝐽𝐺𝑒𝑠 𝑟𝑅𝑎𝑑 Für die Energie auf einem Fahrabschnitt folgt:
+ˆ ˆ 𝑠𝑥 𝑡𝑥 𝐸𝑊 = 𝐹𝑊 (𝑠) · 𝑑𝑠 = 𝑃𝑊 (𝑡) · 𝑑𝑡.
 (2.23) 0 0 In Abbildung 2.15 ist die benötigte Fahrleistung für eine Lokomotive mit einer Zuladung von 100 t dargestellt.
 Es wird deutlich, dass der größte Teil der Leistung zur Beschleunigung und Verzögerung des Fahrzeugs aufgewendet wird.
 Der Anteil der Fahrwiderstandsleistung ist gering.
-Abb. 2.15.: Benötigte Traktionsleistung in Abhängigkeit der Fahrgeschwindigkeit mit einer Beladung von 100 t.
+Abb. 2.15.:
+Benötigte Traktionsleistung in Abhängigkeit der Fahrgeschwindigkeit mit einer Beladung von 100 t.
 2.2.4.
 Zugeinheit
 
@@ -370,13 +405,18 @@ filen und der aktuellen Zuladung das Antriebsmoment am Triebradsatz zu ermitteln
 Dies wird bei der Systembetrachtung des Antriebsstrangs benötigt.
 Das Zugmodell setzt sich aus mehreren Einzelmassen und Massenträgheiten zusammen (siehe Abbildung 2.16).
 Diese sollen im Folgenden zusammengefasst werden.
-Sämtliche Massen werden in der Abb. 2.16.: Komplexes Zugmodell bestehend aus einzelnen Massen und Massenträgheiten.
-Ersatzträgheit: 𝐽𝐺𝑒𝑠 = 𝑟𝑅𝑎𝑑 · (𝑚𝑣 + 𝑚𝑧) (2.24) zusammengefasst.
+Sämtliche Massen werden in der Abb. 2.16.:
+Komplexes Zugmodell bestehend aus einzelnen Massen und Massenträgheiten.
+Ersatzträgheit:
+𝐽𝐺𝑒𝑠 = 𝑟𝑅𝑎𝑑 · (𝑚𝑣 + 𝑚𝑧) (2.24) zusammengefasst.
 Die Fahrwiderstände sind im Ersatzmoment 𝑇𝑅𝑒𝑠 zusammengefasst.
 Die Traktionsleistung wird durch das Moment 𝑇𝑇 erbracht.
-Aus dem Drallsatz folgt für das Ersatzmodell in Abbildung 2.17: 𝑇𝑇 + 𝑇𝑅𝑒𝑠 = 𝐽𝐺𝑒𝑠 · 𝜔˙𝑊.
-(2.25) Das benötigte Traktionsmoment in Abhängigkeit des Streckenabschnitts ergibt sich zu: 𝑇𝑇 (𝑠) = 𝐽𝐺𝑒𝑠 · 𝜔˙𝑊 (𝑠) − 𝑇𝑅𝑒𝑠(𝑠).
-(2.26) Abb. 2.17.: Ersatzmodell des Rangzierzugs, reduziert auf eine Ersatzmasse.
+Aus dem Drallsatz folgt für das Ersatzmodell in Abbildung 2.17:
+𝑇𝑇 + 𝑇𝑅𝑒𝑠 = 𝐽𝐺𝑒𝑠 · 𝜔˙𝑊.
+(2.25) Das benötigte Traktionsmoment in Abhängigkeit des Streckenabschnitts ergibt sich zu:
+𝑇𝑇 (𝑠) = 𝐽𝐺𝑒𝑠 · 𝜔˙𝑊 (𝑠) − 𝑇𝑅𝑒𝑠(𝑠).
+(2.26) Abb. 2.17.:
+Ersatzmodell des Rangzierzugs, reduziert auf eine Ersatzmasse.
 2.2.5.
 Spezifischer Kraftstoffverbrauch Die benötigte Traktionsleistung einer konventionellen Diesel-Lokomotive wird durch Verbrennung von Dieselkraftstoffb ereit gestellt.
 Die im Kraftstoffgespeicherte chemische
@@ -386,8 +426,11 @@ Die im Kraftstoffgespeicherte chemische
 
 
 𝐸𝐾 = 𝑚𝐾 · 𝐻𝑢, (2.27) mit der Kraftstoffmasse 𝑚𝐾 und dem unteren Heizwert des Kraftstoffs 𝐻𝑢 in kJ/kg.
-Für die Motorleistung ergibt sich: 𝑃𝑒 = 𝐸𝑇 , (2.28) 𝑡𝑇 mit der Traktionsenergie 𝐸𝑇 und der Traktionszeit 𝑡𝑇.Für die Fahrleistung gilt: 𝑃 = 𝐸𝐾 = 𝑚𝑘 · 𝐻𝑢𝜂 = 𝑚˙𝑘𝐻𝑢𝜂.
-(2.29) 𝑡𝑇 𝑡 Der spezifische Kraftstoffverbrauch 𝑏𝑒 in g/(kW h) ergibt sich aus dem Quotienten des Kraftstoffmassenstroms 𝑚˙𝐾 und der erbrachten Leistung 𝑃𝑒 in W [Bas14, S. 18]: 𝑚˙𝐾 = 1 𝑏𝑒 =.
+Für die Motorleistung ergibt sich:
+𝑃𝑒 = 𝐸𝑇 , (2.28) 𝑡𝑇 mit der Traktionsenergie 𝐸𝑇 und der Traktionszeit 𝑡𝑇.Für die Fahrleistung gilt:
+𝑃 = 𝐸𝐾 = 𝑚𝑘 · 𝐻𝑢𝜂 = 𝑚˙𝑘𝐻𝑢𝜂.
+(2.29) 𝑡𝑇 𝑡 Der spezifische Kraftstoffverbrauch 𝑏𝑒 in g/(kW h) ergibt sich aus dem Quotienten des Kraftstoffmassenstroms 𝑚˙𝐾 und der erbrachten Leistung 𝑃𝑒 in W [Bas14, S. 18]:
+𝑚˙𝐾 = 1 𝑏𝑒 =.
 (2.30) 𝑃𝑒 𝜂𝐻𝑢 2.3.
 Getriebetechnik Grundlagen Im nachfolgenden Abschnitt werden die Grundlagen zum Verständnis von Getrieben
 
@@ -407,11 +450,16 @@ Stirnrad und Planentengetriebe vorgestellt.
 Drehen die Wellen gegenläufig, ist das Übersetzungsverhältnis negativ.
 Übersetzungen größer eins werden als Übersetzung ins Langsame bezeichnet.
 Die angetriebene Welle (an) dreht sich i-mal so schnell, wie die getriebene Welle (ab).
-Für die Leistung gilt: 𝑃 = 𝑇 · 𝜔 = 𝑇 · 2 · 𝜋 · 𝑛.
-(2.32) Für ein ideales Getriebe gilt 𝑃𝑒𝑖𝑛 = 𝑃𝑎𝑢𝑠 und damit folgt: 𝑇𝑒𝑖𝑛𝜔𝑒𝑖𝑛 = 𝑇𝑎𝑢𝑠𝜔𝑎𝑢𝑠.
-(2.33) Mit Gleichung 2.31 ergibt sich aus Gleichung 2.33: 𝜔𝑒𝑖𝑛 = 𝑇𝑒𝑖𝑛𝑖 = 𝑇𝑎𝑢𝑠.
-(2.34) 𝑇𝑒𝑖𝑛 𝜔𝑎𝑢𝑠 Der Wirkungsgrad definiert sich zu: 𝜂 = 𝑇𝑎𝑢𝑠 ≤ 1.
-(2.35) 𝑇𝑒𝑖𝑛 Für reibungsbehaftete Getriebe folgt mit Gleichung 2.34 und 2.35: 𝑇𝑒𝑖𝑛 · 𝑖 · 𝜂 = 𝑇𝑎𝑢𝑠.
+Für die Leistung gilt:
+𝑃 = 𝑇 · 𝜔 = 𝑇 · 2 · 𝜋 · 𝑛.
+(2.32) Für ein ideales Getriebe gilt 𝑃𝑒𝑖𝑛 = 𝑃𝑎𝑢𝑠 und damit folgt:
+𝑇𝑒𝑖𝑛𝜔𝑒𝑖𝑛 = 𝑇𝑎𝑢𝑠𝜔𝑎𝑢𝑠.
+(2.33) Mit Gleichung 2.31 ergibt sich aus Gleichung 2.33:
+𝜔𝑒𝑖𝑛 = 𝑇𝑒𝑖𝑛𝑖 = 𝑇𝑎𝑢𝑠.
+(2.34) 𝑇𝑒𝑖𝑛 𝜔𝑎𝑢𝑠 Der Wirkungsgrad definiert sich zu:
+𝜂 = 𝑇𝑎𝑢𝑠 ≤ 1.
+(2.35) 𝑇𝑒𝑖𝑛 Für reibungsbehaftete Getriebe folgt mit Gleichung 2.34 und 2.35:
+𝑇𝑒𝑖𝑛 · 𝑖 · 𝜂 = 𝑇𝑎𝑢𝑠.
 (2.36) 2.3.2.
 Stirnradstufe
 
@@ -420,10 +468,12 @@ Stirnradstufe
 
 
 kommt es zu einer Drehrichtungsumkehr.
-Es gilt: 𝑇ein𝑧ein + 𝑇aus𝑧aus = 0, (2.37) 𝑇ein𝑧ein = −𝑇aus𝑧aus.
+Es gilt:
+𝑇ein𝑧ein + 𝑇aus𝑧aus = 0, (2.37) 𝑇ein𝑧ein = −𝑇aus𝑧aus.
 (2.38) Eine einstufige Stirnradübersetzung sollte konstruktionsbedingt maximal 𝑖𝑚𝑎𝑥 = 12 betragen.
 Der maximale Wirkungsgrad beträgt lastbedingt zwischen 90 bis 95 %.
-[Gev13] Abb. 2.18.: Prinzipskizze Funktion Stirnradgetriebe.
+[Gev13] Abb. 2.18.:
+Prinzipskizze Funktion Stirnradgetriebe.
 2.3.3.
 Umlaufrädergetriebe Umlaufrädergetriebe sind Getriebe, deren An- und Abtriebswellen koaxial angeordnet sind.
 Dabei ermöglichen Umlaufrädergetriebe ein geringes Bauvolumen und die Übertragung
@@ -436,18 +486,24 @@ richtungen, Differentiale und zur Leistungsverzweigung eingesetzt.
 [Sch09] Häufig werden Umlaufrädergetriebe als Planetenrädergetriebe oder Planetengetriebe bezeichnet.
 In Abbildung 2.19 ist eine einfache Planetengetriebestufe dargestellt.
 Aufbau und Kinematik einer einfachen Planetenradstufe Eine einfache Planetenstufe besteht aus einem zentralen Sonnenrad, einem innen verzahnten Hohlrad, einem Planetenträger und den Planetenrädern.
-Die Planetenräder befinden Abb. 2.19.: a) Einfache Planetengetriebestufe mit Sonnenrad S, Hohlrad H, Planetenträger T und den Planetenrädern P - b) Getriebeersatzschaubild [Fis12, S. 109] sich mit dem Hohl- und Sonnenrad im Eingriffund sind am Planetenträger befestigt.
+Die Planetenräder befinden Abb. 2.19.:
+a) Einfache Planetengetriebestufe mit Sonnenrad S, Hohlrad H, Planetenträger T und den Planetenrädern P - b) Getriebeersatzschaubild [Fis12, S. 109] sich mit dem Hohl- und Sonnenrad im Eingriffund sind am Planetenträger befestigt.
 Das Hohl- und Sonnenrad und der Planetenträger sind als Welle aus dem Gehäuse geführt.
 In Abbildung 2.19 ist eine Planetenstufe aus Sonnenrad, Hohlrad, Planetenträger und drei Planetenrädern abgebildet.
 Die Kinematik einer einfachen Planetenstufe wird durch das Verhältnis der Zähnezahlen von Sonnenrad (𝑧𝐻 ) und Hohlrad (𝑧𝑆) bestimmt.
-[Fis12, S. 109ff] Das Verhältnis wird als Standgetriebeübersetzung: 𝑖0 = 𝑧𝐻 , (2.39) 𝑧𝑆 bezeichnet.
+[Fis12, S. 109ff] Das Verhältnis wird als Standgetriebeübersetzung:
+𝑖0 = 𝑧𝐻 , (2.39) 𝑧𝑆 bezeichnet.
 Die Zähnezahl für Hohlräder ist negativ definiert.
 Durch Festhalten des Planetenträgers und Antreiben des Sonnenrades ergibt sich die „Stand“-Übersetzung.
-Zur analytischen Darstellung der Drehzahlverhältnisse dient die Willis-Gleichung: 𝑛S − 𝑖0 · 𝑛H − (1 − 𝑖0) · 𝑛C = 0.
+Zur analytischen Darstellung der Drehzahlverhältnisse dient die Willis-Gleichung:
+𝑛S − 𝑖0 · 𝑛H − (1 − 𝑖0) · 𝑛C = 0.
 (2.40) Dabei bezeichnet 𝑛𝑆 die Drehzahl des Sonnenrades, 𝑛𝑅 des Hohlrades und 𝑛𝐶 des Stegs.
-Zur gleichmäßigen Verteilung der 𝑛𝑃 Planetenräder über den Umfang muss das Verhältnis: 𝑧S + |𝑧H| , (2.41) 𝑛𝑃 ganzzahlig sein.
-Unter Vernachlässigung der Verluste ergibt sich für die äußeren Momente der einfachen Planetenstufe die Momentenbilanz: 𝑇𝑆 + 𝑇𝑅 + 𝑇𝐶 = 0, (2.42) mit dem Moment 𝑇𝑆 am Sonnenrad, 𝑇𝑅 am Hohlrad und 𝑇𝐶 am Planetenträger.
-Für die äußeren Leistungsflüsse folgt: 𝑃𝑆 + 𝑃𝑅 + 𝑃𝐶 = 0.
+Zur gleichmäßigen Verteilung der 𝑛𝑃 Planetenräder über den Umfang muss das Verhältnis:
+𝑧S + |𝑧H| , (2.41) 𝑛𝑃 ganzzahlig sein.
+Unter Vernachlässigung der Verluste ergibt sich für die äußeren Momente der einfachen Planetenstufe die Momentenbilanz:
+𝑇𝑆 + 𝑇𝑅 + 𝑇𝐶 = 0, (2.42) mit dem Moment 𝑇𝑆 am Sonnenrad, 𝑇𝑅 am Hohlrad und 𝑇𝐶 am Planetenträger.
+Für die äußeren Leistungsflüsse folgt:
+𝑃𝑆 + 𝑃𝑅 + 𝑃𝐶 = 0.
 (2.43) Durch Vorgabe eines äußeren Moments sind alle anderen Momente bestimmt.
 Die Leistungen folgen aus den Winkelgeschwindigkeiten und mit entsprechenden Momenten.
 Umlaufgetriebe mit mehreren Planetenrädern übertragen die Momente über mehrere Pfade.
@@ -459,12 +515,14 @@ Im komplexen Fall folgt aus zwei gegebenen Drehzahlen die dritte Drehzahl.
 Das Planetengetriebe wird als Summiergetriebe realisiert.
 Damit wird es möglich, den Leistungsfluss zu variieren.
 Durch Variation der an den Wellen anliegenden Leistungen werden dynamische Übersetzungen realisiert.
-[Fis12, S. 116ff] Nach Gleichung 2.43 folgt unter Vernachlässigung der Verluste: ∑︁ 𝑃𝑊 𝑒𝑙𝑙𝑒,𝑖 = 0.
+[Fis12, S. 116ff] Nach Gleichung 2.43 folgt unter Vernachlässigung der Verluste:
+∑︁ 𝑃𝑊 𝑒𝑙𝑙𝑒,𝑖 = 0.
 (2.44) 𝑖 Zugeführte Leistungen besitzen ein positives Vorzeichen, abgeführte Leistungen erhalten ein negatives Vorzeichen.
 Abbildung 2.20 zeigt das Prinzip der Leistungsverteilung am einfachen Planetengetriebe.
 Die Leistung wird über den Planetenträger zugeführt und über das Hohlrad und das Sonnenrad abgeführt.
 Das Summierprinzip eignet sich zur Kombination der verschiedenen Leistungserzeugungsprinzipen, die im Hybridfahrzeug verwendet werden.
-[Fri15] Abb. 2.20.: Prinzip der Leistungsverteilung am einfachen Planetengetriebe [Fis12, S. 117]
+[Fri15] Abb. 2.20.:
+Prinzip der Leistungsverteilung am einfachen Planetengetriebe [Fis12, S. 117]
 
 
 :::: Analyse der Fahrzeuganforderungen ::::
@@ -486,7 +544,8 @@ Die Teilstrecken sind in Form von Geschwindigkeits- und Beladungsprofilen vorgeg
 Zusätzlich ist ein Referenzzyklus als Abfolge der Teilstrecken in [IAV15] vorgegeben.
 Die Grenzwerte für die Streckenanforderungen sind in Tabelle 3.1 dargestellt.
 Eine detaillierte Darstellung folgt in Abschnitt 3.1.3.
-Die Gesamtanforderung ergibt sich durch Auswertung Name Beladung 𝑣𝑚𝑎𝑥 𝜔˙𝑚𝑖𝑛 𝜔˙𝑚𝑖𝑛 𝑃𝑚𝑖𝑛 𝑃𝑚𝑎𝑥 t km/h rad/s2 rad/s2 kW kW Behala 1400 1400 24 −0,37 0,22 -837 773 0 25 −1,39 1,0 -320 168 Behala 1800 1800 24 −0,21 0,40 -1268 857 0 25 −1,11 1,11 -217 205 Chemiepark 110 25 −0,37 0,43 -177 240 RST 0 0 50 −1,0 0,6 -477 285 RST 560 560 50 −0,6 0,14 -2596 610 Tab. 3.1.: Übersicht der Grenzwerte der Streckenanforderungen.der Teilstrecken, die in Abschnitt A. 3
+Die Gesamtanforderung ergibt sich durch Auswertung Name Beladung 𝑣𝑚𝑎𝑥 𝜔˙𝑚𝑖𝑛 𝜔˙𝑚𝑖𝑛 𝑃𝑚𝑖𝑛 𝑃𝑚𝑎𝑥 t km/h rad/s2 rad/s2 kW kW Behala 1400 1400 24 −0,37 0,22 -837 773 0 25 −1,39 1,0 -320 168 Behala 1800 1800 24 −0,21 0,40 -1268 857 0 25 −1,11 1,11 -217 205 Chemiepark 110 25 −0,37 0,43 -177 240 RST 0 0 50 −1,0 0,6 -477 285 RST 560 560 50 −0,6 0,14 -2596 610 Tab. 3.1.:
+Übersicht der Grenzwerte der Streckenanforderungen.der Teilstrecken, die in Abschnitt A. 3
 abgebildet sind.
 
 
@@ -497,10 +556,12 @@ Der Referenzzyklus setzt sich aus den in Tabelle 3.2 angegebenen Teilstrecken zu
 Das resultierende Geschwindigkeitsprofil ist in Abbildung 3.1 dargestellt.
 Die wechselnde Beladung ist in Abbildung A. 5
 dargestellt.
-Aus dem Fahrprofil, dem Beladungsprofil Rangierzyklus Beladung Wiederholung RST 560 0, 560 2 RST 0 0 1 Chemiepark 110 1 Behala 1400 0, 1400 2 Behala 1800 0, 1800 2 Tab. 3.2.: Abfolge des Referenzzyklus nach [IAV15].
+Aus dem Fahrprofil, dem Beladungsprofil Rangierzyklus Beladung Wiederholung RST 560 0, 560 2 RST 0 0 1 Chemiepark 110 1 Behala 1400 0, 1400 2 Behala 1800 0, 1800 2 Tab. 3.2.:
+Abfolge des Referenzzyklus nach [IAV15].
 und dem Längsdynamikmodell berechnet sich die benötigte Traktionsleistung, die in Abbildung A. 6
 dargestellt ist.
-Abb. 3.1.: Verlauf der Fahrzeuggeschwindigkeit im Referenzzyklus.
+Abb. 3.1.:
+Verlauf der Fahrzeuggeschwindigkeit im Referenzzyklus.
 
 
 :::: Häufigkeitsanalyse ::::
@@ -509,8 +570,12 @@ Abb. 3.1.: Verlauf der Fahrzeuggeschwindigkeit im Referenzzyklus.
 Zum optimalen Abfahren der Fahrzyklen durch das Hybridfahrzeug werden Traktionsleistungen in Abhängigkeit der Radsatzgeschwindigkeit benötigt.
 Diese sind in Abbildung 3.2 bis 3.5 dargestellt.
 Bei der Auslegung des Getriebes sind diese zu beachten.
-Abbildung 3.2 Abb. 3.2.: Strecke Behala 1400 - Logarith­ Abb. 3.3.: Strecke Behala 1800 - Logarithmische Häufigkeitsverteilung der Traktionsleis­ mische Häufigkeitsverteilung der Traktionsleistung.tung.und 3.3 zeigen Strecken, die geringe Fahrgeschwindigkeiten aufweisen.
-Durch die Beladung Abb. 3.4.: Strecke Chemiepark - Logarith­ Abb. 3.5.: Strecke Referenzzyklus - Logamische Häufigkeitsverteilung der Traktionsleis­ rithmische Häufigkeitsverteilung der Traktionstung.leistung.
+Abbildung 3.2 Abb. 3.2.:
+Strecke Behala 1400 - Logarith­ Abb. 3.3.:
+Strecke Behala 1800 - Logarithmische Häufigkeitsverteilung der Traktionsleis­ mische Häufigkeitsverteilung der Traktionsleistung.tung.und 3.3 zeigen Strecken, die geringe Fahrgeschwindigkeiten aufweisen.
+Durch die Beladung Abb. 3.4.:
+Strecke Chemiepark - Logarith­ Abb. 3.5.:
+Strecke Referenzzyklus - Logamische Häufigkeitsverteilung der Traktionsleis­ rithmische Häufigkeitsverteilung der Traktionstung.leistung.
 von 1400 bzw. 1800 t muss die Volllast von 1000 kW bei Geschwindigkeiten von 20 km/h zur Verfügung stehen.
 Abbildung A. 1 und A. 2 zeigen eine Strecke mit einer Beladung von 0 bzw. 560 t.
 Die Geschwindigkeiten sind erhöht.
@@ -526,16 +591,21 @@ In Abbildung 3.5 ist die Häufigkeitsanalyse für den Referenzzyklus dargestellt
 
 Die Mindestanforderungen an das Traktionssystem werden nachfolgend aufgezeigt.
 Aus dem Fahrprofil und der Leistungsanforderung wird das Traktionsmoment, die Traktionsleistung und die Radsatzbeschleunigung in Abhängigkeit der Beladung und der Radsatzgeschwindigkeit ermittelt.
-Zur Vereinfachung werden die Daten mit einer Einhül-Abb. 3.6.: Verfahren zum Ermitteln der Anforderungen aus einem gegebenen Streckenabschnitt.
+Zur Vereinfachung werden die Daten mit einer Einhül-Abb. 3.6.:
+Verfahren zum Ermitteln der Anforderungen aus einem gegebenen Streckenabschnitt.
 Der vorgegebene Streckenabschnitt wird geladen und analysiert.
 Die ermittelten Daten werden durch den Filter über eine Einhüllende geglättet.
 Als Ergebnis stehen Moment, Leistung und Winkelbeschleunigung in Abhängigkeit der Lokomotivgeschwindigkeit und Beladung.lenden geglättet.
 Das Vorgehen ist in Abbildung 3.6 dargestellt.
-Für die Anforderungen Abb. 3.7.: Gefordertes Traktionsmoment, An­ Abb. 3.8.: Gefordertes Traktionsmoment, Anhängelast 0 Tonnen hängelast 1400 Tonnen (Leistung, Moment, Beschleunigung) werden sowohl das Maximum und das Minimum bestimmt.
+Für die Anforderungen Abb. 3.7.:
+Gefordertes Traktionsmoment, An­ Abb. 3.8.:
+Gefordertes Traktionsmoment, Anhängelast 0 Tonnen hängelast 1400 Tonnen (Leistung, Moment, Beschleunigung) werden sowohl das Maximum und das Minimum bestimmt.
 Dabei findet diese Betrachtung in Abhängigkeit des Beladungszustands des Fahrzeugs statt.
 Dies ist nötig, da die Komponenten deutlich von der Beladung des Fahrzeugs abhängen.
 In Abbildung 3.7 bis 3.10 und A. 4 ist diese Abhängigkeit für die Strecke Behala 1400 dargestellt.
-Abb. 3.9.: Geforderte Traktionsleistung, An­ Abb. 3.10.: Geforderte Traktionsleistung, Anhängelast 0 Tonnen.hängelast 1400 Tonnen.
+Abb. 3.9.:
+Geforderte Traktionsleistung, An­ Abb. 3.10.:
+Geforderte Traktionsleistung, Anhängelast 0 Tonnen.hängelast 1400 Tonnen.
 Eine höhere Anhängelast erfordert höhere Traktionsmomente und Traktionsleistungen.
 Die Radsatzbeschleunigung ist für höhere Beladungen reduziert.
 Die abgeleiteten Anforderungen werden zur Konfiguration des Getriebes benutzt.
@@ -563,7 +633,8 @@ Im Schleppbetrieb sind bis zu 100 km/h möglich.
 Die Lokomotive ermöglicht eine minimale Dauerfahrgeschwindigkeit von 3 km/h.
 Diese Kennwerte sollen auch nach der Modernisierungsmaße erhalten bleiben.
 Mit der Modernisierung sollen 10 bis 15 % Dieselkraftstoffeingespart werden.
-[Pfe14] Abb. 3.11.: Zur Modernisierung vorgegebene Referenzlokomotive aus [Mor09].
+[Pfe14] Abb. 3.11.:
+Zur Modernisierung vorgegebene Referenzlokomotive aus [Mor09].
 
 
 :::: Analyse Systemstruktur des Getriebes ::::
@@ -590,7 +661,8 @@ Zur konventionellen Bremsung wirkt die mechanische Bremse (9) direkt auf die Mit
 Die Stirnradstufe (14) dient der Vorwärtsfahrt.
 Durch Umschalten auf Stirnradstufe (15) ist eine Fahrtrichtungsumkehr möglich.
 Das Achsgetriebe ist ebenfalls über eine Kardanwelle (17) fest mit dem Getriebe verbunden.
-Abb. 3.12.: Getriebestruktur des Antriebsstrangs nach [Pfe14].
+Abb. 3.12.:
+Getriebestruktur des Antriebsstrangs nach [Pfe14].
 
 
 :::: Getriebeausgang ::::
@@ -599,15 +671,19 @@ Abb. 3.12.: Getriebestruktur des Antriebsstrangs nach [Pfe14].
 Die Maximalgeschwindigkeit der Lokomotive im Rangierbetrieb beträgt 80 km/h.
 Der Radscheibendurchmesser beträgt im Neuzustand 1,1 m.
 Im verschlissenen Zustand redu­ ziert sich dieser auf bis zu 1 m.
-Der Umfang der Radscheibe ergibt sich zu: 𝑢𝑅𝑎𝑑 = 2𝜋𝑟𝑅𝑎𝑑 = 2 · 𝜋 · 0,55 = 3,46 m.
-(3.1) Die Maximaldrehzahl des Radsatzes ergibt sich aus der Höchstgeschwindigkeit zu: 𝑛𝑅𝑎𝑑 = 80 000 m/h · 𝑢𝑅𝑎𝑑 −1 · 60−1 = 385/min.
+Der Umfang der Radscheibe ergibt sich zu:
+𝑢𝑅𝑎𝑑 = 2𝜋𝑟𝑅𝑎𝑑 = 2 · 𝜋 · 0,55 = 3,46 m.
+(3.1) Die Maximaldrehzahl des Radsatzes ergibt sich aus der Höchstgeschwindigkeit zu:
+𝑛𝑅𝑎𝑑 = 80 000 m/h · 𝑢𝑅𝑎𝑑 −1 · 60−1 = 385/min.
 (3.2) Das eCVT-Getriebe und der Radsatz sind zusätzlich über ein im Drehgestell verbautes Radsatzgetriebe verbunden.
 Die Übersetzung des Radsatzgetriebes beträgt 5,4876.
-Aus der maximalen Radsatzdrehzahl und der Radsatzgetriebeübersetzung ergibt sich die Ausgangsdrehzahl am eCVT-Getriebe zu: 𝑛𝑒𝐶𝑉 𝑇,𝑎𝑢𝑠𝑔𝑎𝑛𝑔 = 𝑛𝑅𝑎𝑑 · 5,4876 = 2213/min.
+Aus der maximalen Radsatzdrehzahl und der Radsatzgetriebeübersetzung ergibt sich die Ausgangsdrehzahl am eCVT-Getriebe zu:
+𝑛𝑒𝐶𝑉 𝑇,𝑎𝑢𝑠𝑔𝑎𝑛𝑔 = 𝑛𝑅𝑎𝑑 · 5,4876 = 2213/min.
 (3.3) Zusätzlich ist eine Sicherheit von 10 % zu berücksichtigen.
 Damit ergibt sich die maximale Drehzahl am eCVT-Getriebe zu 2434/min.
 Das maximale Moment am Getriebe ergibt sich aus der Radsatzgetriebeübersetzung und dem maximalen Traktionsmoment am Rad-Schiene-Kontakt aus Abschnitt 2.2.1 und ist in Abbildung 3.13 dargestellt.
-Abb. 3.13.: Maximales Drehmoment am Getriebeausgang.
+Abb. 3.13.:
+Maximales Drehmoment am Getriebeausgang.
 3.3.3.
 Generator Der Generator besitzt eine maximale Leistung von 600 kW.
 Das maximale Drehmoment beträgt 4000 Nm.
@@ -619,7 +695,8 @@ Die maximale Leistung kann im Drehzahlbereich zwischen
 
 beträgt 6000/min.
 Das ansteuerbare Maximalmoment ist in Abbildung 3.14 abgebildet.
-[Pfe14] Abb. 3.14.: Maximal ansteuerbares Moment des Generators in Abhängigkeit der Drehzahl.
+[Pfe14] Abb. 3.14.:
+Maximal ansteuerbares Moment des Generators in Abhängigkeit der Drehzahl.
 Die Hyperbel kennzeichnet den Bereich der maximalen Leistung von 600 kW.
 
 
@@ -629,7 +706,8 @@ Die Hyperbel kennzeichnet den Bereich der maximalen Leistung von 600 kW.
 Das Getriebe verfügt über zwei elektrische Fahrmaschinen, die einen rein elektrischen Fahrbetrieb ermöglichen.
 Eine Fahrmaschine verfügt über eine Leistung von 350 kW.
 Das maximale mechanische Moment beträgt 5500 Nm.
-Abb. 3.15.: Maximalmoment des Fahrmotors in Abhängigkeit der Drehzahl.
+Abb. 3.15.:
+Maximalmoment des Fahrmotors in Abhängigkeit der Drehzahl.
 
 
 :::: Verbrennungsmotor ::::
@@ -637,7 +715,8 @@ Abb. 3.15.: Maximalmoment des Fahrmotors in Abhängigkeit der Drehzahl.
 
 Der Verbrennungsmotor verfügt über eine Nennleistung von 1000 kW.
 Das Drehmoment kann im Drehzahlbereich von 600 bis 1800 1/min nach dem Kennfeld in Abbildung 3.16 abgerufen werden.
-Abb. 3.16.: Maximale Leistung und Drehmoment des Verbrennungsmotors nach [IAV15].
+Abb. 3.16.:
+Maximale Leistung und Drehmoment des Verbrennungsmotors nach [IAV15].
 
 
 :::: Traktionsbatterie ::::
@@ -649,8 +728,11 @@ Das Traktionsbatteriesystem ermöglicht einen Leistungsfluss von 700 kW.
 Der Wirkungsgrad des Batteriesystems erreicht mindestens 90 % [IAV15].
 Das Gesamtgewicht der Batterie ist mit 3000 kg begrenzt.
 Bei einer nutzbaren Restbatteriekapazität von 25 kWh ist der Betrieb der elektrisch fahrenden Lokomotive mit einer Geschwindigkeit von 10 km/h zu gewährleisten.
-Die Restenergie der Batterie beträgt: 𝐸𝐵𝑎𝑡𝑡𝑒𝑟𝑖𝑒,𝑟𝑒𝑠𝑡 = 25 kWh.
-(3.4) Die Dauer von 10 min entspricht 600 s. 25 kWh entspricht einer Arbeit von: 25 kWh = 25 · 3600kW s = 90 000 kW s. (3.5) Die Dauertraktionsleistung ergibt sich zu: 90 000 kW s 𝑃𝑇 𝑟𝑎𝑐,𝑟𝑒𝑠 = = 150 kW.
+Die Restenergie der Batterie beträgt:
+𝐸𝐵𝑎𝑡𝑡𝑒𝑟𝑖𝑒,𝑟𝑒𝑠𝑡 = 25 kWh.
+(3.4) Die Dauer von 10 min entspricht 600 s. 25 kWh entspricht einer Arbeit von: 25
+kWh = 25 · 3600kW s = 90 000 kW s. (3.5) Die Dauertraktionsleistung ergibt sich zu: 90
+000 kW s 𝑃𝑇 𝑟𝑎𝑐,𝑟𝑒𝑠 = = 150 kW.
 (3.6) 600 s
 
 
@@ -668,14 +750,17 @@ Weiterhin werden die Ersatzmodelle und Kennfelder der Antriebskomponenten betrac
 Das Ersatzmodell der Getriebestruktur ist in Abbildung 4.1 und 4.2 dargestellt.
 Die Nummerierung entspricht der Nummer der Welle bzw.des Zahnrads.
 Die verwendeten Momentenbezeichnungen sind in Abbildung 4.3 dargestellt.
-Abb. 4.1.: Nummerierung der Zahnräder.
-Abb. 4.2.: Nummerierung der Wellen.
+Abb. 4.1.:
+Nummerierung der Zahnräder.
+Abb. 4.2.:
+Nummerierung der Wellen.
 Das physikalische Modell des Getriebes wird durch die kinematischen Gleichungen 4.1 bis 4.7 und die kinetischen Gleichungen 4.8 bis 4.38 vollständig beschrieben.
 Für die weitere fahrdynamische Betrachtung wird das Traktionsmoment am Radsatz 𝑇1716 betrachtet.
 Dies entspricht dem gesamten Traktionsmoment als Summe aus Verbrennungsmotormoment 𝑇𝐼𝐶𝐸, Stützmoment am Generator 𝑇𝐺𝐸𝑁 , den zwei Momenten der elektrischen Fahrmomenten 𝑇𝐸𝑀 1,2 und dem Bremsmoment 𝑇𝐵𝑅.
 Dem Traktionsmoment wirkt das Ersatzmoment der Fahrwiderstände 𝑇𝑅𝐸𝑆 entgegen.
 Für die Betrachtung des Planetengetriebes ist das Moment am Steg 𝑇𝐶, das Moment am Sonnenrad 𝑇𝑆 und das Moment am Hohlrad 𝑇𝑅 zu betrachten.
-Abb. 4.3.: Innere und äußere Momente im Getriebemodell.
+Abb. 4.3.:
+Innere und äußere Momente im Getriebemodell.
 
 
 :::: Kinematische Gleichungen ::::
@@ -684,12 +769,18 @@ Abb. 4.3.: Innere und äußere Momente im Getriebemodell.
 Die Kinematik des Getriebes wird eindeutig durch die Gleichungen 4.1 bis 4.7 beschrieben.
 Die Geschwindigkeitsbeziehungen im Planetengetriebe werden durch die Willis-Gleichung in 4.2 beschrieben.
 Durch Vorgabe von zwei unabhängigen Winkelgeschwindigkeiten (𝜔1 oder 𝜔3 und 𝜔𝑛 mit 𝑛 ∈ {2, 4, 5, 6, 7, 8, 9}) werden sämtliche Winkelgeschwindigkeiten der Wellen im Getriebe bestimmt.
-Die Übersetzung von Verbrennungsmotorwelle zur Stegwelle ergibt: 𝜔1𝑧1 + 𝜔2𝑧2 = 0.
-(4.1) Für den Planetensatz ergibt sich mit der Willis-Gleichung: 𝜔3 − 𝑖0𝜔4 − (1 − 𝑖0)𝜔2 = 0.
-(4.2) Direkt an das Planetengetriebe anliegend erfolgt eine Übersetzung durch eine Stirnradstufe auf die Mittelwelle mit: 𝜔5𝑧7 + 𝜔4𝑧6 = 0.
-(4.3) Die Geschwindigkeiten der elektrischen Fahrmaschinen ergeben sich aus der Übersetzung zur Mittelwelle mit der Geschwindigkeitsbeziehung: 𝜔6𝑧11 + 𝜔5𝑧10 = 0, (4.4) 𝜔7𝑧12 + 𝜔5𝑧10 = 0.
-(4.5) Der Vorwärtsgang wird über: 𝜔5𝑧9 + 𝜔8𝑧13 = 0, (4.6) übersetzt.
-Die letzte Übersetzung des Radsatzgetriebes erfolgt Radsatzgetriebe mit: 𝜔8𝑧16 + 𝜔9𝑧17 = 0.
+Die Übersetzung von Verbrennungsmotorwelle zur Stegwelle ergibt:
+𝜔1𝑧1 + 𝜔2𝑧2 = 0.
+(4.1) Für den Planetensatz ergibt sich mit der Willis-Gleichung:
+𝜔3 − 𝑖0𝜔4 − (1 − 𝑖0)𝜔2 = 0.
+(4.2) Direkt an das Planetengetriebe anliegend erfolgt eine Übersetzung durch eine Stirnradstufe auf die Mittelwelle mit:
+𝜔5𝑧7 + 𝜔4𝑧6 = 0.
+(4.3) Die Geschwindigkeiten der elektrischen Fahrmaschinen ergeben sich aus der Übersetzung zur Mittelwelle mit der Geschwindigkeitsbeziehung:
+𝜔6𝑧11 + 𝜔5𝑧10 = 0, (4.4) 𝜔7𝑧12 + 𝜔5𝑧10 = 0.
+(4.5) Der Vorwärtsgang wird über:
+𝜔5𝑧9 + 𝜔8𝑧13 = 0, (4.6) übersetzt.
+Die letzte Übersetzung des Radsatzgetriebes erfolgt Radsatzgetriebe mit:
+𝜔8𝑧16 + 𝜔9𝑧17 = 0.
 (4.7) 4.1.2.
 Kinetische Gleichungen Die kinetischen Gleichungen beschreiben die Änderung der Beschleunigung der Systemkomponenten.
 Diese Änderung resultiert aus den von außen auf das System einwirkenden Momenten.
@@ -702,23 +793,40 @@ Das Verbrennungsmotormoment 𝑇𝐼𝐶𝐸 wird über die Kardanwelle auf die 
 
 
 𝑇𝐼𝐶𝐸 + 𝑇12 − 𝐽1 𝜔˙1 = 0.
-(4.8) Von der Stirnradstufe wird die Leistung auf den Planetenträger übertragen: 𝑇12𝑧1 − 𝑇21𝑧2 = 0, (4.9) 𝜔˙1𝑧1 + 𝜔˙7𝑧2 = 0.
-(4.10) Im Planetengetriebe werden die Beschleunigungen durch die Willis-Gleichung dargestellt: 𝜔˙3 − 𝑖0 𝜔˙9 + (𝑖0 − 1)𝜔˙7 = 0.
-(4.11) Die Standübersetzung: 𝑖0 = 𝑧5 , (4.12) 𝑧4 definiert den Zusammenhang zwischen dem Moment am Sonnenrad 𝑇𝑆 und dem Moment am Hohlrad 𝑇𝑅: 𝑇𝑆𝑖0 + 𝑇𝑅 = 0.
+(4.8) Von der Stirnradstufe wird die Leistung auf den Planetenträger übertragen:
+𝑇12𝑧1 − 𝑇21𝑧2 = 0, (4.9) 𝜔˙1𝑧1 + 𝜔˙7𝑧2 = 0.
+(4.10) Im Planetengetriebe werden die Beschleunigungen durch die Willis-Gleichung dargestellt:
+𝜔˙3 − 𝑖0 𝜔˙9 + (𝑖0 − 1)𝜔˙7 = 0.
+(4.11) Die Standübersetzung:
+𝑖0 = 𝑧5 , (4.12) 𝑧4 definiert den Zusammenhang zwischen dem Moment am Sonnenrad 𝑇𝑆 und dem Moment am Hohlrad 𝑇𝑅:
+𝑇𝑆𝑖0 + 𝑇𝑅 = 0.
 (4.13) Das Planetengetriebe wirkt als Summiereinheit.
-Die Bilanz der angreifenden Momente an der Planetenstufe ist: 𝑇𝐶 + 𝑇𝑅 + 𝑇𝑆 = 0.
-(4.14) Für die angrenzenden Wellen im Planetengetriebe gilt: 𝑇21 − 𝑇𝐶 − 𝐽2 𝜔˙2 = 0, (4.15) −𝑇𝑅 + 𝑇67 − 𝐽4 𝜔˙4 = 0, (4.16) −𝑇𝑆 + 𝑇𝐺𝐸𝑁 − 𝐽3 𝜔˙3 = 0.
-(4.17) Das summierte Moment wird über eine Stirnradstufe auf die Mittelwelle übertragen: 𝑇67𝑧6 − 𝑇76𝑧7 = 0, (4.18) 𝜔˙6𝑧6 + 𝜔˙9𝑧5 = 0.
-(4.19) Auf die Mittelwelle wirkt das summierte Moment des Planetengetriebes 𝑇76, die mechanische Bremsung 𝑇𝐵𝑅, die übersetzten Momente der elektrischen Fahrmaschinen (𝑇1011, 𝑇1012) und die Stirnradstufe des Abtriebs 𝑇913 oder 𝑇815: 𝑇76 + 𝑇913 + 𝑇1011 + 𝑇1012 + 𝑇815 + 𝑇𝐵𝑅 − 𝐽5 𝜔˙5 = 0.
-(4.20) Die elektrischen Fahrmaschinen wirken mit den Momenten 𝑇𝐸𝑀 1 und 𝑇𝐸𝑀 2 auf das System: 𝑇𝐸𝑀 1 + 𝑇1110 − 𝐽6 𝜔˙6 = 0, (4.21) 𝑇𝐸𝑀 2 + 𝑇1210 − 𝐽7 𝜔˙7 = 0.
-(4.22) Die Leistungsübertragung der elektrischen Fahrmotoren erfolgt über die Zahnräder 𝑧11 und 𝑧12 symmetrisch auf das Zahnrad 𝑧10: 𝑇1011𝑧10 − 𝑇1110𝑧11 = 0, (4.23) 𝑇1012𝑧10 − 𝑇1210𝑧12 = 0.
-(4.24) Der Zusammenhang zwischen der Beschleunigung der Fahrmotorwellen und der Mittelwelle folgt mit: 𝜔˙6𝑧11 + 𝜔˙5𝑧10 = 0, (4.25) 𝜔˙7𝑧12 + 𝜔˙5𝑧10 = 0.
-(4.26) Die Mittelwelle wirkt über die Vorwärtsfahrstufe auf den Abtrieb: 𝑇913𝑧9 − 𝑇139𝑧13 = 0, (4.27) 𝜔˙5𝑧9 + 𝜔˙2𝑧13 = 0.
-(4.28) Während der Vorwärtsfahrt findet keine Momentenübertragung über (𝑧8, 𝑧15, 𝑧14) statt: 𝑇815 = 0, (4.29) 𝑇1415 = 0.
-(4.30) Die Fahrrichtungsumkehr wird durch Wechseln auf die Rückwärtsfahrstufe ermöglicht: 𝑇815𝑧8 − 𝑇1415𝑧14 = 0, (4.31) 𝜔˙5𝑧8 + 𝜔˙8𝑧14 = 0.
-(4.32) Während der Vorwärtsfahrt wird 𝑧9 von der Mittelwelle entkoppelt und überträgt kein Moment: 𝑇913 = 0, (4.33) 𝑇139 = 0.
-(4.34) Die Leistungsübertragung auf von der Abtriebswelle auf das Radsatzgetriebe erfolgt: 𝑇139 + 𝑇1514 + 𝑇1617 − 𝐽8 𝜔˙8 = 0.
-(4.35) Das Radsatzgetriebe überträgt das summierte Traktionsmoment 𝑇1716 auf den Abtrieb: 𝑇1716 − 𝑇𝑅𝐸𝑆 − 𝐽9 𝜔˙9 = 0, (4.36) 𝑇1716𝑧17 − 𝑇1617𝑧16 = 0, (4.37) 𝜔˙8𝑧16 + 𝜔˙9𝑧17 = 0.
+Die Bilanz der angreifenden Momente an der Planetenstufe ist:
+𝑇𝐶 + 𝑇𝑅 + 𝑇𝑆 = 0.
+(4.14) Für die angrenzenden Wellen im Planetengetriebe gilt:
+𝑇21 − 𝑇𝐶 − 𝐽2 𝜔˙2 = 0, (4.15) −𝑇𝑅 + 𝑇67 − 𝐽4 𝜔˙4 = 0, (4.16) −𝑇𝑆 + 𝑇𝐺𝐸𝑁 − 𝐽3 𝜔˙3 = 0.
+(4.17) Das summierte Moment wird über eine Stirnradstufe auf die Mittelwelle übertragen:
+𝑇67𝑧6 − 𝑇76𝑧7 = 0, (4.18) 𝜔˙6𝑧6 + 𝜔˙9𝑧5 = 0.
+(4.19) Auf die Mittelwelle wirkt das summierte Moment des Planetengetriebes 𝑇76, die mechanische Bremsung 𝑇𝐵𝑅, die übersetzten Momente der elektrischen Fahrmaschinen (𝑇1011, 𝑇1012) und die Stirnradstufe des Abtriebs 𝑇913 oder 𝑇815:
+𝑇76 + 𝑇913 + 𝑇1011 + 𝑇1012 + 𝑇815 + 𝑇𝐵𝑅 − 𝐽5 𝜔˙5 = 0.
+(4.20) Die elektrischen Fahrmaschinen wirken mit den Momenten 𝑇𝐸𝑀 1 und 𝑇𝐸𝑀 2 auf das System:
+𝑇𝐸𝑀 1 + 𝑇1110 − 𝐽6 𝜔˙6 = 0, (4.21) 𝑇𝐸𝑀 2 + 𝑇1210 − 𝐽7 𝜔˙7 = 0.
+(4.22) Die Leistungsübertragung der elektrischen Fahrmotoren erfolgt über die Zahnräder 𝑧11 und 𝑧12 symmetrisch auf das Zahnrad 𝑧10:
+𝑇1011𝑧10 − 𝑇1110𝑧11 = 0, (4.23) 𝑇1012𝑧10 − 𝑇1210𝑧12 = 0.
+(4.24) Der Zusammenhang zwischen der Beschleunigung der Fahrmotorwellen und der Mittelwelle folgt mit:
+𝜔˙6𝑧11 + 𝜔˙5𝑧10 = 0, (4.25) 𝜔˙7𝑧12 + 𝜔˙5𝑧10 = 0.
+(4.26) Die Mittelwelle wirkt über die Vorwärtsfahrstufe auf den Abtrieb:
+𝑇913𝑧9 − 𝑇139𝑧13 = 0, (4.27) 𝜔˙5𝑧9 + 𝜔˙2𝑧13 = 0.
+(4.28) Während der Vorwärtsfahrt findet keine Momentenübertragung über (𝑧8, 𝑧15, 𝑧14) statt:
+𝑇815 = 0, (4.29) 𝑇1415 = 0.
+(4.30) Die Fahrrichtungsumkehr wird durch Wechseln auf die Rückwärtsfahrstufe ermöglicht:
+𝑇815𝑧8 − 𝑇1415𝑧14 = 0, (4.31) 𝜔˙5𝑧8 + 𝜔˙8𝑧14 = 0.
+(4.32) Während der Vorwärtsfahrt wird 𝑧9 von der Mittelwelle entkoppelt und überträgt kein Moment:
+𝑇913 = 0, (4.33) 𝑇139 = 0.
+(4.34) Die Leistungsübertragung auf von der Abtriebswelle auf das Radsatzgetriebe erfolgt:
+𝑇139 + 𝑇1514 + 𝑇1617 − 𝐽8 𝜔˙8 = 0.
+(4.35) Das Radsatzgetriebe überträgt das summierte Traktionsmoment 𝑇1716 auf den Abtrieb:
+𝑇1716 − 𝑇𝑅𝐸𝑆 − 𝐽9 𝜔˙9 = 0, (4.36) 𝑇1716𝑧17 − 𝑇1617𝑧16 = 0, (4.37) 𝜔˙8𝑧16 + 𝜔˙9𝑧17 = 0.
 (4.38)
 
 
@@ -738,7 +846,8 @@ Für die fahrdynamische Betrachtung genügt die Modellierung als Mittelwertmodel
 [Gas13] Das Mittelwertmodell wird durch ein Verzögerungsglied ergänzt, um den verzögerten Aufbau des Drehmoments darzustellen.
 Die vollständige Beschreibung des Mittelwertmodells erfolgt über die Kennfelder für Verbrauch (siehe Abbildung 4.4) und Emissionen des Verbrennungsmotors.
 Zusätzlich wird die Volllastkennlinie, die Schleppmomentenkennlinie und das Massenträgheitsmoment benötigt.
-[Hof11] Abb. 4.4.: Verbrauchskennfeld Verbrennungskraftmaschine in g/s mit Volllastkennlinie (-), Schleppline (-*) und der Linie des optimalen spezifischen Verbrauchs (-o).
+[Hof11] Abb. 4.4.:
+Verbrauchskennfeld Verbrennungskraftmaschine in g/s mit Volllastkennlinie (-), Schleppline (-*) und der Linie des optimalen spezifischen Verbrauchs (-o).
 Daten aus [IAV15].
 
 
@@ -751,8 +860,11 @@ In Abhängigkeit des SOC werden das maximale generatorische und motorische Momen
 Dies erfolgt unter Einbeziehung des Wirkungsgradkennfelds in Abbildung 4.5.
 Die zweite Begrenzung erfolgt durch Limitierung des maximalen mechanischen Moments.
 Weiterhin ist der Drehmomentenaufbau durch eine Zeitkonstante begrenzt.
-Der Zusammenhang zwischen mechanischer Leistung und elektrisch benötigter Leistung lautet: 𝑃𝑀 𝑒𝑐ℎ,𝑚𝑜𝑡 = 𝜂𝑚𝑜𝑡(𝑛𝐺𝑒𝑛,𝑇𝐺𝑒𝑛) · 𝑃𝐸𝑙𝑒𝑘,𝑚𝑜𝑡, (4.39) die generatorische Leistung beträgt: 𝑃𝐸𝑙𝑒𝑘,𝑔𝑒𝑛 = 𝑃𝑀 𝑒𝑐ℎ · 𝜂𝑚𝑜𝑡(𝑛𝑀 𝑜𝑡,𝑇𝑀 𝑜𝑡)−1.
-(4.40) Abb. 4.5.: Wirkungsgradkennfeld der elektrischen Maschinen in Abhängigkeit der Drehzahl und des Drehmoments.
+Der Zusammenhang zwischen mechanischer Leistung und elektrisch benötigter Leistung lautet:
+𝑃𝑀 𝑒𝑐ℎ,𝑚𝑜𝑡 = 𝜂𝑚𝑜𝑡(𝑛𝐺𝑒𝑛,𝑇𝐺𝑒𝑛) · 𝑃𝐸𝑙𝑒𝑘,𝑚𝑜𝑡, (4.39) die generatorische Leistung beträgt:
+𝑃𝐸𝑙𝑒𝑘,𝑔𝑒𝑛 = 𝑃𝑀 𝑒𝑐ℎ · 𝜂𝑚𝑜𝑡(𝑛𝑀 𝑜𝑡,𝑇𝑀 𝑜𝑡)−1.
+(4.40) Abb. 4.5.:
+Wirkungsgradkennfeld der elektrischen Maschinen in Abhängigkeit der Drehzahl und des Drehmoments.
 Daten aus [IAV15].
 
 
@@ -763,10 +875,13 @@ Die Batterie wird als idealer Energiespeicher angenommen.
 Der Wirkungsgrad der Batterie beträgt 𝜂𝐵𝑎𝑡𝑡𝑒𝑟𝑖𝑒 = 1.0 angenommen.
 Der Energiegehalt der Batterie beträgt 𝐸𝐵𝑎𝑡𝑡𝑒𝑟𝑖𝑒 = 50 kWh.
 Der Ladezustand einer Batterie wird als SOC (State of Charge) bezeichnet und kennzeichnet damit die wichtigste Kenngröße im Bordnetz.
-Der SOC kann als Quotient der in der Batterie gespeicherten Ladung 𝑄𝑖𝑠𝑡 und der maximal möglichen gespeicherten Ladung 𝑄𝑚𝑎𝑥 definiert werden[Rei10, S. 26]: SOC = 𝑄𝑖𝑠𝑡.
+Der SOC kann als Quotient der in der Batterie gespeicherten Ladung 𝑄𝑖𝑠𝑡 und der maximal möglichen gespeicherten Ladung 𝑄𝑚𝑎𝑥 definiert werden[Rei10, S. 26]:
+SOC = 𝑄𝑖𝑠𝑡.
 (4.41) 𝑄𝑚𝑎𝑥 Der nutzbare SOC-Bereich wird mit 20 bis 80 % angenommen (siehe Abbildung 4.6).
-Die benötigte Arbeit zur Veränderung des SOC um ΔSOC = 1 beträgt: 𝐸Δ𝑆𝑂𝐶 = 50 kWh/60 = 0,83 kWh.
-(4.42) Abb. 4.6.: Ersatzmodell der Batterie mit Batteriekontrolleinheit (BCU).
+Die benötigte Arbeit zur Veränderung des SOC um ΔSOC = 1 beträgt:
+𝐸Δ𝑆𝑂𝐶 = 50 kWh/60 = 0,83 kWh.
+(4.42) Abb. 4.6.:
+Ersatzmodell der Batterie mit Batteriekontrolleinheit (BCU).
 Die BCU dient der Überwachung der Batterie und der Begrenzung der Leistungsströme.
 4.3.
 Wirkungsgradbetrachtung des Leistungsflusses Zum Systemverständnis und zur Einordnung der Potentiale für die in Abschnitt 2.1.2 betrachteten Betriebsstrategien, werden die theoretisch maximalen Wirkungsgrade der
@@ -787,22 +902,29 @@ Die Leistung fließt durch das Getriebe über eine Kardanwelle, eine Stirnradstu
 triebe.
 Jede Stufe beinhaltet individuelle Verluste.
 Tabelle 4.1 enthält die verwendeten Wirkungsgradannahmen aus der Literatur.
-Getriebestufe Abkürzung Wirkungsgrad Kardanwelle 𝜂𝐾𝑎𝑟𝑑𝑎𝑛 0,97 Stirnradstufe 𝜂𝑆𝑡𝑖𝑟𝑛𝑟𝑎𝑑 0,98 Planetengetriebe 𝜂𝑃 𝑙𝑎𝑛𝑒𝑡 0,985 Achsgetriebe 𝜂𝐴𝑐ℎ𝑠 0,95 Tab. 4.1.: Theoretischer Wirkungsgrad der Getriebestufen [Wit13].
-Für die rein mechanische Leistungsübertrag ergibt sich ein Getriebewirkungsgrad 𝜂𝐺𝑒𝑡𝑟𝑖𝑒𝑏𝑒 von: 𝜂𝐺𝑒𝑡𝑟𝑖𝑒𝑏𝑒 = 𝜂𝐾𝑎𝑟𝑑𝑎𝑛𝜂𝑆𝑡𝑖𝑟𝑛𝑟𝑎𝑑𝜂𝑃 𝑙𝑎𝑛𝑒𝑡𝜂𝑆𝑡𝑖𝑟𝑛𝑟𝑎𝑑𝜂𝑆𝑡𝑖𝑟𝑛𝑟𝑎𝑑𝜂𝐾𝑎𝑟𝑑𝑎𝑛𝜂𝐴𝑐ℎ𝑠 (4.43) = 0,97 · 0,98 · 0,985 · 0,98 · 0,98 · 0,97 · 0,95 = 0,829.
+Getriebestufe Abkürzung Wirkungsgrad Kardanwelle 𝜂𝐾𝑎𝑟𝑑𝑎𝑛 0,97 Stirnradstufe 𝜂𝑆𝑡𝑖𝑟𝑛𝑟𝑎𝑑 0,98 Planetengetriebe 𝜂𝑃 𝑙𝑎𝑛𝑒𝑡 0,985 Achsgetriebe 𝜂𝐴𝑐ℎ𝑠 0,95 Tab. 4.1.:
+Theoretischer Wirkungsgrad der Getriebestufen [Wit13].
+Für die rein mechanische Leistungsübertrag ergibt sich ein Getriebewirkungsgrad 𝜂𝐺𝑒𝑡𝑟𝑖𝑒𝑏𝑒 von:
+𝜂𝐺𝑒𝑡𝑟𝑖𝑒𝑏𝑒 = 𝜂𝐾𝑎𝑟𝑑𝑎𝑛𝜂𝑆𝑡𝑖𝑟𝑛𝑟𝑎𝑑𝜂𝑃 𝑙𝑎𝑛𝑒𝑡𝜂𝑆𝑡𝑖𝑟𝑛𝑟𝑎𝑑𝜂𝑆𝑡𝑖𝑟𝑛𝑟𝑎𝑑𝜂𝐾𝑎𝑟𝑑𝑎𝑛𝜂𝐴𝑐ℎ𝑠 (4.43) = 0,97 · 0,98 · 0,985 · 0,98 · 0,98 · 0,97 · 0,95 = 0,829.
 Der Gesamtwirkungsgrad am Achsgetriebe ergibt sich aus der Kombination des Wirkungsgrades des Verbrennungsmotors und dem Getriebe.
-Der maximale Wirkungsgrad eines Dieselmotors beträgt 𝜂𝐼𝐶𝐸 = 0.45 [Bas14, S.20].Der maximale mechanische Wirkungsgrad 𝜂𝐼𝐶𝐸,𝑚𝑒𝑐ℎ ergibt: 𝜂𝐼𝐶𝐸,𝑚𝑒𝑐ℎ = 𝜂𝐼𝐶𝐸 · 𝜂𝐺𝑒𝑡𝑟𝑖𝑒𝑏𝑒 (4.44) = 0,45 · 0,829 = 0,37.
+Der maximale Wirkungsgrad eines Dieselmotors beträgt 𝜂𝐼𝐶𝐸 = 0.45 [Bas14, S.20].Der maximale mechanische Wirkungsgrad 𝜂𝐼𝐶𝐸,𝑚𝑒𝑐ℎ ergibt:
+𝜂𝐼𝐶𝐸,𝑚𝑒𝑐ℎ = 𝜂𝐼𝐶𝐸 · 𝜂𝐺𝑒𝑡𝑟𝑖𝑒𝑏𝑒 (4.44) = 0,45 · 0,829 = 0,37.
 4.3.2.
 Elektrisches Fahren Für die elektrische Antriebsleistung folgt die Abschätzung des maximalen Wirkungsgrades bezogen auf das Achsgetriebe.
 Für die Einzelkomponenten gelten die Annahmen aus Tabelle 4.1 und 4.2.
-Wandler Abkürzung Wirkungsgrad Gleichrichter und Batterie 𝜂𝐵𝑎𝑡𝑡 0,97 Fahrmaschine 𝜂𝐸𝑀 0,95 Generator 𝜂𝐺𝑒𝑛 0,95 Tab. 4.2.: Wirkungsgrad der elektrischen Komponenten [Pfe14], [IAV15].
+Wandler Abkürzung Wirkungsgrad Gleichrichter und Batterie 𝜂𝐵𝑎𝑡𝑡 0,97 Fahrmaschine 𝜂𝐸𝑀 0,95 Generator 𝜂𝐺𝑒𝑛 0,95 Tab. 4.2.:
+Wirkungsgrad der elektrischen Komponenten [Pfe14], [IAV15].
 
 
 :::: Elektrisches Fahren ::::
 
 
-Generator Der Wirkungsgrad 𝜂𝐼𝑐𝑒𝐺𝑒𝑛,𝑚𝑒𝑐ℎ des mechanischen Getriebes zwischen Verbrennungsmotor und Generator beträgt: 𝜂𝐼𝐶𝐸𝐺𝐸𝑁,𝑚𝑒𝑐ℎ = 𝜂𝐾𝑎𝑟𝑑𝑎𝑛𝜂𝑆𝑡𝑖𝑟𝑛𝑟𝑎𝑑𝜂𝑃 𝑙𝑎𝑛𝑒𝑡 (4.45) = 0,97 · 0,98 · 0,985 = 0,936.
-Zur Speicherung der elektrischen Energie unter Einbeziehung von Verbrennungsmotor-, Getriebe-, Generatorwirkungsgrad und Speicherverlusten in der Batterie folgt ein maximaler Wirkungsgrad von: 𝜂𝐺𝑒𝑛,𝑒𝑙𝑒𝑘 = 𝜂𝐼𝐶𝐸 · 𝜂𝐼𝐶𝐸𝐺𝐸𝑁,𝑚𝑒𝑐ℎ · 𝜂𝐺𝑒𝑛,𝑏𝑎𝑡𝑡 · 𝜂𝐺𝑒𝑛 (4.46) = 0,40 · 0,936 · 0,97 · 0,95 = 0,345.
-Elektrische Fahrmaschine Der maximale Getriebewirkungsgrad zwischen elektrischer Fahrmaschine und Achsgetriebe ergibt sich zu: 𝜂𝐸𝑀,𝑎𝑏𝑡𝑟𝑖𝑒𝑏 = 𝜂𝑆𝑡𝑖𝑟𝑛𝑟𝑎𝑑 · 𝜂𝑆𝑡𝑖𝑟𝑛𝑟𝑎𝑑 · 𝜂𝐾𝑎𝑟𝑑𝑎𝑛 · 𝜂𝐴𝑐ℎ𝑠 (4.47) = 0,98 · 0,98 · 0,97 · 0,95 = 0,885.
+Generator Der Wirkungsgrad 𝜂𝐼𝑐𝑒𝐺𝑒𝑛,𝑚𝑒𝑐ℎ des mechanischen Getriebes zwischen Verbrennungsmotor und Generator beträgt:
+𝜂𝐼𝐶𝐸𝐺𝐸𝑁,𝑚𝑒𝑐ℎ = 𝜂𝐾𝑎𝑟𝑑𝑎𝑛𝜂𝑆𝑡𝑖𝑟𝑛𝑟𝑎𝑑𝜂𝑃 𝑙𝑎𝑛𝑒𝑡 (4.45) = 0,97 · 0,98 · 0,985 = 0,936.
+Zur Speicherung der elektrischen Energie unter Einbeziehung von Verbrennungsmotor-, Getriebe-, Generatorwirkungsgrad und Speicherverlusten in der Batterie folgt ein maximaler Wirkungsgrad von:
+𝜂𝐺𝑒𝑛,𝑒𝑙𝑒𝑘 = 𝜂𝐼𝐶𝐸 · 𝜂𝐼𝐶𝐸𝐺𝐸𝑁,𝑚𝑒𝑐ℎ · 𝜂𝐺𝑒𝑛,𝑏𝑎𝑡𝑡 · 𝜂𝐺𝑒𝑛 (4.46) = 0,40 · 0,936 · 0,97 · 0,95 = 0,345.
+Elektrische Fahrmaschine Der maximale Getriebewirkungsgrad zwischen elektrischer Fahrmaschine und Achsgetriebe ergibt sich zu:
+𝜂𝐸𝑀,𝑎𝑏𝑡𝑟𝑖𝑒𝑏 = 𝜂𝑆𝑡𝑖𝑟𝑛𝑟𝑎𝑑 · 𝜂𝑆𝑡𝑖𝑟𝑛𝑟𝑎𝑑 · 𝜂𝐾𝑎𝑟𝑑𝑎𝑛 · 𝜂𝐴𝑐ℎ𝑠 (4.47) = 0,98 · 0,98 · 0,97 · 0,95 = 0,885.
 Elektrische Energie aus der Batterie kann mit einem Wirkungsgrad von 𝜂𝐸𝑀,𝑚𝑒𝑐ℎ zum Antrieb genutzt werden.
 𝜂𝐸𝑀,𝑚𝑒𝑐ℎ = 𝜂𝐵𝑎𝑡𝑡 · 𝜂𝐸𝑀 · 𝜂𝐸𝑀,𝑎𝑏𝑡𝑟𝑖𝑒𝑏 (4.48) = 0,97 · 0,95 · 0,885 = 0,816.
 
@@ -811,16 +933,19 @@ Elektrische Energie aus der Batterie kann mit einem Wirkungsgrad von 𝜂𝐸�
 
 
 Die Zahnradkonfiguration wird manuell nach den Vorgaben aus den Abschnitten 3.1.3, 3.2, 3.3 mit dem Verfahren nach Abbildung 4.7 festgelegt.
-Abb. 4.7.: Ablauf der manuellen Getriebesynthese zur Erzeugung einer Zähnezahlkombination.
+Abb. 4.7.:
+Ablauf der manuellen Getriebesynthese zur Erzeugung einer Zähnezahlkombination.
 Das Ergebnis der Konfiguration ist in Tabelle 4.3 dargestellt.
 Eine Optimierung der Zähnezahlen wurde nicht durchgeführt.
 Die Zähnezahlen mit dem Standardwert 11 bzw. 9 werden nicht weiter betrachtet.
-Zahnrad Zähnezahl Zahnrad Zähnezahl Zahnrad Zähnezahl 𝑧1 9 𝑧2 11 𝑧3 27 𝑧4 30 𝑧5 -110 𝑧6 11 𝑧7 9 𝑧8 11 𝑧9 30 𝑧10 30 𝑧11 11 𝑧12 9 𝑧13 11 𝑧14 9 𝑧15 15 𝑧16 27 𝑧17 144 Tab. 4.3.: Manuell erzeugte Getriebekonfiguration aus der Anforderungsanalyse.
+Zahnrad Zähnezahl Zahnrad Zähnezahl Zahnrad Zähnezahl 𝑧1 9 𝑧2 11 𝑧3 27 𝑧4 30 𝑧5 -110 𝑧6 11 𝑧7 9 𝑧8 11 𝑧9 30 𝑧10 30 𝑧11 11 𝑧12 9 𝑧13 11 𝑧14 9 𝑧15 15 𝑧16 27 𝑧17 144 Tab. 4.3.:
+Manuell erzeugte Getriebekonfiguration aus der Anforderungsanalyse.
 Die Konfiguration sichert die Fahrbarkeit des Systems auf der gegebenen Referenzstrecke.
 In Abbildung 4.8 ist die benötigte Traktionsleistung, die mögliche Traktionsleistung und die maximale Verbrennungsmotorleistung in Abhängigkeit der Fahrzeuggeschwindigkeit abgebildet.
 Die Leistungsanforderung der Referenzstrecke wird für sämtliche Fahrzeuggeschwindigkeiten garantiert.
 Geschwindigkeiten über 50 km/h sind im Referenzprofil nicht enthalten und werden daher nicht betrachtet.
-Abb. 4.8.: Maximale Leistungsabgabe der Getriebekonfiguration mit den gegeben Komponenten in Abhängigkeit der Fahrzeuggeschwindigkeit
+Abb. 4.8.:
+Maximale Leistungsabgabe der Getriebekonfiguration mit den gegeben Komponenten in Abhängigkeit der Fahrzeuggeschwindigkeit
 
 
 :::: Entwicklung der Betriebsstrategie ::::
@@ -843,7 +968,8 @@ Nach dem Prinzip der optimalen Substruktur besteht ein optimaler Weg stets aus o
 Der optimale Weg aus k Teilwegen entspricht dem minimalen Erwartungswert der Summe der direkten Übergangskosten der einzelnen Teilwege.
 Die Minimierung der Kosten erfolgt durch Backward-Dynamic-Programming.
 Dabei wird durch Rückwärtsrechnung über sämtliche zur Verfügung stehende Aktionen optimiert.
-[Pap15] Abb. 5.1.: Mehrstufige Entscheidung nach [Rie11]
+[Pap15] Abb. 5.1.:
+Mehrstufige Entscheidung nach [Rie11]
 
 
 :::: Systembeschreibung ::::
@@ -854,11 +980,20 @@ Das aktuelle Verhalten 𝑠𝑡 kann durch Aktionen 𝑢𝑡 geändert werden.
 Diese Eingriffe verursachen Kosten 𝑐𝑡,𝑢 und sind zu diskreten Zeitpunkten t möglich.
 Der Zeithorizont ist endlich und endet nach N Entscheidungen.
 Das System wird als deterministisch betrachtet.
-Die Beschreibung des Systemverhalten folgt nach [Rie11] durch: 𝑁 diskrete Entscheidungspunkte: 𝑡 ∈ 𝑇 = {0,1, ..., 𝑁 } , endliche Zustandsmenge: 𝑠𝑡 ∈ 𝑆 = {1,2,...,𝑛} , endliche Aktionsmenge: 𝑢𝑡 ∈ 𝑈 = {𝑢1,...,𝑢𝑚} , direkte Kosten: 𝑐 : 𝑆 × 𝑈 → R, Übergangsfunktion: 𝑠𝑡+1 = 𝑓 (𝑠𝑡, 𝑢𝑡).
+Die Beschreibung des Systemverhalten folgt nach [Rie11] durch:
+𝑁 diskrete Entscheidungspunkte:
+𝑡 ∈ 𝑇 = {0,1, ..., 𝑁 } , endliche Zustandsmenge:
+𝑠𝑡 ∈ 𝑆 = {1,2,...,𝑛} , endliche Aktionsmenge:
+𝑢𝑡 ∈ 𝑈 = {𝑢1,...,𝑢𝑚} , direkte Kosten:
+𝑐 :
+𝑆 × 𝑈 → R, Übergangsfunktion:
+𝑠𝑡+1 = 𝑓 (𝑠𝑡, 𝑢𝑡).
 5.1.2.
 Kosten Jede Entscheidung erzeugt Kosten.
-Diese fallen als direkte Kosten 𝑐 : 𝑆 → R, (5.1) an.
-Die verfeinerten Kosten sind von Zustand und Aktion 𝑐 : 𝑆 × 𝑈 → R, (5.2)
+Diese fallen als direkte Kosten 𝑐 :
+𝑆 → R, (5.1) an.
+Die verfeinerten Kosten sind von Zustand und Aktion 𝑐 :
+𝑆 × 𝑈 → R, (5.2)
 
 
 :::: Kosten ::::
@@ -867,8 +1002,12 @@ Die verfeinerten Kosten sind von Zustand und Aktion 𝑐 : 𝑆 × 𝑈 → R, (
 𝐾 = ∑︁ 𝑐(𝑠𝑡,𝑢𝑡).
 (5.3) 𝑡∈𝑇 5.1.3.
 Strategie Das Optimalziel wird durch Anwendung einer Strategie erreicht.
-Die Auswahlfunktion: 𝜋𝑡 : 𝑆 → 𝑈, 𝜋𝑡(𝑠) = 𝑢, (5.4) wählt zum Zeitpunkt 𝑡 eine Aktion 𝑢 ∈ 𝑈 als Funktion des aktuellen Zustands 𝑠 ∈ 𝑆.
-Zusätzlich kann dies situationsabhängig 𝑈 (𝑠) erfolgen: 𝜋𝑡 : 𝑆 → 𝑈, 𝜋𝑡(𝑠) = 𝑢, mit 𝑢 ∈ 𝑈 (𝑠).
+Die Auswahlfunktion:
+𝜋𝑡 :
+𝑆 → 𝑈, 𝜋𝑡(𝑠) = 𝑢, (5.4) wählt zum Zeitpunkt 𝑡 eine Aktion 𝑢 ∈ 𝑈 als Funktion des aktuellen Zustands 𝑠 ∈ 𝑆.
+Zusätzlich kann dies situationsabhängig 𝑈 (𝑠) erfolgen:
+𝜋𝑡 :
+𝑆 → 𝑈, 𝜋𝑡(𝑠) = 𝑢, mit 𝑢 ∈ 𝑈 (𝑠).
 (5.5) Eine Strategie 𝜋^ umfasst N Auswahlfunktionen.
 N bezeichnet die Anzahl der Entscheidungspunkte
 
@@ -879,8 +1018,11 @@ N bezeichnet die Anzahl der Entscheidungspunkte
 Die Auswahlfunktion 𝜋𝑡 ist vom Zeitpunkt der Entscheidung abhängig.
 Dieselbe Situation kann in verschiedenen Zeitpunkten zu verschiedenen Entscheidungen führen.
 Dies wird als nicht stationäre Strategie bezeichnet.
-Für die Pfadkosten 𝐾, folgt für einen gegebenen Zustand s bei nicht stationärer Strategie 𝜋𝑡: 𝐾𝜋(𝑠) = ∑︁ 𝑐(𝑠𝑡, 𝜋𝑡(𝑠𝑡)), 𝑠0 = 𝑠.
-(5.7) 𝑡∈𝑇 Für die optimale Strategie 𝜋* folgt: ∑︁ 𝐾𝜋*(𝑠) = 𝑚𝑖𝑛 𝑐(𝑠𝑡,𝜋𝑡(𝑠𝑡)), 𝑠0 = 𝑠, (5.8) 𝜋∈𝜋^ 𝑡∈𝑇 mit der Nebenbedingung für den Zustandsübergang: 𝑠𝑡+1 = 𝑓 (𝑠𝑡, 𝑢𝑡).
+Für die Pfadkosten 𝐾, folgt für einen gegebenen Zustand s bei nicht stationärer Strategie 𝜋𝑡:
+𝐾𝜋(𝑠) = ∑︁ 𝑐(𝑠𝑡, 𝜋𝑡(𝑠𝑡)), 𝑠0 = 𝑠.
+(5.7) 𝑡∈𝑇 Für die optimale Strategie 𝜋* folgt:
+∑︁ 𝐾𝜋*(𝑠) = 𝑚𝑖𝑛 𝑐(𝑠𝑡,𝜋𝑡(𝑠𝑡)), 𝑠0 = 𝑠, (5.8) 𝜋∈𝜋^ 𝑡∈𝑇 mit der Nebenbedingung für den Zustandsübergang:
+𝑠𝑡+1 = 𝑓 (𝑠𝑡, 𝑢𝑡).
 5.1.4.
 Backward-Dynamic-Programming In Abbildung 5.2 ist das Verfahren der dynamischen Programmierung skizziert.
 Im Beispiel wird eine optimale Zustandsfolge mit minimalen Kosten zwischen dem Startzustand 𝑠0 und dem Zielzustand 𝑠𝑁 =6 bestimmt.
@@ -913,7 +1055,8 @@ Dazu wird das eCVT-Modell in Matlab umgesetzt (siehe Abschnitt A.5.2).
 Die Referenzlösung dient als Datengrundlage für die Erzeugung einer kennfeldbasierten Betriebsstrategie.
 Die Betriebsstrategie regelt die Verbrennungsmotorleistung in Abhängig des SOC und der Leistungsanforderung des Fahrers.
 Das gesamte Verfahren ist in Abbildung 5.3 dargestellt.
-Abb. 5.3.: Vorgehen zum Erzeugen des Betriebsstrategiekennfeldes für die Referenzstrecke.
+Abb. 5.3.:
+Vorgehen zum Erzeugen des Betriebsstrategiekennfeldes für die Referenzstrecke.
 Die Berechnung des theoretischen Optimums des Fahrzeugverbrauchs mit Hilfe der dynamischen Programmierung, gliedert sich in zwei Teilschritte (siehe Abbildung 5.3).
 Zuerst erfolgt die Vorbereitungsphase in der sich wiederholende Getriebezustände vorberechnet und zwischengespeichert werden.
 Die Vorbereitungsphase beginnt mit der Analyse des Streckenprofils (siehe Abschnitt 5.2.1) zur Ermittlung der Fahrzustände des Fahrzeugs.
@@ -930,7 +1073,8 @@ Aus diesen Tupeln werden die möglichen Aktionen (siehe Abschnitt 5.2.2) erzeugt
 Die Radsatzbeschleunigung 𝜔˙𝑊 und das Traktionsmoment 𝑇𝑇 müssen durch die Komponenten des Antriebsstrang erzeugt werden.
 Dies erfolgt durch den Verbrennungsmotor, die elektrischen Fahrmaschinen, den Generator und die mechanische Bremse.
 Aus der kontinuierliche Systembeschreibung durch die Differentialgleichungen sind unendlich viele Kombinationen der Antriebskomponenten zur Erzeugung des Traktionsmoments am Radsatz möglich.
-Abb. 5.4.: Ermittelung der Fahrzeuganforderungsspezifikation aus den gegebenen Streckenfahrprofilen.
+Abb. 5.4.:
+Ermittelung der Fahrzeuganforderungsspezifikation aus den gegebenen Streckenfahrprofilen.
 
 
 :::: Wiederholende Aktionsmöglichkeiten erzeugen ::::
@@ -939,13 +1083,16 @@ Abb. 5.4.: Ermittelung der Fahrzeuganforderungsspezifikation aus den gegebenen S
 Die Leistungsanforderung am Radsatz wird zwischen dem Verbrennungsmotor, dem Generator, den zwei Fahrmotoren und der konventionellen Bremse aufgeteilt.
 Der Wirkungsgrad dieser Komponenten ist abhängig von Drehzahl und Leistungsabgabe.
 Diese Kombinationen sind aufwendig zu berechnen und werden häufig in gleicher Form benötigt.
-Zur Abb. 5.5.: Aktionsraum aus der Diskretisierung der Getriebezustände über ein Gitter erzeugen.
+Zur Abb. 5.5.:
+Aktionsraum aus der Diskretisierung der Getriebezustände über ein Gitter erzeugen.
 Reduktion der Rechenzeit werden diese Aktionen vor der dynamischen Programmierung berechnet und in einer Lookup-Table zwischengespeichert und können ohne Rechenzeitbedarf ausgelesen werden.
 Da die Aktionen kontinuierlich sind und es dementsprechend unendlich viele Möglichkeiten gibt, werden die Aktionen über ein Gitter diskretisiert.
 Ein Zustand s wird über die Beschleunigungsanforderung am Rad, das benötigte Traktionsmoment und die Gesamtfahrzeugmasse identifiziert.
 Für jeden Zustand s sind Listen mit möglichen Aktionen (𝑇𝐼𝐶𝐸,𝑖, 𝑇𝐺𝐸𝑁,𝑖, 𝑇𝐵𝑅,𝑖, 𝑇𝐸𝑀,𝑖, 𝜔˙𝐼𝐶𝐸,𝑖 , 𝜔˙𝐺𝐸𝑁,𝑖) gespeichert.
-Die Gleichungen 5.9 bis 5.11 beschreiben das Prinzip der Diskretisierung: 𝑇𝐸𝑀 1,2 = {−4000, −3000, −2000, −1500, ..., 3000, 4000} , (5.9) 𝑇𝐵𝑅 = {0, −1000, −2000, ..., −10000} , (5.10) 𝑇𝐼𝐶𝐸 = {−450, −300, −150, −50, 0, 50, 100, 150, 200, ..., 6000}.
-(5.11) Der Aktionsraum wird entsprechend: 𝑍 = 𝜔˙W × 𝑇T × 𝑚L × 𝑇𝐸𝑀 × 𝑇𝐵𝑅 × 𝑇𝐼𝐶𝐸, (5.12) erzeugt.
+Die Gleichungen 5.9 bis 5.11 beschreiben das Prinzip der Diskretisierung:
+𝑇𝐸𝑀 1,2 = {−4000, −3000, −2000, −1500, ..., 3000, 4000} , (5.9) 𝑇𝐵𝑅 = {0, −1000, −2000, ..., −10000} , (5.10) 𝑇𝐼𝐶𝐸 = {−450, −300, −150, −50, 0, 50, 100, 150, 200, ..., 6000}.
+(5.11) Der Aktionsraum wird entsprechend:
+𝑍 = 𝜔˙W × 𝑇T × 𝑚L × 𝑇𝐸𝑀 × 𝑇𝐵𝑅 × 𝑇𝐼𝐶𝐸, (5.12) erzeugt.
 Das Einsetzen von Z in die Systemgleichungen liefert die Tupel (𝜔˙𝐺𝐸𝑁 , 𝜔˙𝐼𝐶𝐸, 𝑇𝐺𝐸𝑁 ) × 𝑀.Von diesen M Aktionen werden alle gültigen Kombinationen übernommen.
 Durch Überschreiten der Systemgrenzen (z.B. 𝜔˙𝐺𝐸𝑁 > 𝜔˙𝐺𝐸𝑁,𝑚𝑎𝑥) werden ungültige Aktionen erzeugt, die verworfen und nicht gespeichert werden.
 Übersteigt die Anzahl der gültigen Aktionen die maximal zu speichernde Anzahl, werden systematisch Aktionen aussortiert.
@@ -953,7 +1100,8 @@ Es entsteht ein diskreter Gesamtaktionsraum für das Fahrzeug.
 Dieser wird in der dynamischen Programmierung bei der Aktionsauswahl verwendet.
 Der Gesamtaktionsraum wird nach dem Erzeugen gespeichert.
 Ein Beispiel für einen Gesamtaktionsraum ist in Abbildung 5.6 dargestellt.
-Abb. 5.6.: Anzahl der Aktionen u(s) in Abhängigkeit des Zustands s. Die Identifizierung des Fahrzeugzustands erfolgt über das Traktionsmoment 𝑇𝑇 und die Radsatzbeschleunigung 𝜔˙𝑊.
+Abb. 5.6.:
+Anzahl der Aktionen u(s) in Abhängigkeit des Zustands s. Die Identifizierung des Fahrzeugzustands erfolgt über das Traktionsmoment 𝑇𝑇 und die Radsatzbeschleunigung 𝜔˙𝑊.
 
 
 :::: Simulation ::::
@@ -966,37 +1114,52 @@ Weiterhin werden der erzeugte Aktionsraum und die Bauteilgrenzen benötigt.
 Die dynamische Programmierung erzeugt den verbrauchsoptimalen Pfad für den vorgegebenen Fahrzyklus.
 Durch die Simulation entsteht eine Beschreibung des gesamten Fahrzeugverhaltens über den Fahrzyklus.
 Für die weitere Auswertung werden die Optimaldaten des Verlaufs des SOC und der Verbrennungsmotorleistung benötigt.
-Abb. 5.7.: Schnittstellendefinition der dynamischen Programmierung.
+Abb. 5.7.:
+Schnittstellendefinition der dynamischen Programmierung.
 Rückwärtsrechnung Ausgehend vom Endzustand N der Streckendaten findet die Rückwärtsrechnung statt.
-Die Berechnung beginnt mit dem finalen SOC-Stand und dem System in Ruhe: (𝑁 ) = 0 (5.13) 𝑠𝜔𝐼𝐶𝐸 (𝑁 ) = 0 𝑠𝜔˙𝐼𝐶𝐸 (𝑁 ) = 0 𝑠𝜔W (𝑁 ) = 0 (5.14) 𝑠𝜔˙W (𝑁 ) = 0 𝑠𝑇𝐸𝑀 1,2 (𝑁 ) = 0 𝑠𝑇𝐵𝑅 (𝑁 ) = 0 (5.15) 𝑠𝑇1716 (𝑁 ) = 0 𝑠𝑇𝐼𝐶𝐸 (𝑁 ) = 0 𝑠𝑇𝐺𝐸𝑁 Es liegen keine äußeren Momente an.
+Die Berechnung beginnt mit dem finalen SOC-Stand und dem System in Ruhe:
+(𝑁 ) = 0 (5.13) 𝑠𝜔𝐼𝐶𝐸 (𝑁 ) = 0 𝑠𝜔˙𝐼𝐶𝐸 (𝑁 ) = 0 𝑠𝜔W (𝑁 ) = 0 (5.14) 𝑠𝜔˙W (𝑁 ) = 0 𝑠𝑇𝐸𝑀 1,2 (𝑁 ) = 0 𝑠𝑇𝐵𝑅 (𝑁 ) = 0 (5.15) 𝑠𝑇1716 (𝑁 ) = 0 𝑠𝑇𝐼𝐶𝐸 (𝑁 ) = 0 𝑠𝑇𝐺𝐸𝑁 Es liegen keine äußeren Momente an.
 Zusätzlich sind keine Beschleunigungen im System vorhanden.
 Vom finalen Zustand N wird nun der Vorgängerzustand N-1 betrachtet.
 Dieser weist ein Traktionsmoment und eine Radsatzbeschleunigung auf.
 Ausgehend von diesen Daten werden mögliche Aktionen ausgewählt.
-Ein Vorgängerzustand ergibt sich allgemein durch Subtrahieren der Aktion 𝑢𝑛−1 vom Nachfolgezustand 𝑠𝑛 folgendermaßen: (𝑛 − 1), (5.16) 𝑠𝜔𝐼𝐶𝐸 (𝑛 − 1) = 𝑠𝜔𝐼𝐶𝐸 (𝑛) − 𝑢𝜔˙𝐼𝐶𝐸 (𝑛 − 1).
+Ein Vorgängerzustand ergibt sich allgemein durch Subtrahieren der Aktion 𝑢𝑛−1 vom Nachfolgezustand 𝑠𝑛 folgendermaßen:
+(𝑛 − 1), (5.16) 𝑠𝜔𝐼𝐶𝐸 (𝑛 − 1) = 𝑠𝜔𝐼𝐶𝐸 (𝑛) − 𝑢𝜔˙𝐼𝐶𝐸 (𝑛 − 1).
 (5.17) 𝑠𝜔𝐺𝐸𝑁 (𝑛 − 1) = 𝑠𝜔𝐺𝐸𝑁 (𝑛) − 𝑢𝜔˙𝐺𝐸𝑁 Die Drehzahl des Motors im Zustand ergibt sich durch Subtraktion der Motorbeschleunigung des Zustands von der Motordrehzahl der Folgezustands.
 Durch Kenntnis der Motordrehzahl und der gegeben Radsatzdrehzahl aus dem Fahrzyklus sind alle Drehzahlen für den Vorgängerzustand bestimmt.
-Die Momente der Antriebsstrangkomponenten (𝑇𝐼𝐶𝐸, 𝑇𝐺𝐸𝑁 , 𝑇𝐸𝑀 1,2, 𝑇𝐵𝑅) werden als konstant über den Rechenschritt angenommen: 𝑠𝑇,𝐼𝐶𝐸(𝑛 − 1) = 𝑢𝑇,𝐼𝐶𝐸(𝑛 − 1) 𝑠𝑇,𝐺𝐸𝑁 (𝑛 − 1) = 𝑢𝑇,𝐺𝐸𝑁 (𝑛 − 1), (5.18) 𝑠𝑇,𝐸𝑀 1(𝑛 − 1) = 𝑢𝑇,𝐸𝑀 (𝑛 − 1) 𝑠𝑇,𝐸𝑀 2(𝑛 − 1) = 𝑢𝑇,𝐸𝑀 (𝑛 − 1).
+Die Momente der Antriebsstrangkomponenten (𝑇𝐼𝐶𝐸, 𝑇𝐺𝐸𝑁 , 𝑇𝐸𝑀 1,2, 𝑇𝐵𝑅) werden als konstant über den Rechenschritt angenommen:
+𝑠𝑇,𝐼𝐶𝐸(𝑛 − 1) = 𝑢𝑇,𝐼𝐶𝐸(𝑛 − 1) 𝑠𝑇,𝐺𝐸𝑁 (𝑛 − 1) = 𝑢𝑇,𝐺𝐸𝑁 (𝑛 − 1), (5.18) 𝑠𝑇,𝐸𝑀 1(𝑛 − 1) = 𝑢𝑇,𝐸𝑀 (𝑛 − 1) 𝑠𝑇,𝐸𝑀 2(𝑛 − 1) = 𝑢𝑇,𝐸𝑀 (𝑛 − 1).
 (5.19) Nun wird über die Aktionen des Aktionsraum iteriert.
 Die Multiplikation der Momente der Komponenten mit ihren Winkelgeschwindigkeiten berechnet die Leistungen (Verbrennungsmotor, Generator, Fahrmotor, Bremse) im System.
 Die Belastung der Batterie entsteht durch Summieren der elektrischen Verbraucher (Generator, Motor, Hilfsaggregate) und entspricht der Batterieleistung 𝑢𝑃,𝑏𝑎𝑡𝑡(𝑛 − 1).
-Die Änderung des SOC ergibt sich aus: 𝑢Δ𝑆𝑂𝐶(𝑛 − 1) = 𝑢𝑃,𝑏𝑎𝑡𝑡(𝑛 − 1) · 1 s.(5.20) 𝐸Δ𝑆𝑂𝐶 𝐸Δ𝑆𝑂𝐶 bezeichnet die Energie die nötigt ist, um ein SOC-Schritt zu verursachen.
-Der SOC-Übergang ergibt sich dann zu: 𝑠𝑆𝑂𝐶(𝑛 − 1) = 𝑠𝑆𝑂𝐶(𝑛) − 𝑢Δ𝑆𝑂𝐶(𝑛 − 1).
+Die Änderung des SOC ergibt sich aus:
+𝑢Δ𝑆𝑂𝐶(𝑛 − 1) = 𝑢𝑃,𝑏𝑎𝑡𝑡(𝑛 − 1) · 1 s.(5.20) 𝐸Δ𝑆𝑂𝐶 𝐸Δ𝑆𝑂𝐶 bezeichnet die Energie die nötigt ist, um ein SOC-Schritt zu verursachen.
+Der SOC-Übergang ergibt sich dann zu:
+𝑠𝑆𝑂𝐶(𝑛 − 1) = 𝑠𝑆𝑂𝐶(𝑛) − 𝑢Δ𝑆𝑂𝐶(𝑛 − 1).
 (5.21) Die Systemübergänge sind durch die Bauteilgrenzen begrenzt.
-Der nutzbare SOC-Bereich der Batterie ist zwischen 𝑆𝑂𝐶𝑚𝑖𝑛 = 20 und 𝑆𝑂𝐶𝑚𝑎𝑥 = 80 begrenzt: 𝑆𝑂𝐶𝑚𝑖𝑛 ≤ 𝑠𝑆𝑂𝐶(𝑛 − 1) ≤ 𝑆𝑂𝐶𝑚𝑎𝑥.
-(5.22) Weiterhin die Drehzahl des Motors von 𝑛𝐼𝐶𝐸,𝑚𝑖𝑛 = 0 und 𝑛𝐼𝐶𝐸,𝑚𝑎𝑥 = 2200: 𝑛𝐼𝐶𝐸,𝑚𝑖𝑛 ≤ 𝑠𝑛,𝐼𝐶𝐸(𝑛 − 1) ≤ 𝑛𝐼𝐶𝐸,𝑚𝑎𝑥, (5.23) begrenzt.
-Die Änderung der Motordrehzahl ist mit: −105 ≤ 𝑢𝜔˙𝐼𝐶𝐸 (𝑛 − 1) ≤ 105, (5.24) limitiert.
-Die Kosten für einen Zustandsübergang ergeben sich zu: 𝑐(𝑠𝑡,𝑢𝑡) = 𝑣𝑒𝑟𝑏𝑟𝑎𝑢𝑐ℎ(𝑠𝜔,𝐼𝐶𝐸(𝑡),𝑢𝑇,𝐼𝐶𝐸(𝑡)) + 𝑐(𝑡 + 1) (5.25) ⏟ ⏞ ⏟ ⏞ 𝐴𝑘𝑡𝑢𝑒𝑙𝑙𝑒𝑟𝑉 𝑒𝑟𝑏𝑟𝑎𝑢𝑐ℎ 𝑍𝑖𝑒𝑙𝑘𝑜𝑠𝑡𝑒𝑛 Die Kosten c entsprechen dem Verbrauch des Verbrennungsmotors in g/s mit 𝑐(𝑁 ) = 0.
+Der nutzbare SOC-Bereich der Batterie ist zwischen 𝑆𝑂𝐶𝑚𝑖𝑛 = 20 und 𝑆𝑂𝐶𝑚𝑎𝑥 = 80 begrenzt:
+𝑆𝑂𝐶𝑚𝑖𝑛 ≤ 𝑠𝑆𝑂𝐶(𝑛 − 1) ≤ 𝑆𝑂𝐶𝑚𝑎𝑥.
+(5.22) Weiterhin die Drehzahl des Motors von 𝑛𝐼𝐶𝐸,𝑚𝑖𝑛 = 0 und 𝑛𝐼𝐶𝐸,𝑚𝑎𝑥 = 2200:
+𝑛𝐼𝐶𝐸,𝑚𝑖𝑛 ≤ 𝑠𝑛,𝐼𝐶𝐸(𝑛 − 1) ≤ 𝑛𝐼𝐶𝐸,𝑚𝑎𝑥, (5.23) begrenzt.
+Die Änderung der Motordrehzahl ist mit:
+−105 ≤ 𝑢𝜔˙𝐼𝐶𝐸 (𝑛 − 1) ≤ 105, (5.24) limitiert.
+Die Kosten für einen Zustandsübergang ergeben sich zu:
+𝑐(𝑠𝑡,𝑢𝑡) = 𝑣𝑒𝑟𝑏𝑟𝑎𝑢𝑐ℎ(𝑠𝜔,𝐼𝐶𝐸(𝑡),𝑢𝑇,𝐼𝐶𝐸(𝑡)) + 𝑐(𝑡 + 1) (5.25) ⏟ ⏞ ⏟ ⏞ 𝐴𝑘𝑡𝑢𝑒𝑙𝑙𝑒𝑟𝑉 𝑒𝑟𝑏𝑟𝑎𝑢𝑐ℎ 𝑍𝑖𝑒𝑙𝑘𝑜𝑠𝑡𝑒𝑛 Die Kosten c entsprechen dem Verbrauch des Verbrennungsmotors in g/s mit 𝑐(𝑁 ) = 0.
 Die Systemsprünge erfolgen auf einem diskretisierten Gitter (siehe Abbildung 5.8).
 Der Zustandsraum wird in Abhängigkeit der Diskretisierungsauflösung 𝑆𝑂𝐶𝑑𝑖𝑠𝑘 und 𝐼𝐶𝐸𝑑𝑖𝑠𝑘 diskretisiert.
-Die Rechenzeit und Rechengenauigkeit wird durch die Diskretisierung Abb. 5.8.: Diskretisierung des Zustandsraum über ein Gitter.
+Die Rechenzeit und Rechengenauigkeit wird durch die Diskretisierung Abb. 5.8.:
+Diskretisierung des Zustandsraum über ein Gitter.
 Zwei freie Zustände für SOC und Drehzahl des Verbrennungsmotors sind nötig.
 In den Gitterpunkten wird der kostengünstigste Vorgänger mit Kosten 𝑐(𝑠𝑡,𝑢𝑡) gespeichert nach [Les15].
-Die gestrichelten Linien entsprechen der Begrenzung der Motor- und Batteriedynamik.bestimmt: Δ𝑆𝑂𝐶𝑑𝑖𝑠𝑘 = 𝑆𝑂𝐶𝑚𝑎𝑥 − 𝑆𝑂𝐶𝑚𝑖𝑛 , (5.26) 𝑆𝑂𝐶𝑑𝑖𝑠𝑘 Δ𝑛𝐼𝐶𝐸,𝑑𝑖𝑠𝑘 = 𝑛𝐼𝐶𝐸,𝑚𝑎𝑥.
+Die gestrichelten Linien entsprechen der Begrenzung der Motor- und Batteriedynamik.bestimmt:
+Δ𝑆𝑂𝐶𝑑𝑖𝑠𝑘 = 𝑆𝑂𝐶𝑚𝑎𝑥 − 𝑆𝑂𝐶𝑚𝑖𝑛 , (5.26) 𝑆𝑂𝐶𝑑𝑖𝑠𝑘 Δ𝑛𝐼𝐶𝐸,𝑑𝑖𝑠𝑘 = 𝑛𝐼𝐶𝐸,𝑚𝑎𝑥.
 (5.27) 𝐼𝐶𝐸𝑑𝑖𝑠𝑘 In jedem Gitterpunkt wird die Liste der möglichen Aktionen 𝑢𝑡(𝜔˙W,i,𝑇𝑇,𝑖,𝑚𝐿,𝑖) durchgerechnet.
-Der Zielgitterpunkt der Aktion wird mit: 𝑠𝑆𝑂𝐶(𝑛) 𝑆𝑂𝐶𝐺𝑖𝑡𝑡𝑒𝑟,𝑑𝑖𝑠𝑘(𝑛) = ⌈ ⌉, (5.28) Δ𝑆𝑂𝐶𝑑𝑖𝑠𝑘 (𝑛) 𝑠𝑛𝐼𝐶𝐸 𝑛𝐼𝐶𝐸 𝐺𝑖𝑡𝑡𝑒𝑟,𝑑𝑖𝑠𝑘(𝑛) = ⌈ ⌉, (5.29) Δ𝑛𝐼𝐶𝐸,𝑑𝑖𝑠𝑘 bestimmt.
-Die Rückwärtsrechnung endet mit dem Erreichen des Zustands 𝑠0: (0) = 0, (5.30) 𝑠𝜔𝐼𝐶𝐸 (0) = 0, 𝑠𝜔˙𝐼𝐶𝐸 (0) = 0, 𝑠𝜔W (0) = 0, (5.31) 𝑠𝜔˙W (0) = 0, 𝑠𝑇𝐸𝑀 1,2 (0) = 0, 𝑠𝑇𝐵𝑅 (0) = 0.
-(5.32) 𝑠𝑇1716 (0) = 0, 𝑠𝑇𝐼𝐶𝐸 (0) = 0, 𝑠𝑇𝐺𝐸𝑁 Der Zielgitterpunkt ergibt sich zu: 𝑆𝑂𝐶𝑆𝑡𝑎𝑟𝑡 𝑛𝐼𝐶𝐸 𝐺𝑖𝑡𝑡𝑒𝑟,𝑑𝑖𝑠𝑘𝑟𝑒𝑡(0) = 1, 𝑆𝑂𝐶𝐺𝑖𝑡𝑡𝑒𝑟,𝑑𝑖𝑠𝑘𝑟𝑒𝑡(0) = ⌈ ⌉.
+Der Zielgitterpunkt der Aktion wird mit:
+𝑠𝑆𝑂𝐶(𝑛) 𝑆𝑂𝐶𝐺𝑖𝑡𝑡𝑒𝑟,𝑑𝑖𝑠𝑘(𝑛) = ⌈ ⌉, (5.28) Δ𝑆𝑂𝐶𝑑𝑖𝑠𝑘 (𝑛) 𝑠𝑛𝐼𝐶𝐸 𝑛𝐼𝐶𝐸 𝐺𝑖𝑡𝑡𝑒𝑟,𝑑𝑖𝑠𝑘(𝑛) = ⌈ ⌉, (5.29) Δ𝑛𝐼𝐶𝐸,𝑑𝑖𝑠𝑘 bestimmt.
+Die Rückwärtsrechnung endet mit dem Erreichen des Zustands 𝑠0:
+(0) = 0, (5.30) 𝑠𝜔𝐼𝐶𝐸 (0) = 0, 𝑠𝜔˙𝐼𝐶𝐸 (0) = 0, 𝑠𝜔W (0) = 0, (5.31) 𝑠𝜔˙W (0) = 0, 𝑠𝑇𝐸𝑀 1,2 (0) = 0, 𝑠𝑇𝐵𝑅 (0) = 0.
+(5.32) 𝑠𝑇1716 (0) = 0, 𝑠𝑇𝐼𝐶𝐸 (0) = 0, 𝑠𝑇𝐺𝐸𝑁 Der Zielgitterpunkt ergibt sich zu:
+𝑆𝑂𝐶𝑆𝑡𝑎𝑟𝑡 𝑛𝐼𝐶𝐸 𝐺𝑖𝑡𝑡𝑒𝑟,𝑑𝑖𝑠𝑘𝑟𝑒𝑡(0) = 1, 𝑆𝑂𝐶𝐺𝑖𝑡𝑡𝑒𝑟,𝑑𝑖𝑠𝑘𝑟𝑒𝑡(0) = ⌈ ⌉.
 (5.33) Δ𝑆𝑂𝐶𝑑𝑖𝑠𝑘𝑟𝑒𝑡 Vorwärtsrechnung Die Vorwärtsrechnung beginnt mit dem Laden der Teilergebnisse der Rückwärtsrechnung.
 Als erstes wird Zustand 𝑠0 ausgelesen.
 Vom Zustand werden 𝑠𝜔𝐼𝐶𝐸 (0), 𝑠𝑇𝐼𝐶𝐸 (0), 𝑠𝑇𝐺𝐸𝑁 (0), (0) ausgelesen und gespeichert.
@@ -1018,16 +1181,19 @@ Begonnen wird mit einem sehr groben Gitter, das mit jedem Schritt verfeinert wir
 Eine Verdopplung der Genauigkeit einer Dimension (𝑆𝑂𝐶𝑑𝑖𝑠𝑘 oder 𝐼𝐶𝐸𝑑𝑖𝑠𝑘) führt zu einer Verdopplung der Rechenzeit.
 Die Verdopplung beider Dimensionen führt zu einer Vervierfachung der Rechenzeit.
 Die Konvergenzanalyse beinhaltet die Betrachtung des relativen Simulationsfehlers (Gleichung 5.34), des relativen Kraftstoffdurchschnittsverbrauchs (Abbildung 5.9) und der relativen Durchschnittsleistung des Verbrennungsmotors (Abbildung 5.10).
-Der relative Simulationsfehler wird als Abweichung der diskreten, Abb. 5.9.: Konvergenzanalyse des relativen Kraftstoffverbrauchs in Abhängigkeit der Auflösung des Diskretisierungsgitters (Batterieauflösung 𝑆𝑂𝐶𝑑𝑖𝑠𝑘, Verbrennungsmotordrehzahl 𝐼𝐶𝐸𝑑𝑖𝑠𝑘).
+Der relative Simulationsfehler wird als Abweichung der diskreten, Abb. 5.9.:
+Konvergenzanalyse des relativen Kraftstoffverbrauchs in Abhängigkeit der Auflösung des Diskretisierungsgitters (Batterieauflösung 𝑆𝑂𝐶𝑑𝑖𝑠𝑘, Verbrennungsmotordrehzahl 𝐼𝐶𝐸𝑑𝑖𝑠𝑘).
 Das Minimum wird im Punkt der höchsten Diskretisierung erreicht.
-numerischen Lösung von der kontinuierlichen Lösung betrachtet: ∑︀𝑁 𝑛=0 |𝑃𝑠𝑜𝑙𝑙(𝑛) − 𝑃𝑖𝑠𝑡(𝑛)| ||𝑒𝑇 || =.
+numerischen Lösung von der kontinuierlichen Lösung betrachtet:
+∑︀𝑁 𝑛=0 |𝑃𝑠𝑜𝑙𝑙(𝑛) − 𝑃𝑖𝑠𝑡(𝑛)| ||𝑒𝑇 || =.
 (5.34) ∑︀𝑁 𝑛=0 |𝑃𝑠𝑜𝑙𝑙(𝑛)| Zur Reduktion der Rechenzeit beträgt die Batteriespeicherfähigkeit während der Konvergenzanalyse des Gitters 5 kWh.
 Die Simulationsdauer der Strecke beträgt 170 s. In Abbildung 5.9 ist der relative Kraftstoffverbrauch in Abhängigkeit der Gitterdiskretisierung dargestellt.
 Der minimale relative Kraftstoffverbrauch wird bei der feinsten Diskretisierung (𝐼𝐶𝐸𝑑𝑖𝑠𝑘 = 150, 𝑆𝑂𝐶𝑑𝑖𝑠𝑘 = 350) erreicht.
 In Abbildung 5.10 ist die relativ geleistete Arbeit des Verbrennungsmotor in Abhängigkeit der Auflösung des Gitters dargestellt.
 Das Optimum wird im Bereich der genausten Auflösung erreicht.
 Es wird deutlich, dass der Mehrverbrauch aus Abbildung 5.9 aus einer erhöhten Motorleistung resultiert.
-Der Simulationsfehler ist im Bereich geringer Auflösungen erhöht Abb. 5.10.: Konvergenzanalyse der relativ geleisteten Arbeit des Verbrennungsmotors in Abhängigkeit der Auflösung des Diskretisierungsgitters.
+Der Simulationsfehler ist im Bereich geringer Auflösungen erhöht Abb. 5.10.:
+Konvergenzanalyse der relativ geleisteten Arbeit des Verbrennungsmotors in Abhängigkeit der Auflösung des Diskretisierungsgitters.
 (siehe Abbildung 5.11).
 Die Mindestauflösung der Verbrennungsmotordrehzahl kann aus Abbildung 5.11 ermittelt werden.
 Es ist eine Mindestauflösung von 8 Schritten für die Motordrehzahl nötig.
@@ -1038,7 +1204,8 @@ Mit dieser Konfiguration wird in der Konvergenzanalyse ein relativer Verbrauch v
 Die Anzahl der betrachteten Zustände wird auf 1200 je Simulationszeitschritt reduziert.
 Dies ermöglicht die Reduktion der Rechenzeit um das 43-Fache.
 Die geringe Abweichung wird aufgrund der Rechenzeitreduzierung toleriert.
-Abb. 5.11.: Konvergenzanalyse des Simulationsfehler in Abhängigkeit der Batterie- und Verbrennungsmotordrehzahlauflösung des Zustandsraums.
+Abb. 5.11.:
+Konvergenzanalyse des Simulationsfehler in Abhängigkeit der Batterie- und Verbrennungsmotordrehzahlauflösung des Zustandsraums.
 
 
 :::: Simulationsergebnisse der dynamischen Optimierung ::::
@@ -1064,12 +1231,14 @@ Es wird deutlich, dass Zyklen höherer Beladung einen erhöhten Verbrauch aufwei
 Der Gesamtverbrauch der Referenzstrecke ist geringer als bei Addition der anteiligen Teilstrecken.
 Dies ist eine Folge des größeren Optimierungshorizonts der Gesamtstrecke.
 Der Freiheitsgrad der Leistungserzeugung ist auf der Referenzstrecke erhöht.
-Strecke Beladung Verbrauch t l/100 km Behala 1400 1400 100,5 Behala 1800 1800 178,8 Chemiepark 110 43,1 RST 0 0 28,2 RST 560 560 124,1 Referenz 103,5 Tab. 5.1.: Optimale Verbrauchsdaten auf den Teilstrecken und der zusammengesetzten Referenzstrecke.
+Strecke Beladung Verbrauch t l/100 km Behala 1400 1400 100,5 Behala 1800 1800 178,8 Chemiepark 110 43,1 RST 0 0 28,2 RST 560 560 124,1 Referenz 103,5 Tab. 5.1.:
+Optimale Verbrauchsdaten auf den Teilstrecken und der zusammengesetzten Referenzstrecke.
 Die Verbrauchsdaten bilden den theoretischen Grenzwert der Fahrzeugkonfiguration.
 5.3.2.
 Variation der Batteriekapazität Für den Referenzzyklus wird die Speicherfähigkeit der Batterie variiert.
 In Tabelle 5.2 sind die veränderten Verbrauchsdaten dargestellt.
-Batteriekapazität Verbrauch 𝑃𝐼𝐶𝐸,𝑎𝑣𝑔 kWh l/100 km kW 2 122.2 62.7 5 109,4 55,1 10 106,7 53,9 20 104,8 52,6 50 103,5 51,5 Tab. 5.2.: Ergebnisse der dynamischen Programmierung bei Variation der maximalen Batteriegröße.
+Batteriekapazität Verbrauch 𝑃𝐼𝐶𝐸,𝑎𝑣𝑔 kWh l/100 km kW 2 122.2 62.7 5 109,4 55,1 10 106,7 53,9 20 104,8 52,6 50 103,5 51,5 Tab. 5.2.:
+Ergebnisse der dynamischen Programmierung bei Variation der maximalen Batteriegröße.
 𝑃𝐼𝐶𝐸,𝑎𝑣𝑔 entspricht der durchschnittlichen Verbrennungsmotorleistung während des Zyklus.
 
 
@@ -1089,10 +1258,12 @@ Ausgehend vom korrigierten Leistungswunsch
 
 
 des Fahrers und dem aktuellen SOC wird durch die Betriebsstrategie die Verbrennungsmotorleistung vorgeben.
-Die Systemregelung stellt einen ordnungsgemäßen Betrieb des Abb. 5.12.: Parameterstruktur der Betriebsstrategie.
+Die Systemregelung stellt einen ordnungsgemäßen Betrieb des Abb. 5.12.:
+Parameterstruktur der Betriebsstrategie.
 Die Leistung des Verbrennungsmotor 𝑃𝐼𝐶𝐸,𝑠𝑜𝑙𝑙 ist von der angeforderten Traktionsleistung 𝑃𝑇,𝑠𝑜𝑙𝑙 und dem aktuellen SOC abhängig.
 Fahrzeugs sicher.
-Zur Umsetzung des Fahrerleistungswunschs 𝑃𝑇,𝑠𝑜𝑙𝑙 muss die Differenz: 𝑃𝑇,𝑑𝑖𝑓 𝑓 = 𝑃𝑇,𝑠𝑜𝑙𝑙 − 𝑃𝐼𝐶𝐸,𝑠𝑡𝑟𝑎𝑡𝑒𝑔𝑖𝑒(𝑃𝑇,𝑠𝑜𝑙𝑙, 𝑆𝑂𝐶), (5.35) von der Systemregelung durch die elektrischen Maschinen und die konventionelle Bremse umgesetzt werden.
+Zur Umsetzung des Fahrerleistungswunschs 𝑃𝑇,𝑠𝑜𝑙𝑙 muss die Differenz:
+𝑃𝑇,𝑑𝑖𝑓 𝑓 = 𝑃𝑇,𝑠𝑜𝑙𝑙 − 𝑃𝐼𝐶𝐸,𝑠𝑡𝑟𝑎𝑡𝑒𝑔𝑖𝑒(𝑃𝑇,𝑠𝑜𝑙𝑙, 𝑆𝑂𝐶), (5.35) von der Systemregelung durch die elektrischen Maschinen und die konventionelle Bremse umgesetzt werden.
 5.4.1.
 Vorgehen zum Ableiten des Betriebsstrategiekennfelds
 
@@ -1107,7 +1278,8 @@ Als erstes werden die Daten nach Anhängelast separiert.
 Aus diesen Daten wird ein dreidimensionales Kennfeld durch Parameterschätzung erzeugt(siehe Abbildung 5.13).
 Die Erzeugung des Kennfelds erfolgt über die Interpolation der Daten durch die Matlab-Methode Thin-plate spline.
 Diese Methode eignet sich zur Erzeugung von glatten Kennfeldern [MAT16].
-Für Abb. 5.13.: Vorgehen zum Erzeugen des Kennfeldes der Fahrstrategie.
+Für Abb. 5.13.:
+Vorgehen zum Erzeugen des Kennfeldes der Fahrstrategie.
 SOC-Werte unter 20 wird die Maximalleistung angewendet um eine Tiefenentladung zu verhindern.
 
 
@@ -1118,7 +1290,9 @@ In Abbildung 5.14 und 5.15 sind zwei erzeugte Betriebsstrategiekennfelder abgebi
 Diese werden in Abhängigkeit der Fahrzeugbeladung eingesetzt.
 Das Bremsen entspricht der negativen Fahranforderung.
 Nach den Daten der dynamischen Programmierung wird beim Bremsen die Verbrennungsmotorleistung 0 kW.
-Abb. 5.14.: Erzeugtes Strategiekennfeld Bela­ Abb. 5.15.: Erzeugtes Strategiekennfeld Beladung 0 t dung 1800 t Das Kennfeld der geringeren Beladung in Abbildung 5.14 weist eine geringere Maximalleistung auf.
+Abb. 5.14.:
+Erzeugtes Strategiekennfeld Bela­ Abb. 5.15.:
+Erzeugtes Strategiekennfeld Beladung 0 t dung 1800 t Das Kennfeld der geringeren Beladung in Abbildung 5.14 weist eine geringere Maximalleistung auf.
 Die Ergebnisse der Kennfelderzeugung werden in der Simulink-Simulation getestet und bewertet.
 
 
@@ -1155,7 +1329,8 @@ Zur Leistungsübertragung wird zwischen Dieselmotor und Endgetriebe ein hydrodyn
 Das hydrodynamische Getriebe enthält drei Fahrstufen.
 Das Endgetriebe ist als Radsatzgetriebe mit einer Übersetzung von 5,49 im Drehgestell ausgeführt [Pfe14].
 Die Dienstmasse der Lokomotive beträgt 70 t.
-Aus der maximalen Antriebsleistung und der Dienstmasse folgt das maximale Traktionsmoment: 𝑇𝑇,𝑚𝑎𝑥 = 𝜇𝑟𝑠 · 𝑔 · 𝑚𝑣 · 𝑟𝑅𝑎𝑑 = 0,33 · 9,81 · 70000 · 0,5 = 113 305 N m.
+Aus der maximalen Antriebsleistung und der Dienstmasse folgt das maximale Traktionsmoment:
+𝑇𝑇,𝑚𝑎𝑥 = 𝜇𝑟𝑠 · 𝑔 · 𝑚𝑣 · 𝑟𝑅𝑎𝑑 = 0,33 · 9,81 · 70000 · 0,5 = 113 305 N m.
 (6.1)
 
 
@@ -1177,7 +1352,8 @@ Eine ausführliche Darstellung der Umsetzung der Systemregelung folgt in Abschni
 Die ECU (Engine Control Unit) dient der Regelung des Verbrennungsmotors (Engine).
 Das Modell des Verbrennungsmotors wird durch eine kennfeldbasierte Bedatung realisiert.
 Dies erfolgt durch die Schlepp- und Maximalmomentkennlinie.
-Der Verbrauch Abb. 6.2.: VeLoDyn-Modell der hybriden Rangierlokomotive des Verbrennungsmotors ist durch ein Kennfeld in Abhängigkeit der Drehzahl und des Drehmoments modelliert.
+Der Verbrauch Abb. 6.2.:
+VeLoDyn-Modell der hybriden Rangierlokomotive des Verbrennungsmotors ist durch ein Kennfeld in Abhängigkeit der Drehzahl und des Drehmoments modelliert.
 Der verzögerte Momentenaufbau ist durch ein 𝑃 𝑇1-Glied mit einer Zeitkonstante 𝑇1,𝐼𝐶𝐸 = 0.05 realisiert.
 Die verfügbare Lade- und Entladeleistung der Batterie wird durch die BCU (Batterie Control Unit) bestimmt.
 Dies erfolgt in Abhängigkeit des SOC und der elektrischen Leistung die die elektrischen Maschinen umsetzen.
@@ -1187,42 +1363,54 @@ Zur Berechnung der Beschleunigungen des Rades und des Verbrennungsmotors werden 
 Die Systemgleichungen werden in Abhängigkeit der Beladung des Fahrzeugs ausgewählt.
 Durch Einsetzen der IST-Momente der Antriebskomponenten in die Systemgleichungen wird die Beschleunigung des Radsatzes und des Verbrennungsmotors ermittelt.
 Durch fortlaufende Simulation wird das Systemverhalten ermittelt.
-Abb. 6.3.: eCVT-Getriebemodell - Änderung der Beschleunigungen des Verbrennungsmotors und der Räder in Abhängigkeit der äußeren Systemmomente.
+Abb. 6.3.:
+eCVT-Getriebemodell - Änderung der Beschleunigungen des Verbrennungsmotors und der Räder in Abhängigkeit der äußeren Systemmomente.
 Im Vehicle ist das Fahrwiderstandsmodell aus Abschnitt 2.2.2 ausgeführt und das Bremsmodell des Fahrzeugs integriert.
 Systemregelung durch den Hybridmanager Der Hybridmanager dient der Regelung der Antriebskomponenten im Fahrzeug.
 Dabei werden die Komponenten in Abhängigkeit des Fahrerwunsches, der Batterieladung und der Komponentenbegrenzungen geregelt (siehe Abbildung 6.4).
-Abb. 6.4.: Vorgehen zur Regelung der Leistungsanforderung der Systemkomponenten.
+Abb. 6.4.:
+Vorgehen zur Regelung der Leistungsanforderung der Systemkomponenten.
 Fahrerwunsch Der Fahrer gibt seinen Leistungswunsch in Form der Stellung des Fahrstufenreglers an.
 Die maximale Traktionsleistung wird durch die maximal übertragbare Zugkraft am Rad-Schiene-Kontakt nach Abbildung 6.5 begrenzt.
-Durch das Kennfeld in Abb. 6.5.: Maximales Zugmoment in Abhängigkeit der Geschwindigkeit Abbildung 6.6 wird der Anteil der maximalen Zugkraft bestimmt.
+Durch das Kennfeld in Abb. 6.5.:
+Maximales Zugmoment in Abhängigkeit der Geschwindigkeit Abbildung 6.6 wird der Anteil der maximalen Zugkraft bestimmt.
 Aus der geforderten Zugkraft und der aktuellen Fahrzeuggeschwindigkeit ergibt sich die benötigte Antriebsleistung, die durch den Verbrennungsmotor und die elektrischen Fahrmotoren bereitgestellt wird.
-Abb. 6.6.: Auswertung des Fahrerleistungswunsches durch Kennfeld der maximalen Zugkraft in Abhängigkeit des Fahrstufenreglers.
+Abb. 6.6.:
+Auswertung des Fahrerleistungswunsches durch Kennfeld der maximalen Zugkraft in Abhängigkeit des Fahrstufenreglers.
 Systemregelung Die Systemregelung dient der Koordination des Verbrennungsmotors, der Elektromotoren und dem Batteriemanagement.
 Ausgehend vom korrigierten Leistungswunsch des Fahrers erfolgt die Leistungsverteilung zwischen Verbrennungsmotor und den Fahrmotoren.
 Zur Bestimmung der Sollmomente werden die Systemgleichungen verwendet (siehe Abbildunng 6.7).
-Abb. 6.7.: Bestimmung der Sollmomente durch Anwendung der Systemgleichungen.
+Abb. 6.7.:
+Bestimmung der Sollmomente durch Anwendung der Systemgleichungen.
 Verbrennungsmotor Die Sollleistung des Verbrennungsmotors wird in Abhängigkeit der Betriebsstrategie bestimmt.
 Der Freiheitsgrad der Verbrennungsmotorleistung ist durch die anliegenden Systemkomponenten begrenzt.
 Das maximale Verbrennungsmotormoment wird durch das maximale Generatormoment begrenzt.
 Das maximale Generatormoment ist durch die Batterieladeleistung und konstruktive Beschränkungen des Generators limitiert.
 Der Zusammenhang zwischen Verbrennungsmotormoment und Generatormoment ist in den Systemgleichungen beschrieben.
 Durch Subtraktion der Gleichung 4.14 von Gleichung 4.13 folgt: 1 𝑇𝑆 = −𝑇𝐶 ·.
-(6.2) 1 − 𝑖0 Das Moment am Sonnenrad 𝑇𝑆 muss das Moment am Planetenträger 𝑇𝐶 abstützen: 1.
+(6.2) 1 − 𝑖0 Das Moment am Sonnenrad 𝑇𝑆 muss das Moment am Planetenträger 𝑇𝐶 abstützen:
+1.
 (6.3) 𝑇𝑆 ≥ −𝑇𝐶 · 1 − 𝑖0 Das Einsetzen der Gleichungen der Generatorwelle 4.17 und des Planetenträgers 4.15 ergibt: 1 𝑇𝐺𝐸𝑁 − 𝐽3 𝜔˙3 ≥ −(𝑇21 − 𝐽2 𝜔˙2) ·.
-(6.4) 1 − 𝑖0 Aus der Übersetzung von Planetenträger und Verbrennungsmotor (Gleichung 4.9) folgt: 𝑧1 (𝑇𝐺𝐸𝑁 − 𝐽3 𝜔˙3)(1 − 𝑖0) ≥ −𝑇12 + 𝐽2 𝜔˙2, (6.5) 𝑧2 𝑧2 ((𝑇𝐺𝐸𝑁 − 𝐽3 𝜔˙3)(1 − 𝑖0) − 𝐽2 𝜔˙2) ≥ −𝑇12.
-(6.6) 𝑧1 Durch Einsetzen der Gleichung 4.8 der Verbrennungsmotorwelle folgt: 𝑧2 ((𝑇𝐺𝐸𝑁 − 𝐽3 𝜔˙3)(1 − 𝑖0) − 𝐽2 𝜔˙2) ≥ 𝑇𝐼𝐶𝐸 + 𝐽1 𝜔˙1, (6.7) 𝑧1 𝑧2 ((𝑇𝐺𝐸𝑁 − 𝐽3 𝜔˙3)(1 − 𝑖0) − 𝐽2 𝜔˙2) − 𝐽1 𝜔˙1 ≥ 𝑇𝐼𝐶𝐸.
-(6.8) 𝑧1 Das maximale Verbrennungsmotormoment ergibt sich zu: 𝑧2 ((𝑇𝐺𝐸𝑁,𝑚𝑎𝑥 − 𝐽3 𝜔˙3)(1 − 𝑖0) − 𝐽2 𝜔˙2) − 𝐽1 𝜔˙1.
+(6.4) 1 − 𝑖0 Aus der Übersetzung von Planetenträger und Verbrennungsmotor (Gleichung 4.9) folgt:
+𝑧1 (𝑇𝐺𝐸𝑁 − 𝐽3 𝜔˙3)(1 − 𝑖0) ≥ −𝑇12 + 𝐽2 𝜔˙2, (6.5) 𝑧2 𝑧2 ((𝑇𝐺𝐸𝑁 − 𝐽3 𝜔˙3)(1 − 𝑖0) − 𝐽2 𝜔˙2) ≥ −𝑇12.
+(6.6) 𝑧1 Durch Einsetzen der Gleichung 4.8 der Verbrennungsmotorwelle folgt:
+𝑧2 ((𝑇𝐺𝐸𝑁 − 𝐽3 𝜔˙3)(1 − 𝑖0) − 𝐽2 𝜔˙2) ≥ 𝑇𝐼𝐶𝐸 + 𝐽1 𝜔˙1, (6.7) 𝑧1 𝑧2 ((𝑇𝐺𝐸𝑁 − 𝐽3 𝜔˙3)(1 − 𝑖0) − 𝐽2 𝜔˙2) − 𝐽1 𝜔˙1 ≥ 𝑇𝐼𝐶𝐸.
+(6.8) 𝑧1 Das maximale Verbrennungsmotormoment ergibt sich zu:
+𝑧2 ((𝑇𝐺𝐸𝑁,𝑚𝑎𝑥 − 𝐽3 𝜔˙3)(1 − 𝑖0) − 𝐽2 𝜔˙2) − 𝐽1 𝜔˙1.
 (6.9) 𝑇𝐼𝐶𝐸,𝑚𝑎𝑥 ≤ 𝑧1 Es wird eine Sicherheit von 10 % angenommen.
 Die Massenträgheiten sind sehr klein gegenüber den Momenten.
-Unter Berücksichtigung der Sicherheit wird Gleichung 6.9 zur Umsetzung der Regelung des Verbrennungsmotors vereinfacht: 𝑇𝐼𝐶𝐸,𝑚𝑎𝑥 ≤ 𝑇𝐺𝐸𝑁,𝑚𝑎𝑥(1 − 𝑖0) 𝑧2 · 0.9.
+Unter Berücksichtigung der Sicherheit wird Gleichung 6.9 zur Umsetzung der Regelung des Verbrennungsmotors vereinfacht:
+𝑇𝐼𝐶𝐸,𝑚𝑎𝑥 ≤ 𝑇𝐺𝐸𝑁,𝑚𝑎𝑥(1 − 𝑖0) 𝑧2 · 0.9.
 (6.10) 𝑧1 Bei der Regelung ist stets darauf zu achten, dass der Verbrennungsmotor durch den Generator abgestützt werden kann.
 Der Verbrennungsmotor wird auf der Linie des besten spezifischen Verbrauchs (vgl. Abbildung 4.4) betrieben.
 Da das maximale Verbrennungsmotormoment nicht in allen Betriebszuständen verfügbar ist, wird die Regelung um die Begrenzung des Motormoments erweitert (siehe Abbildung 6.8).
 Nach Gleichung 6.10 wird das maximale Verbrennungsmotormoment bestimmt.
 Zu diesem maximalen Moment wird die optimale Drehzahl 𝑛𝐼𝐶𝐸,𝑜𝑝𝑡(𝑇𝐼𝐶𝐸,𝑚𝑎𝑥) bestimmt.
 Zusätzlich wird der optimale Betriebspunkt (𝑇𝐼𝐶𝐸,𝑜𝑝𝑡, 𝑛𝐼𝐶𝐸,𝑜𝑝𝑡) für die geforderte Leistung der Betriebsstrategie bestimmt.
-Der Betriebspunkt wird nach: {︃(𝑇𝐼𝐶𝐸,𝑜𝑝𝑡, 𝑛𝐼𝐶𝐸,𝑜𝑝𝑡) 𝑇𝐼𝐶𝐸,𝑜𝑝𝑡 ≤ 𝑇𝐼𝐶𝐸,𝑚𝑎𝑥, (6.11) (𝑇𝐼𝐶𝐸,𝑟𝑒𝑞, 𝑛𝐼𝐶𝐸,𝑟𝑒𝑞) = (𝑇𝐼𝐶𝐸,𝑚𝑎𝑥, 𝑛𝐼𝐶𝐸,𝑜𝑝𝑡(𝑇𝐼𝐶𝐸,𝑚𝑎𝑥)) sonst, bestimmt.
-Abb. 6.8.: Begrenzung des maximalen Verbrennungsmotormoments durch Limitierung des Generators Der Generator stellt durch Leistungsverzweigung im Planetengetriebe die Übersetzung zwischen Verbrennungsmotor und Abtrieb ein.
+Der Betriebspunkt wird nach:
+{︃(𝑇𝐼𝐶𝐸,𝑜𝑝𝑡, 𝑛𝐼𝐶𝐸,𝑜𝑝𝑡) 𝑇𝐼𝐶𝐸,𝑜𝑝𝑡 ≤ 𝑇𝐼𝐶𝐸,𝑚𝑎𝑥, (6.11) (𝑇𝐼𝐶𝐸,𝑟𝑒𝑞, 𝑛𝐼𝐶𝐸,𝑟𝑒𝑞) = (𝑇𝐼𝐶𝐸,𝑚𝑎𝑥, 𝑛𝐼𝐶𝐸,𝑜𝑝𝑡(𝑇𝐼𝐶𝐸,𝑚𝑎𝑥)) sonst, bestimmt.
+Abb. 6.8.:
+Begrenzung des maximalen Verbrennungsmotormoments durch Limitierung des Generators Der Generator stellt durch Leistungsverzweigung im Planetengetriebe die Übersetzung zwischen Verbrennungsmotor und Abtrieb ein.
 Dazu wird durch Veränderung des Generatormoments die Drehzahl des Verbrennungsmotor geregelt.
 Über die Drehzahlregelung ist es möglich, den Verbrennungsmotor auf der vorgegebenen, optimalen Drehzahl der Betriebsstrategie zu führen.
 Die Drehzahlregelung wird durch einen PI-Regler realisiert.
@@ -1231,9 +1419,12 @@ Fahrmotoren und Bremse Das Bremsen durch die elektrischen Fahrmotoren ermöglich
 Die Rekuperationsfähigkeit des Systems ist von den elektrischen Verlusten der elektrischen Fahrmotoren und der Ladeleistung der Batterie begrenzt.
 Überschüssige kinetische Energie, die nicht rekuperiert werden kann, wird durch eine konventionelle, mechanische Bremsung in Wärme umgewandelt.
 Das mechanische Bremsmoment wird über einen leistungsbasierten Ansatz ermittelt.
-Das überschüssige Moment 𝑇𝐸𝑀,𝑑𝑖𝑓 𝑓 ergibt sich als Differenz aus dem möglichen Rekuperationsmoment 𝑇𝐸𝑀,𝑚𝑎𝑥 und dem durch Abbildung 6.7 vorgegebenen Bremsmoment 𝑇𝐸𝑀,𝑟𝑒𝑞: 𝑇𝐸𝑀,𝑑𝑖𝑓 𝑓 = 𝑚𝑎𝑥(0,𝑇𝐸𝑀,𝑟𝑒𝑞 − 𝑇𝐸𝑀,𝑚𝑎𝑥).
-(6.12) Die mechanische Bremsleistung ergibt sich damit: 𝑃𝐵𝑟𝑎𝑘𝑒,𝑚𝑒𝑐ℎ = 𝑇𝐸𝑀,𝑑𝑖𝑓 𝑓 · 𝜔6.
-(6.13) Aus der mechanischen Bremsleistung 𝑃𝐵𝑟𝑎𝑘𝑒,𝑚𝑒𝑐ℎ folgt das mechanische Bremsmoment: 𝑇𝐵𝑟𝑎𝑘𝑒,𝑚𝑒𝑐ℎ = 𝑃𝐵𝑟𝑎𝑘𝑒,𝑚𝑒𝑐ℎ.
+Das überschüssige Moment 𝑇𝐸𝑀,𝑑𝑖𝑓 𝑓 ergibt sich als Differenz aus dem möglichen Rekuperationsmoment 𝑇𝐸𝑀,𝑚𝑎𝑥 und dem durch Abbildung 6.7 vorgegebenen Bremsmoment 𝑇𝐸𝑀,𝑟𝑒𝑞:
+𝑇𝐸𝑀,𝑑𝑖𝑓 𝑓 = 𝑚𝑎𝑥(0,𝑇𝐸𝑀,𝑟𝑒𝑞 − 𝑇𝐸𝑀,𝑚𝑎𝑥).
+(6.12) Die mechanische Bremsleistung ergibt sich damit:
+𝑃𝐵𝑟𝑎𝑘𝑒,𝑚𝑒𝑐ℎ = 𝑇𝐸𝑀,𝑑𝑖𝑓 𝑓 · 𝜔6.
+(6.13) Aus der mechanischen Bremsleistung 𝑃𝐵𝑟𝑎𝑘𝑒,𝑚𝑒𝑐ℎ folgt das mechanische Bremsmoment:
+𝑇𝐵𝑟𝑎𝑘𝑒,𝑚𝑒𝑐ℎ = 𝑃𝐵𝑟𝑎𝑘𝑒,𝑚𝑒𝑐ℎ.
 (6.14) 𝜔5 6.2.
 Simulationsergebnisse der Längsdynamiksimulation Durch Simulation der definierten Fahrzyklen werden die Verbrauchsdaten für die konventionelle und die hybridisierte Lokomotive bestimmt.
 Durch einen Vergleich der Ver­
@@ -1250,10 +1441,12 @@ Konventionelles Lokomotivmodell In Tabelle 6.1 sind die Verbrauchsdaten, die Dur
 
 
 Mit diesen Referenzwerten werden die Ergebnisse der hybridisierten Lokomotive mit eCVT-Getriebe verglichen.
-Die hohen Verbrauchswerte ergeben sich durch die hohen Strecke Beladung Verbrauch Durchschnittsgeschwindigkeit Zyklusfehler t l/100 km km/h % Behala 1400 1400 331,0 8,8 2,77 Behala 1800 1800 690,7 3,9 0,92 Chemiepark 110 181,3 10,0 5,41 RST 0 0 77,0 33,4 0,23 RST 560 560 412,3 30,5 1,35 Referenz - 315,7 14,7 3,69 Tab. 6.1.: Ausgangsdaten der konventionellen Rangierlokomotive.
+Die hohen Verbrauchswerte ergeben sich durch die hohen Strecke Beladung Verbrauch Durchschnittsgeschwindigkeit Zyklusfehler t l/100 km km/h % Behala 1400 1400 331,0 8,8 2,77 Behala 1800 1800 690,7 3,9 0,92 Chemiepark 110 181,3 10,0 5,41 RST 0 0 77,0 33,4 0,23 RST 560 560 412,3 30,5 1,35 Referenz - 315,7 14,7 3,69 Tab. 6.1.:
+Ausgangsdaten der konventionellen Rangierlokomotive.
 Stillstandszeiten der Lokomotive.
 Während der Stillstandszeit der Lokomotive benötigt der Verbrennungsmotor Kraftstoffzur Aufrechterhaltung des Leerlaufs.
-In Abbildung Abb. 6.9.: Analyse der Verteilung der Fahrstufen für den Referenzzyklus.
+In Abbildung Abb. 6.9.:
+Analyse der Verteilung der Fahrstufen für den Referenzzyklus.
 6.9 ist die Häufigkeitsanalyse der Fahrstufen für den Referenzzyklus der konventionellen Lokomotive abgebildet.
 Die Daten stimmen quantitativ mit den gemessenen Daten der EPA (Abbildung 2.12) überein.
 6.2.2.
@@ -1268,8 +1461,10 @@ Dies erfolgt durch automatisches Abschalten und Anschalten des Verbrennungsmotor
 :::: Hybrid-Modell ::::
 
 
-Strecke Beladung Verbrauch Durchschnittsgeschwindigkeit Zyklusfehler t l/100 km km/h % Behala 1400 1400 121 9,28 3,71 Behala 1800 1800 196 5,53 3,82 Chemiepark 110 50 10,5 2,61 RST 0 0 30 33,87 0,44 RST 560 560 154 30,74 3,63 Referenz - 112,1 15,32 3,14 Tab. 6.2.: Ergebnisse der Längsdynamikuntersuchung mit Simulink.
-Abb. 6.10.: Häufigkeit der Fahrstufen des eCVT-Modells während des Referenzzyklus.
+Strecke Beladung Verbrauch Durchschnittsgeschwindigkeit Zyklusfehler t l/100 km km/h % Behala 1400 1400 121 9,28 3,71 Behala 1800 1800 196 5,53 3,82 Chemiepark 110 50 10,5 2,61 RST 0 0 30 33,87 0,44 RST 560 560 154 30,74 3,63 Referenz - 112,1 15,32 3,14 Tab. 6.2.:
+Ergebnisse der Längsdynamikuntersuchung mit Simulink.
+Abb. 6.10.:
+Häufigkeit der Fahrstufen des eCVT-Modells während des Referenzzyklus.
 6.2.3.
 Vergleich der Simulationsergebnisse In den nächsten Abschnitten werden die Ergebnisse der verschiedenen Simulationsmodelle verglichen und analysiert.
 Vergleich mit der konventionellen Lokomotive Nachfolgend werden die Simulationsergebnisse der konventionellen Lokomotive mit der Hybridlokomotive verglichen (siehe Tabelle 6.3).
@@ -1283,10 +1478,12 @@ Weiterhin werden die Simulationen SOC-neutral
 :::: Vergleich der Simulationsergebnisse ::::
 
 
-Strecke Verbrauch Konventionell Verbrauch Hybrid Kraftstoffersparnis l/100 km l/100 km % Behala 1400 331 121 63 Behala 1800 690 196 71 Chemiepark 181 50 72 RST 0 77 30 61 RST 560 412 154 63 Referenz 315 112,1 64 Tab. 6.3.: Vergleich der Verbrauchsdaten der konventionellen Lokomotive mit der hybridisierten Lokomotive in der Simulink-Simulation.durchgeführt werden.
+Strecke Verbrauch Konventionell Verbrauch Hybrid Kraftstoffersparnis l/100 km l/100 km % Behala 1400 331 121 63 Behala 1800 690 196 71 Chemiepark 181 50 72 RST 0 77 30 61 RST 560 412 154 63 Referenz 315 112,1 64 Tab. 6.3.:
+Vergleich der Verbrauchsdaten der konventionellen Lokomotive mit der hybridisierten Lokomotive in der Simulink-Simulation.durchgeführt werden.
 Das bedeutet, dass die Rekuperationsleistung auf den Teilstrecken nicht vollständig ausgeschöpft werden kann.
 Vergleich mit dem theoretischen Optimum Zur Bewertung der Leistungsfähigkeit der kennfeldbasierten Betriebsstrategie soll die Betriebsstrategie der hybriden Lokomotive mit dem theoretischen Optimum verglichen werden (siehe Tabelle 6.4).
-Strecke Verbrauch Hybridstrategie Verbrauch Optimal Zielerreichung l/100 km l/100 km % Behala 1400 121 100,5 83 Behala 1800 196 178,8 91 Chemiepark 50 43,1 86 RST 0 30 28,2 94 RST 560 154 124,1 80 Referenz 112,1 103,5 92 Tab. 6.4.: Vergleich der Verbrauchsdaten der hybridisierten Lokomotive mit dem ermittelten theoretischen Optimum.
+Strecke Verbrauch Hybridstrategie Verbrauch Optimal Zielerreichung l/100 km l/100 km % Behala 1400 121 100,5 83 Behala 1800 196 178,8 91 Chemiepark 50 43,1 86 RST 0 30 28,2 94 RST 560 154 124,1 80 Referenz 112,1 103,5 92 Tab. 6.4.:
+Vergleich der Verbrauchsdaten der hybridisierten Lokomotive mit dem ermittelten theoretischen Optimum.
 Das theoretische Optimum wird auf dem Referenzzyklus zu 92 % erreicht.
 Dies kann auf die Erzeugung des Kennfeldes, die Simulationsrichtung und Abweichungen der Simulationsmodelle zueinander zurückgeführt werden.
 Das Kennfeld der Betriebsstrategie besteht aus diskreten Punkten zwischen denen interpoliert wird.
@@ -1299,7 +1496,8 @@ Weiterhin ist die Begrenzung der Dynamik des Systems geringer, als in der Simula
 Allgemein wird mit der Systematik ein ausreichend genaues Ergebnis erreicht.
 Vergleich der Methodik Im Folgenden werden die Ergebnisse der drei Modelle gegenübergestellt.
 Abbildung 6.11 zeigt die Anzahl der Zustände der Traktionsleistungen im Referenz-Zyklus.
-Dabei ist zu Abb. 6.11.: Übersicht der Verteilung Traktionsleistungen in den Modellen.beachten, dass die Modelle unterschiedlich modelliert sind.
+Dabei ist zu Abb. 6.11.:
+Übersicht der Verteilung Traktionsleistungen in den Modellen.beachten, dass die Modelle unterschiedlich modelliert sind.
 Für die Längsdynamikbetrachtung zur Abschätzung der Verbrauchseigenschaften stimmen die Modelle ausreichend überein.
 Es wird deutlich, dass im konventionellen Modell geringere Maximalleistungen benötigt werden.
 Das Modell zur Berechnung des theoretischen Optimums weist eine große Abweichung bei −600 kW zu den anderen Modellen auf.
@@ -1323,14 +1521,18 @@ Die Skalierung erfolgt zwischen 80 bis 120 %.
 In Abbildung 6.12 ist die Auswirkung der Skalierung auf den Gesamtverbrauch für den Referenzzyklus dargestellt.
 Das Optimum stellt sich bei einer Skalierung von 95 % des Kennfeldes ein.
 Die erzeugte Betriebsstrategie weicht um 0,037 l vom lokalen Optimum ab.
-In Abbildung 6.13 und 6.14 ist die durchschnittliche Abb. 6.12.: Skalierung der Betriebsstrategie und Gesamtverbrauch auf der Referenzstrecke.
+In Abbildung 6.13 und 6.14 ist die durchschnittliche Abb. 6.12.:
+Skalierung der Betriebsstrategie und Gesamtverbrauch auf der Referenzstrecke.
 Traktionsleistung und Geschwindigkeit bei Variation des Kennfeldes der Referenzstrecke abgebildet.
 Die Kraftstoffverbrauchsvorteile der Betriebsstrategie werden nicht durch eine geringere Geschwindigkeit oder eine verminderte Traktionsleistung erreicht.
-Zur Abb. 6.13.: Durchschnittliche Antriebsleistung Abb. 6.14.: Durchschnittliche Geschwindigkeit bei Variation des Betriebsstrategiekennfeldes.bei Variation des Betriebsstrategiekennfeldes.
+Zur Abb. 6.13.:
+Durchschnittliche Antriebsleistung Abb. 6.14.:
+Durchschnittliche Geschwindigkeit bei Variation des Betriebsstrategiekennfeldes.bei Variation des Betriebsstrategiekennfeldes.
 Bestimmung des Kraftstoffverbrauchs wird die Simulation SOC-neutral durchgeführt.
 Der SOC-Verlauf des variierten Kennfeldes ist in Abbildung 6.15 dargestellt.
 In Abhängigkeit der Kennfelder treten verschiedene SOC-Verläufe auf.
-Abb. 6.15.: SOC-Verlauf in Abhängigkeit des skalierten Betriebsstrategiekennfeldes.
+Abb. 6.15.:
+SOC-Verlauf in Abhängigkeit des skalierten Betriebsstrategiekennfeldes.
 
 
 :::: Einfluss der Parametrisierung auf das Simulationsergebnis ::::
@@ -1340,15 +1542,19 @@ Im nächsten Abschnitt werden die Auswirkungen der Parametrisierung auf das Simu
 Dabei wird der Gradient des relativen Kraftstoffverbrauchs bei relativer Änderung eines Systemparameters betrachtet.
 Durch Betrachtung der Gradienten können Ungenauigkeiten in der Modellierung und Alterungsprozesse des Fahrzeugs abgeschätzt werden.
 In Abbildung 6.16 ist die Änderung des relativen Kraftstoffverbrauchs bei Änderung der relativen Verlustleistung des Generators dargestellt.
-Für das Systemverhalten ist Abb. 6.16.: Änderung der relativen elektrischen Verlustleistung des Generators die relative Änderung der Verlustleistung des Generators von geringer Bedeutung.
+Für das Systemverhalten ist Abb. 6.16.:
+Änderung der relativen elektrischen Verlustleistung des Generators die relative Änderung der Verlustleistung des Generators von geringer Bedeutung.
 Die relative Änderung der elektrischen Verlustleistung der Fahrmotoren (siehe Abbildung 6.17) hat einen großen Einfluss auf den relativen Kraftstoffverbrauch des Fahrzeugs.
-Abb. 6.17.: Änderung der relativen elektrischen Verlustleistung der Fahrmotoren Eine größere Batterie verbessert den relativen Kraftstoffverbrauch deutlich (siehe Abbildung 6.18).
+Abb. 6.17.:
+Änderung der relativen elektrischen Verlustleistung der Fahrmotoren Eine größere Batterie verbessert den relativen Kraftstoffverbrauch deutlich (siehe Abbildung 6.18).
 Aus einer größeren Batterie resultiert ein erhöhter Raum- und Kostenbedarf.
 Weiterhin vergrößert sich die Gesamtmasse des Fahrzeugs.
-Abb. 6.18.: Änderung des relativen Kraftstoffverbrauchs durch Änderung der relativen Batteriespeicherfähigkeit.
+Abb. 6.18.:
+Änderung des relativen Kraftstoffverbrauchs durch Änderung der relativen Batteriespeicherfähigkeit.
 In Abbildung 6.19 sind die Empfindlichkeiten der Komponenten Fahrmotor, Generator und Batterie im Vergleich aufgetragen.
 Die Betrachtung erfolgt durch den Betrag der Gradienten.
-Die Auswirkungen einer falschen Bedatung der Verlustleistung der Fahrmotoren Abb. 6.19.: Empfindlichkeit der Komponenten im Vergleich.hat den größten Einfluss auf das Ergebnis der Simulation.
+Die Auswirkungen einer falschen Bedatung der Verlustleistung der Fahrmotoren Abb. 6.19.:
+Empfindlichkeit der Komponenten im Vergleich.hat den größten Einfluss auf das Ergebnis der Simulation.
 Gleichzeitig sind die Potentiale der Optimierung der elektrischen Fahrmotoren am höchsten.
 Den zweitgrößten Einfluss auf das Verbrauchsergebnis hat die Kapazität der Batterie.
 Die Batterie verliert durch Alterungsprozesse an Speicherfähigkeit[Kur16].

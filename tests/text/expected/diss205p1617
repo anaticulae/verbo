@@ -9,7 +9,8 @@
 
 
 Die voranschreitende Implementierung digitaler Prozesse in der Planung im Bauwesen geht einher mit der Entwicklung komplexer Datenstrukturen.
-Eine Form dieser Datenstrukturen stellt das digitale Bauwerksmodell dar, welches den Kern der modellbasierten Arbeitsweise (englisch: Building Information Modeling; Abk.
+Eine Form dieser Datenstrukturen stellt das digitale Bauwerksmodell dar, welches den Kern der modellbasierten Arbeitsweise (englisch:
+Building Information Modeling; Abk.
 BIM) darstellt.
 Dabei stellt das Modell die Datenbasis für den aktuellen und alle folgenden Prozessschritte dar und bildet, so weit wie nötig, das real existierende oder zu erschaffende Bauwerk ab.
 Ein solches Modell umfasst geometrische Daten zur Beschreibung der geometrischen Form, sowie nicht-geometrische Daten zur Beschreibung semantischer, physikalischer oder anderer Inhalte.

@@ -70,7 +70,8 @@ Dieser Druck wird kontinuierlich mit mäßiger Geschwindigkeit abgelassen (siehe
 Mit einem Stethoskop oder einem Mikrofon werden distal der Manschette , meist in der Ellenbeuge, charakteristische Geräuschphänomene a bgehört.
 Diese sogenannten Korotkow -Töne (benannt nach ihrem Entdecker Nikolai Korotkow, russ ischer Arzt) entstehen durch die Blutströmung in der Arterie.
 Der Druckwert bei ihrem ersten Auftreten kann mit dem systolischen Blutdruck, der Druckwert bei ihrem Verschwinden mit dem diastol ischen Blutdruck gleichgesetzt werden (siehe Abb. 1).
-[Elt01] Abbildung 1: Korotkow-Geräusche bei der auskultatorischen Blutdruckmessung [Elt01]
+[Elt01] Abbildung 1:
+Korotkow-Geräusche bei der auskultatorischen Blutdruckmessung [Elt01]
 
 
 :::: Oszillometrische Methode ::::
@@ -98,16 +99,19 @@ Somit sind der zu messende Druck innerhalb der Arterie und der in der Manschette
 Das Prinzip wurde in den Gerätesystemen Finapres und Portapres realisiert.
 [Elt01] Um hier zahlenmäßig möglichst genaue Messwerte zu erhalten erfolgt regelmäßig eine Anpassung des Sollwerts der Regelung.
 Zu diesem Zweck wird in einem Abstand von 10-70 Sekunden (variabel je nach Stabilität der Eingangsgrößen) die kontinuierliche Regelung unterbrochen und ein Kalibrationsmanöver durchgeführt.
-[Ohm91] Abbildung 3: Volumenkompensationsmethode nach Penaz [Elt01] Von R. Aaslid und AO.
+[Ohm91] Abbildung 3:
+Volumenkompensationsmethode nach Penaz [Elt01] Von R. Aaslid und AO.
 Brubakk wurde die Methode im Jahre 1981 weiterentwickelt , die zugrunde liegende Idee der Penaz-Methode ist beibehalten.Das Blutvolumen, das nun indirekt über die G eschwindigkeit der Blutströmung bestimmt wird, soll ebenfalls auf einen kleinen Wert begrenzt werden (Referenzgeschwindigkeit 3cm/s).
-Der Aufbau ist in Abbildung 4 dargestellt: Die Fingermanschette wird durch eine Druckmanschette am Oberarm ersetzt.Die als Eingangssignal für die schnelle pneumatische Regelung benutzte Strömungsgeschwindigkeit wird mithilfe eines Ultraschall -Dopplers bestimmt.
+Der Aufbau ist in Abbildung 4 dargestellt:
+Die Fingermanschette wird durch eine Druckmanschette am Oberarm ersetzt.Die als Eingangssignal für die schnelle pneumatische Regelung benutzte Strömungsgeschwindigkeit wird mithilfe eines Ultraschall -Dopplers bestimmt.
 Zunächst wird bei normalem Fluss ein Druck durch die Manschette aufgebracht, der obe rhalb des angenommenen systolischen Werts liegt.
 Anschließend erfolgt die Reduktion des Drucks bis zum gewünschten Sollwert.
 Auch hier können theoretisch gleiche Druckverhältnisse innerhalb und außerhalb des Blutgefäßes angenommen werden.
 Das genannte Verfahren wird als weniger unang enehm empfunden als das Ablassen des Drucks bei der auskultatorischen Messmethode.
 Nach zwei Minuten soll jedoch eine 15 Sekun den andauernde Pause eingelegt werden, um die ausreichende Durchblutung des Arms sicherzustellen.
 Die festgestellten Probleme des Verfahrens sind die Instabil ität der Regelung bei einer Verschlechterung des Dopplersignals sowie die Tatsache, dass bei einem hohen Gefäßwiderstand des Probanden (patientenabhängig) eine Regelung des Blutflusses auf den erwünschten Wert nur schwer möglich ist.
-[Aas81] Abbildung 4: Messverfahren nach R. Aaslid und AO.
+[Aas81] Abbildung 4:
+Messverfahren nach R. Aaslid und AO.
 Brubakk [Aas81]
 
 
@@ -120,7 +124,8 @@ Zum Ei ndringen in die Haut muss der Schall mit einem Gel eingekoppelt werden um
 Das eingebrachte Signal wird an den bewegten Blutteilchen z urückgestreut und kann vom Empfangskristall detektiert werden (siehe Abb. 5).
 Aufgrund der entstehenden Laufzeitdifferenzen bei einer konstanten Ausbreitungsgeschwindigkeit im Gewebe (ca. 1500m/s) wird die Geschwindigkeit in verschiedenen Gewebetiefen ermittelt.
 [Elt01] A us dem Spektrum kann ein analoges Spannungssignal berechnet und ausgegeben werden.
-Abbildung 5: Schematische Darstellung einer aufgesetzten Ultraschall -Doppler-Sonde [Pau11]
+Abbildung 5:
+Schematische Darstellung einer aufgesetzten Ultraschall -Doppler-Sonde [Pau11]
 
 
 :::: Digitale Regelung ::::
@@ -152,7 +157,8 @@ Somit werden nur zu bestimmten Zeitpunkten Werte berechnet, die Regelung funkti 
 Um eine möglichst kontinuierl iche und stabile Regelung zu erhalten , müssen diese Verzögerungen so klein wie möglich gehalten werden.
 Weiterhin müssen auch die im zu digitalisi erenden Signal auftretenden Frequenzen berücksichtigt werden.
 Diese müssen kleiner als die halbe Abtastfrequenz sein (Nyquist -Frequenz), um eine verfälschte Aufnahme des Signals zu vermeiden (Aliasing-Effekt).
-[Lun10] Abbildung 7: Digitalisierung mit Abtast -Halteglied [Reu08]
+[Lun10] Abbildung 7:
+Digitalisierung mit Abtast -Halteglied [Reu08]
 
 
 :::: Der PI-Regler ::::
@@ -174,7 +180,8 @@ Die von National Instruments entwickelte Software LabVIEW ( Laboratory Virtual I
 Sie folgt hierbei dem Ansatz der Datenflussprogrammierung, bei der technische Prozesse so abgebildet werden so llen, wie sie in der Realität vorkommen.
 LabVIEW ist hierbei Entwicklungsumgebung und grafische Programmiersprache zugleich.
 [Geo09] Die Vorteile lie gen in der großen Übersichtlichkeit der pro grammierten Abläufe sowie in der schnelleren Erlernbarkeit gegenüber konventionellen Programmie rsprachen.
-Abbildung 9: Einfache LabVIEW-Operation Ein Beispiel für die Datenflussprog rammierung bildet die einfache LabVIEW- Operation in Abbildung 10.
+Abbildung 9:
+Einfache LabVIEW-Operation Ein Beispiel für die Datenflussprog rammierung bildet die einfache LabVIEW- Operation in Abbildung 10.
 Eine eingegebene Variable (Zahl_1) wird zunächst vom Wert 100 subtrahiert, anschließend wird eine zweite Variable (Zahl_2 ) zum Zwischenergebnis addiert.
 Das Resultat wird als neue Variable (Ergebnis) ausgegeben.
 Die durchzuführenden Operationen während des Programmablaufs werden , wie im Beispiel ersichtlich, durch Funktionsblöcke festgelegt.
@@ -193,7 +200,8 @@ Durch eine spontane Ausatemanstrengung bei geschlossener Stimmritze, der sogenan
 Hierbei entsteht ein Druckanstieg im Niederdrucksystem gewisser Thoraxabschnitte, wodurch der Blutrückstrom in den Brustkorb gestoppt wird.
 Dadurch fällt das Herzzeitvolumen rasch ab [Elt01].
 Beim Wiederausatmen (siehe Zeitmarke 2) ist eine erhöhte Vorlast am Herzen vorhanden, die Kreislaufregulation bewirkt eine gesteigerte Herzfrequenz und einen Anstieg des arteriellen Drucks.
-Abbildung 10: Blutdruckverlauf während eines Valsalva-Manövers
+Abbildung 10:
+Blutdruckverlauf während eines Valsalva-Manövers
 
 
 :::: Aufgabenstellung ::::
@@ -218,7 +226,8 @@ Der einzustellende Sollwert weicht vom Referenzwert der Methode aufgrund der ge�
 Der Manschettendruck wird durch eine speziell angefertigte Druckerzeugungseinheit, bestehend aus Kompressor, Vorratsbehälter und Proportionalventil, zur Verfügung gestellt.
 Die Anzeige der Doppler-Hüllkurve sowie der Verlaufskurve des Manschettendrucks ist am Computer realisiert.
 Die Signale werden mittels einer USB-Messkarte digitalisiert und in einer LABVIEW-Anwendung auf dem Bildschirm dargestellt.
-Abbildung 11: Bestehender Versuchsaufbau vor der Optimierung Es wird festgestellt, dass der Versuch bei der praktischen Bestimmung des Blutdrucks zwar den zeitlichen Verlauf gut darstellt, jedoch die ermittelten Werte tendenziell zu hoch sind.
+Abbildung 11:
+Bestehender Versuchsaufbau vor der Optimierung Es wird festgestellt, dass der Versuch bei der praktischen Bestimmung des Blutdrucks zwar den zeitlichen Verlauf gut darstellt, jedoch die ermittelten Werte tendenziell zu hoch sind.
 Weiterhin erscheint der bestehende Aufbau in vielen Punkten nicht mehr zeitgemäß.
 Zum einen sind einige Komponenten im sehr großen und sperrigen Geräteaufbau (siehe Abb. 11) überflüssig.
 Sie stammen, wie z.B. das Display und einige Platinen, aus früheren Versuchen einen eigenen Doppler zu entwickeln.
@@ -264,7 +273,8 @@ Zunächst muss festgestellt werden, ob die Geschwindigkeit, die eine getaktete D
 Sowohl das Digitalisieren und Einlesen der Messwerte, als auch die Berechnung der Regelgrößen und die Ausgabe der Stellgröße nehmen eine bestimmte Zeit in Anspruch.
 Im Falle einer nicht ausreichenden Geschwindigkeit kann der Manschettendruck dem Dopplersignal nicht folgen.
 Somit kann die Blutflussgeschwindigkeit nicht geregelt werden, was eine Verfälschung der Messung zur Folge hat.
-Abbildung 12: Blockdiagramm des ersten Modellentwurfs Für den ersten Aufbau ergibt sich das Blockdiagramm in Abbildung 12.
+Abbildung 12:
+Blockdiagramm des ersten Modellentwurfs Für den ersten Aufbau ergibt sich das Blockdiagramm in Abbildung 12.
 Die Basis der Software bildet eine zeitgesteuerte Schleife, welche den Regelalgorithmus zyklisch ausführen soll.
 Die Frequenz dieser Schleife wird auf 500Hz festgelegt, um eine Periodendauer von 2ms zu erreichen.
 In der Schleife werden mittels zweier DAQ-Express-VIs (Schnittstelle zur USB-Messkarte) das Dopplersignal sowie der aktuelle Manschettendruck eingelesen.
@@ -274,7 +284,8 @@ Das errechnete Stellsignal wird durch einen weiteren DAQ-Block ausgegeben.
 Eine zusätzliche Funktion bildet die Einrichtung einer Timer-Struktur, welche bei jedem Durchlauf die seit dem Start abgelaufene Zeit in Millisekunden protokolliert.
 Somit können die Periodendauer und daraus die tatsächlich erreichte Frequenz der zeitgesteuerten Schleife ermittelt werden.
 Eine erste Testmessung ergibt eine Periodendauer zwischen 20 und 50ms.
-Deshalb wird versucht, die Performance durch verschiedene Maßnahmen zu verbessern: • Es wird festgestellt, dass beim Einlesen und Ausgeben der Signale unter Verwendung des DAQ-
+Deshalb wird versucht, die Performance durch verschiedene Maßnahmen zu verbessern:
+• Es wird festgestellt, dass beim Einlesen und Ausgeben der Signale unter Verwendung des DAQ-
 14u
 15u
 16u
@@ -291,7 +302,8 @@ stellt.
 Dies hat zur Folge, dass beim Ausführen als Zeitbasis der interne Timer des Betriebssystems verwendet wird, was eine unregelmäßige Taktverzögerung oder -verschiebung nach sich zieht.
 Diese entsteht hauptsächlich aufgrund im Hintergrund ablaufender Prozesse.
 Durch die Verwendung eines externen Zählers, der die Schleifeniterationen steuert, kann der Takt regelmäßiger und schneller durchgeführt werden.
-Abbildung 13: Optimierung der Regelschleife - Zeitsteuerung Messschleife Um einen solchen Counter zu erhalten, muss die USB-Messkarte gegen eine PCI-Steckkarte getauscht werden, die nach Angaben im Datenblatt das Timing unterstützt.
+Abbildung 13:
+Optimierung der Regelschleife - Zeitsteuerung Messschleife Um einen solchen Counter zu erhalten, muss die USB-Messkarte gegen eine PCI-Steckkarte getauscht werden, die nach Angaben im Datenblatt das Timing unterstützt.
 Abbildung 13 zeigt die Konfiguration der Zeitsteuerung beim Aufruf der Schleife.
 Im Zuge der Optimierung wird weiterhin nach den rechenintensivsten Prozessen im Programmablauf gesucht.
 Dabei stellt sich heraus, dass die grafische Anzeige (Signalverlaufskurve) die regelmäßig getaktete Ausführung der Schleife behindert.
@@ -302,7 +314,8 @@ Die Kommunikation zwischen den beiden zu Beginn jeder Messung synchronisierten S
 Während der Messung im möglichst schnellen Takt wird der Puffer gefüllt.
 Die langsamer laufende Anzeigeschleife stellt (mit niedriger Priorität als die Messung) mehrere Werte gleichzeitig im Verlaufsdiagramm dar und leert somit den Puffer wieder (siehe Abb. 14).
 Der Anzeigeschleife wird ein separater Counter der PCI-Karte zugewiesen.
-Abbildung 14: Optimierung der Regelschleife - Puffer nach dem „FIFO“-Prinzip • Ein weiterer Ansatzpunkt ist die Gestaltung des Regelalgorithmus.
+Abbildung 14:
+Optimierung der Regelschleife - Puffer nach dem „FIFO“-Prinzip • Ein weiterer Ansatzpunkt ist die Gestaltung des Regelalgorithmus.
 Der verwendete PID-Block wird als ungeeignet bewertet.
 Einerseits scheint er für den erwünschten Zweck überdimensioniert (Differentialanteil wird nicht benötigt), andererseits sind die intern ablaufenden Vorgänge schlecht zu überschauen und zu verstehen.
 Weiterhin werden die Anteile von Proportional- und Integralglied in multiplikativer Form miteinander verknüpft, weshalb ein Betrieb als reiner P- oder I-Regler nicht möglich ist.
@@ -314,13 +327,16 @@ Die Multiplikation dieses Signals mit dem eingegebenen Proportionalfaktor ergibt
 Zur Ermittlung des I-Glieds wird das Signal mit dem Kehrwert der Integral-Zeitkonstante Ti sowie der Diskretisierungszeit dt multipliziert und anschlie- ßend über die Zeit integriert.
 Am Ende werden die Anteile addiert, der Ausgangswert des Reglers begrenzt und das Ergebnis zur Übertragung auf die Regelstrecke invertiert.
 Als zusätzliche Funktion kann die Integralsumme per Knopfdruck zurückgesetzt werden.
-Abbildung 15: Optimierung der Regelschleife - Regelalgorithmus (PI) Somit ergibt sich ein verbessertes Blockdiagramm (vgl. 7.1.3).
+Abbildung 15:
+Optimierung der Regelschleife - Regelalgorithmus (PI) Somit ergibt sich ein verbessertes Blockdiagramm (vgl. 7.1.3).
 Die durch die Protokollierung ermittelten Periodendauern werden erneut analysiert.
 Mit den ergriffenen Maßnahmen wird erreicht, dass die Dauer einer Schleifeniteration nun in mehr als 98% der Durchläufe kleiner oder gleich 3ms ist.
 Somit kann der angestrebte Takt als erfüllt betrachtet werden.
 Um letztendlich eine Eignung des digitalen Aufbaus für die Aufgabe feststellen zu können, wird das Ergebnis mit der bestehenden analogen Regelung verglichen.
 Neben der subjektiven Einschätzung wird mit beiden Aufbauten eine Serie von Valsalva-Versuchen (vgl. 2.5) durchgeführt.
-Abbildung 16: Valsalva-Press-Versuch mit altem Aufbau Abbildung 17: Valsalva-Press-Versuch mit neuem Aufbau Wie die Abbildungen 16 und 17 zeigen, stimmen die von analoger und digitaler Regelung ermittelten Werte quantitativ nicht überein.
+Abbildung 16:
+Valsalva-Press-Versuch mit altem Aufbau Abbildung 17:
+Valsalva-Press-Versuch mit neuem Aufbau Wie die Abbildungen 16 und 17 zeigen, stimmen die von analoger und digitaler Regelung ermittelten Werte quantitativ nicht überein.
 Der qualitative Verlauf der Blutdruckkurve folgt jedoch sehr gut dem physiologisch stattfindenden Vorgang.
 Auch Veränderungen des hydrostatischen Drucks durch Aufund Ab-Bewegungen des Arms werden gut registriert.
 Somit kann der analoge Aufbau durch die digitale Regelung ersetzt werden.
@@ -350,7 +366,8 @@ Hier ist auch ein analoger Tiefpass (RC-Glied) zur Filterung des eingehenden Dop
 Die Platine ist in Abbildung 19 sichtbar, die Schalt- und Anschlusspläne sind der Arbeit angehängt (vgl. 7.2.1).
 12u
 13u
-Abbildung 18: Spannungsverteiler (1) und 24V-Netzteil (2) Zur mechanischen Anpassung des Gehäuses müssen lediglich die Frontplatte und die Rückwand angepasst werden.
+Abbildung 18:
+Spannungsverteiler (1) und 24V-Netzteil (2) Zur mechanischen Anpassung des Gehäuses müssen lediglich die Frontplatte und die Rückwand angepasst werden.
 Die neue Frontplatte bildet aufgrund der weggefallenen, manuellen Drehregler eine einfache Aluminiumplatte, in die lediglich die Schraubenlöcher zur Montage am Gehäuse eingebracht werden müssen.
 Eine auf dieser Platte aufgebrachte Klebefolie kennzeichnet den Versuch und beschreibt mit einer Skizze die Anordnung der Komponenten am Unterarm.
 Die existierende Rückwand wird um die Lochgeometrie zum Einbau von Kaltgerätebuchse, Kippschalter, D-Sub- und BNC-Buchse erweitert.
@@ -359,10 +376,12 @@ Nr. Komponente 1 Steckverbindung zum Ventil
 2u
 2 Steckverbindung zu den Gehäusebuchsen (D-SUB/BNC)
 5u
-3 RC-Glied als analoger Tiefpass zur Filterung des Dopplersignals (Eingang) 4 Anschluss für 24V-Versorgung Tabelle 1: Komponenten in Abb. 19
+3 RC-Glied als analoger Tiefpass zur Filterung des Dopplersignals (Eingang) 4 Anschluss für 24V-Versorgung Tabelle 1:
+Komponenten in Abb. 19
 10u
 11u
-Abbildung 19: Verteilerplatine
+Abbildung 19:
+Verteilerplatine
 
 
 :::: Anpassung der Messwerte mit alternativem Verfahren ::::
@@ -385,7 +404,8 @@ Die Programmierung wird als Sub-VI realisiert und im Hauptprogramm eingebettet.
 :::: Oszillometrische Bestimmung des mittleren arteriellen Blutdrucks ::::
 
 
-Das Unterprogramm soll folgende Abläufe durchführen: Dem Ventil soll ein Rampensignal vorgegeben werden, das in der Manschette zügig einen Druck von vorerst 200mmHg erzeugt und diesen dann mit mäßiger Geschwindigkeit (ca. 5mmHg/s) ablässt.
+Das Unterprogramm soll folgende Abläufe durchführen:
+Dem Ventil soll ein Rampensignal vorgegeben werden, das in der Manschette zügig einen Druck von vorerst 200mmHg erzeugt und diesen dann mit mäßiger Geschwindigkeit (ca. 5mmHg/s) ablässt.
 Während des Ablassens sollen die vom Blutgefäß auf die Manschette übertragenen Oszillationen registriert, herausgefiltert und verstärkt werden.
 Aus diesen Schwingungen sollen dann Blutdruckwerte ermittelt werden.
 Das Sub-VI ist in zwei Sequenzen aufgeteilt.
@@ -450,7 +470,8 @@ Eine Übersicht über die Programmfunktionen liefert neben der folgenden Beschre
 :::: Anforderungen an die Bedienoberfläche ::::
 
 
-Folgende Forderungen sollen erfüllt werden: • Durchführung der Blutdruckmessung
+Folgende Forderungen sollen erfüllt werden:
+• Durchführung der Blutdruckmessung
 26u
 27u
 28u
@@ -474,7 +495,8 @@ Im Registerkartenfeld „Blutdruckwerte“ können vom Benutzer der alternativ e
 Um den für die Wiedergabe bereits erwähnten Anpassungsfaktor zu berechnen (nach Gleichung 1), kann zusätzlich ein Wert für MAD_servo angegeben werden (vgl. 4.2.2).
 Im Feld „Dateiname“ wird der Titel der Protokolldatei festgelegt, welche das Programm im unter „Voreinstellungen“ definierten Verzeichnis abgelegt.
 In diesem Registerkartenfeld (siehe Abb. 20) können weiterhin die zeitliche Auflösung von Monitor- und Trendfenster (Auswahlfelder) sowie die Voreinstellungen des Reglers (Texteingabe) definiert werden.
-Abbildung 20: Registerkartenelement "Voreinstellungen" der Bedienoberfläche Beim Betätigen des Buttons „Wiedergabe“ werden die unter „Blutdruckwerte“ definierten Eingaben zum systolischen und diastolischen Druck der alternativen Messung eingelesen und der MAD_anp berechnet (vgl. 4.2.2).
+Abbildung 20:
+Registerkartenelement "Voreinstellungen" der Bedienoberfläche Beim Betätigen des Buttons „Wiedergabe“ werden die unter „Blutdruckwerte“ definierten Eingaben zum systolischen und diastolischen Druck der alternativen Messung eingelesen und der MAD_anp berechnet (vgl. 4.2.2).
 Sollten keine Werte vorhanden sein, wird im Folgenden auch keine Anpassung durchgeführt.
 Anschließend wird aus dem angegebenen Verzeichnis und dem Dateinamen der Dateipfad des Messprotokolls erstellt und geprüft, ob eine Datei mit diesem Pfad existiert.
 Sollte dies nicht der Fall sein, wird der Benutzer über einen Dialog zur Korrektur der Angaben aufgefordert.
@@ -486,7 +508,8 @@ Dieser wird in der letzten Zeile des Protokolls festgehalten und kann von dort a
 Der Zustand der Anpassung wird in einer Statuszeile unterhalb des Trendfensters ausgegeben, hier befindet sich auch die Grafikpalette des Diagramms, mit dem sich der Benutzer innerhalb der ausgegebenen Kurve bewegen kann (Zoom etc.).
 Der Button „Start“ ruft das Sub-VI „Messprogramm“ auf, welches nachfolgend separat beschrieben wird.
 Auch hier wird zunächst der MAD_anp berechnet, weiter werden Dateipfad, Regler- und Anzeigeeinstellungen ausgelesen und an das Unterprogramm übergeben.
-Abbildung 21: Registerkartenelement "Wiedergabe" der Bedienoberfläche mit gespeicherter Messung
+Abbildung 21:
+Registerkartenelement "Wiedergabe" der Bedienoberfläche mit gespeicherter Messung
 
 
 :::: Sub-VI „Messprogramm“ ::::
@@ -510,7 +533,8 @@ Eine auffällige Gestaltung dieses Bedienknopfes erscheint als sehr wichtig, da 
 Diese Funktion ist zusätzlich über die Escape-Taste ausführbar.
 Während der laufenden Messung können, wie bereits beschrieben, die Messwerte an die alternative Messung angepasst werden.
 Sollten zu Beginn keine gültigen Druckwerte übergeben worden sein, sind die hierfür vorgesehenen Bedienknöpfe deaktiviert.
-Abbildung 22: Frontpanel des Messprogramms
+Abbildung 22:
+Frontpanel des Messprogramms
 
 
 :::: Überarbeitung der Sondenfixierung ::::
@@ -530,7 +554,8 @@ Für diese werden folgende Anforderungen erarbeitet:
 Ein wichtiger und zu berücksichtigender Aspekt ist der zu erwartende Fertigungsaufwand.
 Die neue Halterung soll möglichst schnell zur Verfügung stehen.
 Das für den bestehenden Versuch aufwendig gestaltete Kunststoff-Verbindungselement soll, wenn möglich, weiter verwendet werden.
-Es werden folgende Lösungsideen gefunden: • Gummi-Lochband (ähnlich EKG-Gurten) mit kleinem Lochabstand zur möglichst stufenlosen An-
+Es werden folgende Lösungsideen gefunden:
+• Gummi-Lochband (ähnlich EKG-Gurten) mit kleinem Lochabstand zur möglichst stufenlosen An-
 18u
 19u
 20u
@@ -564,7 +589,8 @@ Es werden folgende Lösungsideen gefunden: • Gummi-Lochband (ähnlich EKG-Gurt
 12u
 13u
 14u
-Abbildung 23: Optimierte Sondenfixierung
+Abbildung 23:
+Optimierte Sondenfixierung
 
 
 :::: Ergebnisse ::::
@@ -584,7 +610,11 @@ D as in der Manschette gemessene Drucksignal wird an den Messcomputer weitergele
 Die Steuerung der Programmfunktionen, die Betrachtung der aktuellen und gespeicherten Messungen sowie das Ver ändern der Einstellungen we rden ebenfalls im LabVIEW-Programm durchgeführt.
 Weiter wird hier ein Protokoll zur Speicherung der ermittelten Werte erstellt.
 Es erg eben sich die in den Abbildungen 24 bis 27 dargestellten Struktur - und Signalflusspläne.
-Abbildung 24: Struktur- und Signalflussplan - Legende Abbildung 25: Struktur- und Signalflussplan - Übersicht Laboraufbau Abbildung 26: Struktur- und Signalflussplan - Detailansicht Druckerzeugungseinheit Abbildung 27: Struktur- und Signalflussplan - Detailansicht Mess-PC Mit dem Versuchsaufbau können folgende Messungen durchgeführt werden:
+Abbildung 24:
+Struktur- und Signalflussplan - Legende Abbildung 25:
+Struktur- und Signalflussplan - Übersicht Laboraufbau Abbildung 26:
+Struktur- und Signalflussplan - Detailansicht Druckerzeugungseinheit Abbildung 27:
+Struktur- und Signalflussplan - Detailansicht Mess-PC Mit dem Versuchsaufbau können folgende Messungen durchgeführt werden:
 3u
 4u
 5u
@@ -616,7 +646,8 @@ Es werden folgende Voraussetzungen definiert:
 10u
 Sollwert=0.07, KP=0.6, Ti=0.07 Die jeweils durchzuführenden Manöver bzw.der Ablauf der Messungen sollen bei jedem Probanden gleich sein und werden einheitlich festgelegt.
 Es wird ein Messprotokoll erstellt, welches zur Führung durch den Versuch und zur Dokumentation der Ergebnisse eingesetzt wird (vgl. 7.4.1).
-Die Versuche sollen folgende Fragestellungen beantworten: • Vergleich der ermittelten Werte für den mittleren arteriellen Druck durch verschiedene Metho-
+Die Versuche sollen folgende Fragestellungen beantworten:
+• Vergleich der ermittelten Werte für den mittleren arteriellen Druck durch verschiedene Metho-
 17u
 18u
 19u
@@ -629,7 +660,8 @@ Die Versuche sollen folgende Fragestellungen beantworten: • Vergleich der ermi
 :::: Ergebnisse ::::
 
 
-Nach der Auswertung der Messwerte können folgende Aussagen getroffen werden: • Die oszillometrische Messung der für die Anpassung verwendeten Werte mit der im Versuchsauf-
+Nach der Auswertung der Messwerte können folgende Aussagen getroffen werden:
+• Die oszillometrische Messung der für die Anpassung verwendeten Werte mit der im Versuchsauf-
 27u
 28u
 29u
@@ -639,12 +671,15 @@ Nach der Auswertung der Messwerte können folgende Aussagen getroffen werden: �
 33u
 34u
 35u
-Abbildung 28: Auswertung der Testmessungen - Beispiel für oszillometrische Messung Abbildung 29: Auswertung der Testmessungen - Vergleich der ermittelten MAP-Werte • Die quantitative Anpassung durch den Berechnungsfaktor f ist für den Anwendungsfall geeignet.
+Abbildung 28:
+Auswertung der Testmessungen - Beispiel für oszillometrische Messung Abbildung 29:
+Auswertung der Testmessungen - Vergleich der ermittelten MAP-Werte • Die quantitative Anpassung durch den Berechnungsfaktor f ist für den Anwendungsfall geeignet.
 Für die Fälle, in denen der oszillometrische Wert dem auskultatorischen Wert ähnelt, werden nach der Anpassung auch durch die Servo-Methode physiologisch sinnvolle und den auskultatorischen Werten ähnliche Blutdruckwerte ermittelt.
 Beispiele hierfür sind die Messungen Nr. 1, 3, 4, 6 und 10.
 In Abbildung 29 liegen für diese Durchläufe der auskultatorisch bestimmte und der mit dem Versuchsaufbau gemessene MAP-Wert nahe beieinander.
 In diesen Fällen sind dann auch, in Abbildung 30 sichtbar, die gemessenen Blutdruckwerte (Systole/Diastole) annähernd gleich.
-Abbildung 30: Auswertung der Testmessungen - Qualität der oszillometrischen Anpassung
+Abbildung 30:
+Auswertung der Testmessungen - Qualität der oszillometrischen Anpassung
 8u
 9u
 10u

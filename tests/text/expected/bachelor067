@@ -13,7 +13,8 @@ Verschiedene Programme und Paradigmen konkurrieren um die schnellste, bequemste 
 Mit dem Begriff„große Datenmengen“ oder „Big Data“ werden in dieser Arbeit solche Datenmengen zusammengefasst, die die Kriterien Volume, Velocity und Variety [Lan01] erfüllen oder „Datenmengen, die nicht mehr unter Auflage bestimmter Service Level Agreements auf einzelnen Maschinen verarbeitet werden können“ (Vgl. [SW14]).
 Als Unternehmen, das früh mit zeitkritischen Aufgaben (u.a. Indizierung von Webseiten und PageRank [Pag01]) auf solchen Datenmengen konfrontiert war, implementierte Google das Map-Reduce Paradigma [DG04] als Framework zur Ausnutzung vieler kostengünstiger Rechner für verschiedene Aufgaben.
 In Folge der Veröffentlichung dieser Idee im Jahr 2004 wurde Map-Reduce in Form der OpenSource Implementation Hadoop (gemeinsam mit einer Implementation des Google File Systems GFS, u.a.) [GGL03] zum De-facto-Standard für Big-Data-Analyseaufgaben.
-Reines Map-Reduce (in der ursprünglichen Implemenation von Hadoop) als Berechnungsparadigma zur Verarbeitung großer Datenmengen zeigt jedoch in vielen Anwendungsfällen Schwächen: • Daten, die in hoher Frequenz entstehen und schnell verarbeitet werden sollen, erfordern
+Reines Map-Reduce (in der ursprünglichen Implemenation von Hadoop) als Berechnungsparadigma zur Verarbeitung großer Datenmengen zeigt jedoch in vielen Anwendungsfällen Schwächen:
+• Daten, die in hoher Frequenz entstehen und schnell verarbeitet werden sollen, erfordern
 21u
 22u
 0u
@@ -87,7 +88,9 @@ Hadoop/YARN wiederum ist für den Betrieb auf einem Rechnercluster auf Mittelkla
 Für Spark kann daher von einer vergleichbaren Hardwarekonfiguration ausgegangen werden.
 0u
 Der Vergleich von drei aktuellen Rack Servern der 2000-Euro-Klasse in der Grundausstattung - hier als Mittelklasse-Geräte bezeichnet - liefert die folgenden Verhältnisse der wesentlichen Schnittstellen zueinander (Siehe Anhang 3.1).
-Netzwerk Festspeicher Arbeitsspeicher 0,125 GB/s 1 GB/s 17 GB/s Tabelle 2.1: Theoretische Spitzenleistungen bei Mittelklasse-Servern Bei den folgenden Bewertungen der Kernkonzepte ist es wichtig, sich die aus Tabelle 2.1 abgeleiteten Größenordnungen des Durchsatzes (D) der verschiedenen Datenkanäle zu vergegenwärtigen: DN etzwerk < DF estspeicher < DArbeitsspeicher Für eine effzieinte Verarbeitung von Daten ist es - ganz allgemein - also wünschenswert, den größten Anteil des Datentransfers im Arbeitsspeicher zu haben, einen kleineren Anteil auf der Festplatte und einen noch kleineren Anteil auf Netzwerkverbindungen.
+Netzwerk Festspeicher Arbeitsspeicher 0,125 GB/s 1 GB/s 17 GB/s Tabelle 2.1:
+Theoretische Spitzenleistungen bei Mittelklasse-Servern Bei den folgenden Bewertungen der Kernkonzepte ist es wichtig, sich die aus Tabelle 2.1 abgeleiteten Größenordnungen des Durchsatzes (D) der verschiedenen Datenkanäle zu vergegenwärtigen:
+DN etzwerk < DF estspeicher < DArbeitsspeicher Für eine effzieinte Verarbeitung von Daten ist es - ganz allgemein - also wünschenswert, den größten Anteil des Datentransfers im Arbeitsspeicher zu haben, einen kleineren Anteil auf der Festplatte und einen noch kleineren Anteil auf Netzwerkverbindungen.
 Es ist das wichtigste Ziel der folgenden Kernkonzepte von Apache Spark unter diesen Bedingungen, die effzieinte und stabile Verarbeitung großer Datenmengen ([SW14]) zu gewährleisten.
 
 
@@ -118,15 +121,20 @@ Solche globalen - auf sämtlichen Partitionen des RDD durchgeführten - Operatio
 Eine Folge von Operationen op1op2op3... wird als Lineage eines RDD bezeichnet.
 Die Lineage kann als das „Rezept“ zur Erstellung eines Datensatzes verstanden werden.
 Dabei gibt es zwei grundsätzlich verschiedene Operationen, nämlich Transformationen und Aktionen.
-Transformationen sind Operationen, die ein RDD auf ein anderes abbilden: T ransf ormation : RDD × RDD −→ RDD oder T ransf ormation : RDD −→ RDD Es wird also - grob gesagt - nur die abstrakte Repräsentation des Datensatzes geändert, ohne tatsächlich dessen Datenelemente für den Programmfluss im Treiberprogramm abzurufen.
-Beispiele für solche Operationen sind: • filter
+Transformationen sind Operationen, die ein RDD auf ein anderes abbilden:
+T ransf ormation :
+RDD × RDD −→ RDD oder T ransf ormation :
+RDD −→ RDD Es wird also - grob gesagt - nur die abstrakte Repräsentation des Datensatzes geändert, ohne tatsächlich dessen Datenelemente für den Programmfluss im Treiberprogramm abzurufen.
+Beispiele für solche Operationen sind:
+• filter
 19u
 20u
 0u
 Zusammenfassen von zwei RDDs zu einem neuen.
 Die Partitionen bleiben dabei erhalten Aktionen sind Operationen, die RDDs in eine andere Domäne abbilden:
 #$@FORMULA@$#:0
-Beispiele für Aktionen sind die Methoden: • reduce
+Beispiele für Aktionen sind die Methoden:
+• reduce
 5u
 6u
 7u
@@ -149,7 +157,8 @@ Wie in Abb. 2.4 dargestellt ist, werden während der Transformationsvorgänge ke
 Möchte man Zwischenergebnisse zu einem späteren Zeitpunkt oder in anderem Zusammenhang wiederverwenden, kann man dies explizit über das Kommando persist() oder cache() anweisen:
 6u
 Realisiert ist das Konzept der Lineage und der „Lazy Initialization“ von RDDs durch Transformations-Methoden, die eine Variante des Factory-Pattern ([BL13]) implementieren.
-Die erzeugten Objekte sind dabei wiederum Unterklassen von RDDs: Jedes RDD-Objekt führt eine Liste von Vorgängern mit.
+Die erzeugten Objekte sind dabei wiederum Unterklassen von RDDs:
+Jedes RDD-Objekt führt eine Liste von Vorgängern mit.
 Aus dieser lässt sich auch die Art der Berechnung des jeweiligen Nachfolgers ableiten.
 Jede weitere Transformations-Methode konstruiert nun lediglich ein neues RDD-Referenzobjekt.
 Dieses basiert auf dem aktuellen Objekt und der jeweiligen Transformation.
@@ -169,7 +178,8 @@ Dort werden dann die rekursiven Abhängigkeiten des aktuellen RDD aufgelöst und
 7u
 8u
 verloren - beispielsweise durch Defekt eines Knotens - ist das „Rezept“ zur Erstellung des Datensatzes in der Lineage des RDD-Objektes weiterhin vorhanden und die Partition kann gezielt wiederhergestellt werden.
-Ein weiterer Vorteil dieser Art von Arbeitsdatensatz wird ebenfalls sofort deutlich: Im optimalen Fall sind die zu ladenden Daten von jedem der Worker auf unabhängigen Kanälen erreichbar (z.B. auf dem lokalen Festspeicher) und gleichmäßig auf diesen Kanälen partitioniert
+Ein weiterer Vorteil dieser Art von Arbeitsdatensatz wird ebenfalls sofort deutlich:
+Im optimalen Fall sind die zu ladenden Daten von jedem der Worker auf unabhängigen Kanälen erreichbar (z.B. auf dem lokalen Festspeicher) und gleichmäßig auf diesen Kanälen partitioniert
 #$@FORMULA@$#:4
 #$@FORMULA@$#:5
 0u
@@ -251,7 +261,8 @@ Spark unterteilt diese beiden Fälle in narrow dependencies (erster Fall) und wi
 Der Abhängigkeitsgraph eines RDD wird nun in sogenannte Stages zerlegt (Abb. 2.13).
 Eine Stage ist dabei ein Untergraph, dessen Elemente (von den Blättern in Richtung Wurzel betrachtet) auf eine gemeinsame wide dependency stoßen.
 Elemente innerhalb einer Stage können nach dieser Konstruktion unabhängig auf den Knoten berechnet werden, die die jeweilige Partition vorhalten.
-Ein Datenelement xi,j sei dabei Element eines RDD j und Element einer lokalen Partition Pi,j (d.h. es existiert auf einem Knoten i): xi,j ∈ P artitioni,j ⊆ RDDj Weil nach Definition der narrow dependencies innerhalb einer Stage die Elemente einer Partition Pi,j aus den Elementen genau einer Vorgängerpartition Pi,j−1 berechnet werden können, lässt sich jedes Element xi,j des Nachfolger-RDD über eine Komposition lokaler
+Ein Datenelement xi,j sei dabei Element eines RDD j und Element einer lokalen Partition Pi,j (d.h. es existiert auf einem Knoten i):
+xi,j ∈ P artitioni,j ⊆ RDDj Weil nach Definition der narrow dependencies innerhalb einer Stage die Elemente einer Partition Pi,j aus den Elementen genau einer Vorgängerpartition Pi,j−1 berechnet werden können, lässt sich jedes Element xi,j des Nachfolger-RDD über eine Komposition lokaler
 0u
 Transformationen transi,k, k = 0..j berechnen:
 #$@FORMULA@$#:0
@@ -432,7 +443,8 @@ Als Versuchsumgebung dient ein Rechnercluster aus vier identischen Workern und e
 2u
 Dieser Cluster besteht aus ausschließlich aus leistungsschwacher Hardware.
 Mit leistungsschwach sind Geräte gemeint, deren Leistungsfähigkeit noch deutlich unter aktueller sogenannter Commodity Hardware liegt (Vgl. Anhang 3.1).
-Konkret kommen die folgenden Geräte zum Einsatz: Worker Rasperry Pi 2
+Konkret kommen die folgenden Geräte zum Einsatz:
+Worker Rasperry Pi 2
 8u
 9u
 10u
@@ -446,7 +458,8 @@ Master Dell d420
 #$@FORMULA@$#:0
 Die Rechner sind mit RJ45 über einen TP-Link TL-SF1008D Switch mit theoretischem maximalem Durchsatz von 100MBit/s vernetzt.
 Als Basisdaten für die Leistungsfähigkeit der eingesetzten Hardware werden zusätzliche Tests durchgeführt, deren Ergebnisse in Tabelle 3.1, Tabelle 3.2 und Tabelle 3.2 aufgeführt sind.
-Worker → Worker Worker → Master 94,4 MBit/s 94,4 MBit/s Tabelle 3.1: Maximaler Netzwerkdurchsatz4
+Worker → Worker Worker → Master 94,4 MBit/s 94,4 MBit/s Tabelle 3.1:
+Maximaler Netzwerkdurchsatz4
 12u
 4Gemessen mit iperf.
 Siehe Anhang Listing 2 5Gemessen mit dd.
@@ -505,7 +518,8 @@ Die Prozedur beginnt mit dem Definieren eines RDDs aus der Textdatei aller Email
 #$@FORMULA@$#:0
 Diese Textdatei wird durch ModelBuilder regelmäßig ergänzt, sofern der IMAP-Client neue Nachrichten aus der Mailingliste empfangen hat.
 Anschließend werden die Elemente des RDD documents von einer Sequenz von Wörtern auf einen Vektor der Worthäufigkeiten abgebildet:
-1 val tf: RDD[Vector] = hashingTF.transform(documents) Mit diesem RDD von Vektoren der Worthäufigkeiten wird nun ein Modell (IDF, Inverse Document Frequency) gebildet, dass die inversen Worthäufigkeiten berechnet.
+1 val tf:
+RDD[Vector] = hashingTF.transform(documents) Mit diesem RDD von Vektoren der Worthäufigkeiten wird nun ein Modell (IDF, Inverse Document Frequency) gebildet, dass die inversen Worthäufigkeiten berechnet.
 Dazu wird für jedes vorkommende Wort die Anzahl aller Dokumente ermittelt in denen es vorkommt.
 Dieses Modell wird dann genutzt um die bereits berechneten Wortvorkommen pro Dokument anzupassen (idf.transform(tf)).
 Es entstehen die TF-IDF Vektoren:
@@ -522,7 +536,8 @@ Die Fenstergröße entspricht dem Bereich, dessen spezifische Wörter in der Str
 Dazu wird über die Spark-Komponente TwitterUtils8 eine Verbindung über HTTP zu einem Twitter-Endpunkt aufgebaut9.
 Über diese Verbindung werden - bei unpriveligiertem Zugriffetwa 40 Tweets pro Sekunde über einen dauerhaften Datenstrom zur Verfügung gestellt (siehe Abb. 3.11).
 In der Komponente RealtimeAnalyzer wurden vor dem Start des Datenstroms Funktionen zur Bewertung einzelner Tweets registriert.
-Die Funktion ScoreTweets zur Bewertung einzelner Tweets ScoreTweets : T weets −→ IR × Tweets
+Die Funktion ScoreTweets zur Bewertung einzelner Tweets ScoreTweets :
+T weets −→ IR × Tweets
 0u
 #$@FORMULA@$#:2
 wird dabei wie in Listing 3.1 dargestellt implementiert:
@@ -610,7 +625,8 @@ Tabelle 3.4 zeigt die Laufzeiten der Modelbuilderkomponente bei verschiedenen Ko
 1u
 Einen besonderen Einfluss auf die Laufzeit hat offenbar die Blockgröße.
 Bei gleicher Anzahl von Workern und Replikaten verschlechtert sich die Laufzeit in jedem Versuch bei zunehmender Größe.
-Diese Beobachtung deckt sich mit den in Tabelle 3.3 dargestellten Eigenschaften des Festspeichers auf den Workern: Im Gegensatz zu den Durchsatzraten der mechanischen Festplatte des Masters verschlechtert sich auf den SD-Karten des Workers der Durchsatz bei zunehmender Blockgröße.
+Diese Beobachtung deckt sich mit den in Tabelle 3.3 dargestellten Eigenschaften des Festspeichers auf den Workern:
+Im Gegensatz zu den Durchsatzraten der mechanischen Festplatte des Masters verschlechtert sich auf den SD-Karten des Workers der Durchsatz bei zunehmender Blockgröße.
 Ab einer Blockgröße von 128MB ist es zusätzlich nicht mehr möglich, vier Blöcke parallel im Arbeitsspeicher des Executor zu halten (384MB) und diese getrennt auf den 4 verfügbaren Cores verarbeiten zu lassen.
 11u
 Ein Hinweis auf den Flaschenhals bei der Verarbeitung auf einem einzigen Knoten ist in Abbildung 3.9 zu erkennen.
@@ -621,7 +637,8 @@ Netzwerkdurchsatz spielt hier - wie bei einem einzelnen Knoten zu erwarten - off
 6u
 Betrachtet man die Summe der IO-Durchsätze über sämtliche Knoten, lassen sich deutlich die verschiedenen Phasen der Feature-Extraction erkennen.
 Abbildung 3.10 zeigt das kommentierte Diagramm eines Testlaufs mit 4 Workern, 2 Replikaten und einer HDFS-Blockgröße von 64MB.
-Anmerkung: Die Methode treeAggregate 11 innerhalb der Methode IDF.fit() stellt einen Spezialfall unter den RDD-Transformationen dar.
+Anmerkung:
+Die Methode treeAggregate 11 innerhalb der Methode IDF.fit() stellt einen Spezialfall unter den RDD-Transformationen dar.
 Sie besteht aus zwei Phasen, wobei in der ersten Phase lokal auf den Partitionen eine Aggregation von Datensätzen durchgeführt wird und anschließend über reduce die partitionsübergreifende Aggregation der bereits partiell aggregierten Datensätze durchgeführt wird.
 Aus dieser Implementation ergibt sich die Netzwerk-Lastspitze ab Sekunde 251
 #$@FORMULA@$#:0
