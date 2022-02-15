@@ -7,8 +7,10 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import utila
 import utilatest
 
+import tests
 import tests.fixtures.master72.seventytwo as fseventytwo
 import words.text.chapter
 import words.text.sentence
@@ -29,7 +31,6 @@ def test_validate_words_split_master72():
     extracted_pages = words.text.chapter.split(required)
     for page in extracted_pages:
         expected = MASTER72_EXPECTED[page.page]
-        current = 0
-        for _, sentences in words.text.sentence.find_sentences(page):
-            current += len(sentences)
-        assert current == expected, f'page: {page.page}'
+        sentences = utila.flatten(
+            [item[1] for item in words.text.sentence.find_sentences(page)])
+        tests.assert_length(sentences, expected, msg=f'page: {page.page}')

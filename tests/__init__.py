@@ -20,6 +20,7 @@ Required resources:
 import functools
 
 import power
+import utila
 import utilatest
 
 import words
@@ -42,3 +43,11 @@ fail = functools.partial(  #pylint:disable=C0103
 )
 
 utilatest.register_marker('huge')
+
+
+def assert_length(sentences, count, msg=''):
+    if len(sentences) == count:
+        return
+    for sentence in sentences:
+        utila.log(sentence, end='\n\n')
+    assert len(sentences) == count, f'{len(sentences)}=={count} {msg}'

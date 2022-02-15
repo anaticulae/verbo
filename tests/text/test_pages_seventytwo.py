@@ -10,6 +10,7 @@
 import utila
 import utilatest
 
+import tests
 import tests.fixtures.master72.seventytwo as fseventytwo
 import words.text.chapter
 import words.text.sentence as wts
@@ -25,7 +26,7 @@ def test_text_seventytwo_extract_texts_page3():
     firstsection = firstpage.content[0]
     sectioncontent = firstsection.content
 
-    assert len(sectioncontent) == 15
+    tests.assert_length(sectioncontent, 15)
 
 
 @utilatest.nightly
@@ -34,12 +35,11 @@ def test_text_seventytwo_visit_sentences():
     firstpage = words.text.chapter.split(required)[0]
     required = fseventytwo.textrequired(pages=(4,))
     secondpage = words.text.chapter.split(required)[0]
-
+    # validate
     sentences = list(wts.visit_sentences(firstpage))
-    assert len(sentences) == 15
-
+    tests.assert_length(sentences, 15)
     sentences = list(wts.visit_sentences(secondpage))
-    assert len(sentences) == 12
+    tests.assert_length(sentences, 12)
 
     # second page first sentence
     assert sentences[0][1] == ('Nutzerverhalten vor allem in '
@@ -61,7 +61,7 @@ def test_text_seventytwo_visit_sentences_merge_page_endstart():
     pages = words.text.chapter.split(required)
 
     merged = wts.merge_sentences(pages)
-    assert len(merged) == 26
+    tests.assert_length(merged, 26)
 
     merged_middle_sentence = merged[14].sentence
     assert utila.normalize_whitespaces(merged_middle_sentence) == (
@@ -160,8 +160,7 @@ def test_text_seventytwo_extract_textsections_complete():
             require_headlinelevel=require_headlinelevel,
         )
     ]
-    master72_headline_count = 32  # VALIDATED BY HAND
-    assert len(headlines) == master72_headline_count
+    tests.assert_length(headlines, 32)  # VALIDATED BY HAND
     assert headlines[0].title == 'Einleitung'
     assert headlines[-3].raw == '5.  Schlussbetrachtung und Fazit'
     assert headlines[-1].raw == 'Eidesstattliche Erklärung'
