@@ -29,11 +29,9 @@ def cluster_headline_level(items: iamraw.PagesHeadlineList) -> dict:
     if not clustered:
         # to less data to cluster
         return could_not_cluster(items)
-
     groups = list(item.center for item in clustered)
     groups = sorted(groups, key=lambda x: x['after'], reverse=True)
     groups = sorted(groups, key=lambda x: x['textsize'], reverse=True)
-
     border = [(
         item['textsize'],
         item['after'],
@@ -42,8 +40,11 @@ def cluster_headline_level(items: iamraw.PagesHeadlineList) -> dict:
 
     left_or_right = 100.0  # decide if text is right or left feeded
     tolerance = [
-        utila.roundme((first * 0.15, second * 0.15, left_or_right))
-        for first, second, _ in border
+        utila.roundme((
+            first * 0.15,
+            second * 3.0,
+            left_or_right,
+        )) for first, second, _ in border
     ]
     items = update_level(items, border, tolerance)
     return items
@@ -148,7 +149,7 @@ def equal_after(candidat, clusteritem) -> bool:
     if not utila.near(
             current=candidat['after'],
             expected=clusteritem['after'],
-            diff=clusteritem['after'] * AFTER_DIFF_MAX,
+            diff=max(clusteritem['after'] * AFTER_DIFF_MAX, 4.0),
     ):
         return False
     return True

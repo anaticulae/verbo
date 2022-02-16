@@ -9,7 +9,6 @@
 
 import iamraw
 import power
-import pytest
 import serializeraw
 import utilatest
 
@@ -67,11 +66,10 @@ EXPECTED = [
 ]
 
 
-@pytest.mark.xfail
 def test_headlines_no_level_docu027():
     source = power.DOCU027_PDF
     chapters = [0, 1, 2, 3, 4, 5, 6, 7]
-    result = nolevel(source, chapters)
+    result = nolevel(source, chapters=chapters)
     # check only the start, TODO: increase check later?
     extracted = result[0:2]
     assert len(extracted) == len(EXPECTED)
