@@ -96,11 +96,10 @@ def equal_headline_cluster(
         def matcher(candidat, clusteritem) -> bool:
             if not equal_fontsize(candidat, clusteritem):
                 return False
-
-            if (equal_after(candidat, clusteritem) or
-                    equal_feed(candidat, clusteritem)):
+            if equal_after(candidat, clusteritem):
                 return True
-
+            if equal_feed(candidat, clusteritem):
+                return True
             return False
 
         return matcher(candidat, clusteritem)
