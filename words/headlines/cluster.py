@@ -132,9 +132,9 @@ def equal_feed(candidat, clusteritem) -> bool:
 
 def equal_fontsize(candidat, clusteritem) -> bool:
     return utila.near(
-        candidat['textsize'],
-        clusteritem['textsize'],
-        TEXTSIZE_DIFF_MAX,
+        current=candidat['textsize'],
+        expected=clusteritem['textsize'],
+        diff=TEXTSIZE_DIFF_MAX,
     )
 
 
@@ -146,9 +146,9 @@ def equal_after(candidat, clusteritem) -> bool:
         return True
     # 15 percent diff
     if not utila.near(
-            clusteritem['after'],
-            candidat['after'],
-            clusteritem['after'] * AFTER_DIFF_MAX,
+            current=candidat['after'],
+            expected=clusteritem['after'],
+            diff=clusteritem['after'] * AFTER_DIFF_MAX,
     ):
         return False
     return True
