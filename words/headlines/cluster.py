@@ -99,8 +99,8 @@ def equal_headline_cluster(
                 return False
             if equal_after(candidat, clusteritem):
                 return True
-            if equal_feed(candidat, clusteritem):
-                return True
+            # if equal_feed(candidat, clusteritem):
+            #     return True
             return False
 
         return matcher(candidat, clusteritem)
