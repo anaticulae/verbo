@@ -77,6 +77,16 @@ def test_headlines_no_level_docu027():
     assert extracted == EXPECTED
 
 
+@utilatest.longrun
+def test_headlines_no_level_book173():
+    source = power.BOOK173_PDF
+    chapters = None
+    result = nolevel(source, chapters)
+    expected = [8, 7, 17, 11, 9, 9, 6]  # VALIDATED, extend after increase 0:100
+    counted = [len(item) for item in result]
+    assert counted == expected
+
+
 def nolevel(source, chapters: tuple = None):
     utilatest.fixture_requires(source)
     path = power.link(source)
