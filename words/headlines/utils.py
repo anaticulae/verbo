@@ -7,10 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import re
-
 import iamraw
-import iamraw.sections
 import texmex
 import utila
 
@@ -82,8 +79,8 @@ def determine_contentrange(items) -> 'ChapterRanges':
             (
                 iamraw.MainPart,
                 iamraw.MultipleSection,
-                iamraw.sections.Appendix,
-                iamraw.sections.Unknown,
+                iamraw.Appendix,
+                iamraw.Unknown,
             ),
         )
     ]
@@ -114,11 +111,11 @@ def flat_chapters(contents):
     for item in contents:
         if isinstance(item, iamraw.MainPart):
             result.extend(item.content)
-        elif isinstance(item, iamraw.sections.Appendix):
+        elif isinstance(item, iamraw.Appendix):
             result.append(item)
     result = utila.select_type(
         result,
-        (iamraw.sections.Chapter, iamraw.sections.Appendix),
+        (iamraw.Chapter, iamraw.Appendix),
     )
     return result
 
