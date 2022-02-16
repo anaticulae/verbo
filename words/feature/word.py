@@ -94,46 +94,44 @@ class ListLookUp:
 
     # TODO: UNITE WITH BOXEDCHECKER!
     def __init__(self, lists):
-        self.data = None
-        self.load(lists)
+        self.data = self.load(lists)
 
-    def load(self, lists):
+    def load(self, lists) -> dict:
         # rewrite input data
         constructed = collections.defaultdict(dict)
         for page in lists:
             for listnumber, listinstance in enumerate(page.content):
-                for (pagenr, line), value in expand_instance(
+                for (pagenr, line), value in self.expand_instance(
                         listinstance,
                         listnumber,
                         page.page,
                 ):
                     constructed[pagenr][line] = value
-        self.data = dict(constructed)
+        return dict(constructed)
+
+    def expand_instance(self, listinstance, listnumber, pagenr):  # pylint:disable=R0201
+        arealist = listinstance.area
+        if isinstance(arealist[0], int):
+            arealist = [tuple(arealist)]
+        area_length = index_split(
+            data=listinstance.area_length,
+            lengths=[len(item) for item in arealist],
+        )
+        result = []
+        for pageoff, (area, length) in enumerate(zip(arealist, area_length)):
+            # pageoff to signal that list overlaps more than one page
+            instance_areas = areas(
+                area,
+                area_length=length,
+            )
+            for line, pos in zip(area, instance_areas):
+                result.append(((pagenr + pageoff, line), (listnumber, pos[0])))
+        return result
 
     def search(self, page, headline, undefined):  # pylint:disable=W0613
         with contextlib.suppress(KeyError):
             return self.data[page][undefined]
         return None
-
-
-def expand_instance(listinstance, listnumber, pagenr):
-    arealist = listinstance.area
-    if isinstance(arealist[0], int):
-        arealist = [tuple(arealist)]
-    area_length = index_split(
-        data=listinstance.area_length,
-        lengths=[len(item) for item in arealist],
-    )
-    result = []
-    for pageoff, (area, length) in enumerate(zip(arealist, area_length)):
-        # pageoff to signal that list overlaps more than one page
-        instance_areas = areas(
-            area,
-            area_length=length,
-        )
-        for line, pos in zip(area, instance_areas):
-            result.append(((pagenr + pageoff, line), (listnumber, pos[0])))
-    return result
 
 
 def index_split(data, lengths):
