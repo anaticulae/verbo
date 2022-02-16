@@ -85,10 +85,3 @@ def test_headlines_no_level():
 
     assert [len(item) for item in extracted] == [len(item) for item in EXPECTED]
     assert extracted == EXPECTED
-
-
-def test_headlines_dump_and_load_headlines():
-    """Dump and load the example above"""
-    dumped = serializeraw.dump_headlines(EXPECTED)
-    loaded = serializeraw.load_headlines(dumped)
-    assert loaded == EXPECTED
