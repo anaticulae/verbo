@@ -29,3 +29,21 @@ def test_word_master110pages67(testdir, monkeypatch):
     error = 'sentence seems to mixed in lists/undefined parsing'
     assert expected in str(content), error
     assert all(item in content for item in '0l0 0l1 0l2 0l3 0l4 0l5'.split())
+
+
+def test_words_list_replace_book173p1314(testdir, monkeypatch):
+    source = power.link(power.BOOK173_PDF)
+    cmd = f'--word --page=13,14 -i {source} -o {testdir.tmpdir}'
+    tests.run(cmd, monkeypatch=monkeypatch)
+    headlines = serializeraw.load_headlines(source)
+    loaded = serializeraw.load_text(
+        'words__word_result.yaml',
+        headlines=headlines,
+        pages=(13, 14),
+    )
+    content = loaded[0].content[2][-1]
+    # Single list item at the end of the page
+    assert "['0l0', '0l0']" in str(content)
+    content = loaded[1].content[0][-1]
+    # List one the next page
+    assert "'0l3', '0l3', '0l4'" in str(content)
