@@ -147,7 +147,7 @@ def extract_page(strategy, data, page):
     pagecontent = utila.select_page(data.ptcns, page)
     bounds = texmex.textbounds(pagecontent, pagecontent.content)
     without_content = [item.bounds for item in bounds]
-    # PageContentNavigator, the header and footer is ignored
+    # PageContentNavigator: skip header and footer content
     textdistances = texmex.fontdistance_textbounds(without_content)
     textfeeds = [item.bounds.leftdist for item in bounds]
     result = []
