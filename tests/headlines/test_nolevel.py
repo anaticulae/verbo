@@ -68,20 +68,26 @@ EXPECTED = [
 
 
 @pytest.mark.xfail
-@utilatest.requires(power.DOCU027_PDF)
-def test_headlines_no_level():
-    path = power.link(power.DOCU027_PDF)
-    section = serializeraw.load_sections(iamraw.path.sections_(path))
+def test_headlines_no_level_docu027():
+    source = power.DOCU027_PDF
+    chapters = [0, 1, 2, 3, 4, 5, 6, 7]
+    result = nolevel(source, chapters)
+    # check only the start, TODO: increase check later?
+    extracted = result[0:2]
+    assert len(extracted) == len(EXPECTED)
+    assert [len(item) for item in extracted] == [len(item) for item in EXPECTED]
+    assert extracted == EXPECTED
+
+
+def nolevel(source, chapters: tuple = None):
+    utilatest.fixture_requires(source)
+    path = power.link(source)
+    section = serializeraw.load_sections(path)
     content = serializeraw.ptcn_frompath(path)
     result = words.headlines.machine.headlines(
         ptcns=content,
         sectionlist=section,
         strategies=[words.headlines.strategies.nolevel],
-        chapters=[0, 1, 2, 3, 4, 5, 6, 7],
+        chapters=chapters,
     )[0]
-    # check only the start, TODO: increase check later?
-    extracted = result[0:2]
-    assert len(extracted) == len(EXPECTED)
-
-    assert [len(item) for item in extracted] == [len(item) for item in EXPECTED]
-    assert extracted == EXPECTED
+    return result
