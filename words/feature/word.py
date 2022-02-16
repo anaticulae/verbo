@@ -101,21 +101,30 @@ class ListLookUp:
         # rewrite input data
         constructed = collections.defaultdict(dict)
         for page in lists:
-            listnumber = 0
-            for listinstance in page.content:
-                instance_areas = areas(
-                    listinstance.area,
-                    area_length=listinstance.area_length,
-                )
-                for line, pos in zip(listinstance.area, instance_areas):
-                    constructed[page.page][line] = (listnumber, pos[0])
-                listnumber += 1
+            for listnumber, listinstance in enumerate(page.content):
+                for (pagenr, line), value in expand_instance(
+                        listinstance,
+                        listnumber,
+                        page.page,
+                ):
+                    constructed[pagenr][line] = value
         self.data = dict(constructed)
 
     def search(self, page, headline, undefined):  # pylint:disable=W0613
         with contextlib.suppress(KeyError):
             return self.data[page][undefined]
         return None
+
+
+def expand_instance(listinstance, listnumber, pagenr):
+    instance_areas = areas(
+        listinstance.area,
+        area_length=listinstance.area_length,
+    )
+    result = []
+    for line, pos in zip(listinstance.area, instance_areas):
+        result.append(((pagenr, line), (listnumber, pos[0])))
+    return result
 
 
 def areas(area, area_length) -> list:
