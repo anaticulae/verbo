@@ -102,13 +102,13 @@ class ListLookUp:
         constructed = collections.defaultdict(dict)
         for page in lists:
             listnumber = 0
-            for list_single in page.content:
+            for listinstance in page.content:
                 instance_areas = areas(
-                    list_single.area,
-                    area_length=list_single.area_length,
+                    listinstance.area,
+                    area_length=listinstance.area_length,
                 )
-                for item, pos in zip(list_single.area, instance_areas):
-                    constructed[page.page][item] = (listnumber, pos[0])
+                for line, pos in zip(listinstance.area, instance_areas):
+                    constructed[page.page][line] = (listnumber, pos[0])
                 listnumber += 1
         self.data = dict(constructed)
 
