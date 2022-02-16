@@ -117,13 +117,41 @@ class ListLookUp:
 
 
 def expand_instance(listinstance, listnumber, pagenr):
-    instance_areas = areas(
-        listinstance.area,
-        area_length=listinstance.area_length,
+    arealist = listinstance.area
+    if isinstance(arealist[0], int):
+        arealist = [tuple(arealist)]
+    area_length = index_split(
+        data=listinstance.area_length,
+        lengths=[len(item) for item in arealist],
     )
     result = []
-    for line, pos in zip(listinstance.area, instance_areas):
-        result.append(((pagenr, line), (listnumber, pos[0])))
+    for pageoff, (area, length) in enumerate(zip(arealist, area_length)):
+        # pageoff to signal that list overlaps more than one page
+        instance_areas = areas(
+            area,
+            area_length=length,
+        )
+        for line, pos in zip(area, instance_areas):
+            result.append(((pagenr + pageoff, line), (listnumber, pos[0])))
+    return result
+
+
+def index_split(data, lengths):
+    """\
+    >>> index_split([2, 2, 1, 2, 2, 1],(2, 8))
+    ([2], [2, 1, 2, 2, 1])
+    """
+    result = []
+    for count in lengths:
+        collected = []
+        while count:
+            if not data:
+                break
+            count -= data[0]
+            collected.append(data[0])
+            data = data[1:]
+        result.append(collected)
+    result: tuple = tuple(result)
     return result
 
 
