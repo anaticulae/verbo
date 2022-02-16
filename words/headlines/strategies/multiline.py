@@ -11,7 +11,6 @@ import statistics
 
 import configo
 import elements
-import elements.headline.parser
 import german
 import iamraw
 import texmex
@@ -137,15 +136,13 @@ def plain(items: list) -> str:
 
 
 def parse_headline(raw: str, before=None):  # pylint:disable=R0911
-    parsed = words.headlines.utils.parse_headline(raw)
-    if parsed:
+    if parsed := elements.parse_leveled_headline(raw):
         rawlevel, title = parsed['level'], parsed['text']
         level = elements.level_numbered(rawlevel)
         if level is False:  # pylint:disable=C2001
             return None
         return title, level, rawlevel
-    parsed = elements.headline.parser.parse_chapter_level(raw)
-    if parsed:
+    if parsed := elements.parse_chapter_level(raw):
         title, rawlevel = parsed
         level = 1  # pylint:disable=R0204
         if 'anhang' in rawlevel.lower():

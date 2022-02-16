@@ -7,6 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import elements
+
 import words.headlines.strategies.multiline
 import words.headlines.strategies.standard
 import words.headlines.utils
@@ -20,7 +22,7 @@ def filter_headlines(items):  # pylint:disable=R0201
         # skip `normal` headlines, we want to analyze NoLevelHeadlines
         items = [
             item for item in chapter
-            if not words.headlines.utils.parse_headline(item.title)
+            if not elements.parse_leveled_headline(item.title)
         ]
         result[number] = items
     # TODO: USE DICT CONVERTER HERE

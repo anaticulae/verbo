@@ -25,8 +25,7 @@ def filter_headlines(items: iamraw.PagesHeadlineList):
             if elements.noheadline(headline.title):
                 # Skip toc line entries for example
                 continue
-            parsed = words.headlines.utils.parse_headline(headline.title)
-            if parsed:
+            if parsed := elements.parse_leveled_headline(headline.title):
                 raw_level = parsed['level']
                 headline.level = elements.level_numbered(raw_level)
                 headline.raw_level = raw_level
