@@ -144,6 +144,7 @@ LEFT_FEED_DIFF_MAX = configo.HV_FLOAT_PLUS(default=5.0)
 
 
 def groupby_textfeed(ptcn, headlines, textfeed: float):
+    # TODO: MOVE TO A MORE GENERAL PLACE TO REUSE CODE
     result = []
     for index, line in enumerate(sync_headlines(ptcn, headlines)):
         if line is None:
