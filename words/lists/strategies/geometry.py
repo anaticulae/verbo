@@ -103,6 +103,8 @@ def find_withbackup(items, find):
 FEEDED_DIFF_MAX = configo.HV_FLOAT_PLUS(default=5.0)
 # Text feed does not align with page text feed
 NOT_FEEDED_DIFF_MAX = configo.HV_FLOAT_PLUS(default=20.0)
+# Max diff to left text feed to be in feed
+LEFT_FEED_DIFF_MAX = configo.HV_FLOAT_PLUS(default=5.0)
 
 
 def groupby_textfeed(ptcn, headlines, textfeed: float):
@@ -148,8 +150,8 @@ def feed_changes(current, before, textfeed) -> bool:
         # No line before, therefore no change is possible
         return False
     feeded = any((
-        utila.near(x0, textfeed, diff=5.0),
-        utila.near(before, textfeed, diff=5.0),
+        utila.near(x0, textfeed, diff=LEFT_FEED_DIFF_MAX),
+        utila.near(before, textfeed, diff=LEFT_FEED_DIFF_MAX),
     ))
     if feeded:
         # current line or line before is in the near of the page feed.
