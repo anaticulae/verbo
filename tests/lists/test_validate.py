@@ -78,7 +78,7 @@ def test_list_master72page39_40_41(testdir, monkeypatch):
     assert len(first_list) == 4
 
 
-# @utilatest.longrun
+@utilatest.longrun
 def test_list_master155page23(testdir, monkeypatch):
     pages = (23,)
     source = power.MASTER155_PDF
