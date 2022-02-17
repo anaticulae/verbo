@@ -20,7 +20,7 @@ def analyze_page(ptcn, headlines):
     # TODO: RUN GROUPING A FEW TIMES AND SELECT "BEST" ONE?
     if not ptcn:
         return []
-    remove_headline_content(ptcn, headlines)
+    ptcn = remove_headline_content(ptcn, headlines)
     lists = group_and_parse(ptcn)
     result = create_lists(lists)
     return result
@@ -34,6 +34,7 @@ def remove_headline_content(ptcn, headlines):
         # TODO: INVESTIGATE GHOST PATTERN?
         # invalidate headline content
         ptcn.data[index].text = ''
+    return ptcn
 
 
 def group_and_parse(ptcn):
