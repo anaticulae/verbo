@@ -116,6 +116,7 @@ class ListLookUp:
             lengths=[len(item) for item in arealist],
         )
         result = []
+        listoff = 0
         for pageoff, (area, length) in enumerate(zip(arealist, area_length)):
             # pageoff to signal that list overlaps more than one page
             instance_areas = areas(
@@ -125,8 +126,12 @@ class ListLookUp:
             for line, pos in zip(area, instance_areas):
                 result.append((
                     (pagenr + pageoff, line),
-                    (listinstance.identifier, pos[0]),
+                    (listinstance.identifier, listoff + pos[0]),
                 ))
+            if length:
+                # TODO: VERIFY THIS, NOT SURE HERE: HKF
+                # if no length is given, the list does not overlap
+                listoff += instance_areas[-1][0] + 1
         return result
 
     def search(self, page, headline, undefined):  # pylint:disable=W0613
