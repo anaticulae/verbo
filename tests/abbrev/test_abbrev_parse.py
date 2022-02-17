@@ -28,11 +28,14 @@ def abbr(source, pages, testdir, monkeypatch, flat: bool = False):
     return result
 
 
-BACHELOR37 = ('PFC al. IAPS US FMRI s. bzw. ENBP EN BP SAM RS CX EKG etc. PASW '
-              'SPSS IL USA ANOVA SA SEM AG CD MATLAB MA BPM ca. SD MDHF PET')
+BACHELOR37 = utila.splititems("""AG ANOVA BP BPM CD CX EKG EN ENBP FMRI IAPS \
+IL MA MD MATLAB MDHF PASW PET PFC RS SAM SD SEM SPSS HF US USA al. bzw. ca. \
+etc. s. \u2212md
+""")
 
 
 def test_bachelor37abbr(testdir, monkeypatch):
     extracted = abbr(power.BACHELOR037_PDF, '5:33', testdir, monkeypatch, True)
-    raw = ' '.join(extracted)
-    assert raw == BACHELOR37
+    extracted = sorted(utila.lower(*extracted))
+    expected = sorted(BACHELOR37)
+    assert extracted == expected
