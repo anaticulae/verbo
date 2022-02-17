@@ -15,7 +15,6 @@ import iamraw
 import texmex
 
 import words.feature
-import words.feature.sentences
 import words.text
 import words.undefined
 
@@ -200,7 +199,7 @@ class SentenceMerge:
                     ))
             else:
                 isundefined = words.undefined.intindex(sentence) is not None
-                isformula = words.feature.sentences.is_formula(sentence)
+                isformula = texmex.is_formula(sentence)
                 issentence = german.is_sentence_closed(sentence.split())
                 if issentence or isundefined or isformula:
                     assert not self.lastsentence
@@ -254,7 +253,7 @@ class SentenceMerge:
         if not self.lastsentence:
             return False
         isundefined = words.undefined.intindex(sentence) is not None
-        isformula = words.feature.sentences.is_formula(sentence)
+        isformula = texmex.is_formula(sentence)
         if not any((isundefined, isformula)):
             return False
         self.result.append(

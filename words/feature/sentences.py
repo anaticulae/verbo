@@ -10,14 +10,10 @@
 import german
 import iamraw
 import serializeraw
+import texmex.sentences
 import utila
 
 import words.undefined
-
-LIST_SEPA = '#$@LIST_SEPA@$#:'
-LIST_ITEM = '#$@LIST_ITEM@$#:'
-
-FORMULA = '#$@FORMULA@$#:'
 
 
 def work(
@@ -97,9 +93,9 @@ def prepare_listitem(item, list_onpage, page) -> tuple:
         normalize_spaces=True,
     )
     sentences = sentence_split(list_text)
-    content, pages = [f'{LIST_SEPA}{sentences[0]}'], [page]
+    content, pages = [f'{texmex.sentences.LIST_SEPA}{sentences[0]}'], [page]
     for sentence in sentences[1:]:
-        content.append(f'{LIST_ITEM}{sentence}')
+        content.append(f'{texmex.sentences.LIST_ITEM}{sentence}')
         pages.append(page)
     return content, pages
 
@@ -107,55 +103,3 @@ def prepare_listitem(item, list_onpage, page) -> tuple:
 def sentence_split(item: str) -> list:
     result = german.sentence_tokenize(item)
     return result
-
-
-def is_list_separator(item: str) -> bool:
-    """\
-    >>> is_list_separator('#$@LIST_SEPA@$#:Hände waschen')
-    True
-    """
-    item = item.strip()
-    if item.startswith(LIST_SEPA):
-        return True
-    return False
-
-
-def is_list_item(item: str) -> bool:
-    """\
-    >>> is_list_item('#$@LIST_ITEM@$#:Content')
-    True
-    """
-    item = item.strip()
-    if item.startswith(LIST_ITEM):
-        return True
-    return False
-
-
-def is_formula(item: str) -> bool:
-    """\
-    >>> is_formula('#$@FORMULA@$#:5')
-    True
-    """
-    item = item.strip()
-    if item.startswith(FORMULA):
-        return True
-    return False
-
-
-def nosentence(text: str) -> bool:
-    if is_list_separator(text):
-        return True
-    if is_list_item(text):
-        return True
-    if is_formula(text):
-        return True
-    return False
-
-
-def list_split(item: str):
-    start = item[0:16]
-    if start == LIST_SEPA:
-        return item[16:], LIST_SEPA
-    if start == LIST_ITEM:
-        return item[16:], LIST_ITEM
-    return item

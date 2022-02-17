@@ -9,9 +9,8 @@
 
 import german
 import iamraw
+import texmex
 import utila
-
-import words.feature.sentences
 
 
 def parses(
@@ -38,7 +37,7 @@ def parse_page(  # pylint:disable=R0914
     page_sentence, page_word = 0, 0
     for textsection in textsections:
         for sentence, pagenumber in zip(textsection.content, textsection.pages):
-            if words.feature.sentences.nosentence(sentence):
+            if texmex.nosentence(sentence):
                 continue
             wordx = german.word_tokenize(sentence, validate_sentences=False)
             if wordx is None:

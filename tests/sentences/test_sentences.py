@@ -8,10 +8,10 @@
 # =============================================================================
 
 import power
+import texmex.sentences
 import utila
 
 import tests
-import words.feature.sentences
 
 
 def test_sentences_master110pages67(testdir, monkeypatch):
@@ -19,6 +19,6 @@ def test_sentences_master110pages67(testdir, monkeypatch):
     cmd = f'--sentences --page=67 -i {source} -o {testdir.tmpdir}'
     tests.run(cmd, monkeypatch=monkeypatch)
     output = utila.file_read('words__sentences_sentences.yaml')
-    counted = output.count(words.feature.sentences.LIST_SEPA)
+    counted = output.count(texmex.sentences.LIST_SEPA)
     # 6 list items in generated sentences
     assert counted == 6
