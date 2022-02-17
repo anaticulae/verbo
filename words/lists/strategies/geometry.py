@@ -6,6 +6,42 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
+"""Geometry-Strategy
+=================
+
+Detect lists which are indendet in page content and are not aligned to
+left page border.
+
+Process
+--------
+
+1. Run groupby_textfeed
+2. Run al_parse_pages for every block
+3. Parse lists with geometry parser
+
+Example
+-------
+
+.. code-block:: none
+
+    Professorin Shoshana Zuboff mit ihren drei „Gesetzen der
+    Digitalisierung“ diese fundamentalen Veränderungen, welche aus heutiger
+    Sicht aktueller denn je sind:
+
+            1. „Alles, was digitalisiert und in Informationen verwandelt
+                werden kann, wird digitalisiert und in Informationen
+                verwandelt“1
+            2. „Was automatisiert werden kann, wird automatisiert“2
+            3. „Jede Technologie, die zum Zweck der Überwachung und
+                Kontrolle kolonisiert werden kann, wird, was immer auch ihr
+                ursprünglicher Zweck war, zum Zwecke der Überwachung und
+                Kontrolle kolonisiert“3
+
+    Die zunehmende Verbreitung von Smartphones und Tablets sind die
+    sichtbarsten Zeichen für den digitalen Wandel. Sie verändern das
+    Kommunikations- und Konsumverhalten der Menschen
+
+"""
 
 import configo
 import geostrat
