@@ -40,7 +40,7 @@ def test_diss172_headlines_content_headline():
     """Ensure that false detected first level headline `CONTENTS` is
     removed by first level duplicated mechanism."""
     path = power.link(power.DISS172_PDF)
-    pages = utila.ranged_tuple(20, 70)
+    pages = utila.rtuple(20, 70)
     section = serializeraw.load_sections(
         iamraw.path.sections_(path),
         pages=pages,

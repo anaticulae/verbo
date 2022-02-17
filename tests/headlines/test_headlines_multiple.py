@@ -21,7 +21,7 @@ import words.headlines.strategies.multiline
 @utilatest.longrun
 def test_headlines_multiple_extract_master72pages5_7(monkeypatch):
     path = power.link(power.MASTER072_PDF)
-    pages = utila.ranged_tuple(5, 7)
+    pages = utila.rtuple(5, 7)
 
     with monkeypatch.context() as context:
         context.setattr(
@@ -45,7 +45,7 @@ def test_headlines_multiple_extract_master72pages5_7(monkeypatch):
 @utilatest.longrun
 def test_headlines_multiple_extract_master72pages13_14():
     path = power.link(power.MASTER072_PDF)
-    pages = utila.ranged_tuple(13, 15)
+    pages = utila.rtuple(13, 15)
     headlines = parse_multiline(path, pages)
     assert len(headlines) == 3
     expected = [
@@ -60,7 +60,7 @@ def test_headlines_multiple_extract_master72pages13_14():
 def test_headlines_multiple_extract_master72pages20_22():
     """The headline extractor strategy extracts footnotes as headlines."""
     path = power.link(power.MASTER072_PDF)
-    pages = utila.ranged_tuple(20, 23)
+    pages = utila.rtuple(20, 23)
     headlines = parse_multiline(path, pages)
     assert len(headlines) == 2
     expected = [
@@ -76,7 +76,7 @@ def test_headlines_multiple_extract_master72pages20_22():
 def test_headlines_multiple_extract_master72pages38_42():
     """The headline extractor strategy extracts list with sentences."""
     path = power.link(power.MASTER072_PDF)
-    pages = utila.ranged_tuple(38, 43)
+    pages = utila.rtuple(38, 43)
     headlines = parse_multiline(path, pages)
     assert len(headlines) == 2
     expected = [
@@ -91,7 +91,7 @@ def test_headlines_multiple_extract_master72pages38_42():
 def test_headlines_multiple_diss266():
     utilatest.requires(power.DISS266_PDF)
     path = power.link(power.DISS266_PDF)
-    pages = utila.ranged_tuple(7, 266)
+    pages = utila.rtuple(7, 266)
     headlines = parse_multiline(path, pages, prefix='oneline')
     assert headlines[0] == ('', 'VORWORT', 1)
     assert headlines[-1] == ('ANHANG 8:', 'LEBENSLAUF', 2)

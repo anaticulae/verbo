@@ -76,7 +76,7 @@ def find_area(items: list, detected: str, startindex: int) -> list:
         utila.error(f'could not find {end} in: {items}')
         return []
     end = end + 1  # ranged list
-    result = utila.ranged_list(start + startindex, end + startindex)
+    result = utila.rlist(start + startindex, end + startindex)
     return result
 
 

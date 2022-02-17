@@ -20,7 +20,7 @@ import words.path
 def test_merge_pages():
     # TODO: WHAT SHOULD WE CHECK?
     source = power.link(power.MASTER072_PDF)
-    pages = utila.ranged_tuple(35, 40)
+    pages = utila.rtuple(35, 40)
     ptcns = serializeraw.ptcn_frompath(
         path=source,
         pages=pages,
@@ -33,7 +33,7 @@ def test_merge_pages():
 @utilatest.longrun
 def test_extract_lists():
     source = power.link(power.MASTER072_PDF)
-    pages = utila.ranged_tuple(35, 50)
+    pages = utila.rtuple(35, 50)
     lists = extract_multiple_lists(source, pages)
     # TODO: REPLACE AFTER CHANGING DATA STRUCTURE
     page39 = utila.select_page(lists, 39)

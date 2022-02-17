@@ -111,7 +111,7 @@ def test_headlines_master110page18():
     source = power.link(power.MASTER110_PDF)
     headlines = words.feature.headlines.headlines_frompath(
         source,
-        pages=utila.ranged_tuple(18, 20),
+        pages=utila.rtuple(18, 20),
     )
     headlines = utila.flatten(headlines)
     first = headlines[0]

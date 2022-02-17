@@ -98,7 +98,7 @@ def test_list_master155page23(testdir, monkeypatch):
 
 @pytest.mark.parametrize('pages', [
     pytest.param((36, 37, 38, 39, 40, 41, 42), id='with_offset'),
-    pytest.param(utila.ranged_tuple(42), id='no_offset'),
+    pytest.param(utila.rtuple(42), id='no_offset'),
     pytest.param(':', id='all'),
 ])
 @utilatest.longrun
@@ -115,8 +115,8 @@ def test_list_bachelor128page36_42(pages, testdir, monkeypatch):
     area = selected[0].area
     expected = [
         (17, 18, 19, 20, 21),  # page 37
-        utila.ranged_tuple(0, 30),  # page 38
-        utila.ranged_tuple(0, 11),  # page 39
+        utila.rtuple(30),  # page 38
+        utila.rtuple(11),  # page 39
     ]
     assert area == expected
 

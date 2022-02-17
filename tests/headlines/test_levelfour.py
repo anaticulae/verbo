@@ -51,7 +51,7 @@ def test_extract_levelfour_bachelor90():
     navigators = serializeraw.ptcn_frompath(
         path=source,
         prefix='oneline',
-        pages=utila.ranged_tuple(11, 90),
+        pages=utila.rtuple(11, 90),
     )
     headlines = words.headlines.improve.levelfour.headlines(navigators)
     current = '\n'.join(item.title for item in headlines)
@@ -96,7 +96,7 @@ def test_extract_levelfour_master116():
     navigators = serializeraw.ptcn_frompath(
         path=source,
         prefix='oneline',
-        pages=utila.ranged_tuple(7, 87),
+        pages=utila.rtuple(7, 87),
     )
     headlines = words.headlines.improve.levelfour.headlines(navigators)
     current = '\n'.join(item.title for item in headlines)
