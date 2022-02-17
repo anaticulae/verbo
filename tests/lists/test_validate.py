@@ -98,7 +98,7 @@ def test_list_master155page23(testdir, monkeypatch):
 
 @pytest.mark.parametrize('pages', [
     pytest.param((36, 37, 38, 39, 40, 41, 42), id='with_offset'),
-    pytest.param(utila.ranged_tuple(0, 42), id='no_offset'),
+    pytest.param(utila.ranged_tuple(42), id='no_offset'),
     pytest.param(':', id='all'),
 ])
 @utilatest.longrun
