@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import words.lists.strategies.regex
+import words.lists.regex
 
 CONTENT = """\
 Betreute Einzelwohnen nach $ 53/54 SGB XII beinhaltet folgende Leistungen.
@@ -25,7 +25,7 @@ Psychologen.  Zusätzlich  verfügen  einige  Mitarbeiter  über  sozialpsychiat
 
 
 def test_list_parse_regex():
-    parsed = words.lists.strategies.regex.parse_single(CONTENT)
+    parsed = words.lists.regex.parse_single(CONTENT)
     assert len(parsed) == 6
 
 
@@ -40,7 +40,7 @@ Experimentvorgaben.
 
 
 def test_list_parse_regex_regression():
-    parsed = words.lists.strategies.regex.parse_single(RAW)
+    parsed = words.lists.regex.parse_single(RAW)
     assert len(parsed) == 1
     end = parsed[0]
     assert end.endswith('Experimentvorgaben.')

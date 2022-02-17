@@ -13,9 +13,9 @@ import serializeraw
 import utilatest
 
 import tests
+import words.lists.regex
 import words.lists.runtime
 import words.lists.strategies.bestpage
-import words.lists.strategies.regex
 import words.lists.strategies.vertical
 
 NUMBERED_LIST_SAMPLE_SIZE = 9
@@ -45,7 +45,7 @@ Text
 
 
 def test_list_numbered_regex_last_item():
-    parsed = words.lists.strategies.regex.parse_numbered_list(NUMBERED_LIST)
+    parsed = words.lists.regex.parse_numbered_list(NUMBERED_LIST)
     assert len(parsed) == NUMBERED_LIST_SAMPLE_SIZE, parsed
     # Final example is very important!
     last_content, last_title = parsed[-1]
@@ -61,7 +61,7 @@ def test_list_numbered_regex_single_item():
         "8. Consider using optional static type checking to make sure your "
         "type usage works in both Python 2 &\n3 (e.g. use mypy to check your "
         "typing under both Python 2 & Python 3).")
-    parsed = words.lists.strategies.regex.parse_numbered_list(raw)
+    parsed = words.lists.regex.parse_numbered_list(raw)
     assert len(parsed) == 1
     level = parsed[0][1]
     assert level == "8."
@@ -111,7 +111,7 @@ DOTTED_LIST_EXPECTED = [
 
 
 def test_list_dotted_simple():
-    parsed = words.lists.strategies.regex.parse_dotted_list(DOTTED_LIST)
+    parsed = words.lists.regex.parse_dotted_list(DOTTED_LIST)
     assert parsed == DOTTED_LIST_EXPECTED
 
 
@@ -138,7 +138,7 @@ DOTTED_EXAMPLE_EXPECTED = [
 
 
 def test_list_dotted_with_start_and_end():
-    parsed = words.lists.strategies.regex.parse_dotted_list(DOTTED_EXAMPLE)
+    parsed = words.lists.regex.parse_dotted_list(DOTTED_EXAMPLE)
     assert parsed == DOTTED_EXAMPLE_EXPECTED
 
 
@@ -148,8 +148,7 @@ DOTTED_EXAMPLE_CONTENT_ONLY = """ • Index Page
 
 
 def test_list_dotted_with_content_only():
-    parsed = words.lists.strategies.regex.parse_dotted_list(
-        DOTTED_EXAMPLE_CONTENT_ONLY)
+    parsed = words.lists.regex.parse_dotted_list(DOTTED_EXAMPLE_CONTENT_ONLY)
     assert parsed == ['Index Page', 'Support', 'Changelog']
 
 

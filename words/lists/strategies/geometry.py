@@ -49,7 +49,7 @@ import iamraw
 import texmex
 import utila
 
-import words.lists.strategies.regex
+import words.lists.regex
 
 
 def analyze_page(ptcn: texmex.PTCN, headlines: list, textfeed: float) -> list:
@@ -87,7 +87,7 @@ def extract_list(possible_list, indexes):
     index = 0
     for group in possible_list:
         content = utila.NEWLINE.join([item.text.strip() for item in group])
-        parsed = words.lists.strategies.regex.parse_single(content)
+        parsed = words.lists.regex.parse_single(content)
         if not parsed:
             # TODO: START NEW LIST HERE?
             start += len(group)

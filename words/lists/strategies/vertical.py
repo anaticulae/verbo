@@ -12,8 +12,8 @@ import iamraw
 import texmex
 import utila
 
+import words.lists.regex
 import words.lists.strategies.geometry
-import words.lists.strategies.regex
 
 
 def analyze_page(ptcn, headlines):
@@ -44,7 +44,7 @@ def group_and_parse(ptcn):
         if not content.strip():
             collected.append(None)
             continue
-        parsed = words.lists.strategies.regex.parse_single(content)
+        parsed = words.lists.regex.parse_single(content)
         # parsed = fix_lastone(parsed)
         if parsed:
             # TODO: GROUP DOES NOT REPRESENT THE COLLECTED LINES, GROUPS
