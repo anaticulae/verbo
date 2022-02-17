@@ -88,8 +88,7 @@ def process_words(text, listlookup, boxlookup):
 class ListLookUp:
     """ListLookUp
 
-    Uses page wise lookup. The first list on a page starts with the
-    number 0.
+    Uses page wise lookup. The list number is defined by list identifier.
     """
 
     # TODO: UNITE WITH BOXEDCHECKER!
@@ -100,16 +99,15 @@ class ListLookUp:
         # rewrite input data
         constructed = collections.defaultdict(dict)
         for page in lists:
-            for listnumber, listinstance in enumerate(page.content):
+            for listinstance in page.content:
                 for (pagenr, line), value in self.expand_instance(
-                        listinstance,
-                        listnumber,
-                        page.page,
+                        listinstance=listinstance,
+                        pagenr=page.page,
                 ):
                     constructed[pagenr][line] = value
         return dict(constructed)
 
-    def expand_instance(self, listinstance, listnumber, pagenr):  # pylint:disable=R0201
+    def expand_instance(self, listinstance, pagenr):  # pylint:disable=R0201
         arealist = listinstance.area
         if isinstance(arealist[0], int):
             arealist = [tuple(arealist)]
@@ -125,7 +123,10 @@ class ListLookUp:
                 area_length=length,
             )
             for line, pos in zip(area, instance_areas):
-                result.append(((pagenr + pageoff, line), (listnumber, pos[0])))
+                result.append((
+                    (pagenr + pageoff, line),
+                    (listinstance.identifier, pos[0]),
+                ))
         return result
 
     def search(self, page, headline, undefined):  # pylint:disable=W0613

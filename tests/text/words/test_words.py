@@ -7,6 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import re
+
 import power
 import pytest
 import serializeraw
@@ -43,7 +45,7 @@ def test_words_list_replace_book173p1314(testdir, monkeypatch):
     )
     content = loaded[0].content[2][-1]
     # Single list item at the end of the page
-    assert "['0l0', '0l0']" in str(content)
+    assert re.search(r"\[\'\d+l0\'\, \'\d+l0\'\]", str(content))
     content = loaded[1].content[0][-1]
     # List one the next page
-    assert "'0l3', '0l3', '0l4'" in str(content)
+    assert re.search(r"\'\d+l3\'\, \'\d+l3\'\, \'\d+l4\'", str(content))
