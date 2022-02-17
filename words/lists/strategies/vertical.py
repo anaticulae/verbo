@@ -31,6 +31,7 @@ def remove_headline_content(ptcn, headlines):
     for index, line in enumerate(synced):
         if line:
             continue
+        # TODO: INVESTIGATE GHOST PATTERN?
         # invalidate headline content
         ptcn.data[index].text = ''
 
