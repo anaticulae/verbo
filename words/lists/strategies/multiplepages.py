@@ -44,11 +44,13 @@ import words.lists.strategies.bestpage
 
 def run(ptcns, headlines) -> iamraw.PageContentLists:
     textfeed = texmex.document_textfeed(ptcns, count=1)
+    textdistance = texmex.document_textdistance_from_contentnavigators(ptcns)
     merged = merge(ptcns)
     extracted = words.lists.strategies.bestpage.extract_best_page(
         merged,
         headlines,
         textfeed,
+        textdistance,
     )
     from_area = lookup_table(ptcns)
     adjusted = adjust_pagenumbers(extracted, from_area)

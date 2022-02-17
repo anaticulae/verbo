@@ -18,12 +18,14 @@ import words.lists.utils
 
 def run(ptcns, headlines) -> iamraw.PageContentLists:
     textfeed = texmex.document_textfeed(ptcns)
+    textdistance = texmex.document_textdistance_from_contentnavigators(ptcns)
     result = []
     for navigator in ptcns:
         pageslist = extract_best_page(
             navigator,
             headlines,
             textfeed,
+            textdistance,
         )
         if not pageslist:
             continue
@@ -33,7 +35,7 @@ def run(ptcns, headlines) -> iamraw.PageContentLists:
     return result
 
 
-def extract_best_page(navigator, headlines, textfeed):
+def extract_best_page(navigator, headlines, textfeed, textdistance):
     geo = words.lists.strategies.geometry.analyze_page(
         navigator,
         headlines,
@@ -46,6 +48,7 @@ def extract_best_page(navigator, headlines, textfeed):
     vertical = words.lists.strategies.vertical.analyze_page(
         navigator,
         headlines,
+        textdistance,
     )
     vertical = [
         item for item in vertical if words.lists.utils.valid_area(item.area) and
