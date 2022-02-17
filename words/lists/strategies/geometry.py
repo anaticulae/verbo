@@ -160,7 +160,7 @@ def feed_changes(current, before, textfeed) -> bool:
     else:
         # current line or line before is not aligned to page left feed.
         maxdiff = NOT_FEEDED_DIFF_MAX
-    if not utila.near(x0, before, diff=maxdiff.value):
+    if not utila.near(x0, before, diff=maxdiff):
         return True
     return False
 
