@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import functools
 import os
 
 import power
@@ -16,6 +17,7 @@ import utila
 import utilatest
 
 import tests
+import words
 import words.path
 
 
@@ -119,73 +121,66 @@ def test_list_bachelor128page36_42(pages, testdir, monkeypatch):
     assert area == expected
 
 
-def validate_master99(extracted):
-    # single list with six items on page 9
-    page9 = utila.select_content(extracted, page=9)
-    assert len(page9) == 1
-    # TODO: ADD TEST FOR LAST ITEM WHICH IN TOO LONG YET
-    assert len(page9[0]) == 6
+ARCHIVE = os.path.join(words.ROOT, 'tests/lists/expected')
+utila.exists_assert(ARCHIVE)
 
-    page46 = utila.select_content(extracted, page=46)
-    assert len(page46) == 1
-    assert len(page46[0]) == 9
-
-    # regression check to avoid parsing table as list
-    assert not utila.select_content(extracted, page=48)
-
-    page49 = utila.select_content(extracted, page=49)
-    assert len(page49) == 1
-    # assert len(page49[0]) == 3
-
-    # page79 = utila.select_content(extracted, page=79)
-    # assert len(page79[0]) == 3 # TODO: Activate later
-    # assert len(page79[0]) == 2
-
-    # page80 = utila.select_content(extracted, page=80)
-    # assert len(page80[0]) == 9 # TODO: Activate later
-    # assert len(page80[0]) == 3
+param = pytest.param
 
 
-# yapf:disable
-@pytest.mark.parametrize('source, validator, pages', [
-    pytest.param(power.MASTER099_PDF, validate_master99, ':', id='master99',
-                        marks=pytest.mark.xfail(reason='broken table extractor'),
-    ),
-    pytest.param(power.MASTER155_PDF, 'master155', ':', id='master155'),
-    pytest.param(power.BACHELOR067_PDF, 'bachelor067', ':', id='bachelor067',
-                        marks=pytest.mark.xfail(reason='broken formulero parser'),
-    ),
-    pytest.param(power.MASTER099_PDF, 'master099', ':', id='master099'),
-    pytest.param(power.DISS178_PDF, 'diss178p17', utila.ranged_list(15,20), id='diss178p17'),
-    pytest.param(power.DISS178_PDF, 'diss178', utila.ranged_list(15,70), id='diss178'),
-    pytest.param(power.MASTER063_PDF, 'master063', utila.ranged_list(20,30), id='master063'),
-    pytest.param(power.BOOK173_PDF, 'book173', utila.ranged_list(10,35), id='book173'),
+@pytest.mark.parametrize('source, pages, expected', [
+    param(power.BACHELOR067_PDF, ':', 'bachelor067', id='bachelor067'),
+    param(power.BOOK173_PDF, '10:35', 'book173p10p35', id='book173p10p35'),
+    param(power.DISS178_PDF, '15:20', 'diss178p15p20', id='diss178p15p20'),
+    param(power.DISS178_PDF, '15:70', 'diss178p15p70', id='diss178p15p70'),
+    param(power.MASTER063_PDF, '20:30', 'master063', id='master063'),
+    param(power.MASTER099_PDF, ':', 'master099', id='master099'),
+    param(power.MASTER155_PDF, ':', 'master155', id='master155'),
 ])
-# yapf:enable
 @utilatest.nightly
-def test_list_validate(source, validator, pages, testdir, monkeypatch):
-    # run extraction
-    extracted = extract_lists(source, pages, testdir, monkeypatch=monkeypatch)
-    # run validation
-    if isinstance(validator, str):
-        expected = load_expected(validator)
-        current = make_raw(extracted)
-        if current != expected:
-            utila.file_create('baseline', current)
-        assert current == expected
-        return
-    validator(extracted)
+def test_list_validate(source, pages, expected, testdir, monkeypatch):
+    utilatest.fixture_requires(source)
+    Evaluate(
+        source=source,
+        pages=pages,
+        expected=expected,
+        workdir=testdir.tmpdir,
+        monkeypatch=monkeypatch,
+    ).evaluate()
 
 
-def make_raw(extracted) -> str:
-    result = []
-    for page in extracted:
-        result.append(f'################### {page.page} ###################')
-        for lists in page.content:
-            for number, data in lists.data:
-                data = utila.normalize_whitespaces(data)
-                result.append(f'{number} {data}')
-            if len(page.content) > 1:
-                result.append('---------------------------------------------')
-    raw = utila.NEWLINE.join(result).strip()
-    return raw
+class Evaluate(utilatest.BaseLiner):
+
+    def __init__(self, source, pages, expected, workdir, monkeypatch):
+        super().__init__(
+            program=functools.partial(
+                tests.run,
+                monkeypatch=monkeypatch,
+            ),
+            step='list',
+            pages=pages,
+            source=power.link(source),
+            workdir=workdir,
+            archive=ARCHIVE,
+            loader=self.frompath,
+            convert_source=False,
+            index=expected,
+        )
+
+    def frompath(self, _):  # pylint:disable=W0613
+        loaded = serializeraw.load_lists(self.workdir)
+        return loaded
+
+    def raw(self, value) -> str:
+        result = []
+        for page in value:
+            result.append(
+                f'################### {page.page} ###################')
+            for lists in page.content:
+                for number, data in lists.data:
+                    data = utila.normalize_whitespaces(data)
+                    result.append(f'{number} {data}')
+                if len(page.content) > 1:
+                    result.append(
+                        '---------------------------------------------')
+        raw = utila.NEWLINE.join(result).strip()
+        return raw
