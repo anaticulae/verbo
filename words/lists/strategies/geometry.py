@@ -30,11 +30,12 @@ def analyze_page(ptcn: texmex.PTCN, headlines: list, textfeed: float) -> list:
     result = []
     for group in grouped:
         data = [item[1] for item in group]
-        indexes = [item[0] for item in group]
         try:
             parsed = geostrat.al_parse_pages([data])
         except geostrat.AlternateGeometryException:
             continue
+        indexes = [item[0] for item in group]
+        # TODO: VERIFY[0]
         parsed = parsed[0]
         extracted = extract_list(parsed, indexes)
         if not extracted:
@@ -110,7 +111,6 @@ def groupby_textfeed(ptcn, headlines, textfeed: float):
             # headline, start new group
             result.append([(index, line)])
             continue
-        x0 = line.bounding.x0
         try:
             before = result[-1][-1][1].bounding.x0
         except AttributeError:
@@ -119,6 +119,8 @@ def groupby_textfeed(ptcn, headlines, textfeed: float):
         except IndexError:
             # empty result list, first item
             before = None
+        # current x-feed
+        x0 = line.bounding.x0
         feeded = before and any((
             utila.near(x0, textfeed, diff=5.0),
             utila.near(before, textfeed, diff=5.0),
