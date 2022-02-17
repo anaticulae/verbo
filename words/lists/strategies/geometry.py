@@ -83,6 +83,7 @@ def analyze_page(ptcn: texmex.PTCN, headlines: list, textfeed: float) -> list:
 
 def extract_list(possible_list, indexes):
     result = iamraw.PageList()
+    result.__strategy__ = __name__
     start = 0
     index = 0
     for group in possible_list:

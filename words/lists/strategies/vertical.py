@@ -68,6 +68,7 @@ def create_lists(lists) -> list:
     result = []
     for listgroup in lists:
         current = iamraw.PageList()
+        current.__strategy__ = __name__
         for row, indexs in listgroup:
             for item in row:
                 # assert len(item) == 2, str(item)
