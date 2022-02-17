@@ -10,14 +10,24 @@
 import configo
 import geostrat
 import iamraw
+import texmex
 import utila
 
 import words.lists.strategies.regex
 
 
-def analyze_page(ptcn, headlines, textfeed):
-    result = []
+def analyze_page(ptcn: texmex.PTCN, headlines: list, textfeed: float) -> list:
+    """Use Geometry-Strategy to detect lists on current page.
+
+    Args:
+        ptcn(PTCN): content navigator with content of current page
+        headlines(list): list of document headlines
+        textfeed(float): distance to left page border
+    Returns:
+        Extracted lists on current page.
+    """
     grouped = groupby_textfeed(ptcn, headlines, textfeed)
+    result = []
     for group in grouped:
         data = [item[1] for item in group]
         indexes = [item[0] for item in group]
@@ -93,10 +103,11 @@ FEEDED_DIFF_MAX = configo.HV_FLOAT_PLUS(default=5.0)
 NOT_FEEDED_DIFF_MAX = configo.HV_FLOAT_PLUS(default=20.0)
 
 
-def groupby_textfeed(ptcn, headlines, textfeed):
+def groupby_textfeed(ptcn, headlines, textfeed: float):
     result = []
     for index, line in enumerate(sync_headlines(ptcn, headlines)):
         if line is None:
+            # headline, start new group
             result.append([(index, line)])
             continue
         x0 = line.bounding.x0
