@@ -28,22 +28,26 @@ def work(
         headlines=headlines,
         pages=pages,
     )
-    lists = serializeraw.load_lists(lists, pages=pages)
+    lists = load_lists(lists, pages=pages)
     word = prepare_lists(wordo, lists=lists)
     word = undefined_remove(word)
     dumped = serializeraw.dump_text(word)
     return dumped
 
 
+def load_lists(source: str, pages: tuple = None) -> dict:
+    lists = serializeraw.load_lists(source, pages=pages)
+    lists = utila.flatten_content(lists)
+    result = {item.identifier: item for item in lists}
+    return result
+
+
 def prepare_lists(
     word: iamraw.PageContentTexts,
-    lists: iamraw.PageContentLists,
+    lists: dict,
 ) -> iamraw.PageContentTexts:
     for page in word:
         for textsection in page.content:
-            pagelist = utila.select_content(lists, page=page.page)
-            if not pagelist:
-                continue
             textsection.content, textsection.pages = list_insert(
                 textsection,
                 lists,
@@ -76,16 +80,15 @@ def list_insert(textsection, lists) -> tuple:
             continue
         if single.contains(listindex):
             continue
-        list_onpage = utila.select_content(lists, page=page)
-        listdata, listpages = prepare_listitem(item, list_onpage, page=page)
+        listdata, listpages = prepare_listitem(item, lists, page=page)
         contents.extend(listdata)
         pages.extend(listpages)
     return contents, pages
 
 
-def prepare_listitem(item, list_onpage, page) -> tuple:
+def prepare_listitem(item, lists, page) -> tuple:
     listnumber, position = words.undefined.listindex(item)
-    listitem = list_onpage[listnumber].data[position]
+    listitem = lists[listnumber].data[position]
     list_text = listitem[1]
     # TODO: RUN IN --WORD-Step?
     list_text = utila.normalize_text(
