@@ -111,31 +111,46 @@ def groupby_textfeed(ptcn, headlines, textfeed: float):
             # headline, start new group
             result.append([(index, line)])
             continue
-        try:
-            before = result[-1][-1][1].bounding.x0
-        except AttributeError:
-            # Headline/None-item before
-            before = None
-        except IndexError:
-            # empty result list, first item
-            before = None
-        # current x-feed
-        x0 = line.bounding.x0
-        feeded = before and any((
-            utila.near(x0, textfeed, diff=5.0),
-            utila.near(before, textfeed, diff=5.0),
-        ))
-        maxdiff = FEEDED_DIFF_MAX if feeded else NOT_FEEDED_DIFF_MAX
+        # determine feed of line before
+        before = feed_before(result)
         if before is None:
-            # After headline of first item on page
+            # Before is a headline or current line is first line on the page.
             result.append([(index, line)])
-        elif not utila.near(x0, before, diff=maxdiff.value):
-            # textfeed changes
+            continue
+        if feed_changes(current=line, before=before, textfeed=textfeed):
+            # create a new group
             result.append([(index, line)])
-        else:
-            result[-1].append((index, line))
+            continue
+        # add to current group
+        result[-1].append((index, line))
+    # remove headlines
     result = [item for item in result if item[0][1] is not None]
     return result
+
+
+def feed_before(result: list) -> float:
+    try:
+        before = result[-1][-1][1].bounding.x0
+    except AttributeError:
+        # Headline/None-item before
+        before = None
+    except IndexError:
+        # empty result list, first item
+        before = None
+    return before
+
+
+def feed_changes(current, before, textfeed) -> bool:
+    # current x-feed
+    x0 = current.bounding.x0
+    feeded = before and any((
+        utila.near(x0, textfeed, diff=5.0),
+        utila.near(before, textfeed, diff=5.0),
+    ))
+    maxdiff = FEEDED_DIFF_MAX if feeded else NOT_FEEDED_DIFF_MAX
+    if not utila.near(x0, before, diff=maxdiff.value):
+        return True
+    return False
 
 
 def ranges(item):
