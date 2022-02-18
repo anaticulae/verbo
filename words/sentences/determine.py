@@ -10,12 +10,14 @@
 import iamraw
 
 import words.sentences.lists
+import words.sentences.quote
 import words.undefined
 
 
 def determine(word, lists, pages: tuple = None):
     lists = words.sentences.lists.load_lists(lists, pages=pages)
     word = words.sentences.lists.prepare_lists(word, lists=lists)
+    word = words.sentences.quote.mark_quotes(word)
     word = undefined_remove(word)
     return word
 
