@@ -9,7 +9,7 @@
 
 import serializeraw
 
-import words.sentences
+import words.sentences.determine
 
 
 def work(
