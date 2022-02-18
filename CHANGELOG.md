@@ -2,6 +2,30 @@
 
 Every noteable change is logged here.
 
+## v1.13.0
+
+### Feature
+
+* use global text distance to improve vertical lists parser (c154c22dd21f)
+* dump extraction strategy (7191d97c5710)
+* use page independent list identifier (5a89ef1bdde8)
+* use list identifier to improve page lookup (35ddf821314f)
+* add list lookup over more than one page (ceb44c6368ce)
+* increase tolerance to build bigger groups (6521b8cc8bbd)
+* normalize list content (25047837d2fc)
+
+### Fix
+
+* adjust list content on overlapping pages (a32e3667855e)
+* disable equal feed check, its not used at the moment (3d652561cb2d)
+* do not lose headline information (b315ff37634e)
+
+### Documentation
+
+* add module documentation (126cb695af51)
+* increase documentation (97ab5b6b1577)
+* extend interface documentation (0d0fed1cdb73)
+
 ## v1.12.0
 
 ### Feature
