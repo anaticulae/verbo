@@ -160,7 +160,11 @@ def test_list_master72page39_one_list(testdir):
         source,
         pages=pages,
     )
-    listinstance = words.lists.strategies.vertical.analyze_page(ptcn[0], [])
+    listinstance = words.lists.strategies.vertical.analyze_page(
+        ptcn[0],
+        [],
+        textdistance=18.0,
+    )
     assert len(listinstance) == 1
     assert len(listinstance[0]) == 2
 
