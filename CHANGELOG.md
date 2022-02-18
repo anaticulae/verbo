@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v1.14.0
+
+### Feature
+
+* add module to mark quotes (c8a32669c726)
+* add package to analyze sentences (823605a82d7e)
+
 ## v1.13.0
 
 ### Feature
