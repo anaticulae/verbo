@@ -51,6 +51,7 @@ if __name__ == "__main__":
             'words.links',
             'words.lists',
             'words.lists.strategies',
+            'words.sentences',
             'words.text',
         ],
         entry_points={
