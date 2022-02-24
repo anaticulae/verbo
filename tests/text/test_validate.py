@@ -42,6 +42,7 @@ param = pytest.param
     param(power.MASTER110_PDF, '19:104', 'master110', id='master110'),
     param(power.MASTER116_PDF, '7:88', 'master116', id='master116'),
     param(power.MASTER155_PDF, '8:77', 'master155', id='master155'),
+    param(power.MASTER072_PDF, '30', 'master072p30', id='master072p30'),
 ])
 @utilatest.nightly
 def test_text_validate(source, pages, expected, testdir, monkeypatch):
