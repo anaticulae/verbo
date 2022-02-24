@@ -56,7 +56,6 @@ def load_resources(  # pylint:disable=R0914,R0913
     pages=None,
 ) -> TextRequiredResources:
     """Load content from path and create required object"""
-
     # TODO: CHECK REALY REQUIRED RESOURCES AND REMOVE NON REQUIRED
     ptcns = serializeraw.ptcn_fromfile(
         text=text,
@@ -70,7 +69,6 @@ def load_resources(  # pylint:disable=R0914,R0913
     headlines = serializeraw.load_headlines(headlines, pages=pages)
     boxes = serializeraw.load_boxes(boxes, pages=pages)
     boxed = words.boxed.BoxedChecker(boxes)
-
     if os.path.exists(lists):
         lists = serializeraw.load_lists(lists, pages=pages)
     else:
@@ -121,7 +119,6 @@ def load_resources_frompath(  # pylint:disable=R0914
     lists = words.path.lists(path)
     headlines = words.path.headlines(path)
     magics = magic.path.content_oneline(path)
-
     loaded = load_resources(
         text=text,
         textposition=textposition,
