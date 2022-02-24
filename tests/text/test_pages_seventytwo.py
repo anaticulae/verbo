@@ -52,6 +52,22 @@ def test_text_seventytwo_visit_sentences():
                                'der Nutzer.')
 
 
+def test_text_visit_sentence_abbreviation_at_lineend():
+    """Regression test to merge abbreviation at line end correctly.
+
+    im Sinne von singulären bzw.
+    typischen Merkmalen
+
+    Merge to => im Sinne von singulären bzw. typischen Merkmalen
+    not => im Sinne von singulären bzw.typischen Merkmalen
+    """
+    required = fseventytwo.textrequired(pages=(30,))
+    firstpage = words.text.chapter.split(required)[0]
+    sentences = list(wts.visit_sentences(firstpage))
+    assert 'bzw.typischen' not in str(sentences)
+    assert 'von singulären bzw. typischen Merkmalen' in str(sentences)
+
+
 @utilatest.longrun
 def test_text_seventytwo_visit_sentences_merge_page_endstart():
     """Merge the first two content pages to one sentence unit.
