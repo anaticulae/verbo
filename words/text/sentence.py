@@ -110,6 +110,7 @@ def visit_sentences(  # pylint:disable=R1260
                     else:
                         result.append((section.headline, f'{seq.container}u'))
                 continue
+            # TODO: INSERT HIGHNOTES AS {{highnote:10}}
             text = texmex.remove_highnotes(seq.content)
             current.append(text)
         if current:
