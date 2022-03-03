@@ -15,5 +15,5 @@ power==2.5.0
 # ensure that test data is generated with the right version of rawmaker
 rawmaker==2.31.0
 
-genex==0.23.1
+genex==0.24.0
 genref==1.3.2
