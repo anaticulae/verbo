@@ -41,7 +41,7 @@ def test_extract_lists():
     assert len(page39.content[0]) == 4
 
 
-@utilatest.longrun
+@utilatest.nightly
 def test_extract_multiple_lists_master72():
     source = power.link(power.MASTER072_PDF)
     pages = None

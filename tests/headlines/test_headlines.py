@@ -18,7 +18,7 @@ import words.feature.headlines
 import words.headlines.strategies
 
 
-@utilatest.longrun
+@utilatest.nightly
 def test_headlines_work():
     sections_ = tests.fixtures.docu27.sections()
     src = power.link(power.DOCU027_PDF)

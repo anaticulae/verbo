@@ -77,7 +77,7 @@ def test_headlines_no_level_docu027():
     assert extracted == EXPECTED
 
 
-@utilatest.longrun
+@utilatest.nightly
 def test_headlines_no_level_book173():
     source = power.BOOK173_PDF
     chapters = None

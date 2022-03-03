@@ -101,7 +101,7 @@ def test_list_master155page23(testdir, monkeypatch):
     pytest.param(utila.rtuple(42), id='no_offset'),
     pytest.param(':', id='all'),
 ])
-@utilatest.longrun
+@utilatest.nightly
 def test_list_bachelor128page36_42(pages, testdir, monkeypatch):
     """Use pages to ensure that extracting works when extraction uses
     more than one chunk."""

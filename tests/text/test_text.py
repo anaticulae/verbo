@@ -23,8 +23,8 @@ import words.text
 import words.undefined
 
 
-@utilatest.longrun
-def test_text_work():
+@utilatest.nightly
+def test_text_work_docu027():
     source = power.link(power.DOCU027_PDF)
     headlines = tests.fixtures.docu27.headlines()
     result = words.feature.text.work(

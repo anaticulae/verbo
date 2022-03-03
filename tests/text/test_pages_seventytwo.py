@@ -112,7 +112,7 @@ def test_text_seventytwo_visit_sentences_merge_page5_7():
     assert utila.normalize_whitespaces(merged[-1].sentence) == lastsentence
 
 
-@utilatest.longrun
+@utilatest.nightly
 def test_text_seventytwo_extract_textsections():
     required = fseventytwo.textrequired(pages=tuple(range(0, 14)))
     pages = words.text.chapter.split(required)
