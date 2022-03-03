@@ -87,7 +87,6 @@ RESOURCES = [
         figureo=True,
         formulero=True,
         rawmaker_cleanup=True,
-        pages='18:35',
     ),
     power.DOCU027_PDF,
     (power.MASTER063_PDF, '20:30'),
