@@ -19,7 +19,8 @@ Developer
   releases/backlog
 
 Modules
---------------------
+-------
+
 .. toctree::
    :maxdepth: 4
 
