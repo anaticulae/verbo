@@ -8,6 +8,7 @@
 # =============================================================================
 
 import collections
+import functools
 import typing
 
 import german
@@ -77,50 +78,73 @@ def visit_sections(page: words.text.PageTextWithHeadlines):
             yield section.headline, seq.content
 
 
-def visit_sentences(  # pylint:disable=R1260
+def visit_sentences(
     page: words.text.PageTextWithHeadlines,
     *,
     skip_undefined: bool = False,
     merge_divis: bool = True,
     normalize_spaces: bool = True,
-) -> typing.Tuple[iamraw.Headline, str]:
-    """Yield tuple of Headline and extracted sentence."""
+) -> typing.List[typing.Tuple[iamraw.Headline, str]]:
+    """Yield tuple of Headline and extracted sentence.
+
+    Go trough sections and extract sentences, formulas etc. and group
+    them by headline.
+    """
+    sentence_tokenizer = functools.partial(
+        german.sentence_tokenize,
+        normalize_spaces=normalize_spaces,
+        merge_divis=merge_divis,
+    )
     result = []
     for section in page.content:
         current = []
         if not section.content:
+            # if section does not contains any data, return headline with
+            # empty content.
             result.append((section.headline, ''))
             continue
-        for seq in section.content:
-            if not isinstance(seq, iamraw.Paragraph):
-                if current:
-                    for sentence in german.sentence_tokenize(
-                            text=''.join(current),
-                            merge_divis=merge_divis,
-                            normalize_spaces=normalize_spaces,
-                    ):
-                        result.append((section.headline, sentence))
-                    current = []
-                if not skip_undefined:
-                    if isinstance(seq, iamraw.DFormula):
-                        result.append((
-                            section.headline,
-                            f'#$@FORMULA@$#:{seq.content}',
-                        ))
-                    else:
-                        result.append((section.headline, f'{seq.container}u'))
-                continue
+        # extract content between headlines
+        current, appends = extract_section_content(
+            section,
+            current,
+            skip_undefined=skip_undefined,
+            sentence_tokenizer=sentence_tokenizer,
+        )
+        result.extend(appends)
+        if current:
+            for sentence in sentence_tokenizer(text=''.join(current)):
+                result.append((section.headline, sentence))
+    return result
+
+
+def extract_section_content(
+    section,
+    current,
+    *,
+    skip_undefined,
+    sentence_tokenizer,
+) -> tuple:
+    result = []
+    for seq in section.content:
+        if isinstance(seq, iamraw.Paragraph):
             # TODO: INSERT HIGHNOTES AS {{highnote:10}}
             text = texmex.remove_highnotes(seq.content)
             current.append(text)
+            continue
+        # NoParagraph
         if current:
-            for sentence in german.sentence_tokenize(
-                    text=''.join(current),
-                    merge_divis=merge_divis,
-                    normalize_spaces=normalize_spaces,
-            ):
+            for sentence in sentence_tokenizer(text=''.join(current)):
                 result.append((section.headline, sentence))
-    return result
+            current = []
+        if not skip_undefined:
+            if isinstance(seq, iamraw.DFormula):
+                result.append((
+                    section.headline,
+                    f'#$@FORMULA@$#:{seq.content}',
+                ))
+            else:
+                result.append((section.headline, f'{seq.container}u'))
+    return current, result
 
 
 def merge_sentences(
