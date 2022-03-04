@@ -1,0 +1,2450 @@
+
+
+:::: Einleitung ::::
+
+
+Unvorhergesehene Ausfälle elektronischer Systeme können aufgrund der hohen Verbreitung und vielfältiger Anwendungsmöglichkeiten zu Sicherheitsproblemen führen und sogar Schäden an Personen, Sachwerten oder der Umwelt begünstigen.
+Dies geht oftmals mit hohen Kosten, insbesondere durch Produktionsausfälle in Folge von Stillstandszeiten und Reparatur komplexer industrieller Anlagen einher.
+Hohe Zuverlässigkeit und ständige Verfügbarkeit in Kombination mit geringen zusätzlichen Kosten sind daher Forderungen aus der Industrie und von Anwendern.
+Durch steigende Komplexität und Anforderungen an die Aufbau- und Verbindungstechnik in Form hoher Packungsdichten, Integration heterogener Systeme, Dezentralisierung von Funktionen oder extremer Betriebsbedingungen steigt auch der Bedarf an Maßnahmen der Zuverlässigkeitsabsicherung in Entwicklung, Qualifikation und im Betrieb.
+Je nach Anwendung und Kostendruck gibt es trotzdem Bereiche, in denen derzeit keine technologisch möglichen bzw. wirtschaftlichen Ansätze zur Steigerung der Zuverlässigkeit etabliert sind [42].
+Zustandsüberwachung elektronischer Systeme kann genutzt werden, um das Ausmaß von Degradationen zu bestimmen, drohende Ausfälle vorherzusagen, in der Wartung Kosten zu reduzieren und die Wiederverwendung gebrauchter Systeme zu ermöglichen.
+Die Kenntnis des noch verbleibenden Lebensdauervorrats eines elektronischen Systems kann Wartungskonzepte weiterentwickeln zur sogenannten zustandsbasierten Wartung, um die Wirtschaftlichkeit eines Unternehmens, im Hinblick auf ein minimiertes Betriebsrisiko aufwändiger Produktionsmaschinen, zu steigern und sogar neue Ersatzteilstrategien durch garantierte Restfunktionszeiten zu ermöglichen.
+Zuverlässigkeit wird im Rahmen dieser Arbeit nach der Definition in [20] verstanden als Beschaffenheit einer Einheit bezüglich ihrer Eignung, während oder nach vorgegebenen Zeitspannen bei vorgegebenen Anwendungsbedingungen die Zuverlässigkeitsforderung zu erfüllen.
+Ein Ausfall tritt demnach ein, wenn die Funktion nicht mehr gewährleistet werden kann.
+Der Ablauf eines Systemausfalls beginnt dabei stets mit einer Belastung, die auf das System oder Systemkomponenten wirkt und außerhalb der für die Anwendung vorgesehenen Benutzung liegt. 1 Dies führt während der Lebensdauer des Produktes zu Parameterverschiebungen, die schlussendlich Systemspezifikationen verletzen und damit zum Ausfall führen.
+Dabei kann ein Ausfall durch seine Annäherung an ein beliebig definiertes Fehlerkriterium in Drift- und Sprungausfall unterschieden werden.
+Während Driftausfälle eine Restlebensdauervorhersage begünstigen, sind plötzliche, sprunghafte Anstiege nicht vorherseh- und vorhersagbar (siehe Abbildung 1a).
+Unabhängig davon können die Methoden der Zustandsüberwachung aufgrund verschiedener Ansatzmöglichkeiten in drei Bereiche unterteilt werden [12].
+14u
+15u
+16u
+17u
+18u
+19u
+20u
+System) → Parametermessung (PM) Diese drei Ansätze unterscheiden sich hinsichtlich ihres Aufwands und des nötigen Systemverständnisses.
+Während die LCU über eine gemessene Belastung in Kombination mit einem Systemmodell eine mit größerer Unsicherheit behaftete Restlebensdaueraussage ermöglicht, kann durch PM unabhängig von verschiedenen Belastungsarten und systemeigenen Schwächen ein Zustand angegeben werden.
+Dafür müssen jedoch das zu überwachende System, die wirkenden Belastungen und auftretenden Ausfallmechanismen sehr gut verstanden sein.
+Der Aufwand im Sinne der Einschränkungen im System durch zusätzliche Überwachungsstrukturen und -subsysteme ist bei der LCU am höchsten, während
+0u
+1u
+2u
+3u
+4u
+5u
+6u
+7u
+8u
+9u
+10u
+11u
+12u
+13u
+standsüberwachung
+15u
+16u
+die PM während des Betriebes keinerlei zusätzlichen Aufwand benötigt, da eine Untersuchung mit externer Messtechnik während der Wartung genügt.
+Der Ansatz der MS ist sowohl im Aufwand durch den zusätzlichen Platzbedarf in der Nähe der zu überwachenden Struktur, als auch durch die Nachbildung des zu überwachenden Systems und damit dem geringeren Systemverständnis gegenüber der PM zwischen den beiden anderen Ansätzen einzuordnen.
+Nicht zuletzt können mit den Ansätzen LCU und MS nur vorher festgelegte bzw. dominante Systembelastungen erfasst werden, während die PM davon unabhängig sein kann.
+Abbildung 1b zeigt diese Aussagen zusammengefasst.
+Elektrische Verbindungen sind stets ein Schwerpunkt der Aufbau- und Verbindungstechnik [28, 76, 59] und werden in zahlreichen Arbeiten charakterisiert und bewertet [99, 22, 26].
+Zunehmende Miniaturisierung und dreidimensionale Aufbautechniken machen die Verbindungen oft schwer bzw. nicht zugänglich für Inspektionen.
+Oft bilden elektrische Verbindungen eine Schwachstelle im gesamten Systemaufbau.
+Begründet werden kann dies durch die Fehlanpassung thermischer Ausdehnungskoeffzieinten bei der Kombination mehrerer Funktionswerkstoffe [75].
+Reduziert auf das makroskopische Erscheinungsbild der Degradation kann zusammengefasst werden, dass es sich unabhängig vom jeweiligen Ausfallmechanismus stets um eine Querschnittsverringerung des leitfähigen Pfades handelt.
+Diese Querschnittsverringerung zeichnet sich dadurch aus, dass sie von einer beliebigen, bei gleichartigen Verbindungen oftmals jedoch ähnlichen, Position ausgeht und den Querschnitt einer leitfähigen Verbindung bis zum elektrischen, thermischen und mechanischen Versagen mindert [70].
+Querschnittsverringerungen wirken sich auf die herkömmliche Widerstands- messung als Werkzeug der Zustandsanalyse analog dem Sprungausfallverhalten in Abbildung 1a aus.
+Dies kann anhand von Abbildung 2 nachvollzogen werden.
+Sie zeigt eine Flip-Chip Verbindung, die durch thermomechanische Wechselbelastung stark degradiert ist.
+Der Widerstandsanstieg ist jedoch im Bereich von nur wenigen Prozent des ursprünglichen Widerstandes, ein leitfähiger Pfad zwischen dem Pad unten und der Chipmetallisierung oben kann hier auch optisch festgestellt werden.
+Diese Verbindung wird also mit herkömmlicher Methodik als intakt klassifiziert, obwohl ein Versagen unmittelbar bevorsteht.
+Dieses Ausfallverhalten und die schwierige Zugänglichkeit der Ver-Abbildung 2:
+Stark beschädigte jedoch elektrisch intakte Flip-Chip Lotverbindung.
+bindungen vorausgesetzt, wird folglich ein physikalischer Effekt gesucht, der die kleiner werdende Querschnittsfläche innerhalb eines elektrischen Pfades mit hoher Empfindlichkeit auf einen Systemparameter in Form eines elektrischen Signales abbilden kann.
+In der Literatur gibt es eine Vielzahl von Ansätzen, um Restlebensdauern von Systemen zu prognostizieren.
+Sikorska stellt den Stand der Technik in industrieller Umsetzung verschiedener Ansätze dar und kategorisiert diese in [90] mit steigender Komplexität beginnend mit wissensbasierten Modellen über Lebenserwartungsmodelle und künstliche neuronale Netze bis hin zu physikalischen Modellen.
+Diese Ansätze beinhalten überwiegend statistische und stochastische Methoden, die über Signalverarbeitungsalgorithmen und mit dem Gesetz der großen Zahlen2 statistisch sichere Aussagen ermöglichen.
+Die oben erwähnte PM kann dabei in die applikationsspezifischen physikalischen Modelle eingeordnet werden.
+Beschränkt auf die Messung elektrischer Parameter wird der Stand der Technik reduziert auf Widerstandsspitzenmessung und Vierdrahtmessung [38].
+Beide Verfahren sind wiederum nicht in der Lage Sprungausfälle zeitlich vor dem nahezu vertikalen Anstieg zu detektieren (siehe Abbildung 1a.
+Durch Anwendung geeigneter Filteralgorithmen zeigt Dobs [21], dass zwar die Detektionsempfindlichkeit gesteigert werden kann, allerdings die statistische Unsicherheit damit zunimmt.
+Kwon [56] entwickelt ein rein elektrisches Verfahren, welches als Parameter den reflektierten Signalanteil an einer durch einen Riss verursachten Fehlanpassung der Leitungsimpedanzen verwendet.
+Dieses Verfahren greift Straube [91] auf und zeigt, dass es sich für Kontakte im Mikrometerbereich nicht eignet.
+Grund dafür ist die mit sinkendem Querschnitt der Verbindung steigende notwendige Bandbreite des Messsystems.
+Einen ähnlichen Ansatz verfolgt der Autor in [49].
+Er verwendet Korrelationsalgorithmen in Kombination mit der Messung von Reflexionskoeffizienten an Koplanarleitungen.
+Hier kann die Früherkennung mit dem Nachteil des Umganges mit sehr hohen Frequenzen und damit der Eignung nur für entsprechend ausgelegte Teststrukturen demonstriert werden.
+Allen diesen Ansätzen gemein ist die Ausnutzung allein der elektrischen Leitfähigkeit des verwendeten Kontaktmaterials.
+Die Kombination dieser Verfahren mit thermisch oder mechanisch provozierten Effekten birgt derzeit großes Entwicklungspotential.
+Bei der Charakterisierung von Kohleschichtwiderständen stellt Millard [65] einen Zusammenhang zwischen nichtlinearem Verhalten und Rissen innerhalb des Widerstandsmaterials fest.
+Kirby [46] nimmt dieses Phänomen auf und empfiehlt die Messung der dritten Harmonischen (Third-Harmonic-Testing) eines Wechselsignals.
+Die Frequenzen der anregenden Signale liegen dabei im zweistelligen Kilohertzbereich [74].
+Es zeigt sich experimentell, dass Widerstände mit geringer parasitärer Nichtlinearität später ausfallen [61, 67] als diejenigen mit höherer Nichtlinearität.
+Ein Modell oder die gezielte Ausnutzung des Phänomens in anderen Bereichen der Technik ist in der Literatur bisher nicht aufzufinden [85].
+Selbst Handlungsanweisungen zur Auslegung von Leistungsankontaktierungen in der Funktechnik3 basieren derzeit häufig ohne
+#$@FORMULA@$#:0
+Modellverständnis auf Erfahrungen (z.B. [97]).
+Ziel dieser Arbeit ist es, ein elektrisches Parametermessverfahren (PM) zu entwickeln, welches ohne zusätzliche Systemkomponenten auch unzugängliche elektrisch und thermisch leitfähige Kontakte charakterisieren kann, ein Modell für die Wirkungsweise des Messverfahrens aufzustellen und durch Experimente an einfachen elektrischen Verbindungen zu validieren.
+Diese Arbeit baut auf dem von Millard beobachteten nichtlinearen Verhalten degradierter elektrischer Verbindungen auf.
+dende Leiterquerschnitte und stetig steigenden Aufwand bezüglich des thermischen Managements.
+
+
+:::: Zeitabhängiges Verhalten elektrischer Verbindungen ::::
+
+
+Alle elektronischen Systeme verhalten sich, zumindest an den Betriebsgrenzen, nichtlinear.
+Die Annahme eines linearen Verhaltens entstammt moderner Schaltungslehre und ist tatsächlich nur eine Approximation [63].
+In manchen
+6u
+7u
+8u
+9u
+10u
+11u
+12u
+gung.
+Das schwarz dargestellte Eingangssignal als Überlagerung zweier sinusförmiger Schwingungen wird an der durchgezeichneten Kennlinie verzerrt.
+Es entsteht das rot dargestellte Ausgangssignal mit zusätzlichen Frequenzanteilen.
+Fällen wird versucht, das nichtlineare Verhalten zu unterdrücken, da es zu Einbußen in der Leistungsfähigkeit führt.
+Ein gutes Beispiel dafür sind Kleinsignalverstärker, deren schwache Nichtlinearität verschiedene Parameter, wie z.B. die Ausgangsleistung, begrenzt.
+Diese Schaltungen werden dennoch als linear angenommen.
+Andere Schaltungen hingegen sind ohne Nichtlinearitäten gar nicht möglich.
+Beispiele dafür sind Modulatorschaltungen bzw. Frequenzmultiplizierer.
+In diesen Fällen wird nichtlineares Verhalten gezielt ausgenutzt.
+Eine elektrische Nichtlinearität bezeichnet die Abweichung der Kennlinie zwischen Strom und Spannung von der linearen Kennlinie innerhalb einer Periodendauer T des Messsignales.
+Die Abweichung kann von einer Nichtlinearität des spezifischen elektrischen Widerstandes und/oder von einer zeitlichen Änderung des Widerstandes innerhalb der Periodendauer des Messsignales verursacht werden.
+Das Messsignal hängt von der Höhe der Amplitude der Eingangssignale ab.
+Dies bedeutet im Fall thermisch induzierter Widerstandsänderungen, dass die Frequenzen der Eingangssignale an die thermischen Zeitkonstanten des zu überwachenden Systems angepasst sein müssen.
+Abbildung 1.1 zeigt das Übertragungsverhalten eines Wechselsignals, bestehend aus zwei Frequenzen, über einen nichtlinearen Kanal.
+Die Abweichungen von der idealen Übertragung werden als Verzerrungen wahrgenommen.
+Sie sind ein Maß für die Nichtlinearität der Übertragungsstrecke.
+Diese Eigenschaft wird im Folgenden untersucht, um den Degradationszustand einer sich im Ausgangszustand annähernd linear verhaltenden elektrischen Verbindung messtechnisch zu erfassen.
+
+
+:::: Ursachen für zeitabhängige Widerstands- änderungen ::::
+
+
+Elektrische Verbindungen werden vorrangig durch ihren elektrischen Widerstand charakterisiert.
+Dieser besitzt neben geometrischen Abhängigkeiten, wie der Länge und dem Querschnitt des leitfähigen Materials, auch eine Abhängigkeit von dem verwendeten Leitermaterial.
+Bei Metallen in ausreichender Reinheit lässt sich ein materialspezifischer Widerstandswert angeben1.
+Bei Vorhandensein eines elektrischen Feldes E wirkt auf jedes freie Elektron eine Kraft der Größe F =-eE, die eine Beschleunigung entgegen der Feldrichtung bewirkt.
+Dieser Transport einer negativen Ladung -e, bezogen auf eine Querschnittseinheit, entspricht der Stromdichte J in Feldrichtung.
+Das ohmsche Gesetz verknüpft die elektrische Feldstärke und Stromdichte über den spezifischen elektrischen Widerstand.
+Die Gleichung für den spezifischen elektrischen Widerstand ρ eines isotropen Werkstoffes ist das Ohm’sche Gesetz.
+#$@FORMULA@$#:0
+E~ = ρJ~ (1.1) Darin sind E~ und J~ die vektoriellen Feldgrößen.
+Wird der Werkstoffals isotrop bezüglich seiner elektrischen Leitfähigkeit angenommen, kann der spezifische Widerstand ρ als skalare Größe angegeben werden.
+Unter der Voraussetzung, dass das leitfähige Material in eine der drei Raumrichtungen viel weiter ausgedehnt ist, als in die verbleibenden zwei anderen Raumrichtungen, kann unter Beachtung des Winkels zwischen den beteiligten Feldern die Gleichung auch in skalaren Größen dargestellt werden.
+Dazu werden E=U /l und J=I/A in Gleichung 1.1 eingesetzt.
+Darin sind U und I Spannung und Strom und l und A die Länge des stromdurchfolssenen Leiters und seine Querschnittsfläche.
+Mit dem Verhältnis aus Strom und Spannung und der Aufspaltung der Fläche als Produkt der beiden beteiligten, rechtwinklig zueinander angeordneten Raumrichtungen ergibt sich die bekannte, für eine feste Temperatur geltende, Widerstandsformel:
+#$@FORMULA@$#:1
+l Rel = ρ0 · .
+(1.2) b h Hier sind Rel der elektrische Widerstand, ρ0 der temperaturunabhängige Teil des spezifischen elektrischen Widerstandes, l, b und h Länge, Breite und Höhe des Leitermaterials.
+Die Formel besitzt keine offensichtlichen nichtlinearen Bestandteile.
+Um dennoch ein nichtlineares Verhalten elektrischer Verbindungen erklären zu können, werden im Folgenden die einzelnen Bestandteile der Gleichung 1.2 genauer analysiert.
+Jede zyklische Änderung einer der Bestandteile der Widerstandsformel 1.2 bewirkt eine Modulation eines eingangsseitigen Signals.
+Wenn dieses zyklische Verhalten unabhängig von der Frequenz eines anregenden Signals stattfindet, kann für eine Messung auch ein Gleichsignal genutzt werden.
+Zyklische Änderungen der Querschnittsfläche eines stromdurchflossenen Leiters, wie sie beispielsweise bei zeitabhängiger Dehnung auftreten können, führen ebenso zu Nichtlinearitäten wie die Auswahl von ferromagnetischen Leitermaterialien wie z.B. Nickel [6], Kontakte zwischen verschiedenen Metallen [96] oder der Betrieb eines Leiters an seinen Leistungsgrenzen [102].
+Hier spielt die Temparaturabhängigkeit des Leitungsverhaltens [100] eine zunehmende Rolle.
+Diese Abhängigkeiten werden u.a. in [50] diskutiert und dienen als Ansatz für eine Parametermessung [53].
+Nachfolgend werden verschiedene physikalische Effekte, die zu nichtlinearem Leiterverhalten beitragen, auf ihre Anwendbarkeit als Parametermessverfahren hin untersucht.
+
+
+:::: Zyklische mechanische Belastung ::::
+
+
+Eine mechanische Belastung von elektrischen Verbindungen führt zu Geometrieänderungen, die wiederum Rückwirkungen auf den elektrischen Widerstand einer Verbindung haben.
+Zur Veranschaulichung dient als Beispiel eine Flip-Chip-Lotverbindung.
+Die Leiterplatte und der darauf befindliche Chip unterliegen in einem Vibrations- oder Droptest zyklischen mechanischen Belastungen.
+Das Lot wird infolge der Belastung gedehnt.
+Im Verlauf dieses Versuches steigt die plastische Dehnung des Lotwerkstoffes immer weiter an.
+Das Lot ermüdet, es altert.
+Es ergeben sich demnach immer größere maximale Abstände zwischen Schaltungsträger und Chip.
+#$@FORMULA@$#:0
+17u
+#$@FORMULA@$#:1
+18u
+19u
+20u
+21u
+treuen Lotverbindung
+23u
+24u
+Ursache für eine Widerstandsmodulation Bei angenommener Volumenkonstanz der Flip-Chip-Lotverbindung steigt der dynamische Widerstand über die Belastungszeit kontinuierlich an [58] bis es zu einem Defekt im Lot kommt, der die mechanische und elektrische Verbindung letztendlich versagen lässt.
+Der Ansatz von Lall et al. [58] greift noch vor die Entstehung eines Risses.
+Allein die Ermüdung des Verbindungswerkstoffes kann hier als Lebensdauerindikator angesetzt werden.
+Einschränkend muss hier jedoch erwähnt werden, dass sich die Signalverläufe kaum von denen der Widerstandsmessung unterscheiden.
+Ein sehr langer Abschnitt, in dem sich das Signal nahezu nicht ändert, wird von einem zeitlich stark begrenzten Abschnitt gefolgt, der den eigentlichen Ausfall abbildet (siehe Sprungausfall in Abbildung 1a auf Seite 3).
+Die Detektion früher Degradationsstadien scheint somit nicht realisierbar.
+Für Ermüdungsuntersuchungen zur Charakterisierung von Werkstoffen unter zyklischer mechanischer Belastung ist diese Methode als zerstörungsfreies Messverfahren dennoch geeignet.
+Die Messfrequenz muss in diesem Fall mit der Frequenz der zyklischen Dehnung übereinstimmen.
+Anderenfalls entsteht eine Schwebung2.
+Die Bestimmung der Ermüdung erfolgt durch Messungen zu verschiedenen Zeitpunkten zwischen denen eine Degradation stattgefunden hat.
+Abschließend sei noch erwähnt, dass Geometrieänderungen auch thermisch verursacht werden können, da jedes Material einen thermischen Ausdehnungskoeffzieint3 besitzt.
+
+
+:::: Temperaturänderung durch Wechselsignale ::::
+
+
+Mithilfe des Temperaturunterschiedes ∆T = T − T0 und Temperaturkoeffe- zienten lässt sich der elektrische Widerstand temperaturabhängig darstellen:
+#$@FORMULA@$#:0
+Rel(T ) = Rel(T0) (1 + αT∆T ) = Rel(T0) (1 + αT (T − T0)) .
+(1.3) Hier sind T die Temperatur, T0 die Bezugstemperatur und αT der lineare Temperaturkoeffzieint.
+Die Näherung mit linearem Temperaturkoeffzieinten αT genügt den meisten Anforderungen bei metallischen Materialien und nicht zu großen Temperaturbereichen.
+Für alle anderen Fälle sind Glieder höherer Ordnung (βT, γT.
+.
+. )
+in die Gleichung einzubeziehen.
+Sind die temperaturabhän- gigen Materialeigenschaften hysteresefrei und ohne Sprungstellen, können sie ausgehend von einer Referenztemperatur T0 beschrieben werden.
+Im allgemeinen Fall kann die Temperaturabhängigkeit einer physikalischen Größe durch eine Taylorreihe angenähert werden, die mit ξ(T ) = Rel(T ) auch für den elektrischen Widerstand Gültigkeit besitzt.
+#$@FORMULA@$#:0
+ ξ(T ) = ξ (T0 + ∆T ) = ξ (T0) · 1 + αT0 ∆T + βT0 ∆T 2 + · · · + kmT0 ∆T m + .
+.
+.
+(1.4) mit den Symbolen:
+ξ(T ) temperaturabhängige physikalische Größe Temperaturkoeffzieint 1.
+Ordnung an der Referenztemperatur T0 αT0 Temperaturkoeffzieint 2.
+Ordnung an der Referenztemperatur T0 βT0 Temperaturkoeffzieint m. Ordnung an der Referenztemperatur T0 kmT0 m Ordnungszahl Ein angelegtes Potential an eine elektrische Verbindung führt zu einem Stromfluss, falls es ein Bezugspotential in dem Aufbau gibt.
+Dieser Stromfluss bewirkt durch joulsche Erwärmung auch einen Anstieg der Leitertemperatur.
+Handelt es sich um ein Wechselsignal, so ändert sich auch die Verlustleistung periodisch.
+Abbildung 1.3 zeigt die zeitlichen Verläufe einer sinusförmigen Spannung in V
+24u
+25u
+26u
+27u
+28u
+29u
+30u
+31u
+strombeanspruchung.
+Spannung und des sich über einen konstanten ohmschen Widerstand einstellenden sinusförmigen Stromes.
+Das Produkt beider Zeitverläufe ergibt wiederum eine sinusförmige Augenblicksleistung mit doppelter Frequenz.
+Da der spezifische elektrische Widerstand des verwendeten Leitermaterials unter anderem von der Temperatur abhängig ist, ergibt sich dadurch ein nichtlineares Übertra- gungsverhalten.
+Thermische Kapazitäten innerhalb der Verbindung glätten jedoch die transienten thermischen Vorgänge im Werkstoff, so dass nur an Orten mit hohen Verlustleistungsamplituden einfach messbare Nichtlinearitäten generiert werden.
+Abbildung 1.4a zeigt das thermische Einschwingverhalten einer sich ohmsch verhaltenden Struktur.
+Die Temperaturänderung hängt von der thermischen Zeitkonstante ab.
+Je größer die thermische Zeitkonstante des zu überwachenden Systems ist, desto mehr wird das durch die Temperaturabhängigkeit des spezifischen elektrischen Widerstandes generierte Signal gedämpft.
+Temperaturänderungen treten nur innerhalb der halben Periodendauer der anregenden Frequenz auf.
+Eine sinnvolle Auswertung der Messsignale kann dabei erst stattfinden, wenn sich das System im thermisch eingeschwungenen Zustand befindet, wie es in Abbildung 1.4b gezeigt ist.
+Es gilt folgender Zusammenhang4 zwischen Temperaturänderung ∆T , Widerstandsänderung ∆R, Frequenz f und thermischer Zeitkonstanten τ th:
+#$@FORMULA@$#:0
+  1 − e− ∆T ∼ ∆R ∼ .
+(1.5) 2f τth Der genaue Verlauf der thermischen Zeitkonstanten wird in den folgenden inKT
+22u
+23u
+24u
+#$@FORMULA@$#:1
+25u
+#$@FORMULA@$#:2
+∼ ∆R
+#$@FORMULA@$#:3
+i(t)
+#$@FORMULA@$#:4
+i(t) 1 2 T 0 τth t in s 0 t in s (a) Thermischer Einschwingvorgang (b) Stationärer Zustand Abbildung 1.4:
+Thermisches Verhalten eines elektrischen Leiters bei Wechselstrombelastung.
+Der Einschwingvorgang und der stationäre Zustand besitzen eine eigene thermische Einschwingkonstante τth.
+Die Zeitkonstanten der Aufheizkurve τth,1 und der Abkühlkurve τth,2 unterscheiden sich je nach äußeren Gegebenheiten ebenfalls.
+Kapiteln untersucht und dargestellt.
+Abbildung 1.4b zeigt das Temperaturverhalten für kleine Zeitkonstanten τ th  1 2f .
+Abschließend sei hier noch erwähnt, dass makroskopisch zwar Strom und Spannung gleichphasig sind, durch geringe Induktivitäten und Kapazitäten im Leiterersatzschaltbild aber stets geringe Phasendifferenzen entstehen (siehe Kapitel 5.2).
+Dies ist auch im Fall der thermisch generierten Nichtlinearitäten so.
+Da die Temperatur dem erzeugenden Strom durch die thermischen Kapazitäten nachläuft, ändert sich der Widerstand einer elektrischen Verbindung nicht phasengleich mit dem Verlustleistung erzeugenden Strom.
+
+
+:::: Zusammenfassung ::::
+
+
+Die Ausnutzung eines nichtlinearen Verhaltens des elektrischen Widerstandes von Verbindungen zur Detektion und Vorhersage von Ausfällen gelingt nur, wenn sich die betrachtete elektrische Verbindung hinsichtlich ihrer Linearität zyklisch ändert.
+Diese Änderung muss idealerweise über den Lebenszyklus der Verbindung in ihrer Amplitude steigen, damit die modulierende Eigenschaft des elektrischen Widerstandes ausgenutzt werden kann.
+Die zwei Phänomene, die im Folgenden weiter betrachtet werden sollen, basieren auf den Ursachen Temperaturänderung durch Anregung mit entsprechenden elektrischen Signalen und Geometrieänderung durch zyklische Dehnung.
+Letztere wird als Abwandlung des Messverfahrens mit Wechsel der Modulationsquelle in Kapitel 5.3 diskutiert.
+Die Temperaturabhängigkeit des spezifischen Widerstandes bei Wechselsignalanregung wird im Folgenden weiter untersucht, da sie durch die Amplitude des Messstromes einen sehr gut zu skalierenden Parameter besitzt, um die zu messenden Signale anzuheben.
+Zusätzlich ist kein Eingriffin ein System notwendig, um dessen Zustand zu überwachen.
+
+
+:::: Entstehung von Harmonischen und Inter- modulationen ::::
+
+
+Nichtlineare Systeme generieren je nach Anzahl und Frequenz der Eingangssignale unterschiedliche Ausgangssignale.
+Wenn ein Eingangssignal nur eine Frequenzkomponente enthält, können nur Harmonische dieser Frequenz generiert werden.
+In der Kommunikationstechnik tritt jedoch häufig der Fall auf, dass mehrere Signale zur gleichen Zeit über den gleichen Kanal5 übertragen werden sollen.
+Dann treten die einzelnen Signale miteinander in Beziehung und generieren Frequenzanteile, die keine Harmonische der Eingangssignale darstellen.
+Dieses Verhalten wird als Intermodulation bezeichnet.
+Auch die Art der Nichtlinearität des Übertragungssystems hat einen Einfluss auf die Ausgangssignale6.
+Bei thermischer Anregung ergibt sich ein Übertragunssystem zweiter Ordnung, da die Temperatur in einem Leiter bei Wechselstromanregung stets mit der doppelten Frequenz oszilliert.
+Durch die Wahl entsprechender Eingangssignale können die Frequenzanteile in einem nichtlinearen Übertragungssystem gezielt beeinflusst werden.
+Die folgende Tabelle 1.1 zeigt nach [32] für einige typische Eingangssignale die entsprechend generierten Frequenzanteile7 bei nichtlinearem Zusammenhang zwischen Strom und Spannung in einem System zweiter Ordnung.
+Die Am-Eingangsstrom generierte Frequenzen i(t) = I1 cos(ω1t) f, 3f, 5f, 7f, .
+.
+.
+i(t) = I0 + I1 cos(ω1t) f, 2f, 3f, 4f, .
+.
+.
+i(t) = I1 cos(ω1t) + I2 cos(ω2t) f1, f2, 3f1, 3f2, 2f1 − f2, 2f2 − f1, .
+.
+.
+i(t) = I0 + I1 cos(ω1t) + I2 cos(ω2t) f2 − f1, f1, f2, 2f1, f2 + f1, 2f2, .
+.
+.
+Tabelle 1.1:
+Eingangssignale mit den Amplituden In, den Kreisfrequenzen ωn
+#$@FORMULA@$#:0
+(n = 0, 1, 2...) und generierte Frequenzanteile durch eine nichtlineare Übertragungsstrecke.
+Hier ist die Amplitude der generierten Frequenzen nicht dargestellt und auch die Anzahl der generierten Frequenzen unbegrenzt.
+Es gilt ω = 2πf mit der Kreiszahl π und der Frequenz f .. plitude und Anzahl der generierten Frequenzanteile variiert.
+Mit steigender Ordnungszahl sinkt die Amplitude, während die Anzahl mit der Zahl der Eingangsfrequenzen bzw. der Kanalanzahl steigt [62].
+Das Ausgangsspektrum der vierten Tabellenzeile ist in Abbildung 1.6 auf Seite 20 dargestellt.
+In [63, Kap. 1.3] werden noch weitere Einflüsse auf die Funktion elektrischer Systeme durch nichtlineares Verhalten dargestellt.
+Diese Phänomene sollen hier
+#$@FORMULA@$#:1
+der Vollständigkeit halber erwähnt werden.
+Im weiteren Verlauf der vorliegenden Arbeit werden sie vernachlässigt:
+Neben der Erzeugung von Harmonischen und Intermodulationen gibt es einen Einfluss auf die Amplitude bzw. Modulation (Kreuzmodulation, Wechsel der Modulationsart).
+Des Weiteren treten Sättigungseffekte durch die begrenzte Leistung und Kanalinterferenzen in Übertragungssystemen auf.
+
+
+:::: Messung von Nichtlinearitäten ::::
+
+
+Es gibt eine Vielzahl von Messverfahren, die nichtlineare Systeme charakterisieren können.
+Spektrumanalysatoren stellen im Frequenzbereich die in einem Signal enthaltenen Frequenzen dar.
+Je nach Bandbreite und Messzeit ist der Aufwand einer solchen Messung sehr groß.
+Netzwerkanalysatoren werden genutzt um das frequenzspezifische Verhalten eines Systems darzustellen.
+Dazu wird ein eingangsseitiges Sinussignal am Ausgang wieder aufgenommen und verschiedene Verhältnisse zwischen beiden Signalen gebildet [49].
+In der Praxis sind oft nur sehr begrenzte Frequenzbereiche von Interesse, so dass es möglich ist, effzieintere Messverfahren zu nutzen.
+Das Superpositionsprinzip gilt nur für lineare Systeme.
+Die Wahl eines allgemeinen Eingangssignals zur Beschreibung nichtlinearer Systeme durch ihr Ausgangssignal ist somit nicht möglich.
+Aus diesem Grund werden Eingangssignale zur Charakterisierung nichtlinearer Systeme möglichst so gewählt, dass sie in oder zumindest nah an dem zu untersuchenden Frequenzbereich liegen.
+Eine einfache Möglichkeit, ein System bezüglich einer bestimmten Frequenz zu charakterisieren, ist der Eintontest [73, Kap. 2.2], der auch im Fall linearer Systeme verwendet wird.
+Um die Übertragungsfunktion im Frequenzbereich H(jω) zu ermitteln8, wird ein sinusförmiges Signal x(t) = Ai cos(ωt) durch das System geschickt.
+Am Ausgang wird bei derselben Frequenz gemessen.
+Durch die vorausgesetzte Linearität kann ein Frequenzsweep9 nur Änderungen in der Amplitude und Phase bewirken.
+Der Ausgang eines linearen Systems kann also
+#$@FORMULA@$#:0
+dargestellt werden als:
+y(t) = Ao(ω) cos[ωt + φ0(ω)], (1.6) mit den Symbolen:
+t Zeit Ai Amplitude am Eingang Ao Amplitude am Ausgang ω Kreisfrequenz φ Phasenwinkel.
+Diese Testmethode wird nun erweitert, um damit nichtlineare Systeme zu charakterisieren.
+In diesem Fall ist die Ausgangsamplitude Ao kein skaliertes Replikat der Eingangsamplitude Ai und die relative Phase φ0 wird nicht ausschließlich durch die Eingangsfrequenz bestimmt.
+In nichtlinearen Systemen kann die Übertragungsfunktion mit den Konstanten C m (m ∈ N) und s = jω dargestellt werden als
+#$@FORMULA@$#:0
+H(s) = C1 + C2s + C3s2 + C4s4 + .
+.
+.
+(1.7) Dieses Übertragungssystem generiert Signalbestandteile mit neuen Frequenzen (Harmonische) bei ganzzahligen Vielfachen der Eingangsfrequenzen:
+#$@FORMULA@$#:1
+∞ X y(t) =
+#$@FORMULA@$#:3
+(ω, Ai)].
+(1.8) Aom (ω, Ai) cos[mωt + φ0m
+#$@FORMULA@$#:2
+m=1 Abbildung 1.5 zeigt ein typisches Ausgangsspektrum in dem Harmonische durch das nichtlineare Verhalten des Übertragungssystems erzeugt werden.
+Gleichung 1.8 zeigt, dass bei der Eintonmessung in nichtlinearen Systemen nicht allein die Eingangsfrequenz bewertet werden kann.
+Um das gesamte Spektrum entsprechend bewerten zu können, wird die Leistung aller Harmonischen in das Verhältnis zum Eingangssignal gesetzt.
+Dazu wird der THD-Bewertungsfaktor10 genutzt [83].
+Er setzt die Wurzel aus der Summe der Leistungen der einzelnen Harmonischen ins Verhältnis zur Grundschwingungsleis- 10Total Harmonic Distortion (THD)
+0u
+1u
+2u
+3u
+4u
+5u
+6u
+7u
+tung.
+Nach Gleichung 1.8 gilt dann:
+#$@FORMULA@$#:0
+s ≤ ∞ 2 T 1 R P (ω, Ai)] Aom (ω, Ai) cos [mωt + φ0m dt T 0 m=2 THD = (1.9) s
+#$@FORMULA@$#:2
+T ]]dt [Ao1 (ω, Ai) cos [ωt + φ01 1 R T 0 mit den Symbolen:
+T Periodendauer
+32u
+33u
+34u
+35u
+36u
+37u
+38u
+nung sinkt die Amplitude der Oberwellen signifikant [46].
+Kirby definiert deshalb den Third Harmonic Index (THI), der bei Auftreten von Harmonischen genutzt werden kann, um nichtlineare Systeme zu charakterisieren11.
+Der THI ist das logarithmierte Verhältnis aus dem Effektivwert der gemessenen dritten Harmonischen zum Effektivwert des Eingangssignals.
+Er wird wie folgt dargestellt:
+THI = 20 log Ao3,eff .
+(1.10)
+#$@FORMULA@$#:1
+Ai1,eff Der so gewonnene Index stellt den Grad der Nichtlinearität über die dritte Harmonische unabhängig von der Amplitude des Eingangssignals dar [44].
+Ein sogenannte (sog.) Zweitontest wird häufig in der Kommunikationstechnik genutzt, da er dem realen Betriebsszenario besser entspricht.
+Dazu werden zwei sinusförmige Eingangssignale genutzt.
+Diese lassen nun auch die Charakterisierung von Mischkomponenten nahe der Grundfrequenzen zu.
+Da diese oft innerhalb des Übertragungsbandes liegen, spielen sie eine wichtige Rolle in der Kommunikationstechnik.
+Für das Eingangssignal x(t) = Ai1 cos(ω1t) + cos(ω2t) kann der Ausgang folgendermaßen dargestellt werden:
+Ai1
+#$@FORMULA@$#:0
+∞ X y(t) = ) (1.11) Aor cos(ωrt + φ0r r=1 mit ωr = mω1 + nω2 und m, n ∈ Z. Die Gleichung zeigt, dass im Ausgangssignal eine sehr hohe Anzahl an Harmonischen mit allen möglichen Kombinationen aus ±ω1 und ±ω2 auftreten.
+In der Kommunikationstechnik werden die
+#$@FORMULA@$#:1
+Mischkomponenten unterschieden in Inband- (m + n = 1) und Außerbandverzerrungen (m+n 6= 1).
+Die Ordnung der Verzerrung ergibt sich aus der Summe |m|+|n|.
+Es entstehen Verzerrungsprodukte (z.B. zweiter Ordnung bei ω2 −ω1, dritter Ordnung bei 2ω1 − ω2 oder fünfter Ordnung bei 3ω2 − 2ω1, siehe Abbildung 1.6), die gruppenweise über das gesamte Spektrum verteilt sind.
+Alle Frequenzkomponenten, die keine Harmonischen der Eingangssignale sind, werden Intermodulationsprodukte (Intermodulation Distortion (IMD)) genannt.
+Auch hier gilt analog zu [46], dass mit steigender Ordnung die Amplituden der Intermodulationssignale sinken.
+Wird nur ein Intermodulationsprodukt genutzt um ein System zu beschreiben, kann das Verhältnis der Signalleistungen als Intermodulation Ratio (IMR) definiert werden [73, S. 36 Gl.
+2.10].
+Dazu wird die Signalleistung einer der Eingangsfrequenzen (P (ω1) oder P (ω2)) in das
+#$@FORMULA@$#:2
+Verhältnis mit der Leistung der IMD-Produkte (z.B.
+P (2ω2 − ω1)) gesetzt12.
+#$@FORMULA@$#:3
+= P (ω2) Pfund = P (ω1) IMR ≡ (1.12) P (2ω1 − ω2) P (2ω2 − ω1) PIMD Abbildung 1.6 zeigt das Ausgangsspektrum einer Messung mit zwei Messsignalen.
+Es entstehen durch das untersuchte nichtlineare Übertragungssystem eine Vielzahl von Oberwellen, die sich in Gruppen neben die eigentlichen anregenden Signale legen.
+Amplitude
+#$@FORMULA@$#:0
+ω1 ω2 Eingangs- 2ω1+ω2 2ω2+ω1 frequenzen 2ω1 2ω2 .
+.
+.
+.
+.
+.. .
+.
+#$@FORMULA@$#:1
+(ω2−ω1) 3ω1 3ω2 (ω1+ω2) Frequen (2ω1−ω2) (2ω2−ω1 Abbildung 1.6:
+Ausgangsspektrum der Mehrtonmessung.
+Es sind gruppenweise verteilte Intermodulationsprodukte zu sehen, deren Amplitude mit steigender Ordnung sinkt.
+In der Kommunikationstechnik wird aufgrund des geringen Abstandes der Oberwellenfrequenz zu den eigentlichen Signalträgern und aufgrund begrenzter Steilheit von Eingangsfiltern oftmals die Leistung der Oberwellen dritter Ordnung (z.B. bei 2ω2 − ω1 bei der Zweitonmessung) betrachtet.
+Werden Eingangs- und Ausgangsleistung in einem Diagramm auf verschiedenen Achsen dargestellt, so fällt auf, dass die Leistung der Oberwellen stärker steigt als die Leistung der Eingangssignale.
+Abbildung 1.7 zeigt diesen Zusammenhang.
+Bei vergleichsweise kleinen Signalleistungen steigt die Ausgangsleistung des Eingangssignals im gezeigten Bild um 1 dB pro dB Erhöhung der Eingangsleistung.
+Die Leistung des Intermodulationssignals steigt hingegen mit 3 dB/dB.
+Bei hohen Signalleistungen sind höhere Ordnungen stärker präsent und dürfen nicht mehr vernachlässigt werden, deshalb sättigen die Kurven in der Abbildung und tendieren zu einem konstanten Wert.
+Dieses Verhalten ist nach [73] in der großen Mehrheit von Mikrowellen- und drahtlosen Systemen beobachtbar.
+Durch die verschiedenen Anstiege der Geraden im niedrigen Leistungsbereich lässt sich bei Extrapolation dieser ein Schnittpunkt ermitteln, der zur Systemcharakterisierung herangezogen werden kann.
+Dieser Punkt wird Third-Order Intercept Point (IP3) genannt.
+Mathematisch kann der Schnittpunkt bei Zweitonübertragung mit gleicher Amplitude A und Vernachlässigen der Ther-
+#$@FORMULA@$#:0
+IP3 AusgangsleistungindBm 40 1dB/dB 20 P (ω2) 0 -10 0 20 30 -20 Eingangs-IP3 leistung -40
+13u
+14u
+15u
+16u
+#$@FORMULA@$#:1
+17u
+Abbildung 1.7:
+Leistungen des Eingangssignals bei ω2 und des Intermodulationsproduktes bei 2ω2 − ω1 bei Zweitonübertragung mit gleicher Eingangsamplitude nach [73, S. 37].
+me mit Ordnungen größer als drei laut Pedro [73] wie folgt dargestellt werden13:
+#$@FORMULA@$#:2
+PIMD(2ω1 − ω2) = C 2A6.
+(1.13) Die Gleichung zeigt, dass die Amplitude der Eingangssignale in der 6.
+Potenz in die Leistung des Intermodulationssignals eingehen.
+Bei der Anwendung als Parameter zur Messung von Degradationen in frühen Stadien führt dieser Zusammenhang zu sehr hohen Empfindlichkeiten.
+Der Vollständigkeit halber sei hier noch die Leistung des Eingangssignals dargestellt:
+#$@FORMULA@$#:3
+Plinear(ω1) = CA2.
+(1.14) Im Gegensatz zu Gleichung 1.13 geht die Amplitude des Eingangssignals quadratisch in die Leistung ein.
+Je mehr Eingangssignale zur Charakterisierung eines Übertragungssystemes genutzt werden, desto exakter lässt sich das Übertragungsverhalten erfassen.
+Die gedankliche Weiterführung der hier vorgestellten Messansätze stellen Pedro et al. in [72] als Multitontechnik vor.
+Da dieser Ansatz jedoch erheblichen Messaufwand in Form von Zeit oder Messgeräten bedarf und im Folgenden nur ein oder zwei Signale als Eingangssignale für die Charakterisierung ge- nutzt werden, sei an dieser Stelle auf zwei Literaturquellen verwiesen, die sich ausführlicher mit Messungen in aktuellen Kommunikationssystemen beschäftigen:
+[63] und [73].
+Im Fall thermisch generierter Nichtlinearitäten in sich ansonsten ohmsch verhaltenden elektrischen Leitern, wie sie in Kapitel 1.1.2 dargestellt sind, ergibt sich ein Übertragungssystem zweiter Ordnung nach Gleichung 1.3 mit dem elektrischen Widerstand als Übertragungsfunktion:
+#$@FORMULA@$#:0
+Rel(T ) = Rel(T0) (1 + αT∆T ) .
+(1.15) Die Temperaturdifferenz kann mit der elektrischen Leistung p(t), dem thermischen Widerstand Rth, der thermischen Zeitkonstante τ und dem zeitabhängigen elektrischen Strom i(t) unter Berücksichtigung von Gleichung 1.5 dargestellt werden als
+#$@FORMULA@$#:1
+    1 − e− t 1 − e− t δT (t) = p(t) · Rth = i2(t)RelRth .
+(1.16) τth τth Bei sinusförmiger Anregung ergibt sich mit dem Additionstheorem sin2 x =
+#$@FORMULA@$#:2
+1 (1 − cos(2x)) 2
+#$@FORMULA@$#:3
+1     1 − e− t Rel(T, t) = Rel(T0) 1 + 2 αTRel(T0)Rth(1 − cos(2ωt)) .
+(1.17) τth Für den zeitabhängigen Anteil der Gleichung ergibt sich:
+#$@FORMULA@$#:4
+Rel(T, t) 1   1 − e− t = − 2 αTRth cos(2ωt) .
+(1.18) τth R2 (T0) el Der messbare resultierende zeitabhängige Anteil der elektrischen Spannung bei Anregung mit einem sinusförmigen Strom und kleinen thermischen Zeit-
+#$@FORMULA@$#:5
+konstanten14 ergibt dann mit sin(x) · cos(y) = 1 [sin(x − y) + sin(x + y)] für die 2 dritte Harmonische:
+#$@FORMULA@$#:6
+1   1 − e− u3(t) = − 4 αTi0R2 el,0Rth sin(3ωt) .
+(1.19) 2f τth Hierbei entsprechen die Variablen mit dem Index Null den zeitunabhängigen Spitzenwerten der jeweiligen Größe.
+Wird eine sehr kleine thermische Zeitkonstante bei relativ niedriger Fre-   1 − e− quenz vorausgesetzt, ist 1 2τthf  1.
+Damit ergibt sich ≈ 1.
+Glei- 2τthf chung 1.19 vereinfacht sich dann zu:
+#$@FORMULA@$#:1
+1 u3(t) = − 4 αTi0R2 el,0Rth sin(3ωt).
+(1.20) Die im Experiment verwendeten Daten lassen diese Vereinfachung zu.
+Aus der Rechnung wird ersichtlich, dass die Art der Nichtlinearität einen Einfluss auf die generierten Signalanteile hat. 15 Je nach Grad der Nichtlinearität entstehen an unterschiedlichen Frequenzen neue Signalbestandteile.
+Hier zeigt sich, dass im beschriebenen Fall die dritte Harmonische eine gute Wahl zur Charakterisierung von thermisch generierten Nichtlinearitäten darstellt.
+#$@FORMULA@$#:0
+
+
+:::: Einfluss von Degradationen auf die Linearität elektrischer Verbindungen ::::
+
+
+In elektrischen Verbindungen und Leitern wirken sich Degradationen überwiegend derart aus, dass die ursprüngliche Querschnittsfläche verringert wird.
+Die Folge sind Parameterverschiebungen wie Widerstandsänderungen und stromdichtebedingte Temperaturerhöhungen bis hin zum Versagen der Funktion.
+Eine deutlich messbare Widerstandserhöhung durch alterungsbedingte Querschnittseinengung tritt jedoch erst im letzten Zehntel der Lebensdauer (z.B. einer Lotverbindung [21]) auf.
+Im Folgenden wird ein Modell hergeleitet, welches es ermöglicht, diese fortschreitende Degradation eher zu erkennen, Testzeiten zu minimieren und Abschätzungen über die Restlebensdauer einer elektrischen Verbindung zu treffen.
+
+
+:::: Abgrenzung der Begriﬄichkeiten und De- fektbreite Null ::::
+
+
+Der BegriffRiss ist aus dem Bereich der Bruch- und Schädigungsmechanik bekannt als Fehlstelle in einem Bauteil oder Bauelement als Folge des Herstellungsprozesses (z.B. Einschlüsse, Poren, Lunker, Spannungsrisse) oder des Einsatzes (z.B. zyklische Beanspruchung) die potentiell zum Versagen der Funk- tion führen können [29].
+Dabei beschäftigt sich die Schädigungsmechanik mit der Entstehung und der Ausbreitung vom Mikroriss bis zum Bruch (Übersteigen der Buchfestigkeit).
+Ein Bruch kann systematisiert werden als Spröd-, Ermüdungs- oder Verformungsbruch.
+Die Entstehung und Ausbreitung von Rissen soll im Folgenden eine untergeordnete Rolle spielen, so dass ein Riss hier definiert werden kann als eine instabile Querschnittseinengung mit der Tendenz des Wachsens bzw. Ausbreitens.
+Diese Querschnittseinengung stellt eine Momentaufnahme des Risses zum Zeitpunkt der Messung dar und kann im Rahmen dieser Arbeit als stationärer Riss betrachtet werden.
+Aus diesem Grund werden in der vorliegenden Arbeit die Begriffe Riss, Querschnittseinengung und Defektstelle synonym verwendet.
+Querschnittseinengungen z.B. Poren haben eine räumliche Ausdehung in drei Raumrichtungen.
+Theoretisch kann ein Riss in einem Werkstoffauch existieren indem zwei Teilbereiche keine stoffschlüssige Verbindung aufweisen, der Abstand (Dimension a in Abbildung 2.3 auf Seite 30) zwischen beiden jedoch Null ist.
+Hier wäre bei metallischen Werkstoffen eine elektrische und thermische Leitfähigkeit weiterhin gegeben, wenn auch im Vergleich zum ungerissenen Zustand leicht eingeschränkt, während die mechanische Stabilität nicht mehr vorhanden ist.
+Die Modelle in dieser Arbeit betrachten den Fall mit einer Defektbreite von Null nicht näher, da in der Praxis die Kontaktfläche zweier Teilbereiche, die mechanisch versagt haben stets geringer als 100 % und oft durch eine Zwischenschicht gekennzeichnet ist.
+Für den theoretischen Fall eines Risses mit verbeibender Kontaktfläche von 100 % ohne verbleibender elektrischer Leitfähigkeit in der Defektregion wird hier der Vollständigkeit halber ein Modellierungsvorschlag entwickelt der sich an dem Ausbreitungswiderstand orientiert [36].
+Nachfolgende Abbildung 2.1 zeigt einen elektrischen Leiter, der in der Mitte rotationssymmetrisch eingeengt ist.
+Dabei ist der Durchmesser der Einengung d und der Abstand der zwei Volumenkörper bzw. die Defektbreite 2·a.
+Der Ausbreitungswiderstand RS kann mit dem spezifischen elektrischen Widerstand ρ vereinfacht nach [36] und [79] dargestellt werden als:
+#$@FORMULA@$#:0
+RS = ρ .
+(2.1) πd Die Gleichung 2.1 ist unabhängig vom Abstand a und beschreibt eine der zwei
+0u
+1u
+Abbildung 2.1:
+Bemaßung eines Leiters mit rotationssymmetrischer Querschnittseinengung.
+Hälften der Abbildung 2.1.
+Da diese Geometrie gespiegelt an der gegenüberliegenden Seite wieder auftritt, kann der resultierende elektrische Widerstand dargestellt werden als:
+#$@FORMULA@$#:0
+8a Rel = 2RS + πd2 ρ.
+(2.2) Dies bietet die Möglichkeit auch für den Fall einer Defektbreite von Null ein analytisches Modell aufzustellen ohne, dass der resultierende Widerstand Null wird. 1 Im Folgenden wird nun davon ausgegangen, dass die Defektbreite stets größer Null ist.
+2.2 Modellierung elektrischer Verbindungen
+
+
+:::: Modellierung elektrischer Verbindungen ::::
+
+
+pfaden.
+Elemente dieser Pfade können z.B. vertical interconnect areas (VIAs), Lot- oder Sinterverbindungen, Leiterbahnen, Bonddrähte, Steckkontakte oder Chipmetallisierungen sein.
+Am Beispiel einer Leiterbahn mit Querschnittseinengung wird hier ein analytisches Modell aufgebaut, welches durch zyklische Temperaturänderung ein nichtlineares Verhalten der elektrischen Größen erklärt.
+Grundlegend dafür ist das Joulesche Gesetz, welches besagt, dass der in einem Stromkreis erzeugte
+#$@FORMULA@$#:0
+Wärmestrom Q˙ gleich der umgesetzten Leistung P des Stromkreises ist
+#$@FORMULA@$#:0
+Q˙ = P.
+(2.3) Ein Wechselsignal mit genügend hoher Amplitude des Stromes verursacht in jedem ohmschen Leiter mit einem elektrischen Widerstand größer Null (Rel > 0) eine Temperaturänderung.
+Diese ist abhängig von den geometrischen und thermischen Gegebenheiten sowie der umgesetzten elektrischen Leistung.
+Unter der Nebenbedingung 1 2τthf  1 kann die Temperaturänderung beschrieben werden als
+#$@FORMULA@$#:1
+∆T = P · Rth = I 2Rel · Rth, (2.4) mit den Symbolen:
+∆T Temperaturerhöhung
+12u
+13u
+14u
+15u
+16u
+#$@FORMULA@$#:2
+17u
+18u
+19u
+Darin ist l die Leiterlänge in Wärmeflussrichtung, λ die spezifische thermische Leitfähigkeit und A die Querschnittsfläche, durch die die Wärme fließt.
+Der Exponentialtherm für die Temperaturdifferenz aus Gleichung 1.16 auf Seite 22 entfällt hier, da die maximale und minimale Temperatur für die Modellbildung genügen, zudem wird die Herleitung dadurch übersichtlicher.
+Die Frequenzabhängigkeit des Messsignals und die Eingrenzung auf einen in der Praxis günstigen Frequenzbereich wird dann in Kapitel 2.3 genauer untersucht.
+Die Temperaturdifferenz ist wichtig für das Verständnis der Modellbildung, deshalb zeigt Abbildung 2.2 exemplarisch den zeitlichen Verlauf der Temperatur bei Anregung durch ein Wechselstromsignal. 2 Vor dem Zeitpunkt Null haben alle Materialien die Umgebungstemperatur T0 angenommen.
+Erst wenn der Strom beginnt zu fließen, steigt die Temperatur im Leiter an, bis sich ein
+#$@FORMULA@$#:0
+inA,inK2PT
+#$@FORMULA@$#:2
+Tmax
+#$@FORMULA@$#:1
+δT T (t) ∆ ∆Toffset T0
+#$@FORMULA@$#:3
+i(t) 0 t in s Abbildung 2.2:
+Variable und konstante Temperaturdifferenzen durch Wechselstromanregung im eingeschwungenen Zustand (∆Toffset  δT, ∆T ; ∆Toffset = Tok − T0).
+Gleichgewicht aus Erwärmung und Entwärmung einstellt oder der Strom seinen Hochpunkt überschritten hat und wieder gegen Null verläuft.
+Dieser Vorgang wiederholt sich periodisch.
+Die Leitertemperatur sinkt dabei nicht wieder vollständig auf T0 ab.
+Somit kann im eingeschwungenen Zustand die gesamte Temperaturänderung ∆T = T (t) − T0 in einen konstanten Temperaturanteil ∆Toffset und einen zeitabhängigen Temperaturanteil δT aufgeteilt werden.
+Als Bezugsgröße sind Tmax bzw. T0 + Toffset ungeeignet, da sie unter anderem von der zeitvariablen Defektgröße, der Frequenz, den Materialien und den Wärmeübergangskoeffzieinten abhängig sind.
+Zusätzlich ist ∆Toffset wesentlich kleiner als δT und ∆T .
+Aus diesem Grund wird die konstante und einfach zu beschreibende Umgebungstemperatur T0 als Bezugstemperatur gewählt.
+Dies hat zur Folge, dass die folgenden Ableitungen einfacher dargestellt werden können.
+Allerdings liefert das Modell bis zur Aufteilung der Signalbestandteile in variable und konstante Anteile damit eine Temperatur, die sich aus beiden beschriebenen Temperaturbestandteilen zusammensetzt.
+Das wiederum hat jedoch keinen Einfluss auf das Ergebnis, da nur der zeitvariable Anteil des Messsignals ausgewertet wird und somit schlussendlich ∆T = Tmax − T0 gilt.
+Der zeitliche Verlauf der Temperatur hat stets die doppelte Frequenz des anregenden Stromes, da die Joulesche Erwärmung unabhängig von der Stromrichtung stets positiv ist.
+Die höchste lokale Temperatur eines stromdurchflossenen Leiters tritt in dem Bereich mit der größten Stromdichte, also dem Bereich mit der höchsten Verlustleistung auf.
+Falls im Design keine Stelle ab- sichtlich für eine Stromdichteüberhöhung vorgesehen ist, ist dieser Bereich oftmals ein Defekt, der die Lebensdauer einer elektrischen Verbindung reduziert, sofern er nicht direkt zu einem Frühausfall führt.
+Zuerst soll nun ein Modell für die über einer Leiterbahn mit Defekt abfallende, zeitabhängige Spannung u(t) definiert werden.
+Die hier betrachteten Defekte sollen klein im Vergleich zum gesamten Signalpfad sein.
+Die thermische Kapazität der eingeengten Leiterstelle kann zunächst im Vergleich zur thermischen Kapazität des intakten Leiterbahnvolumens vernachlässigt werden. 3 Der dominierende Wärmetransportmechanismus ist die Wärmeleitung entlang der Leiterbahn in Richtung des intakten Leiterbahnbereiches (Richtung des elektrischen Stromes).
+Mit der temperaturabhängigen Widerstandsformel aus Gleichung 1.3 und dem Ohmschen Gesetz ergibt sich die elektrische Spannung als Summe der zwei betrachteten Bereiche:
+intakte Leiterbahn mit Rok und eingeengter Leiterbahnabschnitt mit Rdef, dies gilt für den thermischen sowie den elektrischen Widerstand.
+#$@FORMULA@$#:0
+u(t) = [Rel,ok · (1 + αT(Tok − T0)) + Rel,def · (1 + αT(Tdef − T0))] · i(t) (2.6) mit den Symbolen:
+Rel,ok elektrischer Widerstand des intakten Leiterbahnabschnittes Rel,def elektrischer Widerstand des eingeengten Leiterbahnabschnittes T ok Temperatur des intakten Bereiches T def Temperatur des eingeengten Bereiches T 0 Umgebungstemperatur αT linearer Temperaturkoeffzieint i(t) zeitabhängiger elektrischer Strom Analog zu Gleichung 2.4 können die Temperaturdifferenzen beschrieben werden als
+#$@FORMULA@$#:1
+Tok − T0 = i2(t)Rel,okRth,ok (2.7) und
+#$@FORMULA@$#:2
+Tdef − Tok = i2(t)Rel,defRth,def.
+(2.8) Darin sind Rth,ok und Rth,def die thermischen Widerstände der beiden Bereiche nach Gleichung 2.5.
+Die über der Leiterbahn abfallende Spannung ist getrennt nach den zwei auftretenden Potenzen des Stromes demnach
+#$@FORMULA@$#:0
+u(t) = i(t)[Rel,ok + Rel,def] (2.9) + i3(t)αT[R2 el,okRth,ok + R2 el,defRth,def + Rel,okRel,defRth,ok].
+Die Gleichung enthält einen ohmschen Anteil, der sich als Summe der zwei Widerstandsanteile, multipliziert mit dem durch die Leiterbahn fließenden Strom, ergibt und einen Anteil, der durch die dritte Potenz des Stromes entsteht (vergleiche (vgl.) Tabelle 1.1).
+Hier sind die Summanden jeweils Produkte aus den elektrischen und thermischen Widerständen.
+Der dritte Summand ergibt sich aus dem Ersetzen von Tdef − T0 + Tok − Tok, also dem Einsetzen von beiden oben definierten Temperaturdifferenzen, im hinteren Teil der Gleichung 2.6.
+Der Zusammenhang zwischen Spannung und Strom ist durch den Temperatureinfluss nichtlinear.
+Die modulierende Eigenschaft dieses Zusammenhanges kann zur Messung von Degradationen genutzt werden, wenn sich die Temperaturen zyklisch ändern.
+Diese Voraussetzung ist bei Wechselsignalanregung erfüllt.
+Somit wird der Gleichanteil aus Gleichung 2.9 auch messtechnisch vernachlässigbar.
+17u
+18u
+19u
+20u
+21u
+22u
+23u
+hen, werden nun die Bestandteile von Gleichung 2.9 mit realen Abmessungen ergänzt.
+Abbildung 2.3 zeigt eine Streifenleiterbahn auf einem Substrat.
+Der defekte Leiterabschnitt kann durch das noch vorhandene Volumen aus a · c · h2 beschrieben werden.
+Das restliche Leitervolumen w · (l − a) · h2 wird als intakt definiert.
+Damit ergeben sich für die Bestandteile des elektrischen und thermischen Widerstands mit den Symbolen der Abbildung 2.3 folgende Zusammehänge:
+#$@FORMULA@$#:1
+l − a Rel,ok = ρ · (2.10) h2w
+#$@FORMULA@$#:0
+a Rel,def = ρ · (2.11) h2c
+#$@FORMULA@$#:1
+Rth,ok = h(2.12) λ1(l − a)w
+#$@FORMULA@$#:2
+Rth,def = a (2.13) 2λ2h2c Die thermischen Leitfähigkeiten λ1 und λ2 beziehen sich analog der Materialnummerierung von h1 und h2 auf das Leiterplattenmaterial und das Material der Leiterbahn.
+Die Wärmeleitung entlang der Leiterbahn wird hier als dominierender Mechanismus angesehen, Wärmespreizung vernachlässigt.
+Der elektrische Widerstand der gesamten Leiterbahn ergibt sich demnach zu
+#$@FORMULA@$#:3
+Rel = Rel,ok + Rel,def = ρ [aw + (l − a)c] .
+(2.14) h2cw Für den hier gegebenen Fall mit Wärmeleitung als dominierendem Transportmechanismus kann näherungsweise für den defekten Leiterbahnabschnitt angenommen werden, dass thermischer und elektrischer Widerstand bis auf einen konstanten Faktor, der sich aus dem Verhältnis zwischen den beiden Leitfähigkeiten zusammensetzt, gleich groß sind (Rel ≈ Rth).
+Die Empfindlichkeit für den Teil der messbaren Spannung mit dem Strom in der dritten Potenz (u3) kann nun unter der Annahme, dass sich der elektrische und thermische Widerstand im fortschreitenden Degradationsverlauf nicht ändern (Momentaufnahme), im Vergleich zum elektrischen Widerstand dargestellt werden.
+#$@FORMULA@$#:4
+u3(t) ∼ R3 el,def (2.15) Hier zeigt sich der Vorteil der Messung der dritten Harmonischen der Spannung, denn der Einfluss der Änderung des Widerstandes durch eine Querschnittseinengung ist entsprechend höher als bei einer vergleichbaren Messung des Gleichstromwiderstandes.
+Im Allgemeinen kann nach Holm [37, S. 193] für kleine Temperaturspitzen der folgende Zusammenhang zwischen thermischem und elektrischem Widerstand genutzt werden:
+#$@FORMULA@$#:5
+Rel = Rth · LT. (2.16) Darin ist T die Temperatur und L die Lorenz-Konstante, die das Verhältnis aus elektrischer (σ) und thermischer Leitfähigkeit λ und der Temperatur abbildet.
+Sie ist die Proportionalitätskonstante in dem empirischen Wiedemann-Franz
+#$@FORMULA@$#:0
+Gesetz ( λ = L · T ).
+σ
+#$@FORMULA@$#:1
+L = λ (2.17) σT In den hergeleiteten Formeln für die Spannung über der Leiterbahn können als wichtigste Parameter neben der Defekttiefe b die Stromstärke i(t) und die Defektbreite a ausgemacht werden.
+Alle drei Parameter erhöhen den Temperaturunterschied zwischen intakter und defekter Region und damit die messbare Spannung.
+Da die thermische Zeitkonstante für das Modell eine untergeordnete Rolle spielt, wird in den Abbildungen die Amplitude von i(t) mit I dargestellt.
+Damit ergibt sich für die Spannung auch eine Darstellung der Amplitude U .
+Folgende Abbildung 2.4 zeigt die zwei Parameter I und a normiert über der fortschreitenden Defekttiefe.
+In der linken Abbildung zeigt die Variation von a
+#$@FORMULA@$#:2
+17u
+#$@FORMULA@$#:3
+18u
+19u
+20u
+21u
+22u
+23u
+24u
+25u
+26u
+27u
+28u
+29u
+30u
+31u
+32u
+tiefe b mit variabler Defektbreite a im logatiefe mit variabler Amplitude des Stromes rithmischen Maßstab Abbildung 2.4:
+Variation von Strom und Defektgröße an einer Mikrostreifenleitung und deren Einfluss auf die Spannung u(t) in logarithmischer Darstellung.
+eine immer weiter steigende Spannung auf.
+Gerade bei geringen Defekttiefen ist der Unterschied der einzelnen Kurven nicht sehr groß, er nimmt jedoch im Verlauf von b weiter zu.
+Die rechte Abbildung zeigt im Gegensatz dazu auch ein Ansteigen der Kurven bei geringen Defekttiefen, da der Strom als Multiplikator der dargestellten Spannung dient.
+Beide Kurvenscharen streben gegen Unendlich für b = w. Es zeigt sich also, dass ohne eine getrennte Betrachtung der Nichtlinearität der Spannung an der Leiterbahn eine Kurvenschar durch Parametervariation auftritt.
+Es ist weiterhin zu erkennen, dass der Einfluss von a bei geringer Variation von b (z.B. b = 0...0, 8 · w) größer ist, als der der Stromstärke.
+Bei sehr kleinen Einengungen bewirkt die Stromstärkevariation eine stufenweise höhere Spannung, während der Einfluss von a bei sehr kleinen Einengungen vernachlässigbar wird.
+Des Weiteren ist zu erkennen, dass beide Parameter nicht beliebig erhöht werden können.
+Der Abstand zwischen den einzelnen Kurven wird mit steigendem Parameter geringer, so dass es sowohl messtechnisch, als auch aus Sicht der thermischen Belastung der zu vermesssenden elektrischen Verbindung ein Optimum gibt.
+Der Parameter a ist von der Messtechnik nicht beeinflussbar.
+Trotzdem gilt hier, dass größere Defekte leichter erkannt werden, als nahezu intakte Leiterabschnitte.
+Um die Selektivität der Messung weiter zu steigern, kann die dritte Harmonische der Spannung u(t) einzeln untersucht werden.
+Dazu wird ein sinusförmiger Strom angenommen:
+#$@FORMULA@$#:0
+i(t) = I · sin(ωt).
+(2.18) Darin ist I die Amplitude des Stromes, ω = 2πf die Kreisfrequenz mit der Frequenz f und t die Zeit.
+Die dritte Potenz des Stromes im zweiten Teil von Gleichung 2.9 ist4:
+#$@FORMULA@$#:1
+≤ 3
+#$@FORMULA@$#:2
+1
+#$@FORMULA@$#:3
+ i(t) = I · sin(ωt) − sin(3ωt) .
+(2.19) 4 4 Es zeigt sich also, dass ein Teil des sinusförmigen Stromes durch die Potenzierung auf die dreifache Anregungsfrequenz moduliert wird.
+Demzufolge findet sich im Frequenzspektrum der aufgenommen Spannung auch eine Komponente an der Stelle der dritten Harmonischen mit 25 % der Eingangsamplitude, verteilt auf die positive und negative dritte Harmonische.
+Wird diese nun isoliert betrachtet, ergibt sich für die gleiche Parametervariation ein optisch ähnliches Bild mit dem Unterschied der viel höheren Änderung der Spannung über nun mehrere Größenordnungen hinweg (Abbildung 2.5).
+Ein weiterer Unterschied ist nun die gesteigerte Empfindlichkeit bei geringen Defektgrößen bezüglich a, wie sie in der linken Abbildung dargestellt ist.
+Dies liegt daran, dass die Defektbreite nun nahezu isoliert im Zähler auffndibar ist.
+Die Variation des
+#$@FORMULA@$#:1
+I=0,5...4 A
+#$@FORMULA@$#:0
+a=0...l
+3u
+4u
+5u
+6u
+I
+8u
+#$@FORMULA@$#:2
+100 100 0 0.5 1 0 0.5 1 Risstiefe b=0...w, normiert Risstiefe b=0...w, normiert (a) Spannung der dritten Harmonischen (b) Spannung der dritten Harmonischen über fortschreitender Defekttiefe b mit variaüber fortschreitender Defekttiefe mit variabler Defektbreite a im logarithmischen Maßbler Amplitude des Stromes stab Abbildung 2.5:
+Variation von Strom und Defektgröße an einer Mikrostreifenleitung und deren Auswirkung auf die dritte Harmonische der Spannung u3(t) in logarithmischer Darstellung.
+Stromes zwischen 500 mA und 4 A zeigt auch bei niedrigem b einen starken Einfluss auf die Amplitude der Spannung u3(t), die über drei Zehnerpotenzen verteilt ist.
+In der Praxis muss die Stromstärke einige Voraussetzungen erfüllen, um eine Temperaturänderung an der Defektstelle zu generieren, ohne dabei neue Defekte in das Messobjekt einzubringen.
+So dürfen maximal zulässige Betriebsparameter nicht überschritten werden, ausschließlich Stromdichten eingeprägt werden, die Maximaltemperaturen unterhalb des Schmelzpunktes verursachen und Messzeiten nur so hoch gewählt werden, dass keine Migrationsefefkte die eigentliche Messstelle langfristig schädigen können.
+Trotzdem ist es am Ende nicht von Bedeutung, wie hoch der Strom bei der Messung tatsächlich ist [46].
+Da im 2.
+Teil der Gleichung 2.9 der Strom im Zähler an nur einer Position steht, kann die Spannung u3(t) auch auf die dritte Potenz der Stromstärke normiert werden.
+Somit wäre das Defektsignal unabhängig von Stromschwankungen und über verschiedene Messaufbauten vergleichbar.
+Die oben gezeigte Streifenleiterbahn wird nun genutzt, um die Sensitivität der hier dargestellten Zusammenhänge aufzuzeigen.
+Dazu wird U3 im Vergleich zum elektrischen Widerstand über einer wachsenden Einengung dargestellt.
+0u
+1u
+2u
+3u
+4u
+5u
+6u
+7u
+8u
+9u
+10u
+11u
+12u
+13u
+14u
+15u
+16u
+17u
+18u
+19u
+20u
+21u
+22u
+23u
+fektsignal U3, normiert auf den jeweiligen renz zwischen den Kurven links) von U3 ge-Anfangswert genüber Rel, normiert Abbildung 2.6:
+Vergleich der Sensitivität von elektrischem Widerstand und generierter Defektspannung.
+Abbildung 2.6a zeigt ein im Vergleich zur Widerstandsänderung steiler ansteigendes Messsignal.
+Die Definition einer beliebigen Schwelle als Ausfallkriterium fällt stets zugunsten der Spannung aus.
+Je nachdem, wie hoch diese Schwelle angesetzt wird, ist der Vorhersagevorsprung (z.B. wie in [90] und [57] vorgeschlagen) unterschiedlich hoch.
+Abbildung 2.6b zeigt die Differenz zwischen den Kurven von Rel und U3 für die zwei Fälle, dass die Defekttiefe b linear bzw. exponentiell wächst.
+Das exponentielle Wachstum soll dabei dem praktischen Defektwachstum angenähert sein.
+Es zeigt sich, dass die Differenz zu Beginn der Einengung stark zunimmt und bis etwa 90 % Querschnittseinengung einen (streng) monoton steigenden Verlauf hat.
+Der Vorhersagevorsprung fällt am Ende wieder sehr schnell ab, da beide Parameter hier einen exponentiellen Anstieg haben.
+Beide Kurven von Abbildung 2.6b haben ein globales Maximum, bevor sie stark abfallen.
+Die hier besprochene Defektspannung U3 besitzt also stets einen zeitlichen Vorsprung, im Sinne einer definierten Ausfallschwelle, gegenüber dem elektrischen Widerstand.
+Dieser ist zu Beginn der Degradation vorhanden und wird in deren Verlauf größer.
+Eine Eignung zur Detektion von Defekten, bevor diese mit herkömmlicher Widerstandsmessung erkannt werden können, ist damit gegeben.
+
+
+:::: Ermittlung eines günstigen Messfrequenz- bereiches ::::
+
+
+Die Selektivität der Messung hängt vom dynamischen Temperaturunterschied zwischen Defektstelle und intakter Leiterregion ab.
+Ist der Temperaturunterschied gering, so ist der Einfluss der intakten Leiterregion auf das Messsignal hoch.
+Es muss also ein Optimum gefunden werden, welches eine maximale dynamische Temperaturdifferenz generiert.
+Aufgrund thermischer Kapazitäten im Messobjekt besitzt die Verlustleistung an den verschiedenen Stellen eine Frequenzabhängigkeit.
+Wechselsignale bieten den Vorteil, dass die thermische Belastung der gesamten zu überwachenden Leiterstruktur je nach Kurvenform sehr viel geringer ist als bei Gleichsignalanregung.
+Es können auf diese Art transient sehr hohe Temperaturspitzen an Querschnittseinengungen erzeugt werden.
+Die so erzeugte Verlustleistung breitet sich über die gesamte Teststruktur aus.
+Aus diesem Grund sollte die Frequenz gerade so hoch sein, dass die thermische Kapazität der defekten Leiterregion während einer Periodendauer des anregenden Stromes vollständig umgeladen werden kann.
+Bei noch höheren Frequenzen würde die Selektivität des Messverfahrens wegen geringerer Temperaturspitzen wieder sinken.
+Die thermische Zeitkonstante τ th einer Streifenleitung, wie sie in Abbildung 2.3 gezeigt ist, kann folgendermaßen berechnet werden:
+#$@FORMULA@$#:0
+τth = Cth · Rth.
+(2.20) Die thermische Kapazität Cth ist dabei das Produkt aus der spezifischen thermischen Kapazität cth, der Dichte ρm und dem Volumen V des verwendeten Materials.
+#$@FORMULA@$#:1
+Cth = cth · ρm · V (2.21) Der thermische Widerstand wird nach Gleichung 2.5 berechnet.
+Es ergeben sich ohne gesonderte Betrachtung der Wärmespreizung für die Zeitkonstanten der thermischen Kapazitäten damit:
+#$@FORMULA@$#:2
+τth,ok = h1h2cth,1ρm,1 (2.22) λ1 und
+#$@FORMULA@$#:0
+τth,def = a2cth,2ρm,2 .
+(2.23) λ2 Die Indizes 1 und 2 der Dichte ρm und der spezifischen thermischen Kapazität cth sind angelehnt an Abbildung 2.3 wieder den jeweils verwendeten Materialien zuzuschreiben.
+Es ist zu erkennen, dass in den Gleichungen der Zeitkonstanten als einzige geometrieabhängige Variablen die Höhen der verwendeten Materialien und die Breite des Defektes enthalten sind.
+Mit den gegebenen Größen h1 = 1,6 mm, h2 = 35 µm, cth,1 = 600 W s/(kg K), cth,2 = 394 W s/(kg K), ρm,1 = 2000 kg/m3, ρm,2 = 8900 kg/m3, λ1 = 0,3 W/(m K), λ2 = 400 W/(m K) und a = 1 µm ergeben sich für τth,ok = 0,224 s und für τth,def = 8,8 ns.
+Aus Aufladekurven ist bekannt, dass ein Kondensator nach dem fünffachen der Zeitkonstante τ zu 99 % aufgeladen ist.
+Die maximale Anregungsfrequenz bei der die thermische Kapazität vollständig umgeladen wird, ist demnach der Kehrwert aus 5τ th.
+Zusätzlich ist durch die doppelte Frequenz der umgesetzten Leistung die Messfrequenz noch zu halbieren.
+Aus den Kehrwerten der zehnfachen Zeitkonstanten ergeben sich die maximal möglichen Messfrequenzen:
+#$@FORMULA@$#:1
+1 fmax,th,ok = ≈ 0,45 Hz (2.24) 10 · τth,ok und
+#$@FORMULA@$#:2
+1 fmax,th,def = ≈ 11,4 MHz (2.25) 10 · τth,def Werden diese Frequenzen überschritten, verringert sich der Einfluss des jeweiligen Leiterbahnabschnittes und wird zunehmend von den unerwünschten Leitungsbestandteilen überdeckt.
+Da hier der Einfluss des intakten Abschnittes als parasitär betrachtet werden kann, sollte ein vollständiges Umladen von Cth,ok vermieden werden.
+Es bleibt also festzuhalten, dass ein günstiger Messfrequenzbereich zwischen fmax,th,ok und fmax,th,def liegen sollte.
+Die Bandbreite, in der die Messung erfolgreich durchgeführt werden kann, beträgt damit im gewählten Beispiel etwa 11 MHz.
+Abbildung 2.7 zeigt diesen Zusammenhang noch einmal grafisch.
+Da in der Gleichung für τ th,def die Defektbreite enthalten ist, soll im Folgenden der Einfluss dieses Parameters a auf die Zeitkonstante bzw. die maximale
+0u
+1u
+2u
+#$@FORMULA@$#:0
+(10τth,ok)−1 (10τth,def)−1 Frequenz Abbildung 2.7:
+Einfluss der Messfrequenz auf das Ausgangssignal (Messsignal) der thermisch angeregten Leiterbahn.
+Messfrequenz untersucht werden.
+Abbildung 2.8a zeigt, dass sich die thermi- 6
+9u
+10u
+11u
+12u
+13u
+14u
+15u
+16u
+17u
+18u
+19u
+20u
+21u
+22u
+23u
+24u
+Abbildung 2.8:
+Einfluss der Defektbreite auf die thermische Zeitkonstante und Messfrequenz an einer Leiterbahn.
+sche Zeitkonstante der defekten Leiterbahnstelle erwartungsgemäß proportional zur steigenden Defektbreite verhält.
+Der Zusammenhang zwischen Defektbreite a und Zeitkonstante stellt sich nach Gleichung 2.23 quadratisch dar.
+Weiterhin zeigt die rechte Abbildung 2.8b eine abfallende maximale Messfrequenz mit steigender Defektbreite.
+Dies resultiert auch hier aus dem zunehmendem Volumen der Defektstelle.
+Für sehr breite Defekte (in der Größenordnung der betrachteten Leiterbahnlänge l selbst) sinkt die maximale Messfrequenz auf weniger als 1 Hz.
+Die Gleichungen für die Messfrequenzen stellen eine Näherung für die maximale Frequenz dar, mit der im obigen Beispiel eine Temperaturänderung angeregt werden kann.
+Dabei wird als einziger Wärmetransportmechanismus die Wärmeleitung entlang der Leiterbahn und durch das verwendete Substratmaterial genutzt.
+Vernachlässigt wird die Wärmespreizung.
+Diese Näherung bewirkt demnach eine Abschätzung nach oben.
+Die Messzeit hängt unter anderem auch von der gewählten Messsignalfrequenz ab.
+Es werden in der praktischen Messung stets mehrere hundert Periodendauern benötigt, um das sehr kleine Messsignal aus dem Rauschen bzw. von Störungen abzuheben (siehe dazu Anhang A.1).
+Mit höherer Frequenz verkürzt sich die Messzeit entsprechend.
+Das Layout einer Teststruktur und der zugehörigen Ankontaktierung muss den gewünschten Messsignalfrequenzen angepasst sein.
+Zu hohe Dämpfungen oder Übersprechen verringern die Sensitivität und verhindern unter Umständen eine aussagekräftige Messung.
+Als letztes hängt die Güte des Messsignals direkt von den benutzten Generatoren und Detektoren ab.
+Je höher also die Frequenz, desto mehr Harmonische und Rauschen sind im Ausgangssignal zu erwarten.
+Es gilt also auch hier die Maßgabe, dass die Messsignalfrequenz so niedrig wie nötig gehalten werden sollte, jedoch so hoch, dass sich an der zu erwartenden Defektstelle eine signifikante Temperaturerhöhung gegenüber dem restlichen Signalpfad einstellt.
+Zusammenfassend kann hier festgehalten werden, dass die Anregungsfrequenz einen Einfluss auf das Messsignal hat.
+Dieser Einfluss ist jedoch über einen weiten Frequenzbereich sehr gering und kann somit vernachlässigt werden.
+Trotzdem sollten wiederholte bzw. kontinuierliche Messungen bei konstanter Frequenz durchgeführt werden, um selbst geringe Frequenzabhängigkeiten ausschließen zu können.
+2.4 Zusammenhang zwischen Defekt und Messsignal Das Eingangssignal zur Messung von Defekten besteht, wie in den vorangegangenen Kapiteln beschrieben, aus einem oder mehreren sinusförmigen Strömen, die durch die zu untersuchende Teststruktur fließen.
+Nachdem in Kapitel 1.2 die Erzeugung neuer Frequenzen durch nichtlineares Verhalten eines elektrischen Leiters erläutert wurde, soll hier nun der Einfluss unterschiedlicher Defektgrößen (z.B. bei einer fortschreitenden Degradation) auf ein sinusförmiges Messsignal und damit auf das entstehende Defektsignal untersucht werden.
+Der zweite Teil von Gleichung 2.9 zeigt exemplarisch für eine Mikrostreifenleitung mit Querschnittseinengung die Amplitude der dritten Harmonischen.
+Einsetzen der Geometriedaten aus Abbildung 2.3 liefert:
+#$@FORMULA@$#:0
+" (l − a)h1h2λ2c3 + a3λ1w3 + h1h2wc2λ1λ2a # u3(t) = i3(t)αTρ2 .
+(2.26) h3 2w3c3λ1λ2 Die zwei wachsenden Parameter a und c sind diejenigen, welche eine fortschreitende Degradation beschreiben.
+Aus der Gleichung ist ersichtlich, dass das Defektsignal mit steigender Defektbreite a und sinkendem Restleiterbahnabschnitt c größer wird.
+Die Leiterbahnhöhe h2 im Nenner verringert hingegen das Signal.
+Je höher die Leiterbahn, desto geringer wird das zu erwartende Signal der dritten Harmonischen.
+Dies entspricht den Erwartungen und zeigt die Zusammenhänge der Grafiken aus Kapitel 2.2 noch einmal auf.
+Da der intakte Leiterbahnabschnitt zusätzlich einen Einfluss auf das Defektsignal besitzt, wird im Folgenden dieser Einfluss genauer untersucht.
+Ausschlaggebend für den Modulationsgrad der Leiterbahnstruktur sind die Temperaturdifferenzen aus den Gleichungen 2.7 und 2.8.
+Für das Verhältnis dieser zwei Temperaturdifferenzen ergibt sich:
+#$@FORMULA@$#:1
+∆Tdef = a2w2λ1 .
+(2.27) ∆Tok ch1h2λ2 Direkt zu erkennen ist hier die Unabhängigkeit von der Leiterlänge l, der elektrischen Stromstärke und der spezifischen elektrischen Leitfähigkeit ρ.
+Um das Temperaturverhältnis anschaulicher darzustellen, werden die Werte aus Kapitel 2.3 von Seite 37 und die Leiterbahnbreite w mit 4 mm eingesetzt.
+Für die Defektbreite wird hier der Wert a in Anlehnung an die Teststruktur aus Kapitel 4.1 mit 417 µm angesetzt5:
+#$@FORMULA@$#:1
+∆Tdef =
+#$@FORMULA@$#:0
+1
+#$@FORMULA@$#:3
+c2 · 37,2 nm2.
+(2.28)
+#$@FORMULA@$#:2
+∆Tok Werden nun für die verbleibende intakte Leiterbahnbreite c 51 µm, 143 µm und 345 µm eingesetzt, ergeben sich die Temperaturverhältnisse 14 sowie 1,8 und 0,31.
+Ein Umschlagen des Verhältnisses unter eins bedeutet, dass die Temperaturdifferenz in der intakten Leiterbahn größer ist als die im defekten Abschnitt.
+Damit beinhaltet das Messsignal zusätzliche Anteile des intakten Leitervolumens.
+Diese sind zwar als konstant anzusehen, können jedoch kleinste Änderungen in der Einengung überdecken und die Sensitivität des Messverfahrens herabsetzen.
+Das bedeutet, dass der zu überwachende Signalpfad möglichst bekannt sein und der zu erwartende Ausfall eine Einengung erzeugen sollte, die den geringsten Querschnitt des Leitermaterials auf dem gesamten zu überwachenden Signalpfad besitzt.
+Die Grenze im gewählten Beispiel stellt sich bei einem Verhältnis von 1:1 mit der verbleibenden Leiterbreite von etwa 192 µm ein.
+Jede Querschnittseinengung, die weniger als 192 µm Restleiterbahnbreite bewirkt, verursacht ein Signal, welches überwiegend durch den Defekt geprägt wird.
+Dieses Verhalten ergibt sich demnach, wenn die Leiterbahnbreite unter ein Zwanzigstel der ursprünglichen Breite sinkt.
+Neben den Einflüssen der Geometrie kann durch geeignete Materialwahl und Maximierung der zugrunde liegenden Eingangsstromstärke das Messsignal zusätzlich maximiert werden.
+Aus Gleichung 2.26 wird ersichtlich, dass der Einfluss des spezifischen Widerstandes des Leitermaterials ρ quadradisch und damit größer ist als der Einfluss des Temperaturkoeffzieinten αT.
+Eine zusätzliche Wärmeabfuhr z.B. durch Konvektion verringert die Amplitude des Messsignals, da das Maximum des temperaturabhängigen Widerstands nicht mehr erreicht wird.
+Im diskutierten Modell ist der Einfluss von nur einer Einengung auf das Messsignal untersucht worden.
+Natürlich existieren auch Anwendungsfälle in denen mehrere sich ändernde Einengungen zu erwarten sind.
+In diesen Fällen wird stets die Summe der generierten Defektsignalanteile im Messsignal auftreten.
+Dies kann leicht am Beispiel der Leiterbahn aus Abbildung 2.3 gezeigt werden.
+Die Abmessungen können hier als Volumina gesehen werden.
+Damit gilt immernoch Gleichung 2.26, worin (a · b) die Summe aller eingeengten Volumina und (b + c), h2 und l das gesamte verbleibende Leitervolumen darstellen.
+Das hier gezeigte Messverfahren kumuliert also alle querschnittsverringernden Einflüsse.
+
+
+:::: Entwicklung eines Simulationsmodells zur Erkennung kleinster Defekte in Leiterbahnen ::::
+
+
+Simulationen werden genutzt, um z.B. kritische Bereiche und problematische Geometrien in Aufbauten zu identifizieren ohne Kosten durch die Erstellung von variantenreichen Prototypen zu generieren.
+Sie beschreiben Wechselwirkungen verschiedener Parameter innerhalb einer zu untersuchenden Struktur und ermöglichen die Abschätzung von nicht messbaren Größen.
+Einzig die Rechenleistung begrenzt die Komplexität und damit die Möglichkeiten der Simulation.
+In der VDI-Richtlinie 3633 ist die Simulation treffend formuliert als „das Nachbilden eines Systems mit seinen dynamischen Prozessen in einem experimentierfähigen Modell, um zu Erkenntnissen zu gelangen, die auf die Wirklichkeit übertragbar sind. “[95] In diesem Kapitel werden Simulationsmodelle vorgestellt, welche die Erzeugung von Harmonischen in elektrischen Verbindungen und die resultierenden Messsignale nachvollziehbar machen.
+Ursächlich für die Harmonischen sind nach Kapitel 2 Temperaturänderungen innerhalb stromdurchflossener Leiterbahnen.
+An eingeengten Leiterstellen sind diese Temperaturänderungen durch die erhöhte Stromdichte größer als in Bereichen geringerer Stromdichte, so dass die eingeengten Leiterstellen einen größeren Beitrag zum nichtlinearen Verhalten der gesamten elektrischen Verbindung leisten.
+Nach der thermischelektrisch gekoppelten Simulation eines Leiterbahnabschnittes mit der Finite-Elemente-Methode (FEM) wird eine effzieintere Simulationsumgebung vorgestellt, die es ermöglicht, innerhalb kürzester Zeit verwertbare Ergebnisse zu generieren.
+Nachfolgend werden die einzelnen Schritte zur Modellierung mittels Differentialgleichungen aufgezeigt und Ergebnisse in Form von Parameterstudien dargestellt.
+Die Simulation ermöglicht somit eine schnelle und vergleichsweise einfache Abschätzung der resultierenden Mess- und Defektgrößen.
+Die zur Erzeugung signifikanter Temperaturerhöhungen benötigten Stromstärken lassen sich mit Hilfe der in der DIN IEC 326 [19] vorgeschlagenen Formel für Leiterbahnen ohne Querschnittseinengung abschätzen.
+#$@FORMULA@$#:0
+∆T = Rel · I 2 (3.1) 2wlαk Folgende Symbole werden dabei verwendet:
+∆T Temperaturerhöhung
+16u
+17u
+18u
+19u
+20u
+21u
+22u
+23u
+Der Wärmeübergangskoeffzieint wird nach [19] für den Fall, dass die Temperatur auf der Leiterbahn und den benachbarten Flächen im Initialzustand
+#$@FORMULA@$#:1
+gleich sind auf αk=0,006 mW/(mm2 K) gesetzt.
+Die Abbildung zeigt, dass erwartungsgemäß ein hoher Strom sowie eine schmale Leiterbahn, gleichzusetzen mit einer weit fortgeschrittenen Leiterbahneinengung, signifikante Temperaturerhöhungen liefern.
+Bei einer Leiterbahnbreite von 200 µm ergibt sich mit einer Stromstärke von 1 A (bzw. einer Stromdichte von 14 kA/cm2)1 beispielsweise eine Temperaturerhöhung um 0,35 K.
+Eine Verdopplung der Stromstärke auf 2 A führt zu einer Erwärmung um etwa 1,4 K und damit etwa zu einer
+0u
+1u
+2u
+3u
+4u
+5u
+6u
+7u
+8u
+9u
+10u
+11u
+326 [19] Vervierfachung der Temperatur.
+Bei höheren Stromstärken steigt die Temperaturerhöhung stark nichtlinear an.
+Stromstärken von 3 A verursachen Temperaturen von 112 K.
+Diese Beispiele sind für den Fall einer Leiterbahn mit einer lokal sehr begrenzten Querschnittseinengung nicht uneingeschränkt anwendbar, da in [19] die thermischen Kapazitäten und Wärmeflüsse in angrenzende Leiterbahnen nicht berücksichtigt werden.
+Dennoch liefert Gleichung 3.1 eine nützliche Abschätzung für benötigte Stromstärken in der Simulation sowie im Experiment.
+3.1 Thermisch-elektrische FEM Simulation ei-
+
+
+:::: Thermisch-elektrische FEM Simulation ei- ner Mikrostreifenleiterbahn ::::
+
+
+Modellansatz ursächlich für die Modulation des Messsignals und damit unerlässlich für die erfolgreiche Implementierung des Messverfahrens.
+Im Folgenden werden hier am Beispiel der Mikrostreifenleitung die nötigen Stromstärken simuliert, die signifikante Temperaturerhöhungen an einer Querschnittseinengung bewirken.
+Im Besonderen soll das Verhältnis zwischen Leiterbahnerwärmung und der Temperaturerhöhung des eingeengten Leiterbahnabschnittes un- tersucht werden, um den Einfluss des intakten Signalpfades auf das Messsignal zu evaluieren.
+Als Standardwerkzeug zur Festkörpersimulation hat sich die FEM durchgesetzt.
+Sie ist ein Verfahren zur numerischen Lösung von partiellen Differentialgleichungen.
+Dabei wird das Berechnungsgebiet in eine beliebig große Anzahl von Elementen unterteilt.
+Über die Definition von Lasten und Randbedingungen kann das resultierende Differentialgleichungssystem gelöst werden.
+Die Lösung der einzelnen Elemente wird anschließend interpoliert, so dass mit begrenzter Rechenleistung und Zeit eine kontinuierliche Lösung erreicht wird.
+Die Genauigkeit und auch die Größe der zu lösenden Matrix hängen direkt mit der Anzahl der definierten Elemente zusammen [30, 81].
+Ein dreidimensionales Geometriemodell einer Leiterbahn mit Einengung wird mit der Software COMSOL Multiphysics [15] erstellt.
+Einziger geometrischer Parameter in dem Modell ist die verbleibende Leiterbahnbreite im Bereich der Einengung, c (siehe Abbildung 2.3 auf Seite 30).
+Der Wertebereich wird auf drei diskrete Breiten festgelegt:
+c ={572 µm, 371 µm, 171 µm}.
+Die festen Abmessungen des Geometriemodells und weitere genutzte elektrische und thermische Parameter können der nachfolgenden Tabelle 3.1 entnommen werden.
+Nach Formel 1.2 auf Seite 9 ergibt sich für die Leiterbahn mit den drei unterschiedlich tiefen Einengungen ein elektrischer Widerstand von
+#$@FORMULA@$#:1
+Rel,LB ={0,299 mΩ, 0,362 mΩ, 0,571 mΩ}.
+Beschreibung Symbol Einheit Wert
+#$@FORMULA@$#:2
+Defektbreite a µm 138,0 Leiterbahnbreite w = b + c µm 945,0 Substratlänge l cm 0,5 elektrische Leitfähigkeit Leiterbahn σ S/m 6,0E07 Wärmekapazität Leiterbahn cth J/(kg K) 385
+#$@FORMULA@$#:0
+Dichte Leiterbahn ρm kg/m3 8700 thermische Leitfähigkeit Leiterbahn λ W/(m K) 400 Tabelle 3.1:
+Übersicht wichtiger zur Simulation verwendeter Daten.
+Die Werte der ersten drei Zeilen sind angelehnt an praktische Aufbauten, die anderen Materialdaten aus [10, 60].
+Die Restleiterbahnbreite c wird diskret variiert zwischen 572 µm, 371 µm und 171 µm.
+Die Ergebnisse der Simulation sind in Abbildung 3.2 dargestellt.
+Auf der linken Seite ist der eingeschwungene Zustand bei sinusförmiger Anregung ab- gebildet.
+Erwartungsgemäß ist der Bereich mit der höchsten Stromdichte in der Mitte der Leiterbahn am wärmsten.
+Der Temperaturbereich deckt im eingeschwungenen Zustand über die gesamte simulierte Leiterbahn mit Trägermaterial etwa 2 K ab.
+Eine Simulation mit verschiedenen Stromstärken und den drei verschieden großen Querschnittseinengungen ist in Abbildung 3.2b dargestellt.
+Im Gegensatz zur linken Abbildung findet diese Simulation mit Gleichstromanregung statt, da damit die Rechenzeit drastisch reduziert werden kann.
+Es ist gut zu erkennen, dass mit steigendem Strom die Temperatur nichtlinear zunimmt und die unterschiedlich weit eingeengten Leiterbahnen ab etwa 1 A Anregung in ihrem thermischen Verhalten voneinander zu unterscheiden sind.
+Hier ist auch gut zu erkennen, dass die Gleichung 3.1 nur eine grobe Schätzung einer Leiterbahn mit durchgehend gleichmäßigem Querschnitt liefert.
+Ein Vergleich zwischen Abbildung 3.2b und 3.1 zeigt eine Abweichung in der Temperaturerhöhung von etwa 4 K bei einer Stromstärke von 1 A.
+Allerdings wird hier die Temperatur eines Hotspots mit der Gesamtleiterbahntemperatur verglichen.
+16u
+17u
+18u
+19u
+20u
+21u
+22u
+23u
+24u
+25u
+26u
+27u
+28u
+29u
+30u
+31u
+32u
+33u
+34u
+35u
+36u
+stark eingeengter Leiterbahnen bei verschienen Zustand in ◦C.
+Anregung mit sinusdener Gleichstromanregung (eingeschwungeförmigem Signal mit einer Amplitude von ner Zustand bei 20 ◦C Umgebungstempera- 2 ARMS bei 30 ◦C Umgebungstemperatur tur).
+Abgebildet ist jeweils die Maximaltemperatur in der Defektregion.
+Abbildung 3.2:
+Temperaturverlauf im eingeschwungenen Zustand, berechnet nach der FEM-Methode Abbildung 3.3 zeigt das Ergebnis einer transienten FEM-Simulation. 2 Ab- gebildet ist der noch nicht abgeschlossene Aufwärmvorgang.
+Simuliert wird die Leiterbahn mit etwa 61 % Querschnittseinengung bei 20 ◦C Umgebungstemperatur und einem Strom von 1 ARMS bei einer Frequenz von 100 Hz.
+Die Temperaturen an Defekt und Leiterbahn sind verschieden.
+Die transiente Temperaturerhöhung (Amplitude der höherfrequenten Welligkeit) in der Defektregion beträgt ein Vielfaches der transienten Erwärmung des restlichen Leitervolumens.
+Dieses Verhalten erhöht die Selektivität des in dieser Arbeit vorgestellten Messverfahrens.
+Es werden durch die höhere Variabilität der Temperatur an Stellen geringen Querschnittes durch die höheren Temperaturänderungen auch größere Änderungen im Widerstand der eingeengten Stelle stattfinden.
+Grund dafür ist die Temperaturabhängigkeit des spezifischen elektrischen Widerstandes.
+Dadurch treten Gebiete mit hoher Stromdichte im Messsignal deutlicher hervor.
+Eine Zuordnung der gemessenen Signale zu einem vorgegebenen Layout
+13u
+14u
+15u
+16u
+17u
+18u
+19u
+20u
+21u
+22u
+Abbildung 3.3:
+Transiente thermische Simulation einer eingeengten Mikrostreifenleitung.
+Es bleibt festzuhalten, dass die FEM-Methode zielführend eingesetzt werden kann, um Temperaturen in Leitern zu untersuchen.
+Transiente thermischelektrisch gekoppelte Simulationen mit Anregung durch unter Umständen mehrere überlagerte sinusförmige Signale erfordern jedoch viel Rechenleistung, so dass Parameterstudien nicht effzieint durchgeführt werden können.
+Ein Grund dafür ist die hohe zeitliche Auflösung mehrerer Simulationsschritte.
+Einerseits muss die Auflösung mindestens doppelt so hoch sein wie die größte Signalfrequenz der Anregung, andererseits müssen die auszuwertenden Signale rauschfrei und mit nutzbarer Amplitude zur Verfügung stehen.
+fortschreitendem thermischen Einschwingen.
+
+
+:::: Anforderungen an eine geeignete Simula- tionsumgebung ::::
+
+
+Ein anwendbares Simulationsmodell muss transient thermisch-elektrisch gekoppelt sein.
+Die nach der Simulation stattfindende Auswertung im Frequenzbereich bei Frequenzen von einigen hundert bis mehreren tausend Hertz erfordert eine entsprechende zeitliche Auflösung bei der Simulation.
+In Abschnitt 3.1 wird eine sinusförmige Signalquelle mit einer Frequenz von 100 Hz genutzt, um Temperaturverläufe darzustellen.
+Für eine Periodendauer sind dafür genau so viele Stützstellen nötig, dass die im Bereich von einem Millionstel der anregenden Amplitude entstehenden Signalanteile sicher abgebildet werden. 3
+Die Auswertung im Frequenzbereich bei z.B. der dritten Harmonischen erfordert mindestens die dreifache Anzahl der Abtastpunkte.
+Für jede dieser Stützstellen muss nun ein kompletter Simulationslauf berechnet werden.
+Die dafür nötige Zeit ist selbst bei einfachen Geometrien unvertretbar hoch.
+Ein Ausweg aus diesen ungünstigen Abhängigkeiten wird im folgenden Kapitel aufgezeigt.
+
+
+:::: Modellierung des thermischen Verhaltens einer Mikrostreifenleitung ::::
+
+
+Ein Weg, die Simulationszeit signifikant zu verkürzen ist die Modellierung der physikalischen Zusammenhänge mittels Differentialgleichungen in einem zeitkontinuierlichen Modell.
+Differentialgleichungen besitzen die Möglichkeit, neben der Verwendung mehrerer Variablen auch die dynamischen Vorgänge innerhalb einer zu simulierenden Struktur durch Ableitungen zu modellieren und damit Ausgleichsvorgänge darzustellen.
+Eine geeignete Simulationsumgebung zur numerischen Lösung von Differentialgleichungen stellt die Software Matlab Simulink dar.
+Hier kann die Modellierung mittels Blockschaltbildern erfolgen, die dann iterativ nummerisch gelöst werden.
+Kopplungen zwischen verschiedenen Differentialgleichungen sind einfach möglich.
+Der Vorteil dieser Methodik liegt in der Zugänglichkeit der einzelnen Modellbestandteile.
+Sie können einzeln analysiert werden und erlauben so einen erkenntnisreichen Zugang zu dem Gesamtsystem.
+sin
+3u
+4u
+5u
+6u
+7u
+Abbildung 3.4:
+Blockschaltbild zur Lösung von Differentialgleichungen in Matlab Simulink.
+Die Darstellung ist analog der in Simulink genutzten Blöcke gewählt.
+Ein solches Blockschaltbild des implementierten Lösungsansatzes zeigt Abbildung 3.4.
+In der Abbildung ist die Anregung durch ein harmonisches Zeitsignal (sin) dargestellt, welches durch den Block mit der Bezeichnung Funktion in die rückgekoppelte Berechnungsschleife eingeht.
+Die Funktion stellt dabei die Systemfunktion dar, die zusammen mit dem Block Gain das physikalische System beschreibt.
+Direkt vor der Rückkopplung wird im Block 1/s eine Integration durchgeführt.
+Zur Anzeige wird die Temperaturerhöhung durch Abziehen der Umgebungstemperatur gebracht.
+Diese transiente Temperaturerhöhung ist nachfolgend ursächlich für die Modulation des spezifischen, temperaturabhängigen elektrischen Widerstandes.
+Ziel des Modells ist die Abbildung einer elektrisch leitfähigen Struktur mit positivem Temperaturkoeffzieint.
+Das Modell soll voll parametrisierbar sein und insbesondere den Einfluss einer Querschnittseinengung präzise über transiente Temperaturänderungen auf das durch Modulation entstehende Ausgangssignal abbilden.
+Die Grundlage für eine derartige Modellierung bilden [48, 64] und [82].
+
+
+:::: Aufstellen der Differentialgleichungen ::::
+
+
+Um das transiente elektrische und thermische Verhalten beschreiben zu können, ist es notwendig die einzelnen physikalischen Vorgänge zu modellieren und abschnittweise miteinander zu koppeln.
+Im Folgenden wird ein Modell einer Mikrostreifenleiterbahn aufgestellt, welches sowohl das Einschwingverhalten, als auch den stationären Zustand abbildet.
+Dazu wird die Gesamtstruktur in drei Teile unterteilt.
+Der erste ist die Region mit der Querschnittseinengung, die hier stellvertretend für einen Defekt stehen soll.
+Der zweite Bereich beschreibt die verbleibende (intakte) Leiterbahn und den dritten Bereich stellt das Leiterplattensubstrat dar.
+Diese Aufteilung ermöglicht es, die einzelnen Wärme- und Stromflüsse zu isolieren und an bestimmten Stellen der anderen Teilmodelle wieder einzufügen.
+Die Kopplung kann dabei in der grafischen Benutzeroberfläche von Matlab Simulink stattfinden, in der gleichzeitig die einzelnen Temperaturen, Ströme und Spannungen abgegriffen werden können, um ein tieferes Verständnis der Vorgänge und einzelnen Einflüsse innerhalb der Mikrostreifenleiterbahn zu erlangen.
+Eine Leiterplatte nimmt im stromlosen Zustand nach genügend langer Lagerungszeit die Umgebungstemperatur an.
+Wird nun eine Spannung angelegt, stellt sich über den elektrischen Widerstand der Leiterstruktur ein Stromfluss ein.
+Dieser ist zunächst höher als im eingeschwungenen Zustand.
+Durch den Stromfluss erwärmt sich der Leiter und der elektrische Widerstand steigt geringfügig an.
+Gleichzeitig findet eine Entwärmung durch Konvektion, Strahlung und Wärmeleitung statt.
+Die Wärmestrahlung kann hier aufgrund der vergleichsweise niedrigen Temperaturen vernachlässigt werden.
+Als überwiegender Effekt findet Wärmeleitung statt.
+Im Falle der Querschnittseinengung, die gleichzeitig auch den Ort der höchsten Temperatur darstellt, fließt die Wärme bevorzugt in Richtung der intakten Leiterbahn ab, da Kupfer ein guter Wärmeleiter ist und keine Materialgrenzflächen innerhalb der Leiterbahn existieren.
+Auch die intakte Leiterbahn erwärmt sich infolge des Stromflusses und zusätzlich durch die Abwärme der Querschnittseinengung.
+Die Entwärmung der Leiterbahn findet durch Konvektion nach oben an die Umgebung statt und durch Wärmeleitung in das Substrat unter der Leiterbahn, an dem an der Unterseite ein konvektiver Wärmeübergang existiert.
+Da das Substrat eine viel größere Fläche im Vergleich zu den Ausdehnungen der Leiterbahn besitzt, findet hier eine Spreizung der Wärme statt.
+Durch die Erwärmung der Leiterstrukturen sinkt schlussendlich der Stromfluss und es stellt sich nach genügend langer Wartezeit ein Gleichgewicht der Größen ein, der sog. eingeschwungene Zustand.
+Nachfolgend wird das elektrische Verhalten mit den temperaturabhängigen Widerständen modelliert.
+Als Anregungssignal dient ein sinusförmiger Strom, der durch das transiente thermische Verhalten der Widerstände frequenzmoduliert wird.
+Die generierten Signalbestandteile können anschließend im Frequenzbereich analysiert und ein Defektsignal an der Stelle der dritten Harmonischen extrahiert werden.
+Um die Differentialgleichungen aufstellen zu können, wird ein Kontrollraum um den defekten Leiterbahnabschnitt gelegt, der die Systemgrenzen darstellt.
+Die Leistungsbilanz dient dann als Startpunkt der Modellierung.
+Die Differenz zwischen zugeführter Leistung P zu und der abgeführten Leistung P ab führt zu einer zeitlichen Änderung des thermischen Energiegehaltes dEth :
+dt
+#$@FORMULA@$#:0
+Pzu − Pab = dEth .
+(3.2) dt Die zugeführte elektrische Leistung kann mit dem temperaturabhängigen elektrischen Widerstand Rel(T ) und dem Strom I dargestellt werden als
+#$@FORMULA@$#:1
+Pzu = Rel(T ) · I 2 = Rel,0 · [1 + αT(TLB − TU)] I 2, (3.3) dabei sind αT der lineare Temperaturkoeffzieint, T die Temperatur der modellierten Region und TU und Umgebungstemperatur.
+Die Gleichung der zugeführten Energie gilt sowohl für die Region der Leiterbahn mit Querschnittseinengung, als auch für den breiteren intakten Leiterbahnabschnitt.
+Als Unterschied gehen verschiedene Geometriedaten in Rel,0 analog zu Gleichung 1.2 ein.
+Unterschiede ergeben sich jedoch in der abgeführten Leistung P ab.
+Hier gilt für die Region mit Querschnittseinengung als dominierender Entwärmepfad die Wärmeleitung entlang der Leiterbahn in die thermische Kapazität der intakten Leiterbahn.
+Die thermische Kapazität der Defektregion wird aufgrund des geringen Volumens ebenso vernachlässigt wie die Entwärmung durch Konvektion aufgrund der vergleichsweise geringen Oberfläche.
+Für die Region mit Querschnittseinengung gilt:
+#$@FORMULA@$#:2
+TMitte − Taußen Pab,def = 4λ · A · .
+(3.4) a Darin sind λ die thermische Wärmeleitfähigkeit des verwendeten Leiterbahnmaterials, A die Fläche der Grenzfläche zwischen Defekt und Leiterbahn und a die Breite der Defektregion.
+Der Faktor 4 entsteht durch den Abstand vom Mittelpunkt der Defektregion bis zu der angrenzenden Übergangsfläche zur intakten Leiterbahn mit der Länge a/2.
+Diese Länge tritt in zwei Richtungen, wenn der Defekt, wie in Abbildung 2.3 dargestellt, in der Mitte der Leiterbahn liegt, auf.
+Die Temperatur in der Mitte des Defektes entspricht der maximalen Temperatur des stromdurchflossenen Leiters, während die Temperatur der Grenzfläche zur intakten Leiterbahn anfänglich der Umgebungstemperatur entspricht und im Laufe der Simulation die Leiterbahntemperatur annimmt.
+Für die intakte Leiterbahn findet die Entwärmung über Konvektion an der Oberseite und Wärmeleitung nach unten in das Substrat, gefolgt von Konvektion an der Unterseite, statt.
+#$@FORMULA@$#:0
+Pab,ok = αkA (TLB − TU) + λ · A (TLB − TFR4) (3.5) h1 Anfangs entspricht die Temperatur des Leiterplattensubstrates T FR4 der Umgebungstemperatur T U. Da die Fläche A der intakten Leiterbahn an der Oberseite gleich der Fläche an der Unterseite ist, unterscheiden sich beide Bestandteile der obigen Gleichung nur in den Vorfaktoren Wärmeübergangskoeffzieint αk, thermische Leitfähigkeit λ und der Höhe des Leiterplattensubstrates h1.
+Somit kann für den Simulationsbeginn die Leistungsfähigkeit beider Entwärmepfade (Wärmeleitung und Konvektion) abgeschätzt werden.
+Dies stellt eine Abschätzung nach oben dar, da die Erwärmung des Leiterplattensubstrates nicht mit betrachtet wird.
+Das Verhältnis aus konvektiv nach oben abgegebener thermischer Leistung und der durch Wärmeleitung nach unten in das Substrat abgegebene Leistung lautet demnach:
+#$@FORMULA@$#:1
+Pab,Konvektion = h1αk .
+(3.6) Pab,Leitung λ
+#$@FORMULA@$#:2
+Mit praxisnahen Werten für h1=1,6 mm, αk=50 W/(m2 K)4 und λ=0,4 W/(m K) ergibt sich ein Verhältnis von 1:5.
+Es werden also anfangs vier Fünftel der ther- mischen Leistung nach unten abgeleitet.
+Diese Verhältnis verschiebt sich etwas zugunsten der Konvektion, wenn die thermische Kapazität des Leiterplattensubstrates vollständig geladen ist und sich folglich eine von der Umgebungstemperatur verschiedene Temperatur einstellt.
+Der Vollständigkeit halber sei hier die Wärmeleitfähigkeit von Kupfer im Vergleich zu der des Leiterplatten-
+#$@FORMULA@$#:0
+substrats FR45 mit etwa 400 W/(m K) [98] zu 0,4 W/(m K) [34] angegeben.
+Die Wärme aus der Defektregion wird also um etwa den Faktor 103 besser in Richtung der intakten Leiterbahn abgeleitet, als dies durch das FR4 geschieht.
+Der dritte Teil des Modells beschreibt die konvektive Entwärmung an der frei umströmten Unterseite des Leiterplattensubstrates.
+Die abgegebene Leistung genügt der Gleichung:
+#$@FORMULA@$#:1
+Pab,FR4 = αkA (TFR4 − TU) .
+(3.7) Da innerhalb des Leiterplattensubstrates die Wärme gespreizt wird, kann hier die entwärmende Fläche korrigiert werden.
+Ausgehend von der Mitte der Leiterbahn kann angenommen werden, dass die Fläche für schmale Leiterbahnen im Vergleich zu den Ausdehnungen des Leiterplattensubstrates etwa der doppelten Höhe h1 des Leiterplattensubstrates entspricht. 6 Da die Wärmeleitung auch innerhalb der Leiterplatte größer ist, als die durch Konvektion abgeführte Leistung, kann diese Abschätzung als untere Schwelle angesehen werden.
+Je höher die Durchwärmung ist, desto mehr Wärme kann auch über die gesamte Leiterplattenfläche abgeführt werden.
+Die korrigierte Gleichung lautet:
+#$@FORMULA@$#:2
+Pab,FR4 = 2h1αk (l − a) · (TFR4 − TU) .
+(3.8) In der Gleichung stellt (l − a) die Länge des intakten Leiterbahnabschnittes in Anlehnung an Abbildung 2.3 auf Seite 30 dar.
+Nachdem die zugeführten und abgeführten Leistungen für jeden Modellbestandteil definiert sind, fehlt nur die Beschreibung der inneren Energie und deren Änderung, wie sie in Gleichung 3.2 zur Modellierung benötigt wird.
+Der thermische Energieinhalt der Leiterbahn ist proportional zur Temperaturdifferenz zwischen Leiterbahn- und konstanter Umgebungstemperatur.
+Der Proportionalitätsfaktor ist das Produkt aus spezifischer Wärmekapazität cth und der Masse m.
+#$@FORMULA@$#:0
+Eth = c · m (T − TU) .
+(3.9) Die Variable T steht bei der Modellierung der Leiterbahn für die Leiterbahn-, bzw. Defekttemperatur und im Fall der Modellierung des Leiterplattensubstrates für die Temperatur desselben.
+Die Masse ist das Produkt aus Dichte und Volumen des jeweils betrachteten Materials.
+Benötigt wird das erste Moment der inneren Energie.
+Der zeitabhängige Bestandteil der Gleichung ist die Temperatur T .
+Für die zeitliche Ableitung gilt:
+#$@FORMULA@$#:1
+dEth = c · m · T˙ .
+(3.10) dt Da nun alle Bestandteile der defekten Leiterbahnstruktur modelliert sind, werden hier noch einmal die in Gleichung 3.2 eingesetzten Bestandteile aufgelistet.
+Es ergibt sich das nachfolgende lineare, gekoppelte Differentialgleichungssystem erster Ordnung.
+Für den Bereich der Querschnittseinengung gilt:
+#$@FORMULA@$#:2
+" cthρmh2(w − b) # · T˙Riss = ρ [1 + αT(TRiss − TLB)] I 2 (3.11) λh2(w − b) λ
+#$@FORMULA@$#:3
+4h2(w − b) (TRiss − TLB) .
+− a2 Der intakte Leiterbahnbereich kann beschrieben werden als:
+#$@FORMULA@$#:4
+" cthρmh2w(l − a) # · T˙LB = ρ(l − a) [1 + αT(TLB − TFR4)] I 2 (3.12) λh1 λh1h2w
+#$@FORMULA@$#:5
+αkw(l − a) w(l − a) (TLB − TU) − (TLB − TFR4) − h2 λh1 1 und für das Substrat FR4 gilt:
+#$@FORMULA@$#:6
+" cthρmh1(l − a) # · T˙FR4 = w(l − a) (TLB − TFR4) − 2αk(l − a) (TFR4 − TU).
+h2 λ λ 1 (3.13) Der Übersichtlichkeit halber werden an den Materialparametern auf die je- weiligen Indizes der einzelnen Materialien verzichtet.
+Es gilt selbstverständlich beispielsweise für den Bereich der Querschnittseinengung, dass cth, ρm und λ für das Leiterbahnmaterial, Kupfer, stehen.
+Der linksstehende Ausdruck in den eckigen Klammern der drei Gleichungen besitzt die Dimension einer Zeit und kann somit als Zeitkonstante des jeweils modellierten Gebietes angesehen werden.
+Sie charakterisiert die thermische Trägheit des Systems mit Wichtung auf den jeweils dominierenden Entwärmemechanismus.
+Es ist zu erkennen, dass in allen drei Termen sowohl die spezifische thermische Kapazität cth, die Dichte ρm, die Leiterbahnhöhe h2 und die thermische Leitfähigkeit des jeweiligen Materials λ zu finden sind.
+Sind die Werte der Variablen im Zähler klein, so ist das System durch die kleine Zeitkonstante schnell.
+Gleiches gilt für hohe thermische Leitfähigkeiten im Nenner.
+Hohe thermische Leitfähigkeiten machen das System auch hier wieder reaktionsfreudiger bezüglich thermischer Änderungen.
+Das bedeutet, dass Materialien mit geringer Dichte, kleiner thermischer Kapazität, geringen Abmessungen und hoher Wärmeleitfähigkeit in der Praxis vergleichsweise kurze Messzeiten benötigen.
+Oftmals sind die Materialien jedoch nicht beeinflussbar beziehungsweise (bzw.) nicht sehr unterschiedlich in den beschriebenen Eigenschaften, so dass diese Möglichkeit der Einflussname auf das Messverfahren praktisch ausscheidet.
+Die stationären Temperaturen können auch direkt berechnet werden.
+Stationär bedeutet, dass alle Einschwingvorgänge abgeklungen sind und sich ein stabiler Zustand bezüglich der Temperatur eingestellt hat.
+In diesem Fall verschwindet die Ableitung der Temperatur, T˙ = 0.
+
+
+:::: Simulation des Temperaturverlaufs ::::
+
+
+Für den Integrierereingang in der Simulation werden die aufgestellten Gleichungen 3.11 bis 3.13 nach T˙ aufgelöst und in die grafische Oberfläche von Matlab Simulink eingegeben.
+Angelehnt an Abbildung 3.4 stellt die reziproke Zeitkonstante den Block Gain dar und in den Funktionsblock wird der verbleibende Teil der Differentialgleichung eingesetzt.
+Somit entstehen drei voneinander abhängige Blockschaltbilder, bei denen die Temperaturen am Ausgang des Integrierers wieder in einen der anderen Blöcke geführt werden, da sie sich untereinander beeinflussen.
+Als Anfangsbedingung erhält der Integrierer die Umgebungstemperatur.
+Ein Simulationslauf berechnet neben dem stationären Zustand auch die transienten Vorgänge innerhalb der modellierten Strukturen.
+Für eine übersichtliche Darstellung wird als Anregungssignal eine Sprungfunktion für den Strom gewählt, die nach 0,1 s auf einen Wert von 1,73 A springt und 0,3 s später wieder zurück auf 0 A.
+Es ist damit möglich die einzelnen Zeitkonstanten der Modellbestandteile gut darzustellen.
+Abbildung 3.5 zeigt die Verläufe der Temperaturen von der Defektregion, der Leiterbahn (LB) und des Substrates FR4.
+Zu beachten sind dabei die verschiedenen Temperaturbereiche an der jeweiligen Ordinatenachse.
+Der Einschwingvorgang der Defektregion (Abbil-
+9u
+10u
+11u
+12u
+13u
+14u
+15u
+16u
+17u
+18u
+19u
+20u
+21u
+22u
+23u
+24u
+25u
+26u
+27u
+28u
+29u
+30u
+31u
+Abbildung 3.5:
+Thermisches Einschwingverhalten von Defektregion und Leiterbahn bei Anregung mit einem Stromsprung auf 1,73 A bei 0,1 s und zurück auf 0 A bei 0,4 s dung 3.5a) ist direkt nach dem Einschalten des Gleichstromes abgeschlossen.
+Im weiteren Verlauf steigt die Temperatur mit steigender Leiterbahntemperatur weiter mäßig an, bis zum Abschalten des Stromes.
+Auch hier klingt die Temperatur hauptsächlich durch Wärmeleitung in Richtung der Leiterbahn zügig ab und landet in der Nähe der Umgebungstemperatur.
+Bei dem gewählten Parametersatz für die Simulation steigt die Temperatur in der Defektregion um mehr als 10 K. Abbildung 3.5b zeigt den innerhalb des Zeitbereiches mit Stromfluss noch nicht abgeschlossenen Aufwärmvorgang der Leiterbahn.
+Die Zeitkonstante ist hier deutlich höher im Vergleich zu der der Defektregion.
+Hauptursache dafür ist das große Volumen und damit die hohe thermische Kapazität, die durch die Verlustleistung geladen wird.
+Der Aufheizvorgang dauert bis zum Abschalten des Stromes.
+Da die bis dahin erzeugte Verlustleistung nun nur noch in Richtung Leiterplattensubstrat abfließen kann und die konvektive Entwärmung eine geringere Effzieinz im Vergleich zur Wärmeleitung besitzt, sinkt die Temperatur nur langsam.
+Das Substrat erwärmt sich von den drei Bestandteilen des Modells am geringsten und mit der größten Zeitkonstante (Abbildung 3.5c).
+Innerhalb der dargestellten Zeit von 2 s beginnt die Temperatur nach dem Abschalten nur leicht zu sinken.
+Der Abkühlvorgang auf die Umgebungstemperatur dauert durch den geringen Temperaturunterschied und das große Volumen entsprechend lange.
+An der Abbildung 3.5 ist gut die Selektivität des Messverfahrens ablesbar.
+Durch die hohe Temperaturänderung mit kleiner Zeitkonstante dominiert die Region mit Querschnittseinengung das Messsignal, während die viel breitere, intakte Leiterbahn eine nur untergeordnete Rolle spielt.
+Die gute thermische Anbindung der Leiterbahn an die Defektregion ermöglicht jedoch erst diese hohe Temperaturvariabilität und sorgt schließlich für ein deutliches Defektsignal im Spektrum der simulierten Spannung.
+
+
+:::: Simulation des nichtlinearen elektrischen Verhal- tens ::::
+
+
+Da die Temperaturen nun genügend genau durch die Simulation bereitgestellt werden, können sie für die temperaturabhängige Widerstandsformel aus Gleichung 1.3 genutzt werden, um die thermische Widerstandsänderung zu beschreiben.
+Abbildung 3.6 zeigt die zwei Modellbestandteile Leiterbahn und Defekt während des Aufheizvorganges von 5 ms.
+Während der Widerstandswert 1.06
+21u
+22u
+23u
+24u
+25u
+26u
+#$@FORMULA@$#:0
+0 1 2 3 4 5 Zeit in s ·10−3 Abbildung 3.6:
+Thermischer Einschwingvorgang des ohmschen Widerstandes der zwei Leiterbahnbestandteile (Defekt und Leiterbahn (LB)) bei einer Anregungsfrequenz von 4,5 kHz, normiert auf den jeweiligen Anfangswert des Defektes zügig steigt und die Wechselstromanregung deutliche Variationen herbeiführt, ist im Fall des Leiterbahnwiderstandes nahezu keine Änderung innerhalb dieser Zeit beobachtbar.
+Zur besseren Übersicht sind beide Kurven normiert auf den jeweiligen Anfangswert und bei einer von der späteren Messung abweichenden Anregungsfrequenz von 4,5 kHz dargestellt.
+Auch aus dieser Abbildung ist ersichtlich, dass die höhere Variabilität des Widerstandes in der Region mit dem Defekt stattfindet, während im Widerstand der Leiterbahn die Anregungsfrequenz nur bei sehr starker Vergrößerung darstellbar ist.
+Nicht nur der elektrische Widerstand wird durch Temperaturveränderungen moduliert, sondern auch die darüber abfallende elektrische Spannung u(T, t).
+Aus dem Produkt des anregenden sinusförmigen Stromes Iˆsin(ωt + φ) mit Kreisfrequenz ω und Phasenwinkel φ und des temperaturabhängigen elektrischen Widerstandes Rel(T ) kann die elektrische Spannung dargestellt werden als:
+#$@FORMULA@$#:0
+u(T, t) = Rel(T ) · Iˆsin(ωt + φ).
+(3.14) Sie enthält durch das nichtlineare Verhalten des Widerstandes Harmonische der anregenden Frequenz.
+Abbildung 3.7 zeigt das Betragsspektrum der simulierten Spannung.
+Darin ist die Eingangsfrequenz bei 9,961 kHz und die erzeugte dritte Harmonische tritt bei etwa 30 kHz in Erscheinung.
+Die durch das nichtlineare elektrische Verhalten des Modells generierte Harmonische setzt sich deutlich von dem als Rauschen interpretierbaren Rest des Signals ab.
+Das anregende Signal ist hier um drei Größenordnungen höher als die Signalamplitude an der Stelle der dreifachen Frequenz.
+In der praktischen Messung übernimmt die Aufgabe der Frequenztransformation und Filterung das schmalbandige Filter in Form des Lock-in Voltmeters (siehe Abschnitt A).
+3.3.4 Parameterstudien an dem entwickelten Simulati-
+
+
+:::: Parameterstudien an dem entwickelten Simulati- onsmodell ::::
+
+
+Defekttiefe zu untersuchen.
+Dazu werden Werte für die Stromstärken gewählt, die dem späteren Messaufbau sehr ähnlich sind und auch die Querschnittseinengungen sind so gewählt, wie sie im praktischen Versuch genutzt werden um eine gute Vergleichbarkeit mit den zu erwartenden Messergebnissen zu errei- 10−3 AmplitudeinV 10−4 10−5 10−6
+#$@FORMULA@$#:2
+10−7 0 1 2 3 4 Frequenz in Hz ·104 Abbildung 3.7:
+Exemplarisches Betragsspektrum der simulierten elektrischen Spannung mit Anregungssignal und dritter Harmonischer bei etwa 30 kHz.
+chen.
+Dargestellt wird die Amplitude der dritten Harmonischen in Volt.
+Die Bezeichungen K1 bis K3 entstammen der später in Kapitel 4.1 beschriebenen Teststruktur (Abbildung 4.1 auf Seite 66).
+Abbildung 3.8 zeigt die Ergebnisse der Parametervariationen.
+In der linken Abbildung 3.8a werden verschieden tie-
+#$@FORMULA@$#:0
+3 ·10−7
+#$@FORMULA@$#:1
+3 ·10−7
+16u
+17u
+Simulation K1 Simulation K2 2 Simulation K3 2 1 1 0 0 0 0.5 1 1.5 0 20 40 60 80 100 Strom in Ap2p Einengung in Prozent (a) Amplitude der dritten Harmonischen (b) Amplitude der dritten Harmonischen über der Stromstärke (Restbreite c von unüber fortschreitender Defekttiefe.
+Die Amten nach oben 345 µm, 143 µm, 51 µm).
+Konplitude der Messstromstärke beträgt von untinulierliche Kurven entsprechen dem analyten nach oben 0,47 A, 0,92 A, 1,32 A, 1,73 A. tischen Modell (Gleichung 1.20).
+Kontinulierliche Kurven entsprechen dem analytischen Modell (Gleichung 1.20).
+Abbildung 3.8:
+Verlauf der Harmonischen-Simulation an einer Leiterbahnteststruktur.
+Die Einheit der dritten Harmonischen ist in Volt dargestellt.
+fe Defekte simuliert mit dem Ziel eine Stromstärke zu finden, die es ermöglicht die Teststrukturen sicher auf Basis der aufgenommenen Werte zu unterschei- den.
+Dieser Bereich beginnt bei etwa 1 A.
+Je größer der gewählte Strom ist, desto leichter lassen sich die Teststrukturen voneinander unterscheiden.
+Die hinterlegten kontinuierlichen Kurven entsprechen dabei dem vorher aufgestellen analytischen Modell.
+In der rechten Abbildung wird der Strom innerhalb experimentell erreichbarer Größen variiert.
+Auch hier entsprechen die kontinuierlichen Kurven dem analytischen Modell.
+Mit steigendem Strom verschiebt sich der Knickpunkt der Kurven immer weiter in Richtung niedrigerer Querschnittseinengungen.
+Dies bedeutet, dass die Methode um so sensitiver wird, je höher der anregende Strom ist.
+Eine Erklärung dafür ist der steigende Temperaturunterschied zwischen Leiterbahn und Defektregion.
+Wird der Strom jedoch zu hoch gewählt, muss mit Schäden der zu untersuchenden Struktur gerechnet werden.
+Bei etwas weniger als 7 A übersteigt die Temperatur der Defektregion mit 140 ◦C die maximale Betriebstemperatur vieler FR4 Substrate.
+Oberhalb dieser Temperatur steigt der Längenausdehnungskoeffzieint des Substrates so stark an, dass Leiterbahnabrisse stattfinden können.
+Als Empfehlung vieler Leiterplattenhersteller sollte die Betriebstemperatur unterhalb der sog. Glasübergangstemperatur bleiben [4].
+Zusätzlich beginnen die Schmelztemperaturen einiger Lotwerkstoffe bei etwa 160 ◦C.
+Wird der Strom weiter gesteigert, so kann bei einer Stromstärke von etwa 11 A die Schmelztemperatur der Kupferleiterbahn von 1085 ◦C erreicht werden.
+#$@FORMULA@$#:0
+3 ·10−7 0,47 A
+23u
+24u
+25u
+26u
+27u
+28u
+29u
+30u
+31u
+32u
+33u
+#$@FORMULA@$#:1
+mes.
+[3.
+Harmonische/I 3]=V/A3.
+Da der Strom als Faktor in das Modell eingeht, kann eine vom Strom unab- hängige Darstellung gefunden werden.
+Diese hat den Vorteil über verschiedene Aufbauten und Versuche hinweg eine Vergleichbarkeit sicherzustellen [33].
+Abbildung 3.9 zeigt die normierten Simulationsergebnisse.
+Es ist zu erkennen, dass die bei verschieden tiefen Querschnittseinengungen variierten Stromstärken sehr nah beieinander liegen.
+Dies ist aufgrund des Modellansatzes auch zu erwarten.
+Wichtige für die Simulationen genutzte Werte und Parameter sind in Tabelle 3.2 aufgeführt.
+Sie stellt teilweise, durch die praktische Messtechnik sowie einer umgesetzten Teststruktur, vorgegebene Größen dar.
+In der Tabelle werden die
+9u
+10u
+11u
+12u
+13u
+14u
+15u
+16u
+17u
+18u
+19u
+20u
+21u
+22u
+23u
+24u
+25u
+26u
+27u
+28u
+29u
+30u
+31u
+32u
+33u
+34u
+35u
+
+
+:::: Grenzen der Simulation ::::
+
+
+In einer Simulation werden durch die Modellierung (vermeintlich) unwesentliche Elemente des realen Aufbaus abstrahiert.
+Der Abstraktionsgrad bestimmt dann den Grad der Übereinstimmung der Simulationsergebnisse mit den experimentell ermittelten Werten.
+Einerseits ermöglicht ein hoher Abstraktionsgrad eine einfache Modellierung und damit einhergehend, verkürzte Zeiten für die Modellerstellung und Simulation, andererseits führt dies zu geringfügig abweichendem Verhalten des Modells im Vergleich zum Experiment.
+Es gilt hier also den Abstraktionsgrad gerade genau so hoch zu wählen, dass das wesentliche Verhalten der physikalischen Vorgänge, die zu der Generierung von Nichtlinearitäten führen, ausreichend abgebildet wird.
+Gleichzeitig darf die Simulationszeit nicht so stark anwachsen, dass Parameterstudien durch begrenzte Rechenzeit unmöglich werden.
+Zudem sollte durch die Simulation eine hohe Reproduzierbarkeit der Ergebnisse gegeben sein [80].
+Die Auswertung der Ergebnisse findet hier in einem Postprozess statt.
+Dazu wird eine Fouriertransformation der simulierten Spannungssignale durchgeführt und der durch das Modell vorgegebene Frequenzanteil als Zustandsvariable bzw. Defektsignal extrahiert.
+Die Transformation benötigt für eine hohe Auflösung im Frequenzbereich ein Zeitintervall in dem mehrere Schwingungen der zu untersuchenden Signale enthalten sind und eine Abtastfrequenz, die mindestens der doppelten Maximalfrequenz des zu untersuchenden Signals entspricht.
+Dies führt zu einem Zielkonflikt zwischen guter Frequenz- und Amplitudenauflösung, Genauigkeit der simulierten Ergebnisse und der Rechenzeit.
+Zusätzlich beeinflussen diese Einstellungen die kleinste mögliche Schrittweite der transienten Simulation, die sich aus dem Quotienten zwischen simuliertem Zeitbereich und der Auflösung ergibt [55].
+Je länger also das simulierte Zeitinvall ist, desto größer ist die minimale Schrittweite aber auch die Frequenzauflösung im Postprozess.
+Es muss also ein Simulationsparametersatz gefunden werden der eine hohe Frequenzauflösung im Postprozess ermöglicht und gleichzeitig die Rechenzeit nicht zu hoch werden lässt.
+Zu den Modellbestandteilen, die sehr stark abstrahiert werden, zählen die Oberflächenrauigkeiten der Materialien und die damit einhergehenden Konvektionskoeffzieinten, die Verwendung von Materialdaten aus der Literatur und die idealisiert dargestellte Geometrie mit scharfen Kanten und parallelen Flä- chen.
+Auch die zeitliche Ausbreitung der thermischen Leistung innerhalb des intakten Leiterbahnabschnittes wird in der Modellierung abstrahiert.
+Das gesamte Volumen hat stets die gleiche Temperatur.
+In der Simulation wird eine über mehrere reale Teststrukturen gemittelte Defektbreite genutzt und für das thermische Verhalten wird nur der lineare Temperaturkoeffzieint des jeweiligen Materials verwendet.
+Dies ist auch ein Grund für die vorhandenen Schwankungen der Werte in der normierten Abbildung 3.9.
+Demgegenüber stehen verringerte Einflüsse der Messgeräte, die nicht vorhandenen Übergangswiderstände bei der Messung der Signale und die fehlenden Einflüsse von Klima (Temperatur, Luftfeuchtigkeit, Windzug und Partikelbelastung im Labor), Umwelt, Einstreuungen benachbarter schaltender Geräte, Kalibrierung und Versorgungsspannungsschwankungen.
+
+
+:::: Experimentelle Verifikation ::::
+
+
+In diesem Kapitel werden die zuvor aufgestellten Zusammenhänge messtechnisch überprüft.
+Dazu werden verschiedene Teststrukturen künstlich1 gealtert und kontinuierlichen oder diskreten Messungen unterzogen.
+Der verwendete Messaufbau wird diskutiert sowie ein Vergleich zwischen Fehlerbildern, Modell und Messung durchgeführt.
+4.1 Auswahl und Beschreibung der Testobjekte Geeignete Testobjekte sollen einerseits eine verhältnismäßig einfach zu berechnende Geometrie besitzen, leicht und reproduzierbar zu schädigen sein und andererseits möglichst praktischen bzw. etablierten Aufbauten der Mikrosystemtechnik entsprechen.
+Im Folgenden werden zwei verschiedene Teststrukturen vorgestellt.
+Eine geometrisch sehr einfach beschreibbare Leiterbahnstruktur und eine mehr praxisrelevante Flip-Chip-Struktur.
+Erfahrungen aus vorangegangenen Arbeiten (z.B. [50] oder [51]) zeigen, dass Leiterstrukturen zur Modellverifikation aufgrund der überschaubaren Geometrie und Werkstoffkombination bestens geeignet sind.
+Aus diesem Grund besteht die erste von zwei Teststrukturen aus Streifenleitungen auf einer Leiterplatte (engl.
+Printed Circuit Board (PCB)).
+Die Schädigung kann hier schon im Layout durch Einkerbungen erzeugt werden.
+Um einen deutlich messbaren Effekt mit geringem Einfluss der intakten Leiterbahn auf das Messsignal zu erzeugen, sind die Einkerbungen der Leiterbahnen im Vergleich zu deren Breite sehr groß.
+Des Weiteren kann an einer so präparierten Leiterbahn sowohl mehrmals als auch mit verschiedenen Messverfahren gemessen werden, was die Reproduzierbarkeit der Messungen verbessert.
+Die dafür verwendeten Leiterbahnen sind 4 mm breit und 2,5 cm lang.
+Die Kupferlage der Leiterplatte ist 35 µm dick.
+In jeder Leiterbahn befindet sich eine Einkerbung unterschiedlicher Tiefe.
+Die Abmessungen der Einkerbungen betragen angelehnt an Abbildung 2.3 (b + c = 4 mm) c = 51 µm, 143 µm und 345 µm mit einer durchschnittlichen Breite a von 415 µm.
+Auf einen Lötstopplack wird verzichtet, da somit eine geringfügig bessere Entwärmung an die Umgebung stattfinden kann.
+Die genutzten Leiterplatten sind 1-lagig mit Standard FR4 Substrat aufgebaut.
+Die Leiterplatten sind Restriction of Hazardous
+#$@FORMULA@$#:0
+Substances Directive (RoHS)-konform gemäß EU-Richtlinie 2002/95 [25].
+Abbildung 4.1 zeigt die präparierten Leiterbahnen.
+Die Einengungen stehen hier stellvertretend für produktions-, alterungs- oder überbeanspruchungsbedingte Poren oder Risse.
+Alle verwendeten Teststrukturen sind nach dem Eingangstest nach IPC-A-600G (Acceptability of Printed Boards [39]) als brauchbar klassifiziert.
+20u
+21u
+22u
+23u
+bende Querschnitt an der engsten Stelle nimmt von oben nach unten jeweils mit Faktor 2 zu.
+Die zweite in dieser Arbeit verwendete Teststruktur ist hinsichtlich ihres Aufbaus komplexer.
+An ihr soll die Möglichkeit gegeben sein, Degradationen in Lotwerkstoffen zu untersuchen.
+Diese Version der Teststruktur wurde zuerst in Arbeiten von Eckert z.B. [23] und nachfolgend auch von Straube [91] und Jaeschke z.B. [41] verwendet.
+Die Teststruktur besteht aus einem Flip-Chip, der auf einer Leiterplatte verlötet ist.
+Untersuchungsgegenstand ist hier die elektrische bzw. mechanische Verbindung zwischen Chip und Board in Form einer Lotkugel, dem sog. Lotbump.
+Dieser ist in der Praxis bei thermischer Wechselbelastung der dominierende Fehlerort, da das Lot die durch unterschiedliche thermische Ausdehnung von Chip und Board entstehenden Spannungen aufnimmt und durch Fließen bzw. Kriechen verringert.
+Beide Mechanismen führen zur Ermüdung der Lotverbindung und damit auch zur Reduzierung der Lebensdauer des Aufbaus [94].
+Montierte Flip-Chips werden daher bevorzugt mit einem Polymer unterfüllt, um die Steifigkeit und damit auch die Lebensdauer des Aufbaus signifikant zu erhöhen.
+Aufgrund gesetzlicher Regelungen zum Verbot von Blei in elektronischen Produkten werden in dieser Arbeit nur bleifreie Lote genutzt [8].
+Die in den vorigen Kapiteln hergeleiteten Zusammenhänge sind jedoch von der Wahl des Werkstoffs in gewissen Grenzen unabhängig2 und somit auch für bleihaltige Werkstoffe anwendbar.
+Für oberflächenmontierte Bauelemente überwiegt derzeit die auch hier verwendete Lotzusammensetzung SAC305 (Sn3,0%Ag0,5%Cu)3.
+Abbildung 4.2 zeigt die verwendete Teststruktur von der Unterseite und nach dem Löten auf einem Schaltungsträger.
+(a) Flip-Chip mit Leiterbahnmetallisierung (b) Montierter Flip-Chip auf dem Schalund umgeschmolzenen Lotkugeln zur Kon- tungsträger zur Kontaktierung der Messtaktierung auf einem Schaltungsträger technik Abbildung 4.2:
+Flip-Chip Teststruktur zur Ermittlung der Lotdegradation [23] Hergestellt wird die Teststruktur in einer der derzeit häufig angewandten Surface Mounting Technology (SMT) Verbindungstechnologie [1], der Flip-Chip-Technologie [66].
+Das Layout der Teststruktur ist für Zuverlässigkeitsuntersuchungen optimiert.
+Der Chip enthält keine aktiven Strukturen.
+Auf der Unterseite sind verschieden lange Leiterbahnen strukturiert, die eine online Überwachung einzelner Lotverbindungen ermöglichen.
+Die verschiedenen Abstände der Lotkugeln vom Mittelpunkt des Chips führen zu unterschiedlichen Lebensdauern bei Temperaturwechsel- oder Vibrationsbelastung.
+Je Chip können 12 Lotverbindungen überwacht werden.
+Die unkontaktierten Lotkugeln stabilisieren den Chip während des Lötens mit der Folge sehr geringer Prozessierungsschwankungen und somit weniger Streuungen in Zuverlässigkeitsuntersuchungen.
+Als Signalrückführung dienen die Lotverbindungen in der Mitte des Chips.
+Diese sind redundant vorhanden, um sicherzustellen, dass die Lebensdauer der äußeren Verbindungen erfasst wird.
+Der detaillierte Aufbau der Lotverbindung ist in Abbildung 4.3b dargestellt.
+(a) Detailierter Schichtaufbau des verwende- (b) Detailierter Aufbau der verlöteten Testten Schaltungsträgers [23] struktur [91] Abbildung 4.3:
+Schematischer Aufbau von Flip-Chip Teststruktur und verwendetem Schaltungsträger Der verwendete Schaltungsträger dient der Kontaktierung externer Messtechnik.
+Er besteht aus einem mehrlagigen faserverstärkten Kunststoffverbund.
+Alle verwendeten Schaltungsträger haben die Eingangskontrolle, beschrieben in der Norm IPC-A-600G [39], ohne Beanstandungen durchlaufen.
+Der detailierte Schichtaufbau des Schaltungsträgers kann Abbildung 4.3a entnommen werden.
+Bei der Montage der Flip-Chips wird ein Fineplacer verwendet.
+Die Chips werden in einem 100 µm hohen Flussmittelreservoir benetzt und anschließend im Reflow-Löt-Verfahren umgeschmolzen.
+Lötparametervariationen während des Montageprozesses und ein erster Lötprozess im unbestückten Zustand4 tragen zu einer homogenen Verbindung mit guter Benetzung und wenigen Poren bei.
+
+
+:::: Alterung der Testobjekte ::::
+
+
+Der Fokus der in dieser Arbeit vorgeschlagenen Messtechnik liegt einerseits in der Früherkennung von Defekten in elektrischen Verbindungen und andererseits in der Testzeitersparnis in der Entwicklung, Weiterentwicklung und Erprobung neuer und bereits vorhandener elektrischer Verbindungsverfahren.
+Da die Entwicklung eines neuen Messverfahrens eine Vielzahl von Messungen in Anspruch nimmt, wird eine Schädigungsmethode benötigt, die in möglichst kurzer Zeit reproduzierbare Schädigungsbilder liefert.
+Aus diesem Grund werden als erste Schädigungsart Einschnürungen in Mikrostreifenleiterbahnen genutzt, wie sie in Abbildung 4.13 dargestellt sind.
+Eine derartige Vorgehensweise wird auch in [49] genutzt und hat sich dort als günstig herausgestellt.
+Dies ermöglicht Parametervariationen des Messverfahrens an ein und derselben Teststruktur, um das Messverfahren zu charakterisieren und gleichzeitig Grenzen der ID5-Messung aufzuzeigen.
+Damit auch kontinuierlich fortschreitende Degradationen in Form von Querschnittseinengungen als Messobjekt dienen können, werden die oben beschriebenen Flip-Chip Teststrukturen in einem Zugtester mechanisch belastet.
+Dadurch beginnt das Lot zu kriechen und es stellt sich eine zeitlich vergleichsweise sehr langsame voranschreitende Querschnittsverringerung ein.
+Diese Methode hat im Vergleich zu Temperaturwechselbelastung (Thermozyklen) den Vorteil, dass die Testzeit je nach Wahl der Schädigungsparameter auf unter 24 Stunden sinkt und zudem die entstehenden Kosten minimiert.
+
+
+:::: Beschleunigte Alterung als Testbedingung ::::
+
+
+Zuverlässigkeitstests stellen reale Belastungsszenarien im Labor nach, um Ausfallursachen besser zu verstehen, ohne dabei den Ausfall eines unter realen Belastungen stehenden Systems abwarten zu müssen.
+Sie dienen zusätzlich der statistischen Erfassung von Lebensdauerdaten, um eine gewünschte bzw. geforderte Lebensdauer sicherstellen oder sogar garantieren zu können.
+Im Idealfall können die Lebensdauerdaten für die reale Alterung extrapoliert werden.
+Den Zusammenhang zwischen realer Lebensdauer und der Lebensdauer, die aus Zuverlässigkeitsuntersuchungen gewonnen wird, stellen Beschleunigungsfaktoren her.
+Diese lassen in der Praxis allerdings oft nur qualitative Bewertungen zu [13, 69].
+Gründe hierfür können in der Komplexität und Anzahl realer Fehlermechanismen liegen, die im Laborversuch entweder nicht vollständig erfasst oder bewusst vernachlässigt werden.
+Da in dieser Arbeit ein Messverfahren untersucht wird, welches unabhängig von den vielfältigen realen Belastungen allein den Degradationszustand einer elektrischen Verbindung erfasst, können mehrere Beschleunigungsmechanismen genutzt werden, um die Lotverbindungen effzieint zu schädigen.
+Eine Korrelation zu realer Lebensdauer ist nicht nötig und wenn überhaupt, nur qualitativ herzustellen.
+Das Ausfallverhalten der zu untersuchenden elektrischen Verbindung darf sich jedoch nicht verändern.
+Einen typischen Ermüdungsausfall zeigt Abbildung 4.4a.
+Zuerst wachsen vorhandene Körner zugunsten anderer in ihrem Volumen.
+Dieses Wachstum verursacht kleinste Poren im Material, die sich über die Zeit zu Mikrorissen agglomerieren können.
+Mit andauernder Belastung wachsen diese Mikrorisse zu größeren, zusammenhängenden Defekten, die dann für den Ausfall einer Lotverbindung verantwortlich sind.
+Bei kleinen Korngrößen, hohen Temperaturen und verhältnismäßig langsamen Dehnungsraten ist der dominierende Ermüdungsmechanismus das Kriechen (Diffusionskriechen) [94].
+Der Materialtransport findet hier nicht nur im Kornvolumen, sondern wegen einer großen Anzahl an Leerstellen verstärkt auch an den Korngrenzen statt.
+Hierbei stellt Kriechen den zeitvarianten Mechanismus dar, der Spannungen im Materialgefüge durch Korngrenzgleiten abbaut.
+Dieser Prozess ist zeitlich gesteuert und läuft bei höheren Temperaturen schneller ab.
+Abbildung 4.4b veranschaulicht diesen Zusammenhang.
+Es 1 2
+#$@FORMULA@$#:0
+I II III Bruch Dehnung T4  0, 4 · TS T3 > 0, 4 · TS 3 4 T2 < 0, 4 · TS
+#$@FORMULA@$#:2
+T1  0, 4 · TS Zeit log t (a) Entstehung von Rissen in einer Lotver- (b) Temperaturabhängigkeit des Kriechens bindung durch Ermüdung nach [24] (1 Kornmetallischer Werkstoffe bei konstanter Spanwachstum, 2 Mikroporen, 3 Mikrorisse, 4 nung nach [9, 78] Makrorisse) Abbildung 4.4:
+Einflussfaktoren und Wirkung der beschleunigten Alterung als Testbedingung zeigt sich, dass ab einer Temperatur von etwa dem 0, 4-fachen der Schmelztemperatur in Kelvin (homologe Temperatur TH= T Ts
+#$@FORMULA@$#:1
+= 0, 4) das Kriechen auftritt und in drei Phasen unterteilt werden kann.
+Phase I beschreibt dabei das primäre Kriechen, welches durch Veränderungen in der Versetzungsdichte und -anordnung gekennzeichnet ist.
+Die Kriechgeschwindigkeit ˙ = d/dt nimmt stetig ab.
+In Phase II, dem stationären bzw. sekundären Kriechen ist die Kriechgeschwindigkeit konstant.
+Die Dehnung  kann dabei als Funktion der Zeit beschrieben werden  = ˙ · t = k · t, mit k = konstant.
+Dieser Bereich besitzt die größte praktische Bedeutung, im Allgemeinen werden Werkstofef in diesem Bereich benutzt.
+Es besteht ein Gleichgewicht zwischen Verfestigung und Entfestigung (dynamische Erholung).
+Der Bereich III (tertiäres Kriechen) ist durch stark beschleunigtes Kriechen gekennzeichnet, welches sehr schnell zu einem Bruch führt.
+Die Leerstellenkondensation an den Korngrenzen führt zu ausgeprägten Korngrenzdeformationen (Korngrenzrissen) [7].
+Durch dieses zeitliche Verhalten eignet sich der Kriechtest, also die Auslagerung einer Teststruktur bei erhöhter Umgebungstemperatur und konstanter Kraftwirkung in eine Vorzugsrichtung, ideal für eine effzieinte Schädigung.
+
+
+:::: Diskussion der Fehlermechanismen natürlicher und beschleunigter Alterung ::::
+
+
+Im Fall der natürlichen Alterung von elektrischen Verbindungen im Feldeinsatz treten als Fehlermechanismen überwiegend Spröd- und Ermüdungsbrüche auf.
+Die Folge ist ein Versagen der elektrischen Leitfähigkeit durch die Ausfallarten Drift- oder Sprungausfall (Abbildung 1a).
+Für den Fall einer beschleunigten Alterung, die oft unter Laborbedingungen stattfindet, müssen die Beschleunigungsparameter so gewählt werden, dass sich der Fehlermechanismus bzw. der dominierende Fehlermechanismus nicht ändert.
+Eine beschleunigte Alterung als Testbedingung sollte stets den höchsten Beschleunigungsfaktor unter der Nebenbedingung eines gleichbleibenden Fehlermechanismus anstreben.
+Diese Bedingung ist gleichzeitig auch die Grenze, über die hinaus keine weitere Zeitersparnis im Versuch erreicht werden kann.
+In der vorliegenden Arbeit wird einerseits Defektbildung als Fehlermechanismus der Leiterbahnteststruktur und andererseits der Ermüdungsbruch durch Kriechen als Fehlermechanismus der Flip-Chip Lotverbindung betrachtet.
+Beide Fehlermechanismen haben die Eigenschaft, eine Querschnittseinengung herbeizuführen, die nach einer gewissen Zeit der Belastung zum Versagen der Funktion führt.
+Der dominierende Fehlermechanismus einer Leiterbahn bei natürlicher Alterung ist die Riss- bzw. Porenbildung z.B. durch mechanische oder chemische Belastung.
+Dieser Fehlermechanismus ist im Laborversuch durch verschieden tiefe im Herstellungsprozess generierte rissförmige Querschnittseinengungen abgebildet.
+Der dominierende Fehlermechanismus einer Flip-Chip Lotverbindung ist der Kriechermüdungsbruch infolge zyklischer thermo-mechanischer Belastung, die durch Fehlanpassung der thermischen Ausdehnungskoeffzieinten entsteht.
+Dieser Fehlermechanismus wird im Laborversuch durch einen Kriechtest bei konstanter mechanischer Belastung der Chips in eine Vorzugsrichtung abgebildet.
+In beiden Versuchen werden die Fehlermechanismen beibehalten, wenn auch das Fehlerbild sich ändert.
+Die Flip-Chip Lotverbindung im Laborversuch wird seitlich abgeschert und verändert ihre Form in Richtung der wirkenden Kraft.
+Im Falle der natürlichen Alterung bleibt die ursprüngliche Form der Lotverbin- dung weitestgehend erhalten, zusätzlich entstehen eine große Anzahl von Zerklüftungen der Oberfläche durch die zyklische thermo-mechanische Belastung.
+Der Kriechtest ermöglicht im Vergleich zum Thermozykeltest eine weitaus grö- ßere Beschleunigung ohne den Fehlermechanismus zu ändern.
+Das Fehlerbild der Leiterbahn unterscheidet sich im Laborversuch nur durch die abgerundete Spitze der Einengung und den geraden Verlauf, der sich nicht an den Körnern des Leiterwerkstoffes orientiert.
+
+
+:::: Reproduzierbarkeit der Schädigung ::::
+
+
+Ein wichtiges Kriterium für Laborversuche ist neben nachvollziehbarer Messung eine reproduzierbare Schädigung der Proben.
+Bei der natürlichen Alterung von elektrischen Verbindungen treten sehr große Streuungen der Lebensdauern auf, die einerseits in Variationen der Belastungen, andererseits in Streuungen im Herstellungsprozess bzw. in den Werkstoffen selbst begründet liegen.
+Im Laborversuch werden diese Streuungen durch den Test einer einzigen Charge mit möglichst geringen Variationen der verwendeten Materialien minimiert.
+Zudem werden die Belastungen aller im Test befindlichen Verbindungen möglichst gleich gehalten.
+Die Diskussion der Reproduzierbarkeit reduziert sich für die Leiterbahnteststrukturen auf ein Minimum, da definierte Querschnittseinengungen direkt hergestellt werden.
+Die so präparierten Leiterbahnen können dann wiederholt mit verschiedenen Messungen getestet werden.
+Einziges Augenmerk liegt hier in der Verhinderung von Schaden durch zu hohe Messströme.
+Diese Teststruktur kann zur Kalibrierung der Methode benutzt werden.
+Im Laborversuch mit den Flip-Chip Lotverbindungen als Teststruktur treten zwar Variationen im Volumen der Lotverbindungen und auch im verwendeten Werkstoffauf, diese werden jedoch reduziert durch die Verwendung von vorgefertigten Lotkügelchen [23].
+Da im Kriechversuch jeweils nur ein Chip zeitgleich, also mit exakt gleicher Kraft und Temperatur belastet werden kann, sind die einzelnen Versuche untereinander nicht direkt vergleichbar.
+Zusätzlich werden die Versuchsparameter Kraft, Temperatur und die Parameter des Messsignals variiert um deren Einfluss zu untersuchen.
+Aufgrund des Designs der Flip-Chips mit mehreren überwachbaren Lotverbindungen sind diese als eine gemeinsame Stichprobe anzusehen.
+
+
+:::: Messaufbau ::::
+
+
+In diesem Abschnitt wird der Messaufbau, der zur effzieinten Schädigung der Proben entwickelt wurde, diskutiert.
+Nachdem der praktische Ansatz der mechanischen Schädigung der Testobjekte abgehandelt ist, folgt die detaillierte Beschreibung der Umsetzung des Messverfahrens in die Praxis.
+Es werden sowohl Beschränkungen der verwendeten Messtechnik, als auch der Nachweis bestimmter Eigenschaften des zu messenden Parameters angeführt.
+
+
+:::: Mechanische Schädigung ::::
+
+
+Zur zeit- und kostenoptimierten mechanischen Schädigung der Teststrukturen wird ein Zugtester (Zwick 1446) mit einer temperierbaren Kammer genutzt.
+Den schematischen Aufbau zeigt Abbildung 4.5a.
+Die Kraft wirkt senkrecht auf
+11u
+12u
+13u
+14u
+15u
+16u
+17u
+18u
+19u
+20u
+21u
+22u
+23u
+24u
+25u
+26u
+27u
+28u
+29u
+30u
+31u
+32u
+33u
+34u
+eine fest eingespannte Probe.
+Der Versuch wird kraftgeregelt durchgeführt mit
+36u
+Temperaturen genutzt, die ein Kriechen begünstigen.
+Nach Abschnitt 4.2.1 ist
+38u
+Kelvin TS weit übersteigt.
+Im vorliegenden Versuch beträgt die Schmelztemperatur des SAC305 Lotes 217 ◦C.
+Somit ergibt sich eine homologe Temperatur
+#$@FORMULA@$#:0
+TH= T Ts = 0, 4 bei −77 ◦C [78].
+Zur weiteren zeitlichen Raffung werden Temperaturen von mehr als 100 ◦C genutzt, was mehr als dem 0, 75-fachen der Schmelztemperatur entspricht.
+
+
+:::: Elektrische Messung ::::
+
+
+Für die Messung werden zwei ähnliche Aufbauten herangezogen.
+Der einfachere Messaufbau ist in der Lage, Harmonische eines Eingangssignals zu erfassen, während der komplexere Aufbau in der Lage ist, die Differenz zwischen zwei Eingangsfrequenzen als Intermodulationssignal messbar zu machen.
+Zusätzlich können mittels Multiplexer eine Vielzahl von Proben sequentiell vermessen werden.
+Im zweiten Fall werden durch die Messung der Differenz der Frequenzen Einflüsse der Messkette auf das Messsignal minimiert.
+Die Messung von Intermodulationssignalen wird im Folgenden als IDe-Messung6 bezeichnet.
+13u
+14u
+15u
+16u
+17u
+18u
+19u
+20u
+Stromsignal gesehen werden kann.
+Abbildung 4.6 zeigt den Messaufbau.
+Dieser besteht aus einer Signalquelle, die die Frequenz f bereitstellt.
+Als Signalquelle und Verstärker kommen im Fall der Messung von Harmonischen speziell in Richtung Rauscharmut und Unterdrückung von parasitären Harmonischen am Fraunhofer IZM entwickelte Geräte zum Einsatz (siehe Trampert [92]).
+Nach der Verstärkung der Messsignale werden im DUT7 Harmonische nach dem präsentierten Modell generiert.
+Zur Minimierung von Harmonischen, die durch das Anregungssignal in den nachgeschalteten Messgeräten generiert werden, wird zwischen DUT und Messung ein Kerbfilter (engl.
+Notchfilter) eingesetzt, der die Anregungsfrequenz f um mehr als 80 dB im unbelasteten Fall dämpft.
+Die Messung wird durch ein schmalbandiges Filter bei der zu überwachenden Frequenz vorgenommen.
+Diese Anforderungen werden von einem nach dem Lock-in Prinzip (siehe Anhang A) arbeitenden Voltmeter erfüllt.
+Als Referenz dient die zu messende Signalfrequenz, die im aufgeführten Beispiel eine beliebige Phasenlage besitzen darf, da es sich bei dem Lock-in Voltmeter um ein dualphasiges Gerät handelt (siehe Abschitt A.1.3).
+Der Messstand zur Messung von Harmonischen wird im Folgenden charakterisiert.
+Da die geforderte Linearität und Rauscharmut große Herausforderungen für den Schaltungsentwurf darstellen, kann die Frequenz des Signalgenerators nicht mehr variiert werden.
+Sie ist fest auf einen Wert von 9,961 kHz bei einer Amplitude von 1 Vp2p (Spitze-Spitze-Wert; engl.
+peak to peak, p2p) eingestellt.
+Verstärkt wird um den konstanten Faktor 2.
+15u
+16u
+17u
+18u
+19u
+20u
+21u
+22u
+23u
+24u
+25u
+26u
+27u
+28u
+29u
+30u
+31u
+32u
+33u
+Voltmeter gemessene, ungedämpfte Grunddämpfte Grundwelle hat eine Amplitude von welle hat eine Amplitude von 1,98 Vp2p.
+89,1 µVp2p.
+Abbildung 4.7:
+Vergleich der generierten Oberwellen im unbelasteten Fall mit und ohne Kerbfilter.
+Die Grundwellen sind der Übersichtlichkeit halber nicht mit abgebildet.
+Abbildung 4.7 zeigt den Vergleich der messbaren Harmonischen mit dem Lock-in Voltmeter im unbelasteten Fall mit und ohne Kerbfilter.
+Hier ist das DUT durch einen Kurzschluss ersetzt worden.
+Es ist zu erkennen, dass ohne Kerbfilter (Abbildung 4.7a) mit der Nummer der Harmonischen die Amplitu- de des gemessenen Signals sinkt.
+Die Grundwelle ist nicht aufgeführt, da sie um ein Vielfaches größer ist als die Harmonischen.
+Das Verhältnis zwischen Grundwelle und dritter Harmonischer beträgt etwa 8, 2 · 103.
+In der rechten Abbildung fällt die Amplitude durch die selektive Dämpfung des Kerbfilters nicht kontinuiertlich mit steigender Ordnung der Harmonischen.
+Hier zeigt sich eine für das Messvorhaben günstige Dämpfung der dritten Harmonischen.
+Allein die Grundwelle wird durch das Kerbfilter um mehr als den Faktor 22 · 103 gedämpft.
+Das Verhältnis zwischen Grundwelle und dritter Harmonischer beträgt bei der Messung mit Kerbfilter 13, 7·106.
+Dies entspricht mehr als 150 dB Abstand.
+Eine Beeinflussung des zu messenden Signals durch die Messkette kann damit praktisch ausgeschlossen werden.
+Die Dämpfungseigenschaften des
+11u
+12u
+13u
+14u
+15u
+16u
+17u
+18u
+19u
+20u
+21u
+22u
+23u
+24u
+25u
+26u
+27u
+28u
+29u
+30u
+31u
+32u
+33u
+Wert (peak-to-peak - p2p).
+Abbildung 4.8:
+Charakterisierung der Messkette für die Harmonischenmessung.
+Die einzelnen Messpunkte sind als Linie verbunden.
+Kerbfilters sind in Abbildung 4.8a noch einmal mit Hilfe eines logarithmischen Abstandsmaßes dargestellt, hier das Verhältnis aus Grundschwingungsamplitude zu gedämpften und ungedämpften Amplituden.
+UGrundwelle, ungedämpft
+#$@FORMULA@$#:0
+SHR = 20 · log 10 (4.1) UHarmonische Hier ist gut zu erkennen, dass durch die Unterdrückung der Grundwelle alle nachfolgenden Harmonischen in der Messkette reduziert werden.
+Die Abhängigkeit von parasitär erzeugten Harmonischen von der Stromstärke ist in Abbildung 4.8b aufgeführt.
+Es zeigt sich, dass unterhalb einer kritischen Strom- stärke von 2,5 A der Einfluss auf die Messung sehr gering ist.
+Die Messwerte sind zusätzlich noch einmal in Tabelle 4.1 aufgelistet.
+Strom in Ap2p Amplitude der 3.
+Harmonischen in Vp2p
+3u
+4u
+5u
+6u
+7u
+8u
+9u
+10u
+11u
+12u
+13u
+14u
+15u
+16u
+schwingzeit gespeichert und kann so jedem Kanal und jedem Messzeitpunkt zugeordnet werden.
+Abbildung 4.9 zeigt den weiterentwickelten Messaufbau zur Onlinemessung von IDe-Signalen.
+Einen optimalen Aufbau der online Lockin Verstärker-Messung beschreibt [2].
+Der gezeigte Messaufbau orientiert sich an diesen Empfehlungen.
+Von links nach rechts setzt sich der Messaufbau wie folgt zusammen:
+Zwei Anregungsfrequenzen werden von zwei unabhängigen Frequenzgeneratoren bereitgestellt und überlagert.
+Ein Leistungsverstärker (NF HSA4014) mit in Serie geschaltetem, niederohmigen Leistungswiderstand formt das Anregungssignal in ein Stromsignal um.
+Dies hat neben der Tatsache, dass das vorgeschlagene Modell aufgrund von thermischen Wechselwirkungen zwischen Defektstelle und Messsignal ein Stromsignal benötigt, zusätzlich den Vorteil, dass Stromsignale unempfindlich gegenüber elektromagnetischen Störungen8 und Spannungsverlusten durch Leitungswiderstände sind.
+Der Multiplexer Keithley 3706 mit einer Relaiskarte (Modell 3722) verbindet die Messkanäle mit dem Lock-in-Voltmeter SignalRecovery 7270.
+Da nach dem Lock-in-Prinzip eine Referenzfrequenz benötigt wird und diese nach 8z.B.
+Einschalten von benachbarten Verbrauchern
+0u
+1u
+2u
+3u
+4u
+5u
+6u
+7u
+8u
+dem Modell der Differenz der zwei Anregungsfrequenzen entsprechen soll, wird der interne Frequenzgenerator des Lock-in Voltmeters zusätzlich genutzt.
+Eine Minimierung bzw. Modulation der gemessenen Amplitude durch Phasenverschiebung zwischen Mess- und Referenzsignal wird durch den dualphasigen Modus des Lock-in Voltmeters zuverlässig unterdrückt.
+Die angezeigten Werte werden über einen analogen Ausgang des Lock-in-Voltmeters wieder in das Multimeter des Multiplexers geführt, wo die Datenspeicherung stattfindet.
+Eine Auswertung der aufgenommenen Messwerte findet mit der Software Matlab des Herstellers Mathworks statt.
+Der Multiplexer kann für oﬄine-Messungen auch durch einen Flying-Probe-Tester ersetzt werden.
+Dies hat den Vorteil, dass keine Verkabelung an das Testobjekt angebracht werden muss, da die Nadeln die auf dem Testobjekt vorgesehenen Flächen kontaktieren.
+Die Messung einer großen Probenanzahl wird somit möglich.
+Im vorliegenden Aufbau wird die Flip-Chip Struktur mittels Multiplexer vermessen, um eine zeitlich fein aufgelöste Messung zu erhalten und Einflüsse durch mehrmaliges Ein- und Ausspannen des Testobjektes auszuschließen.
+
+
+:::: Beschränkungen der verwendeten Messtechnik ::::
+
+
+Aufgrund der sehr geringen Amplitude der durch einen Defekt generierten Frequenzen kommt das Lock-in Verfahren zur Anwendung.
+Damit ist es möglich, selbst kleinste Amplituden aus einem Mischsignal herauszufiltern, sofern die gesuchte Frequenz bekannt ist.
+Selbst wenn Rauschen das eigentliche Messsignal überlagert, ist es möglich, aussagekräftige Messergebnisse zu erzielen.
+Dieses Verfahren hat jedoch auch Grenzen.
+Durch einen internen Vorverstärker werden alle Signalanteile verstärkt.
+Das führt zusätzlich zu Verzerrungen bzw. Intermodulationen, die nicht durch das zu messende Objekt generiert werden.
+Sie überlagern das eigentliche Messsignal.
+Eine Variante mit mehreren schmalbandigen Verstärkern mit unterschiedlicher Verstärkung in Kombination mit Kerbfiltern ist im Hinblick auf Rauscharmut und Linearität zu bevorzugen.
+In den Langzeitversuchen kommt ein Multiplexer zum Einsatz, der mittels verschiedener Relais die Verbindung der einkanaligen Messtechnik zu verschiedenen Teststrukturen sequenziell herstellt.
+Diese Relais stellen während des Schaltens nicht zwangsläufig den gleichen Kontaktwiderstand her.
+Das Schalten selbst und die Güte des Kontaktwiderstandes beeinflussen die Messergebnisse.
+Um den Einfluss des Multiplexers zu minimieren, werden vor jeder Messung stets alle Kanäle kurzgeschlossen und die Amplituden der generierten Signale aufgenommen.
+Diese haben als konstanten Offset keine weitere Auswirkung auf die Messung.
+Wenn es die Messung ermöglicht, wird auf einen Multiplexer verzichtet.
+Die Signalerzeugung wird teilweise mit digitalen Funktionsgeneratoren durchgeführt.
+Dadurch bleibt der Messstand sehr flexibel und einfach zu bedienen.
+Die Funktionsgeneratoren erzeugen jedoch ebenfalls Oberwellen, die letztendlich auch auf das Messergebnis einwirken.
+Für die Erzeugung von Temperaturunterschieden zwischen intakten und defekten Leitergebieten wird ein Leistungsverstärker genutzt.
+Dieser ist derart bemessen, dass nur wenige zusätzliche Verzerrungen durch das nichtlineare Verhalten des Verstärkers generiert werden.
+In dem hier beschriebenen Fall wird eine Spannungs-Strom-Wandlung mithilfe eines Leistungswiderstandes durchgeführt.
+Der niederohmige Widerstand ändert den Ausgangswiderstand des Signalquellennetzwerkes nur geringfügig.
+Zudem sind die Stromstärken nur über die Einstellung der Lastwiderstände variierbar.
+Diese setzen sich jeweils aus der Summe des Vorwiderstandes und des aktuellen Widerstandes der Teststruktur zusammen.
+Es ergibt sich somit ein unerwünschter Gegenkopplungseffekt, der mit steigendem elektrischen Widerstand der Teststruktur den Strom verringert.
+Der Einfluss der Umgebungs- und Betriebstemperatur spielt im Hinblick auf Frequenzstabilität der Generatoren und Filter eine große Rolle.
+Für die Messungen wird das Labor klimatisiert und das Kerbfilter in einem temperierten Gehäuse betrieben, so dass die Frequenz nahezu keinen Drift aufweist.
+Trotzdem muss vor jeder Messung die Sperrfrequenz überprüft werden, da sie durch die hohe Steilheit des Filters einen großen Einfluss auf die Messungen haben kann.
+Die Signalgeneratoren besitzen ebenfalls einen Frequenzdrift, der temperaturbedingt ist.
+Hier ergeben sich Genauigkeiten von etwa ±5 Hz bezüglich der angestrebten Frequenz.
+Diese spielen jedoch eine untergeordete Rolle, da im Lock-in-Voltmeter die jeweilige Frequenz als Referenz genutzt wird und bei jeder Messung die Frequenzen der Harmonischen errechnet werden.
+Die Annahme, dass bei gleicher Eingangsleistung die von der Messtechnik generierten Verzerrungen konstant sind, wird durch die Messergebnisse bestätigt.
+Als nächste Ausbaustufe des Messstandes kann hier also empfohlen werden, diskrete Bauteile zu verwenden, die in der gesamten Messkette sehr wenig Verzerrungen generieren.
+Ein speziell zugeschnittener Aufbau bietet zwar deutlich weniger Möglichkeiten, besitzt jedoch Potential, die Messgenauigkeit zusätzlich zu steigern [92, 93].
+
+
+:::: Ergebnisse der Messungen ::::
+
+
+Im folgenden Kapitel werden Ergebnisse der einzelnen Messungen dargestellt und bewertet.
+Beide Teststrukturen werden hinsichtlich ihrer Eignung bezüglich der Empfindlichkeit des Messverfahrens untersucht.
+Die experimentell untersuchten Parameter sind für die Leiterbahnteststruktur Stromstärke und Defekttiefe.
+Im Fall der Flip-Chip Teststruktur sind es Scherkraft und Temperatur.
+
+
+:::: Dritte Harmonische der Leiterbahnteststruktur ::::
+
+
+Die drei diskret eingeengten Leiterbahnabschnitte werden bei Stromstärken zwischen 0,47 A und 1,73 A vermessen.
+Abbildung 4.10a zeigt den Verlauf der dritten Harmonischen bei einer Messfrequenz von 9961 Hz.
+Erwartungsgemäß steigt mit größerem Strom die Temperatur an der eingeengten Leiterbahnstelle durch die höhere joulsche Erwärmung.
+Dadurch wird dem Modell entsprechend das Leiterverhalten nichtlinearer und die Amplitude des generierten Signals steigt.
+Eine zusätzliche Verringerung des Querschnittes führt zu weiterem Anstieg der Stromdichte und damit auch des gemessenen Signals.
+Die rot mit Sternen markierte Kurve entspricht der mit etwa 3,949 mm am weitesten eingeengten Leiterbahn, die erwartungsgemäß die größte Variabilität über den dargestellten Strombereich aufweist.
+12u
+13u
+14u
+15u
+16u
+17u
+18u
+19u
+20u
+21u
+22u
+23u
+24u
+25u
+26u
+27u
+28u
+29u
+30u
+31u
+32u
+33u
+34u
+tinulierliche Kurven entsprechen dem analy- 0,47 A, 0,92 A, 1,32 A, 1,73 A. Kontinuliertischen Modell.
+liche Kurven entsprechen dem analytischen Modell.
+Abbildung 4.10:
+Verlauf der Harmonischen-Messung an der Leiterbahnteststruktur.
+Die Einheit der dritten Harmonischen ist in Volt dargestellt.
+Den genauen Einfluss der Defekttiefe auf das Messsignal zeigt Abbildung 4.10b.
+Der minimal nötige Strom zur Messung der unterschiedlich stark eingeengten Leiterbahnabschnitte beträgt laut Grafik 4.10a 1 A, da ab dieser Stromstärke eine eindeutige Zuordnung der Messsignale zu den verschiedenen Proben möglich ist.
+Bei größeren Strömen nimmt die Empfindlichkeit9 noch einmal 9Die Empfindlichkeit wird durch die Steigung, also dem ersten Moment der betrachteten deutlich zu.
+Ein Strom von 0,5 A genügt dagegen nicht den Anforderungen, da die Temperaturerhöhung in der Defektregion durch die hohe thermische Leitfähigkeit entlang der Leiterbahn zu gering ist, um durch die einhergehende Nichtlinearität messbare Oberwellen anzuregen.
+4u
+5u
+6u
+7u
+8u
+9u
+10u
+11u
+12u
+13u
+14u
+15u
+16u
+#$@FORMULA@$#:0
+17u
+Die bereits im Simulationskapitel auf Seite 61 eingeführte stromunabhängige Darstellung der Ergebnisse wird auch hier genutzt.
+Abbildung 4.11 zeigt eine auf den Strom normierte Darstellung der Messung.
+Die Unabhängigkeit von der verwendeten Stromstärke ist hier gut ersichtlich.
+Das Modell ist in der blauen Kurve für den Vergleich hinterlegt.
+4.4.2 Intermodulation in Flip-Chip-Lotverbindungen Durch die Verwendung von Intermodulationssignalen spielen die Nichtlineari-
+
+
+:::: Intermodulation in Flip-Chip-Lotverbindungen ::::
+
+
+untergeordnete Rolle, sofern jede Frequenz einzeln verstärkt und nachträglich erst als Messsignal zusammengeführt wird.
+Diesem Vorteil steht jedoch die Herausforderung einer Messung der um fast zwei Größenordnungen geringeren Amplitude entgegen.
+Da die Phasenlage und Drift der Einzelsignale unveränderbar und konstant sein müssen, bietet sich hier die Nutzung digitaler Signalgeneratoren an.
+Dadurch werden jedoch mehr Oberwellen bei der Signalerzeugung generiert, so dass es hier auch möglich ist mit einem einzelnen Leistungsverstärker zu arbeiten, ohne die Messgenauigkeit zu beeinflussen.
+Das vorgestellte Messverfahren findet hier Anwendung in der Früherkennung von Ausfällen.
+Dazu wird an der Flip-Chip Teststruktur ein Lebensdauertest unter Scherbelastung durchgeführt.
+Die Ergebnisse werden mit der ohmschen Widerstandsmessung verglichen, die als etabliertes Verfahren zur Ausfallbestimmung eingesetzt wird [31].
+Als Ausfallkriterium dient die in [38] vorgeschlagene Erhöhung des gemessenen Widerstandes um 20 % gegenüber dem Ausgangswert.
+Dieses Ausfallkriterium findet auch bei der Messung des Intermodulationssignals Anwendung, um beide Methoden sinnvoll in Bezug setzen zu können.
+Die äußere Kraft führt erwartungsgemäß zusätzlich dazu, dass die Ausfallzeitpunkte aller Lotverbindungen zeitlich sehr nah beieinander liegen.
+Abbildung 4.12 zeigt Weibullverteilungen10 der gemessenen Ausfallzeitpunkte.
+Die blau dargestellten Geraden sind jeweils die IDe-Messungen, während in grün die Ergebnisse der Widerstandsmessung dargestellt sind.
+Es werden zwei Versuche mit unterschiedlicher Beschleunigung und unterschiedlichen Messfrequenzen durchgeführt, um einerseits die Schädigungsparameter auf möglichst kurze Lebensdauern zu reduzieren und andererseits den Einfluss der Messfrequenz zu untersuchen.
+Die Frequenzen werden derart gewählt, dass die Differenz der zwei anregenden Signalfrequenzen in beiden Fällen gleich groß ist.
+Abbildung 4.12a zeigt den Versuch mit einer Umgebungstemperatur von 100 ◦C.
+Die sich einstellende charakteristische Lebensdauer bei der Widerstandsmessung beträgt etwa 55 h. Im Vergleich dazu wird eine Signalamplitudenerhöhung von 20 % bei der IDe-Messung im Mittel schon nach 37 h erreicht.
+Bei höherer Temperatur von 120 ◦C sinkt die charakteristische Lebensdauer um den Faktor 2,5.
+Der Grund hierfür ist die temperaturbedingt höhere Kriechgeschwindigkeit des Lotes unter Belastung (siehe Abbildung 4.4b).
+Der Einfluss der höheren
+#$@FORMULA@$#:0
+0u
+1u
+2u
+3u
+4u
+5u
+6u
+7u
+8u
+9u
+10u
+11u
+12u
+13u
+14u
+15u
+16u
+17u
+18u
+19u
+20u
+21u
+22u
+23u
+24u
+25u
+#$@FORMULA@$#:0
+26u
+27u
+28u
+Parameter
+30u
+31u
+R:
+b=35,7 Tc=54,83 h
+33u
+34u
+35u
+36u
+37u
+38u
+auf das frequenzabhängige Verhalten der Messung haben, kann angenommen
+40u
+Empfindlichkeit der Messung nicht beeinflusst wird.
+In beiden Versuchen ist der Vorsprung des hier zu evaluierenden IDe-Messverfahrens in der Vorhersage der bevorstehenden Ausfälle etwa mit dem Faktor 1,6 anzugeben.
+Die Widerstandsmessung hat einen höheren Formfaktor b und damit geringere Streuungen in der Lebensdauer verglichen mit der IDe-Messung.
+Gründe für die unterschiedlichen Formfaktoren liegen im Aufbau des Messsystems, welches in dem präsentierten Ausbauzustand einerseits verschieden lange Messzeiten von Widerstands- und IDe-Messung besitzt und durch die höhere Sensitivität anfälliger für Oberwellen ist.
+Die Messabfolge beginnt stets mit der Widerstandsmessung aller Kanäle, die etwa 2 s in Anspruch nimmt.
+Die nachfolgende IDe-Messung benötigt, bedingt durch die Einschwingzeit des Lock-in Verstärkers, mehrere Minuten für einen Messdurchlauf.
+In Abbildung 4.12b ist die zeitliche Differenz zwischen den Ausfallzeiten bis auf die der letzten drei Ausfallzeitpunkte nahezu konstant.
+Die Streuung der IDe-Messwerte resultiert zusätzlich aus einem im Versuch beobachteten leicht verkippten Ab- scheren des Flip-Chips.
+Dadurch werden einige Lotverbindungen etwas mehr in einem Winkel von 90◦ zur Scherrichtung belastet.
+Dies verjüngt die Verbindung zusätzlich und wird von der unempfindlicheren Widerstandsmessung nicht detektiert.
+
+
+:::: Bestätigung verteilter IDe-Quellen ::::
+
+
+Schitvov et al. [88, 101] zeigen, dass konzentrierte Quellen von Nichtlinearitäten in Mikrostreifenleitungen vorhanden sind.
+Diese Quellen erstrecken sich entlang der Leiterbahn und können summiert werden.
+Je länger die Leiterbahnstrecke, über die gemessen wird, desto höher ist auch die Summe der konzentrierten nichtlinearen Quellen.
+Dies gilt analog zur Reihenschaltung der ohmschen Widerstände entlang der einzelnen Leiterbahnabschnitte.
+Die Annahmen, die von Shitvov getroffen werden, können mit Ergebnissen dieser Arbeit bestätigt werden.
+Die dafür verwendeten Leiterbahnen sind 2 mm breit und 2,5 cm lang.
+Die Kupferlage der Leiterplatte ist 35 µm dick.
+In jeder Leiterbahn befinden sich drei gleichmäßig über die Länge verteilte Einkerbungen unterschiedlicher Tiefe.
+Die Abmessungen der Einkerbungen betragen angelehnt an Abbildung 2.3 (b + c = 2 mm) b = 775 µm, 1175 µm und 1570 µm mit einer Breite a von 170 µm.
+Diese Werte sind die Mittelwerte der Messungen an den fertig hergestellten Leiterbahnen.
+Die genutzten Leiterplatten sind 4-lagig mit Standard FR4 Substrat aufgebaut und haben Abmessungen von 160 mm x 100 mm.
+Abbildung 4.13 zeigt die präparierten Leiterbahnabschnitte.
+21u
+Abbildung 4.13:
+Detailaufnahme der einzelnen Einkerbungen in der Leiterbahn.
+Der angegebene Maßstab gilt für alle Bilder gleichermaßen.
+Messungen über mehrere unterschiedlich tief eingeengte Leiterbahnabschnitte zeigen, dass die aufgenommene Amplitude der Summe der Einzelmessungen über jeweils nur einem eingeengten Abschnitt entspricht [52].
+Eine Übersicht über eine derartige Messreihe an der 2 mm breiten Leiterbahnstruktur zeigt Abbildung 4.14.
+Links sind die einzelnen Messpunkte dargestellt, die miteinander in Beziehung gesetzt werden sollen (Abbildung 4.14a).
+Auf der rechten Seite (Abbildung 4.14b) sind die Messwerte als Balkendiagramm aufgeführt.
+Werden beliebige Kombinationen der ersten drei Messwerte summiert, so ergeben sich die letzten drei gemessenen Balken.
+Gemessen wird jeweils mit der in Abbildung 4.6 dargestellten Messkette ohne Kerbfilter.
+7u
+8u
+#$@FORMULA@$#:0
+9u
+10u
+11u
+12u
+13u
+#$@FORMULA@$#:1
+14u
+15u
+16u
+17u
+18u
+19u
+20u
+21u
+22u
+23u
+bahnabschnitte und die dazugehörigen Sum-
+25u
+Abbildung 4.14:
+Nachweis verteilter, konzentrierter Quellen von Nichtlineari-
+27u
+IDe-Verfahren.
+UIDe ist dabei die Spannungsamplitude des generierten Signals.
+Abweichend von den Arbeiten von Shitvov et al. sind die Quellen der Nichtlinearitäten hier die Leiterbahneinengungen und nicht werkstoffeigene Nichtliniaritäten, die laut Shitvov residual in der Leiterbahn vorhanden sind.
+Es wird damit gezeigt, dass sowohl das in dieser Arbeit vorgestellte Modell zu dem neuen Messverfahren, als auch die Annahmen verteilter, konzentrierter Quellen von Nichtlinearitäten in Leiterstrukturen, gültige Annahmen darstellen.
+Shitvov et al. gehen nicht gesondert auf die Ursachen der Nichtlinearitäten in den Leiterbahnen ein.
+4.6 Zusammenfassung und Bewertung der Ergebnisse Die Ergebnisse der Messungen zeigen, dass das hier vorgestellte Verfahren in der Lage ist, Defekte eher festzustellen, als dies bisher mit anderen elektrischen Verfahren möglich war.
+Die Sensitivität des IDe-Verfahrens ist damit bezogen auf kleinste Defekte signifikant höher als die der Widerstandsmessungen.
+Die Parametervariationen zeigen auch, dass als Voraussetzung für eine erfolgreiche Anwendung des Messverfahrens nicht nur eine höhere transiente Temperaturänderung an der zu untersuchenden Leiterstelle existieren muss, sondern auch der Frequenzbereich der anregenden Signale günstig gewählt werden muss.
+Parametervariationen zeigen zusätzlich, dass der größte Einfluss auf das Messergebnis durch eine geeignete Wahl der Amplituden der anregenden Ströme getroffen wird.
+Bei gleichem Degradationszustand ist der Frequenzbereich, in dem das Messverfahren gut funktioniert sehr breit, so dass einzig die Stromdichte zu noch besser messbaren Signalen beitragen kann.
+Unter der Voraussetzung der Nachbildung eines bestimmten Ausfallverhaltens muss jedoch stets berücksichtigt werden, keine zusätzliche Fehlermechanismen, wie z.B. Elektromigration anzuregen.
+Der Vorhersagevorsprung des IDe-Verfahrens gegenüber der Widerstandsmessung liegt bei den vorgestellten Versuchen der Flip-Chip Teststruktur bei bis zu 40 Prozent bezogen auf die Lebensdauer, die durch die Widerstandsmessung angegeben werden kann (siehe Abbildung 4.12 auf Seite 85).
+Durch geeignete Wahl der Schädigungsparameter lässt sich zwar die Lebensdauer des Versuches weiter verringern, jedoch ändert dies nichts an dem Vorhersagevorsprung.
+Der gerätetechnische Aufwand der ID-Messungen ist verglichen mit der Widerstandsmessung höher, da es derzeit kein Gerät gibt, was dieses Messverfahren mit allen Bestandteilen vereint.
+Auch die Kosten für einen Messaufbau bewegen sich auf höherem Niveau.
+Da jedoch der Verkabelungsaufwand und die Durchführung der Versuche bei Berücksichtigung der Zeit- und Kostenersparnis bei Lebensdauertests auf dem Niveau der online-Widerstandsmessung liegen, ist dieses Verfahren sehr gut geeignet, um nicht nur Testzeit einzusparen, sondern auch Feldinformationen eher zu erhalten und damit Ausfälle
+
+
+:::: Vergleich zwischen Simulation und Experiment ::::
+
+
+Zur Verifikation der simulativ errechneten Temperaturverläufe entlang der Leiterbahnoberfläche werden zusätzlich Thermografieaufnahmen vom Ort der größten Querschnittseinengung angefertigt.
+Dazu wird die Oberfläche der Leiterbahn mit schwarzer Farbe matt lackiert, so dass die Emissivität der Leiterbahn annähernd der eines schwarzen Strahlers entspricht.
+Eine Kalibrierung der Kamera auf die im Datenblatt des Lackes angegebene Emissivität ermöglicht exakte Messungen.
+Die zu untersuchende Leiterplatte wird auf eine Heizplatte gelegt, die eine Temperatur von 30 ◦C aufweist.
+So wird der Wärmefluss in die Umgebung abgeschwächt.
+Die Messung findet in einer lichtdichten Kammer statt, um ungewollte Konvektion und Erwärmung durch z.B. Sonneneinstrahlung zu verhindern.
+Abbildung 4.15 zeigt den Vergleich einer Thermografiemessung mit den mittels FEM simulativ ermittelten Temperaturen an einer um etwa 82 % eingeengten Leiterbahn bei sinusförmiger Anregung mit einer Amplitude von 1 A bei 15 Hz11.
+16u
+17u
+18u
+19u
+20u
+21u
+22u
+23u
+24u
+25u
+26u
+27u
+28u
+Der gemessene Verlauf entspricht qualitativ der Simulation, die Amplitude der Messung ist jedoch um den Faktor drei geringer.
+Dies resultiert aus der Messung an der Auflösungsgrenze der Kamera und dem nicht zur Verfügung stehenden Lock-in-Thermografie-Verfahren.
+Zusätzlich werden für die Thermografiemessung Konstanten, wie z.B. Emissionsfaktor, Konvektionskoeffzieint oder Rauigkeit, angenommen, die eventuell nicht den tatsächlichen Werten entsprechen und damit Abweichungen unterstützen.
+Die Zusammenführung der Ergebnisse aus den Simulationen in Kapitel 3 mit den Messergebnissen bestätigt die Modellannahme insofern, als dass das Messverfahren grundsätzlich einen Vorteil in der Empfindlichkeit und damit in der Vorhersagefähigkeit bezüglich Degradationen in frühen Stadien besitzt.
+Im Vergleich zwischen den Abbildungen 3.8 auf Seite 60 und 4.10 auf Seite 82 fällt auf, dass sowohl die Simulation, als auch die Messung gut zu der Kurve des analytischen Modells passen.
+Der Wertebereich der Ergebnisse in beiden Kurven stimmt überein mit der Tendenz, dass die Simulationsergebnisse geringfügig besser mit den Kurven des analytischen Modells korrelieren.
+Sowohl in der Messung, als auch in der Simulation sind die hinterlegten kontinuierlichen Kurven des analytischen Modells gleich.
+Leicht größere Abweichungen gibt es bei den jeweils rechten Bildern der Abbildungen 3.8 und 4.10.
+In der Simulation liegen die Datenpunkte immer unterhalb der kontinuierlichen Kurven, während bei der Messung eine etwas bessere Übereinstimmung existiert.
+Um diesen Umstand etwas genauer zu untersuchen werden beide normierten Ergebnisse aus den Abbildungen 3.9 und 4.11 miteinander direkt verglichen.
+Abbildung 4.16 stellt diesen Zusammenhang grafisch dar.
+Die Abweichungen zwischen den gemessenen und den si-
+21u
+22u
+23u
+24u
+25u
+26u
+27u
+28u
+29u
+30u
+31u
+32u
+Simulationswerte.
+Als Abweichung wird hier die Differenz aus Messdaten und Simulationsdaten bezogen auf die Simulationsdaten definiert.
+Die Spanne in Abbildung 4.16 reicht von -40 bis 20 %.
+Es zeigt sich, dass die Unterschiede bis auf drei Ausnahmen gering sind.
+Sie folgen keinem klaren Trend, einzig die Abweichung bei einem Strom von 0,92 A sticht heraus.
+Hier liegt die Differenz zwischen Messung und Simulation etwa in der Größe von einem Drittel des Simulationswertes.
+Die geringsten Abweichungen ergeben sich bei sehr niedrigen und hohen Strömen.
+Je geringer der verbleibende Querschnitt der Leiterbahn, desto höher sind auch die Streuungen im mittleren Strombereich.
+Gestaffelt nach der verbleibenden Restleiterbahnbreite 345, 143 und 51 µm ergeben sich mittlere Abweichungen von 8, 2 und 10 % der Differenz von den Simulationswerten.
+Diese Abweichungen können auch durch die Art der Modellierung erklärt werden.
+Als Hauptursache für das nichtlineare Verhalten wird das vorgestellte thermische Modell angesehen.
+Wie am Beginn der Arbeit diskutiert, gibt es Einflüsse auf die Linearität von Leiterstrukturen, die hier zwar eine untergeordnete Rolle einnehmen, jedoch nicht vollständig vernachlässigbar sind.
+
+
+:::: Ableitungen für die praktische Umsetzung des Mess- verfahrens ::::
+
+
+Grundsätzlich gilt, dass der Strom für die entsprechende Messung so hoch wie für ein aussagekräftiges Messsignal nötig, jedoch eher niedrig eingestellt werden muss, um die Lebensdauer der zu testenden Verbindung durch den Stromfluss nicht zu beeinflussen.
+Ein günstiger Messstrombereich für eine Leiterbahn von 1 mm Breite beginnt bei etwa 1 A.
+Dann können die gemessenen Signale den verschieden starken Einengungen des Leiterquerschnittes eindeutig zugeordnet
+#$@FORMULA@$#:0
+werden (Abbildung 4.10a).
+Es zeigt sich, dass nach etwa 60 Prozent der Lebensdauer einer Lotverbindung der Ausfall sicher vorhergesagt werden kann (Abbildung 4.12 auf Seite 85).
+Demzufolge reduziert sich die Testzeit um fast die Hälfte, was eine ebenso große Kostenersparung bedeuten kann.
+In Feldmessungen könnten damit auf einfache Art und Weise Konzepte der zustandsbasierten Wartung umgesetzt werden.
+Zusätzlich lässt sich aus den vorgestellten Ergebnissen ableiten, dass trotz geringerer Amplitude des Messignals bei der IDe-Messung der messtechnische Aufwand gegenüber der Messung der dritten Harmonischen gerechtfertigt ist.
+
+
+:::: Verallgemeinerung des Messprinzips ::::
+
+
+Das in dieser Arbeit vorgestellte Messverfahren kann in mehrere Richtungen angepasst werden.
+Es ist möglich, durch die Wahl der Messfrequenzen im Fall der Zweitonmessung Gleichspannungsdegradationssignale zu erzeugen oder bei gleichem Messprinzip die Modulationsquelle1 zu wechseln.
+Dadurch steigen die Möglichkeiten in der Anwendung des Messverfahrens enorm.
+Ein weiterer Ansatz ergibt sich durch Auswerten der Phaseninformation in den Messsignalen.
+
+
+:::: Vereinfachung des Messaufbaus durch ge- eignete Wahl der Signalfrequenzen ::::
+
+
+Falls zur Messung zwei Signale mit unterschiedlichen Frequenzen verwendet werden, kann nach der in dieser Arbeit vorgestellten Methodik ein Degradationssignal im Frequenzbereich bei der Differenz beider Frequenzen auftreten.
+Werden Intermodulationsprodukte höherer Ordnung betrachtet, kann diese Differenz auch bei 0 Hz liegen.
+Einer dieser Fälle mit möglichst niedriger Ordnung ist die Differenzfrequenz 2f2 − f1.
+Ist die Frequenz f1 genau doppelt so groß wie f2, ergibt sich ein Messsignal als Gleichspannungssignal.
+Dies gilt natürlich auch für jede andere Kombination, bei der die Differenz von Vielfachen der Eingangsfrequenzen gerade Null ergibt.
+In der Praxis bedeutet dies, dass bei reiner Wechselsignalübertragung eine vergleichsweise einfache Gleichspannungsmessung an dem zu überwachenden Objekt durchgeführt werden kann.
+Der gemessene Wert ist dem thermischen Modell zufolge ein geeigneter Degradationsparameter.
+Abbildung 5.1 zeigt die dafür notwendige Messkette.
+Wie in der Abbildung zu erkennen ist, bedarf
+6u
+7u
+8u
+9u
+10u
+11u
+12u
+spannung.
+dieser Ansatz einer Kapazität, um die parasitären Gleichspannungsanteile, die durch die Messtechnik bzw. Aufladungseffekte generiert werden, abzugrenzen.
+Dieser Kondensator muss einerseits einen hohen Verschiebungsstrom tragen können, andererseits darf er das Messsignal nicht durch die Generation zusätzlicher Harmonischer beeinflussen.
+Der benötigte Verschiebungsstrom muss dem Strom entsprechen, der zur thermischen Anregung der zu überwachenden Kontaktstelle benötigt wird.
+Als weitere Anforderung an das dargestellte Messverfahren müssen die Phasen der Messsignale nicht nur bekannt sein, sondern auch in festem Verhältnis zueinander stehen, da eine Messung mittels dualphasigem Lock-in Verstärker bei Gleichspannung nicht mehr möglich ist.
+Ausgehend von einer konstanten Phasenverschiebung zwischen den zwei Messsignalen wird die Amplitude des Gleichspannungsdefektsignals durch den Sinus der Phasendifferenz sin(φ) gedämpft.
+Eine günstige Wahl der Phasendifferenz (π/2 + kπ mit k ∈ N) ermöglicht hier zusätzliche Optimierung.
+Hieraus wird auch ersichtlich, dass variable Phasendifferenzen eine Herausforderung für praktische Messungen darstellen.
+Mit den entsprechenden Signalgeneratoren, die die Phase evtl. sogar nachregeln oder sehr konstante Phasen generieren können ist dieser Ansatz eine sinnvolle Erweiterung in Richtung Integration von Messtechnik in miniaturisierten
+
+
+:::: Höhere Selektivität durch Auswertung der Phaseninformation zwischen Eingangs- und Ausgangssignal ::::
+
+
+In der Modellierung des Messverfahrens in Kapitel 2.2 wird die Leiterbahn in zwei Bereiche unterteilt:
+Einen defekten Bereich, der die Querschnittseinengung beinhaltet und der Bereich, der die restliche intakte Leiterbahn abbildet [52].
+In beiden Bereichen ist eine thermische Kapazität des leitenden Werkstoffes vorhanden [32, 100].
+Diese kann genutzt werden, um das Defektsignal noch mehr von dem Signal abzugrenzen, welches durch die intakte Leiterbahn generiert wird [33].
+Der querschnittseingeengte Bereich zeichnet sich durch eine geringere thermische Kapazität aus.
+Verlustleistung generiert sehr schnell signifikante Temperaturänderungen.
+Die generierte Wärme fließt durch die gute thermische Leitfähigkeit elektrischer Leiter zusätzlich sehr schnell in Richtung der intakten Leiterbahn ab.
+Gegensätzliche Verhältnisse herrschen im Bereich der intakten Leiterbahn.
+Sie heizt sich aufgrund der großen thermischen Kapazität langsamer auf und kühlt sich aufgrund der vergleichsweise schlechten thermischen Anbindung an das Trägersubstrat sehr langsam ab.
+Dieses unterschiedliche Verhalten führt zu einer Phasenverschiebung zwischen Defektsignal und dem überlagerten Signal der intakten Leiterbahn.
+Bei Vernachlässigung der thermischen Kapazität der defekten Region und Nutzung eines sinusförmigen Messsignals ergibt sich durch Mittelung des anregenden Stromes durch Integration eine Phasenverschiebung von 90◦.
+Durch Simulationen mit einem thermischen Ersatzschaltbild ergeben sich geringe Abweichungen aufgrund der Verzweigungen der Signalleitungen zwischen den einzelnen modellierten Kapazitäten.
+Diese führen zu einer simulativ ermittelten Phasenverschiebung von 108◦ zwischen Defektsignal und überlagertem Signal der intakten Leiterbahn.
+Aus diesen Überlegungen folgt, dass der Einfluss des Signals der intakten Leiterbahn erst relevant wird, wenn die Temperaturerhöhung während eines Anregungszyklus in der Größenordnung der Temperaturerhöhung der eingeengten Leiterbahnstelle ist.
+Es ist zusätzlich möglich, die Verschiebung zu nutzen, um eine höhere Selektivität der Messung zu erreichen.
+Da die Pha-
+3u
+4u
+5u
+6u
+7u
+8u
+9u
+10u
+11u
+12u
+13u
+14u
+15u
+16u
+17u
+18u
+19u
+20u
+21u
+22u
+23u
+24u
+25u
+26u
+27u
+28u
+29u
+jektion der gemessenen Defektspannung auf die um 90◦ verschobene Achse zum Signal des intakten Leiterbereiches2 schlägt Halperin [33] vor.
+Dadurch wird zwar nicht die maximale Amplitude des Defektsignales erreicht, jedoch besteht in jedem Fall eine dynamische Dämpfung des parasitären Signals intakter Leiterbereiche.
+5.3 Wechsel der Modulationsquelle In den vorangegangen Abschnitten wird das Messsignal selbst zur Anregung der thermischen Modulation genutzt (IDe).
+Für Verbindungen, die mechanisch mit einer festen Anregungsfrequenz altern, kann das Messprinzip weiter vereinfacht werden.
+In diesem Fall findet die Anregung mechanisch statt (IDm).
+
+
+:::: Wechsel der Modulationsquelle ::::
+
+
+durch die zu testende elektrische Verbindung.
+Dieser Strom hat im Gegensatz
+0u
+1u
+2u
+3u
+4u
+5u
+6u
+7u
+nischer Anregung (IDm).
+zu dem Strom im IDe Messverfahren eine geringe Stromdichte, da das thermische Verhalten an einer Querschnittseinengung hier nicht benötigt wird.
+Die Frequenz f1, mit der sowohl die Schädigung (z.B. durch Vibration oder Verschiebung eines beweglichen Probentisches) als auch die Referenzfrequenz des Lock-in Voltmeters festgelegt wird, kann nun, unabhängig von den Überlegungen in Kapitel 2.3, beliebig gewählt werden.
+Sie muss jedoch der Schädigungsfrequenz entsprechen.
+Am Ausgang des Lock-in Voltmeters steht eine der Schädigung proportionale Gleichspannung zur Verfügung.
+Da die Messfrequenz und Schädigungsfrequenz nun identisch sind, ist die Amplitude des Messergebnisses um Größenordnungen höher, verglichen mit den Ergebnissen der IDe-Messung.
+#$@FORMULA@$#:0
+20u
+R1 R2(f1) (a) Modellhafter Defekt in einem (idealisier- (b) Elektrisches Ersatzschalbild der IDmten) Bonddraht - Momentaufnahme ohne Methode an einem Bonddraht.
+Ausbreitung.
+Abbildung 5.4:
+Voraussetzung für die Anwendung der IDm-Methode.
+Das zugrundeliegende Modell basiert auf zyklischem Öffnen und Schließen des eingeprägten Defektes (siehe Abbildung 5.4a) und damit auf einer zy- klischen Änderung des Widerstandes mit der Schädigungsfrequenz f1 (siehe Abbildung 5.4b).3 Durch diese in der Amplitude über der Schädigungszeit steigende Widerstandsänderung in R2 wird der Gleichstrom IDC auf die Schädigungsfrequenz moduliert und kann als Parameter der Schädigung genutzt werden.
+Der verbleibende intakte Widerstandsanteil wird in der Abbildung durch R1 repräsentiert.
+Ein Optimum der Sensitivität wird im Falle einer einseitigen Querschnittseinengung erreicht.
+Da bei diesem Ansatz zyklisch der Ausgangsquerschnitt zur Verfügung steht, kann eine Degradationsmessung unabhängig vom Alterungszustand der elektrischen Verbindung stattfinden.
+Einen ähnlichen Ansatz nutzt [58], dabei liegt jedoch die Ursache der Modulation in der zyklischen Dehnung des Lotes und der damit verbundenen Ermüdung.
+Im theoretischen Fall einer gleichzeitigen Defekteinprägung von zwei Seiten steht der Ausgangsquerschnitt während der Belastung nicht zyklisch zur Verfügung.
+Als Folge ist der Spitze-Spitze-Wert des IDm-Signals geringer und im Verlauf der Degradation ist mit einer geringeren Sensitivität zu rechnen.
+Dies liegt in einem gestiegenen Gleichanteil im Gesamtspektrum der Messung begründet, der jedoch nicht zum IDm-Signal beiträgt.
+Der Gleichanteil steigt während der Degradation zusätzlich an, da immer an der gegenüberliegenden Seite des Defektes, bei maximaler Auslenkung eine zunehmend größere Querschnittseinengung vorhanden ist.
+Dies wird ausführlich in [54] diskutiert.
+Abbildung 5.5 zeigt den Aufbau zur Heel Bonddraht Piezo Aktor Amplitude
+#$@FORMULA@$#:0
+t ∆ x Abbildung 5.5:
+Schematischer Versuchsaufbau zur Messung von fortschreitenden Defekten im Heel-Bereich eines Bonddrahtes.
+Schädigung eines Bonddrahtes, um fortschreitende Defekte messen zu können.
+Durch die zyklische Änderung des Abstandes der zwei Bondpads zueinander wird eine Deformation in den Draht eingeprägt, die über viele Zyklen zum mechanischen und elektrischen Versagen im Heel-Bereich führt.
+Den Vergleich und die damit verbundenen Vorteile der IDm-Methode zeigt eine exemplarische Messung an einem 25 µm dicken Bonddraht.
+Geschädigt wird der AlSi1-Draht4 mit Hilfe eines Piezotisches, der eine horizontale Bewegung mit 35 µm Auslenkung in jede der beiden Raumrichtungen um den Nullpunkt bei einer Frequenz von 5 Hz durchführt.
+Der eingeprägte Strom beträgt 100 mA.
+Gemessen wird das modulierte Wechselspannungssignal bei 5 Hz und der ohmsche Widerstand als Vergleichswert mit der Zweileitermessung.
+Damit beide Messungen vergleichbar sind, werden die Messwerte auf die jeweiligen Anfangswerte normiert.
+Der Ausgangswiderstand beträgt 280 mΩ und das anfängliche IDm-Signal 0,47 µV.
+Die Ergebnisse der Messung zeigt Abbildung
+14u
+15u
+16u
+17u
+18u
+19u
+20u
+21u
+22u
+23u
+24u
+25u
+26u
+schen Zyklen (hier exemplarisch gezeigt an normiert auf die Anfangswerte der jeweiligen einem Dickdraht) Einheit (Volt und Ohm).
+Abbildung 5.6:
+IDm-Messung an einem mechanisch gealterten Bonddraht Im Vergleich zur ohmschen Widerstandsmessung zeigt die IDm-Methode einen signifikanten Vorsprung.
+Ein gängiges Ausfallkriterium bei Zuverlässi-
+#$@FORMULA@$#:0
+keitsuntersuchungen ist z.B. ein Parameteranstieg um 20 % (nach z.B. [38]).
+Wird dieses Kriterium auf Abbildung 5.6a angewandt, ist das Verhältniss von IDm- zu Widerstandsausfall 1610 zu 4268 Zyklen und somit etwa 62 % Vorsprung in der Früherkennung bzw. Testzeitersparnis.
+An dieser Stelle muss darauf hingewiesen werden, dass es derzeitiger Stand der Technik ist, statt elektrischer Ausfallkriterien bei Bondverbindungen fast ausschließlich mechanische Kriterien in Form von Zug- und Scherkräften zu nutzen (z.B. Zugtestmethoden 2011 und 2017 in [18] bzw. Schertest [5]).
+Das beschriebene IDm-Verfahren könnte an dieser Stelle eine Lücke in der Normung schließen, indem es eine Möglichkeit der elektrischen Messung von Degradationen in Bondverbindungen, speziell im Heel-Bereich, bereitstellt.
+Eine Modellierung des Defektverhaltens im Heel-Bereich mit messtechnischer Verifikation an dünnen Bonddrähten wird in [54] ausführlich diskutiert.
+
+
+:::: Ausblick ::::
+
+
+Die Ergebnisse der vorliegenden Arbeit können genutzt werden, um in allen Bereichen der Wertschöpfung elektronischer Systeme Verbesserungen anzustreben.
+Zukünftig sollte die Entwicklung eines eigenständigen Messgerätes, welches auf den beschriebenen Verfahren beruht, vorangetrieben werden.
+Dazu besteht noch Handlungsbedarf in der idealen Generation von oberwellenfreien Messsignalen, sowie der Minimierung von Nichtlinearitäten bei der Verstärkung und der Digitalisierung der Signale.
+Eine Steigerung des Dynamikumfanges vorhandener Messsysteme könnte die Selektivität des Verfahrens zusätzlich verbessern.
+Auch eine Automatisierung des Verfahrens zur Integration in Produktionslinien scheint möglich und erstrebenswert.
+Trampert [92, 93] und Sehr [85] haben mit ihren Arbeiten bisher deutlich zur Verbesserung der messtechnischen Realisierung und damit zur Erweiterung des Standes der Technik beigetragen.
+In der Wissenschaft bieten sich Untersuchungsbereiche in der Charakterisierung von Werkstoffen, z.B. der Ermüdungsmessung während Vibrationsbelastungen.
+Des Weiteren könnte ein Fortschritt im Verständnis des Alterungsverhaltens von lösbaren elektrischen Verbindungen durch entsprechende Analysen erreicht werden.
+Einflüsse von intrinsischen Nichtlinearitäten wie z.B. Raumladungszonen sollten weiterhin Untersuchungsgegenstand werden, um das Anwendungsfeld zu vergrößern.
+Zusätzlich sollten leitfähige Klebverbindungen und Kohlefaserverbundwerkstoffe auf Charakterisierungsmöglichkeiten hin untersucht werden, da auch in diesem Bereich derzeit keine zerstörungsfreien elektrischen Verfahren etabliert sind.
+Konkrete Aussagen zur Restlebensdauer elektrischer Verbindungen können getroffen werden, wenn ein abschließendes Verständnis des zeitlichen Verlaufs von querschnittsverringernden Einflüssen (Risse, Poren, .
+.
+. )
+auf elektrische Verbindungen vorhanden ist.
+Parallel zur Entstehung dieser Arbeit sind fünf studentische Abschlussarbeiten entstanden, die einige Gedanken weitergehend untersucht haben.
+Konkret wurden ein Messstand zur Messung von Nichtlinearitäten in Widerständen entwickelt [85], ein Signalgenerator, der sehr geringe harmonische Amplituden generiert und ein Verstärker, der bisher unerreicht linear verstärkt [93], realisiert.
+Es existieren neben einem einsatzfähigen Messstand eigens entwickelte Messgeräte, die in der Lage sind, die beschriebenen Phänomene praktisch abzubilden.
+Die Ergebnisse dieser Arbeiten können genutzt werden, um eine Kommerzialisierung des Messverfahrens zu unterstützen bzw. voranzutreiben.
+Zusätzlich wurden in [91] das Schädigungsverhalten von Lotverbindungen im Zeitbereich untersucht und in [21] Signalverarbeitungsalgorithmen entwickelt, die auf Basis des Kalman-Filters noch frühzeitigere Vorhersagen erlauben.
+
+
+:::: Anhang A ::::
+
+
+
+
+:::: Frequenz- und Phasenselektive Messung sehr kleiner Signalamplituden ::::
+
+
+Die Messung sehr kleiner Signale, die im Allgemeinen zusätzlich überlagert sind von anderen Signalen, stellt selbst moderne Messgeräte mit hoher Auflösung vor nicht zu überwindende Herausforderungen.
+Vor allem, wenn der Messbereich durch das Vorhandensein sehr großer Signale weit gewählt werden muss, reicht die begrenzte Auflösung der Messgeräte z.B. bei der Digitalisierung nicht aus um Signaländerungen in den eventuell enthaltenen kleinen Frequenzanteilen sicher zu überwachen.
+Genau diese Herausforderung galt es bei den in dieser Arbeit vorgestellten Messungen zu überwinden.
+Ein Weg, Signalamplituden zu messen, die Größenordnungen unterhalb des eigentlichen aufgenommen Signals liegen, ist die Nutzung des Lock-in Prinzips.
+Durch effzieinte analoge Signalverarbeitung werden selbst Signale unterhalb der Rauschschwelle messbar.
+
+
+:::: Das Lock-in Prinzip ::::
+
+
+Das Lock-in Prinzip wird genutzt, um sehr schwache elektrische Wechselsignale, die in Phase und Frequenz bekannt sind, aus einer Überlagerung verschiedener Signalquellen zu isolieren.
+Ein entsprechend arbeitendes Gerät stellt ein extrem schmalbandiges Bandpassfilter dar, das das Signal-Rausch-Verhältnis einer Messung günstig beeinflussen kann.
+Die ungewünschten Signalanteile werden unterdrückt bzw. gefiltert.
+Messsignal
+2u
+3u
+4u
+5u
+#$@FORMULA@$#:4
+6u
+7u
+8u
+9u
+10u
+se und Frequenz dem zu messenden Signal entspricht, ein Phasenschieber, ein Multiplizierer und ein Mittelwertfilter.
+Das am Ende bereitgestellte Gleichspannungssignal entspricht in seiner Amplitude der Amplitude des gesuchten Signals bei der Referenzfrequenz und -phase (Abbildung A.1).
+A.1.1 Allgemeine Berechnung von Fourierkoeffzieinten Gegeben sei ein Eingangssignal mit der Kreisfrequenz ωs = 2πfs und der Amplitude As.
+Das Rauschen (Rauschleistungsdichte) sei gleichverteilt über das gesamte Frequenzspektrum.
+Dann kann das zusammengesetzte Signal f (t) geschrieben werden als:
+#$@FORMULA@$#:2
+∞ 1 Z f (t) = a(ω) · e−iωt+φ, (A.1)
+#$@FORMULA@$#:3
+√ 2π −∞ wobei a(ω) die Fourierkoeffzieinten des Gesamtsignals sind.
+Die inverse Fouriertransformation kann also genutzt werden um diese Koeffzieinten zu bestimmen.
+Eine zum Eingangssignal proportionale Amplitude kann mit folgender Gleichung bestimmt werden:
+#$@FORMULA@$#:0
+∞ 1 Z a(ωs) = f (t) · eiωt−φ.
+(A.2)
+#$@FORMULA@$#:1
+√ 2π −∞ Diese Transformation kann auch durch die Multiplikation mit einem Referenzsignal und anschließender Integration wie in obiger Abbildung A. 1 dargestellt, ausgeführt werden.
+A.1.2 Beschreibung des Lock-in Prinzips im Zeitbereich Gegeben sei ein beliebiges Eingangssignal, in dem das zu detektierende Signal Vscos(2πfst + φs) enthalten ist.
+Dieser Signalanteil hat die Amplitude Vs, die Frequenz fs und den Phasenwinkel φs.
+Zuerst wird das Eingangssignal verstärkt.
+Da nur Frequenzabschnitte um die zu detektierende Frequenz von Interesse sind, kann die Übertragungsfunktion des Verstärkers Gac(ω) ein Bandpassverhalten um die Referenzfrequenz aufweisen.
+Das resultierende Signal kann wie folgt dargestellt werden:
+#$@FORMULA@$#:0
+Vac(t) = GacVscos(ωst + φs), (A.3)
+#$@FORMULA@$#:1
+mit ωs = 2πfs und einem wegen der geringen Bandbreite als konstant angenommenen Verstärkungsfaktor Gac [84].
+Nun wird das Signal mit einem Referenzsignal Vref(t) = Vrcos(ωrt + φr) der zu detektierenden Frequenz fs = fr multipliziert:
+#$@FORMULA@$#:2
+Vac(t) · Vref(t) = GacVrVs[cos(ωrt + φr) · cos(ωst + φs)].
+(A.4)
+#$@FORMULA@$#:3
+Das Produkt zweier sinusförmiger Signale der Frequenzen fr und fs ergibt Signalanteile bei fr + fs und fr − fs. 1
+#$@FORMULA@$#:4
+1 Vpsd(t) = 2 GacVrVs[cos(ω+t + φ+) + cos(ω−t + φ−)] (A.5)
+#$@FORMULA@$#:5
+#$@FORMULA@$#:6
+Der Index „psd“ steht dabei für phase sensitive detector und beschreibt das Signal am Ausgang des Phasenschiebers.
+In der Gleichung sind ω+ = ωr + ωs, ω− = ωr−ωs, φ+ = φr+φs und φ− = φr−φs.
+Für den angestrebten Fall, dass die Referenzfrequenz und die Eingangsfrequenz (ωr = ωs) sowie die Referenzphase und die Eingangsphase (φr = φs) gleich sind, ergibt sich:
+#$@FORMULA@$#:7
+1 Vpsd(t) = 2 GacVrVs[1 + cos(2ωst + 2φs)].
+(A.6)
+#$@FORMULA@$#:8
+#$@FORMULA@$#:9
+#$@FORMULA@$#:10
+#$@FORMULA@$#:11
+#$@FORMULA@$#:12
+Der Signalanteil, der die Differenzen der Frequenzen und Phasen enthält, wird durch diese Rechnung auf 0 Hz abgebildet.
+Beide Amplituden sind proportional zu der zu messenden Signalamplitude Vs.
+Da in beiden Signalanteilen die gleiche Information steckt, kann mit Hilfe eines Tiefpassfilters der höherfrequente Signalanteil bei 2ωs unterdrückt werden. 2 Eine Verstärkung des resultierenden Signals ergibt das Ausgangssignal Vout:3
+#$@FORMULA@$#:0
+1 Vout = 2 GdcGacVsVr.
+(A.7)
+#$@FORMULA@$#:1
+Die Tiefpassfilterung übernimmt hier zwei Aufgaben.
+Einerseits wird die 2ωs-Komponente wirkungsvoll unterdrückt und andererseits durch die Integratorwirkung eine Rauschminimierung in der Nähe der Gleichspannungskomponente erreicht.
+In Gleichung A. 7 sind nun bis auf Vs alle anderen Variablen bekannt.
+Somit kann die gesuchte Amplitude Vs eindeutig bestimmt werden.
+A.1.3 Beseitigung der Frequenz- und Phasenabhängigkeit des Ausgangssignals Die in Abschnitt A.1.2 idealisiert beschriebene Vorgehensweise zur Messung kleinster Signalamplituden soll hier erweitert werden, um in der Praxis schneller und einfacher messen und Fehler deuten bzw. vermeiden zu können.
+In Gleichung A. 5 sind sowohl Frequenz- als auch Phasenabhängigkeiten von Referenzund Eingangssignal vorhanden.
+Zuerst wird der Fall einer Frequenzverstimmung diskutiert.
+In Gleichung A. 5 wird dazu die Phasengleichheit vorausgesetzt und der Term der Summenfrequenz entfernt:
+#$@FORMULA@$#:2
+1 Vpsd(t) = 2 GacVrVscos[(ωr − ωs)t].
+(A.8)
+#$@FORMULA@$#:3
+#$@FORMULA@$#:4
+Bei verschiedenen Taktgeneratoren in den Messgeräten kann es zu Frequenzunterschieden von z.B. 50 parts per million (ppm) kommen [3].
+Eine solche Differenz führt zu einer sinusförmigen Modulation des Ausgangssignals, deren Einfluss größer sein kann als das Messsignal.
+Bei einer Frequenz von 1 kHz sind das im ungünstigsten Fall 0,5 Hz mit folgendem Resultat:
+#$@FORMULA@$#:0
+1 Vout(t) = 2 GdcGacVsVrcos (πt) .
+(A.9)
+#$@FORMULA@$#:1
+#$@FORMULA@$#:2
+Mit steigender Frequenzdifferenz ωr − ωs steigt auch die Modulationsfrequenz.
+Abweichungen im Bereich von nur wenigen ppm führen dabei zu zeitlich sehr langsamer Änderung, die oft nicht bemerkt wird.
+Eine Möglichkeit, diese Modulation zu beseitigen, ist die Nutzung von nur einer Frequenzbasis in allen verwendeten Geräten.
+Bei kontinuierlicher Messung über einen längeren Zeitraum4 kann alternativ auch eine Mittelwertbildung angeschlossen werden.
+Die Phase des Messsignals ist im Allgemeinen unbekannt.
+Um diese zu bestimmen, wird in der Praxis die Referenzphase so lange variiert, bis die Amplitude der Ausgangsspannung maximal ist.
+In der folgenden Gleichung wird nun Frequenzgleichheit zwischen Eingangssignal und Referenzsignal vorausgesetzt.
+Der hochfrequente Signalanteil sei hier wieder entfernt:
+#$@FORMULA@$#:3
+1 Vout = 2 GdcGacVrVs[cos(φr − φs)].
+(A.10)
+#$@FORMULA@$#:4
+#$@FORMULA@$#:5
+Eine Zeitabhängigkeit ist nun nicht mehr vorhanden.
+Die konstante Phasendifferenz wirkt sich als Faktor aus.
+Ist nur die Amplitude des Ausgangssignals von Interesse, kann die Phasenabhängigkeit von Gleichung A. 10 vollständig eliminiert werden.
+Dazu wird in einem zweiten Lock-in Zweig zeitgleich das Eingangssignal mit einem zweiten Referenzsignal mit 90◦ Phasenverschiebung multipliziert (z.B. Vref,2(t) = Vrcos(ωrt+φr−90◦).
+Analog zu Gleichung A. 4 ergibt sich bei Frequenzgleichheit nach Einsetzen, Umformen5 und entfernen des höherfrequenten Signalanteils
+#$@FORMULA@$#:6
+mit φ− = φr − φs:
+#$@FORMULA@$#:7
+Vac(t) · Vref,2(t) = GacVrVs[sin(ωrt + φr) · cos(ωst + φs)] (A.11)
+#$@FORMULA@$#:8
+1 Vpsd,2 = 2 GdcGacVrVssin(φ−).
+(A.12)
+#$@FORMULA@$#:9
+#$@FORMULA@$#:10
+#$@FORMULA@$#:11
+Aus beiden Lock-in Zweigen Vpsd,1 = 1 2 GacVrVscos(φ−) und Vpsd,2(t) wird nun der Betrag berechnet6:
+#$@FORMULA@$#:0
+1 Vout = q psd,1 (t) + V 2 (t) = 2 GdcGacVsVr.
+(A.13)
+#$@FORMULA@$#:1
+V 2 psd,2 Das Ergebnis entspricht Vout aus Gleichung A.7.
+Die Phase des Referenzsignals kann beliebig gewählt werden.
+Dies ermöglicht Messungen mit Hilfe von Multiplexern, weil ein Nachstellen der Phase entfällt.
+#$@FORMULA@$#:2
+6Trigonometrischer Pythagoras:
+sin2(α) + cos2(α) = 1
+
+
+:::: Stichwortverzeichnis ::::
+
+
+Ausfall Entspricht ein System nicht mehr den an es gestellten Anforderungen, so ist es nicht mehr funktionstüchtig, ausgefallen.
+Ausfallkriterium Ein Ausfallkriterium beschreibt die messtechnisch erfassbare Schwelle, die definitionsgemäß zwei Zustände eines zu überwachenden Systems trennt.
+Meist ist der Zustand jenseits erreichten Ausfallkriteriums ein Bereich, in dem das System den an es gestellten Anforderungen nicht mehr entspricht und damit als ausgefallen angesehen werden kann.
+Ermüdung Ermüdung (engl.
+fatigue) ist ein Alterungsprozess und beschreibt die Abnutzung eines Produktes, die bis zum Ausfall durch eine sich wiederholende Belastungseinwirkung gehen kann.
+Es wird zwischen spannungsund dehnungsinduzierter Ermüdung unterschieden (siehe Kriechen bzw.
+Fließen).
+Weiterhin wird eine Unterscheidung nach überlebbarer Zyklusanzahl in low cycle und high cycle fatigue durchgeführt.
+Ermüdung findet im Gegensatz zum Verschleiß innerhalb des Materials statt.
+Fehlerkriterium Als Fehlerkriterium wird eine beliebig definierte Schwelle eines Parameters definiert, deren überschreiten das System als defekt klassifiziert.
+Fehlermechanismus Fehlermechanismen bzw. Ausfallmechanismen sind alle physikalischen, elektrischen, chemischen oder sonstigen Prozesse, die zu einem Ausfall führen.
+Beispiele für Ausfallmechanismen sind Sprödbruch, Ermüdungsbruch, Interdiffusion, Migration, Ablation, Korrosion, Delamination, Elektromigration usw.
+Fließen Unter Fließen wird der Vorgang der Dehnungszunahme ohne gleichzeitige Spannungszunahme bei einer plastischen Verformung verstanden.
+Nach [94] handelt es sich dabei um einen plastischen und zeitinvarianten Verformungsvorgang, der erst nach Überschreiten einer bestimmten kritischen Mindestspannung, der Fließgrenze, einsetzt.
+Glasübergangstemperatur Die Glasübergangstemperatur beschreibt die Temperatur bei der ein festes Glas oder Polymer in einen gummiartigen oder auch zähflüssigen Zustand übergeht.
+Dadurch ändern sich die mechanischen Eigenschaften, so dass nicht mehr jeder Anwendungsfall uneingeschränkt abgedeckt werden kann.
+Die Glasübergangstemperatur definiert in vielen Anwendungen das absolute Maximum der Betriebstemperaturen.
+In der praktischen Anwendung bleiben die Betriebstemperaturen jedoch deutlich unterhalb der Glasübergangstemperatur.
+Harmonische Eine Harmonische ist ein ganzzahliges Vielfaches einer Grundfrequenz.
+Sie beschreibt eine rein sinusförmige Schwingung.
+Heel Im Zusammenhang mit dem Kaltpressschweißverfahren Bonden beschreibt der sog. Heel-Bereich den Übergangsbereich vom Wedge, der ausgeformten Verbindungsstelle, zum freien Draht.
+Hysterese Bezeichnet ein materialtypisches Verhalten von Systemen, bei dem die Ausgangsgrößen nicht nur von unabhängigen veränderlichen Eingangsgrößen abhängen, sondern auch von dem vorherigen Zustand der Ausgangsgrößen.
+Die Systeme können bei gleicher Eingangsgröße mehrere Zustände einnehmen.
+Intermodulation Bezeichnet in der Nachrichtentechnik und Elektroakustik die Generation von spektralen Anteilen durch nichtlineare Übertragungssysteme bei Vorhandensein von zwei oder mehr unterschiedlichen Frequenzen.
+Kriechen Kriechen ist der zeitabhängige Abbau von Spannungen mit Hilfe von viskoplastischem Fließen mit dem Resultat einer Veränderung der Dehnung.
+Lebensdauer siehe Restlebensdauer Lebensdauertest Ein Lebensdauertest bezeichnet einen Belastungstest einer Baugruppe oder eines Systems der zum Ziel hat ein Versagen der Funktion herbeizuführen.
+Die Ausfallzeitpunkte werden dabei aufgenommen und oftmals statistisch ausgewertet.
+So können Kennzahlen wie die mittlere Lebensdauer oder auch die Zeit bis zum ersten Fehler bzw. die Zeit zwischen Fehlern angegeben werden.
+Lebensdauertests haben stets eine höhere Genauigkeit als mittlere Ausfallzahlen aus Tabellen.
+Nachteilig ist die begrenzte Gültigkeit auf nur ein Belastungskollektiv bzw. nur eine Aufbauvariante.
+Reflow-Löten Auch Wiederaufschmelzlöten; Bezeichnet in der Elektrotechnik ein sehr häufig verwendetes Weichlotverfahren zur Herstellung von Dickschicht-Hybridschaltungen.
+Der Prozess ist in mehrere Schritte unterteilt und beginnt mit dem Auftragen und Umschmelzen des Lotes auf einen der Fügepartner.
+In einem zweiten Schritt werden die Fügepartner mit Flussmittel benetzt und aneinander ausgerichtet um im nachfolgenden Schritt miteinander verlötet zu werden.
+Je nach verwendtem Lotwerkstoffzentrieren sich die Fügepartner durch die Oberflächenspannung selbst.
+Restlebensdauer Die noch verbleibende Zeit bis zum funktionellen Ausfall eines Systems wird durch die Restlebensdauer beschrieben.
+Diese entwickelt sich gegenläufig zum Lebensdauervorrat eines Produktes oder Systems.
+Der Ausfall wird dabei durch die Definition einer Ausfallschwelle, zu der das System die an es gestellten Anforderungen nicht mehr erfüllt, festgelegt.
+Vorhersagevorsprung Der Vorhersagevorsprung ist die Zeitdifferenz zwischen zwei durch unterschiedliche Arten der Vorhersage prognostizierten Ausfallzeitpunkten.
+Zugunsten der Methodik, die einen Ausfall früher vorhersagen kann wird diese Zeitersparnis als Vorsprung definiert.
+Übertragungsfunktion Ist definiert als der Quotient aus den zweiseitigen Laplace-Transformierten des Ausgangssignals Y (s) und Eingangssignals X(s):
+H(s) = Y (s)
+#$@FORMULA@$#:0
+mit X(s) s = jω.
+Dies gilt nur bei linearen, zeitinvarianten Systemen.
+Übertragungssystem Beschreibt eine Umgebung in der Signale in verschiedenen Formen (Energie, Information, Masse) weitergeleitet oder beeinflusst werden.
+Es hat mindestens einen Ein- und einen Ausgang.
