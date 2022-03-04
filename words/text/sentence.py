@@ -42,7 +42,10 @@ def find_sentences(page: words.text.PageTextWithHeadlines) -> words.text.TextSec
             # does not have any content, see commit XXX:commit,haha.
             if seq.content is None:
                 continue
-            text = texmex.remove_highnotes(seq.content)
+            text = texmex.remove_highnotes(
+                seq.content,
+                magic=True,
+            )
             current.append(text)
         if current:
             lines.extend(german.sentence_tokenize(''.join(current)))
@@ -127,8 +130,10 @@ def extract_section_content(
     result = []
     for seq in section.content:
         if isinstance(seq, iamraw.Paragraph):
-            # TODO: INSERT HIGHNOTES AS {{highnote:10}}
-            text = texmex.remove_highnotes(seq.content)
+            text = texmex.remove_highnotes(
+                seq.content,
+                magic=True,
+            )
             current.append(text)
             continue
         # NoParagraph
