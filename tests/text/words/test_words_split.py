@@ -24,7 +24,7 @@ MASTER72_EXPECTED = {
 }
 
 
-@utilatest.longrun
+@utilatest.nightly
 def test_validate_words_split_master72():
     pages = tuple(MASTER72_EXPECTED.keys())
     required = fseventytwo.textrequired(pages=pages)

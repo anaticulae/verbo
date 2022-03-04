@@ -10,10 +10,12 @@
 import power
 import serializeraw
 import utila
+import utilatest
 
 import tests
 
 
+@utilatest.nightly
 def test_word_diss143page27(testdir, monkeypatch):
     source = power.link(power.DISS143_PDF)
     cmd = f'--text --page=26,27 -i {source} -o {testdir.tmpdir}'
