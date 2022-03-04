@@ -118,7 +118,7 @@ def inrange(index, pcn, maxi: bool = True):
     # maxi: use start or end
     # TODO: REMOVE AFTER FIXING ONELINE NORMAL CONVERTING
     if isinstance(index, tuple):
-        utila.error(f'tuple {index}')
+        utila.error(f'~oneline-normal tuple {index}')
         if maxi:
             index = index[-1]
         else:
