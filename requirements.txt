@@ -12,7 +12,7 @@ iamraw>=4.62.0<5.0.0
 sections>=1.18.0<2.0.0
 
 # split sentences and determine language of written sentence
-german>=1.19.0<2.0.0
+german>=1.19.1<2.0.0
 # some constants
 konrad>=0.7.1<1.0.0
 
