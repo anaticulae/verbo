@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v1.15.0
+
+### Feature
+
+* add magic flag to preserve highnotes (b9ca1b6b5f6d)
+
+### Fix
+
+* clarify error message (df19d1fa831c)
+
 ## v1.14.2
 
 ## v1.14.1
