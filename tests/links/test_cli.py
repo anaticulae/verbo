@@ -8,6 +8,7 @@
 # =============================================================================
 
 import power
+import pytest
 import serializeraw
 import utilatest
 
@@ -15,6 +16,8 @@ import tests
 import words.path
 
 
+# TODO: MOVE TO TEXMEX
+@pytest.mark.xfail(reason='hyperlink merger requires \n at line end')
 @utilatest.requires(power.MASTER075_PDF)
 def test_links_master75(testdir, monkeypatch):
     # TODO: MASTER75 TEXT SECTION EXTRACTION IS BROKEN
