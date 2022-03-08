@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.15.1
+
+### Fix
+
+* adjust word merge after upgrading rawmaker (2d2530c18d17)
+
 ## v1.15.0
 
 ### Feature
