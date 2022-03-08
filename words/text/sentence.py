@@ -14,6 +14,7 @@ import typing
 import german
 import iamraw
 import texmex
+import utila
 
 import words.feature
 import words.text
@@ -34,7 +35,8 @@ def find_sentences(page: words.text.PageTextWithHeadlines) -> words.text.TextSec
         for seq in section.content:
             if not isinstance(seq, iamraw.Paragraph):
                 if current:
-                    lines.extend(german.sentence_tokenize(''.join(current)))
+                    current: str = utila.NEWLINE.join(current)
+                    lines.extend(german.sentence_tokenize(current))
                     current = []
                 lines.append(undefined_tostr(seq))
                 continue
@@ -48,7 +50,7 @@ def find_sentences(page: words.text.PageTextWithHeadlines) -> words.text.TextSec
             )
             current.append(text)
         if current:
-            lines.extend(german.sentence_tokenize(''.join(current)))
+            lines.extend(german.sentence_tokenize(utila.NEWLINE.join(current)))
             current = []
         result.append(
             words.text.TextSection(
@@ -115,7 +117,8 @@ def visit_sentences(
         )
         result.extend(appends)
         if current:
-            for sentence in sentence_tokenizer(text=''.join(current)):
+            current: str = utila.NEWLINE.join(current)
+            for sentence in sentence_tokenizer(text=current):
                 result.append((section.headline, sentence))
     return result
 
@@ -138,7 +141,8 @@ def extract_section_content(
             continue
         # NoParagraph
         if current:
-            for sentence in sentence_tokenizer(text=''.join(current)):
+            current: str = utila.NEWLINE.join(current)
+            for sentence in sentence_tokenizer(text=current):
                 result.append((section.headline, sentence))
             current = []
         if not skip_undefined:

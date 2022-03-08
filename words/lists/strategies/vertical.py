@@ -53,7 +53,7 @@ def group_and_parse(
     collected = []
     for group in grouped:
         rawgroup = [ptcn[item].text for item in group]
-        content = ''.join(rawgroup)
+        content = utila.NEWLINE.join(rawgroup)
         if not content.strip():
             collected.append(None)
             continue
@@ -131,7 +131,7 @@ def fix_lastone(items):
             break
         connected.append(item)
     # update last one
-    updated = '\n'.join(connected)
+    updated = utila.NEWLINE.join(connected)
     if isinstance(items[-1], tuple):
         items[-1] = (updated, items[-1][1])
     else:

@@ -102,7 +102,7 @@ def parse_general_list(
         # could not detect any list
         return []
     result = [
-        '\n'.join(data[current:after])
+        utila.NEWLINE.join(data[current:after])
         for current, after in zip(starts[:-1], starts[1:])
     ]
     # find first empty item to merge last item
@@ -119,7 +119,7 @@ def parse_general_list(
     else:
         # last item is a content item
         end = starts[-1]
-    result.append('\n'.join(data[starts[-1]:end + 1]))
+    result.append(utila.NEWLINE.join(data[starts[-1]:end + 1]))
     # strip selector
     if selector_skip:
         result = [selector.sub('', item).strip() for item in result]

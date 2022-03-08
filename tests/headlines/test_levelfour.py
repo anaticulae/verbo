@@ -55,7 +55,7 @@ def test_extract_levelfour_bachelor90():
         pages=utila.rtuple(11, 90),
     )
     headlines = words.headlines.improve.levelfour.headlines(navigators)
-    current = '\n'.join(item.title for item in headlines)
+    current = utila.NEWLINE.join(item.title for item in headlines)
     assert current == EXPECTED
 
 
@@ -101,5 +101,5 @@ def test_extract_levelfour_master116():
         pages=utila.rtuple(7, 87),
     )
     headlines = words.headlines.improve.levelfour.headlines(navigators)
-    current = '\n'.join(item.title for item in headlines)
+    current = utila.NEWLINE.join(item.title for item in headlines)
     assert current == MASTER116_EXPECTED
