@@ -83,8 +83,7 @@ def test_filter_headlines():
     # subsections
     subsections = [item[1:] for item in filtered]
     subsections_count = [len(item) for item in subsections]
-    # expected_subsection_count = [2, 5, 7, 5, 2] # BETTER
-    expected_subsection_count = [2, 6, 7, 5, 2]
+    expected_subsection_count = [2, 5, 7, 5, 2]  # BETTER
     assert subsections_count == expected_subsection_count
 
 
