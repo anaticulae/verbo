@@ -18,7 +18,7 @@ import words.lists.utils
 
 def run(ptcns, headlines) -> iamraw.PageContentLists:
     textfeed = texmex.document_textfeed(ptcns)
-    textdistance = texmex.document_textdistance_from_contentnavigators(ptcns)
+    textdistance = texmex.document_textdist_from_ptcns(ptcns)
     result = []
     for navigator in ptcns:
         pageslist = extract_best_page(

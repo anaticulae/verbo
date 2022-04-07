@@ -185,7 +185,7 @@ def extract_page(strategy, data, page):
 
 def create_data(ptcns, sectionlist, chapters, fontstore, magics, pages):
     textsize = texmex.document_textsize(navigators=ptcns)
-    textdistance = words.headlines.utils.document_textdistance(
+    textdistance = texmex.document_textdist_from_ptcns(
         navigators=ptcns,
         digits=0,
     )
