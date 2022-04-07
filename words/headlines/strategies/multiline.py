@@ -39,7 +39,7 @@ HEADLINE_MEDIAN = configo.HolyTable(
 )
 
 
-def extract_page(data, page) -> iamraw.Headlines:
+def extract_page(data, page) -> iamraw.Headlines:  # pylint:disable=R0914
     """Extract headlines on selected page."""
     pagecontent = utila.select_page(data.ptcns, page)
     result = []
@@ -59,10 +59,10 @@ def extract_page(data, page) -> iamraw.Headlines:
             # first level headline
             if items.size <= 12.0:
                 continue
+        wordcount_max = words.headlines.strategies.cluster.HEADLINE_WORDCOUT_MAX
         if elements.noheadline(
                 title,
-                wordcount_max=words.headlines.strategies.cluster.
-                HEADLINE_WORDCOUT_MAX,
+                wordcount_max=wordcount_max,
         ):
             continue
         headline = iamraw.Headline(

@@ -29,7 +29,7 @@ def document_textdistance(
         for yfirst, ysecond in zip(ydist[:-1], ydist[1:]):
             distance = yfirst - ysecond
             result.append(distance)
-    result = utila.roundme(result, digits=digits, convert=False)  # pylint:disable=R0204
+    result: list = utila.roundme(result, digits=digits, convert=False)
     mode = utila.mode(result)
     return mode
 
