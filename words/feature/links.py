@@ -36,6 +36,9 @@ def process_chunk(sentence):
     hyperlinks = german.hyperlink(sentence, position=True)
     if hyperlinks:
         hyperlinks = try_merge(sentence)
+    hyperlinks += german.locallink(sentence, position=True)
+    # sort links by position
+    hyperlinks.sort(key=lambda x: x[1])
     for hyperlink, starting in hyperlinks:
         date = lookaround(
             sentence,
