@@ -11,6 +11,8 @@ import german
 import iamraw
 import serializeraw
 
+# TODO: REMOVE THIS STEP, THIS IS HANDELD IN TEXAS:WEBLINK
+
 
 def work(textx: str, headliner: str, pages: tuple = None) -> str:
     headlines = serializeraw.load_headlines(headliner, pages=pages)
