@@ -8,59 +8,28 @@
 # =============================================================================
 
 import iamraw
-import iamraw.path
-import iamraw.sections
 import power
-import serializeraw
 import utilatest
 
 import words.feature
-import words.feature.boxed
-import words.feature.headlines
-import words.headlines
-import words.loader
-import words.text
 import words.text.chapter
 
 
-def sections():
-    utilatest.fixture_requires(power.DOCU027_PDF)
-    source = iamraw.path.sections_(power.link(power.DOCU027_PDF))
-    extracted = serializeraw.load_sections(source)
-    dumped = serializeraw.dump_sections(extracted)
-    return dumped
-
-
-def headlines():
-    sections_ = sections()
-    src = power.link(power.DOCU027_PDF)
-    dumped, _ = words.feature.headlines.work(
-        sectionlist=sections_,
-        textx=iamraw.path.text(src),
-        text_position=iamraw.path.textposition(src),
-        font_header=iamraw.path.fontheader(src),
-        font_content=iamraw.path.fontcontent(src),
-        oneline_text=iamraw.path.text(src, prefix='oneline'),
-        oneline_text_position=iamraw.path.textposition(src, prefix='oneline'),
-        oneline_font_header=iamraw.path.fontheader(src, prefix='oneline'),
-        oneline_font_content=iamraw.path.fontcontent(src, prefix='oneline'),
-        sizeandborder=iamraw.path.sizeandborder(src),
-        boxes=iamraw.path.boxed(src),
-        headerfooters=iamraw.path.headerfooters(src),
-    )
-    return dumped
+def headlines() -> str:
+    source = power.link(power.DOCU027_PDF)
+    result = iamraw.path.words_headlines(source)
+    return result
 
 
 def resources():
     utilatest.fixture_requires(power.DOCU027_PDF)
-    headliner = headlines()
     source = power.link(power.DOCU027_PDF)
     loaded = words.feature.load_resources(
         text=iamraw.path.text(source),
         textposition=iamraw.path.textposition(source),
         fontheader=iamraw.path.fontheader(source),
         fontcontent=iamraw.path.fontcontent(source),
-        headlines=headliner,
+        headlines=iamraw.path.words_headlines(source),
         pagesizes=iamraw.path.sizeandborder(source),
         headerfooters=iamraw.path.headerfooters(source),
         boxes=iamraw.path.boxed(source),
