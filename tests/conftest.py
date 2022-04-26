@@ -108,6 +108,7 @@ def extract(resources):
         destination=power.generated(),
         base=power.REPOSITORY,
         groupme=True,
+        headlines=True,
         magic=True,
         sections=True,
         spacestation=True,
