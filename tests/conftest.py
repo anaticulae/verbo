@@ -115,7 +115,6 @@ def extract(resources):
         headlines=True,
         magic=True,
         sections=True,
-        spacestation=True,
         tablero=True,
         words=True,
         worker=WORKER,
