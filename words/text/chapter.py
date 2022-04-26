@@ -17,7 +17,6 @@ import utila
 
 import words.boxed
 import words.feature
-import words.headlines
 import words.lookup
 import words.text
 import words.text.paragraph

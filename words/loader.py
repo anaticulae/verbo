@@ -16,7 +16,6 @@ import iamraw
 import serializeraw
 import utila
 
-import words.headlines
 import words.undefined
 
 

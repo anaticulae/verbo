@@ -17,7 +17,6 @@ import utilatest
 import tests.fixtures.docu27
 import words.feature
 import words.feature.text
-import words.headlines
 import words.path
 import words.text
 import words.undefined

@@ -23,7 +23,6 @@ import utila
 import words.boxed
 import words.feature.headlines
 import words.feature.word
-import words.headlines
 import words.lookup
 import words.path
 

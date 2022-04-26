@@ -14,7 +14,6 @@ import utilatest
 
 # pylint:disable=W0611
 import tests.fixtures.docu27
-import words.headlines
 import words.undefined
 
 # collected by reading the pdf file
