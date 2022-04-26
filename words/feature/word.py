@@ -71,7 +71,7 @@ def process_words(text, listlookup, boxlookup):
                 undefined = words.undefined.intindex(line)
                 searched = listlookup.search(
                     item.page,
-                    headline.container,
+                    headline.container if headline else -1,
                     undefined,
                 )
                 if searched is not None:
