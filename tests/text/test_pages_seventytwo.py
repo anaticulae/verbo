@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import pytest
 import utila
 import utilatest
 
@@ -93,6 +94,7 @@ def test_text_seventytwo_visit_sentences_merge_page_endstart():
     assert all(item.sentence is not None for item in merged)
 
 
+@pytest.mark.xfail(reason='improve headline parser')
 @utilatest.longrun
 def test_text_seventytwo_visit_sentences_merge_page5_7():
     required = fseventytwo.textrequired(pages=(5, 6, 7))
@@ -138,6 +140,7 @@ def test_text_seventytwo_extract_textsections():
     assert sectionpages == [3, 4, 5, 6, 6, 10, 12, 13]
 
 
+@pytest.mark.xfail(reason='improve headline parser')
 @utilatest.longrun
 def test_text_seventytwo_extract_textsections_page5_6_7():
     required = fseventytwo.textrequired(pages=(5, 6, 7))
