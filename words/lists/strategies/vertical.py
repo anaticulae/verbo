@@ -48,7 +48,7 @@ def group_and_parse(
 ):
     grouped = texmex.group_linedistances_complex(
         ptcn,
-        max_distance=lambda x: textdistance * 1.3,
+        distance_max=lambda x: textdistance * 1.3,
     )
     collected = []
     for group in grouped:
