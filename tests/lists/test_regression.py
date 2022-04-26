@@ -29,7 +29,7 @@ def test_nolist_bachelor241page81(testdir, monkeypatch):
 
 
 @utilatest.requires(power.DOCU027_PDF)
-def test_list_docu_restructured_page4(testdir, monkeypatch):
+def test_list_docu027p4(testdir, monkeypatch):
     """This test was designed cause table content was parsed as lists."""
     source = power.link(power.DOCU027_PDF)
     tests.run(f'-i {source} --pages=4 --list', monkeypatch=monkeypatch)
