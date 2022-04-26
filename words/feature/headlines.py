@@ -25,49 +25,18 @@ Required resources:
 import typing
 
 import iamraw
-import serializeraw
 import utila
 
 import words.headlines.run
 
 
 @utila.checkdatatype
-def work(  # pylint:disable=R0913,R0914
-    sectionlist: str,
-    textx: str,
-    text_position: str,
-    font_header: str,
-    font_content: str,
-    oneline_text: str,
-    oneline_text_position: str,
-    oneline_font_header: str,
-    oneline_font_content: str,
-    sizeandborder: str,
-    boxes: str,  # pylint:disable=W0613
-    headerfooters: str,
-    magics: str = None,
-    pages: tuple = None,
-) -> typing.Tuple[str, str]:
+def work(result: str) -> typing.Tuple[str, str]:
     """Extract headlines out of data."""
-    normal, oneline = words.headlines.run.run(
-        sectionlist,
-        textx,
-        text_position,
-        font_header,
-        font_content,
-        oneline_text,
-        oneline_text_position,
-        oneline_font_header,
-        oneline_font_content,
-        sizeandborder,
-        boxes,
-        headerfooters,
-        magics,
-        pages=pages,
-    )
+    result: str = utila.file_read(result)
     # dump
-    normal: str = serializeraw.dump_headlines(normal)
-    oneline: str = serializeraw.dump_headlines(oneline)
+    normal: str = result
+    oneline: str = result
     return normal, oneline
 
 
