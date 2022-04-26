@@ -33,7 +33,8 @@ def test_word_master110pages67(testdir, monkeypatch):
     assert all(item in content for item in '0l0 0l1 0l2 0l3 0l4 0l5'.split())
 
 
-def test_words_list_replace_book173p1314(testdir, monkeypatch):
+@pytest.mark.xfail(reason='missing headline')
+def test_list_replace_book173p1314(testdir, monkeypatch):
     source = power.link(power.BOOK173_PDF)
     cmd = f'--word --page=13,14 -i {source} -o {testdir.tmpdir}'
     tests.run(cmd, monkeypatch=monkeypatch)

@@ -8,7 +8,6 @@
 # =============================================================================
 
 import power
-import pytest
 import utila
 import utilatest
 
@@ -93,7 +92,6 @@ def test_merge_sentences_table_regression():
     assert 'Probandenstichprobe' not in text
 
 
-@pytest.mark.xfail(reason='caption is not extracted properly')
 @utilatest.longrun
 def test_merge_sentences_figure_regression():
     text = bachelor51_text((31,))

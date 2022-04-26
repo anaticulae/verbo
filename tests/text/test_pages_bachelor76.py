@@ -14,6 +14,14 @@ import utilatest
 import tests
 import words.path
 
+SENTENCE_12 = """Die IKT bildet dabei das Verknüpfungselement und \
+ermöglicht eine unternehmensübergreifende Optimierung sämtlicher \
+Prozesse entlang der Wertschöpfungskette.\
+"""
+SENTENCE_13 = """Dadurch wird die Informations- und Kommunikationstechnik \
+zu einem zentralen Bestandteil für die Digitalisierung.{{hn:15:nh}}\
+"""
+
 
 @utilatest.nightly
 def test_text_extract_p7p8p9(testdir, monkeypatch):
@@ -32,11 +40,6 @@ def test_text_extract_p7p8p9(testdir, monkeypatch):
         for _, content in page.content:
             sentences.extend(content)
     # Ensure that page is merged correctly
-    expected = ('Die IKT bildet dabei das Verknüpfungselement und '
-                'ermöglicht eine unternehmensübergreifende Optimierung'
-                ' sämtlicher Prozesse entlang der Wertschöpfungskette.')
-    assert sentences[12] == expected
+    assert sentences[12] == SENTENCE_12
     # First complete sentence after page break
-    expected = ('Dadurch wird die Informations- und Kommunikationstechnik'
-                ' zu einem zentralen Bestandteil für die Digitalisierung.')
-    assert sentences[13] == expected
+    assert sentences[13] == SENTENCE_13
