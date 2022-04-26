@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.16.0
+
+### Feature
+
+* detect local links (64f8b78f55d4)
+
 ## v1.15.1
 
 ### Fix
