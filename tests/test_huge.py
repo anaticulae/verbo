@@ -109,9 +109,7 @@ def test_huge_running_words(source, testdir, request):  # pylint:disable=W0621
     huge pdf example provided by power tool."""
     testfile = request.node.name.split('[')[1].split(']')[0]
     expected_headlines = HEADLINE_COUNT.get(testfile, 0)
-
-    source, _, __, = source
-
+    source = source[0]
     genex.extract(
         files=[source],
         destination=testdir.tmpdir,
@@ -119,12 +117,9 @@ def test_huge_running_words(source, testdir, request):  # pylint:disable=W0621
         sections=True,
         words=True,
     )
-
     filename = utila.file_name(power.link(source))
     directory = os.path.join(testdir.tmpdir, filename)
-
     headlines = serializeraw.load_headlines(directory)
-    headlines = utila.flatten(headlines)
-
+    headlines: list = utila.flat(headlines)
     if expected_headlines:
         assert len(headlines) == expected_headlines, headlines
