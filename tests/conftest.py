@@ -64,6 +64,7 @@ def extract(resources):
         files=resources,
         destination=power.generated(),
         base=power.REPOSITORY,
+        caption=True,
         cleanup=True,
         codero=True,
         figureo=True,
