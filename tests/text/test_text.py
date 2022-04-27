@@ -7,7 +7,6 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import iamraw
 import power
 import pytest
 import serializeraw
@@ -15,29 +14,7 @@ import utila
 import utilatest
 
 import tests.fixtures.docu27
-import words.feature
-import words.feature.text
-import words.path
-import words.text
 import words.undefined
-
-
-@utilatest.nightly
-def test_text_work_docu027():
-    source = power.link(power.DOCU027_PDF)
-    headlines = tests.fixtures.docu27.headlines()
-    result = words.feature.text.work(
-        boxes=iamraw.path.boxed(source),
-        lists=words.path.lists(source),
-        fontcontent=iamraw.path.fontcontent(source),
-        fontheader=iamraw.path.fontheader(source),
-        headerfooters=iamraw.path.headerfooters(source),
-        headliner=headlines,
-        pagesizes=iamraw.path.sizeandborder(source),
-        textx=iamraw.path.text(source),
-        textposition=iamraw.path.textposition(source),
-    )
-    assert len(result) > 4700, str(result)
 
 
 @pytest.mark.xfail(reason='???')
