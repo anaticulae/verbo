@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v1.17.0
+
+### Feature
+
+* use headlines from headlines package (25dfcd48db30)
+
+### Fix
+
+* handle empty headline correctly (2bf792ee0aa2)
+
 ## v1.16.0
 
 ### Feature
