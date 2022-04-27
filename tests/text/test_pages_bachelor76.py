@@ -16,11 +16,10 @@ import words.path
 
 
 @utilatest.nightly
-def test_text_extract_pages7_8_9(testdir, monkeypatch):
+def test_text_extract_p7p8p9(testdir, monkeypatch):
     source = power.link(power.BACHELOR076_PDF)
     cmd = f'--text  --headlines -i={source} --pages=7,8,9'
     tests.run(cmd, monkeypatch=monkeypatch)
-
     text = words.path.text(testdir.tmpdir)
     headlines = words.path.headlines(testdir.tmpdir)
     headlines = serializeraw.load_headlines(
@@ -28,18 +27,15 @@ def test_text_extract_pages7_8_9(testdir, monkeypatch):
         pages=(7, 8, 9),
     )
     text = serializeraw.load_text(text, headlines=headlines)
-
     sentences = []
     for page in text:
         for _, content in page.content:
             sentences.extend(content)
-
     # Ensure that page is merged correctly
     expected = ('Die IKT bildet dabei das Verknüpfungselement und '
                 'ermöglicht eine unternehmensübergreifende Optimierung'
                 ' sämtlicher Prozesse entlang der Wertschöpfungskette.')
     assert sentences[12] == expected
-
     # First complete sentence after page break
     expected = ('Dadurch wird die Informations- und Kommunikationstechnik'
                 ' zu einem zentralen Bestandteil für die Digitalisierung.')
