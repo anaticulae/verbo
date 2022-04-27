@@ -105,8 +105,11 @@ def params():
 @utilatest.nightly
 @pytest.mark.parametrize('source', params())
 def test_huge_running_words(source, testdir, request):  # pylint:disable=W0621
-    """Run rawmaker -> sections -> words. Ensure that this chain works for
-    huge pdf example provided by power tool."""
+    """Run rawmaker -> sections -> headlines -> words.
+
+    Ensure that this chain works for huge pdf example provided by power
+    tool.
+    """
     testfile = request.node.name.split('[')[1].split(']')[0]
     expected_headlines = HEADLINE_COUNT.get(testfile, 0)
     source = source[0]
@@ -114,6 +117,7 @@ def test_huge_running_words(source, testdir, request):  # pylint:disable=W0621
         files=[source],
         destination=testdir.tmpdir,
         groupme=True,
+        headlines=True,
         sections=True,
         words=True,
     )
