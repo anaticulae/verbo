@@ -1,6 +1,6 @@
 
 
-:::: Einleitung ::::
+:::: Stufen eines Bildverarbeitungssystems ::::
 
 
 Dieser Abschnitt beschreibt das klassische Bildverarbeitungssystem.
@@ -17,7 +17,7 @@ In einigen Bildverarbeitungssystemen kommt noch eine sechste Phase, die Interpre
 In dieser Phase wird die betrachtete Szene anhand der erkannten Objekte interpretiert.
 
 
-:::: Stufen eines Bildverarbeitungssystems ::::
+:::: Aufbau der Arbeit ::::
 
 
 Kapitel 1:
@@ -52,7 +52,7 @@ Das letzte Kapitel liefert die Zusammenfassung der Arbeit.
 Es wird beschrieben, welche Methoden in wie weit in der Lage sind, Objekterkennung zu ermoglichen, wo Grenzen und Probleme des verwendeten Ansatzes liegen und welche Verbesserungen in weiterfuhrenden Arbeiten vorgenommen werden konnen.
 
 
-:::: Aufbau der Arbeit ::::
+:::: Wissenschaftlicher Beitrag ::::
 
 
 Objekterkennung spielt im Bereich der autonomen mobilen Robotik eine große Rolle.
@@ -65,13 +65,13 @@ Dieses Verfahren wurde bis jetzt nur auf kunstlich generierten Daten angewendet.
 In dieser Arbeit wird es auf reale Daten angewendet und ein Vergleich mit anderen formbeschreibenden Merkmalen gegeben.
 
 
-:::: Wissenschaftlicher Beitrag ::::
+:::: Stand der Technik ::::
 
 
 Da in dieser Arbeit das gesamte Bildverarbeitungssystem von der Bildgewinnung bis zur Objektklassifikation bearbeitet wird, teilt sich der dieser Abschnitt ebenso in verschiedene Bereiche auf.
 
 
-:::: Stand der Technik ::::
+:::: Tiefenbild Segmentierungstechniken ::::
 
 
 Es gibt eine Vielzahl von Tiefenbild-Segmentierungstechniken, die teilweise f ur Grauwertbilder entwickelt wurden und dann fur Tiefenbilder ubernommen worden sind.
@@ -135,7 +135,7 @@ Besitzen mindestens zwei Pixel 8er Nach- " barschaft und den selben Flachentyp, 
 Lucken, die durch unbekannte Flachentypen entstehen, werden mit Hilfe der in Abschnitt 4.1.3 beschriebenen morphologischen Operatoren geschlossen.
 Fur jede Region um einen Startpunkt wird wieder eine Flachenanpassung ausgefuhrt.
 Der Regionen-Wachstumsprozess wird ausgehend von den Startpunkten durch iterative Anwendung von Ausdehnung, neuer Flachenanpassung der Region und Zusammenziehen erreicht.
-Die Ubereinstimmung der neuen Flachenanpassung mit dem ursprunglichen Flachentyp liefert Kriterien, anhand derer entschieden wird, ob Nachbarpixel zur wachsenden Region im Ausdehnungsprozeß hinzugefugt bzw.von dieser beim Zusammenziehen entfernt werden.
+Die Ubereinstimmung der neuen Flachenanpassung mit dem ursprunglichen Flachentyp liefert Kriterien, anhand derer entschieden wird, ob Nachbarpixel zur wachsenden Region im Ausdehnungsprozeß hinzugefugt bzw. von dieser beim Zusammenziehen entfernt werden.
 Zum Schluss werden die Regionengrenzen des erhaltenen segmentierten Tiefenbildes noch einmal uberarbeitet, indem der Regionen-Wachstumsalgorithmus mit anderen Kriterien f ur das Ausdehnen und Zusammenziehen wiederholt wird.
 Da jedes Segmentierungsverfahren auf vorgegebene Parameter angewiesen ist, existieren verschiedene Verfahren, diese Parameter zu optimieren.
 So werden z.B. im GASE-Projekt (genetic algorithm segmentation environment) genetische Algorithmen eingesetzt, um die Parameter unterschiedlicher Tiefenbild-Segmentierungstechniken zu optimieren [48].
@@ -143,7 +143,7 @@ Zum Vergleich der unterschiedlichen Segmentierungsergebnisse wird die in [19] vo
 Abbildung 2.1 zeigt den schematischen Verlauf der Parameteroptimierung.
 
 
-:::: Tiefenbild Segmentierungstechniken ::::
+:::: Objekterkennung ::::
 
 
 Im Folgenden werden verschiedene Ansatze erlautert, Objekte in zweidimensionalen Bildern zu finden.
@@ -156,7 +156,7 @@ Abbildung 2.1:
 Schematische Darstellung der Parameteroptimierung fur Segmentierungsverfahren mittels genetischer Algorithmen [48]
 
 
-:::: Objekterkennung ::::
+:::: Template Matching ::::
 
 
 Ein alternativer Ansatz zum Vorgehen in dieser Arbeit ist das Template Matching.
@@ -167,7 +167,7 @@ Da dieses Verfahren aufwendig ist, kann es nur fur eine geringe Anzahl von zu er
 Das Verfahren wird vor allem zur Materialprufung eingesetzt, da dort Bedingungen geschaen werden konnen, die eine eziente Objektklassifikation uber Template Matching ermoglichen.
 
 
-:::: Template Matching ::::
+:::: Principal-Component-Analysis (PCA) ::::
 
 
 Die PCA ist ein multivariates Verfahren der Statistik zur Analyse von Datensatzen.
@@ -182,7 +182,7 @@ Zur Objekterkennung werden die Bilder in den Eigenraum projiziert.
 Der Abstand der projizierten Bilder im Eigenraum macht eine Aussage uber die Ahnlichkeit der Bilder [16].
 
 
-:::: Principal-Component-Analysis (PCA) ::::
+:::: Klassifikation von Merkmalen ::::
 
 
 Der in dieser Arbeit verwendete Ansatz ist die Objekterkennung durch Vergleich von Merkmalen, die von den einzelnen Objekten extrahiert werden.
@@ -197,11 +197,12 @@ In diesem Gitter wird bestimmt, wie viele Randpunkte in welcher Zelle liegen.
 Der Anzahl der Randpunkte wird ein Grauwert zugewiesen (viele Punkte pro Zelle = dunkel, wenig Punkte = hell).
 Die Grauwerte werden in ein  - log r Histogramm eingetragen.
 Objekte werden nun klassifiziert, indem der Abstand zwischen verschiedenen Histogrammen mit einem zweiteiligen Vergleichsverfahren (engl.: bipartite matching) bestimmt wird [4].
-Zu diesem Verfahren existieren verschiedene verwandte Verfahren wie Grid-method\ und " Shape-Matrix\.Grid-method\ verwendet im Gegensatz zum Shape-Context\ ein recht- " " " eckiges Gitter und weist den einzelnen Zellen binare Werte zu.
+Zu diesem Verfahren existieren verschiedene verwandte Verfahren wie Grid-method\ und " Shape-Matrix\ .
+Grid-method\ verwendet im Gegensatz zum Shape-Context\ ein recht- " " " eckiges Gitter und weist den einzelnen Zellen binare Werte zu.
 Die Shape-Matrix\ verwendet " als festen Ursprung des Gitters den Schwerpunkt des Objekts.
 1D-Konturreprasentationen von 2D-Konturen.
 Es gibt verschiedene Moglichkeiten, die zweidimensionale Kontur auf eine reale oder komplexe eindimensionale Funktion abzubilden.
-Eine eindimensionale Moglichkeit, die Kontur zu reprasentieren, ist es, die Tangente der Kontur in jedem Punkt zu berechnen und diese uber der Bogenlange der Kontur aufzutragen (engl.: angle vs.arc length function).
+Eine eindimensionale Moglichkeit, die Kontur zu reprasentieren, ist es, die Tangente der Kontur in jedem Punkt zu berechnen und diese uber der Bogenlange der Kontur aufzutragen (engl.: angle vs. arc length function).
 Analog wird beim Ansatz der intrinsischen Gleichung (engl.: intrinsic equation) anstant der Tangente die Krummung jedes Konturpunktes uber der Bogenlange aufzutragen.
 Eine weitere Moglichkeit besteht darin, den Schwerpunkt der Kontur zu berechnen und jeden Punkt der Kontur durch den Abstand zu reprasentieren, den dieser zum Schwerpunkt besitzt (engl.: centroid-to-bondary distance approach).
 Ein weiterer, mit der Schwerpunktsmethode verwandter Ansatz bestimmt nicht den Abstand jedes Konturpunktes zum Schwerpunkt, sondern nur den von ausgezeichneten Merkmalspunkten, die sich durch eine starke Krummung der Kontur auszeichenen [30].
@@ -212,7 +213,7 @@ Dieser Ansatz lasst sich in dieser Arbeit nicht realisieren, da keine segmentier
 Ferner wird die Segmentierung des Tiefenbildes in dieser Arbeit uber die Intensitat der Pixel gesteuert, so dass die einzelnen Segmente mehr oder weniger die selbe Intensitat besitzen und ein Intensitatshistogramm nicht sehr aussagekraftig ware.
 
 
-:::: Klassifikation von Merkmalen ::::
+:::: Tiefenbilder ::::
 
 
 In dieser Arbeit werden ausschließlich Tiefenbilder zur Objekterkennung eingesetzt.
@@ -221,14 +222,16 @@ Dieser befindet sich auf dem mobilen Roboter Kurt3D.
 Der verwendete Laser ist vom Typ Sick LMS 200 und besitzt eine maximale Auosung von 10 mm und eine Reichweite von 80 m.
 
 
-:::: Tiefenbilder ::::
+:::: Erzeugung von Tiefenbildern ::::
 
 
 Der verwendete Scanner arbeitet nach dem Prinzip der Pulslaufzeitmessung.
 Dabei sendet der Laserscanner einen gepulsten Laserstrahl aus.
 Dieser trit auf einen Gegenstand in der gescannten Szene und wird von diesem reektiert.
 Der Laserstrahl gelangt zuruck zum Scanner und wird registriert.
-Uber die Zeit, die vom Aussenden des Signals bis zum Registrieren verstrichen ist, lasst sich uber Gleichung 3.1 direkt die Entfernung R des Objektes zum Scanner berechnen.vt R = (3.1) 2 Da der Laserstrahl eine Geschwindigkeit von v 3 108 m s besitzt, sind an die Zeitauosung hohe ß · Anspruche gestellt.
+Uber die Zeit, die vom Aussenden des Signals bis zum Registrieren verstrichen ist, lasst sich uber Gleichung 3.1 direkt die Entfernung R des Objektes zum Scanner berechnen.
+#$@FORMULA@$#:0
+Da der Laserstrahl eine Geschwindigkeit von v 3 108 m s besitzt, sind an die Zeitauosung hohe ß · Anspruche gestellt.
 Eine Tiefenauosung von einem Zentimeter benotigt eine Zeitauosung von 67 Pikosekunden.
 Diese Genauigkeit wird durch Amplitudenmodulation erreicht.
 Dabei wird die Phasenverschiebung des Detektorsignals relativ zum emittierten Signal ermittelt.
@@ -239,28 +242,30 @@ Durch Wiederholen dieser Prozedur wird erreicht, dass uber die gesamte zu scanne
 Der verwendet 2D-Laserscanner mit Kippvorrichtung ist in Abbildung 3.1a zu sehen.
 Die so ermittelten Punkte im dreidimensionalen Raum mussen nun als Grauwertbild abgebildet werden.
 Dazu werden den Punkten in Abhangigkeit ihrer Entfernung zum Scanner Grauwerte zugeordnet.
-Das Koordinatensystem in das die 3D-Datenpunkte abgebildet werden ist in Abbildung 3.1b y P r z x (a) (b) Abbildung 3.1:
+Das Koordinatensystem in das die 3D-Datenpunkte abgebildet werden ist in Abbildung 3.1b Abbildung 3.1:
 (a) 2D-Laserscanner mit Kippvorrichtung, um 3D-Scans aufzunehmen (b) Koordinatensystem des 3D-Laserscanners zu sehen.
 Folgende Gleichung berechnet den Abstand eines 3D-Datenpunktes zum Scanner und bildet ihn auf das Intervall [0; 1] ab:
-x2 + y2 + z2 d = 1.
-(3.2) − s p maximale Distanz Die Variable maximale Distanz\ wird verwendet, um den Kontrast des Tiefenbildes zu steuern " (vgl. 4.1.1).
+#$@FORMULA@$#:0
+Die Variable maximale Distanz\ wird verwendet, um den Kontrast des Tiefenbildes zu steuern " (vgl. 4.1.1).
 In dieser Gleichung wird der euklidische Abstand des Objektes zum Scanner verwendet.
 Dies ist jedoch nicht optimal, da dadurch ein großes Objekt (auch wenn es eine planare Flache besitzt und senkrecht zum Scanner steht) unterschiedliche Grauwerte erhalt, da der Objektpunkt in Scannerhohe eine geringere Entfernung besitzt, als ein Objektpunkt der sich oberhalb oder seitlich vom Scanner befindet.
 Abbildung 3.2a macht diesen Zusammenhang deutlich.
 Da in dieser Arbeit Objekte als zusammenhangende Pixel mit einem nahezu identischen Grauwert definiert sind und die Segmentierungsverfahren darauf hin ausgerichtet sind (vgl. 4.2), muss Gleichung 3.2 dahingehend verandert werden, dass nur die Tiefenkoordinate berucksichtigt wird:
-z d = 1.− maximale Distanz r Da die Auosung des Tiefenbildes oft großer ist, als die Anzahl der 3D-Datenpunkte, wird zwischen den Grauwerten der einzelnen Datenpunkte interpoliert, um das gesamte Tiefenbild zu erhalten.
+z
+#$@FORMULA@$#:1
+.
+maximale Distanz Da die Auosung des Tiefenbildes oft großer ist, als die Anzahl der 3D-Datenpunkte, wird zwischen den Grauwerten der einzelnen Datenpunkte interpoliert, um das gesamte Tiefenbild zu erhalten.
 Diese Eigenschaft wird in Abschnitt 4.4.3 zur Segmentierung des Tiefenbildes ausgenutzt.
 Abbildung 3.2b zeigt das auf diese Weise erhaltene Tiefenbild.
-(a) (b) Abbildung 3.2:
+Abbildung 3.2:
 (a) Seitenansicht eines Laserscanns.
 (b) Durch Mapping der 3D-Datenpunkte auf Grauwerte und der Interpoltaion zwischen diesen enstandenes Tiefenbild.
-3.2 Eigenschaften von Tiefenbildern
 
 
-:::: Erzeugung von Tiefenbildern ::::
+:::: Eigenschaften von Tiefenbildern ::::
 
 
-prasentieren die in Tiefenbilder enthaltenen Grauwerte den Abstand von Objektoberachen zum Scanner.
+Im Gegensatz zu herkommlichen Kamerabildern, in denen die Lichtintensitat gespeichert ist, reprasentieren die in Tiefenbilder enthaltenen Grauwerte den Abstand von Objektoberachen zum Scanner.
 Durch diese Eigenschaft ist das Tiefenbild unempfindlich gegenuber Beleuchtungsanderungen, Schattenwurf und Verschmutzung von Objektoberachen.
 Tiefendaten bieten uber die bekannte Entfernung von Objekten zum Scanner auch die Moglichkeit die reale Objektgroße zu bestimmen.
 Diese kann als Verifikation bei der Objekterkennung dienen.
@@ -270,7 +275,7 @@ Ein Nachteil der Tiefenbilder ist der, dass die Extraktion der Merkmale, die zur
 Der Grauwert selbst besitzt auch keine Information uber das Objekt, da es sich in beliebiger Entfernung zum Scanner befinden und somit einen beliebigen Grauwert annehmen kann (vgl. Kapitel 5).
 
 
-:::: Eigenschaften von Tiefenbildern ::::
+:::: Konturextraktion ::::
 
 
 Die Kontur eines Objektes bezeichnet dessen Grenze zu anderen Objekten oder zum Hintergrund.
@@ -293,7 +298,7 @@ Neben Bildpunkt- und lokalen Operationen findet noch eine Unterteilung in linear
 Unterschied zwischen einer (a) Bildpunkt- und einer (b) lokalen Operationen.
 
 
-:::: Konturextraktion ::::
+:::: Bildvorverarbeitung ::::
 
 
 Vor der Segmentierung des Bildes wird dieses oft mehrfach vorverarbeitet.
@@ -303,7 +308,7 @@ Alle Maßnahmen mussen entsprechend den Anforderungen an das verarbeitete Bild u
 Die hier vorgenommenen Bildvorverarbeitungsmaßnahmen sind Kontrastverbesserung und Rauschunterdruckung bzw. Ausgleichen von Digitalisierungsfehlern durch Glattung des Tiefenbildes.
 
 
-:::: Bildvorverarbeitung ::::
+:::: Kontrastverbesserung ::::
 
 
 Kontrast bezeichnet den Ubergang von einem Grauwert zu einem anderen in einem begrenzten Bereich des Bildes.
@@ -315,25 +320,26 @@ Es gehort zur Gruppe der linearen Bildpunktoperationen.
 Diese modifizieren mittels Look-Up-Tables (LUT) die Grauwertskala eines Bildes.
 Der Kontrast eines Grauwertbildes B(x; y) kann mit diesem Verfahren verbessert werden, wenn die im Bild vorkommenden minimalen und maximalen Grauwerte Bmin und Bmax nicht den gesamten zur Verfugung stehenden Grauwertbereich Amin bis Amax abdecken.
 In diesem Fall lasst sich nach Gleichung 4.1 das Bild B(x; y) in ein Bild A(x; y) mit hoherem Kontrast transformieren [1]:
-Amax − Amin A(x; y) = (B(x; y) Bmin) + Amin.
-(4.1) Bmax − Bmin · − Die Transformation von B(x; y) nach A(x; y) ist eine lineare, ortsunabhangige und globale Grauwerttransformation [56].
+Amax −
+#$@FORMULA@$#:0
+A(x; y) = Bmax − Die Transformation von B(x; y) nach A(x; y) ist eine lineare, ortsunabhangige und globale Grauwerttransformation [56].
 Es sind jedoch auch nichtlineare Transformationen vorstellbar.
 Eine nichtlineare Transformation ermoglicht es, den Kontrast zwischen Objekten, die sich zu nah am Scanner befinden oder zu weit entfernt sind, herabzusenken.
 Dadurch steht im relevanten Entfernungsbereich ein großerer Grauwertbereich zur Verfugung, so dass der Kontrast dort noch starker erhoht werden kann.
-Abbildung 4.2 stellt die LUT-Kennlinien einer linearen bzw.nichtlinearen Transformation dar.
+Abbildung 4.2 stellt die LUT-Kennlinien einer linearen bzw. nichtlinearen Transformation dar.
 Clipping:
 Das Clipping ist neben den nicht linearen Kennlinien ein weiteres Verfahren, um den Kontrast im relevanten Bereich zu verstarken.
-Dabei wird anstatt des Intervalls [Bmin; Bmax] ein kleineres Intervall [B 0 min; BB0 B0 max] mit Bmin ≤ Bmax abgebildet [1].
-Abbildung 4.3 max ≤ min ≤ macht deutlich, dass insbesondere fur Tiefenbilder nach der Entfernung von Bodenpunkten (deren Erzeugung in 4.4.2 beschrieben ist) das Abschneiden der hellsten Grauwerte durch Clipping Sinn macht, da diese meist nur von wenigen falsch klassifizierten Bodenpunkten besetzt sind.
-4.1.2 Glattung durch lokale Operatoren
+Dabei wird anstatt des Intervalls [Bmin; Bmax] ein
+#$@FORMULA@$#:1
+macht deutlich, dass insbesondere fur Tiefenbilder nach der Entfernung von Bodenpunkten (deren Erzeugung in 4.4.2 beschrieben ist) das Abschneiden der hellsten Grauwerte durch Clipping Sinn macht, da diese meist nur von wenigen falsch klassifizierten Bodenpunkten besetzt sind.
 
 
-:::: Kontrastverbesserung ::::
+:::: Glattung durch lokale Operatoren ::::
 
 
-oder fehlende horizontale Linien enthalten.
+Wie Abbildung 4.4a zeigt, kann das Tiefenbild durch Digitalisierungsfehler einzelne fehlende Pixel oder fehlende horizontale Linien enthalten.
 Neben diesen Digitalisierungsfehlern sind Tiefenbilder Abbildung 4.2:
-Look-Up-Table-Kennlinien einer linearen bzw.nichtlinearen Grauwertdehnung.
+Look-Up-Table-Kennlinien einer linearen bzw. nichtlinearen Grauwertdehnung.
 (a) (b) (c) Abbildung 4.3:
 Kontrasterhohung des Tiefenbildes:
 (a) Tiefenbild ohne Kontrasterhohung, (b) Kontrasterhohung durch Grauwertdehnung, (c) Kontrasterhohung durch Grauwertdehnung mit Clipping realer Szenen im allgemeinen mit Rauschen behaftet [25].
@@ -365,7 +371,7 @@ Dieser ergibt sich, indem alle Pixel der herangezogenen Umgebung in eine sortier
 Der Medianfilter unterdruckt Rauschen und ist gleichzeitig ein kantenerhaltener Operator.
 
 
-:::: Glattung durch lokale Operatoren ::::
+:::: Glattung durch morphologische Operatoren ::::
 
 
 Zu den morphologischen Operatoren gehoren Dilatation, Erosion und Skeletierung, wobei Skeletierung eine spezielle Art der Erosion ist [56].
@@ -384,7 +390,8 @@ Nur wenn die Anzahl der Pixel, fur die diese Bedingung gilt, einen definierten S
 Meist wird der Schwellwert auf die Gesamtgroße des Strukturelementes gesetzt, so dass alle Pixel des Strukturelementes Objektpixel sein mussen, damit der Ankerpunkt als Objektpixel markiert wird.
 Die Wirkungsweise der Erosionsoperation ist in Abbildung4.6 zu sehen.
 Formal lasst sich die Erosion einer Menge X mit einem Strukturelement B als Schnitt negativer Translationen des Strukturelementes darstellen [68]:
-"B(X) = X−b mit Translation X−b = x + ( b) x X.f − j 2 g b\2B Abbildung 4.6:
+#$@FORMULA@$#:0
+Abbildung 4.6:
 Wirkungsweise der Erosionsoperation:
 es ist zu sehen, dass die Erosion die kleinere Komponente der Menge X entfernt, da das Strukturelement B nicht komplett in die Komponente hineinpasst [54].
 Abbildung 4.7:
@@ -394,8 +401,10 @@ Dilatation Dilatation fuhrt zu einem Wachstums- bzw. Ausdehnungsvorgang der Bild
 Es ist moglich, verschiedene Objekte zu vereinigen, Locher zu fullen oder Risse zu schließen.
 Dilatation entspricht der Erosionsoperation mit einem geringen Schwellwert.
 Meist wird dieser auf eins gesetzt, so dass der aktuelle Ankerpunkt des Strukturelementes als Objektpixel markiert wird, sobald ein Pixel unter dem Strukturelement ein Objektpixel im Originalbild ist:
-B(X) = x X = ?.f j Bx \ g Es kann gezeigt werden, dass dies der Vereinigung von Translationen des Originalbildes mit Bezug auf das Strukturelement entspricht:
-B(X) = X−b.b[2B Die Wirkungsweise der Dilatationsoperation ist in Abbildung 4.7 zu sehen.
+#$@FORMULA@$#:0
+Es kann gezeigt werden, dass dies der Vereinigung von Translationen des Originalbildes mit Bezug auf das Strukturelement entspricht:
+#$@FORMULA@$#:1
+Die Wirkungsweise der Dilatationsoperation ist in Abbildung 4.7 zu sehen.
 Dilatation und Erosion sind einander entgegengesetzt aber nicht invers, da es sich um keine linearen Filter handelt.
 Onung Die Onungsoperation ist nach Gleichung 4.2 eine Kombination aus Erosion und anschließender Dilatation mit punktgespiegeltem Strukturelement B 0 [54].
 Sie hat das Ziel, die meisten Strukturen, Abbildung 4.8:
@@ -403,17 +412,20 @@ Wirkungsweise der Onungsoperation [54].
 die durch die Erosion verloren gegangen sind, wiederherzustellen (siehe Abbildung 4.8).
 Es kann aber immer nur ein Teil der Strukturen wiederhergestellt werden, da Objekte, die kleiner als das Strukturelement, sind bei der Erosion komplett zerstort werden.
 Somit besitzt die Onungsoperation eine von Art und Große des Strukturelementes abhangige Filtereigenschaft:
-B(X) = B0 ["B(X)].
-(4.2) Die Onungsoperation kann ebenso wie Erosion und Dilatation geometrisch interpretiert werden.
+#$@FORMULA@$#:0
+Die Onungsoperation kann ebenso wie Erosion und Dilatation geometrisch interpretiert werden.
 Nur wenn das Strukturelement ganz uber Objektpunkten liegt, werden im Gegensatz zur Erosion nicht nur der Ankerpunkt, sondern alle Punkte des Strukturelementes ubernommen.
 Dies fuhrt zur formalen Beschreibung einer geoneten Menge, die sich als Vereinigung aller Strukturelemente, die Teilmenge der Originalmenge sind, ergibt:
-B(X) = B B X.f j  g [ Die geonete Menge ist somit immer Teilmenge der Originalmenge (Anti-Extensivitatseigenschaft) und mehrfache Anwendung der Onungsoperation fuhrt zu keiner Veranderung der bereits geoneten Menge (Idempotenzeigenschaft) [54].
+#$@FORMULA@$#:1
+Die geonete Menge ist somit immer Teilmenge der Originalmenge (Anti-Extensivitatseigenschaft) und mehrfache Anwendung der Onungsoperation fuhrt zu keiner Veranderung der bereits geoneten Menge (Idempotenzeigenschaft) [54].
 Schließung Der duale Operator zur morphologischen Onung ist die morphologische Schließung.
 Sie ist analog zur Onung definiert, nur werden Reihenfolge von Erosion und Dilatation vertauscht:
-B(X) = "B0 [B(X)].Die veranderte Reihenfolge fuhrt dazu, dass die Operation das Objekt nicht verkleinert, sondern kleine Lucken im und zwischen Objekten schließt.
+#$@FORMULA@$#:2
+Die veranderte Reihenfolge fuhrt dazu, dass die Operation das Objekt nicht verkleinert, sondern kleine Lucken im und zwischen Objekten schließt.
 Die algebraische Formulierung lautet:
 Passt das Strukturelement ganz in den Hintergrund X c der zu schließenden Menge, gehoren alle Punkte des Strukturelementes zum Komplement der Schließung der Menge [54]:
-c X c B(X) = B B.f j  g h[ i Die Schließungsoperation besitzt ebenso wie die Onungsoperation die Idempotenzeigenschaft.
+#$@FORMULA@$#:3
+Die Schließungsoperation besitzt ebenso wie die Onungsoperation die Idempotenzeigenschaft.
 Sie erzeugt aber im Gegensatz zur Onungsoperation keine Untermenge der Originalmenge, sondern eine Obermenge (Extensivitatseigenschaft).
 Die Wirkungsweise der Schließungsoperation ist in Abbildung 4.9 zu sehen.
 Abbildung 4.9:
@@ -424,7 +436,7 @@ Dadurch fuhrt die Erosion zu einer Verdunkelung des Grauwertbildes [54].
 Die Grauwert-Dilatation ersetzt jedes Pixel durch den großten Grauwert, der sich unter dem Strukturelement befindet, und fuhrt dem entsprechend zu einer Aufhellung der Bildes.
 Grauwert- Onung und -Schließung arbeiten analog zur binaren Onung und Schließung mit dem Unterschied, dass sie Grauwert-Erosion und -Dilatation verwenden.
 Beide Operationen f uhren zu einer Glattung des Grauwertbildes.
-Dabei filtert die Onungs- bzw. Schließungsoperation Storungen oberhalb bzw.unterhalb des eigentlichen Signals heraus.
+Dabei filtert die Onungs- bzw. Schließungsoperation Storungen oberhalb bzw. unterhalb des eigentlichen Signals heraus.
 Die glattende Wirkung der morphologischen Operationen wird durch eine Kombination aus Onen und Schließen erreicht [45].
 Dabei sind eine Hintereinanderschaltung von Onen und Schließen bzw. Schließen und Onen moglich [25].
 Abbildung 4.4b zeigt ein mit einer Onen-Schließen Kombination geglattetes Bild.
@@ -432,7 +444,7 @@ Dabei wird ein vertikales Strukturelement der Große 1 5 eingesetzt,  da dies d
 Im Vergleich mit Abbildung 4.4a ist zu sehen, dass die Glattung Fehler im Tiefenbild nahezu vollstandig entfernt, ohne die Kanten des Bildes zu verwischen.
 
 
-:::: Glattung durch morphologische Operatoren ::::
+:::: Segmentierungsverfahren ::::
 
 
 Die Bildsegmentierung ist der Ubergang von der rein numerischen zu einer symbolischen aber nicht interpretierten Darstellung des Bildes.
@@ -442,7 +454,7 @@ Segmentierung ist ein anwendungsspezifisches Verfahren, das stark von verwendete
 Zur Segmentierung wird in der Regel kein oder nur wenig Objektwissen eingesetzt [56].
 In dieser Applikation wird das Wissen verwendet, dass die Objekte einen relativ gleichbleibenden Grauwert besitzen.
 Jedes Bildauswertungsverfahren benotigt direkt oder indirekt diesen Schritt der sinnvollen Gruppierung der Bildpixel.
-Jedem segmentierten Objekt konnen im Gegensatz zu einzelnen Bildpixeln komplexere Eigenschaften wie Form, Textur usw.zugeschrieben werden.
+Jedem segmentierten Objekt konnen im Gegensatz zu einzelnen Bildpixeln komplexere Eigenschaften wie Form, Textur usw. zugeschrieben werden.
 Viele High-Level-Bildverarbeitungssysteme arbeiten mit diesen Eigenschaften.
 Wie in Kapitel 5 zu sehen ist, wird in dieser Arbeit nur die Eigenschaft Form\ als Informationstrager fur ein Objekt verwendet. "
 Eine zuverlassige Segmentierung ist von zentraler Bedeutung, da sich Fehler in der Segmentierungsphase auf alle folgenden Verarbeitungsschritte auswirken.
@@ -451,7 +463,8 @@ Ein gutes Segmentierungsverfahren besitzt die Eigenschaft, dass es moglichst gro
 Segmentierungsalgorithmen lassen sich in folgende vier Klassen unterteilen:
 punktorientierte Verfahren:
 Die punktorientierten Verfahren (auch elementare Verfahren) verwenden zur Entscheidung, ob ein Pixel zu einem Segment gehort, nur die Eigenschaften des Pixels wie dessen Grauwert.
-Zu den punktorientierten Verfahren gehort das in 4.2.3 beschriebene Schwellwertverfahren.kantenorientierte Verfahren:
+Zu den punktorientierten Verfahren gehort das in 4.2.3 beschriebene Schwellwertverfahren.
+kantenorientierte Verfahren:
 Kantenorientierte Verfahren versuchen zunachst mittels lokaler Operationen, Kanten im Bild zu finden.
 Anschließend extrahiert ein Konturverfolgungsalgorithmus (vgl. Abschnitt 4.3) die Konturen aus dem Kantenbild.
 Zu den am haufigsten verwendeten Kantendetektionsoperatoren gehoren der Sobel-, Laplace- und der Canny-Operator.
@@ -462,17 +475,19 @@ Sprungkanten zeichnen sich durch eine Diskontinuitat der Tiefenkoordinate aus.
 Wahrend Faltenkanten entstehen, wenn zwei Flachen unter einem Winkel aufeinander treen.
 Oben genannte Kantendetektionsoperatoren sind nur in der Lage Sprungkanten im Tiefenbild zu entdecken, da bei Faltenkanten ein ießender Grauwert ubergang gegeben ist.
 Faltenkanten werden durch den Vergleich der Oberachennormalen der aneinanderstoßenden Flachen detektiert.
-Uberschreitet der Winkel zwischen den Normalen einen definierten Wert, muss zwischen den Flachen eine Faltenkante liegen.regionenbasierte Verfahren:
+Uberschreitet der Winkel zwischen den Normalen einen definierten Wert, muss zwischen den Flachen eine Faltenkante liegen.
+regionenbasierte Verfahren:
 Regionenbasierte Verfahren verwenden im Gegensatz zu punktorientierten Verfahren auch Umgebungspixel um zu entscheiden, ob ein Pixel zu einem Segment gehort oder nicht.
 Diese Verfahren werden in regionenwachstums- und baumorientierte Verfahren unterteilt.
 Regionenwachstumsverfahren setzen sukzessiv Regionenkeime in das Bild und weiten die Region auf die Nachbarpixel der Regionenkeime aus, wenn diese ein bestimmtes Homogenitatskriterium erfullen.
-Baumorientierte Verfahren reprasentatieren das Bild durch eine Baumstruktur (Pyramiden, Quad Trees), wobei ein Knoten im Baum einen homogenen Bereich reprasentiert.regelbasierte Verfahren:
+Baumorientierte Verfahren reprasentatieren das Bild durch eine Baumstruktur (Pyramiden, Quad Trees), wobei ein Knoten im Baum einen homogenen Bereich reprasentiert.
+regelbasierte Verfahren:
 Regelbasierte Verfahren (auch Segmentierung durch Klassifikation) besitzen im Gegensatz zu den bisher vorgestellten Verfahren einen mehrdimensionalen Merkmalsraum.
 Es ist somit moglich, neben der Grauwertskala weitere Merkmale wie Textureigenschaft oder Grauwertgradient zu verwenden.
 Mit Hilfe von Lernverfahren werden diese Merkmalsvektoren der Pixel geclustert und somit das Bild segmentiert.
 
 
-:::: Segmentierungsverfahren ::::
+:::: Canny Kantendetektion ::::
 
 
 Da die Objekte im Tiefenbild sich von ihrem Hintergrund durch einen Grauwertsprung abheben, wird das Canny-Kantendetektionsverfahren [8] eingesetzt, um diese Objektkanten zu ermitteln.
@@ -486,10 +501,12 @@ Dadurch entsteht das Kantenbild (b).
 In (c) sind die aus dem Kantenbild extrahierten Konturen zu sehen, wobei zusammenhangende Konturpunkte mit der selben Farbe markiert sind.
 Gauss-Filter angewendet, um Rauschen im Bild zu eliminieren, da die durch Rauschen entstandenen Pixel einen Helligkeitsunterschied zu ihren Nachbarpixeln besitzen und somit als Kante erkannt werden.
 Das geglattete Tiefenbild wird mit dem Sobel-Operator gefaltet.
-Der Sobel-Operator ist ein Kantendetektor erster Ordnung und wird in x- und y-Richtung auf das Bild angewendet, um horizontale bzw.vertikale Kanten zu extrahieren.
+Der Sobel-Operator ist ein Kantendetektor erster Ordnung und wird in x- und y-Richtung auf das Bild angewendet, um horizontale bzw. vertikale Kanten zu extrahieren.
 Danach werden Große und Orientierung der Gradientenvektoren bestimmt.
 Die Große der Gradienten wird durch das geometrische Mittel der x- und y-Kantenbilder bestimmt.
-Die Orientierung wird nach Gleichung 4.3 ermittelt und durch das in Abbildung 4.10 dargestellte Schema dikretisiert.y Kantenbild(x; y) Orientierung(x; y) = arctan − (4.3) x Kantenbild(x; y)   − (a) (b) (c) Abbildung 4.12:
+Die Orientierung wird nach Gleichung 4.3 ermittelt und durch das in Abbildung 4.10 dargestellte Schema dikretisiert.
+#$@FORMULA@$#:0
+(a) (b) (c) Abbildung 4.12:
 (b) stellt das mittels k-Means Verfahren mit neun Clustern segmentiertes Tiefenbild aus (a) dar.
 Abbildung (c) zeigt die Segmentierung des selben Tiefenbildes mit funf Clustern.
 Zur Kantendetektion wird jedes Pixel entlang der durch die Orientierung vorgegebene Richtung mit seinen Nachbarn verglichen.
@@ -508,7 +525,7 @@ Obwohl Verfahren existieren, um diese Konturlucken zu schließen [24], werden im
 Das
 
 
-:::: Canny Kantendetektion ::::
+:::: k-means Clustering ::::
 
 
 Daten beliebig auf die Cluster aufgeteilt.
@@ -517,11 +534,12 @@ Diesen Mittelwerten werden die einzelnen Datenpunkte so zugeordnet, dass jeder D
 Dadurch entsteht eine neue Partitionierung der Daten.
 Es werden neue Mittelwerte berechnet und die Daten werden den neuen Mittelwerten zugeordnent.
 Diese Prozedur wird so lange angewendet, bis die Summe der Distan- (a) (b) (c) Abbildung 4.13:
-Ein globales Schwellwertverfahren erzeugt definierte Schnitte durch das Tiefenbild bei variierendem Schwellwert.zen der Datenpunkte zu ihren Mittelwerten sich nicht mehr maßgeblich andert.
+Ein globales Schwellwertverfahren erzeugt definierte Schnitte durch das Tiefenbild bei variierendem Schwellwert.
+zen der Datenpunkte zu ihren Mittelwerten sich nicht mehr maßgeblich andert.
 Die Summe der Distanzen ist eine mit den Iterationsschritten monoton fallende Funktion.
 In dieser Arbeit wird das k-means Verfahren eingesetzt, um die Tiefenbilder zu segmentieren.
 Dabei werden die Pixel des Tiefenbildes anhand ihres Grauwertes geclustert.
-Abbildung 4.12 zeigt das Ergebnis eines mit funf bzw.neun Clustern segmentierten Tiefenbildes.
+Abbildung 4.12 zeigt das Ergebnis eines mit funf bzw. neun Clustern segmentierten Tiefenbildes.
 Es ist zu sehen, dass das Problem der in den Boden ubergehenden Konturen auch mit einer großeren Anzahl von Clustern (bis zu 52 Cluster wurden getestet) nicht gelost werden kann.
 Daruber hinaus zeigt der Vergleich von Abbildung 4.12 (b) und (c), dass Objekte zufallig richtig segmentiert werden.
 Dies liegt an der unbekannten Anzahl der benotigten Cluster, die von Tiefenbild zu Tiefenbild variiert.
@@ -530,7 +548,7 @@ Dies ist aber eine ineziente Methode von zufalligem Erfolg und wird in dieser A
 4.2.3 Schwellwertverfahren Mit Hilfe von Schwellwertverfahren kann das Tiefenbild in ein binares Bild umgewandelt werden.
 
 
-:::: k-means Clustering ::::
+:::: Schwellwertverfahren ::::
 
 
 menhangende Bereiche in einem binaren Bild zu extrahieren und das Bild somit zu segmentieren.
@@ -588,7 +606,7 @@ Da die zu verarbeitenden Tiefenbilder mit Abbildung 4.15a vergleichbar sind, wei
 Abbildung 4.16 zeigt das Ergebnis eines auf diese Weise binarisierten Tiefenbildes.
 
 
-:::: Schwellwertverfahren ::::
+:::: Konturextraktion ::::
 
 
 Aus dem binarisierten Bild werden die Konturen mit einem Konturverfolgungsalgorithmus nach [58] extrahiert.
@@ -597,14 +615,14 @@ Die Konturverfolgungsprozedur verfolgt, wie der Name schon sagt, die Kontur und 
 Der Algorithmus geht das Bild so lange durch, bis keine neuen Konturpunkte gefunden werden.
 
 
-:::: Konturextraktion ::::
+:::: Verbesserungen am Eingabebild ::::
 
 
 Da das Problem der in den Boden ubergehenden Konturen durch die vorgestellten Bildvorverarbeitungs- bzw. Segmentierungsverfahren nicht gelost wird, erlautert dieser Abschnitt verschiedene Ansatze, die ein modifiziertes Tiefenbild erzeugen.
 Dieser Abschnitt ist damit klar von der Bildvorverarbeitung und der Segmentierung abzugrenzen, da es sich nicht um Algorithmen handelt, die auf das Tiefenbild angewendet werden, sondern um unterschiedliche Verfahren, aus den 3D-Datenpunkten Tiefenbilder zu generieren.
 
 
-:::: Verbesserungen am Eingabebild ::::
+:::: Parallele Projektion ::::
 
 
 Der erste Ansatz ist der, das Kameramodel zu andern mit dem das Tiefenbild aufgenommen wird.
@@ -622,36 +640,35 @@ Aus diesem Grund wird das Verfahren nicht verwendet.
 Statt dessen kommt das im folgenden Abschnitt beschriebene Verfahren zum Einsatz
 
 
-:::: Parallele Projektion ::::
+:::: Entfernung der Bodenpunkte im Tiefenbild ::::
 
 
 Bei diesem Ansatz wird der Abbildung der 3D-Punkte auf einen Grauwertbereich eine Interpretation derselben vorangestellt.
 Diese ermoglicht es, die Menge der 3D-Punkte in Boden-, Deckenund Objektpunkte aufzuteilen.
 Das Verfahren berechnet den Gradienten zwischen benachbarten Punkten und teilt sie anhand diesem einer der drei Gruppen zu [47][67].
 Dazu werden durch die Punktwolke von der Scannerposition ausgehend vertikale Schnitte gelegt.
-In einem Zylinderkoordi- natensystem besitzt die Punktwolke die Darstellung pi;j = (i; ri;j; zi;j)T , wobei i der Drehwinkel der jeweiligen vertikalen Schnittebene ist und zi;j bzw.ri;j die Koordinaten eines der sich in der vertikalen Ebene i befindlichen Punktes j sind.
-Der Gradient i;j zwischen zwei benachbarten Punkten lasst sich mittels Gleichung 4.4 bestimmen.zi;j − zi;j−1 1 3 i;j = arctan mit ß i;j < ß (4.4) ri;j − ri;j−1  − 2 ≤ 2  Der Vergleich von i;j mit einem festen Schwellwert ermoglicht eine Interpretation des Punktes:
-21u
-2.
-23u
-24u
-25u
-26u
-3. ß < i;j:
-Punkt j ist ein Deckenpunkt − Um dieses Verfahren unempfindlich gegenuber Rauschen zu machen, wird nicht der direkte Nachbar eines Punktes betrachtet, sondern ein weiter entfernter Punkt mit dem Index-Oset k:
-zi;j − zi;j−k tan i;j = ri;j − ri;j−k Wie groß der Abstand der beiden Punkte sein muss, lasst sich mit Formel (4.5) berechnen.
+In einem Zylinderkoordi- natensystem besitzt die Punktwolke die Darstellung pi;j = (i; ri;j; zi;j)T , wobei i der Drehwinkel der jeweiligen vertikalen Schnittebene ist und zi;j bzw. ri;j die Koordinaten eines der sich in der vertikalen Ebene i befindlichen Punktes j sind.
+Der Gradient i;j zwischen zwei benachbarten Punkten lasst sich mittels Gleichung 4.4 bestimmen.
+#$@FORMULA@$#:0
+Der Vergleich von i;j mit einem festen Schwellwert ermoglicht eine Interpretation des Punktes:
+1. i;j <  :
+Punkt j ist ein Bodenpunkt
+#$@FORMULA@$#:1
+Um dieses Verfahren unempfindlich gegenuber Rauschen zu machen, wird nicht der direkte Nachbar eines Punktes betrachtet, sondern ein weiter entfernter Punkt mit dem Index-Oset k:
+#$@FORMULA@$#:2
+Wie groß der Abstand der beiden Punkte sein muss, lasst sich mit Formel (4.5) berechnen.
 Bei dieser Formel wird die Tiefenauosung des Scanners dmin mit berucksichtigt.
-Der Punkt k, der zur Gradientenberechnung herangezogen wird, muss die Bedingung erfullen, dass seine Entfernung zum aktuellen Punkt großer ist als die Tiefenauosung, da der Punkt k ansonsten durch Rauschen entstanden sein muss:
-zi;j−k)2 > dmin (4.5) (ri;j − ri;j−k)2 + (zi;j − q Ein weiteres Problem dieses Verfahrens sind Sprunge zwischen Kanten, wie sie beispielsweise durch das Scannen von oenen Turen entstehen.
+Der Punkt k, der zur Gradientenberechnung herangezogen wird, muss die Bedingung erfullen, dass seine Entfernung zum aktuellen Punkt großer ist als die Tiefenauosung, da der Punkt k ansonsten durch Rauschen
+#$@FORMULA@$#:3
+Ein weiteres Problem dieses Verfahrens sind Sprunge zwischen Kanten, wie sie beispielsweise durch das Scannen von oenen Turen entstehen.
 Ein Bodenpunkt wird nicht als solcher erkannt, wenn er mit einem Punkt verglichen wird, der sich auf einer anderen Kante befindet.
 Um dieses Problem zu losen, wird ein maximaler Entfernungswert definiert, den zwei Punkte besitzen d urfen, die zur Gradientenberechnung herangezogen werden.
-4.4.3 Manipulation der Grauwertinterpolation Da die gemessenen 3D-Punkte nicht der Anzahl der Pixel im Tiefenbild entsprechen, muss zwischen
 
 
-:::: Entfernung der Bodenpunkte im Tiefenbild ::::
+:::: Manipulation der Grauwertinterpolation ::::
 
 
-konnen.
+Da die gemessenen 3D-Punkte nicht der Anzahl der Pixel im Tiefenbild entsprechen, muss zwischen den Grauwerten der 3D-Punkte interpoliert werden, um jedes Pixel einen Grauwert zuweisen zu konnen.
 Diese Tatsache bietet die Ansatzmoglichkeit fur eine weitere Vereinfachung, indem nicht immer interpoliert wird, sondern nur wenn die Entfernung zwischen den 3D-Punkten nicht zu groß ist.
 Bei großen Entfernungen zwischen zwei 3D-Punkten wird nicht interpoliert, so dass die Pixel auf Null gesetzt bleiben.
 Kombiniert mit den in Abschnitt 4.4.2 beschrieben Verfahren zur Entfernung der Bodenpunkte ergibt sich ein Tiefenbild, wie es in Abbildung 4.18b zu sehen ist.
@@ -665,7 +682,7 @@ Eine Glattung wurde ebenso die schwarzen Rander der Objekte entfernen.
 Da die Digitalisierungsfehler nur selten vorkommen, kann dieser Nachteil in Kauf genommen werden, insbesondere deshalb, weil durch dieses Verfahren die Segmentierung des Bildes schon fast gegeben ist.
 
 
-:::: Manipulation der Grauwertinterpolation ::::
+:::: Endfassung des Konturextraktionsalgorithmus ::::
 
 
 Da in diesem Kapitel unterschiedliche, sich teilweise gegenseitig ausschließende Verfahren vorgestellt wurden, wird in diesem Abschnitt die in dieser Applikation verwendete Endfassung beschrieben.
@@ -688,7 +705,7 @@ Kleine Strukturen werden komplett unterdruckt.
 Abbildung 4.19:
 
 
-:::: Endfassung des Konturextraktionsalgorithmus ::::
+:::: Konturreprasentation und Merkmalsextraktion ::::
 
 
 In diesem Kapitel werden zunachst die Begrie Reprasentation und Merkmal einer Kontur geklart.
@@ -697,10 +714,10 @@ Es gibt zwei verschiedene Herangehensweisen, die Form von Objekten zu reprasenti
 konturund regionorientiert.
 Die erste Kategorie reprasentiert die Form, wie der Name schon sagt, durch ihre Kontur, wahrend die zweite Kategorie die Form als Komposition von zweidimensionalen Regionen auasst.
 Abbildung 5.1 zeigt, welche Objekte einander in den unterschiedlichen Beschreibungstechniken ahneln.
-Techniken in beiden Kategorien werden in raumliche (spatial domain) bzw.transformierte Domanen unterteilt.
+Techniken in beiden Kategorien werden in raumliche (spatial domain) bzw. transformierte Domanen unterteilt.
 Die raumliche Domane verwendet numerische, im Ortsraum erzeugte Merkmale, um die Form zu beschreiben.
 Techniken der transformierten Domane erzeugen Deskriptoren mit deren Hilfe die Form in einen anderen Raum abgebildet wird, so dass die formbeschreibenden Merkmale in diesem Raum (z.B. Frequenzraum) erzeugt werden [70].
-Die Techniken der transformierten Domane werden in singlescale\ - (z.B. Fourier Deskriptoren) bzw.multis- " " cale\ - Reprasentationen (z.B. Curvature-Scale-Space-Reprasentation) unterteilt [10].
+Die Techniken der transformierten Domane werden in singlescale\ - (z.B. Fourier Deskriptoren) bzw. multis- " " cale\ - Reprasentationen (z.B. Curvature-Scale-Space-Reprasentation) unterteilt [10].
 Eine weitere wichtige Unterteilung der Reprasentationstechniken unterscheidet zwischen globalen und lokalen (auch strukturellen) Techniken.
 Globale Techniken verwenden zur Reprasentation die Form als Ganzes, wahrend lokale Techniken Teile der Form verwenden, um diese zu beschreiben.
 Abbildung 5.2 zeigt einen Uberblick der Techniken.
@@ -715,11 +732,11 @@ Hierbei konnen aus einer Reprasentationstechnik verschiedene Merkmale bestimmt w
 Welche Reprasentationstechnik Abbildung 5.1:
 Vergleich von regionorientierten und konturorientierten Formmerkmalen:
 Regionorientierte Verfahren werden die blau hinterlegten Objekte als ahnlich erachten, wahrend konturorientierte Verfahren die vertikalen, gelb hinterlegten Objekte als ahnlich erachten werden [6].
-bzw.welches Merkmal dieser Reprasentation verwendet wird, hangt von der Anwendung ab, und es gibt keine Theorie, die besagt, welche Merkmale bei einer bestimmten Anwendung extrahiert werden mussen [1].
+bzw. welches Merkmal dieser Reprasentation verwendet wird, hangt von der Anwendung ab, und es gibt keine Theorie, die besagt, welche Merkmale bei einer bestimmten Anwendung extrahiert werden mussen [1].
 Somit ist die allgemeine Vorgehensweise die, dass erst viele Merkmale extrahiert werden und danach mittels statistischer Verfahren gepruft wird, wie stark die einzelnen Merkmale korreliert sind.
 
 
-:::: Konturreprasentation und Merkmalsextraktion ::::
+:::: Anforderungen an die Konturreprasentationen ::::
 
 
 Damit eine Konturreprasentation Objekterkennung ermoglichen kann, muss sie eine Anzahl von Kriterien erfullen [42].
@@ -742,7 +759,7 @@ Falls die Kontur symmetrisch ist, sollte auch die Reprasentation symmetrisch sei
 Wenn die Kontur Teil einer anderen zweiten Kontur ist, sollte sich auch in der Reprasentation der zweiten Kontur die Reprasentation der ersten Kontur wieder finden lassen (Teil-Ganzes-Kriterium).
 
 
-:::: Anforderungen an die Konturreprasentationen ::::
+:::: Anforderung an die Merkmale ::::
 
 
 An die aus einer Konturreprasentation extrahierten Merkmale werden, wie an die Reprasentation selbst, gewisse Anforderungen gestellt [7].
@@ -758,23 +775,28 @@ Flexibilitat:
 Das System muss sich einfach an sich andernde Randbedingungen anpassen, ohne einen neuen Merkmalssatz extrahieren zu mussen.
 
 
-:::: Anforderung an die Merkmale ::::
+:::: Einfache geometrische Merkmale ::::
 
 
 Objektache und Umfang Die Objektache ist eines der einfachsten geometrischen Merkmale.
 In einem binaren Bild B(x; y) besitzen Objektpixel den Wert 1 und Hintergrundpixel den Wert 0.
-Der Flacheninhalt A ergibt sich als Summe aller Objektpixel des Bildes, M N A = B(x; y).x=1 y=1 X X wobei M die Spalten- und N die Zeilenanzahl ist.
+Der Flacheninhalt A ergibt sich als Summe aller Objektpixel des Bildes, M N A = B(x; y) .
+#$@FORMULA@$#:2
+wobei M die Spalten- und N die Zeilenanzahl ist.
 Die Objektache ist ein translations- und rotationsinvariantes Merkmal.
 Gegenuber Skalierung ist die Objektache trivialerweise nicht invariant.
 Der Objektumfang lasst sich aus einer modifizierten Bildmatrix C(x; y) berechnen, in der alle inneren Objektpixel ebenfalls auf 0 gesetzt werden.
 In einem solchen Bild ergibt sich der Umfang U analog zur Objektache als Summe aller Pixel:
-M N U = C(x; y).Xx=1 Xy=1 Ebenso wie die Objektache handelt es sich beim Objektumfang um ein translations- und rotationsinvariantes Merkmal, das jedoch variant gegenuber Skalierung ist.
+M N
+#$@FORMULA@$#:0
+Ebenso wie die Objektache handelt es sich beim Objektumfang um ein translations- und rotationsinvariantes Merkmal, das jedoch variant gegenuber Skalierung ist.
 Ein Nachteil dieser Berechnungsweise ist der, dass nicht zwischen Konturpixeln, die diagonal miteinander verbunden sind, und Konturpixeln, die 4er Nachbarschaft besitzen, unterschieden wird.
 Eine exaktere Berechnung des Umfangs wird erreicht, indem die Kontur durch den Freeman-Kettencode aus Abschnitt A beschrieben wird.
 Auf diese Weise ist es moglich, diagonal verbundene Pixel mit p2 zu gewichten, was zu einem besseren Ergebnis fuhrt.
 Kreisformigkeit Die Kreisformigkeit C einer Kontur (auch Dunnheitsverhaltnis) ist ein rotations-, skalierungs- und translationsinvariantes Merkmal [32].
 Es stellt ein Verhaltnis aus Flache A und Umfang U einer Kontur dar.
-4ßA C = U 2 Die Kreisformigkeit reicht von 0 fur eine Linie, bis 1 fur einen Kreis.
+#$@FORMULA@$#:1
+Die Kreisformigkeit reicht von 0 fur eine Linie, bis 1 fur einen Kreis.
 Es gibt keine großeren Werte, da der Kreis die maximale Flache bei gegebenem Umfang besitzt.
 Seitenverhaltnis Das Merkmal Seitenverhaltnis\ (engl.: aspect ratio) beschreibt das Seitenverhaltnis eines die Kon- " tur umschreiben Rechtecks.
 Es gibt zwei verschiedene Rechtecke:
@@ -785,29 +807,34 @@ Die Rotationsinvarianz lasst sich erreichen, indem die Bedingung der Parallelita
 Dieses Rechteck wird umschreibendes Rechteck minimaler Flache (engl.: minimum bounding rectangle-MBR) genannt.
 Bei diesem Rechteck wird das Seitenverhaltnis der langeren zur kurzeren Seite berechnet.
 Der Winkel, um den das achsenparallele Rechteck gedreht werden muss, um das umschreibende Rechteck minimaler Flache zu erhalten, lasst sich durch das Merkmal Orientierung bestimmen.
-Meist wird das Verhaltnis der Seitenlangen logarithmisch angegeben, da gilt H B log = log , B H fi fi fi fi fi fi fi fi fi fi fi fi wobei H die Hohe und B die Breite des Rechtecks ist.fi fi fi fi Fullungsgrad Das Merkmal Fullungsgrad\ (auch relative Flache) wird aus dem Verhaltnis der Objektache zu " einer definierten Vergleichsache gebildet und berechnet sich nach Gleichung 5.1.
+Meist wird das Verhaltnis der Seitenlangen logarithmisch angegeben, da gilt H B log = log , B H fi fi fi fi fi fi fi fi fi fi fi fi wobei H die Hohe und B die Breite des Rechtecks ist.
+fi fi fi fi Fullungsgrad Das Merkmal Fullungsgrad\ (auch relative Flache) wird aus dem Verhaltnis der Objektache zu " einer definierten Vergleichsache gebildet und berechnet sich nach Gleichung 5.1.
 Als Vergleichsache wird haufig die Flache eines umschließenden Rechtecks minimaler Flache verwendet.
 Bei dieser Vergleichsache ist der Fullungsgrad ein translations-, rotations- und skalierungsinvariantes Merkmal.
 Wird das kleinste umschreibende, achsenparallele Rechteck verwendet, geht die Invarianz des Merkmals gegenuber Rotation verloren.
-A FG = (5.1) H B · Schwerpunkt Die Koordinaten des geometrischen Schwerpunktes fur ein Objekt werden gemaß folgender Gleichung berechnet:
-A A 1 1 x = xi und y = yi.A A Xi=1 Xi=1 Der Schwerpunkt ist invariant gegenuber Rotation und homogener Skalierung, aber variant gegenuber Translation.
+#$@FORMULA@$#:0
+Schwerpunkt Die Koordinaten des geometrischen Schwerpunktes fur ein Objekt werden gemaß folgender Gleichung berechnet:
+#$@FORMULA@$#:1
+Der Schwerpunkt ist invariant gegenuber Rotation und homogener Skalierung, aber variant gegenuber Translation.
 Radienverhaltnis Das Merkmal Radienverhaltnis\ ist translations-, rotations-, und skalierungsinvariant.
 Es wird " aus dem Verhaltnis der Radien des kleinsten umschreibenden Kreises mit dem des großten Kreises, der vollstandig im Objekt liegt, gebildet.
 Beide Kreise besitzen als Mittelpunkt den Schwerpunkt des Objektes.
 Das Merkmal Radienverhaltnis\ beschreibt zusammen mit den Merkmalen Seiten- " " verhaltnis\ und Kreisformigkeit\ die Kompaktheit des Objektes. "
 Abbildung 5.3:
 Einfache geometrische Merkmale:
-umschließendes achsenparalleles Rechteck minimaler Flache (blau), umschließendes Rechteck minimaler Flache (lila) Hauptachse e und Nebenachse f des Objektes (grun) und minimaler umschreibender Kreis bzw.maximaler innerer Kreis (rot) Exzentrizitat Die Exzentrizitat sowie die im Folgenden beschriebene Orientierung verwenden zur Berechnung die in Abschnitt 5.4 beschriebenen Momente.
+umschließendes achsenparalleles Rechteck minimaler Flache (blau), umschließendes Rechteck minimaler Flache (lila) Hauptachse e und Nebenachse f des Objektes (grun) und minimaler umschreibender Kreis bzw. maximaler innerer Kreis (rot) Exzentrizitat Die Exzentrizitat sowie die im Folgenden beschriebene Orientierung verwenden zur Berechnung die in Abschnitt 5.4 beschriebenen Momente.
 Sie sind trotzdem an dieser Stelle aufgef uhrt, da sie eine geometrische Interpretation besitzen.
 Die Exzentrizitat (auch Elongation) ist translations-, rotations-, und skalierungsinvariantes Merkmal und beschreibt das Verhaltnis der Hauptachse zur Nebenachse eines Objekts.
 Die Haupachse ist die langste Sehne durch das Objekt und die Nebenachse die langste Sehne, die senkrecht zu dieser verlauft.
 Abbildung 5.3 macht dies deutlich.
 Gleichung 5.2 zeigt, wie Exzentrizitat aus den zentralen Momenten berechnet wird.
-02)2 + 42 11 e = (20 − (20 + 02)2 (5.2) Orientierung Das Merkmal Orientierung beschreibt die Hauptrichtung des Objektes.
-Es handelt sich um ein translations- und skalierungsinvariantes Merkmal. 1 211  = arctan (5.3) 2 20 − 02  
+#$@FORMULA@$#:0
+Orientierung Das Merkmal Orientierung beschreibt die Hauptrichtung des Objektes.
+Es handelt sich um ein translations- und skalierungsinvariantes Merkmal.
+#$@FORMULA@$#:1
 
 
-:::: Einfache geometrische Merkmale ::::
+:::: Merkmalsextraktion mittels Momenten ::::
 
 
 Momente lassen sich fur allgemeine Grauwertbilder berechnen.
@@ -817,29 +844,41 @@ Momente entnehmen dem Bild globale Informationen und benotigen keine geschlossen
 Diskrete geometrische Momente (auch regulare Momente) einer zweidimensionalen Bildfunktion B(x; y), lassen sich nach Gleichung 5.4 berechnen.
 Dabei bezeichnet N die Zeilen- und M die Spaltenanzahl.
 Das Moment besitzt die Ordnung j = (p + q), und zu jeder Ordnung j gibt es j + 1 Momente.
-M N B(x; y)xpyq mit p; q = 0; 1; 2; :::
-(5.4) mp;q = Xx=1 Xy=1 Da diese Momente nicht translationsinvariant sind, werden sie zu zentralen Momenten weiterverarbeitet.
+#$@FORMULA@$#:0
+#$@FORMULA@$#:1
+Da diese Momente nicht translationsinvariant sind, werden sie zu zentralen Momenten weiterverarbeitet.
 Zur Berechnung der zentralen Momente wird der Schwerpunkt der Kontur benotigt.
-Dieser berechnet sich aus den geometrischen Momenten nach Gleichung 5.5. m1;0 m0;1 x = y = (5.5) m0;0 m0;0 Hierbei bezeichnet m0;0 das Moment 0.
+Dieser berechnet sich aus den geometrischen Momenten nach Gleichung 5.5.
+#$@FORMULA@$#:2
+Hierbei bezeichnet m0;0 das Moment 0.
 Ordnung.
-Dieses gibt die Summe aller Pixelwerte eines Bildes an und entspricht bei einer binaren Bildfunktion dem Flacheninhalt.m1;0 und m0;1 werden als Zeilenmoment bzw. Spaltenmoment erster Ordnung bezeichnet.
+Dieses gibt die Summe aller Pixelwerte eines Bildes an und entspricht bei einer binaren Bildfunktion dem Flacheninhalt.
+m1;0 und m0;1 werden als Zeilenmoment bzw. Spaltenmoment erster Ordnung bezeichnet.
 Mit Hilfe der Schwerpunktskoordinaten konnen die zentralen Momente definiert werden.
-M N x)p(y y)q p;q = B(x; y)(x − − x=1 y=1 X X Durch die Verschiebung um (x; y) in ein dem Objekt angepasstes Koordinatensystem sind die zentralen Momente translationsinvariant aber nicht skalierungsinvariant.
+#$@FORMULA@$#:3
+Durch die Verschiebung um (x; y) in ein dem Objekt angepasstes Koordinatensystem sind die zentralen Momente translationsinvariant aber nicht skalierungsinvariant.
 Um die Skalierungsinvarianz zu erreichen, mussen die Momente normiert werden.
-Der Normierungsfaktor wird ermittelt, indem die Momente einer Bildfunktion B(x; y) mit denen einer um  skalierten Bildfunktion B 0(x0; y0) verglichen werden [7].
-Es gilt:
-B(x; y) = B 0(x; y) = B0(x0; y0).
-B0(x0; y0)x0py0qdx0dy0 = B(x; y)(x)p(y)qdxdy Z Z Z Z = p+qB(x; y)xpyqdxdy Z Z Wird zusatzlich berucksichtigt, dass das geometrische Moment m0;0 dem Flacheninhalt entspricht, legt dies eine Normierung der zentralen Momente nach Gleichung 5.6 nahe.
-p;q p + q p;q = (m0;0) mit  = + 1 (5.6) 2 Diese normierten Momente p;q werden normalisierte Momente genannt und sind translations- und skalierungsinvariant.
+Der Normierungsfaktor wird ermittelt, indem die Momente einer Bildfunktion B(x; y) mit denen einer um  skalierten Bildfunktion B 0(x0; y0)
+#$@FORMULA@$#:4
+#$@FORMULA@$#:5
+#$@FORMULA@$#:6
+Z Z
+#$@FORMULA@$#:7
+Wird zusatzlich berucksichtigt, dass das geometrische Moment m0;0 dem Flacheninhalt entspricht, legt dies eine Normierung der zentralen Momente nach Gleichung 5.6 nahe.
+#$@FORMULA@$#:8
+Diese normierten Momente p;q werden normalisierte Momente genannt und sind translations- und skalierungsinvariant.
 Die fehlende Rotationsinvarianz wird erst durch geeignete Kombination der normalisierten Momente erreicht.
 
 
-:::: Merkmalsextraktion mittels Momenten ::::
+:::: Hu-Momente ::::
 
 
 Hu verwendet in seiner Arbeit von 1962 [20] normalisierte Momente, um daraus rotations-, translationsund skalierunginvariante Merkmale zu extrahieren.
 Durch eine nichtlineare Kombination normalisierter Momente bis zur 3.
-Ordnung konnte Hu folgende sieben invariante Merkmale berechnen.h1 = 2;0 + 0;2 0;2]2 + 4[1;1]2 h2 = [2;0 − 32;1]h3 = [3;0 − 31;2]2 + [0;3 − h4 = [3;0 + 1;2]2 + [0;3 + 22;1]2 3[0;3 + 2;1]2 h5 = [3;0 − 31;2][3;0 + 1;2] [3;0 + 1;2]2
+Ordnung konnte Hu folgende sieben invariante Merkmale berechnen.
+#$@FORMULA@$#:1
+0;2]{{hn:2:nh}}+ 4[1;1]{{hn:2:nh}} h2 = [2;0 − 32;1]{{hn:2:nh}} h3 = [3;0 − 31;2]2 + [0;3 − h4 = [3;0 + 1;2]{{hn:2:nh}}+ [0;3 + 22;1]{{hn:2:nh}} 3[0;3 + 2;1]{{hn:2:nh}} h5 = [3;0 − 31;2][3;0 + 1;2] [3;0 + 1;2]{{hn:2:nh}}
+13u
 14u
 15u
 16u
@@ -853,59 +892,50 @@ Ordnung konnte Hu folgende sieben invariante Merkmale berechnen.h1 = 2;0 + 0;2
 24u
 25u
 26u
-27u
-+ 41;1[3;0 + 1;2][0;3 + 2;1] 3[0;3 + 2;1]2 h7 = [32;1 − 0;3][3;0 + 1;2] [3;0 + 1;2]2 f − g [0;3 + 2;1]2 + [31;2 − 3;0][0;3 + 2;1] 3[3;0 + 1;2]2 f − g Das siebte Moment ist jedoch nicht invariant gegenuber Spiegelung.
-Da der numerische Wert der Hu-Momente stark mit der Ordnung abfallt, wird in Applikationen oft ein logarithmierter Wert berechnet.hlogi = sign(hi) log( ) j hij
++ 41;1[3;0 + 1;2][0;3 + 2;1] 3[0;3 + 2;1]{{hn:2:nh}} h7 = [32;1 − 0;3][3;0 + 1;2] [3;0 + 1;2]{{hn:2:nh}} f − g [0;3 + 2;1]{{hn:2:nh}} + [31;2 − 3;0][0;3 + 2;1] 3[3;0 + 1;2]{{hn:2:nh}} f − g Das siebte Moment ist jedoch nicht invariant gegenuber Spiegelung.
+Da der numerische Wert der Hu-Momente stark mit der Ordnung abfallt, wird in Applikationen oft ein logarithmierter Wert berechnet.
+#$@FORMULA@$#:0
 
 
-:::: Hu-Momente ::::
+:::: Zernike-Momente ::::
 
 
 Zernike-Polynome wurden in der theoretischen Optik bereits in den 30er Jahren des letzten Jahrhunderts verwendet [35] [69].
 Aber erst 1980 wurden von Teague auf diesen Polynomen basierende orthogonale komplexe Momente entwickelt [59].
 Zernike-Polynome besitzen die Form [29]:
-Vnm(x; y) = Rnm(%)eim , wobei n die radiale und m die azimutale Ordnung des Polynoms beschreibt.
+#$@FORMULA@$#:1
+wobei n die radiale und m die azimutale Ordnung des Polynoms beschreibt.
 % bestimmt die Lange des Vektors vom Ursprung bis zum Pixel und  den Winkel zwischen diesem und der x-Achse.
 Zernike Polynome lassen sich in einen radialen (Rnm(%)) und einen winkelabhangigen Teil (eim) separieren.
 Der radiale Anteil besitzt die Form:
-n−jmj=2 (n s)!
-%n−s.Rnm(%) = ( 1)s − − · s!
-n+jmj n−jmj s !
-s !
-s=0 2 − 2 − X     Es sind komplexe, orthogonale Polynome, die senkrecht auf dem Einheitskreis x2 +y2 1 verlaufen.
-≤ Die Zernike-Momente entstehen durch die Projektion der Bildfunktion B(x; y) auf diese orthogonalen Basisfunktionen.
+#$@FORMULA@$#:0
+Es sind komplexe, orthogonale Polynome, die senkrecht auf dem Einheitskreis x2 +y2
+#$@FORMULA@$#:2
+Die Zernike-Momente entstehen durch die Projektion der Bildfunktion B(x; y) auf diese orthogonalen Basisfunktionen.
 Dies geschieht analog zur Konstruktion der geometrischen Momente (vgl. 5.4) nur das die Bildfunktion nicht auf die nicht orthogonale Basis xpyq projiziert wird, sondern auf die orthogonalen Zernike-Polynome.
 Mit Hilfe dieser Basisfunktionen ergeben sich folgende Zernike-Momente:
-n + 1 B(x; y)V  Anm = nm(%; )dx dy.ß x2+ZyZ2≤1 In Polarkoordinaten werden diese zu:
-2ß 1 n + 1 B(%; )Rnm(%)e(−im)% d% d.Anm = ß Z0 Z0 Zernike-Momente besitzen die Eigenschaft, dass sie ahnlich der in Abschnitt 5.5 beschriebene Curvature-Scale-Space-Reprasentation unter Rotation des Objektes einen Phasenshift vollfuhren.
+#$@FORMULA@$#:2
+In Polarkoordinaten werden diese zu:
+#$@FORMULA@$#:4
+Zernike-Momente besitzen die Eigenschaft, dass sie ahnlich der in Abschnitt 5.5 beschriebene Curvature-Scale-Space-Reprasentation unter Rotation des Objektes einen Phasenshift vollfuhren.
 In [29] wird die Rotationsinvarianz der Merkmale erreicht, indem nur jeweils der Betrag der Momente genommen wird, da dieser invariant gegenuber einer Phasenverschiebung ist (vgl. 5.5.3).
 Eine Invarianz gegenuber Skalierung und Translation wird erreicht, indem das Bild vor der Berechnung der Momente mit Hilfe seiner geometrischen Momente normiert wird.
 Einen alternativen Ansatz, aus den Zernike-Momenten einen kompletten Satz invarianter Merkmale zu erzeugen, wird in [64] vorgestellt.
 Dieser Ansatz beruht auf den beiden folgenden Aussagen:
-23u
-24u
-25u
-26u
-27u
+11u
+12u
+13u
+14u
+15u
 Auf diesen Grundaussagen aufbauend werden drei Regeln definiert, die folgende Invarianten liefern:
-29u
-30u
-31u
-32u
-33u
-34u
-35u
-36u
-37u
-38u
-39u
-40u
-41u
-42u
-j A33j 2 I31 = j A31j 2 I32 = ’22) j A31j j A22j cos(2’31 − 2 P32 = ’22) j A31j j A22j sin(2’31 − I33 = 3’31) j Ajj A31j 3 cos(2’33 − P33 = ’22).j Ajj A31j 3 sin(2’31 −
+#$@FORMULA@$#:3
+#$@FORMULA@$#:1
+#$@FORMULA@$#:0
+’22) j A31j j A22j cos(2’31 − ’22) j A31j j A22j sin(2’31 − 3’31) j A{{hn:33:nh}}jj A31j 3 cos(2’33 − ’22) .
+j A{{hn:33:nh}}jj A31j 3 sin(2’31 −
 
 
-:::: Zernike-Momente ::::
+:::: Reprasentation durch den Curvature-Scale-Space (CSS) ::::
 
 
 Die Curvature-Scale-Space Theorie wurde von F. Mokhtarian und A. K. Mackworth als Reprasentationstechnik fur planare Kurven eingefuhrt [43].
@@ -916,40 +946,55 @@ Nach dem Glatten der parametrisierten Kurve wird bestimmt, an welchen Punkten di
 Diese Prozedur wird mit einer Gaußfunktion mit monoton wachsender Standardabweichung  wiederholt, bis die Kurve keine Wendestellen mehr besitzt.
 
 
-:::: Reprasentation durch den Curvature-Scale-Space (CSS) ::::
+:::: Krummung einer ebenen Kurve ::::
 
 
 Zwei Punkte einer ebenen Kurve, die durch eine Bogenlange ·s voneinander getrennt sind, besitzen Tangenten mit im Allgemeinen unterschiedlichem Richtungswinkel.
 Die Dierenz der Richtungswinkel der Tangenten betragt ·.
 Je großer die Anderung der Richtungstangenten ist, desto großer muss die Krummung der Kurve sein.
-Aus diesem Grund gibt der Quotient · ·s die mittlere Krummung der Kurve fur den Bereich ·s an [34].
-Um die Krummung der Kurve in einem Punkt zu bestimmen, muss nach Gleichung 5.7 der Grenzubergang ·s 0 erfolgen:
-!
-· d ≤ = lim =.
-(5.7) ds ·s! 0
-·s Da tan  = y0 bzw.  = arctan y0 gilt, folgt:
-y00 d = 1 + y02 dx.Mit der Definition der Bogenlange ds= dx+ ydy ))dx = (1 + ( dx 1 + y02dx ds = ) p folgt fur die Krummung in einem Punkt:
-y00 ≤ =.
+Aus diesem Grund gibt der Quotient · ·s die mittlere
+#$@FORMULA@$#:0
+Krummung der Kurve fur den Bereich ·s an [34].
+Um die Krummung der Kurve in einem Punkt
+#$@FORMULA@$#:1
+#$@FORMULA@$#:2
+Mit der Definition der Bogenlange ds{{hn:2:nh}}= dx{{hn:2:nh}}+ y{{hn:2:nh}} dy ){{hn:2:nh}})dx = (1 + ( dx 1 + y02dx ds = ) p folgt fur die Krummung in einem Punkt:
+y00 ≤ = .
 (5.8) 3 (1 + y02) 2 Da die Konturen als Kurven in Parameterdarstellung vorliegen, wird obiger Ausdruck f ur die Krummung dahingehend umgeschrieben.
 Zweidimensionale, mit dem Parameter u parametrisierte Kurven besitzen folgende Form:
-x = x(u) y = y(u).Die in Gleichung 5.8 benotigte erste und zweite Ableitung der Kurve erhalt man durch Anwenden der Kettenregel fur parametrisierte Funktionen.
+#$@FORMULA@$#:3
+Die in Gleichung 5.8 benotigte erste und zweite Ableitung der Kurve erhalt man durch Anwenden der Kettenregel fur parametrisierte Funktionen.
 Fur die Dierentiation nach dem Parameter u gilt:
-dx dy = x_und = y_.du du Somit ergibt sich die erste Ableitung zu:
-dy x_y= = (5.9) dx y_Die zweite Ableitung ergibt sich, indem y0 nach u und u nach x dierenziert wird.d( y_x_) du x_y xy_1 x_y xy_y= = − = x_3 (5.10) − x_2 · du · dx x_Einsetzen von Gleichung 5.9 und 5.10 in Gleichung 5.8 ergibt die Krummung einer parametrisierten Kurve im Punkt u.x_(u)y(u) y_(u)x(u) ≤(u) = − 3 (1 + ( y_(u) x_2 )) 2 x_3 x_(u)y(u) y_(u)x(u) = −.3 (x_(u)2 + y_(u)2) 2 Wird anstatt der Parametrisierung u der normalisierte Bogenlangenparameter w verwendet, vereinfacht sich die Krummung zu:
-≤(w) = x_(w)y(w) y_(w)x(w).− Da eine CSS-Reprasentation durch Falten der parametrisierten Kurve mit einer Gaussfunktion entsteht, muss eine Darstellung fur die Krummung in Abhangigkeit der Parametrisierung u und der Standardabweichung der Gaußkurve  gefunden werden.
+#$@FORMULA@$#:4
+Somit ergibt sich die erste Ableitung zu:
+#$@FORMULA@$#:0
+Die zweite Ableitung ergibt sich, indem y0 nach u und u nach x dierenziert wird.
+#$@FORMULA@$#:1
+Einsetzen von Gleichung 5.9 und 5.10 in Gleichung 5.8 ergibt die Krummung einer parametrisierten Kurve im Punkt u.
+#$@FORMULA@$#:2
+#$@FORMULA@$#:3
+Wird anstatt der Parametrisierung u der normalisierte Bogenlangenparameter w verwendet, vereinfacht sich die Krummung zu:
+#$@FORMULA@$#:4
+Da eine CSS-Reprasentation durch Falten der parametrisierten Kurve mit einer Gaussfunktion entsteht, muss eine Darstellung fur die Krummung in Abhangigkeit der Parametrisierung u und der Standardabweichung der Gaußkurve  gefunden werden.
 Dazu wird eine Kurve − mit der normalisierten Bogenlange w parametrisiert:
-− = (x(w); y(w)).Nach der Faltung mit der Gaussfunktion besitzt die Kurve die Form:
-X(u; ) = x(u) g(u; ) − = ((X(u; ); Y (u; )) mit Y (u; ) = y(u) g(u; ) wobei g(u; ) die Faltung mit einer Gaussfunktion mit Standardabweichung  beschreibt.
+#$@FORMULA@$#:5
+Nach der Faltung mit der Gaussfunktion besitzt die Kurve die Form:
+#$@FORMULA@$#:6
+wobei g(u; ) die Faltung mit einer Gaussfunktion mit Standardabweichung  beschreibt.
 Analog zur Herleitung fur die parametrisierte Kurve ergibt sich fur die Krummung der gefalteten Kurve:
-Xu(u; )Yuu(u; ) Xuu(u; )Yu(u; ) ≤(u; ) = − (Xu(u; )2 + Yu(u; )2)1:5 wobei @ Xu(u; ) = (x(u) g(u; )) = x(u) gu(u; ) @u @2 Xuu(u; ) = @u2 (x(u) g(u; )) = x(u) guu(u; ) und entsprechend Yu(u; ) = y(u) gu(u; ) Yuu(u; ) = y(u) guu(u; ) Die CSS-Reprasentation ergibt sich, indem die Losung der Gleichung ≤(u; ) = 0 mit u als Ordinate und  als Abszisse aufgetragen wird.
+#$@FORMULA@$#:7
+#$@FORMULA@$#:8
+#$@FORMULA@$#:9
+Die CSS-Reprasentation ergibt sich, indem die Losung der Gleichung ≤(u; ) = 0 mit u als Ordinate und  als Abszisse aufgetragen wird.
 Abbildung 5.4 macht die Entstehungsweise eines CSS-Bildes deutlich.
 
 
-:::: Krummung einer ebenen Kurve ::::
+:::: Eigenschaften der CSS-Reprasentation ::::
 
 
 Die CSS-Reprasentation erfullt das Kriterium der Invarianz (vgl. 5.1), da eine uniforme Skalierung der Kontur nur eine uniforme Skalierung der Reprasentation bewirkt.
-Bei einer geschlossenen Kontur ist es moglich, die CSS-Reprasentationen zu normalisieren und somit eine Invarianz bzgl.uniformer Skalierung zu erreichen.
+Bei einer geschlossenen Kontur ist es moglich, die CSS-Reprasentationen zu normalisieren und somit eine Invarianz bzgl.
+uniformer Skalierung zu erreichen.
 Ferner erzeugt eine Rotation der Kontur einen horizontalen Shift der Reprasentation.
 Diese Translation kann mittels geeigneter Matching-Verfahren ausgeglichen werden (vgl. 5.5.3).
 Die CSS-Reprasentation ist eindeutig, da es moglich ist, eine Kontur aus ihrer CSS-Reprasentation zuruckzugewinnen.
@@ -964,7 +1009,7 @@ Ebenfalls ist es moglich, Konturen zu erkennen, die teilweise verdeckt sind.
 Somit erfullt die CSS-Reprasentation das Kriterium der lokalen Information.
 
 
-:::: Eigenschaften der CSS-Reprasentation ::::
+:::: Merkmalsextraktion mit der Eigen-CSS Methode ::::
 
 
 Die Eigenschaft der CSS-Reprasentation, dass aus einer Rotationsbewegung eine Translationsbewegung der Reprasentation folgt, stellt eine technische Herausforderung an das Matching-Verfahren dar.
@@ -976,35 +1021,41 @@ Drew, Lee und Rova definieren diese Reprasentation als Eigen-CSS Darstellung.
 Diese Eigenraumdarstellung kann direkt als Merkmalsvektor genutzt werden.
 Marginale-Summe Da die Translationsbewegung der CSS-Bilder parallel zur Parametrisierung u gerichtet ist, wird das Bild durch Anwendung von Marginalen-Summen in eine rotationsunabhangige Zeilendarstellung c und eine roationsabhangige Spaltendarstellung r aufgeteilt [11].
 Die Komponenten dieser Spalten- und Zeilenvektoren entstehen durch Aufsummieren der gesetzten Pixel in der jeweiligen Zeile bzw. Spalte.
-Gleichungen 5.11 und 5.12 verdeutlichen das Vorgehen, wobei C(i; j) das Pixel in der i-ten Zeile und der j-ten Spalte bezeichnet.x = [r c]T T r = C(i; 1); C(i; 2); :
-:
-:
-; C(i; c) (5.11) " # Xi Xi Xi T c = C(1; j); C(2; j); :
-:
-:
-; C(r; j) (5.12) 2 3 Xj Xj Xj 4 5 Phasenkorrelation Das Phasenkorrelations-Verfahren wurde bereits Anfang der 70er Jahre eingesetzt, um gegeneinander translatierte Bilder miteinander zu vergleichen.
+Gleichungen 5.11 und 5.12 verdeutlichen das Vorgehen, wobei C(i; j) das Pixel in der i-ten Zeile und der j-ten Spalte bezeichnet.
+#$@FORMULA@$#:5
+#$@FORMULA@$#:0
+#$@FORMULA@$#:1
+Phasenkorrelation Das Phasenkorrelations-Verfahren wurde bereits Anfang der 70er Jahre eingesetzt, um gegeneinander translatierte Bilder miteinander zu vergleichen.
 Das Verfahren beruht auf dem Verschiebungssatz der Fouriertransformation, der aussagt, dass eine Verschiebung im Orts- bzw. Frequenzraum sich im korrespondierenden Bereich nur durch einen Phasenfaktor außert [1].
 Gegeben seien zwei Funktionen im Ortsraum f1(x; y) und f2(x; y).
 Da sich die Funktionen nur durch eine Translation unterscheiden sollen, gilt:
-f2(x; y) = f1(x + x0; y + y0).Mit dem Verschiebungssatz folgt:
-F2(u; v) = F1(u; v)ei(ux0+vy0) , wobei F2(u; v) und F1(u; v) die Fouriertransformierten von f1(x; y) bzw.f2(x; y) sind.
+#$@FORMULA@$#:4
+Mit dem Verschiebungssatz folgt:
+#$@FORMULA@$#:3
+wobei F2(u; v) und F1(u; v) die Fouriertransformierten von f1(x; y) bzw. f2(x; y) sind.
 Wird hieraus das Cross power Spektrum gebildet, wird die Phase isoliert.
-F2(u; v)F1(u; v) = ei(ux0+vy0)  F2(u; v)F1(u; v) j  j Abbildung 5.5:
+#$@FORMULA@$#:2
+Abbildung 5.5:
 r-Vektoren einer (a) um 90 Grad nach links, (b) nicht rotierten und (c) 90 Grad nach rechts rotierten Kontur eines Menschen Die Phasenkorrelationsfunktion ist als inverse Fouriertransformation der Kreuz-Korrelation definiert:
-F2(u; v)F1(u; v) fP CF (f1(x; y); f2(x; y)) = F −1  F2(u; v)F1(u; v)  j  j  = F −1(ei(ux0+vy0)) = (x0; y0).Somit entsteht bei der Korrelation zweier Bilder ein Korrelationsspektrum mit nur einem Peak, dessen Koordinaten der Verschiebung des Bildes in x- bzw.y-Richtung entsprechen.
+#$@FORMULA@$#:0
+Somit entsteht bei der Korrelation zweier Bilder ein Korrelationsspektrum mit nur einem Peak, dessen Koordinaten der Verschiebung des Bildes in x- bzw. y-Richtung entsprechen.
 Es ist moglich, durch Erweiterungen dieses Ansatzes neben der Translation auch Rotation und Skalierung zu bestimmen, die zwei Bilder ineinander uberfuhrt.
 In dieser Applikation wird jedoch nur die Translation in x-Richtung benotigt, und es sind nicht zwei Bildfunktionen f1 und f2 zu korrelieren, sondern nur der Spaltenvektor r. Die beschriebene Phasenkorrelation kann aus dem Grund nicht angewendet werden.
 Um den gewunschten Eekt der Rotationsinvarianz zu erzielen, reicht es aus, das Verschiebungstheorem der Fouriertransformation anzuwenden.
 Dieses besagt, dass die Magnitudenspektren zweier translatierter Bildfunktionen identisch sind.
 Somit ergibt sich folgende Vorgehensweise:
-22u
-23u
-24u
-~r = F −( F (r) ) j j j j x = [~rc]T Abbildung 5.6:
+14u
+15u
+16u
+#$@FORMULA@$#:1
+Abbildung 5.6:
 Mittels Phasenkorrelation erstellte ~r-Vektoren der r-Vektoren aus Abbildung 5.5(a-c) Abbildung 5.7:
 Erstellung des Merkmalsvektors einer Kontur mit dem Eigen-CSS Verfahren Single-Value-Decomposition Um den aus der CSS-Reprasentation erstellten x-Vektor in einen Eigenraum abzubilden, muss eine neue Basis aus orthonormalen Basisvektoren gefunden werden.
 Die algebraisch formulierte Problemstellung lautet:
-Es gibt N Vektoren in einem M -dimensionalen Vektorraum mit N M.Nun soll ein ortho- ≤ normaler Satz von N Vektoren gefunden werden, der den selben Vektorraum aufspannt wie die ursprunglichen N Vektoren.
+Es gibt N Vektoren in einem M -dimensionalen Vektorraum mit N M .
+Nun soll ein ortho-
+#$@FORMULA@$#:0
+normaler Satz von N Vektoren gefunden werden, der den selben Vektorraum aufspannt wie die ursprunglichen N Vektoren.
 Dieses Problem kann mit Hilfe der Single-Value-Decomposition (SVD) M dimensionale Matrix X aus den N Vektoren erstellt.
 Diese gelost werden.
 Dazu wird eine N  Matrix lasst sich als Multiplikation einer spaltenorthonormalen N M Matrix U, einer N N   Diagonalmatrix W (Singular Values) und der Transponierten einer N N orthogonalen Matrix V  schreiben [49].
@@ -1015,28 +1066,26 @@ Range besitzt die Dimension des Ranges von X und beschreibt den durch Multiplika
 Mit Hilfe der SVD-Operation kann eine orthonormale Basis fur beide Vektorraume gefunden werden.
 Dazu werden die Eintrage wj der W-Matrix betrachtet.
 Die Orthonormalbasis des Range bilden die Spalten j der U-Matrix, deren wj von Null verschieden sind.
-Die Orthonormalbasis des Nullraums bilden die Spalten j der V-Matrix, deren wj gleich Null sind.w1...VT X = U 0 1 wn B C @ A
+Die Orthonormalbasis des Nullraums bilden die Spalten j der V-Matrix, deren wj gleich Null sind.
+#$@FORMULA@$#:0
+Folgende Aufzahlung beschreibt die erforderlichen Schritte, um die von einem Objekt erstellten x-Vektoren in ihren Eigenraum abzubilden.
+11u
+12u
+13u
+14u
+15u
+16u
+17u
+18u
 19u
-20u
-21u
-22u
-23u
-24u
-25u
-26u
-27u
-6.
-Projeziere die x-Vektoren in ihren Eigenraum durch Multiplikation mit der transponierten U-Matrix nach Gleichung 5.14.
-X = [x1 − x1; x2 − x2; :
-:
-:
-; xn − x] (5.13) u = UT x (5.14) 5.5.4 CSS-Reprasentation zur Beschreibung von teilweise verdeckten Objekten Obwohl in dieser Arbeit das CSS-Verfahren nicht zur Erkennung von teilweise verdeckten Objekten
 
 
-:::: Merkmalsextraktion mit der Eigen-CSS Methode ::::
+:::: CSS-Reprasentation zur Beschreibung von teilweise verdeckten Objekten ::::
 
 
-turen beschrieben werden.
+#$@FORMULA@$#:0
+#$@FORMULA@$#:1
+u = UT x (5.14) 5.5.4 CSS-Reprasentation zur Beschreibung von teilweise verdeckten Objekten Obwohl in dieser Arbeit das CSS-Verfahren nicht zur Erkennung von teilweise verdeckten Objekten verwendet wird, soll in diesem Abschnitt dessen Potential zur Reprasentation eben solcher Konturen beschrieben werden.
 Durch die Verwendung von lokalen Informationen einer Kontur, ist die CSS-Reprasentation geeignet, um teilweise verdeckte Objekte erkennen zu konnen.
 Abbildung 5.8 zeigt die Kontur eines Menschen mit zugehoriger CSS-Reprasentation.
 Das Bild macht deutlich, dass jedes Maximum der CSS-Reprasentation eindeutig einem bestimmten Teil der Kontur zugeordnet werden kann.
@@ -1049,7 +1098,7 @@ CSS-Darstellung der Kontur eines stehenden Menschen Abbildung 5.9:
 CSS-Darstellung von verschiedenen Teilkonturen eines Menschen der gesamten Kontur verglichen werden.
 Es ist somit moglich, die verdeckte Kontur als Teil der Originalkontur zu klassifizieren.
 Das Matching-Verfahren fur CSS-Reprasentationen verdeckter Objekte kann nicht den einfachen Ansatz verfolgen, die Maxima der Große nach jeweils paarweise zu vergleichen, wie es bei nicht verdeckten Objekten moglich ist.
-Diese Vorgehensweise ist nicht moglich, da zum Beispiel das großte Maximum der nicht verdeckten Kontur in der verdeckten Kontur evtl.nicht vorhanden ist.
+Diese Vorgehensweise ist nicht moglich, da zum Beispiel das großte Maximum der nicht verdeckten Kontur in der verdeckten Kontur evtl. nicht vorhanden ist.
 Nach dem Matching-Verfahren fur nicht verdeckte Objekte wurde das großte Maximum der verdeckten Kontur mit dem großten Maximum der nicht verdeckten Kontur verglichen.
 Entsprechendes gilt Abbildung 5.10:
 Darstellung der ersten 36 Basisfunktionen der ART-Reprasentation [51].
@@ -1059,7 +1108,7 @@ Mokhtarian schlagt zum Matchen von verdeckten Konturen ein Verfahren vor, das je
 Diese Teilkonturen werden einzeln verglichen.
 
 
-:::: CSS-Reprasentation zur Beschreibung von teilweise verdeckten Objekten ::::
+:::: Angular-Radial-Transformation (ART) ::::
 
 
 Die ART-Reprasentation ist eine regionbasierte Formreprasentation und bildet mit der konturorientierten CSS-Reprasentationstechnik die beiden Formbeschreibungstechniken des MPEG-7 Standards [6].
@@ -1072,21 +1121,33 @@ Analog zu den Zernike-Momenten bezeichnen Vnm(%; ) die Basisfunktionen der ART-
 Sie besitzen die Ordnung n und m und lassen sich, wie in Gleichung 5.16 zu sehen ist, in einen radialen und einen winkelabhangigen Teil separieren.
 Die Variable f (%; ) ist ein binares Bild in Polarkoordinaten, welches das zu untersuchende Objekt (oder auch mehrere) enthalt.
 Die ART-Reprasentation lasst sich in abgewandelter Form auch auf Graustufen und Farbbilder anwenden [18][51].
-Fnm = Vnm(%; ); f (%; ) h i 2ß 1 V  nm(%; )f (%; )% d% d (5.15) = Z0 Z0 1 eimRn(%) (5.16) Vnm(%; ) = 2ß 1; n = 0 Rn(%) = (5.17) 2 cos(ßn%); n = 0 ( Abbildung 5.11:
+#$@FORMULA@$#:0
+V * nm(%; )f (%; )% d% d (5.15)
+#$@FORMULA@$#:1
+Z0 Z0
+#$@FORMULA@$#:2
+eimRn(%) (5.16) 1; n = 0
+#$@FORMULA@$#:3
+(5.17) Abbildung 5.11:
 Beschreibung einer Kontur (rot) durch eine Fourierelipse erster (grun) und zweiter Ordnung (blau).
 http://lmb.informatik.uni-freiburg.de/lectures/mustererkennung/WS0405/FourierDemo/fourdem.html Im MPEG-7 Standard wird empfohlen, die Magnitude der ersten 35 Koezienten zur Beschreibung der Objektform heranzuziehen, wobei der erste Koezient nicht berucksichtigt werden soll, da dieser zum Normalisieren der restlichen Koezienten eingesetzt wird.
 Es werden drei radiale und zwolf winkelabhangige Funktionen eingesetzt (n 3 und m 12), um die Koezienten zu bestimmen.
-≤ ≤ Abbildung 5.10 zeigt diese Funktionen.
+#$@FORMULA@$#:0
+Abbildung 5.10 zeigt diese Funktionen.
 
 
-:::: Angular-Radial-Transformation (ART) ::::
+:::: Reprasentation durch Fourier-Deskriptoren ::::
 
 
 Die Reprasentation von Konturen durch Fourier-Deskriptoren ist eine haufig verwendete globale Reprasentationstechnik.
-Geschlossene Konturen bilden in der komplexen Ebene periodische Funktionen mit der Periode T.Fur parametrisierte Kurven kann diese Beziehung durch x(u) = x(u + kT ) ausgedruckt werden.
+Geschlossene Konturen bilden in der komplexen Ebene periodische Funktionen mit der Periode T .
+Fur parametrisierte Kurven kann diese Beziehung durch x(u) = x(u + kT ) ausgedruckt werden.
 Periodische Funktionen lassen sich durch Fourierreihen darstellen.
 Diese werden nach Gleichung 5.18 berechnet und uberfuhren die Kontur vom Orts- in den Frequenzraum.
-T 1 2ß 1 cnejn!u mit w = x(u)e−in!udu (5.18) x(u) = und cn = T T n=−1 Z0 X Die Kontur kann durch die Summe der Fourierkoezienten cn beschrieben werden.
+#$@FORMULA@$#:0
+x(u)e−in!udu (5.18) T T
+#$@FORMULA@$#:1
+Z0 Die Kontur kann durch die Summe der Fourierkoezienten cn beschrieben werden.
 Da die Reprasentation globalen Charakter besitzt, verfugt jeder Fourierkoezient uber Informationen der gesamten Kontur.
 Geschlossenen Konturen sind stetig und beschrankt.
 Die Fourierkoezienten ei- 1 ner solchen Kontur streben n2 gegen Null.
@@ -1097,7 +1158,7 @@ Eine rotierte Kontur im Ortsraum fuhrt nur zu einer Phasenveranderung im Frequen
 Das Magnitudenspektrum bleibt konstant.
 Translation:
 Eine translatierte Kontur besitzt andere Fourierkoezienten als die Originalkontur.
-Aus diesem Grund wird der Ursprung der Komplexen Ebene haufig in den Schwerpunkt der Kontur gelegt bzw.die Kontur wird mit dem ersten Fourierkoezienten normiert, der die Lage des Schwerpunktes angibt.
+Aus diesem Grund wird der Ursprung der Komplexen Ebene haufig in den Schwerpunkt der Kontur gelegt bzw. die Kontur wird mit dem ersten Fourierkoezienten normiert, der die Lage des Schwerpunktes angibt.
 Abbildung 5.12:
 Diskretisierung des zweidimensionalen Raums in radiale Segmente beim Border-Signature-Verfahren.
 Skalierung:
@@ -1111,7 +1172,7 @@ Werden weitere Koezientenpaare verwendet, entstehen weitere Elipsen, die als Ur
 Abbildung 5.11 zeigt, wie die Kontur (rot) durch zwei Fourierelipsen beschrieben wird.
 
 
-:::: Reprasentation durch Fourier-Deskriptoren ::::
+:::: Border-Signature ::::
 
 
 Das Border-Signature-Verfahren arbeitet ahnlich wie das in 2.2.3 beschriebene Shape-Context-Verfahren.
@@ -1126,7 +1187,7 @@ Bei beiden Methoten entspricht die Anzahl der Segmente der Anzahl der extrahiert
 In dieser Arbeit werden 32 Segmente und die Merkmalsextraktion verwendet, die die Entfernungen der Randpunkte betrachtet.
 
 
-:::: Border-Signature ::::
+:::: Klassifikation ::::
 
 
 Ziel der Klassifikation ist die Zuordnung der aus dem Tiefenbild extrahierten Objekte zu verschiedenen Klassen.
@@ -1137,7 +1198,7 @@ Somit kann die Annahme gemacht werden, dass Objekte der gleichen Klasse Cluster 
 Das Problem der Objektklassifikation ist somit ein Clusteringproblem der Merkmalsvektoren im Merkmalsvektorraum.
 
 
-:::: Klassifikation ::::
+:::: Merkmalsauswahl ::::
 
 
 Der erste Schritt der Klassifikation ist eine Dimensionsreduktion des Merkmalsvektorraums.
@@ -1158,7 +1219,7 @@ Ein Selektionsverfahren muss ein Gutekriterium fur die extrahierten Merkmale und
 Im Folgenden werden zwei Auswahlverfahren vorgestellt.
 
 
-:::: Merkmalsauswahl ::::
+:::: plus l-take away r Algorithmus ::::
 
 
 Der plus l-take away r\ Algorithmus ist eine Kombination aus sequentieller Vorwartsselektion " (SFS) und sequentieller Ruckwartsselektion (SBS).
@@ -1176,7 +1237,7 @@ Es gibt also keine Ruckwartsschritte, falls die Performanz des Klassifikators ni
 Somit wird das Zurucknehmen der Merkmale dynamisch gesteuert [50].
 
 
-:::: plus l-take away r Algorithmus ::::
+:::: Principal-Component-Analysis (PCA) ::::
 
 
 Da der reduzierte Merkmalssatz die großtmogliche Varianz des hochdimensionalen Merkmalssatzes erfassen soll, ist PCA ein geeignetes Mittel, den Merkmalsvektorraum zu verkleinern.
@@ -1185,7 +1246,7 @@ Dazu wird ein Satz von Datenpunkten genommen und ein niedrig dimensionaler Unter
 Diese Vorgehensweise wird auch Karhunen-Loeve-Transformation genannt.
 
 
-:::: Principal-Component-Analysis (PCA) ::::
+:::: Klassifikationsstrategien ::::
 
 
 Es gibt zwei unterschiedliche Herangehensweisen, einen Klassifikator zu trainieren.
@@ -1213,61 +1274,95 @@ Ein neuronales Netz wird trainiert, indem die Gewichte und Schwellwerte der einz
 Naturlich muss auch hier das Problem des Overfitting\ beachtet werden. "
 
 
-:::: Klassifikationsstrategien ::::
+:::: Klassifikation mittels Support-Vector-Machines (SVM) ::::
 
 
 6.3.1 Primare Form Das Prinzip der Support-Vector-Machines ist ein von Vladimir Vapnik entwickeltes uberwachtes Lernverfahren zum Losen von Klassifikationsproblemen [61].
 Es sucht eine optimale Hyperebene, um zwei Klassen mit positiven und negativen Beispielen x voneinander zu trennen.
 Die Hyperebene ist uber einen optimalen Gewichtsvektor w und einen Schwellwert b definiert.
 Sie besitzt die Form:
-wT x + b = 0.Damit lautet die Entscheidungsfunktion, die besagt, zu welcher der durch die Hyperebene getrennten Klassen ein Punkt x gehort:
-f (x) = sign(wT x + b).
+#$@FORMULA@$#:1
+Damit lautet die Entscheidungsfunktion, die besagt, zu welcher der durch die Hyperebene getrennten Klassen ein Punkt x gehort:
+#$@FORMULA@$#:0
+f (x) = sign(wT x + b) .
 (6.1) Der Abstand eines Punktes zur Hyperebene ist gegeben durch:
-wT x + b r =.w j j Der minimale Abstand definiert die Trenngute der SVM.
+wT x + b
+#$@FORMULA@$#:2
+w j j Der minimale Abstand definiert die Trenngute der SVM.
 Die maximale Trenngute wiederum definiert die optimale Hyperebene.
 Die Punkte der beiden Klassen, die jeweils am dichtesten zur Abbildung 6.1:
 Darstellung der von der SVM erstellten optimalen Hyperebene zur Trennung von zwei Datensatzen [53].
 Hyperebene liegen, werden Support-Vektoren\ genannt.
-Bei einer optimalen Hyperebene gilt fur " diese Punkte: 1 fur positives Beispiel wT x + b =.
-(6.2) 1 fur negatives Beispiel ( − Somit betragt die Breite des Korridors um die optimale Hyperebene d = jwj.Um ein optimal w trennende Klassifizierung zu erhalten, muss der Korridor moglichst breit und somit moglichst j j klein werden.
-Es handelt sich um ein Optimierungsproblem unter der Nebenbedingung, dass die einzelnen Punkte richtig klassifiziert werden.minimiere wT w (yi(wT xi + b) unter der Nebenbedingung 1) 0.− − ≤ yi gibt an, ob der jeweilige Punkt zu der positiven (yi = 1) bzw.negativen (yi = 1) Klasse − gehort.
+Bei einer optimalen Hyperebene gilt fur " diese Punkte:
+#$@FORMULA@$#:2
+.
+(6.2) 1 fur negatives Beispiel ( − Somit betragt die Breite des Korridors um die optimale Hyperebene d = {{hn:2:nh}}jwj .
+Um ein optimal w trennende Klassifizierung zu erhalten, muss der Korridor moglichst breit und somit moglichst j j klein werden.
+Es handelt sich um ein Optimierungsproblem unter der Nebenbedingung, dass die einzelnen Punkte richtig klassifiziert werden.
+minimiere wT w
+#$@FORMULA@$#:0
+unter der Nebenbedingung yi gibt an, ob der jeweilige Punkt zu der positiven (yi = 1) bzw. negativen (yi = 1) Klasse gehort.
 Der Index i lauft uber alle Beispiele der Trainingsmenge.
 Die zu dem Optimierungsproblem gehorige Lagrangefunktion besitzt die Form:
-p 1 L(w; b; ) = 2 i(yi(wT xi + b) w 1).
-(6.3) 2 j j − − Xi=1 In dieser Gleichung wird die zu minimierende Funktion mit 2 erweitert.
+#$@FORMULA@$#:4
+1 L(w; b; ) = w 1) .
+(6.3) 2 j j − Xi=1 In dieser Gleichung wird die zu minimierende Funktion mit {{hn:1:nh}}2 erweitert.
 Dies geschieht aus rechentechnischen Grunden und andert nichts an dem zu losenden Optimierungsproblem.
-Dierenzieren der Lagrangefunktion ergibt den optimalen Gewichtsvektor w und eine Nebenbedingung fur die Lagrangemultiplikatoren i.p w =  i yixi (6.4) Xi=1 p 0 = iyi (6.5) Xi=1 Zusatzlich gilt die Karush-Kuhn-Tucker-Nebenbedingung: 0 =  i (yi(wT xi + b) 1) fur 1 i p.− ≤ ≤ Der Vergleich mit obiger Definition der Support-Vektoren (Gleichung 6.2) zeigt, dass alle Langrangefaktoren bis auf die der Support-Vektoren Null werden.
+Dierenzieren der Lagrangefunktion ergibt den optimalen Gewichtsvektor w* und eine Nebenbedingung fur die Lagrangemultiplikatoren i.
+#$@FORMULA@$#:1
+* i yixi (6.4) Xi=1 p
+#$@FORMULA@$#:3
+iyi (6.5) Xi=1 Zusatzlich gilt die Karush-Kuhn-Tucker-Nebenbedingung:
+#$@FORMULA@$#:1
+Der Vergleich mit obiger Definition der Support-Vektoren (Gleichung 6.2) zeigt, dass alle Langrangefaktoren bis auf die der Support-Vektoren Null werden.
 Somit mussen nur die Terme der Support-Vektoren in Gleichung 6.4 zur Berechnung der optimalen Gewichte berucksichtigt werden.
-Die optimalen Biaswerte b werden ebenfalls mit Gleichung 6.2 bestimmt.
+Die optimalen Biaswerte b* werden ebenfalls mit Gleichung 6.2 bestimmt.
 Unter Berucksichtigung von yi lasst sie sich umformen zu:
-ys(wT xs + b) = 1.Daraus folgt:
-b = ys − p wT xs  i yixT i xs.= ys − Xi=1 Die Support-Vektoren komprimieren die Information uber die optimale Hyperebene.
-
-
-:::: Klassifikation mittels Support-Vector-Machines (SVM) ::::
-
-
-Das Einsetzen des optimalen Gewichtsvektors 6.4 in die Lagrangegleichung 6.3 unter Ber ucksichtigung der Nebenbedingung 6.5 liefert das duale Optimierungsproblem.p p 1 Q() = ijyiyjxT i xj + i 2 iX;j=1 Xi=1 mit Nebenbedingungen p  i yi = 0 1 i p ≤ ≤ Xi=1  0.i  Das duale Optimierungsproblem hangt nur noch von den Skalarprodukten von x und nicht mehr direkt von x ab.
-Diese Darstellung fuhrt zum Kerngedanken der Support-Vector-Machines (kernel trick).
-Linear nicht trennbare Datensatze konnen mit einer Funktion (x) in einen hochdimensionalen Raum abgebildet werden.
-Im hoherdimensionalen Raum ist es wahrscheinlicher, die Daten linear trennen zu konnen.
-Dies wird realisiert, indem das Skalarprodukt im dualen Optimierungsproblem durch das Skalarprodukt der Abbildungsfunktionen ersetzt wird.xT i xj ) < (xi); (xj) > Da das Skalarprodukt der Abbildungsfunktionen schwer zu berechnen ist, wenn die Dimension des Abbildungsraums entsprechend hoch ist, wird eine Kernelfunktion K(xi; xj) eingefuhrt, die sich wie das Skalarprodukt verhalt.
-Haufig verwendete Kernel werden in Tabelle 6.1 aufgefuhrt [66].
-Abbildung 6.2:
-Linear nicht trennbare Daten werden in einen hoherdimensionalen Raum abgebildet und dort linear getrennt.
-Dies fuhrt zu einer nichtlinearen Trennung der Daten im Originalraum [53].
-Kernelfunktion Definition Parameter Linear xT xj i · Polynomial (≤(xT xj) + )d Ordnung d (positiver Integer),≤  i · jxi−xj jRadial exp  2 −   Sigmoidal tanh(≤(xT xj) + ) ≤ und  i · Tabelle 6.1:
-Haufig verwendete Kernel fur Support-Vector-Machines Die Entscheidungsfunktion 6.1 lasst sich mit Gleichung 6.4 und unter Berucksichtigung der Kernelfunktion folgendermaßen umformen.p yiixT i x + b f (x) = sign !
-Xi=1 p yii(xT i )(x) + b = sign !
-Xi=1 p yiiK(xT i ; x) + b = sign !
-Xi=1 6.3.3 SVM zur Klassifikation von mehreren Objekten Da die SVM als binarer Klassifikator entwickelt wurde, mussen fur eine Klassifikation von mehreren Klassen Strategien entwickelt werden, um das Prinzip der SVM zu erweitern.
-Dazu werden in [53] verschiedene Techniken vorgestellt.
-Hier werden die drei am haufigsten verwendeten Methoden beschrieben [66]:
+#$@FORMULA@$#:0
+Daraus folgt:
+#$@FORMULA@$#:3
+#$@FORMULA@$#:2
+Die Support-Vektoren komprimieren die Information uber die optimale Hyperebene.
 
 
 :::: Duales Optimierungsproblem ::::
 
 
+Das Einsetzen des optimalen Gewichtsvektors 6.4 in die Lagrangegleichung 6.3 unter Ber ucksichtigung der Nebenbedingung 6.5 liefert das duale Optimierungsproblem.
+#$@FORMULA@$#:0
+mit Nebenbedingungen p
+#$@FORMULA@$#:1
+Das duale Optimierungsproblem hangt nur noch von den Skalarprodukten von x und nicht mehr direkt von x ab.
+Diese Darstellung fuhrt zum Kerngedanken der Support-Vector-Machines (kernel trick).
+Linear nicht trennbare Datensatze konnen mit einer Funktion (x) in einen hochdimensionalen Raum abgebildet werden.
+Im hoherdimensionalen Raum ist es wahrscheinlicher, die Daten linear trennen zu konnen.
+Dies wird realisiert, indem das Skalarprodukt im dualen Optimierungsproblem durch das Skalarprodukt der Abbildungsfunktionen ersetzt wird.
+#$@FORMULA@$#:2
+Da das Skalarprodukt der Abbildungsfunktionen schwer zu berechnen ist, wenn die Dimension des Abbildungsraums entsprechend hoch ist, wird eine Kernelfunktion K(xi; xj) eingefuhrt, die sich wie das Skalarprodukt verhalt.
+Haufig verwendete Kernel werden in Tabelle 6.1 aufgefuhrt [66].
+Abbildung 6.2:
+Linear nicht trennbare Daten werden in einen hoherdimensionalen Raum abgebildet und dort linear getrennt.
+Dies fuhrt zu einer nichtlinearen Trennung der Daten im Originalraum [53].
+Kernelfunktion Definition Parameter Linear xT xj
+#$@FORMULA@$#:5
+#$@FORMULA@$#:6
+jxi−xj j{{hn:2:nh}} Radial exp  2 −  
+#$@FORMULA@$#:1
+Sigmoidal tanh(≤(xT xj) + ) ≤ und 
+#$@FORMULA@$#:2
+Tabelle 6.1:
+Haufig verwendete Kernel fur Support-Vector-Machines Die Entscheidungsfunktion 6.1 lasst sich mit Gleichung 6.4 und unter Berucksichtigung der Kernelfunktion folgendermaßen umformen.
+#$@FORMULA@$#:0
+#$@FORMULA@$#:3
+#$@FORMULA@$#:4
+6.3.3 SVM zur Klassifikation von mehreren Objekten Da die SVM als binarer Klassifikator entwickelt wurde, mussen fur eine Klassifikation von mehreren
+
+
+:::: SVM zur Klassifikation von mehreren Objekten ::::
+
+
+verschiedene Techniken vorgestellt.
+Hier werden die drei am haufigsten verwendeten Methoden beschrieben [66]:
 Abbildung 6.3:
 Links:
 gerichteter azyklischer Graph um zwischen vier Klassen zu unterscheiden.
@@ -1280,14 +1375,16 @@ In der Klassifikationsphase wird ein unbekanntes Objekt der Klasse zugeordnet, d
 Dies ist auch der großte Kritikpunkt an diesem Verfahren, da es sich um unterschiedliche binare Klassifikationsprobleme handelt und nicht sichergestellt ist, dass die Ausgaben der SVMs vergleichbar sind.
 Paarweise Klassifikation:
 Bei der paarweisen Klassifikation werden bei M Klassen f ur jede mogliche Paarung zweier Klassen eine binare SVM trainiert.
-Es entstehen somit (M 1)M=2 SVMs − und nicht M , wie es beim Einer gegen den Rest Klassifikation\ der Fall ist [53].
+Es entstehen somit (M
+#$@FORMULA@$#:0
+und nicht M , wie es beim Einer gegen den Rest Klassifikation\ der Fall ist [53].
 In der Klas- " sifikationsphase wird ein unbekanntes Objekt der Klasse zugeordnet, fur die die Anzahl der SVMs, die das Objekt dieser Klasse zuordnen, am großten ist.
 Falle, bei denen ein Objekt von der gleichen Anzahl von SVMs verschiedenen Klassen zugeordnet wird, mussen getrennt betrachtet werden.
 Ein Nachteil dieser Vorgehensweise ist die große Anzahl von Klassifikatoren, die trainiert werden mussen, wenn die Zahl M der unterschiedlichen Klassen steigt.
 Die Klassifikation wird langsam, da der Merkmalsvektor von sehr vielen SVMs klassifiziert werden muss.
 Aus diesem Grund wird die Paarweise Klassifikation\ oft mit gerichteten, azyklischen Graphen " (engl.
 :Directed Acyclic Graph (DAG)) kombiniert.
-Diese verhindern die Ausfuhrung von redundanten SVMs der Paarweisen Klassifikation\."
+Diese verhindern die Ausfuhrung von redundanten SVMs der Paarweisen Klassifikation\ . "
 Wird ein Objekt von den ersten N SVMs weder der Klasse Mi noch der Klasse MJ zugeordnet, ist die SVM, die zwischen diesen beiden Klassen entscheidet, redundant, da das Objekt hochstwahrscheinlich keiner der beiden Klassen angehort.
 Um das Ausfuhren von redundanten SVMs zu vermeiden, werden die SVMs in einem DAG hierarchisch geordnet.
 Abbildung 6.3 zeigt einen solchen Graphen fur ein Vier-Klassen-Problem.
@@ -1309,11 +1406,11 @@ Wert im Ergebnis-Vektor zugewiesen.
 Es sei den, dieser Wert ist geringer als ein definierter optimaler Schwellwert.
 In diesem Fall wird die Kontur als negatives Beispiel klassifiziert.
 Die Vorgehensweise hat den Vorteil, dass Fehler einer SVM durch SVMs der selben Klasse, die andere Merkmale verwenden aufgehoben werden.
-Konturen werden nur dann einer bestimmten Klasse zugewiesen, wenn die Mehrheit der SVMs dieser Klasse die Kontur als Objekt erkennen bzw.wenige SVMs die Kontur zu einem großen Prozentsatz erkennen.
+Konturen werden nur dann einer bestimmten Klasse zugewiesen, wenn die Mehrheit der SVMs dieser Klasse die Kontur als Objekt erkennen bzw. wenige SVMs die Kontur zu einem großen Prozentsatz erkennen.
 Der Nachteil dieser Vorgehensweise ist der, dass SVMs, deren Merkmale als Einzige ermoglichen die Kontur zu erkennen, unterdruckt werden.
 
 
-:::: SVM zur Klassifikation von mehreren Objekten ::::
+:::: Viola Jones AdaBoost Klassifikator ::::
 
 
 In der bestehenden Software-Umgebung ist bereits ein Klassifikator vorhanden, der nach dem Viola Jones AdaBoost Prinzip arbeitet.
@@ -1338,12 +1435,12 @@ Da ein aus wenigen Merkmalen bestehender starker Klassifikator schneller ist, al
 Dies sorgt dafur, dass ein schneller starker Klassifikator zunachst die Detektionsfenster grob aussortiert, auf die im Folgenden komplexere, aus mehr Merkmalen bestehende starke Klassifikatoren angewendet werden.
 
 
-:::: Viola Jones AdaBoost Klassifikator ::::
-
-
-
-
 :::: Performanzevaluation ::::
+
+
+
+
+:::: Receiver-Operating-Characteristics (ROC)-Analyse ::::
 
 
 Die ROC-Analyse wurde im 2.
@@ -1363,37 +1460,45 @@ False Negative (f n):
 die Testinstanz ist ein negatives Beispiel und wird als positives klassifiziert.
 Aus diesen Großen konnen Performanz Metriken hergeleitet werden.
 Zur Erstellung der ROC-Analyse werden die Metriken f p-Rate und tp-Rate wie folgt definiert:
-f p tp f p-Rate = und tp-Rate =.tn f p tp + f n − Die tp-Rate gibt somit das Verhaltnis von korrekt positiv klassifizierten Beispielen zur Gesamtzahl der positiven Beispiele an.
+#$@FORMULA@$#:0
+Die tp-Rate gibt somit das Verhaltnis von korrekt positiv klassifizierten Beispielen zur Gesamtzahl der positiven Beispiele an.
 Entsprechendes gilt fur die f p-Rate und negative Beispiele.
 Beide Werte besitzen somit den Wertebereich von [0,1].
-Oft werden im Zusammenhang mit der ROC-Analyse auch die Begrie sensitivity und specificity verwendet, wobei sensitivity ein Synonym f ur die tp-Rate ist und specificity = 1 f p-Rate gilt:
-− tp sensitivity = tp + f n tn specificity =.tn + f p Visualisiert wird die Performanz im ROC-Raum.
+Oft werden im Zusammenhang mit der ROC-Analyse auch die Begrie sensitivity und specificity verwendet, wobei sensitivity ein Synonym f ur die tp-Rate
+#$@FORMULA@$#:1
+tp sensitivity = tp + f n tn specificity = .
+tn + f p Visualisiert wird die Performanz im ROC-Raum.
 Dieser entsteht, indem die tp-Rate eines Klassifikators uber seiner f p-Rate aufgetragen wird.
 Wie Abbildung 7.1 zeigt, wird ein diskreter Klassifikator Abbildung 7.1:
 ROC-Graph fur funf diskrete Klassifikatoren [12].
 durch einen Punkt im ROC-Graphen dargestellt.
-Da ein diskreter Klassifikator nur die Klasse f ur die jeweiligen Beispiele ausgibt, kann er nur eine diskrete tp-Rate bzw.f p-Rate besitzen.
+Da ein diskreter Klassifikator nur die Klasse f ur die jeweiligen Beispiele ausgibt, kann er nur eine diskrete tp-Rate bzw. f p-Rate besitzen.
 Die Lage des Punktes im ROC-Graphen lasst auf die Performanz des Klassifikators schließen.
 Befindet sich ein Klassifikator auf der Diagonalen zwischen den Punkten (0; 0) und (1; 1), entspricht die Performanz einfachem Raten der Klassen, da der Anteil der richtig klassifizierten Beispiele gleich dem Anteil der falsch klassifizierten Beispiele ist.
 Befindet sich der Klassifikator in der unteren rechten Halfte, ist seine Performanz schlechter als Raten.
 Die linke obere Halfte ist dementsprechend besser.
 Somit ist die rechte untere Halfte des ROC-Graphen nicht relevant, da ein Klassifikator aus diesem Bereich durch Invertieren seiner Ausgaben in einen Klassifikator umgewandelt werden kann, der besser als Raten ist.
 Ein Vorteil der ROC-Graphen ist der, dass die Beurteilung eines Klassifikators unabhangig vom Verhaltnis der Testklasseninstanzen ist.
-Verandert sich die Anzahl von positiven bzw.negativen Instanzen im Testdatensatz, verandert sich nur das Verhaltnis von linker zur rechter Spalte der ?confusion?
+Verandert sich die Anzahl von positiven bzw. negativen Instanzen im Testdatensatz, verandert sich nur das Verhaltnis von linker zur rechter Spalte der ?confusion?
 Matrix.
 Da sowohl tp-Rate als auch f p-Rate nur ein Verhaltnis in einer Spalte bilden, bleiben diese Metriken konstant.
 Metriken wie Exaktheit (engl.:
 accuracy),Prazision (engl.:
 precision), lift, F-score,... sind hingegen sensitiv gegenuber Veranderungen des Verhaltnisses der Testklasseninstanzen, da diese Metriken durch Werte aus unterschiedlichen Spalten gebildet werden [12], wie in folgenden Gleichungen ersichtlich ist:
-tp + tn Exaktheit = tp + tn + f p + f n tp Prazision =.tp + f p
+tp + tn
+#$@FORMULA@$#:0
+tp + tn + f p + f n tp
+#$@FORMULA@$#:1
+.
+tp + f p
 
 
-:::: Receiver-Operating-Characteristics (ROC)-Analyse ::::
+:::: ROC-Kurven ::::
 
 
 ROC-Kurven konnen mit nicht diskreten Klassifikatoren erstellt werden.
 Sie beruhen darauf, dass der Klassifikator einer Testinstanz nicht nur ein Klassenlabel zuordnet, sondern auch einen Wert, wie wahrscheinlich die Testinstanz der Klasse entspricht.
-Dadurch ist es moglich, die tp- bzw.f p-Rate in Abhangigkeit eines Schwellwertes  zu definieren.
+Dadurch ist es moglich, die tp- bzw. f p-Rate in Abhangigkeit eines Schwellwertes  zu definieren.
 Dazu werden in dieser Arbeit die Klassen p und n auf das Intervall [0,1] abgebildet. 100
 % n entspricht 0, 0 % n ebenso wie 0 % p entspricht 0; 5 und 100 % p wird auf 1 abgebildet.
 In der ROC-Analyse wird eine Testinstanz nur dann als positiv gezahlt, wenn der Klassenzugehorigkeitswert uber dem Schwellwert liegt.
@@ -1405,10 +1510,11 @@ Durch Erhohung des Schwellwertes werden immer mehr Testinstanzen als negativ kla
 Dadurch sinkt die f p-Rate und bei einem nicht optimalen Klassifikator sinkt die tp-Rate ebenfalls, da nun positive Beispiele falschlicherweise als negativ klassifiziert werden.
 Erreicht  1.1, werden alle Testinstanzen als negativ klassifiziert, so dass sowohl tp- als auch f p-Rate 0 werden.
 Die ROC-Kurve entsteht, indem die durch die unterschiedlichen Schwellwerte erzeugten Punkte im ROC-Graphen verbunden werden.
-Die ROC-Kurve besitzt aus oben genannten Grunden die Endpunkte (0; 0) bzw. (1; 1).
+Die ROC-Kurve besitzt aus oben genannten Grunden die Endpunkte
+#$@FORMULA@$#:0
 
 
-:::: ROC-Kurven ::::
+:::: Flache unter der ROC-Kurve (AUC) ::::
 
 
 Um die Performanz eines Klassifikators auf einen Wert abzubilden, wird die Flache unter der ROC-Kurve berechnet.
@@ -1420,7 +1526,7 @@ Ein Klassifikator mit einem hohen AUC-Wert kann somit fur einen gewissen Schwell
 Der AUC-Wert entspricht der Wahrscheinlichkeit, dass der Klassifikator einer zufallig gewahlten positiven Instanz einen hoheren Wert zuordnet als einer zufallig gewahlten negativen Instanz [12].
 
 
-:::: Flache unter der ROC-Kurve (AUC) ::::
+:::: Multi-Klassen ROC-Analyse ::::
 
 
 Die bisherigen Erlauterungen gehen von einem Klassifikator aus, der zwischen zwei Klassen entscheidet.
@@ -1431,21 +1537,23 @@ Die n Klassen ?confusion?
 Matrix besitzt neben den n richtig klassifizierten Elementen der Hauptdiagonalen n2 n verschiedene Falschklassifikationen.
 − Eine Moglichkeit, dieses Problem zu losen, ist, fur n Klassen n ROC-Analysen durchzufuhren, wobei sich jede Analyse wieder auf zwei Klassen bezieht.
 Dabei werden alle von der aktuellen Klasse verschiedenen Klassen als negative Instanzen gezahlt.
-Durch diese Vorgehensweise verliert die geometrische Konturmerkmale 1 0.9 0.8 0.7 0.6 t e 0.5 0.4 t p R a 0.3 kombinierte Methode 0.2 CSS−Konturmerkmale (poly) 0.1 geo.
-Konturmerkmale (rad) 0 0 0.2 0.4 0.6 0.8 1 fp Rate Abbildung 7.2:
+Durch diese Vorgehensweise verliert die
+0u
+#$@FORMULA@$#:0
+Abbildung 7.2:
 ROC-Kurven fur zwei Klassifikatoren A und B und fur den aus diesen kombinierten Klassifikator.
 ROC-Analyse jedoch ihre Insenitivitat gegenuber Veranderungen des Klassenverhaltnisses im Testdatensatz, da sich die negativen Beispiele aus n 1 Klassen bzw. Spalten der ?confusion?
 Matrix − zusammensetzen.
 Durch n ROC-Graphen werden fur einen Klassifikator auch n AUC-Werte berechnet, die zu einem AUC-Wert kombiniert werden mussen.
-7.1.4 Konvexe Hulle der ROC-Kurve und kombinierte Klassifikatoren Um verschiedene Klassifikatoren zu vergleichen, gibt es neben der AUC-Metrik die konvexe H ulle eines ROC-Graphen.
+
+
+:::: Konvexe Hulle der ROC-Kurve und kombinierte Klassifikatoren ::::
+
+
+Um verschiedene Klassifikatoren zu vergleichen, gibt es neben der AUC-Metrik die konvexe H ulle eines ROC-Graphen.
 Letztere berucksichtigt den Fall, dass ein Klassifikator mit einem geringeren AUC-Wert durchaus fur gewisse Schwellwerte bessere Ergebnisse liefern kann als ein Klassifikator mit einem hoheren AUC-Wert.
-
-
-:::: Multi-Klassen ROC-Analyse ::::
-
-
-linken Ecke des ROC-Graphen als ein Klassifikator B, wird letzterer von A fur diesen Teilbereich dominiert.
-In Abbildung 7.7b ist zu sehen, dass die mit polynomialen Kernel trainierte SVM die SVM mit linearen bzw.radialen Kernel uber den gesamten Bereich dominiert.
+Befindet sich die ROC-Kurve eines Klassifikators A fur einen Teilbereich dichter an der oberen linken Ecke des ROC-Graphen als ein Klassifikator B, wird letzterer von A fur diesen Teilbereich dominiert.
+In Abbildung 7.7b ist zu sehen, dass die mit polynomialen Kernel trainierte SVM die SVM mit linearen bzw. radialen Kernel uber den gesamten Bereich dominiert.
 Abbildung 7.2 zeigt hingegen, dass nicht eine Kurve dominiert, sondern der Klassifikator A fur einen Bereich dominiert und der Klassifikator B fur einen anderen.
 Diejenige Kurve, die alle Kurven verschiedener Klassifikatoren dominiert, wird konvexe Hulle (ROCCH) des ROC-Graphen genannt.
 In dieser Arbeit wird die konvexe Hulle dazu verwendet, die SVMs eines Objektes zu bestimmen, die kombiniert einen besseren Klassifikator ergeben wurden (vgl. Abschnitt 6.3.3).
@@ -1458,7 +1566,8 @@ Konservative Klassifikatoren besitzen aus erwahnten Grunden typischerweise keine
 Die blaue ROC-Kurve gehort hingegen zu einem liberalen\ Klassifikator.
 Diese Sorte von Klassifikatoren erkennt sehr " viele der positiven Beispiele, macht aber im Vergleich zu einem konservativen Klassifikator mehr Fehler bei den negativen Beispielen.
 Der dritte, aus den beiden anderen Klassifikatoren kombinierte Klassifikator dominiert uber einen großen Bereich des ROC-Graphen und ist sogar besser als die Abbildung 7.3:
-Exaktheit Isometriken fur eine Klassenzusammensetzung von c = 1 (rote Linien) bzw.einer Klassenzusammensetzung von c = 0; 5 (blaue Linien) [14].
+Exaktheit Isometriken fur eine Klassenzusammensetzung von c = 1 (rote Linien) bzw.
+#$@FORMULA@$#:0
 konvexe Hulle.
 Fur einen kleinen Bereich dominiert jedoch der Klassifikator A den kombinierten Klassifikator.
 In dem vorgestellten Fall werden die Klassifikationsergebnisse der Einzelklassifikatoren jeweils gleich gewichtet, um den kombinierten Klassifikator zu erhalten.
@@ -1466,14 +1575,16 @@ Es ist jedoch durchaus denkbar, dass f ur eine definierte Anzahl von Klassifikat
 Hierzu wird in [12] ein Verfahren vorgestellt, das anhand der ROC-Kurven der einzelnen Klassifikatoren deren Gewichtung bestimmt, damit der kombinierte Klassifikator den gewunschten Performanzpunkt erreicht.
 
 
-:::: Konvexe Hulle der ROC-Kurve und kombinierte Klassifikatoren ::::
+:::: Linien gleicher Exaktheit und der optimale Schwellwert ::::
 
 
 ROC-Kurven lassen sich auf andere Performanz Metriken wie Exaktheit oder Prazision abbilden.
 Dabei werden Punkte im ROC-Graphen, die fur eine bestimmte Metrik den selben Wert besitzen, als Isometrik bezeichnet.
 In dieser Arbeit wird die ROC-Kurve auf das Performanz Maß Exaktheit abgebildet, um zu bestimmen, welcher Schwellwert optimalerweise gewahlt werden sollte:
-tp-Rate + c (1 f p-Rate) Exaktheit = · − 1 + c wobei c die Klassenzusammensetzung des Testdatensatzes beschreibt:
-Anzahl der negativen Beispiele c =.Anzahl der positiven Beispiele In Abbildung 7.3 sind die Isometriken fur Exaktheit mit c = 1 und c = 0; 5 abgebildet.
+#$@FORMULA@$#:0
+wobei c die Klassenzusammensetzung des Testdatensatzes beschreibt:
+Anzahl der negativen Beispiele c = .
+Anzahl der positiven Beispiele In Abbildung 7.3 sind die Isometriken fur Exaktheit mit c = 1 und c = 0; 5 abgebildet.
 Es ist zu sehen, dass die Isometriken fur eine Klassenzusammensetzung von 0; 5 acher verlaufen als die einer Klassenzusammensetzung, welche aus gleich vielen positiven wie negativen Beispielen besteht.
 Da in der Objekterkennung typischerweise die Anzahl der negativen Beispiele sehr viel großer ist als die Anzahl der positiven Beispiele, verlaufen die Isometriken fur Exaktheit nahezu vertikal.
 Auf der Diagonalen von Punkt (0,1) zu Punkt (1,0) ist unabhangig von der Klassenzusammensetzung die Exaktheit gleich der tp-Rate.
@@ -1481,7 +1592,7 @@ Dieser Sachverhalt wird in Applikationen ausgenutzt, in denen die Klassenzusamme
 Der optimale Schwellwert der SVM ergibt sich als der, bei dem die Exaktheit am großten ist.
 
 
-:::: Linien gleicher Exaktheit und der optimale Schwellwert ::::
+:::: Ergebnis der Performanz-Analyse ::::
 
 
 Es stellt sich heraus, dass die Angular-Radial-Transformation sich am besten eignet, um die extrahierten Konturen zu beschreiben.
@@ -1512,11 +1623,9 @@ Im Allgemeinen lasst sich sagen, das die Performanz der SVMs, die mit geometrisc
 Zu den kombinierten SVMs lasst sich sagen, dass die ortho.
 ART-Reprasentation fur das Mensch 1\ - " Objekt so gut ist, dass die Kombination mit anderen Verfahren nur eine sehr geringe Performanzsteigerung erzielt.
 Wohingegen die Kombination aller Verfahren beim Mensch 2\ und Kurt 2D\ - " " Objekt zu einer deutlicheren Performanzsteigerung fuhrt.
-Auallig ist, dass der Schwellwert fur die 1 0.95 0.9 0.85 r t 0.8 − W e 0.75 0.7 A U C 0.65 0.6
-12u
-0.55
-14u
-0.5 0 50 100 150 200 Anzahl der Basisvektoren Abbildung 7.4:
+Auallig ist, dass der Schwellwert fur die
+0u
+Abbildung 7.4:
 AUC-Wert in Abhangigkeit zur Anzahl der verwendeten Basisvektoren bei der CSS-Reprasentation.
 Die Gesamtanzahl der verwendeten Beispiele betragt fur die Klassifikatoren der beiden Kurven jeweils 200.
 Die Anzahl der zur Abbildungsmatrix herangezogenen Beispiele betragt fur die schwarze (gepunktete) Kurve 100 und fur die blaue Kurve 200. hochste Exaktheit der Einzelklassifikatoren zwischen 0 und 0,20 oder 0,75 und 1 liegt, wohingegen die Kombination der Klassifikatoren zu einem Schwellwert in die Nahe von 0,5 fuhrt.
@@ -1534,39 +1643,52 @@ Daher scheint es nicht wichtig zu sein, zum Training des Klassifikators Merkmals
 Die blaue Linie besitzt ferner bei Klassifikatoren, die zwischen 100 und 150 Basisvektoren verwenden, eine deutliche Performanzsteigerung, so dass der Klassifikator mit der besten Performanz aus der blauen Linie kommt.
 Zur Frage der notwendigen Basisvektoren ist zu sagen, dass Klassifikatoren der blauen Linie ab 150 Basisvektoren keine Performanzsteigerung mehr besitzen und der Klassifikator der schwarzen (gepunkteten) Linie mit der besten Performanz etwa 90 Basisvektoren verwendet.
 Außerdem ist die Verwendung von vielen Basisvektoren nicht kritisch, da ein signifikanter Unterschied in der Rechenzeit, im Vergleich zu wenigen Basisvektoren, nur in der Trainingsphase des Klassifikators entsteht.
-K1 K2 K3 K4 K5 K6 K7 Mensch 1 200 200 200 200 200 200 200 Mensch 2 - - - - - - -Kurt 2D - - - - - - neg.
-Beispiele 700 700 700 700 700 700 700 Kreisformigkeit x - - - - - x Seitenverhaltnis x - - - - - x Fullungsgrad x - - - - - x Exzentrizitat x - - - - - x Orientierung x - - - - - x Radienverhaltnis x - - - - - x Hu-Momente x - - - - - x Zernike-Momente - - x - - - x Anzahl 7 - 42 - - - 7 bzw. 42 CSS - x - - - - x U-Matrix Beispiele - 200 - - - - 200 Anzahl der Basis- - 200 - - - - 200 vektoren ART - - - x - - x ortho.
-ART - - - - x - x Border-Signature - - - - - x x Rechenzeit [ms] 7 4 187 32 32 0,4 Kernel poly.lin.poly.poly.rad.rad.optimaler Schwell- 0,98 0,76 0,15 0,77 0,78 0,97 0,40 wert Exaktheit 0,964 0,989 0,982 0,990 0,995 0,963 0,996 AUC 0,685 0,986 0,980 0,991 0,999 0,990 0,999 Tabelle 7.1:
+Tabelle 7.1:
 Vergleich der Klassifikatoren fur das Objekt Mensch 1\ :
 zunachst wird die Anzahl der Trai- " ningsbeispiele der jeweiligen Objekte aufgefuhrt.
 Darunter sind die Merkmale markiert, die jeweils extrahiert werden, gefolgt von der Rechenzeit in ms, die zur Berechnung der jeweiligen Merkmale benotigt wird.
 Es wird uber 1997 Konturen gemittelt und ein Pentium4 3 GHz Rechner mit 1 GB Arbeitsspeicher verwendet.
 Unten in der Tabelle ist der Kernel mit der besten Performanz fur die jeweilige Methode, der optimale Schwellwert fur diese SVM, die Exaktheit (bestimmt den optimalen Schwellwert) und der jeweilige AUC-Wert aufgefuhrt (bestimmt den optimalen Kernel).
-geometrische−Konturmerkmale geometrische−Konturmerkmale 1 1 0.9 0.9 0.8 0.8 0.7 0.7 0.6 0.6 a t e a t e 0.5 0.5 0.4 0.4 t p R t p R 0.3 0.3 linearer Kernel linearer Kernel 0.2 0.2 radialer Kernel radialer Kernel 0.1 0.1 polynomialer Kernel polynomialer Kernel 0 0 0 0.2 0.4 0.6 0.8 1 0 0.2 0.4 0.6 0.8 1 fp Rate fp Rate (a) (b) 1 Zernike−Momente 1 ART−Konturmerkmale 0.9 0.9 0.8 0.8 0.7 0.7 0.6 0.6 a t e a t e 0.5 0.5 t p R 0.4 0.4 t p R 0.3 0.3 linearer Kernel linearer Kernel 0.2 0.2 radialer Kernel radialer Kernel 0.1 0.1 polynomialer Kernel polynomialer Kernel 0 0 0 0.2 0.4 0.6 0.8 1 0 0.2 0.4 0.6 0.8 1 fp Rate fp Rate (c) (d) Border Signature 1 ortho.
-ART−Konturmerkmale 1 0.9 0.9 0.8 0.8 0.7 0.7 0.6 0.6 a t e a t e 0.5 0.5 0.4 0.4 t p R t p R 0.3 0.3 linearer Kernel linearer Kernel 0.2 0.2 radialer Kernel radialer Kernel 0.1 0.1 polynomialer Kernel polynomialer Kernel 0 0 0 0.2 0.4 0.6 0.8 1 0 0.2 0.4 0.6 0.8 1 fp Rate fp Rate (e) (f ) Vergleich der Methoden Vergleich der Methoden 1 1 0.9 0.95 0.8 0.9 0.7 0.85 0.6 0.8 geometrische Merkmale (poly) a t e geometrische Merkmale (poly) a t e 0.5 0.75 CSS−Merkmale (lin) CSS−Merkmale (lin) 0.4 0.7 t p R Zernike−Momente (poly) t p R Zernike−Momente (poly) ART (poly) 0.3 ART (poly) 0.65 ortho.
-ART (rad) ortho.
-ART (rad) 0.2 0.6 Border−Signature (rad) Border−Signature (rad) 0.1 0.55 kombinierte Methode kombinierte Methode 0 0.5 0 0.2 0.4 0.6 0.8 1 0 0.05 0.1 0.15 0.2 fp Rate fp Rate (g) (h) Abbildung 7.5:
+geometrische−Konturmerkmale geometrische−Konturmerkmale
+10u
+11u
+#$@FORMULA@$#:0
+#$@FORMULA@$#:1
+(a) (b)
+0u
+1u
+2u
+3u
+4u
+5u
+Abbildung 7.5:
 (a-f):
 ROC-Kurven der mit den verschiedenen Methoden trainierten SVMs (K1-K6) und der Vergleich (g)(h) dieser SVMs mit der aus ihnen kombinierten SVM (K7).
-K8 K9 K10 K11 K12 K13 K14 Mensch 1 - - - - - - -Mensch 2 200 200 200 200 200 200 200 Kurt 2D - - - - - - neg.
-Beispiele 700 700 700 700 700 700 700 Kreisformigkeit x - - - - - x Seitenverhaltnis x - - - - - x Fullungsgrad x - - - - - x Exzentrizitat x - - - - - x Orientierung x - - - - - x Radienverhaltnis x - - - - - x Hu-Momente x - - - - - x Zernike-Momente - - x - - - x Anzahl 7 - 42 - - - 7 bzw. 42 CSS - x - - - - x U-Matrix Beispiele - 200 - - - - 200 Anzahl der Basis- - 200 - - - - 200 vektoren ART - - - x - - x ortho.
-ART - - - - x - x Border-Signature - - - - - x x Rechenzeit [ms] 7 4 187 32 32 0,4 ?227?
-Kernel rad.poly.lin.rad.poly.rad.optimaler Schwell- 0,18 0,93 0,06 0,76 0,81 0,86 0,46 wert Exaktheit 0,969 0,961 0,980 0,985 0,983 0,988 0,986 AUC 0,784 0,932 0,958 0,931 0,933 0,957 0,972 Tabelle 7.2:
-Fortsetzung von Tabelle 7.1 fur das Objekt Mensch 2\."
-geometrische Konturmerkmale 1 CSS−Konturmerkmale 1 0.9 0.9 0.8 0.8 0.7 0.7 0.6 0.6 a t e a t e 0.5 0.5 0.4 0.4 t p R t p R 0.3 0.3 linearer Kernel linearer Kernel 0.2 0.2 radialer Kernel radialer Kernel 0.1 0.1 polynomialer Kernel polynomialer Kernel 0 0 0 0.2 0.4 0.6 0.8 1 0 0.2 0.4 0.6 0.8 1 fp Rate fp Rate (a) (b) 1 Zernike Momente 1 ART−Konturmerkmale 0.9 0.9 0.8 0.8 0.7 0.7 0.6 0.6 a t e a t e 0.5 0.5 0.4 0.4 t p R t p R 0.3 0.3 linearer Kernel linearer Kernel 0.2 0.2 radialer Kernel radialer Kernel 0.1 0.1 polynomialer Kernel polynomialer Kernel 0 0 0 0.2 0.4 0.6 0.8 1 0 0.2 0.4 0.6 0.8 1 fp Rate fp Rate (c) (d) Border Signature 1 ortho.
-ART−Konturmerkmale 1 0.9 0.9 0.8 0.8 0.7 0.7 0.6 0.6 a t e a t e 0.5 0.5 0.4 0.4 t p R t p R 0.3 0.3 linearer Kernel linearer Kernel 0.2 0.2 radialer Kernel radialer Kernel 0.1 0.1 polynomialer Kernel polynomialer Kernel 0 0 0 0.2 0.4 0.6 0.8 1 0 0.2 0.4 0.6 0.8 1 fp Rate fp Rate (e) (f ) Vergleich der Methoden Vergleich der Methoden 1 1 0.9 0.95 0.8 0.9 0.7 0.85 0.6 0.8 geometrische Merkmale (rad) a t e a t e 0.5 0.75 geometrische Merkmale (rad) CSS−Merkmale (poly) CSS−Merkmale (poly) 0.4 0.7 Zernike−Momente (poly) t p R t p R Zernike−Momente (poly) ART (rad) 0.3 0.65 ART (rad) ortho.
-ART (lin) ortho.
-ART (lin) 0.2 0.6 Border−Signature (rad) Border−Signature (rad) 0.1 0.55 kombinierte Methode kombinierte Methode 0 0.5 0 0.2 0.4 0.6 0.8 1 0 0.05 0.1 0.15 0.2 fp Rate fp Rate (g) (h) Abbildung 7.6:
+Tabelle 7.2:
+Fortsetzung von Tabelle 7.1 fur das Objekt Mensch 2\ . "
+geometrische Konturmerkmale
+4u
+5u
+0u
+1u
+2u
+3u
+4u
+5u
+Abbildung 7.6:
 (a-f):
 ROC-Kurven der mit den verschiedenen Methoden trainierten SVMs (K8-K13) und der Vergleich (g)(h) dieser SVMs mit der aus ihnen kombinierten SVM (K14).
-K15 K16 K17 K18 K19 K20 K21 K22 Mensch 1 - - - - - - - -Mensch 2 - - - - - - - -Kurt 2D 200 200 200 200 200 200 200 200 neg.
-Beispiele 700 700 700 700 700 700 700 700 Kreisformigkeit x - - - - - x x Seitenverhaltnis x - - - - - x x Fullungsgrad x - - - - - x x Exzentrizitat x - - - - - x x Orientierung x - - - - - x x Radienverhaltnis x - - - - - x x Hu-Momente x - - - - - x x Zernike-Momente - - x - - - - x Anzahl 7 - 42 - - - 7 7 bzw. 42 CSS - x - - - - - x U-Matrix Beispiele - 200 - - - - - 200 Anzahl der Basis- - 200 - - - - - 200 vektoren ART - - - x - - - x ortho.
-ART - - - - x - - x Border-Signature - - - - - x - x Rechenzeit [ms] 7 4 187 32 32 0,4 Kernel poly.poly.poly.poly.rad.rad.lin.und poly.optimaler Schwell- 0,93 0,95 0,89 0,85 0,85 0,91 0,76 0,75 wert Exaktheit 0,967 0,966 0,976 0,985 0,979 0,972 0,965 0,986 AUC 0,71 0,940 0,985 0,983 0,984 0,973 0,926 0,995 Tabelle 7.3:
-Fortsetzung von Tabelle 7.1 fur das Objekt Kurt 2D\."
-CSS−Konturmerkmale geometrische Konturmerkmale 1 1 0.9 0.9 0.8 0.8 0.7 0.7 0.6 0.6 a t e a t e 0.5 0.5 0.4 0.4 t p R t p R 0.3 0.3 linearer Kernel linearer Kernel 0.2 0.2 radialer Kernel radialer Kernel 0.1 0.1 polynomialer Kernel polynomialer Kernel 0 0 0 0.2 0.4 0.6 0.8 1 0 0.2 0.4 0.6 0.8 1 fp Rate fp Rate (a) (b) 1 Zernike Momente 1 ART−Konturmerkmale 0.9 0.9 0.8 0.8 0.7 0.7 0.6 0.6 a t e a t e 0.5 0.5 0.4 0.4 t p R t p R 0.3 0.3 linearer Kernel linearer Kernel 0.2 0.2 radialer Kernel radialer Kernel 0.1 0.1 polynomialer Kernel polynomialer Kernel 0 0 0 0.2 0.4 0.6 0.8 1 0 0.2 0.4 0.6 0.8 1 fp Rate fp Rate (c) (d) Border Signature 1 ortho.
-ART−Konturmerkmale 1 0.9 0.9 0.8 0.8 0.7 0.7 0.6 0.6 a t e a t e 0.5 0.5 0.4 t p R 0.4 t p R 0.3 0.3 linearer Kernel linearer Kernel 0.2 0.2 radialer Kernel radialer Kernel 0.1 0.1 polynomialer Kernel polynomialer Kernel 0 0 0 0.2 0.4 0.6 0.8 1 0 0.2 0.4 0.6 0.8 1 fp Rate fp Rate (e) (f ) Vergleich der Methoden Vergleich der Methoden 1 1 0.9 0.95 0.8 0.9 0.7 0.85 0.6 0.8 geometrische Merkmale (lin) a t e geometrische Merkmale (lin) a t e 0.5 0.75 CSS−Merkmale (poly) CSS−Merkmale (poly) 0.4 t p R 0.7 Zernike−Momente (poly) t p R Zernike−Momente (poly) ART (lin) 0.3 ART (lin) 0.65 ortho.
-ART (lin) ortho.
-ART (lin) 0.2 0.6 Border−Signature (rad) Border−Signature (rad) 0.1 0.55 kombinierte Methode kombinierte Methode 0 0.5 0 0.2 0.4 0.6 0.8 1 0 0.05 0.1 0.15 0.2 fp Rate fp Rate (g) (h) Abbildung 7.7:
+Tabelle 7.3:
+Fortsetzung von Tabelle 7.1 fur das Objekt Kurt 2D\ . "
+3u
+4u
+0u
+1u
+2u
+3u
+4u
+5u
+Abbildung 7.7:
 (a-f):
 ROC-Kurven der mit den verschiedenen Methoden trainierten SVMs (K15-K20) und der Vergleich (g)(h) dieser SVMs mit der aus ihnen kombinierten SVM (K22).
 tp f p geometrische Merkmale 22 1 CSS 27 11 Zernike-Momente 23 2 ART 28 3 ortho.
@@ -1581,7 +1703,7 @@ Bei den verschieden Ansichten wird darauf geachtet, dass der Mensch vollstandig 
 Der
 
 
-:::: Ergebnis der Performanz-Analyse ::::
+:::: Vergleich mit dem Viola Jones AdaBoost Klassifikator ::::
 
 
 wurden.
@@ -1601,18 +1723,19 @@ Dies kann an dem relativ geringen optimalen Schwellwert von 0,76 liegen.
 Zu den f p-Klassifikationen der ART-Reprasentation ist zu sagen, dass diese ausschließlich durch nahezu kreisrunde Konturen erzeugt werden.
 Zum Auswertungsverfahren muss betont werden, dass die zur Klassifikation herangezogenen Ansichten unter der Voraussetzung der richtigen Segmentierung ausgewahlt werden.
 Wird diese Voraussetzung nicht berucksichtigt besitzt der Viola Jones Klassifikator ein deutlich besseres Ergebnis (a) (b) Abbildung 7.8:
-Vergleich der Robustheit der Klassifikatoren gegenuber Verdeckung von unten (a) bzw.von oben (b).
+Vergleich der Robustheit der Klassifikatoren gegenuber Verdeckung von unten (a) bzw.
+#$@FORMULA@$#:0
 als die in dieser Arbeit entwickelten Klassifikatoren.
 So erkennt der Viola Jones Klassifikator sehr kleine weit entfernte Objekte, deren feine Strukturen durch den Segmentierungsalgorithmus der konturorientierten Klassifikatoren zerstort wird.
 Ein weiterer Vorteil des Viola Jones Klassifikators der ebenfalls durch die fehlende Segmentierung entsteht, sind die geringeren Anforderungen an die zu lernenden Objekte.
 Sie mussen keine relativ große, planare Seitenansicht besitzen, wie es bei den konturorientierten Verfahren der Fall ist.
 Wahrend des Vergleichs ist außerdem aufgefallen, dass das Ergebnis des Viola Jones Klassifikators starker unter verschiedenen Ansichten des selben Scans variiert, als es fur konturorientierten Verfahren der Fall ist.
-Ferner sind einige konturorientierte Verfahren robuster gegen uber Verdeckung (vgl.folgender Abschnitt).
+Ferner sind einige konturorientierte Verfahren robuster gegen uber Verdeckung (vgl. folgender Abschnitt).
 Ein Nachteil in der praktischen Anwendung des Viola Jones Klassifikators liegt darin, dass sowohl das Tiefenbild als auch das Reektionsbild benotigt werden und die Aufnahme des Reektionsbildes zeitintensiv ist.
 7.2.2 Klassifikation von verdeckten Konturen
 
 
-:::: Vergleich mit dem Viola Jones AdaBoost Klassifikator ::::
+:::: Klassifikation von verdeckten Konturen ::::
 
 
 deckte Konturen zu erkennen, hat sich wahrend der Untersuchungen im letzten Abschnitt gezeigt, dass einige der Verfahren relativ robust gegenuber Verdeckung sind.
@@ -1622,7 +1745,7 @@ Es ist zu sehen, dass die CSS-Reprasentation bei der Kontur eines Menschen desse
 Bei Verdeckung von oben schneidet das ART-Verfahren jedoch besser als das CSS-Verfahren ab.
 
 
-:::: Klassifikation von verdeckten Konturen ::::
+:::: Zusammenfassung und Ausblick ::::
 
 
 Damit Roboter mit ihrer Umwelt interagrieren konnen, mussen sie wissen, welche Objekte sich in dieser Umwelt befinden.
@@ -1656,12 +1779,12 @@ Der zweite Ansatz verwendet Merkmale, die lokale Informationen des Objektes verw
 Um verschiedene Ansichten eines Objektes zu klassifizieren, wird in [40] mit Hilfe der CSS-Reprasentation bestimmt, wieviele und welche Ansichten notwendig sind, um die Kontur des Objektes, dass sich in einer beliebigen Pose befindet, klassifizieren zu konnen.
 
 
-:::: Zusammenfassung und Ausblick ::::
-
-
-
-
 :::: Anhang A ::::
+
+
+
+
+:::: Freeman-Kettencode ::::
 
 
 Eine einfache, eindimensionale Konturreprasentation ist der Freeman-Kettencode (auch Chain-Code).
@@ -1671,11 +1794,11 @@ ein Wert zwischen Null und Sieben zugeordnet.
 Der Kettencode entsteht, indem von einem definierten Anfangspunkt aus die Kontur Pixel fur Pixel durchlaufen und die entsprechende Richtungszahl an den Kettencode angehangt wird.
 Neben der Datenreduktion besitzt der Kettencode den Vorteil, dass einfache Merkmale der Form wie Konkavitat bzw. Konvexitat, Flache und Umfang leicht bestimmbar sind [32].
 Der Kettencode besitzt den Nachteil, dass er sensitiv gegenuber Rauschen, Skalierung und Rotation ist.
-Aus diesem Grund findet er in der hier beschriebenen einfachen Grundform keine Anwendung in der Objekterkennung [10]. 3
-2 4 0 5 6 7 Abbildung A.1:
+Aus diesem Grund findet er in der hier beschriebenen einfachen Grundform keine Anwendung in der Objekterkennung [10].
+Abbildung A.1:
 
 
-:::: Freeman-Kettencode ::::
+:::: Anhang B ::::
 
 
 Curvature-Scale-Space-Matching-Verfahren nach Mokhtarian Zusammen mit der CSS-Reprasentationstechnik wird von Mokhtatrian ein mogliches Matching-Verfahren beschrieben, das Konturen anhand ihrer CSS-Reprasentation vergleicht [41].
@@ -1688,7 +1811,10 @@ Folgendes Verfahren ermoglicht es, die Koordinaten verschiedener Konturen mitein
 13u
 14u
 15u
-= um − ui (B.1) Der jeweilige Verschiebeparamter ergibt sich, indem die Dierenz der x-Koordinaten des jeweils großten Maximums der Datenbankkontur (um) mit der aktuellen Kontur (ui) gebildet wird.
+#$@FORMULA@$#:0
+ui (B.1)
+#$@FORMULA@$#:1
+Der jeweilige Verschiebeparamter ergibt sich, indem die Dierenz der x-Koordinaten des jeweils großten Maximums der Datenbankkontur (um) mit der aktuellen Kontur (ui) gebildet wird.
 Mit Hilfe des Verschiebeparameters wird die CSS-Reprasentation der aktuellen Kontur verschoben, so dass die großten Maxima der jeweiligen Konturen beim selben Parameter u liegen.
 Dieser Schritt ist wichtig, da eine rotierte Kontur eine bezuglich u translatierte CSS-Reprasentation bestizt.
 3.

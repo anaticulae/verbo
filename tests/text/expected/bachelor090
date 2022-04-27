@@ -163,22 +163,23 @@ Compete on implementation.“ beschreibt die- ” sen Schwerpunkt.
 Architektur (Unabhängigkeit von benutzter Hardware), Methodik (einheitliche Formate, Workflow) und Anwendungsschnittstellen.
 [NN09, Seite 2-4] Gemeinsame Standards sind nötig um die Wiederverwendbarkeit und Interoperabilität von Komponenten zu erhöhen.
 Speziell der Bereich der Basissoftware ist durch unstrukturiertes Vorgehen geprägt.
-[Rei12, Seite 52] Um Redundanzen zu vermeiden wird das DRY-Prinzip verwendet.
+[Rei12, Seite 52] Um Redundanzen zu vermeiden wird das DRY{{hn:1:nh}}-Prinzip verwendet.
 Dabei wird redundante Software vermieden.
 Softwarekomponenten mit der selben Aufgabe befinden sich nur an einer Stelle im Projekt.
 Um dies zur erreichen, wird die Aufmerksamkeit für das Erstellen der Softwarearchitektur erhöht.
 Struktur ist dabei das wesentliche Element.
 Die Softwarearchitektur ist dabei die oberste Strukturebene eines Softwaresystems.
 AUTOSAR fördert hardwareunabhängige Lösungen.
-Dies geschieht durch das OSI-Schichtenmodell.
+Dies geschieht durch das OSI{{hn:2:nh}}-Schichtenmodell.
 Eine Vermischung von Funktions- und Strukturcode wird vermieden (siehe Abbildung 2.2.1).
 Der AUTOSAR-Standard enthält keine Aussagen zur Mechanik und Hardware der Geräte.
 Lediglich zur Softwarearchitektur werden Aussagen getroffen.
 [OK09] Die Basis Software (BSW) und das Run-Time-Environment (RTE) definieren die Kommunikation und Treiber für Ein- und Ausgabe der Daten [NN09, Seite 2-8].
 Anwendungen befinden sich in der Anwendungs-Schicht und benötigen daher keine Informationen zur Kommunikation, Struktur und Verwaltung der Daten auf Hardwareebene [NN09, Seite 2-4].
-Zur Erhöhung der Lokalität verwendet AUTOSAR einen modellgetriebenen Ansatz.
-[NN09][2-4] Die Modelle enthalten Eingangsports (”required port”) und stellen Ausgangsports (”provided port”) zur Verfügung.
-[NN09, 2-4] AUTOSAR eignet sich potenziell für einen größeren Einsatzbereich.
+Zur Erhöhung der Lokalität verwendet AUTOSAR einen modellgetriebenen An-
+#$@FORMULA@$#:0
+#$@FORMULA@$#:1
+AUTOSAR eignet sich potenziell für einen größeren Einsatzbereich.
 Dieser ist in der Automatisierungstechnik, Schienenfahrzeugtechnik und im Verteidigungswesen zu finden.
 Rechtliche Richtlinien schließen dies bisher aus.
 [OK09, Seite 63-64] Abbildung 2.1.:
@@ -192,8 +193,9 @@ MISRA-C (Motor Industry Software Reliability Association) ist ein Softwarestanda
 Ziel ist die Vermeidung von Fehlern in der Programmierung.
 Diese entstehen durch semantische Fehler und Sprachmittel, die nicht 100% standardisiert sind.
 Diese Fehler sollen durch Einhaltung der MISRA-Regeln vermieden werden.
-Die Regeln werden zwischen verpflichtend (required) und diesen, die in Ausnahmefällen mit Begründung übergangen werden d ürfen (advisory), unterschieden.
-[mis98] Die Verwendung der C-Programmierung im Embedded-Bereich nimmt zu.
+Die Regeln werden zwischen verpflichtend (required) und diesen, die in Ausnahmefällen mit Begründung übergangen werden d ürfen
+#$@FORMULA@$#:0
+Die Verwendung der C-Programmierung im Embedded-Bereich nimmt zu.
 Dies ist auf die Hardwarenähe und den effektiv erzeugten Maschinencode zurückzuführen.
 Es existieren eine große Anzahl an C-Compilern.
 Die Entwickler besitzen große Erfahrung in der C-Entwicklung.
@@ -209,11 +211,11 @@ Der CAN-Bus (Controller Area Network) wurde zu Beginn der 80er-Jahre von der Fir
 Dieser stellt ein flexibles Bussystem zur Vernetzung der Fahrzeugelektronik dar.
 Dieses wird durch die steigenden informationstechnischen Anforderungen an Automobile benötigt.
 [WL11, siehe Einleitung] Der VW Phaeton (2002) enthält bereits über 11.000 elektrische Komponenten.
-Dabei sind 35 ECUs durch 3 CAN-Busse verbunden.
+Dabei sind 35 ECU{{hn:3:nh}}s durch 3 CAN-Busse verbunden.
 Diese tauschen über 2500 Signale in 250 CAN-Nachrichten untereinander aus [ Ju04].
 CAN-Bussysteme werden zur seriellen Datenübertragung verwendet.
-Die Datenübertragungsrate ist von der Entfernung zwischen den Komponenten abhängig.
-Diese beträgt 1 Mbit s (40m)-50 kbit s s (1km).
+Die Datenübertragungsrate ist von der Entfernung zwischen den Komponenten
+#$@FORMULA@$#:0
 In einem Datenframe werden zwischen 0 und 8 Byte Nutzdaten übertragen.
 [WL11, Seite 13] Die Datenübertragung auf dem CAN-Bus erfolgt nach dem multi-master priority-based bus access“-Prinzip. Jeder Knoten kann das Senden ” von Daten beginnen.
 Sollte es auf dem Bus zu Kollisionen kommen, werden diese durch die Arbitrierungsphase (Schiedsverfahren) aufgelöst [WL11, Seite 9].
@@ -246,17 +248,11 @@ linearer Bus und ein Einzelstern nach [WL11]
 :::: Datenübertragung ::::
 
 
-Die Datenübertragung auf dem CAN-Bus erfolgt nach dem NRZ-Prinzip (konstante Leitungszuständen).
+Die Datenübertragung auf dem CAN-Bus erfolgt nach dem NRZ{{hn:4:nh}}-Prinzip (konstante Leitungszuständen).
 Dabei werden für die binären Zustände 0 und 1 Pegel festgelegt, deren Spannung größer als 0 Volt ist (siehe Abbildung 2.3.2).
 [NN09, Seite 4-7].
 Abbildung 2.3.:
-Pegel bei der NRZ-Datenübertragung
-
-
-:::: Abitrierungsphase ::::
-
-
-Die Abitrierung regelt den Datenverkehr auf dem Bus.
+Pegel bei der NRZ-Datenübertragung Abitrierungsphase Die Abitrierung regelt den Datenverkehr auf dem Bus.
 Durch bitweises Senden des Identifiers wird die Kollision aufgelöst.
 Die Abitrierung erfolgt verlustfrei.
 Abbildung 2.4.:
@@ -271,41 +267,31 @@ Der Klient wartet.
 [WL11, Seite 10-11] Der Klient mit dem kleinsten Identifier hat die höchste Priorität und darf senden.
 [ISO03].
 Abbildung 2.5.:
-Buszugriff Abitrierungsphase nach [WR10, Seite 216]
-
-
-:::: Bitstromkompressor ::::
-
-
-Der Bitstromkrompressor führt protokollarische Operationen des Knotens aus.
+Buszugriff Abitrierungsphase nach [WR10, Seite 216] Bitstromkompressor Der Bitstromkrompressor führt protokollarische Operationen des Knotens aus.
 Beim Senden übernimmt der Bitstromkompressor die Busabitrierung.
 Darauf folgt die Serialisierung der Nachricht.
-Es werden Stuff-, CRC-Bits und alle weitere Protokollbits eingefügt.
+Es werden Stuff{{hn:5:nh}}-, CRC{{hn:6:nh}}-Bits und alle weitere Protokollbits eingefügt.
 Beim Empfangen von Nachrichten erfolgt die Deserialisierung.
 Die Stuff- und CRC-Bits sowie weitere Protokollbits werden entfernt.
 Weiterhin übernimmt der Bitstromkompressor die Fehlerbehandlung und Fehlereinschränkung.
-[WL11, Seite 191]
-
-
-:::: CAN-Nachricht ::::
-
-
-Das Startbit (SOF) kennzeichnet den Nachrichtenanfang.
+[WL11, Seite 191] CAN-Nachricht Das Startbit (SOF) kennzeichnet den Nachrichtenanfang.
 Nach einem Leerlaufzeitraum auf dem Bus dient es zur Synchronisation der einzelnen Knoten.
 Diesem folgt der der Nachrichtenidentifikator.
 Je niedriger dieser Wert ist, desto höher liegt die Nachrichtenpriorität auf dem Bus.
-Durch das RTR-Bit wird die Nachricht zwischen Datennachricht und Datenanforderungsnachricht unterschieden.
+Durch das RTR{{hn:7:nh}}-Bit wird die Nachricht zwischen Datennachricht und Datenanforderungsnachricht unterschieden.
 Es bildet den Abschluss der Abitrierungsphase.
 Auf das Abitrierungsfeld folgt das Kontrollfeld.
-Dieses beinhaltet IDE (Identifier Extension), r0 (reserviert) und das DLC-Feld welches die Länge der folgenden Nachricht beinhaltet.
+Dieses beinhaltet IDE (Identifier Extension), r0 (reserviert) und das DLC{{hn:8:nh}}-Feld welches die Länge der folgenden Nachricht beinhaltet.
 Das Daten-Feld besteht aus 0-8 Bit und beinhaltet den eigentlich Nachrichtenteil.
 Die CRC-Prüfsumme wird zur Fehlererkennung verwendet.
-Das verwendete CRC-Polynom hat eine Hamming-Distanz von 6, somit können bis zu 6 Bitfehler erkannt werden.
-Das ACK-Feld dient der Kontrolle der korrekten Datenübertragung.
+Das verwendete CRC-Polynom hat eine Hamming{{hn:9:nh}}-Distanz von 6, somit können bis zu 6 Bitfehler erkannt werden.
+Das ACK{{hn:10:nh}}-Feld dient der Kontrolle der korrekten Datenübertragung.
 Der Sender sendet dieses Bit dominant.
 Der Empfänger überschreibt, bei korrekt empfangener Nachricht, dieses Bit rezessiv.
-Das EOF-Feld beendet den Sendevorgang.
-[WR10, Seite 214-216] Start Identifier RTR IDE r0 DLC Data CRC ACK EOF+IFS 1Bit 11 Bit 1 Bit 1 Bit 1 Bit 1 Bit 0..8 * 8 Bits 15 + 1 Bits 1+1Bit 7+3 Bit Abbildung 2.6.:
+Das EOF{{hn:11:nh}}-Feld beendet den Sendevorgang.
+[WR10, Seite 214-216]
+#$@FORMULA@$#:0
+Abbildung 2.6.:
 CAN-Nachricht nach [WL11, Seite 19]
 
 
@@ -352,11 +338,11 @@ Im Bereich der MDSD existieren verschiedenen Entwicklungswerkzeuge, die spezifis
 Das Eclipse Modelling Framework (EMF) ermöglicht durch das Ecore-Metamodell“ die automatische Quell- ” codeerzeugung [Ole10, Seite 78].
 Dabei wird entschieden, für welche Komponente welcher Code erzeugt wird [BKL+09, Seite 81].
 Der Enterprise Architect (EA) ermöglicht die Erzeugung von Quelltext aus UML-Diagrammen.
-Weiterhin bietet das Frameworkdie M öglichkeit den erzeugten Quelltext auf Konsistenz mit dem Modell zu prüfen.
-[Ole10, Seite 88] [emf12] SCM-Werkzeuge ermöglichen verschiedene Softwarekonfigurationen zu verwalten.
+Weiterhin bietet das Framework{{hn:1:nh}}die M öglichkeit den erzeugten Quelltext auf Konsistenz mit dem Modell zu prüfen.
+[Ole10, Seite 88] [emf12] SCM{{hn:2:nh}}-Werkzeuge ermöglichen verschiedene Softwarekonfigurationen zu verwalten.
 Dies erm öglicht Softwarekomponenten in einheitlichen Konfigurationen auszuführen.
 Weiterhin wird eine zentrale Konfiguration ermöglicht, die Änderungen erleichtert und eine Erhöhung der Übersicht ermöglicht.
-PDM-Software erm öglicht Produktdaten (Spezifikationen, Quellcode, Tests und allgemeine Dokumente) zu versionieren.
+PDM{{hn:3:nh}}-Software erm öglicht Produktdaten (Spezifikationen, Quellcode, Tests und allgemeine Dokumente) zu versionieren.
 Weiterhin ermöglichen verschiedene Benutzerrechte den Zugriff zu begrenzen.
 Über Austauschformate, wie die Extensible Markup Language (XML), wird die Interoperabilität und der Datenaustausch zwischen den Werkzeugen realisiert.
 [NN09, Seite 10-29] Im Rahmen dieser Arbeit wurde Simulink von ”The MathWorks”verwendet.
@@ -374,13 +360,14 @@ Dies wird durch PDM- und SCM-Werkzeuge unterst ützt.
 Viele Entwickler dokumentieren die Anforderungen noch in Texteditoren.
 Die erfolgte Integration der modellbasierten Entwicklung unterscheidet sich von Domain zu Domain.
 [NN09, Seite 10-31] Es werden verschiedene Modellierungs- und Analysetechniken verwendet.
-Die Systementwicklung, Fahrsimmulationen, frühe HMI-Modelle und Sicherheitsanalysen finden häufig in getrennten Modellen statt.
+Die Systementwicklung, Fahrsimmulationen, frühe HMI{{hn:4:nh}}-Modelle und Sicherheitsanalysen finden häufig in getrennten Modellen statt.
 Ein Schwerpunkt der Forschung und Entwicklung liegt in der Vernetzung dieser Anwendungen.
 Dabei wird UML nur partiell verwendet, jedoch steigt die Nutzung.
 [NN09, Seite 10-32] Umfangreiche Tests erfordern den Ausbau systematischer Tests.
 Diese werden direkt durch SCM-Werkzeuge ermöglicht und unterstützt.
-Modellbasiertes Testen in Form von Model in the Loop (MiL), Software in the Loop (SiL) und Hardware in the Loop (HiL) wird immer häufiger verwendet.
-[NN09, Seite 10-33] Die Nutzung von Modellierungssprachen zur Entwicklung, Verwaltung und Integration von Embedded Systems wird im Entwicklungsprozess fokussiert.
+Modellbasiertes Testen in Form von Model in the Loop (MiL), Software in the Loop (SiL) und Hardware in
+#$@FORMULA@$#:0
+Die Nutzung von Modellierungssprachen zur Entwicklung, Verwaltung und Integration von Embedded Systems wird im Entwicklungsprozess fokussiert.
 [NN09, Seite 10-34/35]
 
 
@@ -392,7 +379,7 @@ Durch automatisiertes Erzeugen aus Modellen soll die Konsistenz zwischen Modell 
 Um Systemcode zu erzeugen, leistet der Generator mehrere Arbeitsschnitte.
 Die Modelle werden eingelesen, verlinkt, validiert, transformiert und als Quellcode exportiert.
 [TS07, Seite 139] Anwendungsentwickler müssen die Modelle gut lesen, schreiben und verstehen können [TS07, Seite 115].
-Die automatische Quellcodegenerierung ist eine wesentliche Verbesserung des Rapid Prototyping.
+Die automatische Quellcodegenerierung ist eine wesentliche Verbesserung des Rapid Prototyping{{hn:5:nh}}.
 Dadurch werden schnelle Resultate und Testergebnisse ermöglicht.
 Weiterhin kann ein System kompakter als mit reiner textueller Programmierung beschrieben werden.
 [Rum05, Seite 49] Automatisierte Quellcodegenerierung erm öglicht einheitlichen Quellcode und die dazugehörige Dokumentation.
@@ -411,25 +398,13 @@ Dies wird durch Schichtenbildung zwischen manuellem und erzeugtem Code verbesser
 [TS07, Seite 158-159] Wird die Generierung des Zielcodes darüber hinaus als korrekt angenommen und auf eine manuelle Nachbearbeitung oder Inspektion verzichtet, so ist die Schichtenbildung im generierten Code nicht essentiell.
 Stattdessen kann bei der Generierung die Laufzeiteffizienz erhört werden.
 Vergleichbar mit den Optimierungstechniken von Compilern kann eine Verknüpfung des plattformunabhängigen und plattformspezifischen Code erfolgen.
-[Rum05, Seite 62]
-
-
-:::: Geschützte Bereiche ::::
-
-
-Bei der Verwendung von geschützten Bereichen befinden sich manueller und generierter Code in den selben Klassen.
+[Rum05, Seite 62] Geschützte Bereiche Bei der Verwendung von geschützten Bereichen befinden sich manueller und generierter Code in den selben Klassen.
 Der generierte Quellcode wird durch den Entwickler in den geschützten Bereichen vervollständigt.
 Die Versionsverwaltung von Quellcode wird erschwert.
 Nach Änderungen am Modell muss der Quellcode erneut erzeugt werden.
 Da der Generator die manuellen Bereiche erkennen muss, wird die Komplexität der Implementierung deutlich erhöht.
 Bei unsachgemäßer Nutzung kann Quellcode verloren gehen.
-[TS07, Seite 158-159]
-
-
-:::: Generierung für eine abstrakte Schnittstelle ::::
-
-
-Die Quellcodeerzeugung, gegen eine abstrakte Schnittstelle, ermöglicht es hardware- und plattformunabhängigen Quellcode zu erzeugen.
+[TS07, Seite 158-159] Generierung für eine abstrakte Schnittstelle Die Quellcodeerzeugung, gegen eine abstrakte Schnittstelle, ermöglicht es hardware- und plattformunabhängigen Quellcode zu erzeugen.
 Die Schnittstelle kapselt dabei die Hardware der Plattform für den erzeugten Quellcode.
 Dieser kann auf verschiedenen Plattformen wiederverwendet werden.
 Die abstrakte Schnittstelle bietet standardisierte Funktionalitäten an.
@@ -440,13 +415,7 @@ Individuelle Anpassungen sind nicht möglich.
 Ein Beispiel für die abstrakte Schnittstelle ist die Java-Plattform.
 Diese kann Bytecode auf jeder unterstützen Plattform ausf ühren.
 [Rum05, Seite 61] Abbildung 3.1.:
-Generierung für abstrakte Schnittstelle nach [Rum05, Seite 61]
-
-
-:::: Parametrisierte Codegenerierung ::::
-
-
-Die parametrisierte Quellcodegenerierung erzeugt für eine Plattform spezifizierten Code.
+Generierung für abstrakte Schnittstelle nach [Rum05, Seite 61] Parametrisierte Codegenerierung Die parametrisierte Quellcodegenerierung erzeugt für eine Plattform spezifizierten Code.
 Die Transformation wird dabei durch Parameter spezifiziert.
 Plattformunabhängiger und plattformspezifischer Code werden dabei verwoben (vgl. Abbildung 3.6).
 Die Schichtenbildung im erzeugten Code wird aufgehoben (vgl. Ab- bildung 2.2.1 - klassisches Steuergerät) und ist auch nicht essentiell.
@@ -571,7 +540,7 @@ Diese sind zum Beispiel in der Speicherverwaltung von Betriebssystemen zu finden
 Auch für Konsumelektronikprodukte ist eine händische Entwicklung häufig praktischer, da die Software auf sehr eingeschränkten Bauteilen eingesetzt wird.
 Weiterhin sind meist keine großen Entwicklungswerkzeuge vorhanden.
 [Bae08, Seite 138-139] In der manuellen Entwicklung sind Quellcode und Dokumentation, im Gegensatz zur MDSD, selten synchron [BKL+09, Seite 80].
-Änderungen in der Spezifikation bzw.an der Architektur des Systems sind sehr teuer und kompliziert umzusetzen [Bus98, Seite 194].
+Änderungen in der Spezifikation bzw. an der Architektur des Systems sind sehr teuer und kompliziert umzusetzen [Bus98, Seite 194].
 Im Gegensatz zur MDSD k önnen Fehler im Modell während der Implementierung, durch die Anwendungsentwickler, entdeckt werden.
 In der MDSD werden Fehler aus dem Modell in die Software übernommen.
 [BKL+09, Seite 81] Die Kommunikation der Softwarekomponente mit dem System kann aus jeder Komponente heraus erfolgen (siehe Abbildung 3.4).
@@ -598,8 +567,8 @@ Diese Flexibilität bietet sehr gute M öglichkeiten zum Testen und Debuggen der
 
 
 Die komplette Integration endet in einem eingewebten Modell“ (Weaving Mo- ” del).
-Dieses verbindet die einzelnen Domänender Module und ermöglicht die Kommunikation dieser.
-Es wird das Softwaresystem bzw.eine Gesamtdomäne gebildet.
+Dieses verbindet die einzelnen Domänen{{hn:6:nh}}der Module und ermöglicht die Kommunikation dieser.
+Es wird das Softwaresystem bzw. eine Gesamtdomäne gebildet.
 [Mat09, Seite 353] Abbildung 3.6.:
 Komplett integriertes System Die MDSD erm öglicht die stetige Synchronisation von Modell und Dokumentation.
 Der Einsatz von Modellen erm öglicht leichtere Architekturänderungen im System.
@@ -661,7 +630,7 @@ Das Legacy-Tool wird über die Konsole verwendet.
 Weiterhin k önnen S-Funktionen auch manuell als C/C++-Quellcode erzeugt werden und durch Mex kompiliert werden.
 In dieser Arbeit wurden S-Funktionen manuell oder über den S-Function-Builder erzeugt.
 Die Vorgehensweise ist in Tabelle A. 9 dokumentiert.
-Erzeugte S-Funktionen bzw.deren Mex-Dateien werden über den S-Function“- ” Block in die Simulationen eingebunden (siehe Tabelle A.10).
+Erzeugte S-Funktionen bzw. deren Mex-Dateien werden über den S-Function“- ” Block in die Simulationen eingebunden (siehe Tabelle A.10).
 Abbildung 3.8.:
 S-Function Builder mit vier Eingangsports und einem Ausgangsports sowie ein S-Funktion-Block
 
@@ -673,12 +642,7 @@ Das Verhalten der Simulation wird über Modelle definiert.
 Aus diesen Modellen wird das Softwaresystem exportiert.
 F ür diesen Vorgang sind weitere Konfigurationen des Modells notwendig.
 Dies betrifft Simulationsparameter, die Hardwarekonfiguration, die Kommunikation der Modelle und einzelne Funktionen in den Modellen.
-
-
-:::: Konfiguration des Simulinkmodells ::::
-
-
-Das Verhalten der Modelle wird durch die Konfigurationen bestimmt.
+Konfiguration des Simulinkmodells Das Verhalten der Modelle wird durch die Konfigurationen bestimmt.
 Es können verschiedene Konfigurationen bestimmt werden.
 Für die Simulation, das Testen oder den Export in die Zielsprache werden verschiedene Konfigurationen benötigt.
 Einheitliche Konfigurationen erleichtern diese Arbeit mit mehreren Modellen.
@@ -686,17 +650,12 @@ Speziell die Integration des Gesamtmodells erfordert das häufige Wechseln der K
 SCM-Programme ermöglichen diese Verwaltung (vgl. Abschnitt 3.1.1).
 Das weitere Vorgehen zur Verwendung von Konfigurationen ist in Tabelle A. 8
 erläutert.
-
-
-:::: Anpassen der Simulation ::::
-
-
-Beim Entwickeln und Testen erm öglicht Simulink schnelle Umsetzungen (Rapid Prototyping).
+Anpassen der Simulation Beim Entwickeln und Testen erm öglicht Simulink schnelle Umsetzungen (Rapid Prototyping).
 Diese werden nicht nach dem Standpunkt der Codeerzeugung ausgewählt.
 Somit werden Operationen und Funktionen von Simulink genutzt, für die eine Codeerzeugung nicht integriert ist.
 Um C-Code zu erzeugen, sind diese Funktionen zu ersetzen.
 Mathematische Operationen k önnen nachgebildet werden.
-IO-Operationen f ür Mikrocontroller und verschiedene Bussysteme sind bereits integriert.
+IO{{hn:7:nh}}-Operationen f ür Mikrocontroller und verschiedene Bussysteme sind bereits integriert.
 Das Lesen und Schreiben von Dateien muss manuell integriert werden.
 Dies kann durch manuelles C/C++ erfolgen und durch S-Funktionen eingebunden werden.
 Da die S-Funktionen als standardisierte Simulink-Blöcke eingebunden werden, ist es komfortabel m öglich, die erzeugten Ergebnisse zu testen.
@@ -704,12 +663,7 @@ Dabei wird der erzeugte Block in das Hauptmodell eingebunden.
 Darauf wird die Simulation wiederholt und die Ergebnisse werden, mit den bereits vorhandenen, verglichen.
 Dies ist notwendig, da beim Ersetzen Fehler entstehen können.
 Bevor die Codeerzeugung beginnt, muss die entsprechende Zielplattform und Zielsprache ausgewählt werden.
-
-
-:::: Kommunikation durch Ports ::::
-
-
-Ports definieren die Schnittstellen (Interface) der Modelle und Module.
+Kommunikation durch Ports Ports definieren die Schnittstellen (Interface) der Modelle und Module.
 Sie ermöglichen die Kapselung der Daten, Operationen und das Verbergen der inneren Logik (vgl. Abschnitt 3.3.3).
 Nur durch Ports dürfen Nachrichten über die Modellgrenze ausgetauscht werden.
 Das ermöglicht eine klare Übersicht über den Informationsfluss im Modell.
@@ -739,7 +693,7 @@ Die Wahrscheinlichkeit für Fehler im Quellcode steigt proportional zur Anzahl d
 Fehlerhafte Abschnitte sind verstärkt zu testen.
 [CJM12] Das Beenden der Testphase ist durch zwei Anwendungsfälle möglich.
 Alle Testfälle enden negativ oder das Auslaufen der geplanten Testzeit f ühren zur Beendigung der Testphase.
-[CJM12, Seite 135] Testen analysieren ausführen statistische Prüfung dynamische Prüfung Prüfung gegen quantitative Konsistenzprüfung Regeln Untersuchung Abbildung 3.9.:
+[CJM12, Seite 135] Abbildung 3.9.:
 Möglichkeiten des Testens nach [JL07, Seite 253]
 
 
@@ -842,52 +796,40 @@ Weiterhin dienen formale Methoden zur Verifikation von Software durch mathematis
 [DDG09, Seite 255] Zum frühzeitigen Testen ohne vorhandene Sensoren und Aktuatoren eignen sich MiL-, SiL, HiL-Verfahren [TZ10, Seite 237].
 Da eingebettete Systeme weit verbreitet sind, existieren verschiedene Normen zum Test und zur Verifikation von eingebetteten System.
 Verschiedene Normen spezifizieren verschiedene Teilbereiche.
-Zum Beispiel existieren zur Sicherheit von Maschinen (EN 62061), die funktionale Sicherheit (ISO 26262), die Verifikation von Medizintechnik (ISO 11073) sowie Richtlinien zur Entwicklung von Software im Flugzeugbau (DO178B guidelines for development of aviation software “). ”
-[Mar07, Seite 236]
-
-
-:::: Model in the loop ::::
-
-
-Model in the loop“-Tests ermöglichen die Testdurchführung in frühen Entwick- ” lungsstadien.
+Zum Beispiel existieren zur Sicherheit von Maschinen (EN 62061), die funktionale Sicherheit (ISO 26262), die Verifikation von Medizintechnik (ISO 11073) sowie Richtlinien zur Entwicklung von Software im Flugzeugbau (DO178B guidelines for development of aviation software “). ” [Mar07, Seite 236] Model in the loop Model in the loop“-Tests ermöglichen die Testdurchführung in frühen Entwick- ” lungsstadien.
 Diese können durchgef ührt werden, obwohl einige physikalische Komponenten noch nicht vorhanden sind.
 Als Voraussetzung müssen nur die physikalischen Komponenten getestet werden, deren Verhalten unbekannt ist.
 Die Simulation des Models ermöglicht verschiedene Konfigurationen des Systems zu testen.
 Das Model interagiert mit dem realen System, welches durch die Umwelt gespeist wird.
 In der Umwelt ist die Real-Time-Simulation enthalten.
 Das Modell repräsentiert dabei den Controller.
-[Plu06, Seite 2] Extern (virtuell) Model Real-Time System Extern (real) Abbildung 3.12.:
-MiL-Prinzip nach [Plu06, Seite 3] Software in the loop Ein Software in the loop“-Test bezeichnet die Verifikation von Softwarekompo-
-
-
-:::: Software in the loop ::::
-
-
-nenten in einer simulierten Umgebung.
+[Plu06, Seite 2] Extern (virtuell) Model Real-Time System Extern (real)
+#$@FORMULA@$#:0
+#$@FORMULA@$#:1
+Abbildung 3.12.:
+MiL-Prinzip nach [Plu06, Seite 3] Software in the loop Ein Software in the loop“-Test bezeichnet die Verifikation von Softwarekompo- ” nenten in einer simulierten Umgebung.
 Dabei wird die implementierte Software auf einer virtuellen Maschine (z.B. PC) ausgeführt.
 Die Simulation muss dabei keinen Echtzeitanforderungen genügen.
 Mit SiL-Tests kann Software ohne vorhandene Hardware frühzeitig getestet werden.
 Diese ermöglichen Komponententests zur Softwareabdeckung.
-[TZ10, Seite 281] Extern (virtuell) Software Real-Time System Extern (real) Abbildung 3.13.:
-SiL-Prinzip Hardware in the loop Hardware in the loop (HiL) beschreibt Methoden und Werkzeuge zur Verifikation
-
-
-:::: Hardware in the loop ::::
-
-
-teilweise in einer realen und teilweise virtuellen Umgebung erfolgen.
+[TZ10, Seite 281]
+#$@FORMULA@$#:0
+Extern (virtuell) Software Real-Time System Extern (real)
+#$@FORMULA@$#:1
+Abbildung 3.13.:
+SiL-Prinzip Hardware in the loop Hardware in the loop (HiL) beschreibt Methoden und Werkzeuge zur Verifikation und Validierung von Software in eingebetteten Systemen.
+Dabei kann der Betrieb teilweise in einer realen und teilweise virtuellen Umgebung erfolgen.
 HiL-Tests ermöglichen die Geschwindigkeit der Software auf dem Endgerät zu validieren.
 Im Gegensatz zu MiL und SiL sind hierbei die Echtzeitanforderungen zu gewährleisten.
-Im Blick auf Steuergeräte sind Aspekte der Onboard- und Offboardkommunikation, das Kommunikationsverhalten im Netzwerk, die Regelungs- und Steuertechnik und Überwachungsfunktionen zu betrachten.
-[TZ10, Seite 283] 3.6.5.
-Bewertung des Testens als Prüfverfahren Testen ist ein natürliches Prüfverfahren zur Verifikation der Spezifikation.
-Diese
+Im Blick auf Steuergeräte sind Aspekte der Onboard- und Offboardkommunikation, das Kommunikationsverhalten im Netzwerk, die Regelungs- und Steuertech-
 
 
 :::: Bewertung des Testens als Prüfverfahren ::::
 
 
-den.
+3.6.5.
+Bewertung des Testens als Prüfverfahren Testen ist ein natürliches Prüfverfahren zur Verifikation der Spezifikation.
+Diese können systematisch und reproduzierbar erzeugt und beliebig oft wiederholt werden.
 Dafür wird eine gute Automatisierung und Dokumentation ben ötigt.
 Der investierte Aufwand lässt sich in Regressionstest mehrfach nutzen.
 In Folge des Testens wird das Systemverhalten sichtbar und Mängel in der Anwendung können schnell entdeckt werden.
@@ -989,7 +931,7 @@ Abschließend werden die entstandenen Probleme bei der Portierung dargestellt un
 Als Ziel des Cargo-CBM Projekts soll die zeitabhängige Wartung von Schienenfahrzeugen in eine zustandsabhängige Wartung überführt werden.
 Dazu ist es notwendig, Zustandsparameter automatisiert zu bestimmen.
 Dies wird exemplarisch an der Raddurchmesser-Berechnung umgesetzt.
-Zur Bestimmung der Raddurchmesser und somit eines Parameters des Schienenfahrzeuges, wird der MinMax-Algorithmus bzw.die Kreuzkorrelation verwendet.
+Zur Bestimmung der Raddurchmesser und somit eines Parameters des Schienenfahrzeuges, wird der MinMax-Algorithmus bzw. die Kreuzkorrelation verwendet.
 Der MinMax-Algorithmus zeichnet sich durch Ressourcenschonung aus und liefert weiterhin gute Näherungen der Raddurchmesser.
 Die Kreuzkorrelation benötigt durch die Verwendung der mathematischen Integration wesentlich mehr Rechenkapazität.
 Diese Algorithmen sind als Matlab-Skript vorhanden und sollen nach C übersetzt werden.
@@ -1000,7 +942,7 @@ Jedes Radsatzlager enthält einen Beschleunigungs-, Temperatur- und Drehzahlsens
 Drehgestell Sensorverteilung Als Folge der hohen Datenraten durch die 4 Sensoren können die aufgezeichneten Daten nicht vollständig übertragen werden.
 Die einzelnen CAN-Busse sind als Thread implementiert.
 Die Daten werden abgeholt, wenn der Thread auf der OBU ausreichend hohe Priorität erhält.
-Weiterhin werden noch weitere Prozesse für GPS, GSM STM33 etc.auf der OBU ausgeführt.
+Weiterhin werden noch weitere Prozesse für GPS, GSM STM33 etc. auf der OBU ausgeführt.
 Diese benötigen Rechenzeit.
 Ein CAN-Buffer umfasst 5 Nachrichten und ist direkt im Prozessor integriert.
 Eine erhöhte Systemlast verhindert das regelmäßige Abrufen der Daten aus den Buffern.
@@ -1010,23 +952,22 @@ Der Datenverlust kann jedoch nicht vollständig ausgeschlossen werden.
 In einer folgenden Version sollen nur die Messdaten von einem CAN-Bus ausgewertet werden.
 Gleichzeitig befinden sich die weiteren CAN-Busse im Wartezustand.
 Dies soll zur Reduzierung der Datenlast führen und Nachrichtenverluste komplett vermeiden.
-Zum Zeitpunkt der Umsetzung sind die Messdaten noch fehlerhaft und müssen durch das Buffermodul überprüft werden.
-Die Nachrichten werden zwischen Beschleunigungs-, Temperatur- und Umdrehungsnachrichten unterschieden.
+Zum Zeitpunkt der Umsetzung sind die Messdaten noch fehlerhaft und müssen durch das Buffermodul überprüft werden. {{hn:1:nh}} Die Nachrichten werden zwischen Beschleunigungs-, Temperatur- und Umdrehungsnachrichten unterschieden.
 Ein Beschleunigungspaket besteht aus 64 Bit.
 Der Zeitstempel besteht aus einer vorzeichenlosen Zahl die 20 Bit beinhaltet.
 Darauf folgen 4 Beschleunigungswerte des Sensors zu je 8 Bit.
-Die Zeitstempel der Beschleunigungswerte 2-4 werden mit der Formel 4.1 berechnet.ti = t0 + i ∗ 50µs (4.1) Ein Radimpuls und die Temperatur der Lager werden mit jeder Radumdrehung übertragen.
+Die Zeitstempel der Beschleunigungswerte 2-4 werden mit der Formel 4.1 berechnet.
+#$@FORMULA@$#:0
+Ein Radimpuls und die Temperatur der Lager werden mit jeder Radumdrehung übertragen.
 Diese enthalten zusätzlich einen Zeitstempel von 4*8 Bit.
 Die gesamten Zahlen werden im Zweierkomplement als Big-Endian übertragen.
 [BAU11] Sämtliche CAN-Nachrichten werden f ür die Messung gepuffert und als unsigned-8Bit “in einer Datei abgelegt. Diese Dateien bilden die Grundlage für ” die weiteren Berechnungen.
-4.2.
-Vorgehen um Code zu erzeugen
 
 
 :::: Vorgehen um Code zu erzeugen ::::
 
 
-aus Abbildung 4.2 durchgeführt.
+Die Entwicklung und das Testen der Algorithmen wird nach der Vorgehensweise aus Abbildung 4.2 durchgeführt.
 Die Software wird in Simulink entworfen.
 Dabei sind die Eingabedaten und die erwarteten Ergebnisse vorhanden.
 Diese werden als Spezifikation für das Testen definiert.
@@ -1055,9 +996,9 @@ Softwareentwicklung Übersicht
 :::: Übersicht der praktischen Entwicklung ::::
 
 
-Der C-Code wird durch Simulink bzw.manuell erzeugt und in das Ubuntu-System geladen welches auf einer virtuellen Maschine betrieben wird.
+Der C-Code wird durch Simulink bzw. manuell erzeugt und in das Ubuntu-System geladen welches auf einer virtuellen Maschine betrieben wird.
 Der vorhandene Code wird kompiliert und als OBU-Programm zusammengefügt.
-Das erzeugte Programm wird durch einen SFTP-Klienten auf die OBU geladen.
+Das erzeugte Programm wird durch einen SFTP{{hn:2:nh}}-Klienten auf die OBU geladen.
 Nachdem die Programme auf die OBU kopiert sind, werden diese durch eine Terminalsoftware aufgerufen und gesteuert.
 Abbildung 4.3.:
 Allgemeiner Ablauf der Entwicklung
@@ -1071,13 +1012,8 @@ Auf sämtlichen Betriebssystemen, die die virtuelle Maschine unterstützen, kann
 Dies ermöglicht eine einheitliche Entwicklung, da diese als System vorkonfiguriert ist und an alle Entwickler verteilt wird.
 Weiterhin vermeidet die standardisierte Struktur Fehler in der Konfiguration der Entwicklungsumgebung.
 Die Programmerzeugung wird durch ptxdist “ durchgeführt und gewährleistet standardisier- ” te Programme.
-
-
-:::: Programm anlegen3 ::::
-
-
-Zur besseren Übersicht und Trennung der Funktionalitäten sind diese als eigenständige Programme auf der OBU realisiert.
-In Folge der Verwendung von C++ wird ein QT-Paket benötigt.
+Programm anlegen3 Zur besseren Übersicht und Trennung der Funktionalitäten sind diese als eigenständige Programme auf der OBU realisiert.
+In Folge der Verwendung von C++ wird ein QT{{hn:4:nh}}-Paket benötigt.
 Durch das Terminalprogramm in Ubuntu kann die ptxdist “-Umgebung gesteuert werden. Die Erzeugung neuer Programme er- ” folgt durch die folgende Vorgehensweise.
 Zunächst wird ein neues Programm angelegt.
 Dies wird über ./p newpackage Ordnername“ begonnen. Nachfolgend ” müssen der Paketname, die Versionsnummer, der Autor, die Art des Programms (Standard ist project-specific) angeben werden.
@@ -1090,12 +1026,7 @@ Hierbei ist das neue Programm anzuwählen und durch Betätigen der Leertaste, ei
 Das Menü wird verlassen und die Konfiguration dabei gespeichert.
 Weiterhin muss das Programm installiert und somit erstmals kompiliert werden.
 Dies erfolgt durch die Eingabe ./p targetinstall ’Programmname’“. Nun wird ” ebenfalls Project Specific Configuration“ angewählt. Der Stern wird gesetzt und ” die Konfiguration verlassen und gespeichert. Das erzeugte Programm wird in den Programmordner root/usr/bin“ der OBU ” kopiert.
-
-
-:::: Programm verwalten ::::
-
-
-Im Prozess der Entwicklung werden Änderungen der Algorithmen durchgeführt.
+Programm verwalten Im Prozess der Entwicklung werden Änderungen der Algorithmen durchgeführt.
 Dadurch m üssen diese erneut kompiliert werden.
 Dies erfolgt ebenfalls durch die PTXDist “-Umgebung. Das veraltete kompilierte Programm wird durch ./p clean ” ” <Programmname>“ gelöscht.
 Sehr wichtig ist die Angabe des Programmnamens.
@@ -1111,8 +1042,8 @@ Die Arbeit auf der OBU unterscheidet sich nicht wesentlich von der Arbeit auf ei
 Die Pins sind nach Tabelle A. 4
 zu belegen.
 Über das Adapterkabel wird die OBU mit MPC-Power on “ eingeschaltet. Eine Verbindung wird über die Terminalsoft- ” ware Putty “ nach Tabelle A. 2 hergestellt. ” Änderungen der Programmbasis werden über WinSCP “ (siehe Tabelle A.3) vor- ” genommen.
-Dies benötigt eine aktive LAN-Verbindung.
-Die Programmübersicht befindet sich in root/usr/bin “. Benutzerdaten, die den ” jeweiligen Programmen zur Verfügung stehen, werden in /home/“abgelegt. ”
+Dies benötigt eine aktive LAN{{hn:5:nh}}-Verbindung.
+Die Programmübersicht befindet sich in root/usr/bin “. Benutzerdaten, die den ” jeweiligen Programmen zur Verfügung stehen, werden in /home/ “abgelegt. ”
 Den installierten Programmen müssen Ausführungsrechte zugewiesen werden.
 Dies ist über die Terminalsoftware oder den SFTP-Klienten möglich.
 Fehlende Ausführungsrechte erzeugen beim Ausführen des Programms die Fehlermeldung Permission denied “. ”
@@ -1135,13 +1066,13 @@ Die Daten müssen fortlaufend sein.
 Fehlende Datenfragmente führen zum Ausschluss der Datenserie.
 Nachdem die Daten aufbereitet sind, werden diese im Algorithmus zur Berechnung verwendet.
 Die Algorithmen sollten in separaten Prozessen durchgeführt werden.
-Dies senkt die allgemeine Systemlast, erm öglicht die Parallelisierung von Berechnungen und verhindert dass Daten infolge von Bufferüberläufen verloren gehen (vgl. Abschnitt 4.1).
+Dies senkt die allgemeine Systemlast, erm öglicht die Parallelisierung von Berechnungen und verhindert dass Daten infolge von Bufferüberläufen verloren
+#$@FORMULA@$#:0
 Nachdem die Berechnungen der Algorithmen durchgeführt sind, sind deren Resultate auf Plausibilität zu prüfen.
 Dies kann durch statische Auswertungen oder Grenzwerte erfolgen.
 Abschließend werden die verifizierten Daten serialisiert und auf einem Datenträger gespeichert oder zurück auf den Bus übertragen.
 Dies sollte ebenfalls durch ein Treiberkonzept realisiert werden.
-Speziell durch Modularisierung ist es möglich, die Komponenten parallelisiert aufzurufen und Berechnungen, bei Ressourcenbedarf, gegebenenfalls auch ohne Resultate zu beenden.
-Ressource Einlese Aufbereiten Algorithmus Auswertung Serialisierung Resultat Abbildung 4.4.:
+Speziell durch Modularisierung ist es möglich, die Komponenten parallelisiert aufzurufen und Berechnungen, bei Ressourcenbedarf, gegebenenfalls auch ohne Re-Abbildung 4.4.:
 Allgemeiner Aufbau der Algorithmen
 
 
@@ -1162,7 +1093,8 @@ Diese werden dann im Buffer auf Nachrichtenverlust überprüft.
 Die Durchmesserberechnung findet auf Grundlage der geprüften Daten statt.
 Dazu stehen der MinMax-Algorithmus und die Kreuzkorrelation zur Verfügung.
 Der gewählte Algorithmus ermittelt mehrere Durchmesser, die der statischen Auswertung übergeben werden.
-Diese ermittelt einen Durchmesser für das führende und nachlaufende Rad.ubit8-Array Logdatei Einlese Buffer Durchmesser Auswertung Durchmesser Abbildung 4.5.:
+Diese ermittelt einen Durchmesser für das führende und nachlaufende Rad.
+Abbildung 4.5.:
 Allgemeiner Ablauf des Algorithmus
 
 
@@ -1175,27 +1107,17 @@ konfiguriert.
 Das Programm ist nach Abschnitt 3.4.2 in modulweiser Automatisierung mit manueller Verknüpfung erzeugt.
 Die Dateioperationen vom Einlesen und eine Version des Buffers, sind in C++ implementiert.
 Alle weiteren Module sind in Simulink umgesetzt.
-
-
-:::: Einlesen ::::
-
-
-Grundlage für das Einlesen ist ein Bit-Stream.
+Einlesen Grundlage für das Einlesen ist ein Bit-Stream.
 Dieser enthält die Daten vom CAN-Bus.
 Die Nachricht setzt sich aus Header und Payload zusammen.
 Im Header ist der Sensoridentifikator und Nachrichtenidentifikator abgelegt.
 Anhand des Nachrichtenidentifikator wird zwischen Beschleunigungs-, Temperatur und Drehzahlnachricht unterschieden.
-... Info(8 Bit) Payload(64 Bit) ... Abbildung 4.6.:
+#$@FORMULA@$#:0
+Abbildung 4.6.:
 Nachrichtenformat Der Payload einer Beschleunigungsnachricht besteht aus einem Zeitstempel (20 Bit) und vier Beschleunigungswerten (je 11 Bit).
 Diese werden extrapoliert (Buffer kann noch optimiert werden) und dem Buffer übergeben.
 Abbildung 4.7.:
-Deserialisierung der Nachrichten
-
-
-:::: Buffer ::::
-
-
-Der Buffer dient der Aufarbeitung der Sensordaten.
+Deserialisierung der Nachrichten Buffer Der Buffer dient der Aufarbeitung der Sensordaten.
 Durch fehlende Nachrichten (vgl. Abschnitt 4.1) werden Sequenzen der Daten unbrauchbar und von der Berechnung ausgeschlossen.
 Es wird je Sensor ein Datenblock gebildet.
 Dies erfolgt parallel für zwei Sensoren.
@@ -1206,24 +1128,15 @@ Dies bedeutet, dass die jeweiligen Startzeiten zueinander um maximal 205µs abwe
 Zusätzlich wird jedem Nachrichtenblock die durchschnittliche Drehzahl seines jeweiligen Rades zugeordnet.
 Dazu wird das arithmetische Mittel der Umdrehungsnachrichten zwischen der Start- und Endzeit der Blöcke gebildet.
 Der Buffer übergibt der Durchmesserberechnung zwei Drehzahlen und die dazu gehörigen Blöcke der Beschleunigungsnachrichten.
-
-
-:::: Durchmesser ::::
-
-
-Das Durchmesser-Model ist komplett in Simulink integriert.
+Abbildung 4.8.:
+Buffer Funktionsübersicht Durchmesser Das Durchmesser-Model ist komplett in Simulink integriert.
 Ein Embedded-Matlab-Block enthält die Funktionalität.
 Über drei Eingangsports werden Drehzahl, Beschleunigung der vorderen und die Beschleunigung der hinteren Räder übergeben.
 Der Durchmesser wird über die verwendete Drehzahl bestimmt.
 Wird die vordere Drehzahl übergeben, wird der vordere Durchmesser berechnet.
 Für die hintere Drehzahl wird der hintere Durchmesser berechnet.
 Der berechnete Durchmesser wird dabei über den Ausgangsport übergeben.
-
-
-:::: Statistische Auswertung ::::
-
-
-Die statistische Auswertung wird für eine große Anzahl an Durchmessern durchgeführt.
+Statistische Auswertung Die statistische Auswertung wird für eine große Anzahl an Durchmessern durchgeführt.
 Dabei wird durch ein Histogramm der Durchmesser bestimmt.
 Das Histogramm besitzt eine untere und obere Schranke.
 Zusätzlich kann die Granularität durch die Schrittweite definiert werden.
@@ -1252,34 +1165,24 @@ Das Gesamtsystem wurde über eine MiL-Simulation verifiziert.
 
 
 Das Einlesen besteht aus zwei Teilbereichen.
-Zuerst werden ubit8-Character von der Festplatte in den RAMgelesen.
+Zuerst werden ubit8-Character von der Festplatte in den RAM{{hn:6:nh}}gelesen.
 Dies ist manuell implementiert und wird in das Modell durch eine S-Funktion eingebunden.
 Durch ein in Simulink integriertes Modell wird darauf die Deserialisierung der Nachtrichten durchgeführt.
-
-
-:::: Lesen vom Speicher ::::
-
-
-Die Funktion readFromFile“setzt als eingehende Ports einen Dateinamen und die ” Anzahl der zu lesenden Zeichen voraus.
+Lesen vom Speicher Die Funktion readFromFile“setzt als eingehende Ports einen Dateinamen und die ” Anzahl der zu lesenden Zeichen voraus.
 Am Ausgangsport wird ein Array mit dem Inhalt der gelesenen Zeichen zurückgegeben.
 Die Funktion liest solange Bytes, bis die geforderte Anzahl erreicht ist.
 Sollte die Dateilänge kleiner als die geforderte Anzahl sein, bleiben die restlichen Felder mit Null belegt.
 Dies f ührt zu Problemen, wenn das komplette Array mit Nullen belegt ist.
 Der Buffer kann dann keine, der Spezifikation entsprechenden Datenblöcke, bilden.
 Die Spezifikation definiert nicht vorhandene Dateinamen und negative Zeichenlängen als Fehler.
-Fehlerhafte Zustände werden durch den Rückgabewert NULLgekennzeichnet.
+Fehlerhafte Zustände werden durch den Rückgabewert NULL{{hn:7:nh}}gekennzeichnet.
 Dieses Verhalten ist durch Tests abgedeckt und wurde mit SiL- und HiL-Test bestätigt (siehe Test A.6).
 Abbildung 4.10.:
 Einlesen vom Speicher Bei dieser Umsetzung wird die Wichtigkeit der Tests deutlich.
 Eine erste Implementierung in C lieferte durch den nichtbinären Lesezustand für die ersten ca. 200 Werte die erwarteten Ergebnisse.
-Die weiteren Werte wurden falsch bzw.nicht ausgegeben.
+Die weiteren Werte wurden falsch bzw. nicht ausgegeben.
 Umfangreiches Testen und Debugging entdeckte diese Spezifikationsabweichung.
-
-
-:::: Deserialisierung der Nachrichten ::::
-
-
-Die Deserialisierung der Daten erfolgt durch das vorgegebene Modell A.6.
+Deserialisierung der Nachrichten Die Deserialisierung der Daten erfolgt durch das vorgegebene Modell A.6.
 Einige Änderungen waren nötig um dieses nach Simulink zu portieren.
 Über eine Si- mulation der vorhandenen Vorlage (Matlabcode) und den aufgezeichneten Messdaten wird das erwartete Ergebnis für den portierten Algorithmus spezifiziert.
 Dies schließt Fehler in der Portierung aus.
@@ -1290,7 +1193,7 @@ Die erwarteten Ergebnisse werden ebenfalls f ür den SiL- und HiL-Test, der expo
 :::: Testen des Buffers ::::
 
 
-In der Entwicklung vom Buffer wurden Assertion-Testsverwendet.
+In der Entwicklung vom Buffer wurden Assertion-Tests{{hn:8:nh}}verwendet.
 Diese können über die Zustandsvariable debug“gesteuert werden. ”
 Ein Fehler des Buffers wurde durch Testen ermittelt.
 Das Füllen des Buffers mit 0-Daten führt diesen in eine Endlosschleife.
@@ -1298,7 +1201,8 @@ Um den Buffer auf der Hardware zu verifizieren, werden SiL- und HiL-Tests verwen
 Die Ausgabedaten des Buffers werden nach der Spezifikation(Toleranz zwischen den Blöcken, Toleranz zwischen den Nachrichten) überprüft.
 Allgemein kann der Buffer weiter optimiert werden.
 Zu jeder CAN-Nachricht werden vier Messwerte interpoliert.
-Diese müssen nicht zusätzlich überprüft werden (vgl. Abschnitt 4.1).
+Diese müssen nicht zusätzlich überprüft werden
+#$@FORMULA@$#:0
 
 
 :::: Testen der Durchmesserberechnung ::::
@@ -1370,12 +1274,7 @@ Dies reduziert Fehler in der Integration.
 Das Modell wird komplett in Simulink integriert werden.
 Somit wird die MiL-Funktionalität sichergestellt.
 Es werden Hardware-, Laufzeit- und Speicheroptimierungen zur Transformation vorgenommen.
-
-
-:::: Integrationstest Einlesen ::::
-
-
-Das Systemverhalten der Einlesenmodule wird getestet.
+Integrationstest Einlesen Das Systemverhalten der Einlesenmodule wird getestet.
 Dabei werden die Nachrichten für zwei Sensoren eingelesen.
 Zur Sicherstellung der Einlesefunktionen wird der Eingangsport untersucht.
 Der korrekte Dateneingang ermöglicht erst die weitere Verarbeitung der Daten.
@@ -1383,38 +1282,22 @@ Es werden die Ergebnisse des ersten Sensors dokumentiert und validiert.
 Die Ergebnisse des zweiten Sensors werden nicht betrachtet.
 Diese werden in einem Terminator-Block verworfen.
 Abbildung 4.13.:
-Integrationstest Einlesen
-
-
-:::: Manueller Einzeltest der Gesamtintegration ::::
-
-
-Beim Testen werden die Vorteile von Simulink umgesetzt.
+Integrationstest Einlesen Manueller Einzeltest der Gesamtintegration Beim Testen werden die Vorteile von Simulink umgesetzt.
 Das gesamte System, der Durchmesserberechnung, ist in einen Block zusammengefasst.
 Der Eingang des Modells (Dateiname der Logdatei), wird variiert.
 Dies ermöglicht den Test verschiedener Logdateien.
 Die Durchmesser der Simulation werden nach Plausibilität geprüft, gespeichert und werden in einem zusätzlichen Test im Histogramm ausgewertet.
 Diese Durchmesser bilden die Grundlage zum Testen des Histogramms.
 Abbildung 4.14.:
-Manueller Test der Gesamtintegration
-
-
-:::: Test der Gesamtintegration mit Histogramm ::::
-
-
-Das Histogramm wird mit mehren Daten getestet.
+Manueller Test der Gesamtintegration Test der Gesamtintegration mit Histogramm Das Histogramm wird mit mehren Daten getestet.
 Dazu werden aus 2 Logdateien die Durchmesser berechnet.
 Die Logdateien können durch die Parameter festgelegt werden.
 Die Ergebnisse der Berechnung werden verknüpft und als ganzes dem Histogramm übergeben.
 Dieses wertet separat die Durchmesser für das führende und nachlaufende Rad aus.
 Die Ergebnisse werden auf dem Workspace gespeichert.
 Die Granularität der Histogramms kann über die Parameterblöcke gesteuert werden.
-
-
-:::: Ergebnis der Integration ::::
-
-
-Der Embedded Coder erzeugt den Plattformcode.
+Abbildung 4.15.:
+MiL-Test zum Histogramm Ergebnis der Integration Der Embedded Coder erzeugt den Plattformcode.
 Der erzeugte Code enthält Abhängigkeiten zur Simulink-Umgebung, die nicht reduziert werden können.
 Diese Abhängigkeiten sind auf die unvollständige Codeerzeugung durch Simulink zurückzuführen.
 Die Anwendung auf der Zielplattform kann nicht erfolgen.
@@ -1504,7 +1387,7 @@ Weiterhin wurden im dritten Kapitel Methoden zur Softwareimplementierung erarbei
 Dabei konnte das allgemeine Vorgehen von der Konzeption bis zur Integration in einem Ablaufdiagramm dargestellt werden.
 Die erzielten Erfahrungen, durch die Umsetzung der Algorithmen, sind in diesem Diagramm dargestellt.
 Die verwendete Vorgehensweise sollte eine teamorientierte Arbeitsweise ermöglichen und unter dieser Zielstellung optimiert werden.
-Fehler im Ersetzungsprozess (fehlende Transformationen manuell ersetzten) werden durch das erzeugte Verfahren reduziert bzw.durch Tests aufgezeigt.
+Fehler im Ersetzungsprozess (fehlende Transformationen manuell ersetzten) werden durch das erzeugte Verfahren reduziert bzw. durch Tests aufgezeigt.
 Es erhöht außerdem die Erkennung von Fehlern im Transformationsprozess durch weitere Tests.
 Weiterhin konnte ein allgemeines Architekturmuster in Kapitel drei entwickelt werden.
 Dies kann für die weitere Entwicklung verschiedener Algorithmen verwendet werden.

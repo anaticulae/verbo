@@ -4,7 +4,7 @@
 
 
 Die Messung des Blutdrucks hat in der Medizin eine große Bedeutung.
-Aus ihm können wichtige Rückschlüsse auf die physiologischen Vorgänge im Blutkreislauf bzw.auf die Strömungsmechanik des Bluts (Hämodynamik) gezogen werden.
+Aus ihm können wichtige Rückschlüsse auf die physiologischen Vorgänge im Blutkreislauf bzw. auf die Strömungsmechanik des Bluts (Hämodynamik) gezogen werden.
 So ist der Blutdruck beispielsweise ein Indikator für die Versorgung von Organen und Geweben oder für das im Körper zirkulierende Blutvolumen [Elt01].
 Die Bestimmung des Blutdrucks kann zum einen durch eine punktuelle Ermittlung von Messwerten geschehen.
 Dadurch kann z.B. ein akut erhöhter Blutdruck erkannt werden.
@@ -79,7 +79,8 @@ Korotkow-Geräusche bei der auskultatorischen Blutdruckmessung [Elt01]
 
 Zur oszillometrischen Messung wird mit einer Manschette ebenfalls ein Druck am Arm aufgebracht.
 Beim Ablassen des Drucks entstehen durch die Pulswelle in der Arterie unterhalb der Mansche tte minimale Änderungen des Manschettendrucks , sogenannte Oszillationen.
-Diese können aus dem Drucksignal herausgefiltert und in einer Kurve dargestellt werden (siehe Abb. 2).Während des Ablassens steigen die Amplituden der Oszillationen bis zu einem Maxi mum an und fallen anschließend wieder ab.
+Diese können aus dem Drucksignal herausgefiltert und in einer Kurve dargestellt werden (siehe Abb. 2) .
+Während des Ablassens steigen die Amplituden der Oszillationen bis zu einem Maxi mum an und fallen anschließend wieder ab.
 Für den Zeitpunkt des Maximums wird der mittlere arterielle Druck angenommen.
 Aus dem Verlauf der Hüllkurve der registrierten Oszillationen können auch Rückschlüsse auf den systol ischen und diastolischen Blutdruckw ert gezogen werden.
 So wird der systolische Blutdruck mit dem Punkt gleichgesetzt, bei dem die Amplitude der Hüllkurve zum ersten Mal zwischen 40 -60% des Maximums beträgt.
@@ -101,9 +102,11 @@ Das Prinzip wurde in den Gerätesystemen Finapres und Portapres realisiert.
 Zu diesem Zweck wird in einem Abstand von 10-70 Sekunden (variabel je nach Stabilität der Eingangsgrößen) die kontinuierliche Regelung unterbrochen und ein Kalibrationsmanöver durchgeführt.
 [Ohm91] Abbildung 3:
 Volumenkompensationsmethode nach Penaz [Elt01] Von R. Aaslid und AO.
-Brubakk wurde die Methode im Jahre 1981 weiterentwickelt , die zugrunde liegende Idee der Penaz-Methode ist beibehalten.Das Blutvolumen, das nun indirekt über die G eschwindigkeit der Blutströmung bestimmt wird, soll ebenfalls auf einen kleinen Wert begrenzt werden (Referenzgeschwindigkeit 3cm/s).
+Brubakk wurde die Methode im Jahre 1981 weiterentwickelt , die zugrunde liegende Idee der Penaz-Methode ist beibehalten .
+Das Blutvolumen, das nun indirekt über die G eschwindigkeit der Blutströmung bestimmt wird, soll ebenfalls auf einen kleinen Wert begrenzt werden (Referenzgeschwindigkeit 3cm/s).
 Der Aufbau ist in Abbildung 4 dargestellt:
-Die Fingermanschette wird durch eine Druckmanschette am Oberarm ersetzt.Die als Eingangssignal für die schnelle pneumatische Regelung benutzte Strömungsgeschwindigkeit wird mithilfe eines Ultraschall -Dopplers bestimmt.
+Die Fingermanschette wird durch eine Druckmanschette am Oberarm ersetzt .
+Die als Eingangssignal für die schnelle pneumatische Regelung benutzte Strömungsgeschwindigkeit wird mithilfe eines Ultraschall -Dopplers bestimmt.
 Zunächst wird bei normalem Fluss ein Druck durch die Manschette aufgebracht, der obe rhalb des angenommenen systolischen Werts liegt.
 Anschließend erfolgt die Reduktion des Drucks bis zum gewünschten Sollwert.
 Auch hier können theoretisch gleiche Druckverhältnisse innerhalb und außerhalb des Blutgefäßes angenommen werden.
@@ -156,8 +159,9 @@ Dadurch entsteht eine zeitliche Verzögerung.
 Somit werden nur zu bestimmten Zeitpunkten Werte berechnet, die Regelung funkti oniert also getaktet.
 Um eine möglichst kontinuierl iche und stabile Regelung zu erhalten , müssen diese Verzögerungen so klein wie möglich gehalten werden.
 Weiterhin müssen auch die im zu digitalisi erenden Signal auftretenden Frequenzen berücksichtigt werden.
-Diese müssen kleiner als die halbe Abtastfrequenz sein (Nyquist -Frequenz), um eine verfälschte Aufnahme des Signals zu vermeiden (Aliasing-Effekt).
-[Lun10] Abbildung 7:
+Diese müssen kleiner als die halbe Abtastfrequenz sein (Nyquist -Frequenz), um eine verfälschte Aufnahme des Signals zu vermeiden
+#$@FORMULA@$#:0
+Abbildung 7:
 Digitalisierung mit Abtast -Halteglied [Reu08]
 
 
@@ -182,11 +186,12 @@ LabVIEW ist hierbei Entwicklungsumgebung und grafische Programmiersprache zuglei
 [Geo09] Die Vorteile lie gen in der großen Übersichtlichkeit der pro grammierten Abläufe sowie in der schnelleren Erlernbarkeit gegenüber konventionellen Programmie rsprachen.
 Abbildung 9:
 Einfache LabVIEW-Operation Ein Beispiel für die Datenflussprog rammierung bildet die einfache LabVIEW- Operation in Abbildung 10.
-Eine eingegebene Variable (Zahl_1) wird zunächst vom Wert 100 subtrahiert, anschließend wird eine zweite Variable (Zahl_2 ) zum Zwischenergebnis addiert.
+Eine eingegebene Variable (Zahl_ 1) wird zunächst vom Wert 100 subtrahiert, anschließend wird eine zweite Variable (Zahl_2 ) zum Zwischenergebnis addiert.
 Das Resultat wird als neue Variable (Ergebnis) ausgegeben.
 Die durchzuführenden Operationen während des Programmablaufs werden , wie im Beispiel ersichtlich, durch Funktionsblöcke festgelegt.
 Diese werden VIs (Virtual Instruments) genannt.
-Viele gängige oder oft benutzte Funktionen sind zudem als Express -VIs realisiert, das heißt ein Assistent führt durch die Konfiguration der Optionen/Einstellmöglichkeiten.Die Sammlung ähnlicher oder thematisch zusammengehörender Blöcke wird als Palette bezeichnet.
+Viele gängige oder oft benutzte Funktionen sind zudem als Express -VIs realisiert, das heißt ein Assistent führt durch die Konfiguration der Optionen/Einstellmöglichkeiten .
+Die Sammlung ähnlicher oder thematisch zusammengehörender Blöcke wird als Palette bezeichnet.
 Zusätzlich zur Software bietet National In struments speziell auf das Programm abgestimmte Hardw arepakete zur Erfassung und Ausgabe von analogen und digitalen Signalen an.
 Diese sind zum Beispiel als USB-kompatible Module oder als PCI -Steckkarten aufgebaut.
 
@@ -194,7 +199,7 @@ Diese sind zum Beispiel als USB-kompatible Module oder als PCI -Steckkarten aufg
 :::: Valsalva-Press-Versuch ::::
 
 
-Zur Beurteilung der hämodynamischen Funktion bzw.der Regulation des Kreislaufs kann ein Valsalva-Press-Versuch durchgeführt werden.
+Zur Beurteilung der hämodynamischen Funktion bzw. der Regulation des Kreislaufs kann ein Valsalva-Press-Versuch durchgeführt werden.
 Ein beispielhafter Blutdruckverlauf dieses physiologischen Tests ist in Abbildung 10 dargestellt.
 Durch eine spontane Ausatemanstrengung bei geschlossener Stimmritze, der sogenannten Bauchpresse (siehe Zeitmarke 1), wird ein Druck im Brustkorb aufgebaut.
 Hierbei entsteht ein Druckanstieg im Niederdrucksystem gewisser Thoraxabschnitte, wodurch der Blutrückstrom in den Brustkorb gestoppt wird.
@@ -308,7 +313,7 @@ Abbildung 13 zeigt die Konfiguration der Zeitsteuerung beim Aufruf der Schleife.
 Im Zuge der Optimierung wird weiterhin nach den rechenintensivsten Prozessen im Programmablauf gesucht.
 Dabei stellt sich heraus, dass die grafische Anzeige (Signalverlaufskurve) die regelmäßig getaktete Ausführung der Schleife behindert.
 Auch Eingriffe in das Programm während der Ausführung im Zusammenhang mit dieser Verlaufskurve (Betätigen der Bildlaufleisten, Verschieben des Anzeigefensters, Änderung der Skalierung) haben eine Nichteinhaltung der angestrebten Periodendauer zur Folge.
-Zunächst werden deshalb diese Optionen deaktiviert bzw.gesperrt, eine Einstellung vor Beginn der Messungen wird als ausreichend bewertet.
+Zunächst werden deshalb diese Optionen deaktiviert bzw. gesperrt, eine Einstellung vor Beginn der Messungen wird als ausreichend bewertet.
 Um die grafische Anzeige weniger rechenintensiv zu gestalten, wird diese vom reinen Messvorgang abgekoppelt und in eine separate Schleife verlegt (Takt: 10Hz).
 Die Kommunikation zwischen den beiden zu Beginn jeder Messung synchronisierten Schleifen wird über einen Puffer nach dem „First-In First-Out“ (FIFO-) Prinzip eingerichtet.
 Während der Messung im möglichst schnellen Takt wird der Puffer gefüllt.
@@ -364,23 +369,14 @@ Der Anschluss des Computers erfolgt über eine neunpolige D-Sub Buchse.
 Zur Verteilung der Signale innerhalb des Gehäuses (zwischen 24V-Netzteil, Ventil und PC-Anschluss) wird eine kleine Platine erstellt.
 Hier ist auch ein analoger Tiefpass (RC-Glied) zur Filterung des eingehenden Dopplersignals realisiert.
 Die Platine ist in Abbildung 19 sichtbar, die Schalt- und Anschlusspläne sind der Arbeit angehängt (vgl. 7.2.1).
-12u
-13u
-Abbildung 18:
-Spannungsverteiler (1) und 24V-Netzteil (2) Zur mechanischen Anpassung des Gehäuses müssen lediglich die Frontplatte und die Rückwand angepasst werden.
+#$@FORMULA@$#:0
+Zur mechanischen Anpassung des Gehäuses müssen lediglich die Frontplatte und die Rückwand angepasst werden.
 Die neue Frontplatte bildet aufgrund der weggefallenen, manuellen Drehregler eine einfache Aluminiumplatte, in die lediglich die Schraubenlöcher zur Montage am Gehäuse eingebracht werden müssen.
 Eine auf dieser Platte aufgebrachte Klebefolie kennzeichnet den Versuch und beschreibt mit einer Skizze die Anordnung der Komponenten am Unterarm.
 Die existierende Rückwand wird um die Lochgeometrie zum Einbau von Kaltgerätebuchse, Kippschalter, D-Sub- und BNC-Buchse erweitert.
 Die Bauteile werden durch die Werkstatt gefertigt.
-Nr. Komponente 1 Steckverbindung zum Ventil
-2u
-2 Steckverbindung zu den Gehäusebuchsen (D-SUB/BNC)
-5u
-3 RC-Glied als analoger Tiefpass zur Filterung des Dopplersignals (Eingang) 4 Anschluss für 24V-Versorgung Tabelle 1:
-Komponenten in Abb. 19
-10u
-11u
-Abbildung 19:
+Tabelle 1:
+Komponenten in Abb. 19 Abbildung 19:
 Verteilerplatine
 
 
@@ -439,8 +435,10 @@ Dieses verursacht durch seine aktive Regelung dem physiologischen Oszillationssi
 
 Der mit dem Ultraschall-Doppler-Servo-Verfahren ermittelte Blutdruckverlauf soll nun mithilfe des oszillometrisch ermittelten Wertes angepasst werden.
 Hierzu wird zunächst aus dem qualitativen Verlauf der Druckkurve durch Integration der mittlere Druck (MAD_servo) bestimmt.
-Anschließend wird ein Umrechnungsfaktor _ (. 1)
-· = _fi berechnet, mit dem die eingehenden Druckwerte fortan multipliziert werden.
+Anschließend wird ein Umrechnungsfaktor
+#$@FORMULA@$#:0
+#$@FORMULA@$#:1
+berechnet, mit dem die eingehenden Druckwerte fortan multipliziert werden.
 Der Zeitpunkt der Anpassung muss vom Benutzer gewählt werden, wenn ein konstanter, qualitativ geeigneter Verlauf der Druckkurve vorliegt.
 Nach der Anpassung dürfen die Regeleinstellungen (Verstärkungsfaktor KP, Zeitkonstante Ti, Sollwert) nicht mehr geändert werden.
 Die dazu vorhandenen Bedienelemente sind erst nach dem Zurücksetzen der Anpassung wieder aktiviert.
@@ -452,8 +450,10 @@ Die dazu vorhandenen Bedienelemente sind erst nach dem Zurücksetzen der Anpassu
 Mit umfangreichen Testmessungen (vgl. 5.2) soll ermittelt werden, ob mit der realisierten Anpassung der Blutdruckwerte sinnvolle Ergebnisse erreicht werden können.
 Hierbei wird festgestellt, dass die Anwendung des Umrechnungsfaktors für das Verfahren geeignet ist, jedoch die oszillometrische Messung der MAD-Werte in den meisten Fällen keine brauchbaren Werte liefert.
 Deshalb wird eine manuelle Eingabe realisiert, mit der der Anwender durch ein alternatives Verfahren seiner Wahl (z.B. auskultatorisch) bestimmte Blutdruckwerte (Systole/Diastole) eingeben kann.
-Hieraus wird nach der Formel ( − ß) + ß										(. 2)
-_	 	 = 3 der zur Berechnung des Umrechnungsfaktors (mit Gleichung 1) notwendige mittlere arterielle Druck (MAP_anp) bestimmt.
+Hieraus wird nach der Formel
+#$@FORMULA@$#:0
+#$@FORMULA@$#:1
+der zur Berechnung des Umrechnungsfaktors (mit Gleichung 1) notwendige mittlere arterielle Druck (MAP_anp) bestimmt.
 Die Anpassung der Druckkurve erfolgt analog zur oszillometrischen Anpassung.
 Somit können nun in gewissen Grenzen betrachtet auch quantitativ geeignete Werte mit dem Ultraschall-Doppler-Servo-Verfahren ermittelt werden.
 
@@ -472,16 +472,16 @@ Eine Übersicht über die Programmfunktionen liefert neben der folgenden Beschre
 
 Folgende Forderungen sollen erfüllt werden:
 • Durchführung der Blutdruckmessung
+22u
+23u
+24u
+25u
 26u
 27u
 28u
 29u
 30u
 31u
-32u
-33u
-34u
-35u
 
 
 :::: Hauptprogramm ::::
@@ -574,21 +574,21 @@ Es werden folgende Lösungsideen gefunden:
 33u
 34u
 35u
-0u
-1u
-2u
-3u
-4u
-5u
-6u
-7u
-8u
-9u
-10u
-11u
-12u
-13u
-14u
+Die letztgenannte Idee wird weiterverfolgt und ausgearbeitet (siehe Abb. 23).
+Als Material werden Silikonrundschnüre mit 3mm Durchmesser verwendet.
+Zur Verbindung dient ein Befestigungsblock aus Kunststoff, in dem die einen Enden der Schnüre fixiert und durch den die anderen Enden gefädelt werden.
+Dieser wird durch die mechanische Werkstatt angefertigt.
+Mit einem „Kordelstopper“ (aus dem Textilbedarf) werden die flexiblen Schnüre am Befestigungsblock auf Zug gebracht.
+Durch die angeraute Oberfläche der Schnüre haftet die Fixierung in Längsrichtung gut auf der Haut.
+Das schon bestehende Kunststoff-Verbindungsteil kann ohne zusätzliche Anbauten verwendet werden.
+Die Silikonschnüre werden hierfür durch die Bohrungen geführt, womit eine optimale Querverschiebung der Sonde möglich wird.
+Durch die stufenlose Verstellung der Schüre kann der Anpressdruck während der Messung variiert werden.
+Der Aufbau ist vollständig demontierbar.
+Die Einzelteile lassen sich unter fließendem Wasser abspülen oder in einem Desinfektionsbad behandeln.
+Auch die einhändige Bedienung ist möglich.
+Der potentielle Nachteil einer im Gegensatz zu einem breiten Befestigungsband erhöhten Einschnürung in die Haut wird untersucht.
+Nach zahlreichen Trageversuchen kann jedoch keine negative Beeinträchtigung des Tragekomforts festgestellt werden.
+Die Eignung der Fixierung während der Regelung wird durch Versuche festgestellt (vgl. 5.2).
 Abbildung 23:
 Optimierte Sondenfixierung
 
@@ -644,17 +644,18 @@ Es werden folgende Voraussetzungen definiert:
 8u
 9u
 10u
-Sollwert=0.07, KP=0.6, Ti=0.07 Die jeweils durchzuführenden Manöver bzw.der Ablauf der Messungen sollen bei jedem Probanden gleich sein und werden einheitlich festgelegt.
+#$@FORMULA@$#:0
+Die jeweils durchzuführenden Manöver bzw. der Ablauf der Messungen sollen bei jedem Probanden gleich sein und werden einheitlich festgelegt.
 Es wird ein Messprotokoll erstellt, welches zur Führung durch den Versuch und zur Dokumentation der Ergebnisse eingesetzt wird (vgl. 7.4.1).
 Die Versuche sollen folgende Fragestellungen beantworten:
 • Vergleich der ermittelten Werte für den mittleren arteriellen Druck durch verschiedene Metho-
+16u
 17u
 18u
 19u
 20u
 21u
 22u
-23u
 
 
 :::: Ergebnisse ::::
@@ -662,6 +663,7 @@ Die Versuche sollen folgende Fragestellungen beantworten:
 
 Nach der Auswertung der Messwerte können folgende Aussagen getroffen werden:
 • Die oszillometrische Messung der für die Anpassung verwendeten Werte mit der im Versuchsauf-
+26u
 27u
 28u
 29u
@@ -670,7 +672,6 @@ Nach der Auswertung der Messwerte können folgende Aussagen getroffen werden:
 32u
 33u
 34u
-35u
 Abbildung 28:
 Auswertung der Testmessungen - Beispiel für oszillometrische Messung Abbildung 29:
 Auswertung der Testmessungen - Vergleich der ermittelten MAP-Werte • Die quantitative Anpassung durch den Berechnungsfaktor f ist für den Anwendungsfall geeignet.
@@ -687,9 +688,10 @@ Auswertung der Testmessungen - Qualität der oszillometrischen Anpassung
 12u
 13u
 14u
-0u
-Verstärkungsfaktor KP=0.6, Zeitkonstante Ti=0.07) erweisen sich als gut geeignet für den Großteil der untersuchten Probanden.
-Es konnte in den meisten Fällen ohne eine Veränderung der Werte eine stabile Regelung erreicht werden.
+• Die für die Messungen verwendeten Standardeinstellungen für den Regler (Sollwert = 0.07,
+1u
+2u
+3u
 • Die entwickelte Fixierung der Ultraschall-Doppler-Sonde ist für die Anwendung im Versuchsauf-
 5u
 6u
@@ -717,7 +719,7 @@ Eine Optimierungsmöglichkeit besteht bei der Einstellung des Sollwerts der Rege
 Um die Transparenz des Aufbaus zu steigern könnte hier eine Eingabe in der physikalischen Einheit cm/s realisiert werden.
 Dabei muss jedoch berücksichtigt werden, dass dieser Wert einen korrekten Winkel und somit eine richtige Anbringung der Ultraschall-Sonde voraussetzt.
 In der frühen Planungsphase wurden auch alternative Ideen zur Optimierung der Regelung in Betracht gezogen.
-Denkbar war eine Überarbeitung bzw.ein Neuaufbau des analogen Reglers, was jedoch den Vorteil der einfachen softwarebasierten Änderungen ausgeschlossen hätte.
+Denkbar war eine Überarbeitung bzw. ein Neuaufbau des analogen Reglers, was jedoch den Vorteil der einfachen softwarebasierten Änderungen ausgeschlossen hätte.
 Weiter wurde dieser Schritt als nicht zeitgemäß bewertet, auch wenn gewisse Teile, z.B. die Einstellung der Parameter digital realisiert worden wären.
 Eine weitere überlegte Möglichkeit war die Realsierung der Regelung mittels eines Mikrocontrollers.
 Hierdurch hätte der Regelalgorithmus eigenständig durch das Gerät ausgeführt werden können.
@@ -781,7 +783,7 @@ Mit den durchgeführten Messungen konnte die grundsätzliche Eignung zur kontinu
 Um die Frage der vollständigen Funktionsfähigkeit und Zuverlässigkeit beantworten zu können sind weitere Testmessungen notwendig.
 Bisher wurden nur Versuche mit Probanden zwischen 20 und 30 Jahren durchgeführt, bei denen allesamt normale Blutdruckwerte vorherrschten.
 Von Interesse wären jedoch auch Tests mit jüngeren oder älteren Personen oder mit Probanden, die einen durch Krankheit veränderten Blutdruck besitzen (z.B. Bluthochdruck, erhöhter Gefäßwiderstand etc.).
-Außerdem wären, nicht zuletzt zur Bewertung der entwickelten Sondenfixierung, Versuche bei Bewegung bzw.unter Belastung (z.B. auf dem Ergometer) zur Bewertung hilfreich.
-Dadurch könnten auch für eine breite Anzahl an Personen geeignete Standard-Reglereinstellungen gefunden bzw.die zurzeit verwendeten Parameter überprüft werden.
+Außerdem wären, nicht zuletzt zur Bewertung der entwickelten Sondenfixierung, Versuche bei Bewegung bzw. unter Belastung (z.B. auf dem Ergometer) zur Bewertung hilfreich.
+Dadurch könnten auch für eine breite Anzahl an Personen geeignete Standard-Reglereinstellungen gefunden bzw. die zurzeit verwendeten Parameter überprüft werden.
 Ziel könnte es sein, in Zukunft einen automatischen Messablauf zu realisieren.
 Dieser könnte selbstständig eine Alternativmessung durchführen, den Regler aktivieren und einstellen und zu einem Zeitpunkt oder wiederholt die Werte an den physiologisch vorliegenden Blutdruck anpassen.

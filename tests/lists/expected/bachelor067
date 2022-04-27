@@ -9,10 +9,6 @@ None den Betrieb dieser Anwendung auf einem Cluster mit Hardware am unteren Ende
 1. einen einheitlichen Stil und Vergleichbarkeit zwischen Quellcode-Auszügen und eigenen Beispielen zu gewährleisten.
 2. Ausdrücke in kurzer, prägnanter Form darzustellen.
 ---------------------------------------------
-################### 12 ###################
-1. Clientknoten Auf Nutzerseite greift die Anwendung (Treiberprogramm) auf die API eines lokalen Spark-Kontextes zu, der die Kontaktdaten eines Clustermanagers sowie verschiedene Konfigurationseinstellungen enthält.
-2. Masterknoten Der Masterknoten betreibt den Clustermanager und ist der Einstiegspunkt in den Rech- nercluster. Hier werden Ressourcenanforderungen des Treiberprogramms an die Ar- beitsknoten verteilt und der Betrieb der Worker überwacht.
-3. Workerknoten Die Workerknoten beherbergen die Spark Workerprozesse. Diese melden verfügbare Ressourcen und erzeugen bei Bedarf Executors. Executors sind die ausführenden Elemente der Aktionen und Transformationen im Rahmen einer Sparkanwendung. Die Executors können untereinander Zwischenergebnisse austauschen und Nachrichten und Ergebnisse an das Treiberprogramm senden.
 ################### 15 ###################
 None filter Erstellen eines neuen RDD, das nur die Elemente enthält die einen übergebenen bool- schen Ausdruck erfüllen
 None join
@@ -69,23 +65,17 @@ None Das Archiv aller Email-Bodies ist der Textkorpus
 1. Extrahieren des Textinhaltes (Metadaten werden ignoriert)
 2. Zerlegen des Textes in einzelne Wörter
 3. Normalisieren der Wörter durch Umwandeln in Kleinbuchstaben und Entfernen von Sonderzeichen
-4. Index der einzelnen Wörter im TF-IDF-Vektor berechnen und dem eingetragenen Score zuweisen (Map)
+4. Index der einzelnen Wörter im TF-IDF-Vektor berechnen und dem eingetragenen Score
 5. Scores aller Wörter eines Tweets summieren (Reduce)
 6. Normalisieren des Scores per Division durch die Anzahl aller Wörter des Tweets
 7. Zzurückgeben des Tupels (Score, Status)
 ################### 45 ###################
-1. Systemgrößen auf jedem aktiven Knoten (1 Messpunkt pro Sekunde) CPU Nutzung (User, Idle, System, ...) IO Festplatte (Lesen, Schreiben) Swap (Benutzt, Frei) Speicher (Benutzt, Frei, Cached, ...) IO Netzwerk (Gesendet, Empfangen)
-2. Sparkspezifische Größen (1 Messpunkt alle zwei Sekunden) genutzte Cores aktive Stages parallele Receiver (bei Streaming) u.a.10
----------------------------------------------
-1. die Blockgröße des Hadoop-Dateisystems HDFS (32MB, 64MB, 128MB)
 2. der Replikationsfaktor der Blöcke auf HDFS (1, 2, 3, 4)
-3. die Anzahl der Worker (1, 2, 4)
 1. Größe des Textkorpus: 1,5 GB
 2. Fenstergröße des TF-IDF Vektors: 500 Nachrichten
 3. Erlaubte Cores Pro Executor: 4
 4. Erlaubter Arbeitsspeicher pro Executor: 384 MB
 5. Zeitintervall für die Diskretisierung des Datenstroms (Streaming-Komponente): 5 Se- kunden
----------------------------------------------
 ################### 53 ###################
 1. Da selbst ein einzelner Knoten für die Analyse des Datenstroms mehr als ausreichend ist, lassen sich aus dem Experiment keine Aussagen über das Skalierungsverhalten der entsprechenden Komponente treffen.
 2. Bei der Exploration mehrerer zehntausend Tweets wurde kein einziger mit einem plau- siblen Bezug zu den in der Spark-Mailingliste diskutierten Themen gefunden. Eine empirische Bewertung der funktionalen Qualitäten der Implementation ist damit nicht ohne Weiteres möglich.
