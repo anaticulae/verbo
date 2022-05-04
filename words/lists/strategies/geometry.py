@@ -107,6 +107,10 @@ def extract_list(possible_list, indexes):
 
 
 def find_area(items: list, detected: str, startindex: int) -> list:
+    if not detected.strip():
+        utila.error(f'could not find_area item: {items} startind: {startindex}')
+        # TODO: INVESTIGATE WHY THIS CAN HAPPEN
+        return []
     # TODO: CHANGE TO AREA_AFTERWARDS VALIDATION, USE START AND END OF
     # CONTENT, NOT PREFECT, BUT OK FOR NOW.
     # TODO: REPLACE WITH UTILA CODE?
