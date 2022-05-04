@@ -85,6 +85,9 @@ def listindex(index: str) -> int:
 
 
 def load_lists(source: str, pages: tuple = None) -> dict:
+    if not utila.exists(source):
+        utila.error(f'list does not exists: {source}')
+        return []
     lists = serializeraw.load_lists(source, pages=pages)
     lists = utila.flatten_content(lists)
     result = {item.identifier: item for item in lists}
