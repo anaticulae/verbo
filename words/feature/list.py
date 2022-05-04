@@ -67,8 +67,8 @@ def create_data(
     ptcns = serializeraw.ptcn_fromfile(
         text=text,
         textpositions=textpositions,
-        sizeandborderpath=border,
-        headerfooterpath=headerfooters,
+        sizeandborder=border,
+        headerfooter=headerfooters,
         pages=pages,
     )
     headlines = serializeraw.load_headlines(headlines, pages=pages)
