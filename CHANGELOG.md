@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v1.17.1
+
+### Fix
+
+* do not fail on non existing list (586196c2bf8d)
+* do not fail on empty finding (5af2504ac704)
+
 ## v1.17.0
 
 ### Feature
