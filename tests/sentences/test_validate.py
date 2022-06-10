@@ -29,6 +29,7 @@ param = pytest.param
 @pytest.mark.parametrize('source, pages, expected', [
     param(power.BOOK173_PDF, '13:30', 'book173', id='book173'),
     param(power.MASTER072_PDF, '13:18', 'master072', id='master072'),
+    param(power.BACHELOR032A_PDF, '12', 'bachelor032a', id='bachelor032a'),
 ])
 @utilatest.nightly
 def test_sentence_validate(source, pages, expected, testdir, monkeypatch):
