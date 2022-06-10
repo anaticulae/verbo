@@ -162,6 +162,7 @@ def merge_sentences(
     merge_divis: bool = True,
     normalize_spaces: bool = True,
 ) -> HeadlinedSentences:
+    # TODO: MOVE TO GERMAN????!!!
     merger = SentenceMerge(
         skip_undefined=skip_undefined,
         merge_divis=merge_divis,
