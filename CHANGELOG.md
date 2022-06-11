@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.18.0
+
+### Feature
+
+* add colon list type (874c0740059b)
+
 ## v1.17.2
 
 ## v1.17.1
