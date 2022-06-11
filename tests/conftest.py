@@ -21,6 +21,7 @@ PACKAGE = words.PACKAGE
 power.setup(words.ROOT)
 
 RESOURCES = [
+    (power.BACHELOR046_PDF, '10:20'),
     (power.BACHELOR241_PDF, '70:90'),
     (power.BOOK173_PDF, '0:100'),
     (power.DISS178_PDF, '16:70'),
