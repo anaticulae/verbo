@@ -62,9 +62,9 @@ def valid_area(items) -> bool:
     return True
 
 
-def valid_list_content(items) -> bool:
+def invalid_list_content(items) -> bool:
     for _, content in items:
         if content.count('..') > 5 or content.count('. .') > 5:
             # exclude table content `1 .Einleitung ............ 5`
-            return False
-    return True
+            return True
+    return False
