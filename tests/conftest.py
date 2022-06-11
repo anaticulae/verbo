@@ -21,14 +21,9 @@ PACKAGE = words.PACKAGE
 power.setup(words.ROOT)
 
 RESOURCES = [
-    (power.BACHELOR046_PDF, '10:20'),
-    (power.BACHELOR241_PDF, '70:90'),
     (power.BOOK173_PDF, '0:100'),
-    (power.DISS178_PDF, '16:70'),
     (power.DISS205_PDF, '0:50'),
-    (power.DISS264_PDF, '0:100'),
     (power.HOME050_PDF, '30:40'),
-    (power.MASTER063_PDF, '20:30'),
     power.BACHELOR032A_PDF,
     power.BACHELOR037_PDF,
     power.BACHELOR051_PDF,
@@ -46,7 +41,6 @@ RESOURCES = [
     power.MASTER072_PDF,
     power.MASTER075_PDF,
     power.MASTER098_PDF,
-    power.MASTER099_PDF,
     power.MASTER110_PDF,
     power.MASTER116_PDF,
     power.MASTER155_PDF,
