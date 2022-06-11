@@ -43,7 +43,7 @@ def extract_best_page(navigator, headlines, textfeed, textdistance):
     )
     geo = [
         item for item in geo if words.lists.utils.valid_area(item.area) and
-        not words.lists.utils.invalid_list_content(item.data)
+        not invalid_list_content(item.data)
     ]
     vertical = words.lists.strategies.vertical.analyze_page(
         navigator,
@@ -52,7 +52,7 @@ def extract_best_page(navigator, headlines, textfeed, textdistance):
     )
     vertical = [
         item for item in vertical if words.lists.utils.valid_area(item.area) and
-        not words.lists.utils.invalid_list_content(item.data)
+        not invalid_list_content(item.data)
     ]
     selected = utila.zip_optimizer(  # pylint:disable=E1101
         geo,
@@ -119,3 +119,11 @@ def pagecontentlist(pages) -> iamraw.PageContentLists:
             collected.append(listinstance)
         result.append(iamraw.PageContentList(page=page, content=collected))
     return result
+
+
+def invalid_list_content(items) -> bool:
+    for _, content in items:
+        if content.count('..') > 5 or content.count('. .') > 5:
+            # exclude table content `1 .Einleitung ............ 5`
+            return True
+    return False
