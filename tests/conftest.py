@@ -73,6 +73,7 @@ def extract(resources):
         formulero=True,
         groupme=True,
         headlines=True,
+        lists=True,
         magic=True,
         sections=True,
         tablero=True,
