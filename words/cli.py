@@ -71,18 +71,6 @@ WORKPLAN = [
         output=('links',),
     ),
     utila.create_step(
-        'list',
-        inputs=[
-            ResultFile('rawmaker', 'oneline_text_text'),
-            ResultFile('rawmaker', 'oneline_text_positions'),
-            ResultFile('rawmaker', 'border_pages'),
-            ResultFile('headlines', 'result_result'),
-            ResultFile('groupme', 'footer_footerheader'),
-            ResultFile('magic', 'content_content', optional=True),
-        ],
-        output=('list',),
-    ),
-    utila.create_step(
         'text',
         inputs=TEXTINPUT + [
             ResultFile('magic', 'content_content', optional=True),
