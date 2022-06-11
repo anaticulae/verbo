@@ -1,1 +1,4 @@
-
+################### 17 ###################
+0 ‘possession-based authentication factor’ means an authentication fac- tor where the subject is required to demonstrate possession of it;
+1 ‘knowledge-based authentication factor’ means an authentication fac- tor where the subject is required to demonstrate knowledge of it;
+2 ‘inherent authentication factor’ means an authentication factor that is based on a physical attribute of a natural person, and of which the subject is required to demonstrate that they have that physical attribute;

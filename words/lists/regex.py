@@ -25,6 +25,7 @@ def parse_single(content: str) -> list:
             parse_plus_list,
             parse_minus_list,
             parse_roman_list,
+            parse_colon_list,
     ]:
         extracted = method(content)
         if not extracted:
@@ -41,6 +42,8 @@ MINUS = '-'
 DOTTED = {'•', '\x88', '\x99', chr(61623)}
 NUMBER = utila.compiles(r'^[0-9]{1,2}\.(?!\d)')
 ROMAN = utila.compiles(r'^(I|II|III|IIII|IV|V|VI|VII|VIII|VIIII|IX|X)\.')
+# (a) (b) (c)
+COLON = utila.compiles(r'^\([abcdefghij]\)')
 
 
 def parse_quardo_list(content: str) -> utila.Strings:
@@ -80,6 +83,10 @@ def parse_roman_list(content: str) -> list:
     ['stellen einen Zusammenschluss von sozialen Einheiten mit einem bestimmten Ziel dar,']
     """
     return parse_general_list(content, ROMAN)
+
+
+def parse_colon_list(content: str) -> list:
+    return parse_general_list(content, COLON)
 
 
 def parse_general_list(
