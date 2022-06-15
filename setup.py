@@ -29,7 +29,6 @@ if __name__ == "__main__":
         author='Helmut Konrad Fahrendholz',
         author_email='info@checkitweg.de',
         description='to be or not to be',
-        include_package_data=True,
         install_requires=REQUIRES,
         long_description=README,
         name='words',
@@ -50,6 +49,6 @@ if __name__ == "__main__":
             'words.text',
         ],
         entry_points={
-            'console_scripts': ['words = words.cli:main',],
+            'console_scripts': ['words = words.cli:main'],
         },
     )
