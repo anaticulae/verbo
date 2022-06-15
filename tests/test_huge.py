@@ -95,7 +95,7 @@ def params():
                 '--char_margin 100.0 --boxes_flow 1.0',
                 '--char_margin 5.0 --boxes_flow 1.0 --line_margin 0.3',
             ),
-            id=utila.make_relative(item, power.REPOSITORY),
+            id=utila.file_name(item),
             marks=determine_mark(item),
         )
         result.append(double)
