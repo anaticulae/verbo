@@ -120,6 +120,7 @@ def test_huge_running_words(source, testdir, request):  # pylint:disable=W0621
         headlines=True,
         sections=True,
         words=True,
+        lists=True,
     )
     filename = utila.file_name(power.link(source))
     directory = os.path.join(testdir.tmpdir, filename)

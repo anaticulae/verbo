@@ -49,6 +49,6 @@ def test_feature_words_work_pages0_10(testdir, monkeypatch):
     utila.copy_content(
         src=power.link(power.MASTER072_PDF),
         dest=testdir.tmpdir,
-        pattern='(rawmaker|sections|groupme|headlines)__*.yaml',
+        pattern='(rawmaker|sections|groupme|headlines|words)__*.yaml',
     )
     tests.run(cmd, monkeypatch=monkeypatch)
