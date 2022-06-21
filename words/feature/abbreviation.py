@@ -12,8 +12,8 @@
 List
 ----
 
-DUDEN Whitelist
-~~~~~~~~~~~~~~~
+DUDEN lookup
+~~~~~~~~~~~~
 
 Common accepted German abbreviations. For example: "z.B., etc., ...".
 
