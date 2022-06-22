@@ -11,6 +11,7 @@ import typing
 
 import serializeraw
 
+import words.sentences.bounding
 import words.sentences.determine
 
 
@@ -18,6 +19,10 @@ def work(
     wordo: str,
     lists: str,
     headliner: str,
+    xtext: str,
+    textpositions: str,
+    sizeandborder: str,
+    headerfooter: str,
     pages: tuple = None,
 ) -> typing.Tuple[str, str]:
     headlines = serializeraw.load_headlines(
@@ -38,6 +43,16 @@ def work(
         lists=lists,
     )
     dumped_sentences = serializeraw.dump_text(sentences)
-    sentence_bounding = []
+    ptncs = serializeraw.ptcn_fromfile(
+        xtext,
+        textpositions,
+        sizeandborder,
+        headerfooter,
+        pages=pages,
+    )
+    sentence_bounding = words.sentences.bounding.boundings(
+        sentences,
+        ptncs,
+    )
     dumped_bounding = serializeraw.dump_sentence_bounding(sentence_bounding)
     return dumped_sentences, dumped_bounding
