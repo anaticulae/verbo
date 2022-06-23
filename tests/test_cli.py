@@ -16,9 +16,9 @@ import tests
 
 
 @pytest.mark.parametrize('source, pages', [
+    pytest.param(power.DOCU009_PDF, None, id='docu009'),
     pytest.param(power.DOCU027_PDF, '0:9', id='docu27pages'),
     pytest.param(power.MASTER072_PDF, None, id='master72'),
-    pytest.param(power.DOCU009_PDF, None, id='docu009'),
 ])
 @pytest.mark.usefixtures('testdir')
 @utilatest.nightly
