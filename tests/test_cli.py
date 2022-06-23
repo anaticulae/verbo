@@ -21,12 +21,10 @@ import tests
     pytest.param(power.DOCU009_PDF, None, id='docu009'),
 ])
 @pytest.mark.usefixtures('testdir')
-@utilatest.requires(power.DOCU009_PDF)
-@utilatest.requires(power.DOCU027_PDF)
-@utilatest.requires(power.MASTER072_PDF)
 @utilatest.nightly
 def test_run_words(source, pages, monkeypatch, capsys):
     """Run help and version command to reach basic test coverage"""
+    utilatest.fixture_requires(source)
     pages = pages if pages else ':'
     cmd = f'-i {power.link(source)} --pages {pages}'
     tests.run(cmd, monkeypatch=monkeypatch)

@@ -8,7 +8,6 @@
 # =============================================================================
 
 import functools
-import os
 
 import iamraw
 import power
@@ -20,8 +19,7 @@ import utilatest
 import tests
 import words
 
-ARCHIVE = os.path.join(words.ROOT, 'tests/sentences/expected')
-utila.exists_assert(ARCHIVE)
+ARCHIVE = utila.join(words.ROOT, 'tests/sentences/expected', exist=True)
 
 param = pytest.param
 
@@ -32,7 +30,7 @@ param = pytest.param
     param(power.BACHELOR032A_PDF, '12', 'bachelor032a', id='bachelor032a'),
 ])
 @utilatest.nightly
-def test_sentence_validate(source, pages, expected, testdir, monkeypatch):
+def test_validate_sentence(source, pages, expected, testdir, monkeypatch):
     utilatest.fixture_requires(source)
     Evaluate(
         source=source,

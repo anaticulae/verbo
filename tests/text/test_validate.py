@@ -8,7 +8,6 @@
 # =============================================================================
 
 import functools
-import os
 
 import power
 import pytest
@@ -19,8 +18,7 @@ import utilatest
 import tests
 import words
 
-ARCHIVE = os.path.join(words.ROOT, 'tests/text/expected')
-utila.exists_assert(ARCHIVE)
+ARCHIVE = utila.join(words.ROOT, 'tests/text/expected', exist=True)
 
 param = pytest.param
 
@@ -46,7 +44,7 @@ param = pytest.param
     param(power.MASTER155_PDF, '8:77', 'master155', id='master155'),
 ])
 @utilatest.nightly
-def test_text_validate(source, pages, expected, testdir, monkeypatch):
+def test_validate_text(source, pages, expected, testdir, monkeypatch):
     utilatest.fixture_requires(source)
     Evaluate(
         source=source,
