@@ -8,6 +8,7 @@
 # =============================================================================
 
 import collections
+import math
 
 import german
 import iamraw
@@ -74,8 +75,21 @@ def optimize_bounding(rectangles: list) -> list:
     ||||||||||||||||||||||||||||
     ||||||||||
     """
-    # TODO: ADD A MORE COMPLEX MERGE STRATEGY
-    result = utila.rect_max(rectangles)
+    if not rectangles:
+        return []
+    result = [[rectangles[0]]]
+    for rectangle in rectangles[1:]:
+        before = result[-1][-1]
+        xdiff = math.fabs(before[2] - rectangle[0])
+        ydiff = math.fabs(before[1] - rectangle[1])
+        if xdiff > 8.0 or ydiff > 8.0:
+            # new item
+            result.append([rectangle])
+            continue
+        # extend curret rectangle
+        result[-1].append(rectangle)
+    # merge subrectangle into bigger ones
+    result = [utila.rect_max(items) for items in result]
     return result
 
 
