@@ -97,7 +97,7 @@ WORKPLAN = [
             ResultFile('headlines', 'result_result'),
             # ResultFile('words', 'boxed_boxed'),
         ],
-        output=('sentences',),
+        output=('sentences', 'bounding'),
     ),
 ]
 
