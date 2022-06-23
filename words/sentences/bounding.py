@@ -68,6 +68,7 @@ def find_bounding(sentence: str, content) -> tuple:
     return result
 
 
+@utila.cacheme
 def lookup_create(content) -> list:
     """Split lines into token and there single word bounding."""
     result = []
