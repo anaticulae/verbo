@@ -63,6 +63,17 @@ def find_bounding(sentence: str, content) -> tuple:
     for start, end in done:
         for index in utila.rlist(start, end):
             rectangles.append(lookup[index][1])
+    result = optimize_bounding(rectangles)
+    return result
+
+
+def optimize_bounding(rectangles: list) -> list:
+    """Merges bounding of token from sentence into fewer rectangles.
+
+                    ||||||||||||
+    ||||||||||||||||||||||||||||
+    ||||||||||
+    """
     # TODO: ADD A MORE COMPLEX MERGE STRATEGY
     result = utila.rect_max(rectangles)
     return result
