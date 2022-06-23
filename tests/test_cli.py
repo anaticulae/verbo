@@ -23,7 +23,6 @@ import tests
 @pytest.mark.usefixtures('testdir')
 @utilatest.nightly
 def test_run_words(source, pages, monkeypatch, capsys):
-    """Run help and version command to reach basic test coverage"""
     utilatest.fixture_requires(source)
     pages = pages if pages else ':'
     cmd = f'-i {power.link(source)} --pages {pages}'
