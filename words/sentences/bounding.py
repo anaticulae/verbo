@@ -47,14 +47,15 @@ def find_bounding(sentence: str, content) -> tuple:
     """
     lookup = lookup_create(content)
     page_content = [item[0] for item in lookup]
-    pattern = [
+    pattern = {
         konrad.mark2str(item)
         for item in german.word_tokenize(sentence, validate_sentences=False)
-    ]
-    done = german.search(
-        pattern=pattern,
-        sentence=page_content,
-        compare_content=True,
+    }
+    matches = [item in pattern for item in page_content]
+    # TODO: MAKE ERROR LENGTH PATTERN LENGTH DEPENDENT
+    done = select_longest_group(
+        matches,
+        error=3,
     )
     if not done:
         return None
@@ -65,6 +66,29 @@ def find_bounding(sentence: str, content) -> tuple:
         for index in utila.rlist(start, end):
             rectangles.append(lookup[index][1])
     result = optimize_bounding(rectangles)
+    return result
+
+
+def select_longest_group(items, error: int = 0) -> tuple:
+    if not items:
+        return None
+    collected = [[]]
+    gaps = error
+    for index, item in enumerate(items):
+        if item:
+            collected[-1].append(index)
+            continue
+        if gaps:
+            # do not end group, decrease possible gaps
+            gaps -= 1
+            continue
+        if collected[-1]:
+            collected.append([])
+            gaps = error
+    longest = utila.longest(collected)
+    if not longest:
+        return None
+    result = [(longest[0], longest[-1] + 1)]
     return result
 
 
