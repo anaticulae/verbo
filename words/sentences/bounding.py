@@ -10,6 +10,7 @@
 import collections
 import math
 
+import configo
 import german
 import iamraw
 import konrad
@@ -37,6 +38,9 @@ def boundings(sentences, ptcns) -> iamraw.PageContent:
     return result
 
 
+ERROR_IN_SENTENCE_MAX = configo.HV_INT_PLUS(default=3)
+
+
 def find_bounding(sentence: str, content) -> tuple:
     """Try to locate sentence on a page.
 
@@ -55,7 +59,7 @@ def find_bounding(sentence: str, content) -> tuple:
     # TODO: MAKE ERROR LENGTH PATTERN LENGTH DEPENDENT
     done = select_longest_group(
         matches,
-        error=3,
+        error=ERROR_IN_SENTENCE_MAX,
     )
     if not done:
         return None
@@ -92,6 +96,11 @@ def select_longest_group(items, error: int = 0) -> tuple:
     return result
 
 
+NEW_ITEM_DIFF_X_MAX = configo.HV_FLOAT_PLUS(default=8.0)
+
+NEW_ITEM_DIFF_Y_MAX = configo.HV_FLOAT_PLUS(default=8.0)
+
+
 def optimize_bounding(rectangles: list) -> list:
     """Merges bounding of token from sentence into fewer rectangles.
 
@@ -106,7 +115,7 @@ def optimize_bounding(rectangles: list) -> list:
         before = result[-1][-1]
         xdiff = math.fabs(before[2] - rectangle[0])
         ydiff = math.fabs(before[1] - rectangle[1])
-        if xdiff > 8.0 or ydiff > 8.0:
+        if xdiff > NEW_ITEM_DIFF_X_MAX or ydiff > NEW_ITEM_DIFF_Y_MAX:
             # new item
             result.append([rectangle])
             continue
