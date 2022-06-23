@@ -2,6 +2,15 @@
 
 Every noteable change is logged here.
 
+## v1.20.0
+
+### Feature
+
+* use smarter sentence selector (15d6e3bac80c)
+* add improve bounding merger (271174378bb2)
+* add method to find bounding of a sentence on a page (d5434760bb94)
+* add sentence bounding determiner (f1b11258ba18)
+
 ## v1.19.0
 
 ## v1.18.0
