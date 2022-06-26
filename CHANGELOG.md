@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.20.1
+
+### Feature
+
+* increase max distance to merge sentences (eccaccf35c2e)
+
 ## v1.20.0
 
 ### Feature
