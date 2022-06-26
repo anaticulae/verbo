@@ -17,30 +17,15 @@ Required resources:
   * page-size, to determine the distance from left border to text
 """
 
-import functools
-
 import power
 import utila
 import utilatest
 
 import words
-import words.cli
 
 power.setup(words.ROOT)
 
-run = functools.partial(  #pylint:disable=C0103
-    utilatest.run_command,
-    main=words.cli.main,
-    process=words.PROCESS,
-    success=True,
-)
-
-fail = functools.partial(  #pylint:disable=C0103
-    utilatest.run_command,
-    main=words.cli.main,
-    process=words.PROCESS,
-    success=False,
-)
+run, fail = utilatest.create_cli_runner(words)
 
 utilatest.register_marker('huge')
 
