@@ -26,9 +26,9 @@
     </document>
 
 """
+
 import collections
 import contextlib
-import functools
 import re
 
 import configo
@@ -218,7 +218,7 @@ class BoxLookUp:
         return None
 
 
-@functools.lru_cache(configo.CACHE_SMALL)
+@configo.cache_small
 def load_resources(
     headlines: str,
     text: str,

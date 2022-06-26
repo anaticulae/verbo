@@ -7,7 +7,6 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import functools
 import pprint
 import typing
 
@@ -19,7 +18,7 @@ import utila
 import words.undefined
 
 
-@functools.lru_cache(configo.CACHE_SMALL)
+@configo.cache_small
 def load_resources(
     extracted_text,
     text,

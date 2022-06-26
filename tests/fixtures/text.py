@@ -7,15 +7,13 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import functools
-
 import configo
 import power
 
 import words.feature
 
 
-@functools.lru_cache(configo.CACHE_SMALL)
+@configo.cache_small
 def bachelor051_textrequired(pages=None):
     return words.feature.load_resources_frompath(
         power.link(power.BACHELOR051_PDF),

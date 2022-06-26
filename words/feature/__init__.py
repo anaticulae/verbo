@@ -8,7 +8,6 @@
 # =============================================================================
 
 import dataclasses
-import functools
 import os
 import typing
 
@@ -39,7 +38,7 @@ class TextRequiredResources:
     formulas: iamraw.PageContentRawFormulas = None
 
 
-@functools.lru_cache(configo.CACHE_SMALL)
+@configo.cache_small
 def load_resources(  # pylint:disable=R0914,R0913
     text: str,
     textposition: str,
@@ -98,7 +97,7 @@ def load_resources(  # pylint:disable=R0914,R0913
     return result
 
 
-@functools.lru_cache(configo.CACHE_SMALL)
+@configo.cache_small
 def load_resources_frompath(  # pylint:disable=R0914
     path: str,
     pages: tuple = None,
@@ -134,7 +133,7 @@ def load_resources_frompath(  # pylint:disable=R0914
     return loaded
 
 
-@functools.lru_cache(configo.CACHE_SMALL)
+@configo.cache_small
 def load_extracted(
     extracted_text,
     headlines,
