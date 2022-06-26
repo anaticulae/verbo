@@ -96,7 +96,7 @@ def select_longest_group(items, error: int = 0) -> tuple:
     return result
 
 
-NEW_ITEM_DIFF_X_MAX = configo.HV_FLOAT_PLUS(default=8.0)
+NEW_ITEM_DIFF_X_MAX = configo.HV_FLOAT_PLUS(default=25.0)
 
 NEW_ITEM_DIFF_Y_MAX = configo.HV_FLOAT_PLUS(default=8.0)
 
