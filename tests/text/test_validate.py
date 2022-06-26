@@ -24,6 +24,7 @@ param = pytest.param
 
 
 @pytest.mark.parametrize('source, pages, expected', [
+    param(power.BACHELOR028_PDF, '2:23', 'bachelor028', id='bachelor028'),
     param(power.BACHELOR051_PDF, '3:42', 'bachelor051', id='bachelor051'),
     param(power.BACHELOR063_PDF, '4:43', 'bachelor063', id='bachelor063'),
     param(power.BACHELOR067_PDF, '8:55', 'bachelor067', id='bachelor067'),
