@@ -115,7 +115,7 @@ def test_huge_running_words(source, testdir, request):  # pylint:disable=W0621
     source = source[0]
     genex.extract(
         files=[source],
-        destination=testdir.tmpdir,
+        dest=testdir.tmpdir,
         groupme=True,
         headlines=True,
         sections=True,
