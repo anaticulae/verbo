@@ -44,7 +44,7 @@ def parse_page(  # pylint:disable=R0914
                 # TODO: REMOVE LATER?
                 utila.info(f'incomplete sentence: {sentence}')
                 continue
-            for word in wordx:
+            for index, word in enumerate(wordx):
                 if not isabbreviation(word, lookup):
                     continue
                 position = iamraw.AbbreviationPosition(
@@ -55,6 +55,7 @@ def parse_page(  # pylint:disable=R0914
                 parsed = iamraw.Abbreviation(
                     short=word,
                     position=position,
+                    description=look_around(index, wordx),
                 )
                 collected.append(parsed)
                 page_word += 1
@@ -64,6 +65,18 @@ def parse_page(  # pylint:disable=R0914
         content=collected,
     )
     return result
+
+
+def look_around(number: int, words: list) -> str:
+    abbrev = words[number].lower()
+    length = len(abbrev)
+    before = words[max(0, number - length - 3):number]
+    if detected := german.find_abbrev(abbrev, before):
+        return detected
+    after = words[number + 1:number + length + 3]
+    if detected := german.find_abbrev(abbrev, after):
+        return detected
+    return None
 
 
 def isabbreviation(word: str, lookup) -> bool:
