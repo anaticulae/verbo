@@ -45,17 +45,18 @@ def parse_page(  # pylint:disable=R0914
                 utila.info(f'incomplete sentence: {sentence}')
                 continue
             for word in wordx:
-                if isabbreviation(word, lookup):
-                    position = iamraw.AbbreviationPosition(
-                        page=pagenumber,
-                        sentence=page_sentence,
-                        word=page_word,
-                    )
-                    parsed = iamraw.Abbreviation(
-                        short=word,
-                        position=position,
-                    )
-                    collected.append(parsed)
+                if not isabbreviation(word, lookup):
+                    continue
+                position = iamraw.AbbreviationPosition(
+                    page=pagenumber,
+                    sentence=page_sentence,
+                    word=page_word,
+                )
+                parsed = iamraw.Abbreviation(
+                    short=word,
+                    position=position,
+                )
+                collected.append(parsed)
                 page_word += 1
             page_sentence += 1
     result = iamraw.ExtractedTextAbbreviation(
