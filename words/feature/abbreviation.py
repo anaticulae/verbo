@@ -38,6 +38,9 @@ def work(sentencer: str, pages: tuple = None) -> str:
     # TODO: Load parsed data from abbreviation table
     other = [iamraw.AbbreviationList(data=konrad.ABBREVIATION_LOWER)]
     lookup = iamraw.AbbreviationListLookup.fromparsed(other=other)
-    parsed = words.abbreviation.parser.parses(sentences, lookup)
+    parsed = words.abbreviation.parser.parses(
+        sentences,
+        lookup,
+    )
     dumped = serializeraw.dump_text_abbreviations(parsed)
     return dumped
