@@ -48,4 +48,6 @@ def test_feature_words_work_pages0_10(testdir, monkeypatch):
         dest=testdir.tmpdir,
         pattern='(rawmaker|sections|groupme|headlines|words)__*.yaml',
     )
+    # test data is protected by a write lock
+    utila.directory_unlock(testdir.tmpdir)
     tests.run(cmd, monkeypatch=monkeypatch)
