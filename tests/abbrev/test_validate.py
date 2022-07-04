@@ -21,9 +21,10 @@ import words
 ARCHIVE = utila.join(words.ROOT, 'tests/abbrev/expected', exist=True)
 
 
-@pytest.mark.parametrize('source', [
-    pytest.param(power.BACHELOR028_PDF, id='bachelor028'),
-])
+@pytest.mark.parametrize(
+    'source',
+    utilatest.test_resources(tests.conftest.RESOURCES),
+)
 @utilatest.nightly
 def test_validate_abbrev(source, testdir, monkeypatch):
     utilatest.fixture_requires(source)
@@ -43,7 +44,7 @@ class Evaluate(utilatest.BaseLiner):
                 monkeypatch=monkeypatch,
             ),
             step='abbreviation',
-            pages=':',
+            pages=power.ctext(source, default=':'),
             source=power.link(source),
             workdir=workdir,
             archive=ARCHIVE,
