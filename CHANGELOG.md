@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.21.0
+
+### Feature
+
+* look around to find referenced abbreviation (55ac53ab141e)
+
 ## v1.20.1
 
 ### Feature
