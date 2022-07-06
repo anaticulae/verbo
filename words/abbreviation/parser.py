@@ -95,6 +95,8 @@ def isabbr(item: str):  # pylint:disable=R0911
     False
     >>> isabbr('M=')
     False
+    >>> isabbr('M,')
+    False
     """
     if not isinstance(item, str):
         return False
@@ -114,7 +116,7 @@ def isabbr(item: str):  # pylint:disable=R0911
 NOABBR = utila.splititems("""\
 I II III IV V
 """)
-INVALIDS = '.-='
+INVALIDS = '.-=,;'
 
 
 def chars_invalid(item):
