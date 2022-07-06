@@ -215,7 +215,10 @@ Der genaue Verlauf der thermischen Zeitkonstanten wird in den folgenden
 #$@FORMULA@$#:2
 #$@FORMULA@$#:3
 #$@FORMULA@$#:4
-1 2 T 0 τth t in s 0 t in s (a) Thermischer Einschwingvorgang (b) Stationärer Zustand Abbildung 1.4:
+1 2 T 0 τth t in s 0 t in s
+22u
+23u
+Abbildung 1.4:
 Thermisches Verhalten eines elektrischen Leiters bei Wechselstrombelastung.
 Der Einschwingvorgang und der stationäre Zustand besitzen eine eigene thermische Einschwingkonstante τth.
 Die Zeitkonstanten der Aufheizkurve τth,1 und der Abkühlkurve τth,2 unterscheiden sich je nach äußeren Gegebenheiten ebenfalls.
@@ -545,7 +548,10 @@ In der linken Abbildung zeigt die Variation von a
 #$@FORMULA@$#:3
 12u
 13u
-Risstiefe b=0...w, normiert Risstiefe b=0...w, normiert (a) Spannung über fortschreitender Defekt- (b) Spannung über fortschreitender Defekttiefe b mit variabler Defektbreite a im logatiefe mit variabler Amplitude des Stromes rithmischen Maßstab Abbildung 2.4:
+Risstiefe b=0...w, normiert Risstiefe b=0...w, normiert
+16u
+17u
+tiefe b mit variabler Defektbreite a im logatiefe mit variabler Amplitude des Stromes rithmischen Maßstab Abbildung 2.4:
 Variation von Strom und Defektgröße an einer Mikrostreifenleitung und deren Einfluss auf die Spannung u(t) in logarithmischer Darstellung.
 eine immer weiter steigende Spannung auf.
 Gerade bei geringen Defekttiefen ist der Unterschied der einzelnen Kurven nicht sehr groß, er nimmt jedoch im Verlauf von b weiter zu.
@@ -576,7 +582,9 @@ Die Variation des
 1u
 2u
 #$@FORMULA@$#:2
-(a) Spannung der dritten Harmonischen (b) Spannung der dritten Harmonischen über fortschreitender Defekttiefe b mit variaüber fortschreitender Defekttiefe mit variabler Defektbreite a im logarithmischen Maßbler Amplitude des Stromes stab Abbildung 2.5:
+3u
+4u
+über fortschreitender Defekttiefe b mit variaüber fortschreitender Defekttiefe mit variabler Defektbreite a im logarithmischen Maßbler Amplitude des Stromes stab Abbildung 2.5:
 Variation von Strom und Defektgröße an einer Mikrostreifenleitung und deren Auswirkung auf die dritte Harmonische der Spannung u3(t) in logarithmischer Darstellung.
 Stromes zwischen 500 mA und 4 A zeigt auch bei niedrigem b einen starken Einfluss auf die Amplitude der Spannung u3(t), die über drei Zehnerpotenzen verteilt ist.
 In der Praxis muss die Stromstärke einige Voraussetzungen erfüllen, um eine Temperaturänderung an der Defektstelle zu generieren, ohne dabei neue Defekte in das Messobjekt einzubringen.
@@ -589,7 +597,10 @@ Die oben gezeigte Streifenleiterbahn wird nun genutzt, um die Sensitivität der 
 Dazu wird U3 im Vergleich zum elektrischen Widerstand über einer wachsenden Einengung dargestellt.
 0u
 1u
-Risstiefe b=0...w, normiert Risstiefe b=0...w, normiert (a) Vergleich von Widerstand Rel und De- (b) Vorhersagevorsprung (horizontale Diffefektsignal U3, normiert auf den jeweiligen renz zwischen den Kurven links) von U3 ge-Anfangswert genüber Rel, normiert Abbildung 2.6:
+Risstiefe b=0...w, normiert Risstiefe b=0...w, normiert
+4u
+5u
+fektsignal U3, normiert auf den jeweiligen renz zwischen den Kurven links) von U3 ge-Anfangswert genüber Rel, normiert Abbildung 2.6:
 Vergleich der Sensitivität von elektrischem Widerstand und generierter Defektspannung.
 Abbildung 2.6a zeigt ein im Vergleich zur Widerstandsänderung steiler ansteigendes Messsignal.
 Die Definition einer beliebigen Schwelle als Ausfallkriterium fällt stets zugunsten der Spannung aus.
@@ -649,7 +660,10 @@ Messfrequenz untersucht werden.
 Abbildung 2.8a zeigt, dass sich die thermi-
 4u
 5u
-Rissbreite a=0...l, normiert Rissbreite a=0...l, normiert (a) Änderung der thermischen Zeitkonstante (b) Entwicklung der maximalen Messfredurch wachsende Defektbreite a. quenz in Abhängigkeit der Defektbreite a. Abbildung 2.8:
+Rissbreite a=0...l, normiert Rissbreite a=0...l, normiert
+8u
+9u
+durch wachsende Defektbreite a. quenz in Abhängigkeit der Defektbreite a. Abbildung 2.8:
 Einfluss der Defektbreite auf die thermische Zeitkonstante und Messfrequenz an einer Leiterbahn.
 sche Zeitkonstante der defekten Leiterbahnstelle erwartungsgemäß proportional zur steigenden Defektbreite verhält.
 Der Zusammenhang zwischen Defektbreite a und Zeitkonstante stellt sich nach Gleichung 2.23 quadratisch dar.
@@ -800,7 +814,9 @@ Hier ist auch gut zu erkennen, dass die Gleichung 3.1 nur eine grobe Schätzung 
 Ein Vergleich zwischen Abbildung 3.2b und 3.1 zeigt eine Abweichung in der Temperaturerhöhung von etwa 4 K bei einer Stromstärke von 1 A.
 Allerdings wird hier die Temperatur eines Hotspots mit der Gesamtleiterbahntemperatur verglichen.
 16u
-(a) FEM-Simulation der Temperatur einer (b) Temperatursimulation unterschiedlich eingeengten Leiterbahn im eingeschwungestark eingeengter Leiterbahnen bei verschienen Zustand in ◦C.
+17u
+18u
+eingeengten Leiterbahn im eingeschwungestark eingeengter Leiterbahnen bei verschienen Zustand in ◦C.
 Anregung mit sinusdener Gleichstromanregung (eingeschwungeförmigem Signal mit einer Amplitude von ner Zustand bei 20 ◦C Umgebungstempera- 2 ARMS bei 30 ◦C Umgebungstemperatur tur).
 Abgebildet ist jeweils die Maximaltemperatur in der Defektregion.
 Abbildung 3.2:
@@ -1035,7 +1051,9 @@ In der linken Abbildung 3.8a werden verschieden tie-
 #$@FORMULA@$#:1
 11u
 12u
-(a) Amplitude der dritten Harmonischen (b) Amplitude der dritten Harmonischen über der Stromstärke (Restbreite c von unüber fortschreitender Defekttiefe.
+13u
+14u
+über der Stromstärke (Restbreite c von unüber fortschreitender Defekttiefe.
 Die Amten nach oben 345 µm, 143 µm, 51 µm).
 Konplitude der Messstromstärke beträgt von untinulierliche Kurven entsprechen dem analyten nach oben 0,47 A, 0,92 A, 1,32 A, 1,73 A. tischen Modell (Gleichung 1.20).
 Kontinulierliche Kurven entsprechen dem analytischen Modell (Gleichung 1.20).
@@ -1211,7 +1229,10 @@ Es 1 2
 #$@FORMULA@$#:0
 Dehnung 3 4
 #$@FORMULA@$#:2
-Zeit log t (a) Entstehung von Rissen in einer Lotver- (b) Temperaturabhängigkeit des Kriechens bindung durch Ermüdung nach [24] (1 Kornmetallischer Werkstoffe bei konstanter Spanwachstum, 2 Mikroporen, 3 Mikrorisse, 4 nung nach [9, 78] Makrorisse) Abbildung 4.4:
+Zeit log t
+4u
+5u
+bindung durch Ermüdung nach [24] (1 Kornmetallischer Werkstoffe bei konstanter Spanwachstum, 2 Mikroporen, 3 Mikrorisse, 4 nung nach [9, 78] Makrorisse) Abbildung 4.4:
 Einflussfaktoren und Wirkung der beschleunigten Alterung als Testbedingung zeigt sich, dass ab einer Temperatur von etwa dem 0, 4-fachen der Schmelztemperatur in Kelvin (homologe Temperatur TH= T Ts
 #$@FORMULA@$#:1
 auftritt und in drei Phasen unterteilt werden kann.
@@ -1306,7 +1327,10 @@ peak to peak, p2p) eingestellt.
 Verstärkt wird um den konstanten Faktor 2.
 15u
 16u
-Nummer der Harmonischen Nummer der Harmonischen (a) Gemessene Amplitude der Oberwel- (b) Gemessene Amplitude der Oberwellen len ohne Kerbfilter.
+Nummer der Harmonischen Nummer der Harmonischen
+19u
+20u
+len ohne Kerbfilter.
 Die mit dem Lock-inmit Kerbfilter in der Messkette.
 Die ge-Voltmeter gemessene, ungedämpfte Grunddämpfte Grundwelle hat eine Amplitude von welle hat eine Amplitude von 1,98 Vp2p.
 89,1 µVp2p.
@@ -1428,7 +1452,9 @@ Dadurch wird dem Modell entsprechend das Leiterverhalten nichtlinearer und die A
 Eine zusätzliche Verringerung des Querschnittes führt zu weite-
 8u
 9u
-(a) Amplitude der dritten Harmonischen (b) Amplitude der dritten Harmonischen über der Stromstärke (Restbreite c von unüber fortschreitender Defekttiefe.
+10u
+11u
+über der Stromstärke (Restbreite c von unüber fortschreitender Defekttiefe.
 Amplitude ten nach oben 345 µm, 143 µm, 51 µm).
 Konder Messstromstärke von unten nach oben tinulierliche Kurven entsprechen dem analy- 0,47 A, 0,92 A, 1,32 A, 1,73 A. Kontinuliertischen Modell.
 liche Kurven entsprechen dem analytischen Modell.
@@ -1676,7 +1702,9 @@ Sie muss jedoch der Schädigungsfrequenz entsprechen.
 Am Ausgang des Lock-in Voltmeters steht eine der Schädigung proportionale Gleichspannung zur Verfügung.
 Da die Messfrequenz und Schädigungsfrequenz nun identisch sind, ist die Amplitude des Messergebnisses um Größenordnungen höher, verglichen mit den Ergebnissen
 #$@FORMULA@$#:0
-(a) Modellhafter Defekt in einem (idealisier- (b) Elektrisches Ersatzschalbild der IDmten) Bonddraht - Momentaufnahme ohne Methode an einem Bonddraht.
+12u
+13u
+ten) Bonddraht - Momentaufnahme ohne Methode an einem Bonddraht.
 Ausbreitung.
 Abbildung 5.4:
 Voraussetzung für die Anwendung der IDm-Methode.
@@ -1704,7 +1732,9 @@ Damit beide Messungen vergleichbar sind, werden die Messwerte auf die jeweiligen
 Der Ausgangswiderstand beträgt 280 mΩ und das anfängliche IDm-Signal 0,47 µV.
 Die Ergebnisse der Messung zeigt Abbildung
 14u
-(a) Ergebnisse der IDm-Messung im Ver- (b) Heel-Defekt nach etwa 5400 mechanigleich zur ohmschen Widerstandsmessung schen Zyklen (hier exemplarisch gezeigt an normiert auf die Anfangswerte der jeweiligen einem Dickdraht) Einheit (Volt und Ohm).
+15u
+16u
+gleich zur ohmschen Widerstandsmessung schen Zyklen (hier exemplarisch gezeigt an normiert auf die Anfangswerte der jeweiligen einem Dickdraht) Einheit (Volt und Ohm).
 Abbildung 5.6:
 IDm-Messung an einem mechanisch gealterten Bonddraht Im Vergleich zur ohmschen Widerstandsmessung zeigt die IDm-Methode einen signifikanten Vorsprung.
 Ein gängiges Ausfallkriterium bei Zuverlässi-

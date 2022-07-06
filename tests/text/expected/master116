@@ -115,16 +115,15 @@ Im Bereich der Höchstgeschwindigkeit muss die elektrische Fahrleistung direkt d
 Durch mechanische und elektrische Verluste im Antriebsstrang (aus Ladegruppe und elektrischem Fahrmotor) muss die Ladegruppe mehr Leistung als die maximale Fahrleistung zur Verfügung stellen.
 Aus der Auslesung nach der Höchstgeschwindigkeit folgt für geringe Geschwindigkeiten eine erhöhte Teillast, die zu einem schlechteren Wirkungsgrad führt.
 [Hof11, S.
-23f.] Abb. 2.1.:
-Topologie Serieller Hybrid - 1 Elektrischer Fahrmotor, 2 Kraftstofftank, 3 Leistungselektronik, 4 Batterie, 5 Generator, 6 Verbrennungsmotor nach [Tsc12, S. 4].
-Parallele Hybridstruktur Der parallele Hybridantrieb ermöglicht eine direkte Kopplung zwischen Verbrennungsmotor und den angetriebenen Rädern.
+23f.]
+4u
+5u
+tor und den angetriebenen Rädern.
 Der Antrieb kann parallel durch den elektrischen Antrieb erfolgen.
 Das Fahrzeug kann elektrisch, konventionell oder gemischt betrieben werden.
 Die Antriebsleistung kann durch Drehzahladdition (Planetengetriebe), Momentenaddition (direkte Kopplung) oder Zugkraftaddition (Verbrennungsmotor und Elektromotor wirken auf verschiedene Wellen) erfolgen.
 Die Entkopplung der Antriebssysteme wird durch einen Freilauf oder eine Kupplung realisiert.
-Die Auslegung der Komponenten kann freier Abb. 2.2.:
-Topologie Paralleler Hybrid - 1 Batterie, 2 Kraftstofftank, 3 Getriebe, 4 Generator/Fahrmotor, 5 Leistungselektronik, 6 Kupplung, 7 Verbrennungsmotor nach [Tsc12, S. 5].
-gestaltet werden.
+Die Auslegung der Komponenten kann freier gestaltet werden.
 Die Höchstgeschwindigkeit wird durch den mechanischen Pfad realisiert.
 Der Teillastbereich erfolgt durch den elektrischen Fahrmotor.
 [Hof11, S. 28-31] Leistungsverzweigte Hybridstruktur Die leistungsverzweigte Hybridstruktur überträgt die Fahrleistung über einen mechanischen und einen elektrischen Pfad.
@@ -136,11 +135,9 @@ Der Generator ist mit dem Sonnenrad des Planetengetriebes gekoppelt.
 Über die Drehzahl des Generators wird die Übersetzung zwischen Verbrennungsmotor und Abtrieb kontinuierlich verändert.
 Der Generator ermöglicht es, den Verbrennungsmotor im Bereich des besten Wirkungsgrades zu betreiben.
 Durch die Leistungsübertragung im elektrischen Pfad entstehen zusätzliche Wandlungsverluste (siehe Abbildung 2.4).
-Die leistungsverzweigte Hybridstruktur verbin-Abb. 2.3.:
-Topologie leistungsverzweigter Hybridantrieb - 1 Batterie, 2 Kraftstofftank, 3 elektrischer Fahrmotor, 4 Leistungselektronik, 5 Planetengetriebe, 6 Generator, 7 Verbrennungsmotor nach [Tsc12, S. 6].
-det die Vorteile des optimalen Betriebs des Verbrennungsmotors und des elektrischen Fahrens im Teillastbereich.
-[Hof11, S. 31-33] Abb. 2.4.:
-Leistungsfluss Leistungsverzweigung mit Wandlerverlusten [Hof11, S.33]
+Die leistungsverzweigte Hybridstruktur verbin­
+14u
+15u
 
 
 :::: Betriebsstrategien für Hybridfahrzeuge ::::
@@ -195,15 +192,14 @@ Diese zeichnen sich durch geringere Kraftstoffkosten sowie reduzierte Lärm- und
 [Kac14] Railpower GG20B Greengoat Die Railpower GG20B Green Goat der Firma Railpower Technologies ist eine Hybridrangierlokomotive, die seit 2004 gebaut wird.
 Die Lokomotive verfügt über eine maximale Leistung von 1118 kW und ein maximales Traktionsmoment von 356 kN [Don04].
 Bisher wurden 55 Lokomotiven ausgeliefert [Kon13].
-Die Lokomotive verfügt über einen Abb. 2.5.:
-Hybridlokomotive Railpower GG20B Green Goat aus [Wik07]. 224 kW Sechs-Zylinder-Dieselmotor.
-Das Hybridsystem erzielt eine Kraftstoffeinsparung von 40 bis 60 %.
+Die Lokomotive verfügt über einen
+2u
+von 40 bis 60 %.
 [Don04] Alstom H3 Die Alstom H3 (siehe Abbildung 2.6) ist eine Modernisierung der diesel-hydraulischen Lokomotive der Baureihe V100.
 Der diesel-hydraulische 900 kW Antrieb wurde durch eine Kombination aus 240 kW Dieselmotor und 200 kW Generator ersetzt.
 Der erste Prototyp wurde 2006 produziert.
 [Mag14] [Dit13].
-Die Lokomotive verfügt über eine 6,5 t schwere Abb. 2.6.:
-Alstom H3 aus [Rö15] NiCd-Batterie mit einer Nennspannung von 600 V und einer Nennladung von 170 A h.
+Die Lokomotive verfügt über eine 6,5 t schwere NiCd-Batterie mit einer Nennspannung von 600 V und einer Nennladung von 170 A h.
 Dies entspricht einer Energie von 102 kWh.
 [Mag14] Die Leistungsfähigkeit der Lokomotive entspricht einer konventionellen Diesellokomotive mit einer Nennleistung von 600 kW.
 Die Lokomotive befindet sich seit 2012 im Dauereinsatz bei Volkswagen in Wolfsburg.
@@ -213,8 +209,9 @@ Dies entspricht einer Verminderung von 45 bis 50 % gegenüber der Baureihe V 100
 Durch den elektrischen Fahrbetrieb wird ein schadstofffreier Betrieb in den Verladehallen ermöglicht.
 [Dit13] Toshiba HD300 Die Rangierlokomotive HD300, ist eine hybride dieselelektrische Lokomotive, die seit 2010 bei der Japan Freight Railway Company im Einsatz ist.
 Die Lokomotive wird von Toshiba Corporation gefertigt.
-[Kac14] Abb. 2.7.:
-Hybride Lokomotive Toshiba HD300 aus [Wik13] Die Lokomotive verfügt über Lithium-Ionen-Batterien mit einer Speicherfähigkeit von 67,4 kWh [Kac14].
+[Kac14]
+11u
+67,4 kWh [Kac14].
 Durch den zweiten Energiespeicher konnte ein kleinerer Verbrennungsmotor mit einer Leistung von 242 kW [Kac14] verwendet werden.
 Weiterhin verfügt das System über rekuperatives Bremsen [Tom12].
 Die Antriebsleistung erfolgt elektrisch durch Permanentmagnet-Synchronmaschinen.
@@ -227,8 +224,6 @@ Die Stickoxid-Emissionen konnten im Vergleich zu herkömmlichen diesel-elektrisc
 In Abhängigkeit der Dieselmotorleistung werden verschiedene, äquivalente Traktionsleistungen erzielt.
 Die maximal übertragbare Zugkraft ist durch den Rad-Schiene-Kontakt begrenzt.
 Für die leichteren Lokomotiven folgt aus dem geringeren Traktionsgewicht eine geringere Maximalleistung.
-Tab. 2.1.:
-Übersicht Hybridlokomotiven [Kon13].
 
 
 :::: Bewertungsmethoden von Schienenfahrzeugen ::::
@@ -238,21 +233,16 @@ Zur Untersuchung und Bewertung von Schienenfahrzeugen existieren zwei verschiede
 Es wird zwischen statischen und dynamischen Tests unterschieden.
 Abb. 2.8.:
 Dynamischer Verlauf der Drehzahl Abb. 2.9.:
-Dynamischer Verlauf des Drehmonach [Sko11].
-ments nach [Sko11].
-Beim dynamischen Test wird die Last dynamisch nach einem vorgegebenen Muster variiert (siehe Abbildung 2.8 und 2.9).
+Dynamischer Verlauf des Drehmo-Beim dynamischen Test wird die Last dynamisch nach einem vorgegebenen Muster variiert (siehe Abbildung 2.8 und 2.9).
 Dabei werden die Emissionen und der Verbrauch während der gesamten Laufzeit gemessen.
 Die Schrittweite der zeitlichen Variation beträgt ca. eine Sekunde.
 [Sko11] Der statische Test ist durch stationäre Lastpunkte charakterisiert.
 Diese werden separat angefahren und vermessen (siehe Abbildung 2.10).
-Abb. 2.10.:
-Statischer Leistungstest nach [Sko11].
-Prüfzyklen von Schienenfahrzeugen Zur Bewertung von Dieselmotoren in Schienenfahrzeugen werden in Europa der ISO-8178-F-Zyklus und in den USA der EPA-Zyklus verwendet.
+3u
+Zur Bewertung von Dieselmotoren in Schienenfahrzeugen werden in Europa der ISO-8178-F-Zyklus und in den USA der EPA-Zyklus verwendet.
 Die Anforderungen werden nach Rangier-, Güter- und Reisezugverkehr unterschieden.
 Sämtliche Tests werden auf einem Motorenprüfstand mit Lastbremse durchgeführt.
 Prüfzyklus nach ISO 8178 Der Prüfzyklus ISO-8178 definiert die Messung und Auswertung von gasförmigen und partikelförmigen Abgasemissionen in Verbrennungsmotoren.
-Abb. 2.11.:
-Statischer Zyklus ISO-F nach [Sko11].
 Dies gilt für Motoren zum Antrieb von Fahrzeugen, die nicht für den Betrieb auf öffentlichen Straßen zugelassen sind.
 Zur Zulassung von Schienenfahrzeugen muss dieser Test bestanden werden.
 Der Abschnitt ISO-8178-F beschäftigt sich speziell mit Dieselmotoren für Schienenfahrzeuge.
@@ -263,13 +253,8 @@ Nach einer Stabilisierungsphase beginnen die Messungen für die Emissionswerte.
 [Nit11] Prüfzyklus nach EPA Für Lokomotiven in den USA gilt der EPA(United States Environmental Protection Agency)-Referenzzyklus.
 In Tabelle 2.2 ist die Häufigkeitsverteilung des Lastzyklus für Rangierlokomotiven dargestellt.
 Dabei entsprechen die Stufen dem Fahrstufenregler der Lokomotive.
-Tab. 2.2.:
-Häufigkeiten der Laststufe im EPA-Zyklus [EPA98].
 Grundlage für den EPA-Zyklus bilden Messungen (siehe Abbildung 2.12) der EPA, die im realen Betrieb aufgenommen wurden.
-Abb. 2.12.:
-Gemessene Daten der EPA für Diesellokomotiven im Rangierdienst.
-Die Daten umfassen 333 Betriebsstunden.
-[EPA98] Anforderungen an Referenzzyklen für Hybridfahrzeuge Die Verläufe der Lastprofile von Rangierlokomotiven sind zufällig und weisen eine hohe Anzahl an Lastwechseln auf.
+Anforderungen an Referenzzyklen für Hybridfahrzeuge Die Verläufe der Lastprofile von Rangierlokomotiven sind zufällig und weisen eine hohe Anzahl an Lastwechseln auf.
 Dadurch erreicht das System keinen konstanten Betriebspunkt.
 Somit kann der Verbrennungsmotor nicht im optimalen spezifischen Betriebspunkt betrieben werden (siehe Abbildung 2.12).
 Die Nutzung der vollen diesel-hydraulischen Leistung erfolgt in ca. 10 bis 20 % der Betriebszeit.
@@ -293,9 +278,7 @@ Die Zugkraft bei Schienenfahrzeugen wird durch Dampfmaschinen, Diesel- oder Elek
 Die Übertragung erfolgt durch Reibkräfte zwischen Rad und Schiene.
 Diese sind durch den Haftreibungskoeffzieint, die Fahrzeuggeschwindigkeit und das Gewicht, welches auf die angetriebenen Räder wirkt, begrenzt.
 In Abhängigkeit der Witterungsverhältnisse beträgt der Haftreibungskoeffzieint 𝜇𝑟𝑠 zwischen 0,1 bis 0,33 [Min13][S. 4].
-Das maximale Traktionsmoment 𝑇𝑇,𝑚𝑎𝑥 berechnet sich nach dem Modell Abb. 2.13.:
-Wirkung der Kräfte und Momente am angetriebenen Radsatz.
-in Abbildung 2.13.
+Das maximale Traktionsmoment 𝑇𝑇,𝑚𝑎𝑥 berechnet sich nach dem Modell in Abbildung 2.13.
 Die Gewichtskraft der Lokomotive wirkt mit:
 #$@FORMULA@$#:0
 mit der Gravitationskonstante 𝑔 = 9,81 m/s2 und dem Traktionsgewicht 𝑚𝑣 = 70 t.
@@ -307,9 +290,6 @@ Der Zusammenhang zwischen Traktionsmoment 𝑇𝑇 und Zugkraft 𝐹𝑍 am Rad 
 Um das Durchdrehen der Räder zu verhindern gilt:
 #$@FORMULA@$#:3
 Das maximale Traktionsmoment 𝑇𝑇,𝑚𝑎𝑥 ist in Abhängigkeit des Rad-Schiene-Kontakt ist in Abbildung 2.14 abgebildet.
-Abb. 2.14.:
-Maximales Traktionsmoment am Rad-Schiene-Kontakt.
-Begrenzt durch den Haftreibungskoeffzieint 𝜇𝑟𝑠 = 0,33, das Lokomotivgewicht 𝑚𝑣 = 70 t und die maximale Verbrennnungsmotorleistung 𝑃𝐼𝐶𝐸,𝑚𝑎𝑥 = 1000 kW.
 
 
 :::: Fahrwiderstände ::::
@@ -406,8 +386,6 @@ Es folgt die benötigte Leistung:
 0 0 In Abbildung 2.15 ist die benötigte Fahrleistung für eine Lokomotive mit einer Zuladung von 100 t dargestellt.
 Es wird deutlich, dass der größte Teil der Leistung zur Beschleunigung und Verzögerung des Fahrzeugs aufgewendet wird.
 Der Anteil der Fahrwiderstandsleistung ist gering.
-Abb. 2.15.:
-Benötigte Traktionsleistung in Abhängigkeit der Fahrgeschwindigkeit mit einer Beladung von 100 t.
 
 
 :::: Zugeinheit ::::
@@ -417,9 +395,8 @@ Das Modell der Längsdynamik ermöglicht es aus den vorgegebenen Geschwindigkeit
 Dies wird bei der Systembetrachtung des Antriebsstrangs benötigt.
 Das Zugmodell setzt sich aus mehreren Einzelmassen und Massenträgheiten zusammen (siehe Abbildung 2.16).
 Diese sollen im Folgenden zusammengefasst werden.
-Sämtliche Massen werden in der Abb. 2.16.:
-Komplexes Zugmodell bestehend aus einzelnen Massen und Massenträgheiten.
-Ersatzträgheit:
+Sämtliche Massen werden in der
+0u
 #$@FORMULA@$#:0
 zusammengefasst.
 Die Fahrwiderstände sind im Ersatzmoment 𝑇𝑅𝑒𝑠 zusammengefasst.
@@ -428,8 +405,6 @@ Aus dem Drallsatz folgt für das Ersatzmodell in Abbildung 2.17:
 #$@FORMULA@$#:1
 Das benötigte Traktionsmoment in Abhängigkeit des Streckenabschnitts ergibt sich zu:
 #$@FORMULA@$#:2
-Abb. 2.17.:
-Ersatzmodell des Rangzierzugs, reduziert auf eine Ersatzmasse.
 
 
 :::: Spezifischer Kraftstoffverbrauch ::::
@@ -438,8 +413,8 @@ Ersatzmodell des Rangzierzugs, reduziert auf eine Ersatzmasse.
 Die benötigte Traktionsleistung einer konventionellen Diesel-Lokomotive wird durch Verbrennung von Dieselkraftstoffb ereit gestellt.
 Die im Kraftstoffgespeicherte chemische Energie ergibt sich zu:
 #$@FORMULA@$#:0
-mit der Kraftstoffmasse 𝑚𝐾 und dem unteren Heizwert des Kraftstoffs 𝐻𝑢 in kJ/kg.
-Für die Motorleistung ergibt sich:
+9u
+die Motorleistung ergibt sich:
 #$@FORMULA@$#:1
 mit der Traktionsenergie 𝐸𝑇 und der Traktionszeit 𝑡𝑇 .
 Für die Fahrleistung gilt:
@@ -484,24 +459,25 @@ Es gilt:
 𝑇ein𝑧ein + 𝑇aus𝑧aus = 0, (2.37)
 #$@FORMULA@$#:0
 𝑇ein𝑧ein = −𝑇aus𝑧aus.
-(2.38) Eine einstufige Stirnradübersetzung sollte konstruktionsbedingt maximal 𝑖𝑚𝑎𝑥 = 12
+(2.38)
 
 
 :::: Umlaufrädergetriebe ::::
 
 
-Abb. 2.18.:
-Prinzipskizze Funktion Stirnradgetriebe.
-2.3.3.
-Umlaufrädergetriebe Umlaufrädergetriebe sind Getriebe, deren An- und Abtriebswellen koaxial angeordnet sind.
+betragen.
+Der maximale Wirkungsgrad beträgt lastbedingt zwischen 90 bis 95 %.
+[Gev13] 2.3.3.
+Umlaufrädergetriebe
+9u
 Dabei ermöglichen Umlaufrädergetriebe ein geringes Bauvolumen und die Übertragung hoher Drehmomente.
 Die Getriebe werden als Stufenautomatikgetriebe, Reversiereinrichtungen, Differentiale und zur Leistungsverzweigung eingesetzt.
 [Sch09] Häufig werden Umlaufrädergetriebe als Planetenrädergetriebe oder Planetengetriebe bezeichnet.
 In Abbildung 2.19 ist eine einfache Planetengetriebestufe dargestellt.
 Aufbau und Kinematik einer einfachen Planetenradstufe Eine einfache Planetenstufe besteht aus einem zentralen Sonnenrad, einem innen verzahnten Hohlrad, einem Planetenträger und den Planetenrädern.
-Die Planetenräder befinden Abb. 2.19.:
-a) Einfache Planetengetriebestufe mit Sonnenrad S, Hohlrad H, Planetenträger T und den Planetenrädern P - b) Getriebeersatzschaubild [Fis12, S. 109] sich mit dem Hohl- und Sonnenrad im Eingriffund sind am Planetenträger befestigt.
-Das Hohl- und Sonnenrad und der Planetenträger sind als Welle aus dem Gehäuse geführt.
+Die Planetenräder befinden
+0u
+1u
 In Abbildung 2.19 ist eine Planetenstufe aus Sonnenrad, Hohlrad, Planetenträger und drei Planetenrädern abgebildet.
 Die Kinematik einer einfachen Planetenstufe wird durch das Verhältnis der Zähnezahlen von Sonnenrad (𝑧𝐻 ) und Hohlrad (𝑧𝑆) bestimmt.
 [Fis12, S. 109ff] Das Verhältnis wird als Standgetriebeübersetzung:
@@ -541,8 +517,7 @@ Zugeführte Leistungen besitzen ein positives Vorzeichen, abgeführte Leistungen
 Abbildung 2.20 zeigt das Prinzip der Leistungsverteilung am einfachen Planetengetriebe.
 Die Leistung wird über den Planetenträger zugeführt und über das Hohlrad und das Sonnenrad abgeführt.
 Das Summierprinzip eignet sich zur Kombination der verschiedenen Leistungserzeugungsprinzipen, die im Hybridfahrzeug verwendet werden.
-[Fri15] Abb. 2.20.:
-Prinzip der Leistungsverteilung am einfachen Planetengetriebe [Fis12, S. 117]
+[Fri15]
 
 
 :::: Analyse der Fahrzeuganforderungen ::::
@@ -564,9 +539,7 @@ Die Teilstrecken sind in Form von Geschwindigkeits- und Beladungsprofilen vorgeg
 Zusätzlich ist ein Referenzzyklus als Abfolge der Teilstrecken in [IAV15] vorgegeben.
 Die Grenzwerte für die Streckenanforderungen sind in Tabelle 3.1 dargestellt.
 Eine detaillierte Darstellung folgt in Abschnitt 3.1.3.
-Die Gesamtanforderung ergibt sich durch Auswertung Tab. 3.1.:
-Übersicht der Grenzwerte der Streckenanforderungen.
-der Teilstrecken, die in Abschnitt A. 3
+Die Gesamtanforderung ergibt sich durch Auswertung der Teilstrecken, die in Abschnitt A. 3
 abgebildet sind.
 
 
@@ -577,12 +550,8 @@ Der Referenzzyklus setzt sich aus den in Tabelle 3.2 angegebenen Teilstrecken zu
 Das resultierende Geschwindigkeitsprofil ist in Abbildung 3.1 dargestellt.
 Die wechselnde Beladung ist in Abbildung A. 5
 dargestellt.
-Aus dem Fahrprofil, dem Beladungsprofil Tab. 3.2.:
-Abfolge des Referenzzyklus nach [IAV15].
-und dem Längsdynamikmodell berechnet sich die benötigte Traktionsleistung, die in Abbildung A. 6
+Aus dem Fahrprofil, dem Beladungsprofil und dem Längsdynamikmodell berechnet sich die benötigte Traktionsleistung, die in Abbildung A. 6
 dargestellt ist.
-Abb. 3.1.:
-Verlauf der Fahrzeuggeschwindigkeit im Referenzzyklus.
 
 
 :::: Häufigkeitsanalyse ::::
@@ -591,16 +560,12 @@ Verlauf der Fahrzeuggeschwindigkeit im Referenzzyklus.
 Zum optimalen Abfahren der Fahrzyklen durch das Hybridfahrzeug werden Traktionsleistungen in Abhängigkeit der Radsatzgeschwindigkeit benötigt.
 Diese sind in Abbildung 3.2 bis 3.5 dargestellt.
 Bei der Auslegung des Getriebes sind diese zu beachten.
-Abbildung 3.2 Abb. 3.2.:
-Strecke Behala 1400 - Logarith­ Abb. 3.3.:
-Strecke Behala 1800 - Logarithmische Häufigkeitsverteilung der Traktionsleis­ mische Häufigkeitsverteilung der Traktionsleistung.
-tung.
-und 3.3 zeigen Strecken, die geringe Fahrgeschwindigkeiten aufweisen.
-Durch die Beladung Abb. 3.4.:
-Strecke Chemiepark - Logarith­ Abb. 3.5.:
-Strecke Referenzzyklus - Logamische Häufigkeitsverteilung der Traktionsleis­ rithmische Häufigkeitsverteilung der Traktionstung.
-leistung.
-von 1400 bzw. 1800 t muss die Volllast von 1000 kW bei Geschwindigkeiten von 20 km/h zur Verfügung stehen.
+Abbildung 3.2
+4u
+5u
+6u
+7u
+mische Häufigkeitsverteilung der Traktionsleis­ rithmische Häufigkeitsverteilung der Traktions­ von 1400 bzw. 1800 t muss die Volllast von 1000 kW bei Geschwindigkeiten von 20 km/h zur Verfügung stehen.
 Abbildung A. 1 und A. 2 zeigen eine Strecke mit einer Beladung von 0 bzw. 560 t.
 Die Geschwindigkeiten sind erhöht.
 Die Volllast wird ab 35 km/h benötigt.
@@ -615,26 +580,17 @@ In Abbildung 3.5 ist die Häufigkeitsanalyse für den Referenzzyklus dargestellt
 
 Die Mindestanforderungen an das Traktionssystem werden nachfolgend aufgezeigt.
 Aus dem Fahrprofil und der Leistungsanforderung wird das Traktionsmoment, die Traktionsleistung und die Radsatzbeschleunigung in Abhängigkeit der Beladung und der Radsatzgeschwindigkeit ermittelt.
-Zur Vereinfachung werden die Daten mit einer Einhül-Abb. 3.6.:
-Verfahren zum Ermitteln der Anforderungen aus einem gegebenen Streckenabschnitt.
-Der vorgegebene Streckenabschnitt wird geladen und analysiert.
-Die ermittelten Daten werden durch den Filter über eine Einhüllende geglättet.
-Als Ergebnis stehen Moment, Leistung und Winkelbeschleunigung in Abhängigkeit der Lokomotivgeschwindigkeit und Beladung.
-lenden geglättet.
-Das Vorgehen ist in Abbildung 3.6 dargestellt.
-Für die Anforderungen Abb. 3.7.:
-Gefordertes Traktionsmoment, An­ Abb. 3.8.:
-Gefordertes Traktionsmoment, Anhängelast 0 Tonnen hängelast 1400 Tonnen (Leistung, Moment, Beschleunigung) werden sowohl das Maximum und das Minimum bestimmt.
+Zur Vereinfachung werden die Daten mit einer Einhül­
+11u
+12u
+(Leistung, Moment, Beschleunigung) werden sowohl das Maximum und das Minimum bestimmt.
 Dabei findet diese Betrachtung in Abhängigkeit des Beladungszustands des Fahrzeugs statt.
 Dies ist nötig, da die Komponenten deutlich von der Beladung des Fahrzeugs abhängen.
 In Abbildung 3.7 bis 3.10 und A. 4 ist diese Abhängigkeit für die Strecke Behala 1400 dargestellt.
-Abb. 3.9.:
-Geforderte Traktionsleistung, An­ Abb. 3.10.:
-Geforderte Traktionsleistung, Anhängelast 0 Tonnen.
-hängelast 1400 Tonnen.
-Eine höhere Anhängelast erfordert höhere Traktionsmomente und Traktionsleistungen.
-Die Radsatzbeschleunigung ist für höhere Beladungen reduziert.
-Die abgeleiteten Anforderungen werden zur Konfiguration des Getriebes benutzt.
+5u
+6u
+7u
+derungen werden zur Konfiguration des Getriebes benutzt.
 
 
 :::: Ergebnis der Anforderungsanalyse ::::
@@ -659,8 +615,7 @@ Im Schleppbetrieb sind bis zu 100 km/h möglich.
 Die Lokomotive ermöglicht eine minimale Dauerfahrgeschwindigkeit von 3 km/h.
 Diese Kennwerte sollen auch nach der Modernisierungsmaße erhalten bleiben.
 Mit der Modernisierung sollen 10 bis 15 % Dieselkraftstoffeingespart werden.
-[Pfe14] Abb. 3.11.:
-Zur Modernisierung vorgegebene Referenzlokomotive aus [Mor09].
+[Pfe14]
 
 
 :::: Analyse Systemstruktur des Getriebes ::::
@@ -687,8 +642,6 @@ Zur konventionellen Bremsung wirkt die mechanische Bremse (9) direkt auf die Mit
 Die Stirnradstufe (14) dient der Vorwärtsfahrt.
 Durch Umschalten auf Stirnradstufe (15) ist eine Fahrtrichtungsumkehr möglich.
 Das Achsgetriebe ist ebenfalls über eine Kardanwelle (17) fest mit dem Getriebe verbunden.
-Abb. 3.12.:
-Getriebestruktur des Antriebsstrangs nach [Pfe14].
 
 
 :::: Getriebeausgang ::::
@@ -708,8 +661,6 @@ Aus der maximalen Radsatzdrehzahl und der Radsatzgetriebeübersetzung ergibt sic
 Zusätzlich ist eine Sicherheit von 10 % zu berücksichtigen.
 Damit ergibt sich die maximale Drehzahl am eCVT-Getriebe zu 2434/min.
 Das maximale Moment am Getriebe ergibt sich aus der Radsatzgetriebeübersetzung und dem maximalen Traktionsmoment am Rad-Schiene-Kontakt aus Abschnitt 2.2.1 und ist in Abbildung 3.13 dargestellt.
-Abb. 3.13.:
-Maximales Drehmoment am Getriebeausgang.
 
 
 :::: Generator ::::
@@ -718,21 +669,18 @@ Maximales Drehmoment am Getriebeausgang.
 Der Generator besitzt eine maximale Leistung von 600 kW.
 Das maximale Drehmoment beträgt 4000 Nm.
 Die maximale Leistung kann im Drehzahlbereich zwischen 1500 bis 5500 1/min abgerufen werden.
-Die maximale Drehzahl im lastfreien Betrieb beträgt 6000/min.
-Das ansteuerbare Maximalmoment ist in Abbildung 3.14 abgebildet.
-[Pfe14] Abb. 3.14.:
-Maximal ansteuerbares Moment des Generators in Abhängigkeit der Drehzahl.
-Die Hyperbel kennzeichnet den Bereich der maximalen Leistung von 600 kW.
+Die maximale Drehzahl im lastfreien Betrieb
+14u
+[Pfe14]
 
 
 :::: Fahrmotor ::::
 
 
-Das Getriebe verfügt über zwei elektrische Fahrmaschinen, die einen rein elektrischen Fahrbetrieb ermöglichen.
+1u
+Fahrbetrieb ermöglichen.
 Eine Fahrmaschine verfügt über eine Leistung von 350 kW.
 Das maximale mechanische Moment beträgt 5500 Nm.
-Abb. 3.15.:
-Maximalmoment des Fahrmotors in Abhängigkeit der Drehzahl.
 
 
 :::: Verbrennungsmotor ::::
@@ -740,8 +688,6 @@ Maximalmoment des Fahrmotors in Abhängigkeit der Drehzahl.
 
 Der Verbrennungsmotor verfügt über eine Nennleistung von 1000 kW.
 Das Drehmoment kann im Drehzahlbereich von 600 bis 1800 1/min nach dem Kennfeld in Abbildung 3.16 abgerufen werden.
-Abb. 3.16.:
-Maximale Leistung und Drehmoment des Verbrennungsmotors nach [IAV15].
 
 
 :::: Traktionsbatterie ::::
@@ -775,17 +721,11 @@ Weiterhin werden die Ersatzmodelle und Kennfelder der Antriebskomponenten betrac
 Das Ersatzmodell der Getriebestruktur ist in Abbildung 4.1 und 4.2 dargestellt.
 Die Nummerierung entspricht der Nummer der Welle bzw. des Zahnrads.
 Die verwendeten Momentenbezeichnungen sind in Abbildung 4.3 dargestellt.
-Abb. 4.1.:
-Nummerierung der Zahnräder.
-Abb. 4.2.:
-Nummerierung der Wellen.
 Das physikalische Modell des Getriebes wird durch die kinematischen Gleichungen 4.1 bis 4.7 und die kinetischen Gleichungen 4.8 bis 4.38 vollständig beschrieben.
 Für die weitere fahrdynamische Betrachtung wird das Traktionsmoment am Radsatz 𝑇1716 betrachtet.
 Dies entspricht dem gesamten Traktionsmoment als Summe aus Verbrennungsmotormoment 𝑇𝐼𝐶𝐸, Stützmoment am Generator 𝑇𝐺𝐸𝑁 , den zwei Momenten der elektrischen Fahrmomenten 𝑇𝐸𝑀 1,2 und dem Bremsmoment 𝑇𝐵𝑅.
 Dem Traktionsmoment wirkt das Ersatzmoment der Fahrwiderstände 𝑇𝑅𝐸𝑆 entgegen.
 Für die Betrachtung des Planetengetriebes ist das Moment am Steg 𝑇𝐶, das Moment am Sonnenrad 𝑇𝑆 und das Moment am Hohlrad 𝑇𝑅 zu betrachten.
-Abb. 4.3.:
-Innere und äußere Momente im Getriebemodell.
 
 
 :::: Kinematische Gleichungen ::::
@@ -929,9 +869,7 @@ Der Zusammenhang zwischen mechanischer Leistung und elektrisch benötigter Leist
 𝑃𝑀 𝑒𝑐ℎ,𝑚𝑜𝑡 = 𝜂𝑚𝑜𝑡(𝑛𝐺𝑒𝑛,𝑇𝐺𝑒𝑛) · 𝑃𝐸𝑙𝑒𝑘,𝑚𝑜𝑡, (4.39) die generatorische Leistung beträgt:
 #$@FORMULA@$#:0
 𝑃𝐸𝑙𝑒𝑘,𝑔𝑒𝑛 = 𝑃𝑀 𝑒𝑐ℎ · 𝜂𝑚𝑜𝑡(𝑛𝑀 𝑜𝑡,𝑇𝑀 𝑜𝑡)−1.
-(4.40) Abb. 4.5.:
-Wirkungsgradkennfeld der elektrischen Maschinen in Abhängigkeit der Drehzahl und des Drehmoments.
-Daten aus [IAV15].
+(4.40)
 
 
 :::: Batterie ::::
@@ -946,16 +884,14 @@ Der SOC kann als Quotient der in der Batterie gespeicherten Ladung 𝑄𝑖𝑠�
 Der nutzbare SOC-Bereich wird mit 20 bis 80 % angenommen (siehe Abbildung 4.6).
 Die benötigte Arbeit zur Veränderung des SOC um ΔSOC = 1 beträgt:
 #$@FORMULA@$#:1
-Abb. 4.6.:
-Ersatzmodell der Batterie mit Batteriekontrolleinheit (BCU).
-Die BCU dient der Überwachung der Batterie und der Begrenzung der Leistungsströme.
 
 
 :::: Wirkungsgradbetrachtung des Leistungsflusses ::::
 
 
-Zum Systemverständnis und zur Einordnung der Potentiale für die in Abschnitt 2.1.2 betrachteten Betriebsstrategien, werden die theoretisch maximalen Wirkungsgrade der Leistungsflüsse bestimmt.
-Abhängig von der Position der Komponenten im Getriebe ergeben sich verschiedene, auf das Achsgetriebe bezogene Wirkungsgrade.
+Zum Systemverständnis und zur Einordnung der Potentiale für die in Abschnitt 2.1.2 betrachteten Betriebsstrategien, werden die theoretisch maximalen Wirkungsgrade der
+12u
+13u
 
 
 :::: Mechanisches Fahren ::::
@@ -965,14 +901,13 @@ Beim rein mechanischen Fahren wird die Leistung vom Verbrennungsmotor erzeugt.
 Die Leistung fließt durch das Getriebe über eine Kardanwelle, eine Stirnradstufe, das Planetengetriebe, über zwei Stirnradstufen und eine Kardanwelle schließlich ins Achsgetriebe.
 Jede Stufe beinhaltet individuelle Verluste.
 Tabelle 4.1 enthält die verwendeten Wirkungsgradannahmen aus der Literatur.
-Tab. 4.1.:
-Theoretischer Wirkungsgrad der Getriebestufen [Wit13].
 Für die rein mechanische Leistungsübertrag ergibt sich ein Getriebewirkungsgrad 𝜂𝐺𝑒𝑡𝑟𝑖𝑒𝑏𝑒 von:
 𝜂𝐺𝑒𝑡𝑟𝑖𝑒𝑏𝑒 = 𝜂𝐾𝑎𝑟𝑑𝑎𝑛𝜂𝑆𝑡𝑖𝑟𝑛𝑟𝑎𝑑𝜂𝑃 𝑙𝑎𝑛𝑒𝑡𝜂𝑆𝑡𝑖𝑟𝑛𝑟𝑎𝑑𝜂𝑆𝑡𝑖𝑟𝑛𝑟𝑎𝑑𝜂𝐾𝑎𝑟𝑑𝑎𝑛𝜂𝐴𝑐ℎ𝑠 (4.43)
 #$@FORMULA@$#:0
 Der Gesamtwirkungsgrad am Achsgetriebe ergibt sich aus der Kombination des Wirkungsgrades des Verbrennungsmotors und dem Getriebe.
-Der maximale Wirkungsgrad eines Dieselmotors beträgt 𝜂𝐼𝐶𝐸 = 0.45 [Bas14, S.20] .
-Der maximale mechanische Wirkungsgrad 𝜂𝐼𝐶𝐸,𝑚𝑒𝑐ℎ ergibt:
+Der maximale Wirkungsgrad
+5u
+Wirkungsgrad 𝜂𝐼𝐶𝐸,𝑚𝑒𝑐ℎ ergibt:
 #$@FORMULA@$#:1
 #$@FORMULA@$#:2
 4.3.2.
@@ -984,8 +919,6 @@ Elektrisches Fahren
 
 bezogen auf das Achsgetriebe.
 Für die Einzelkomponenten gelten die Annahmen aus Tabelle 4.1 und 4.2.
-Tab. 4.2.:
-Wirkungsgrad der elektrischen Komponenten [Pfe14], [IAV15].
 Generator Der Wirkungsgrad 𝜂𝐼𝑐𝑒𝐺𝑒𝑛,𝑚𝑒𝑐ℎ des mechanischen Getriebes zwischen Verbrennungsmotor und Generator beträgt:
 #$@FORMULA@$#:0
 #$@FORMULA@$#:1
@@ -1008,19 +941,13 @@ Elektrische Energie aus der Batterie kann mit einem Wirkungsgrad von 𝜂𝐸�
 
 
 Die Zahnradkonfiguration wird manuell nach den Vorgaben aus den Abschnitten 3.1.3, 3.2, 3.3 mit dem Verfahren nach Abbildung 4.7 festgelegt.
-Abb. 4.7.:
-Ablauf der manuellen Getriebesynthese zur Erzeugung einer Zähnezahlkombination.
-Das Ergebnis der Konfiguration ist in Tabelle 4.3 dargestellt.
-Eine Optimierung der Zähnezahlen wurde nicht durchgeführt.
+3u
+Zähnezahlen wurde nicht durchgeführt.
 Die Zähnezahlen mit dem Standardwert 11 bzw. 9 werden nicht weiter betrachtet.
-Tab. 4.3.:
-Manuell erzeugte Getriebekonfiguration aus der Anforderungsanalyse.
 Die Konfiguration sichert die Fahrbarkeit des Systems auf der gegebenen Referenzstrecke.
 In Abbildung 4.8 ist die benötigte Traktionsleistung, die mögliche Traktionsleistung und die maximale Verbrennungsmotorleistung in Abhängigkeit der Fahrzeuggeschwindigkeit abgebildet.
 Die Leistungsanforderung der Referenzstrecke wird für sämtliche Fahrzeuggeschwindigkeiten garantiert.
 Geschwindigkeiten über 50 km/h sind im Referenzprofil nicht enthalten und werden daher nicht betrachtet.
-Abb. 4.8.:
-Maximale Leistungsabgabe der Getriebekonfiguration mit den gegeben Komponenten in Abhängigkeit der Fahrzeuggeschwindigkeit
 
 
 :::: Entwicklung der Betriebsstrategie ::::
@@ -1043,8 +970,7 @@ Nach dem Prinzip der optimalen Substruktur besteht ein optimaler Weg stets aus o
 Der optimale Weg aus k Teilwegen entspricht dem minimalen Erwartungswert der Summe der direkten Übergangskosten der einzelnen Teilwege.
 Die Minimierung der Kosten erfolgt durch Backward-Dynamic-Programming.
 Dabei wird durch Rückwärtsrechnung über sämtliche zur Verfügung stehende Aktionen optimiert.
-[Pap15] Abb. 5.1.:
-Mehrstufige Entscheidung nach [Rie11]
+[Pap15]
 
 
 :::: Systembeschreibung ::::
@@ -1101,11 +1027,6 @@ mit der Nebenbedingung für den Zustandsübergang:
 
 In Abbildung 5.2 ist das Verfahren der dynamischen Programmierung skizziert.
 Im Beispiel wird eine optimale Zustandsfolge mit minimalen Kosten zwischen dem Startzustand 𝑠0 und dem Zielzustand 𝑠𝑁 =6 bestimmt.
-Abb. 5.2.:
-Beispiel dynamische Programmierung.
-Die Knoten entsprechen den diskreten Systemzuständen.
-Die Kosten für einen Zustandsübergang sind auszugsweise an den Kanten des Graphen dargestellt.
-Die Zahl im Knoten entspricht den Kosten bis zum Ziel, die in der Rückwärtsrechnung ermittelt werden.
 Zuerst werden die Teilprobleme optimal gelöst.
 Dazu werden beginnend mit dem letzten Zustand 𝑠𝑁 die optimalen Zustandsübergänge zwischen 𝑠𝑁 und 𝑠𝑁 −1 bestimmt.
 Die Kosten bis zum Ziel (𝑐(𝑠𝑁 −1,𝑢𝑁 −1) + 𝑐(𝑠𝑁 )) und der optimale Nachfolger i mit min {𝑐(𝑠𝑁 −1,𝑢𝑁 −1,𝑖)} ∀𝑖 ∈ 𝑈 werden im Knoten 𝑠𝑁 −1 gespeichert.
@@ -1128,10 +1049,9 @@ Dazu wird das eCVT-Modell in Matlab umgesetzt (siehe Abschnitt A.5.2).
 Die Referenzlösung dient als Datengrundlage für die Erzeugung einer kennfeldbasierten Betriebsstrategie.
 Die Betriebsstrategie regelt die Verbrennungsmotorleistung in Abhängig des SOC und der Leistungsanforderung des Fahrers.
 Das gesamte Verfahren ist in Abbildung 5.3 dargestellt.
-Abb. 5.3.:
-Vorgehen zum Erzeugen des Betriebsstrategiekennfeldes für die Referenzstrecke.
-Die Berechnung des theoretischen Optimums des Fahrzeugverbrauchs mit Hilfe der dynamischen Programmierung, gliedert sich in zwei Teilschritte (siehe Abbildung 5.3).
-Zuerst erfolgt die Vorbereitungsphase in der sich wiederholende Getriebezustände vorberechnet und zwischengespeichert werden.
+Die Berechnung des theoretischen Optimums des Fahrzeugverbrauchs mit Hilfe der dyna­
+21u
+erfolgt die Vorbereitungsphase in der sich wiederholende Getriebezustände vorberechnet und zwischengespeichert werden.
 Die Vorbereitungsphase beginnt mit der Analyse des Streckenprofils (siehe Abschnitt 5.2.1) zur Ermittlung der Fahrzustände des Fahrzeugs.
 Nach der Analyse erfolgt die Erzeugung (siehe Abschnitt 5.2.2) der diskreten Aktionen des Getriebes.
 Nachdem die möglichen Aktionen bestimmt sind, beginnt die Berechnung der Optimallösung durch die dynamische Programmierung.
@@ -1146,19 +1066,16 @@ Aus diesen Tupeln werden die möglichen Aktionen (siehe Abschnitt 5.2.2) erzeugt
 Die Radsatzbeschleunigung 𝜔˙𝑊 und das Traktionsmoment 𝑇𝑇 müssen durch die Komponenten des Antriebsstrang erzeugt werden.
 Dies erfolgt durch den Verbrennungsmotor, die elektrischen Fahrmaschinen, den Generator und die mechanische Bremse.
 Aus der kontinuierliche Systembeschreibung durch die Differentialgleichungen sind unendlich viele Kombinationen der Antriebskomponenten zur Erzeugung des Traktionsmoments am Radsatz möglich.
-Abb. 5.4.:
-Ermittelung der Fahrzeuganforderungsspezifikation aus den gegebenen Streckenfahrprofilen.
 
 
 :::: Wiederholende Aktionsmöglichkeiten erzeugen ::::
 
 
-Die Leistungsanforderung am Radsatz wird zwischen dem Verbrennungsmotor, dem Generator, den zwei Fahrmotoren und der konventionellen Bremse aufgeteilt.
+13u
+rator, den zwei Fahrmotoren und der konventionellen Bremse aufgeteilt.
 Der Wirkungsgrad dieser Komponenten ist abhängig von Drehzahl und Leistungsabgabe.
 Diese Kombinationen sind aufwendig zu berechnen und werden häufig in gleicher Form benötigt.
-Zur Abb. 5.5.:
-Aktionsraum aus der Diskretisierung der Getriebezustände über ein Gitter erzeugen.
-Reduktion der Rechenzeit werden diese Aktionen vor der dynamischen Programmierung berechnet und in einer Lookup-Table zwischengespeichert und können ohne Rechenzeitbedarf ausgelesen werden.
+Zur Reduktion der Rechenzeit werden diese Aktionen vor der dynamischen Programmierung berechnet und in einer Lookup-Table zwischengespeichert und können ohne Rechenzeitbedarf ausgelesen werden.
 Da die Aktionen kontinuierlich sind und es dementsprechend unendlich viele Möglichkeiten gibt, werden die Aktionen über ein Gitter diskretisiert.
 Ein Zustand s wird über die Beschleunigungsanforderung am Rad, das benötigte Traktionsmoment und die Gesamtfahrzeugmasse identifiziert.
 Für jeden Zustand s sind Listen mit möglichen Aktionen (𝑇𝐼𝐶𝐸,𝑖, 𝑇𝐺𝐸𝑁,𝑖, 𝑇𝐵𝑅,𝑖, 𝑇𝐸𝑀,𝑖, 𝜔˙𝐼𝐶𝐸,𝑖 , 𝜔˙𝐺𝐸𝑁,𝑖) gespeichert.
@@ -1178,8 +1095,6 @@ Es entsteht ein diskreter Gesamtaktionsraum für das Fahrzeug.
 Dieser wird in der dynamischen Programmierung bei der Aktionsauswahl verwendet.
 Der Gesamtaktionsraum wird nach dem Erzeugen gespeichert.
 Ein Beispiel für einen Gesamtaktionsraum ist in Abbildung 5.6 dargestellt.
-Abb. 5.6.:
-Anzahl der Aktionen u(s) in Abhängigkeit des Zustands s. Die Identifizierung des Fahrzeugzustands erfolgt über das Traktionsmoment 𝑇𝑇 und die Radsatzbeschleunigung 𝜔˙𝑊 .
 
 
 :::: Simulation ::::
@@ -1192,9 +1107,8 @@ Weiterhin werden der erzeugte Aktionsraum und die Bauteilgrenzen benötigt.
 Die dynamische Programmierung erzeugt den verbrauchsoptimalen Pfad für den vorgegebenen Fahrzyklus.
 Durch die Simulation entsteht eine Beschreibung des gesamten Fahrzeugverhaltens über den Fahrzyklus.
 Für die weitere Auswertung werden die Optimaldaten des Verlaufs des SOC und der Verbrennungsmotorleistung benötigt.
-Abb. 5.7.:
-Schnittstellendefinition der dynamischen Programmierung.
-Rückwärtsrechnung Ausgehend vom Endzustand N der Streckendaten findet die Rückwärtsrechnung statt.
+11u
+Ausgehend vom Endzustand N der Streckendaten findet die Rückwärtsrechnung statt.
 Die Berechnung beginnt mit dem finalen SOC-Stand und dem System in Ruhe:
 #$@FORMULA@$#:0
 #$@FORMULA@$#:1
@@ -1240,14 +1154,13 @@ Die Kosten für einen Zustandsübergang ergeben sich zu:
 Die Kosten c entsprechen dem Verbrauch des Verbrennungsmotors in g/s mit 𝑐(𝑁 ) = 0.
 Die Systemsprünge erfolgen auf einem diskretisierten Gitter (siehe Abbildung 5.8).
 Der Zustandsraum wird in Abhängigkeit der Diskretisierungsauflösung 𝑆𝑂𝐶𝑑𝑖𝑠𝑘 und 𝐼𝐶𝐸𝑑𝑖𝑠𝑘 diskretisiert.
-Die Rechenzeit und Rechengenauigkeit wird durch die Diskretisierung Abb. 5.8.:
-Diskretisierung des Zustandsraum über ein Gitter.
-Zwei freie Zustände für SOC und Drehzahl des Verbrennungsmotors sind nötig.
-In den Gitterpunkten wird der kostengünstigste Vorgänger mit Kosten 𝑐(𝑠𝑡,𝑢𝑡) gespeichert nach [Les15].
-Die gestrichelten Linien entsprechen der Begrenzung der Motor- und Batteriedynamik.
-bestimmt:
+Die Rechenzeit und Rechengenauigkeit wird durch die Diskretisierung
+0u
 #$@FORMULA@$#:0
-, (5.26) 𝑆𝑂𝐶𝑑𝑖𝑠𝑘 Δ𝑛𝐼𝐶𝐸,𝑑𝑖𝑠𝑘 = 𝑛𝐼𝐶𝐸,𝑚𝑎𝑥 .
+1u
+2u
+3u
+.
 (5.27) 𝐼𝐶𝐸𝑑𝑖𝑠𝑘 In jedem Gitterpunkt wird die Liste der möglichen Aktionen 𝑢𝑡(𝜔˙W,i,𝑇𝑇,𝑖,𝑚𝐿,𝑖) durchgerechnet.
 Der Zielgitterpunkt der Aktion wird mit:
 bestimmt.
@@ -1287,10 +1200,7 @@ Begonnen wird mit einem sehr groben Gitter, das mit jedem Schritt verfeinert wir
 Eine Verdopplung der Genauigkeit einer Dimension (𝑆𝑂𝐶𝑑𝑖𝑠𝑘 oder 𝐼𝐶𝐸𝑑𝑖𝑠𝑘) führt zu einer Verdopplung der Rechenzeit.
 Die Verdopplung beider Dimensionen führt zu einer Vervierfachung der Rechenzeit.
 Die Konvergenzanalyse beinhaltet die Betrachtung des relativen Simulationsfehlers (Gleichung 5.34), des relativen Kraftstoffdurchschnittsverbrauchs (Abbildung 5.9) und der relativen Durchschnittsleistung des Verbrennungsmotors (Abbildung 5.10).
-Der relative Simulationsfehler wird als Abweichung der diskreten, Abb. 5.9.:
-Konvergenzanalyse des relativen Kraftstoffverbrauchs in Abhängigkeit der Auflösung des Diskretisierungsgitters (Batterieauflösung 𝑆𝑂𝐶𝑑𝑖𝑠𝑘, Verbrennungsmotordrehzahl 𝐼𝐶𝐸𝑑𝑖𝑠𝑘).
-Das Minimum wird im Punkt der höchsten Diskretisierung erreicht.
-numerischen Lösung von der kontinuierlichen Lösung betrachtet:
+Der relative Simulationsfehler wird als Abweichung der diskreten, numerischen Lösung von der kontinuierlichen Lösung betrachtet:
 #$@FORMULA@$#:0
 #$@FORMULA@$#:1
 Zur Reduktion der Rechenzeit beträgt die Batteriespeicherfähigkeit während der Konvergenzanalyse des Gitters 5 kWh.
@@ -1299,26 +1209,23 @@ Der minimale relative Kraftstoffverbrauch wird bei der feinsten Diskretisierung 
 In Abbildung 5.10 ist die relativ geleistete Arbeit des Verbrennungsmotor in Abhängigkeit der Auflösung des Gitters dargestellt.
 Das Optimum wird im Bereich der genausten Auflösung erreicht.
 Es wird deutlich, dass der Mehrverbrauch aus Abbildung 5.9 aus einer erhöhten Motorleistung resultiert.
-Der Simulationsfehler ist im Bereich geringer Auflösungen erhöht Abb. 5.10.:
-Konvergenzanalyse der relativ geleisteten Arbeit des Verbrennungsmotors in Abhängigkeit der Auflösung des Diskretisierungsgitters.
-(siehe Abbildung 5.11).
+Der Simulationsfehler ist im Bereich geringer Auflösungen erhöht (siehe Abbildung 5.11).
 Die Mindestauflösung der Verbrennungsmotordrehzahl kann aus Abbildung 5.11 ermittelt werden.
 Es ist eine Mindestauflösung von 8 Schritten für die Motordrehzahl nötig.
 Eine weitere Erhöhung der Auflösung erzeugt geringe Verbesserungen.
 Bei Wahl der feinsten Auflösung (𝐼𝐶𝐸𝑑𝑖𝑠𝑘 = 150, 𝑆𝑂𝐶𝑑𝑖𝑠𝑘 = 350) ergeben sich 𝑆𝑂𝐶𝑑𝑖𝑠𝑘 · 𝐼𝐶𝐸𝑑𝑖𝑠𝑘 = 52500 mögliche Optimalzustände je Simulationszeitschritt.
-Zur Reduktion der Rechenzeit wird für die folgenden Simulationen eine Batterieauflösung von 30 Abschnitten je Kilowattstunde und 𝐼𝐶𝐸𝑑𝑖𝑠𝑘 = 8 Abschnitte gewählt.
-Mit dieser Konfiguration wird in der Konvergenzanalyse ein relativer Verbrauch von 108 % erreicht.
+Zur Reduktion der Rechenzeit wird für die folgenden Simulationen eine Batterieauflösung
+16u
+17u
 Die Anzahl der betrachteten Zustände wird auf 1200 je Simulationszeitschritt reduziert.
 Dies ermöglicht die Reduktion der Rechenzeit um das 43-Fache.
 Die geringe Abweichung wird aufgrund der Rechenzeitreduzierung toleriert.
-Abb. 5.11.:
-Konvergenzanalyse des Simulationsfehler in Abhängigkeit der Batterie- und Verbrennungsmotordrehzahlauflösung des Zustandsraums.
 
 
 :::: Simulationsergebnisse der dynamischen Optimierung ::::
 
 
-Für die Simulation wird die Minimalauflösung aus der Konvergenzanalyse verwendet.
+1u
 Diese garantiert eine ausreichende Genauigkeit bei begrenzter Rechenzeit.
 Zuerst werden die optimalen Verbrauchsdaten für der einzelnen Fahrprofile ermittelt.
 Die Batterie verfügt dabei über eine Speicherfähigkeit von 50 kWh.
@@ -1338,9 +1245,6 @@ Es wird deutlich, dass Zyklen höherer Beladung einen erhöhten Verbrauch aufwei
 Der Gesamtverbrauch der Referenzstrecke ist geringer als bei Addition der anteiligen Teilstrecken.
 Dies ist eine Folge des größeren Optimierungshorizonts der Gesamtstrecke.
 Der Freiheitsgrad der Leistungserzeugung ist auf der Referenzstrecke erhöht.
-Tab. 5.1.:
-Optimale Verbrauchsdaten auf den Teilstrecken und der zusammengesetzten Referenzstrecke.
-Die Verbrauchsdaten bilden den theoretischen Grenzwert der Fahrzeugkonfiguration.
 
 
 :::: Variation der Batteriekapazität ::::
@@ -1348,27 +1252,23 @@ Die Verbrauchsdaten bilden den theoretischen Grenzwert der Fahrzeugkonfiguration
 
 Für den Referenzzyklus wird die Speicherfähigkeit der Batterie variiert.
 In Tabelle 5.2 sind die veränderten Verbrauchsdaten dargestellt.
-Tab. 5.2.:
-Ergebnisse der dynamischen Programmierung bei Variation der maximalen Batteriegröße.
-𝑃𝐼𝐶𝐸,𝑎𝑣𝑔 entspricht der durchschnittlichen Verbrennungsmotorleistung während des Zyklus.
 Die Analyse zeigt, dass bei optimaler Strategie eine Batterie mit einer Speicherfähigkeit von 10 kWh ausreichend ist und eine weitere Erhöhung der Speicherfähigkeit geringe Verbrauchsverbesserungen ermöglicht.
 
 
 :::: Ableiten der Betriebsstrategie ::::
 
 
-Im folgenden Abschnitt soll eine kennfeldbasierte Betriebsstrategie für das Fahrzeug entwickelt werden.
-Die Optimaldaten des Kraftstoffverbrauchsr Referenzstrecke dienen als Datengrundlage für die Erzeugung der kennfeldbasierten Betriebsstrategie.
-Ein Kennfeld der Betriebsstrategie kann direkt aus den Optimaldaten erzeugt werden [App14].
+Im folgenden Abschnitt soll eine kennfeldbasierte Betriebsstrategie für das Fahrzeug
+8u
+9u
+der Betriebsstrategie kann direkt aus den Optimaldaten erzeugt werden [App14].
 Die Betriebsstrategie ist von den zwei Parametern Fahrleistungsanforderung und dem aktuellen SOC abhängig (siehe Abbildung 5.12).
 Ausgehend vom korrigierten Leistungswunsch des Fahrers und dem aktuellen SOC wird durch die Betriebsstrategie die Verbrennungsmotorleistung vorgeben.
-Die Systemregelung stellt einen ordnungsgemäßen Betrieb des Abb. 5.12.:
-Parameterstruktur der Betriebsstrategie.
-Die Leistung des Verbrennungsmotor 𝑃𝐼𝐶𝐸,𝑠𝑜𝑙𝑙 ist von der angeforderten Traktionsleistung 𝑃𝑇,𝑠𝑜𝑙𝑙 und dem aktuellen SOC abhängig.
-Fahrzeugs sicher.
-Zur Umsetzung des Fahrerleistungswunschs 𝑃𝑇,𝑠𝑜𝑙𝑙 muss die Differenz:
+Die Systemregelung stellt einen ordnungsgemäßen Betrieb des
+2u
 #$@FORMULA@$#:0
-𝑃𝑇,𝑑𝑖𝑓 𝑓 = 𝑃𝑇,𝑠𝑜𝑙𝑙 − 𝑃𝐼𝐶𝐸,𝑠𝑡𝑟𝑎𝑡𝑒𝑔𝑖𝑒(𝑃𝑇,𝑠𝑜𝑙𝑙, 𝑆𝑂𝐶), (5.35) von der Systemregelung durch die elektrischen Maschinen und die konventionelle Bremse umgesetzt werden.
+3u
+von der Systemregelung durch die elektrischen Maschinen und die konventionelle Bremse umgesetzt werden.
 
 
 :::: Vorgehen zum Ableiten des Betriebsstrategiekennfelds ::::
@@ -1381,9 +1281,7 @@ Als erstes werden die Daten nach Anhängelast separiert.
 Aus diesen Daten wird ein dreidimensionales Kennfeld durch Parameterschätzung erzeugt(siehe Abbildung 5.13).
 Die Erzeugung des Kennfelds erfolgt über die Interpolation der Daten durch die Matlab-Methode Thin-plate spline.
 Diese Methode eignet sich zur Erzeugung von glatten Kennfeldern [MAT16].
-Für Abb. 5.13.:
-Vorgehen zum Erzeugen des Kennfeldes der Fahrstrategie.
-SOC-Werte unter 20 wird die Maximalleistung angewendet um eine Tiefenentladung zu verhindern.
+Für SOC-Werte unter 20 wird die Maximalleistung angewendet um eine Tiefenentladung zu verhindern.
 
 
 :::: Ergebnis ::::
@@ -1393,10 +1291,10 @@ In Abbildung 5.14 und 5.15 sind zwei erzeugte Betriebsstrategiekennfelder abgebi
 Diese werden in Abhängigkeit der Fahrzeugbeladung eingesetzt.
 Das Bremsen entspricht der negativen Fahranforderung.
 Nach den Daten der dynamischen Programmierung wird beim Bremsen die Verbrennungsmotorleistung 0 kW.
-Abb. 5.14.:
-Erzeugtes Strategiekennfeld Bela­ Abb. 5.15.:
-Erzeugtes Strategiekennfeld Beladung 0 t dung 1800 t Das Kennfeld der geringeren Beladung in Abbildung 5.14 weist eine geringere Maximalleistung auf.
-Die Ergebnisse der Kennfelderzeugung werden in der Simulink-Simulation getestet und bewertet.
+5u
+6u
+7u
+getestet und bewertet.
 
 
 :::: Modellbildung und Simulation in Velodyn ::::
@@ -1454,8 +1352,9 @@ Eine ausführliche Darstellung der Umsetzung der Systemregelung folgt in Abschni
 Die ECU (Engine Control Unit) dient der Regelung des Verbrennungsmotors (Engine).
 Das Modell des Verbrennungsmotors wird durch eine kennfeldbasierte Bedatung realisiert.
 Dies erfolgt durch die Schlepp- und Maximalmomentkennlinie.
-Der Verbrauch Abb. 6.2.:
-VeLoDyn-Modell der hybriden Rangierlokomotive des Verbrennungsmotors ist durch ein Kennfeld in Abhängigkeit der Drehzahl und des Drehmoments modelliert.
+Der Verbrauch
+0u
+Drehmoments modelliert.
 Der verzögerte Momentenaufbau ist durch ein 𝑃 𝑇1-Glied mit
 #$@FORMULA@$#:0
 Die verfügbare Lade- und Entladeleistung der Batterie wird durch die BCU (Batterie Control Unit) bestimmt.
@@ -1466,28 +1365,24 @@ Zur Berechnung der Beschleunigungen des Rades und des Verbrennungsmotors werden 
 Die Systemgleichungen werden in Abhängigkeit der Beladung des Fahrzeugs ausgewählt.
 Durch Einsetzen der IST-Momente der Antriebskomponenten in die Systemgleichungen wird die Beschleunigung des Radsatzes und des Verbrennungsmotors ermittelt.
 Durch fortlaufende Simulation wird das Systemverhalten ermittelt.
-Abb. 6.3.:
-eCVT-Getriebemodell - Änderung der Beschleunigungen des Verbrennungsmotors und der Räder in Abhängigkeit der äußeren Systemmomente.
-Im Vehicle ist das Fahrwiderstandsmodell aus Abschnitt 2.2.2 ausgeführt und das Bremsmodell des Fahrzeugs integriert.
+2u
+3u
 Systemregelung durch den Hybridmanager Der Hybridmanager dient der Regelung der Antriebskomponenten im Fahrzeug.
 Dabei werden die Komponenten in Abhängigkeit des Fahrerwunsches, der Batterieladung und der Komponentenbegrenzungen geregelt (siehe Abbildung 6.4).
-Abb. 6.4.:
-Vorgehen zur Regelung der Leistungsanforderung der Systemkomponenten.
 Fahrerwunsch Der Fahrer gibt seinen Leistungswunsch in Form der Stellung des Fahrstufenreglers an.
 Die maximale Traktionsleistung wird durch die maximal übertragbare Zugkraft am Rad-Schiene-Kontakt nach Abbildung 6.5 begrenzt.
-Durch das Kennfeld in Abb. 6.5.:
-Maximales Zugmoment in Abhängigkeit der Geschwindigkeit Abbildung 6.6 wird der Anteil der maximalen Zugkraft bestimmt.
-Aus der geforderten Zugkraft und der aktuellen Fahrzeuggeschwindigkeit ergibt sich die benötigte Antriebsleistung, die durch den Verbrennungsmotor und die elektrischen Fahrmotoren bereitgestellt wird.
-Abb. 6.6.:
-Auswertung des Fahrerleistungswunsches durch Kennfeld der maximalen Zugkraft in Abhängigkeit des Fahrstufenreglers.
-Systemregelung Die Systemregelung dient der Koordination des Verbrennungsmotors, der Elektromotoren und dem Batteriemanagement.
-Ausgehend vom korrigierten Leistungswunsch des Fahrers erfolgt die Leistungsverteilung zwischen Verbrennungsmotor und den Fahrmotoren.
+Durch das Kennfeld in
+3u
+Zugkraft und der aktuellen Fahrzeuggeschwindigkeit ergibt sich die benötigte Antriebsleistung, die durch den Verbrennungsmotor und die elektrischen Fahrmotoren bereitgestellt wird.
+Systemregelung Die Systemregelung dient der Koordination des Verbrennungsmotors,
+8u
+9u
+und den Fahrmotoren.
 Zur Bestimmung der Sollmomente werden die Systemgleichungen
 #$@FORMULA@$#:0
-Abb. 6.7.:
-Bestimmung der Sollmomente durch Anwendung der Systemgleichungen.
-Verbrennungsmotor Die Sollleistung des Verbrennungsmotors wird in Abhängigkeit der Betriebsstrategie bestimmt.
-Der Freiheitsgrad der Verbrennungsmotorleistung ist durch die anliegenden Systemkomponenten begrenzt.
+Verbrennungsmotor Die Sollleistung des Verbrennungsmotors wird in Abhängig­
+2u
+ist durch die anliegenden Systemkomponenten begrenzt.
 Das maximale Verbrennungsmotormoment wird durch das maximale Generatormoment begrenzt.
 Das maximale Generatormoment ist durch die Batterieladeleistung und konstruktive Beschränkungen des Generators limitiert.
 Der Zusammenhang zwischen Verbrennungsmotormoment und Generatormoment ist in den Systemgleichungen beschrieben.
@@ -1522,8 +1417,7 @@ Zusätzlich wird der optimale Betriebspunkt (𝑇𝐼𝐶𝐸,𝑜𝑝𝑡, 𝑛
 Der Betriebspunkt wird nach:
 #$@FORMULA@$#:6
 bestimmt.
-Abb. 6.8.:
-Begrenzung des maximalen Verbrennungsmotormoments durch Limitierung des Generators Der Generator stellt durch Leistungsverzweigung im Planetengetriebe die Übersetzung zwischen Verbrennungsmotor und Abtrieb ein.
+Der Generator stellt durch Leistungsverzweigung im Planetengetriebe die Übersetzung zwischen Verbrennungsmotor und Abtrieb ein.
 Dazu wird durch Veränderung des Generatormoments die Drehzahl des Verbrennungsmotor geregelt.
 Über die Drehzahlregelung ist es möglich, den Verbrennungsmotor auf der vorgegebenen, optimalen Drehzahl der Betriebsstrategie zu führen.
 Die Drehzahlregelung wird durch einen PI-Regler realisiert.
@@ -1553,13 +1447,9 @@ Durch einen Vergleich der Verbrauchsdaten wird das Potential der Modernisierung 
 In Tabelle 6.1 sind die Verbrauchsdaten, die Durchschnittsgeschwindigkeiten, die Abweichungen von den Durchschnittsgeschwindigkeiten und die durchschnittlichen Traktionsleistungen für die Fahrzyklen abgebildet.
 Der Referenzzyklus benötigt 315 l/100 km.
 Mit diesen Referenzwerten werden die Ergebnisse der hybridisierten Lokomotive mit eCVT-Getriebe verglichen.
-Die hohen Verbrauchswerte ergeben sich durch die hohen Tab. 6.1.:
-Ausgangsdaten der konventionellen Rangierlokomotive.
-Stillstandszeiten der Lokomotive.
+Die hohen Verbrauchswerte ergeben sich durch die hohen Stillstandszeiten der Lokomotive.
 Während der Stillstandszeit der Lokomotive benötigt der Verbrennungsmotor Kraftstoffzur Aufrechterhaltung des Leerlaufs.
-In Abbildung Abb. 6.9.:
-Analyse der Verteilung der Fahrstufen für den Referenzzyklus.
-6.9 ist die Häufigkeitsanalyse der Fahrstufen für den Referenzzyklus der konventionellen Lokomotive abgebildet.
+In Abbildung 6.9 ist die Häufigkeitsanalyse der Fahrstufen für den Referenzzyklus der konventionellen Lokomotive abgebildet.
 Die Daten stimmen quantitativ mit den gemessenen Daten der
 #$@FORMULA@$#:0
 
@@ -1570,13 +1460,9 @@ Die Daten stimmen quantitativ mit den gemessenen Daten der
 In Tabelle 6.2 sind die erreichten Verbrauchsdaten für das hybridisierte Fahrzeug abgebildet.
 Als Betriebsstrategie werden die erzeugten Kennfelder aus Kapitel fünf verwendet.
 Abbildung 6.2 zeigt die Veränderung der Verteilung der Fahrstufen.
-Die durchschnittliche Verbrennungsmotorlast wurde erhöht.
-Der Leerlaufanteil konnte gesenkt werden.
-Dies erfolgt durch automatisches Abschalten und Anschalten des Verbrennungsmotors durch die Regelungsstrategie des Antriebsstrangs.
-Tab. 6.2.:
-Ergebnisse der Längsdynamikuntersuchung mit Simulink.
-Abb. 6.10.:
-Häufigkeit der Fahrstufen des eCVT-Modells während des Referenzzyklus.
+Die durchschnittliche
+8u
+erfolgt durch automatisches Abschalten und Anschalten des Verbrennungsmotors durch die Regelungsstrategie des Antriebsstrangs.
 
 
 :::: Vergleich der Simulationsergebnisse ::::
@@ -1586,20 +1472,17 @@ In den nächsten Abschnitten werden die Ergebnisse der verschiedenen Simulations
 Vergleich mit der konventionellen Lokomotive Nachfolgend werden die Simulationsergebnisse der konventionellen Lokomotive mit der Hybridlokomotive verglichen (siehe Tabelle 6.3).
 Dabei wird das Potential der Umrüstung deutlich.
 Die Kraftstoffeinsparungen der Lokomotive auf den verschiedenen Fahrstrecken variiert deutlich nach Fahrprofil.
-Die Einsparung des Hybridantriebs ist auf der Gesamtstrecke höher, als es die Summe der Teilstrecken ergeben würde.
-Dies ist durch den größeren Optimierungshorizont möglich.
-Weiterhin werden die Simulationen SOC-neutral Tab. 6.3.:
-Vergleich der Verbrauchsdaten der konventionellen Lokomotive mit der hybridisierten Lokomotive in der Simulink-Simulation.
+Die Einsparung des Hybridantriebs ist auf der Gesamt­
+8u
+9u
 durchgeführt werden.
 Das bedeutet, dass die Rekuperationsleistung auf den Teilstrecken nicht vollständig ausgeschöpft werden kann.
 Vergleich mit dem theoretischen Optimum Zur Bewertung der Leistungsfähigkeit der kennfeldbasierten Betriebsstrategie soll die Betriebsstrategie der hybriden Lokomotive mit dem theoretischen Optimum verglichen
 #$@FORMULA@$#:0
-Tab. 6.4.:
-Vergleich der Verbrauchsdaten der hybridisierten Lokomotive mit dem ermittelten theoretischen Optimum.
 Das theoretische Optimum wird auf dem Referenzzyklus zu 92 % erreicht.
 Dies kann auf die Erzeugung des Kennfeldes, die Simulationsrichtung und Abweichungen der Simulationsmodelle zueinander zurückgeführt werden.
-Das Kennfeld der Betriebsstrategie besteht aus diskreten Punkten zwischen denen interpoliert wird.
-Zwischen den Stützstellen stehen keine genauen Informationen zur Verfügung.
+8u
+9u
 Durch die kausale Kette stehen bei der Vorwärtssimulation weniger Informationen als zur Bestimmung des Optimums durch Rückwärtsrechnung zur Verfügung.
 Es sind keine Folgezustände bekannt und die Betriebsstrategie trifft eine Entscheidung bei ungewissem Horizont.
 Durch Diskretisierung des Zustandsraums zum Erzeugen einer optimalen Lösung, wurde die Problemstellung vereinfacht.
@@ -1608,10 +1491,9 @@ Weiterhin ist die Begrenzung der Dynamik des Systems geringer, als in der Simula
 Allgemein wird mit der Systematik ein ausreichend genaues Ergebnis erreicht.
 Vergleich der Methodik Im Folgenden werden die Ergebnisse der drei Modelle gegenübergestellt.
 Abbildung 6.11 zeigt die Anzahl der Zustände der Traktionsleistungen im Referenz-Zyklus.
-Dabei ist zu Abb. 6.11.:
-Übersicht der Verteilung Traktionsleistungen in den Modellen.
-beachten, dass die Modelle unterschiedlich modelliert sind.
-Für die Längsdynamikbetrachtung zur Abschätzung der Verbrauchseigenschaften stimmen die Modelle ausreichend überein.
+Dabei ist zu
+10u
+tung zur Abschätzung der Verbrauchseigenschaften stimmen die Modelle ausreichend überein.
 Es wird deutlich, dass im konventionellen Modell geringere Maximalleistungen benötigt werden.
 Das Modell zur Berechnung des theoretischen Optimums weist eine große Abweichung bei −600 kW zu den anderen Modellen auf.
 Dies ist durch die Modellierung begründet.
@@ -1634,19 +1516,15 @@ Die Skalierung erfolgt zwischen 80 bis 120 %.
 In Abbildung 6.12 ist die Auswirkung der Skalierung auf den Gesamtverbrauch für den Referenzzyklus dargestellt.
 Das Optimum stellt sich bei einer Skalierung von 95 % des Kennfeldes ein.
 Die erzeugte Betriebsstrategie weicht um 0,037 l vom lokalen Optimum ab.
-In Abbildung 6.13 und 6.14 ist die durchschnittliche Abb. 6.12.:
-Skalierung der Betriebsstrategie und Gesamtverbrauch auf der Referenzstrecke.
-Traktionsleistung und Geschwindigkeit bei Variation des Kennfeldes der Referenzstrecke abgebildet.
+In Abbildung 6.13 und 6.14 ist die durchschnittliche
+17u
+abgebildet.
 Die Kraftstoffverbrauchsvorteile der Betriebsstrategie werden nicht durch eine geringere Geschwindigkeit oder eine verminderte Traktionsleistung erreicht.
-Zur Abb. 6.13.:
-Durchschnittliche Antriebsleistung Abb. 6.14.:
-Durchschnittliche Geschwindigkeit bei Variation des Betriebsstrategiekennfeldes.
-bei Variation des Betriebsstrategiekennfeldes.
-Bestimmung des Kraftstoffverbrauchs wird die Simulation SOC-neutral durchgeführt.
-Der SOC-Verlauf des variierten Kennfeldes ist in Abbildung 6.15 dargestellt.
-In Abhängigkeit der Kennfelder treten verschiedene SOC-Verläufe auf.
-Abb. 6.15.:
-SOC-Verlauf in Abhängigkeit des skalierten Betriebsstrategiekennfeldes.
+Zur
+0u
+1u
+2u
+der Kennfelder treten verschiedene SOC-Verläufe auf.
 
 
 :::: Einfluss der Parametrisierung auf das Simulationsergebnis ::::
@@ -1656,23 +1534,20 @@ Im nächsten Abschnitt werden die Auswirkungen der Parametrisierung auf das Simu
 Dabei wird der Gradient des relativen Kraftstoffverbrauchs bei relativer Änderung eines Systemparameters betrachtet.
 Durch Betrachtung der Gradienten können Ungenauigkeiten in der Modellierung und Alterungsprozesse des Fahrzeugs abgeschätzt werden.
 In Abbildung 6.16 ist die Änderung des relativen Kraftstoffverbrauchs bei Änderung der relativen Verlustleistung des Generators dargestellt.
-Für das Systemverhalten ist Abb. 6.16.:
-Änderung der relativen elektrischen Verlustleistung des Generators die relative Änderung der Verlustleistung des Generators von geringer Bedeutung.
-Die relative Änderung der elektrischen Verlustleistung der Fahrmotoren (siehe Abbildung 6.17) hat einen großen Einfluss auf den relativen Kraftstoffverbrauch des Fahrzeugs.
-Abb. 6.17.:
-Änderung der relativen elektrischen Verlustleistung der Fahrmotoren Eine größere Batterie verbessert den relativen Kraftstoffverbrauch deutlich (siehe Abbildung 6.18).
+Für das Systemverhalten ist
+8u
+relative Änderung der elektrischen Verlustleistung der Fahrmotoren (siehe Abbildung 6.17) hat einen großen Einfluss auf den relativen Kraftstoffverbrauch des Fahrzeugs.
+Eine größere Batterie verbessert den relativen Kraftstoffverbrauch deutlich (siehe Abbildung 6.18).
 Aus einer größeren Batterie resultiert ein erhöhter Raum- und Kostenbedarf.
 Weiterhin vergrößert sich die Gesamtmasse des Fahrzeugs.
-Abb. 6.18.:
-Änderung des relativen Kraftstoffverbrauchs durch Änderung der relativen Batteriespeicherfähigkeit.
-In Abbildung 6.19 sind die Empfindlichkeiten der Komponenten Fahrmotor, Generator und Batterie im Vergleich aufgetragen.
-Die Betrachtung erfolgt durch den Betrag der Gradienten.
-Die Auswirkungen einer falschen Bedatung der Verlustleistung der Fahrmotoren Abb. 6.19.:
-Empfindlichkeit der Komponenten im Vergleich.
-hat den größten Einfluss auf das Ergebnis der Simulation.
+3u
+4u
+dienten.
+Die Auswirkungen einer falschen Bedatung der Verlustleistung der Fahrmotoren hat den größten Einfluss auf das Ergebnis der Simulation.
 Gleichzeitig sind die Potentiale der Optimierung der elektrischen Fahrmotoren am höchsten.
-Den zweitgrößten Einfluss auf das Verbrauchsergebnis hat die Kapazität der Batterie.
-Die Batterie verliert durch Alterungsprozesse an Speicherfähigkeit[Kur16].
+Den zweitgrößten Einfluss
+8u
+Alterungsprozesse an Speicherfähigkeit[Kur16].
 Dies muss bei der Langzeitbetrachtung des Systems berücksichtigt werden.
 Eine Reduzierung der Generatorverlustleistung hat den geringsten Einfluss auf den relativen Kraftstoffverbrauch.
 
