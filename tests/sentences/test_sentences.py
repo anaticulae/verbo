@@ -10,10 +10,12 @@
 import power
 import texmex.sentences
 import utila
+import utilatest
 
 import tests
 
 
+@utilatest.longrun
 def test_sentences_master110pages67(testdir, monkeypatch):
     source = power.link(power.MASTER110_PDF)
     cmd = f'--sentences --page=67 -i {source} -o {testdir.tmpdir}'

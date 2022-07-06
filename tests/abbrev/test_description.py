@@ -10,10 +10,12 @@
 import power
 import serializeraw
 import utila
+import utilatest
 
 import tests
 
 
+@utilatest.longrun
 def test_description_bachelor028p3(testdir, monkeypatch):
     source = power.link(power.BACHELOR028_PDF)
     cmd = f'-i {source} -o {testdir.tmpdir} --abbreviation --pages=3'

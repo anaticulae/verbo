@@ -26,6 +26,7 @@ def test_word_diss143page27(testdir, monkeypatch):
     assert '#$@FORMULA@$#:1' in str(loaded)
 
 
+@utilatest.longrun
 def test_word_home50page31(testdir, monkeypatch):
     """Regression test that line before '4.1 Auswahl des
     Shuntwiderstands ' does not generate any formula.

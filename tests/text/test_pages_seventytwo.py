@@ -54,6 +54,7 @@ def test_text_seventytwo_visit_sentences():
                                'der Nutzer.')
 
 
+@utilatest.longrun
 def test_text_visit_sentence_abbreviation_at_lineend():
     """Regression test to merge abbreviation at line end correctly.
 
