@@ -37,7 +37,7 @@ def word(path: str, prefix: str = '') -> str:
 
 
 def lists(path: str, prefix: str = '') -> str:
-    return utila.pathconnector(path, 'words', 'list_list', prefix)
+    return utila.pathconnector(path, 'lists', 'result_result', prefix)
 
 
 def links(path: str, prefix: str = '') -> str:

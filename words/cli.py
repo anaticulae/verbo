@@ -24,7 +24,7 @@ TEXTINPUT = [
     ResultFile('rawmaker', 'border_pages'),
     ResultFile('groupme', 'footer_footerheader'),
     ResultFile('rawmaker', 'boxes_boxes'),
-    ResultFile('words', 'list_list'),
+    ResultFile('lists', 'result_result'),
 ]
 
 # TODO: USE ONELINE CONTENT FOR TEXT COMPUTATION?!
@@ -84,7 +84,7 @@ WORKPLAN = [
         inputs=[
             ResultFile('words', 'text_text'),
             ResultFile('headlines', 'result_result'),
-            ResultFile('words', 'list_list'),
+            ResultFile('lists', 'result_result'),
             ResultFile('words', 'boxed_boxed'),
         ],
         output=('result',),
@@ -93,7 +93,7 @@ WORKPLAN = [
         'sentences',
         inputs=[
             ResultFile('words', 'word_result'),
-            ResultFile('words', 'list_list'),
+            ResultFile('lists', 'result_result'),
             ResultFile('headlines', 'result_result'),
             ResultFile('rawmaker', 'text_text'),
             ResultFile('rawmaker', 'text_positions'),
