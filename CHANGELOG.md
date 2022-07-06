@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v1.22.0
+
+### Feature
+
+* extend invalid chars (e24cfb3de751)
+* use new lists resources (f67364f2db24)
+
 ## v1.21.0
 
 ### Feature
