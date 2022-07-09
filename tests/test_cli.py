@@ -47,7 +47,6 @@ def test_feature_words_work_pages0_10(testdir, monkeypatch):
         src=power.link(power.MASTER072_PDF),
         dest=testdir.tmpdir,
         pattern='(rawmaker|sections|groupme|headlines|words)__*.yaml',
+        unlock=True,
     )
-    # test data is protected by a write lock
-    utila.directory_unlock(testdir.tmpdir)
     tests.run(cmd, monkeypatch=monkeypatch)
