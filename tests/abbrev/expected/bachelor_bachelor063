@@ -1,7 +1,7 @@
 008 01 bzw.
 008 06 vgl.
 008 12 vgl.
-009 05 MAD
+009 05 MAD mittlerer arterieller Druck
 011 09 AO
 012 12 AO
 013 01 PW
@@ -45,7 +45,7 @@
 025 16 ca.
 025 19 VI
 025 22 PCI
-026 14 MAD
+026 14 MAD mittlere arterielle Druck
 026 16 vgl.
 026 24 KP
 027 00 vgl.
