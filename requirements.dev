@@ -22,3 +22,5 @@ genref==1.3.6
 # determine headline level
 groupme>=0.37.0<1.0.0
 lists>=0.2.1<1.0.0
+# TODO: REMOVE LATER
+formulero>=0.7.0<1.0.0
