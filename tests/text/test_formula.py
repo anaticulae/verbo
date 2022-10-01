@@ -16,6 +16,7 @@ import tests
 
 
 @utilatest.nightly
+@utilatest.requires(power.DISS143_PDF)
 def test_word_diss143page27(testdir, monkeypatch):
     source = power.link(power.DISS143_PDF)
     cmd = f'--text --page=26,27 -i {source} -o {testdir.tmpdir}'
@@ -27,6 +28,7 @@ def test_word_diss143page27(testdir, monkeypatch):
 
 
 @utilatest.longrun
+@utilatest.requires(power.HOME050_PDF)
 def test_word_home50page31(testdir, monkeypatch):
     """Regression test that line before '4.1 Auswahl des
     Shuntwiderstands ' does not generate any formula.

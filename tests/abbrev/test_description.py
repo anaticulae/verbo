@@ -15,6 +15,7 @@ import utilatest
 import tests
 
 
+@utilatest.requires(power.BACHELOR028_PDF)
 @utilatest.longrun
 def test_description_bachelor028p3(testdir, monkeypatch):
     source = power.link(power.BACHELOR028_PDF)

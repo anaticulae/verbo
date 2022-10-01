@@ -10,10 +10,12 @@
 import power
 import serializeraw
 import utila
+import utilatest
 
 import tests
 
 
+@utilatest.requires(power.BACHELOR067_PDF)
 def test_sentences_bachelor067pages51(testdir, monkeypatch):
     source = power.link(power.BACHELOR067_PDF)
     cmd = f'--sentences --page=50,51 -i {source} -o {testdir.tmpdir}'
