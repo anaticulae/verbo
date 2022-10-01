@@ -17,10 +17,10 @@ import tests
 
 @utilatest.longrun
 @utilatest.requires(power.MASTER110_PDF)
-def test_sentences_master110pages67(testdir, monkeypatch):
+def test_sentences_master110pages67(td, mp):
     source = power.link(power.MASTER110_PDF)
-    cmd = f'--sentences --page=67 -i {source} -o {testdir.tmpdir}'
-    tests.run(cmd, monkeypatch=monkeypatch)
+    cmd = f'--sentences --page=67 -i {source} -o {td.tmpdir}'
+    tests.run(cmd, mp=mp)
     output = utila.file_read('words__sentences_sentences.yaml')
     counted = output.count(texmex.sentences.LIST_SEPA)
     # 6 list items in generated sentences

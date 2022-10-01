@@ -16,11 +16,11 @@ import tests
 import words.path
 
 
-def abbr(source, pages, testdir, monkeypatch, flat: bool = False):
+def abbr(source, pages, td, mp, flat: bool = False):
     source = power.link(source)
-    cmd = f'-i {source} -o {testdir.tmpdir} --abbreviation --pages={pages}'
-    tests.run(cmd, monkeypatch=monkeypatch)
-    abbrpath = words.path.abbr(testdir.tmpdir)
+    cmd = f'-i {source} -o {td.tmpdir} --abbreviation --pages={pages}'
+    tests.run(cmd, mp=mp)
+    abbrpath = words.path.abbr(td.tmpdir)
     result = serializeraw.load_text_abbreviations(abbrpath)
     if flat:
         result = [[item.short for item in page.content] for page in result]
@@ -36,8 +36,8 @@ etc. s. \u2212md
 
 
 @pytest.mark.xfail(reason='???')
-def test_bachelor37abbr(testdir, monkeypatch):
-    extracted = abbr(power.BACHELOR037_PDF, '5:33', testdir, monkeypatch, True)
+def test_bachelor37abbr(td, mp):
+    extracted = abbr(power.BACHELOR037_PDF, '5:33', td, mp, True)
     extracted = sorted(utila.lower(*extracted))
     expected = sorted(BACHELOR37)
     assert extracted == expected

@@ -19,15 +19,15 @@ import words.path
 # TODO: MOVE TO TEXMEX
 @pytest.mark.xfail(reason='hyperlink merger requires \n at line end')
 @utilatest.requires(power.MASTER075_PDF)
-def test_links_master75(testdir, monkeypatch):
+def test_links_master75(td, mp):
     # TODO: MASTER75 TEXT SECTION EXTRACTION IS BROKEN
-    loaded = hyperlinks(power.MASTER075_PDF, testdir, monkeypatch)
+    loaded = hyperlinks(power.MASTER075_PDF, td, mp)
     assert len(loaded) == 22
 
 
 @utilatest.requires(power.MASTER075_PDF)
-def test_links_master75pages15(testdir, monkeypatch):
-    loaded = hyperlinks(power.MASTER075_PDF, testdir, monkeypatch, 15)
+def test_links_master75pages15(td, mp):
+    loaded = hyperlinks(power.MASTER075_PDF, td, mp, 15)
     assert len(loaded) == 1
     hyperlink = loaded[0].href
     assert hyperlink.startswith('https')
@@ -35,8 +35,8 @@ def test_links_master75pages15(testdir, monkeypatch):
     assert loaded[0].visited
 
 
-def hyperlinks(source, testdir, monkeypatch, pages=':'):
+def hyperlinks(source, td, mp, pages=':'):
     cmd = f'-i {power.link(source)} --links --pages={pages}'
-    tests.run(cmd, monkeypatch=monkeypatch)
-    loaded = serializeraw.load_hyperlinks(words.path.links(testdir.tmpdir))  # pylint:disable=e1101
+    tests.run(cmd, mp=mp)
+    loaded = serializeraw.load_hyperlinks(words.path.links(td.tmpdir))  # pylint:disable=e1101
     return loaded

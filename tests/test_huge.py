@@ -104,7 +104,7 @@ def params():
 
 @utilatest.nightly
 @pytest.mark.parametrize('source', params())
-def test_huge_running_words(source, testdir, request):  # pylint:disable=W0621
+def test_huge_running_words(source, td, request):  # pylint:disable=W0621
     """Run rawmaker -> sections -> headlines -> words.
 
     Ensure that this chain works for huge pdf example provided by power
@@ -115,7 +115,7 @@ def test_huge_running_words(source, testdir, request):  # pylint:disable=W0621
     source = source[0]
     genex.extract(
         files=[source],
-        dest=testdir.tmpdir,
+        dest=td.tmpdir,
         groupme=True,
         headlines=True,
         sections=True,
@@ -123,7 +123,7 @@ def test_huge_running_words(source, testdir, request):  # pylint:disable=W0621
         lists=True,
     )
     filename = utila.file_name(power.link(source))
-    directory = os.path.join(testdir.tmpdir, filename)
+    directory = os.path.join(td.tmpdir, filename)
     headlines = serializeraw.load_headlines(directory)
     headlines: list = utila.flat(headlines)
     if expected_headlines:

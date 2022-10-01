@@ -26,22 +26,22 @@ ARCHIVE = utila.join(words.ROOT, 'tests/abbrev/expected', exist=True)
     utilatest.test_resources(tests.conftest.RESOURCES),
 )
 @utilatest.nightly
-def test_validate_abbrev(source, testdir, monkeypatch):
+def test_validate_abbrev(source, td, mp):
     utilatest.fixture_requires(source)
     Evaluate(
         source=source,
-        workdir=testdir.tmpdir,
-        monkeypatch=monkeypatch,
+        workdir=td.tmpdir,
+        mp=mp,
     ).evaluate()
 
 
 class Evaluate(utilatest.BaseLiner):
 
-    def __init__(self, source, workdir, monkeypatch):
+    def __init__(self, source, workdir, mp):
         super().__init__(
             program=functools.partial(
                 tests.run,
-                monkeypatch=monkeypatch,
+                mp=mp,
             ),
             step='abbreviation',
             pages=power.ctext(source, default=':'),

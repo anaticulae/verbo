@@ -17,12 +17,12 @@ import tests
 
 @utilatest.requires(power.BACHELOR028_PDF)
 @utilatest.longrun
-def test_description_bachelor028p3(testdir, monkeypatch):
+def test_description_bachelor028p3(td, mp):
     source = power.link(power.BACHELOR028_PDF)
-    cmd = f'-i {source} -o {testdir.tmpdir} --abbreviation --pages=3'
-    tests.run(cmd, monkeypatch=monkeypatch)
+    cmd = f'-i {source} -o {td.tmpdir} --abbreviation --pages=3'
+    tests.run(cmd, mp=mp)
     abbreviation = utila.flatten_content(
-        serializeraw.load_text_abbreviations(testdir.tmpdir))
+        serializeraw.load_text_abbreviations(td.tmpdir))
     expected = {None, 'multinationaler Unternehmen'}
     descriptions = {item.description for item in abbreviation}
     assert descriptions == expected

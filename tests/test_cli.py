@@ -20,13 +20,13 @@ import tests
     pytest.param(power.DOCU027_PDF, '0:9', id='docu27pages'),
     pytest.param(power.MASTER072_PDF, None, id='master72'),
 ])
-@pytest.mark.usefixtures('testdir')
+@pytest.mark.usefixtures('td')
 @utilatest.nightly
-def test_run_words(source, pages, monkeypatch, capsys):
+def test_run_words(source, pages, mp, capsys):
     utilatest.fixture_requires(source)
     pages = pages if pages else ':'
     cmd = f'-i {power.link(source)} --pages {pages}'
-    tests.run(cmd, monkeypatch=monkeypatch)
+    tests.run(cmd, mp=mp)
     utilatest.write_capsys(capsys)
 
 
@@ -34,19 +34,19 @@ def test_run_words(source, pages, monkeypatch, capsys):
     pytest.param('--help', id='help'),
     pytest.param('--version', id='version'),
 ])
-def test_run_words_basic(command, monkeypatch):
+def test_run_words_basic(command, mp):
     """Run help and version command to reach basic test coverage"""
-    tests.run(command, monkeypatch=monkeypatch)
+    tests.run(command, mp=mp)
 
 
 @utilatest.nightly
 @utilatest.requires(power.MASTER072_PDF)
-def test_feature_words_work_pages0_10(testdir, monkeypatch):
-    cmd = f'-i {testdir.tmpdir} -o {testdir.tmpdir} --pages=0:10'
+def test_feature_words_work_pages0_10(td, mp):
+    cmd = f'-i {td.tmpdir} -o {td.tmpdir} --pages=0:10'
     utila.copy_content(
         src=power.link(power.MASTER072_PDF),
-        dest=testdir.tmpdir,
+        dst=td.tmpdir,
         pattern='(rawmaker|sections|groupme|headlines|words)__*.yaml',
         unlock=True,
     )
-    tests.run(cmd, monkeypatch=monkeypatch)
+    tests.run(cmd, mp=mp)

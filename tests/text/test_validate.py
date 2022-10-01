@@ -45,25 +45,25 @@ param = pytest.param
     param(power.MASTER155_PDF, '8:77', 'master155', id='master155'),
 ])
 @utilatest.nightly
-def test_validate_text(source, pages, expected, testdir, monkeypatch):
+def test_validate_text(source, pages, expected, td, mp):
     utilatest.fixture_requires(source)
     Evaluate(
         source=source,
         pages=pages,
         expected=expected,
-        workdir=testdir.tmpdir,
-        monkeypatch=monkeypatch,
+        workdir=td.tmpdir,
+        mp=mp,
     ).evaluate()
     # TODO: USE SECTIONS TO SELECT PAGES
 
 
 class Evaluate(utilatest.BaseLiner):
 
-    def __init__(self, source, pages, expected, workdir, monkeypatch):
+    def __init__(self, source, pages, expected, workdir, mp):
         super().__init__(
             program=functools.partial(
                 tests.run,
-                monkeypatch=monkeypatch,
+                mp=mp,
             ),
             step='text',
             pages=pages,

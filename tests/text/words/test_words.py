@@ -17,14 +17,14 @@ import tests
 
 
 @pytest.mark.xfail(reason='improve oneline/normal indexing')
-def test_word_master110pages67(testdir, monkeypatch):
+def test_word_master110pages67(td, mp):
     """Ensure that area-attribute is splitted by list content.
 
     Example: 0l_0, 0l_0; 0l_1; 0l_2
     """
     source = power.link(power.MASTER110_PDF)
-    cmd = f'--word --page=67 -i {source} -o {testdir.tmpdir}'
-    tests.run(cmd, monkeypatch=monkeypatch)
+    cmd = f'--word --page=67 -i {source} -o {td.tmpdir}'
+    tests.run(cmd, mp=mp)
     loaded = serializeraw.load_text('words__word_result.yaml', pages=67)
     content = loaded[0].content[0].content
     expected = 'beschreibt die erforderlichen Schritte, um die von einem Objekt'
@@ -34,10 +34,10 @@ def test_word_master110pages67(testdir, monkeypatch):
 
 
 @pytest.mark.xfail(reason='missing headline')
-def test_list_replace_book173p1314(testdir, monkeypatch):
+def test_list_replace_book173p1314(td, mp):
     source = power.link(power.BOOK173_PDF)
-    cmd = f'--word --page=13,14 -i {source} -o {testdir.tmpdir}'
-    tests.run(cmd, monkeypatch=monkeypatch)
+    cmd = f'--word --page=13,14 -i {source} -o {td.tmpdir}'
+    tests.run(cmd, mp=mp)
     headlines = serializeraw.load_headlines(source)
     loaded = serializeraw.load_text(
         'words__word_result.yaml',

@@ -24,12 +24,12 @@ zu einem zentralen Bestandteil für die Digitalisierung.{{hn:15:nh}}\
 
 
 @utilatest.nightly
-def test_text_extract_p7p8p9(testdir, monkeypatch):
+def test_text_extract_p7p8p9(td, mp):
     source = power.link(power.BACHELOR076_PDF)
     cmd = f'--text  --headlines -i={source} --pages=7,8,9'
-    tests.run(cmd, monkeypatch=monkeypatch)
-    text = words.path.text(testdir.tmpdir)
-    headlines = words.path.headlines(testdir.tmpdir)
+    tests.run(cmd, mp=mp)
+    text = words.path.text(td.tmpdir)
+    headlines = words.path.headlines(td.tmpdir)
     headlines = serializeraw.load_headlines(
         content=headlines,
         pages=(7, 8, 9),

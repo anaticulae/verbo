@@ -30,25 +30,25 @@ param = pytest.param
     param(power.BACHELOR032A_PDF, '12', 'bachelor032a', id='bachelor032a'),
 ])
 @utilatest.nightly
-def test_validate_sentence(source, pages, expected, testdir, monkeypatch):
+def test_validate_sentence(source, pages, expected, td, mp):
     utilatest.fixture_requires(source)
     Evaluate(
         source=source,
         pages=pages,
         expected=expected,
-        workdir=testdir.tmpdir,
-        monkeypatch=monkeypatch,
+        workdir=td.tmpdir,
+        mp=mp,
     ).evaluate()
     # TODO: USE SECTIONS TO SELECT PAGES
 
 
 class Evaluate(utilatest.BaseLiner):
 
-    def __init__(self, source, pages, expected, workdir, monkeypatch):
+    def __init__(self, source, pages, expected, workdir, mp):
         super().__init__(
             program=functools.partial(
                 tests.run,
-                monkeypatch=monkeypatch,
+                mp=mp,
             ),
             step='sentence',
             pages=pages,
