@@ -121,6 +121,10 @@ def test_huge_running_words(source, td, request):  # pylint:disable=W0621
         sections=True,
         words=True,
         lists=True,
+        headnote=True,
+        footnote=True,
+        pagenumber=True,
+        cleanup=True,
     )
     filename = utila.file_name(power.link(source))
     directory = os.path.join(td.tmpdir, filename)
