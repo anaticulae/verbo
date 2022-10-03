@@ -17,8 +17,10 @@ Reines Map-Reduce (in der ursprünglichen Implemenation von Hadoop) als Berechnu
 • Daten, die in hoher Frequenz entstehen und schnell verarbeitet werden sollen, erfordern
 21u
 22u
-0u
-auf vorherige Zwischenergebnisse angewiesen sind (häufig bei Maschinenlernalgorithmen), können nur durch persistentes Speichern der Daten und wiederholtes Einlesen zwischen allen Iterationsschritten implementiert werden.
+• Algorithmen die während ihrer Ausführung iterativ Zwischenergebnisse erzeugen und
+1u
+2u
+3u
 • Anfragen an ein solches Map-Reduce-System erfolgen imperativ in Form von kleinen
 5u
 6u
@@ -32,7 +34,8 @@ Ein Indiz für das steigende Interesse an diesem Produkt liefert unter anderem e
 
 
 15u
-Cluster mit Hardware am unteren Ende des Leistungsspektrums zu demonstrieren und zu begutachten.
+16u
+begutachten.
 Dabei wird zunächst ein umfassender Überblick der grundlegenden Konzepte von Spark gegeben.
 Anschließend wird ein Anwendungsfall aus dem Bereich des Text-Mining vorgestellt und dessen Realisierung vom Entwurf bis zum Betrieb erläutert.
 Der theoretische Teil dieser Arbeit umfasst • eine Einführung in die grundlegenden Konzepte von Apache Spark • einen Überblick der High-Level-Application Programming Interfaces (APIs) in den Standardbibliotheken von Spark Der praktische Teil dieser Arbeit umfasst
@@ -57,6 +60,7 @@ Die Zählung von Wortvorkommen in einem Text - das „Hello World“ der Big Dat
 #$@FORMULA@$#:0
 #$@FORMULA@$#:1
 #$@FORMULA@$#:2
+#$@FORMULA@$#:3
 Aus Sicht eines Administrators oder Softwarearchitekten ist Apache Spark eine Applikation auf einem Rechnercluster, die sich in der Anwendungsschicht befindet und charakteristische Anforderungen insbesondere an Lokalität des Storages und die Netzwerkperformance stellt.
 Was das in der konkreten Umsetzung beudeutet und welche Mechanismen und Konzepte dahinterstehen, wird in den folgenden Abschnitten dieses Kapitels beleuchtet.
 
@@ -90,8 +94,9 @@ Um die Architektur und Optimierungskonzepte eines verteilten Systems bewerten zu
 Spark ist explizit für den Betrieb innerhalb eines Hadoop/YARN Rechnerclusters geeignet.
 Hadoop/YARN wiederum ist für den Betrieb auf einem Rechnercluster auf Mittelklasse-Mehrzweckmaschinen (Commodity Hardware) optimiert ([AM14]).
 Für Spark kann daher von einer vergleichbaren Hardwarekonfiguration ausgegangen werden.
-0u
-- hier als Mittelklasse-Geräte bezeichnet - liefert die folgenden Verhältnisse der wesentlichen Schnittstellen zueinander (Siehe Anhang 3.1).
+Der Vergleich von drei aktuellen Rack Servern der 2000-Euro-Klasse in der Grundausstattung
+1u
+Schnittstellen zueinander (Siehe Anhang 3.1).
 Netzwerk Festspeicher Arbeitsspeicher 0,125 GB/s 1 GB/s 17 GB/s Tabelle 2.1:
 Theoretische Spitzenleistungen bei Mittelklasse-Servern Bei den folgenden Bewertungen der Kernkonzepte ist es wichtig, sich die aus Tabelle 2.1 abgeleiteten Größenordnungen des Durchsatzes (D) der verschiedenen Datenkanäle zu vergegenwärtigen:
 DN etzwerk < DF estspeicher < DArbeitsspeicher Für eine effzieinte Verarbeitung von Daten ist es - ganz allgemein - also wünschenswert, den größten Anteil des Datentransfers im Arbeitsspeicher zu haben, einen kleineren Anteil auf der Festplatte und einen noch kleineren Anteil auf Netzwerkverbindungen.
@@ -117,9 +122,10 @@ Sie sind damit die wichtigste Abstraktion des Applikationskerns.
 In erster Näherung können RDDs als eine Variante von Distributed Shared Memory (DSM) ([NL91], [ZC+12]) verstanden werden.
 Sie haben allerdings sehr charakteristische Einschränkungen und Erweiterungen, die in diesem Kapitel erläutert werden.
 Verteilungssicht Aus Verteilungssicht ist ein RDD ein Datensatz, der über den Arbeitsspeicher mehrerer Maschinen partitioniert ist (Abb. 2.2).
-0u
-einzelnen Elementen eines RDD anzuwenden.
-Stattdessen ist es nur möglich, ein einmal definiertes RDD durch globale Anwendung von Operationen in ein anderes zu überführen.
+Laufzeitsicht RDDs sind nicht veränderbar.
+Es ist nicht möglich, Operationen gezielt auf
+1u
+niertes RDD durch globale Anwendung von Operationen in ein anderes zu überführen.
 Solche globalen - auf sämtlichen Partitionen des RDD durchgeführten - Operationen können zwar ihren Effekt auf einzelne Elemente eines RDD beschränken, die Ausführung erfolgt jedoch in jedem Fall auf allen Partitionen.
 Eine Folge von Operationen op1op2op3... wird als Lineage eines RDD bezeichnet.
 Die Lineage kann als das „Rezept“ zur Erstellung eines Datensatzes verstanden werden.
@@ -132,9 +138,9 @@ Beispiele für solche Operationen sind:
 • filter
 18u
 19u
-0u
-Zusammenfassen von zwei RDDs zu einem neuen.
-Die Partitionen bleiben dabei erhalten Aktionen sind Operationen, die RDDs in eine andere Domäne abbilden:
+• join
+1u
+Aktionen sind Operationen, die RDDs in eine andere Domäne abbilden:
 #$@FORMULA@$#:0
 Beispiele für Aktionen sind die Methoden:
 • reduce
@@ -152,15 +158,14 @@ Beispiele für Aktionen sind die Methoden:
 Den meisten dieser Operationen wird im Sinne des Command-Patterns ([BL13]) eine Funktion bzw. ein Funktionsobjekt übergeben, das die gewählte Operation spezifiziert.
 Solange nur Transformationen auf einem RDD ausgeführt werden, ist dieses noch ein bloßes „Rezept“ zur Erstellung eines Datensatzes.
 Tatsächlich wurde noch kein Speicher reserviert und der Cluster wurde noch nicht aktiv ([ZC+12]):
-Sobald die erste Aktion aufgerufen wird, werden die Transformationen nach der vorgegebe-
-22u
-erfolgt also „lazy“:
-1u
-schenergebnisse gespeichert.
-Möchte man Zwischenergebnisse zu einem späteren Zeitpunkt oder in anderem Zusammenhang wiederverwenden, kann man dies explizit über das Kommando persist() oder cache() anweisen:
-Realisiert ist das Konzept der Lineage und der „Lazy Initialization“ von RDDs durch Transformations-
-6u
-jekte sind dabei wiederum Unterklassen von RDDs:
+Sobald die erste Aktion aufgerufen wird, werden die Transformationen nach der vorgegebenen Reihenfolge ausgeführt und schließlich die geforderte Aktion.
+Die Initialisierung des RDD erfolgt also „lazy“:
+Wie in Abb. 2.4 dargestellt ist, werden während der Transformationsvorgänge keine Zwi-
+2u
+oder in anderem Zusammenhang wiederverwenden, kann man dies explizit über das Kommando persist() oder cache() anweisen:
+Realisiert ist das Konzept der Lineage und der „Lazy Initialization“ von RDDs durch Transformations-Methoden, die eine Variante des Factory-Pattern ([BL13]) implementieren.
+Die erzeugten Ob-
+7u
 Jedes RDD-Objekt führt eine Liste von Vorgängern mit.
 Aus dieser lässt sich auch die Art der Berechnung des jeweiligen Nachfolgers ableiten.
 Jede weitere Transformations-Methode konstruiert nun lediglich ein neues RDD-Referenzobjekt.
@@ -177,13 +182,13 @@ Dort werden dann die rekursiven Abhängigkeiten des aktuellen RDD aufgelöst und
 #$@FORMULA@$#:3
 #$@FORMULA@$#:0
 Das Konzept der Lineage ist zentral für die Fehlertoleranz der RDDs:
-Geht eine Partition verloren - beispielsweise durch Defekt eines Knotens - ist das „Rezept“ zur Erstellung des Datensatzes in der Lineage des RDD-Objektes weiterhin vorhanden und die Partition kann
-9u
+Geht eine Partition verloren - beispielsweise durch Defekt eines Knotens - ist das „Rezept“ zur Erstellung des Datensatzes in der Lineage des RDD-Objektes weiterhin vorhanden und die Partition kann gezielt wiederhergestellt werden.
 10u
-timalen Fall sind die zu ladenden Daten von jedem der Worker auf unabhängigen Kanälen erreichbar (z.B. auf dem lokalen Festspeicher) und gleichmäßig auf diesen Kanälen partitioniert
+11u
+erreichbar (z.B. auf dem lokalen Festspeicher) und gleichmäßig auf diesen Kanälen partitioniert
 #$@FORMULA@$#:4
-0u
-jeweiligen Datenquelle also ein idealer Gesamtdurchsatz beim Einlesen von Daten von:
+Im diesem Fall ergäbe sich mit einer Anzahl Worker n und einem Durchsatz δ zu der
+1u
 #$@FORMULA@$#:0
 Kommen in einem Anwendungsfall RDDs zum Einsatz, deren Elemente einzeln über eine oder mehrere Operationen untereinander verknüpft werden, kann es sinnvoll sein diese schon im Vorfeld der Verarbeitung entsprechend erwarteter Cluster zu partitionieren.
 Cluster sind hierbei Teilmengen des RDD, die mit besonders hoher Wahrscheinlichkeit oder besonders häufig untereinander verknüpft werden.
@@ -196,7 +201,6 @@ Solch eine Partitionierung kann - entsprechende Erwartung über das Verhalten de
 
 
 #$@FORMULA@$#:0
-#$@FORMULA@$#:1
 Eine Anwendung, die über ein SparkContext-Objekt von der Spark API Gebrauch macht, wird in der Spark-Terminologie als Treiberprogramm bezeichnet.
 Es gibt grundsätzlich zwei verschiedene Arten solch ein Treiberprogramm zu deployen:
 4u
@@ -207,7 +211,8 @@ Es gibt grundsätzlich zwei verschiedene Arten solch ein Treiberprogramm zu depl
 9u
 10u
 11u
-Der zweite Fall ist eher exotisch, weil eine derart enge Kopplung zwischen dem Treiber und der Konfiguration des Clusters aus Wartungsgründen nicht wünschenswert ist.
+12u
+der Konfiguration des Clusters aus Wartungsgründen nicht wünschenswert ist.
 Im ersten Fall ergeben sich zwei weitere Möglichkeiten zum Ort der Ausführung des Treibers:
 15u
 16u
@@ -217,6 +222,8 @@ Im ersten Fall ergeben sich zwei weitere Möglichkeiten zum Ort der Ausführung 
 Die Lokalität eines Treibers (der mit den Executors auf den Workern kommunizieren muss) kann Einfluss auf Laufzeit und Latenzverhalten des Programms haben.
 Im Fall eines clusterfernen Gateway-Rechners kann also Treiberdeployment im Clustermodus sinnvoll sein, die Standardeinstellung ist jedoch der Clientmodus (siehe auch [Spa]).
 Abb. 2.9 zeigt das Sequenzdiagramm eines typischen Deploymentprozesses, wie er auch im praktischen Teil dieser Arbeit zum Einsatz kommt.
+Abbildung 2.9:
+Laufzeitdiagramm einer Spark-Anwendung im Client Modus (vereinfacht)
 
 
 :::: Scheduling und Shuffling ::::
@@ -244,30 +251,32 @@ Bei den RDDs wurden bisher insbesondere drei Aspekte behandelt:
 22u
 23u
 24u
-0u
-Baumstruktur für die Berechnung eines RDD (Abb. 2.11).
+Betrachtet man nur die Vorgänger-Beziehung, dann erhält man zunächst eine einfache
+1u
 Betrachtet man zusätzlich die Partitionierung und die Funktion mit der RDDs transformiert werden, sieht man einen wichtigen Unterschied zwischen verschiedenen Vorgängerbeziehun-
 #$@FORMULA@$#:0
 4u
 5u
 Wird eine Partition aus höchstens einer anderen erzeugt, lässt sich diese direkt auf dem selben Knoten berechnen.
 Werden jedoch verschiedene Partitionen benötigt um eine Folgepartition zu erzeugen, stellt sich die Frage auf welchen Knoten das am Besten geschieht.
-Spark unterteilt diese beiden Fälle in narrow dependencies (erster Fall) und wide dependencies
+Spark unterteilt diese beiden Fälle in narrow dependencies (erster Fall) und wide dependencies Abbildung 2.11:
+Beispiel eines einfachen Abhängigkeitsbaums eines RDD
 #$@FORMULA@$#:0
-0u
-Stage ist dabei ein Untergraph, dessen Elemente (von den Blättern in Richtung Wurzel betrachtet) auf eine gemeinsame wide dependency stoßen.
+Der Abhängigkeitsgraph eines RDD wird nun in sogenannte Stages zerlegt (Abb. 2.13).
+Eine Stage ist dabei ein Untergraph, dessen Elemente (von den Blättern in Richtung Wurzel betrachtet) auf eine gemeinsame wide dependency stoßen.
 Elemente innerhalb einer Stage können nach dieser Konstruktion unabhängig auf den Knoten berechnet werden, die die jeweilige Partition vorhalten.
 Ein Datenelement xi,j sei dabei Element eines RDD j und Element einer lokalen Partition Pi,j (d.h. es existiert auf einem Knoten i):
 xi,j ∈ P artitioni,j ⊆ RDDj Weil nach Definition der narrow dependencies innerhalb einer Stage die Elemente einer Partition Pi,j aus den Elementen genau einer Vorgängerpartition Pi,j−1 berechnet werden können, lässt sich jedes Element xi,j des Nachfolger-RDD über eine Komposition lokaler
 #$@FORMULA@$#:0
 #$@FORMULA@$#:1
-0u
-Hier stammen - nach Definition der wide dependencies - die direkten Vorgänger eines Elementes nicht alle aus der selben Partition.
+Für den Übergang zwischen Stages ist die Berechnung der Nachfolger etwas aufwändiger.
+1u
+nicht alle aus der selben Partition.
 Um eine neue Partition aus mehreren Vorgänger-Partitionen zu erzeugen, werden zunächst geeignete Ausführungsorte3 ermittelt, von denen dann jeder per geeignetem Partitionierer mindestens einen Bucket4 von Elementen verarbeitet.
 Diese Elemente stammen dann in der Regel aus verschiedenen Vorgängerpartitionen.
-Das so neupartitionierte und -verarbeitete RDD wird so zum Ausgangspunkt des folgenden
-0u
-5 Eine Schlüsselrolle kommt bei diesem Prozess der Methode runTask in der Klasse ShuffleMapTasks aus org.apache.spark.scheduler.ShuffeMlapTask zu.
+Das so neupartitionierte und -verarbeitete RDD wird so zum Ausgangspunkt des folgenden RDDs.
+1u
+Eine Schlüsselrolle kommt bei diesem Prozess der Methode runTask in der Klasse ShuffleMapTasks aus org.apache.spark.scheduler.ShuffeMlapTask zu.
 
 
 :::: Standardbibliotheken ::::
@@ -381,16 +390,15 @@ Spark liefert eine mögliche Implementation eines solchen alternativen Datenvera
 
 
 Apache Mesos15 ist seit Beginn der Entwicklung von Spark ein optionaler Clustermanager für Spark-Applikationen [ZC+12].
-10u
-knotenübergreifenden Ressourcenmanagements.
+Als reiner Clustermanager ersetzt Mesos die Spark Master-Komponente in der Funktion des
+11u
 Wie bei YARN ermöglicht dies auch anderen Anwendungen, die über Mesos verwaltet werden, einen gleichberechtigten Betrieb auf dem selben Cluster.
 
 
 :::: Flink ::::
 
 
-Apache Flink16 ist mit seiner Funktionalität ein direkter Konkurrent zu Apache Spark.
-Flink ist ebenfalls in Java/Scala geschrieben und bietet mit drei Standardbibliotheken zur Graphprozessierung, zum Maschinenlernverfahren und zu SQL-artigen Abfragen auf strukturierten Datensätzen einen sehr ähnlichen Funktionsumfang.
+Graphprozessierung, zum Maschinenlernverfahren und zu SQL-artigen Abfragen auf strukturierten Datensätzen einen sehr ähnlichen Funktionsumfang.
 Der wesentliche Unterschied in der Architektur von Flink, verglichen mit Spark, liegt im Applikationskern.
 Flink bietet ein Streaming-Backend auf dem wiederum auch Batchprozesse implementiert werden können.
 Spark wiederum bietet ein Batch-Processing-Backend (Operationen auf RDDs) auf dem auch Streaming-Prozesse implementiert werden können.
@@ -401,7 +409,7 @@ Solche feingranularen Optimierungsbemühungen sind dem Autoren bei Spark nicht b
 :::: Open MPI ::::
 
 
-Open MPI18 ist die Implementation des Message Passing Interface19, eines Standards zum Nachrichtenaustausch zwischen Prozessen.
+richtenaustausch zwischen Prozessen.
 Obwohl dieses Framework ebenfalls der Koordination unterschiedlicher Prozesse und einem gemeinsamen verteilten Speicherbereich dient, ist es völlig agnostisch bezüglich der ausgeführten Anwendung.
 Sparks Domäne dagegen ist „Large Scale Data Processing“, sämtliche Komponenten von Spark sind für diese Aufgaben optimiert.
 Überschneidungen der Anwendungsbereiche von Open MPI und Spark sind daher sehr unwahrscheinlich.
@@ -423,8 +431,8 @@ In Abbildung 3.1 wird der zugehörige Anwendungsfall dargestellt.
 Für die Beispielanwendung wird nur das Backend implementiert.
 Die grafische Benutzeroberfläche wird jedoch stellenweise erwähnt, um einen klaren Kontext zu setzen.
 Die Analyse der Tweets soll in Quasi-Echtzeit erfolgen und direkt anschließend an eine Datensenke weitergereicht werden (dort wäre beispielsweise eine Messagequeue oder Datenbank zur Weiterleitung an eine grafische Benutzeroberfläche).
-0u
-seien hier als Quasi-Echtzeit akzeptabel.
+Bis zu zehn Sekunden Latenz vom Eingang der Nachricht bis zur Weiterleitung an die Senke
+1u
 Als aktuelle Diskussionen in der Mailingliste der Sparkbenutzer gelten solche, die innerhalb der letzten etwa 500 Nachrichten geführt wurden.
 Bei der Bewertung neuer Nachrichten gibt es hier keine Echtzeit-Anforderung.
 Die Neubewertung bei Eintreffen neuer Nachrichten höchstens etwa alle 30 Minuten - soll genügen.
@@ -436,9 +444,8 @@ Die Neubewertung bei Eintreffen neuer Nachrichten höchstens etwa alle 30 Minute
 Als Versuchsumgebung dient ein Rechnercluster aus vier identischen Workern und einem
 #$@FORMULA@$#:0
 Dieser Cluster besteht aus ausschließlich aus leistungsschwacher Hardware.
-Mit leistungs-
-3u
-nannter Commodity Hardware liegt (Vgl. Anhang 3.1).
+Mit leistungsschwach sind Geräte gemeint, deren Leistungsfähigkeit noch deutlich unter aktueller soge-
+4u
 Konkret kommen die folgenden Geräte zum Einsatz:
 Worker Rasperry Pi 2
 7u
@@ -475,9 +482,9 @@ Zu diesen Konfigurationsmöglichkeiten gehören insbesondere die Größe der Bl�
 
 
 Spark läuft in diesem Versuch als alleinige Computeanwendung auf dem Cluster.
-Es ist also
-9u
-Standalone Clustermanager gewählt.
+Es ist also nicht nötig Konkurrenz um Ressourcen zu berücksichtigen.
+Für diesen Versuch wird daher der
+10u
 
 
 :::: Architekturübersicht ::::
@@ -493,15 +500,16 @@ Diese Schicht gehört nicht zum Spark-Backend und wird für diese Demonstation n
 :::: Batch Layer ::::
 
 
-In dieser Schicht wird die Verarbeitung von Emails aus der Spark-User-Mailingliste zu einem Modell von relevanten Wörtern geleistet.
+5u
+Modell von relevanten Wörtern geleistet.
 Dazu werden eingehende Emails zunächst archiviert und anschließend, mithilfe des Korpus aller bisher archivierten Emails und einer Untermenge von n zuletzt empfangenen Emails, eine Bewertung der vorkommenden Wörtern vorgenommen.
 Diese Bewertung soll das Maß für die Relevanz eines Wortes in der betrachteten Menge der letzten n Emails sein.
 Um das zu erreichen, wird in mehreren Schritten ein TF-IDF Vektor über die Wörter dieser Nachrichten erzeugt.
 TF-IDF steht für Term Frequency - Inverse Document Frequency ([SJ88]).
 Dieses Verfahren bewertet die Relevanz eines Wortes für einen Text nach der Häufigkeit dieses Wortes in dem Text (Term Frequency).
 Die Bewertung eines Wortes wird jedoch abgeschwächt je häufiger es in einem Textkorpus vorkommt (Inverse Document Frequency).
-0u
-Bereich Feature Extraction verfügbar6.
+Eine Implementation dieses Verfahrens ist in der Spark-Standardbibliothek MLLib in dem
+1u
 In diesem Anwendungsfall gilt:
 3u
 4u
@@ -530,12 +538,13 @@ Twitter-Endpunkt aufgebaut9.
 In der Komponente RealtimeAnalyzer wurden vor dem Start des Datenstroms Funktionen zur Bewertung einzelner Tweets registriert.
 Die Funktion ScoreTweets zur Bewertung einzelner Tweets ScoreTweets :
 T weets −→ IR × Tweets
-#$@FORMULA@$#:1
-0u
-#$@FORMULA@$#:0
 #$@FORMULA@$#:2
+wird dabei wie in Listing 3.1 dargestellt implementiert:
+#$@FORMULA@$#:0
+#$@FORMULA@$#:1
 #$@FORMULA@$#:3
-16 splitTweet._2 Dabei geschieht Folgendes:
+1u
+Dabei geschieht Folgendes:
 1u
 2u
 3u
@@ -559,10 +568,11 @@ Diese Pipeline ist durch ein post-receive-Skript in den jeweiligen Repositories 
 :::: Ergebnisse und Bewertung ::::
 
 
-Zur Beurteilung des Laufzeitverhaltens wird die Anwendung in verschiedenen Konfigurationen des Raspberry-Pi-Clusters gestartet.
-Dabei wird jeweils das Verhalten der einzelnen
-0u
-Die zur Laufzeit erfassten Daten sind 1.
+1u
+tionen des Raspberry-Pi-Clusters gestartet.
+Dabei wird jeweils das Verhalten der einzelnen Komponenten und des gesamten Systems erfasst und zur späteren Auswertung gespeichert.
+1u
+1.
 Systemgrößen auf jedem aktiven Knoten (1 Messpunkt pro Sekunde)
 #$@FORMULA@$#:1
 IO Festplatte (Lesen, Schreiben) Swap (Benutzt, Frei)
@@ -570,7 +580,7 @@ IO Festplatte (Lesen, Schreiben) Swap (Benutzt, Frei)
 IO Netzwerk (Gesendet, Empfangen) 2.
 Sparkspezifische Größen (1 Messpunkt alle zwei Sekunden) genutzte Cores aktive Stages parallele Receiver (bei Streaming) u.a. 10 Als Konfigurationsparameter für die Testläufe werden verwendet
 #$@FORMULA@$#:3
-12u
+2. der Replikationsfaktor der Blöcke auf HDFS (1, 2, 3, 4)
 #$@FORMULA@$#:2
 Um eine Vergleichbarkeit der Testläufe untereinander zu erreichen, werden folgende Größen festgelegt:
 0u
@@ -597,10 +607,10 @@ Um die Testläufe unter möglichst kontrollierten Bedingungen zu starten, wurde 
 
 Die Laufzeitmessung beginnt mit dem Start der ersten Aktion auf einem RDD und endet mit der Rückgabe des Relevanzvektors.
 Weil die Initialisierung erst zu diesem Zeitpunkt erfolgt, wird der gesamte Prozess von der Kontaktaufnahme zum Cluster und der Übermittlung der Tasks bis zur Rückgabe des Ergebnisses gemessen (siehe Listing 3.2).
-#$@FORMULA@$#:1
+#$@FORMULA@$#:2
 #$@FORMULA@$#:3
 #$@FORMULA@$#:0
-#$@FORMULA@$#:2
+#$@FORMULA@$#:1
 Die Zeilen 1-6 in Listing 3.2 wurden in die Darstellung aufgenommen, um die Lineage vollständig darzustellen.
 Der übrige Teil der Anwendung - insbesondere das Abrufen und Prozessieren neu eingegangener Emails - wird nicht berücksichtigt.
 Bei einem laufenden System sind die dort entstehenden Lasten so gering, dass kein Bedarf für Skalierung besteht.
@@ -615,11 +625,11 @@ Ein Hinweis auf den Flaschenhals bei der Verarbeitung auf einem einzigen Knoten 
 Die CPU steht unter Volllast, während die Leistung beim Lesen von der SD-Karte mit durchschnittlich 4,3 MB/s deutlich unter dem möglichen Durchsatz bleibt
 #$@FORMULA@$#:1
 Netzwerkdurchsatz spielt hier - wie bei einem einzelnen Knoten zu erwarten - offenbar keine Rolle.
-Betrachtet man die Summe der IO-Durchsätze über sämtliche Knoten, lassen sich deutlich die
-6u
+Betrachtet man die Summe der IO-Durchsätze über sämtliche Knoten, lassen sich deutlich die verschiedenen Phasen der Feature-Extraction erkennen.
+Abbildung 3.10 zeigt das kommentierte
 7u
-Anmerkung:
-Die Methode treeAggregate 11 innerhalb der Methode IDF.fit() stellt einen Spezialfall unter den RDD-Transformationen dar.
+8u
+einen Spezialfall unter den RDD-Transformationen dar.
 Sie besteht aus zwei Phasen, wobei in der ersten Phase lokal auf den Partitionen eine Aggregation von Datensätzen durchgeführt wird und anschließend über reduce die partitionsübergreifende Aggregation der bereits partiell aggregierten Datensätze durchgeführt wird.
 Aus dieser Implementation ergibt sich die Netzwerk-Lastspitze ab Sekunde 251
 #$@FORMULA@$#:0
@@ -628,7 +638,8 @@ Aus dieser Implementation ergibt sich die Netzwerk-Lastspitze ab Sekunde 251
 :::: Echtzeitkomponente ::::
 
 
-Einen ersten Blick auf den Zustand einer Spark-Anwendung ermöglicht die Weboberfläche des Treibers.
+1u
+Treibers.
 Jede Spark-Applikation startet gemäß der Standardeinstellungen auf dem Host des Treibers einen HTTP-Server, über den verschiedene Daten verfolgt werden können.
 In Abb. 3.11 sind die Statistiken einer laufenden Realtime-Komponente dargestellt.
 In dem betrachteten Fall läuft die Realtime-Komponente mit einem einzelnen Worker, der den Empfänger für den Datenstrom von Twitter startet und das Scoring und Filtern der eingehenden Nachrichten ausführt.
@@ -636,16 +647,16 @@ Um den Worker nicht für die Modellerzeugung der Batch-Komponente zu blockieren,
 Zum Zeitpunkt des Schnappschusses wurden 6260 Tweets empfangen und verarbeitet.
 Der letzte Batch enthielt 178 Twitter-Nachrichten (im Durchschnitt sind es etwa 200) und der Median für die Verarbeitungszeit liegt bei 373 Millisekunden (Total Delay).
 Bei einem Zeitfenster von 5 Sekunden (Batch Interval) pro Batch gibt es also keinen Hinweis auf Performanceprobleme bei der Verarbeitung.
-0u
-(Abb. 3.12).
-Die durchschnittliche Last über den beobachteten Zeitraum liegt bei 22,5%.
-Die Last des Master sogar nur bei 8,1%.
-Auch die Netzwerklast ist minimal (Abb. 3.13).
+Dieser Verdacht erhärtet sich bei einem Blick auf die CPU-Last des verarbeitenden Workers
+1u
+Last des Master sogar nur bei 8,1%.
+Abbildung 3.12:
+CPU Last bei Betrieb mit einem Worker Auch die Netzwerklast ist minimal (Abb. 3.13).
 Ab Sekunde 51 liegt die Last des Workers bei durchschnittlich 77 KByte/s.
 Über den beobachteten Zeitraum von knapp 7 Minuten wurden damit 31.4 Megabyte empfangen.
 Die Last des Masters liegt noch darunter.
-3u
-Sekunden bei etwa 362MB stabilisiert.
+Betrachtet man den Speicherverbrauch (Abb. 3.14), sieht man, dass sich dieser nach wenigen
+4u
 
 
 :::: Schlussbetrachtung ::::

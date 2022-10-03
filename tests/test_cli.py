@@ -39,6 +39,7 @@ def test_run_words_basic(command, mp):
     tests.run(command, mp=mp)
 
 
+@pytest.mark.xfail(reason='software integration')
 @utilatest.nightly
 @utilatest.requires(power.MASTER072_PDF)
 def test_feature_words_work_pages0_10(td, mp):

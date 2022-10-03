@@ -427,9 +427,10 @@ Die Orientierung dient dazu, Außenund Innenraum des Körpers strikt voneinander
 Die Ränder der Faces können dabei rekursiv betrachtet jeweils in um eine Dimension reduzierte Randobjekte zerlegt werden (vgl. Hoffmann und Rossignac, 1996).
 Dies kann auch als ein hierarchisches Modell aufgefasst werden, in dem höher-dimensionale Randobjekte durch eine Anzahl niederdimensionaler Randobjekte repräsentiert werden.
 Für dreidimensionale Körper sind die sich ergebenden topologischen Objekte in Tabelle 2.1 dargestellt.
-Tabelle 2.1:
-Topologischen Objekte einer Boundary representation, entsprechend ihrer Dimension, mit deutscher und englischer Bezeichnung In der einfachsten Ausprägung sind B-rep-Modelle „Polygon-basierte Berandungsmodelle”.
-Dabei wird der Rand ausschließlich aus einer Menge planarer Polygone beschrieben, welche die Koordinaten der Eckpunkte geordnet speichern (vgl. Mäntylä, 1988, Abschnitt 6.2.1).
+In der einfachsten Ausprägung sind B-rep-Modelle „Polygon-basierte Berandungs-
+23u
+24u
+tylä, 1988, Abschnitt 6.2.1).
 Dies ist für Visualisierungszwecke ausreichend.
 Die Prüfung, ob zwei Polygone eine gemeinsame Kante besitzen, ist ausschließlich auf geometrischer Ebene möglich, indem die numerischen Werte der Koordinaten verglichen werden.
 In den sogenannten Eckpunkt-basierten Modellen werden von den Polygonen die Koordinaten tragenden Eckpunkte referenziert (vgl. Mäntylä, 1988, Abschnitt 6.2.2).
@@ -624,10 +625,10 @@ So existiert im Maschinenbau das Feature-basierte Modellieren.
 Dabei liegt der Fokus auf dem Herstellungsprozess einzelner Bauteile und damit vor allem dem Herausarbeiten der geometrischen Form (vgl. Hoffmann und Rossignac, 1996).
 Ein Feature (deutsch: Merkmal bzw. Funktion) ist dabei die Repräsentation von physischen Teilen oder Baugruppen, die ingeneurtechnische Relevanz hat (vgl. Shah und Mäntylä, 1995, Seite 97).
 Shah, Sreevalsan u.a. (1988) fassen folgende Eigenschaften eines Features zusammen:
-15u
-16u
-17u
-18u
+• Es ist ein physischer Bestandteil eines (Bau-)Teils.
+• Es kann allgemein auf eine geometrische Form abgebildet werden.
+• Es hat ingenieurtechnische Relevanz.
+• Es hat vorbestimmte Eigenschaften.
 Das Feature-basierte Modellieren steht auch im Zusammenhang mit dem parametrischen Modellieren (siehe Abschnitt 4.3.1), da die Eigenschaften eines Features zur Steuerung der geometrischen Form genutzt werden können.
 
 
@@ -640,15 +641,15 @@ Objekte derselben Klasse besitzen dieselbe Menge an Eigenschaften, welche sie in
 Die Abstraktion findet im Bauwerksmodell entsprechend der ingenieurtechnischen Einteilung statt.
 Dies geschieht beispielsweise auf Basis von Gemeinsamkeiten, die entsprechend im Anwendungskontext identifiziert werden.
 Sie kann aber auch auf Basis eines Klassifikationssystems erfolgen.
-ISO 12006-2 dient als Grundlage für Klassifikationssysteme im Bauwesen, das die Bauteile repräsentierenden Objekte Abbildung 3.1:
-Klassifikation von Komponenten eines Bauwerks in einer Hierarchie (in eigene Übersetzung entnommen aus ISO 12006-2, Abbildung 2, links) entsprechend in Klassen und Unterklassen unterteilt.
+ISO 12006-2 dient als Grundlage für Klassifikationssysteme im Bauwesen, das die Bauteile repräsentierenden Objekte entsprechend in Klassen und Unterklassen unterteilt.
 Ein Beispiel ist in Abbildung 3.1 gegeben.
 Eine Möglichkeit der Abstraktion von digitalen Bauteilobjekten wird von Gielingh (2008) genannt.
 Dieser unterteilt die Beschreibung von Objekten in vier Ebenen:
 Generische Ebene:
-Eine Beschreibung auf Basis von Parametern, wobei nicht alle Parameter mit Werten spezifiziert sind.
-Spezifische Ebene:
-Eine Beschreibung, die alle Parameterwerte spezifiziert, aber für mehrere Objekte verwendet werden kann.
+Eine Beschreibung auf Basis von Parametern, wobei nicht alle
+5u
+6u
+mehrere Objekte verwendet werden kann.
 Individuelle Ebene:
 Individuelle Objekte, deren Eigenschaften über den Lebenszyklus variieren können.
 Auftritts-Ebene:
@@ -674,8 +675,6 @@ Dies ergibt beispielsweise folgende Einteilung:
 Ein Gebäude besteht aus Gebäudeteilen, diese bestehen aus Etagen, diese bestehen aus Räumen und Bauteilen, Bauteile bestehen aus Einzelkomponenten, usw.
 Nach ISO 12006-2 (Abschnitt B.3) kann eine Klassifikation von Bauteilen und ihren Komponenten ebenfalls in einer Hierarchie abgebildet werden.
 Ein Beispiel für ein Gebäude und seine Zusammensetzung ist in Abbildung 3.2 gegeben.
-Abbildung 3.2:
-Strukturierung von Komponenten eines Bauwerks als Kompositions-
 #$@FORMULA@$#:0
 
 
@@ -692,13 +691,15 @@ Ein Bauwerksmodell ist üblicherweise bauteilzentriert bzw. objektorientiert auf
 Dies bedeutet, dass darin als kleinste Einheiten Bauteile oder vergleichbare Einheiten, wie zum Beispiel Räume, enthalten sind.
 Am Beispiel eines Fensters wird deutlich, welche unterschiedlichen Aspekte abgebildet werden.
 Das Fenster ist in Abbildung 3.3 dargestellt.
-Das Fenster selbst besteht aus Attributen (englisch: attribute oder property), welche die Werte enthalten, die verschiedene Eigenschaften des Fensters festlegen.
-So kann es beispielsweise die Attribute „Verglasung“ oder „Rahmenbreite“ besitzen.
-Die Attribute werden den semantischen Daten des Fensters zugeordnet.
+Das Fenster selbst besteht aus Attributen (englisch: attribute oder property), welche
+17u
+18u
+werden den semantischen Daten des Fensters zugeordnet.
 Daneben gehört zu einem Fenster üblicherweise eine geometrische Beschreibung.
 Hierbei handelt es sich nicht um Attribute mit Maßen des Fensters, wie „Höhe“, „Breite“, „Tiefe“, sondern um eine geometrische Repräsentation des Fensters.
-Die „klassische“ geometrische Repräsentation Rahmen ist rechteckig Abbildung 3.3:
-Auszug verschiedener Aspekte eines Bauwerksmodells am Beispiel einer Entität „Fenster“ im Bauwesen stellt die technische Zeichnung dar, welche aber von dreidimensionalen, geometrischen Modellen abgelöst werden.
+Die „klassische“ geometrische Repräsentation
+#$@FORMULA@$#:0
+Rahmen ist rechteckig Scheibe passt in Rahmen im Bauwesen stellt die technische Zeichnung dar, welche aber von dreidimensionalen, geometrischen Modellen abgelöst werden.
 Diese Modelle gehen über die reine Visualisierung hinaus.
 Sie können zur algorithmischen Ableitung von Informationen genutzt werden.
 Der Zweck einer geometrischen Zeichnung – als zweidimensionales Bild – ist es üblicherweise, Maße, Form und Material, als von Menschenen interpretierbar darzustellen:

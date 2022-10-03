@@ -8,6 +8,7 @@
 # =============================================================================
 
 import power
+import pytest
 import serializeraw
 import utila
 import utilatest
@@ -15,6 +16,7 @@ import utilatest
 import tests
 
 
+@pytest.mark.xfail(reason='software integration')
 @utilatest.requires(power.BACHELOR067_PDF)
 def test_sentences_bachelor067pages51(td, mp):
     source = power.link(power.BACHELOR067_PDF)

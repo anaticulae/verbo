@@ -8,6 +8,7 @@
 # =============================================================================
 
 import power
+import pytest
 import serializeraw
 import utila
 import utilatest
@@ -27,6 +28,7 @@ def test_word_diss143page27(td, mp):
     assert '#$@FORMULA@$#:1' in str(loaded)
 
 
+@pytest.mark.xfail(reason='software integration')
 @utilatest.longrun
 @utilatest.requires(power.HOME050_PDF)
 def test_word_home50page31(td, mp):

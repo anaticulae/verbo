@@ -4,123 +4,13 @@
 
 
 2.1 System Dependability .
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-. 9
-2.2 Distributed system observability .
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-. 10
-2.3 Artificial intelligence for IT systems .
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-. 17
-2.4 Anomaly detection .
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-. 19
-In this chapter, we describe the main concepts and principles behind system dependability, observability in distributed systems, and the use of artificial intelligence in IT operations (AIOps).
+. . . . . . . . . . . . . . . . . . . . . . 9 2.2 Distributed system observability .
+. . . . . . . . . . . . . . . . 10 2.3 Artificial intelligence for IT systems .
+. . . . . . . . . . . . . . 17 2.4 Anomaly detection .
+. . . . . . . . . . . . . . . . . . . . . . . . 19 In this chapter, we describe the main concepts and principles behind system dependability, observability in distributed systems, and the use of artificial intelligence in IT operations (AIOps).
 Then, we explain key concepts of anomaly detection needed for understanding the methods in this thesis.
 2.1 system dependability Dependability is defined as the trustworthiness of a computer system such that reliance can justifiably be placed on the service it delivers [27].
 In software engineering, dependability can be broken down into three elements [28]:
-1.
-The threats (impairments) to dependability:
-faults, errors, failures; they
-15u
-16u
-2.
-The means for dependability:
-fault prevention, fault tolerance, fault re-
-18u
-19u
-3.
-The attributes of dependability:
-Depending on the application running
-21u
-22u
-23u
-24u
-25u
-26u
-27u
-0u
-1u
-2u
-3u
-4u
-5u
-6u
-7u
-8u
-9u
-10u
-11u
-12u
-13u
 14u
 15u
 16u
@@ -131,6 +21,22 @@ Depending on the application running
 21u
 22u
 23u
+24u
+25u
+26u
+27u
+The methods presented in this theses are contributing towards the improvement of dependability of the distributed systems by detecting the threats to system dependability.
+In the following we describe the concepts behind faults, errors, and failures.
+A fault or bug is a defect in a system.
+The presence of a fault in a system may or may not lead to a failure.
+For example, although a system may contain a fault, its input and state conditions may never cause this fault to be executed so that an error occurs.
+An error is a difference between the desired behaviour of a system and its actual behaviour.
+Errors usually occur at runtime when some part of the system enters an unexpected state due to the activation of a fault.
+Since errors are generated from invalid states they are hard to observe without special mechanisms, such as debuggers or debug output to logs.
+A failure is an instance in time when a system displays behaviour that is contrary to its specification.
+An error may not necessarily cause a failure, for instance an exception may be thrown by a system but this may be caught and handled using fault tolerance techniques so the overall operation of the system will conform to the specification.
+In modern paradigms of distributed software systems, ensuring high dependability is a challenging problem as the threats can appear in hardware failures, unreliable networks, software bugs, and even human errors [29].
+In the following, we describe key concepts of distributed systems, and observability as a key paradigm that provides the starting point for improving the dependability.
 2.2 distributed system observability A distributed system has multiple components located on different machines, which communicate and coordinate actions over the network by passing messages to each other [30].
 SOAs have been introduced more than 20 years ago [31].
 Since then, the field of distributed systems has been actively researched, which has led to a large paradigm shift.
@@ -161,9 +67,9 @@ Some resources are low-level, e.g., server resources such as CPU, memory, disks,
 However, a higher-level component, such as a database or microservice, can also be considered a resource if another system requires that component to produce work.
 Resource
 #$@FORMULA@$#:0
-0u
+metrics can help reconstruct a picture of a system’s state, which makes them
 1u
-in a software system, several metrics are collected in key areas [41]:
+2u
 3u
 4u
 5u
@@ -204,9 +110,8 @@ For example, the Sarbanes-Oxley Act of 2002 specifies that the execution of tele
 In modern distributed systems, logs provide vital insights by capturing the state of the system for each service/component [21].
 Logs are generally instrumented as per their usability by developers.
 Depending on the storage rules, they are processed, aggregated, and ultimately stored in a centralized data store from where they can be analyzed.
-Logs can originate from the application logic code, middleware, network communications (e.g., from switches),
-0u
-ancers, and communication with security and authentication modules[1].
+Logs can originate from the application logic code, middleware, network communications (e.g., from switches), database communication, message brokers, caches, interaction with load bal-
+1u
 Independent on their origin type, logs contain free-form text with a timestamp, alongside other system-dependent fields.
 We show few typical log messages from a cloud computing infrastructure software (OpenStack [57]) in Table 1.
 The first field is the timestamp when the log was generated, followed by a log level (INFO, WARNING, ERROR, etc.), payload or actual print statement written by developers, and name of the service from which was generated.
@@ -221,9 +126,10 @@ By solely observing discrete events that occurred in any given component at some
 This is the strongest drawback of log data.
 2.2.3 Distributed traces The introduction of distributed traces helps address the drawbacks of the log data.
 They are a series of causally related distributed events that encode the end-to-end request flow through a distributed system.
-A single trace can provide visibility into the service response time to a request, path traversed by a
-0u
-ware developers and operators to understand the different services involved in executing a particular request.
+A single trace can provide visibility into the service response time to a request, path traversed by a request, and structure of a request [39, 60].
+The path of a request enables soft-
+1u
+in executing a particular request.
 The structure of a request helps understand the junctures and effects of asynchrony in the execution of a request.
 The response time contained in the traces is related to the actual user experience, QoS, and can be considered as metric data [14, 18].
 A tracing infrastructure (e.g., Dapper [60]) for distributed services records information about all work in a system on behalf of a given initiator.
@@ -237,9 +143,10 @@ A simple trace for this request will be a collection of message identifiers and 
 Such execution path with distributed tracing can be naturally described as a graph.
 In a trace graph, the nodes are basic units of work, referred to as events or spans.
 Each service invocation produces one span in the trace.
-0u
-forming the structure of a larger trace in Figure 3.
-Tracing records a humanreadable span name for each span, as well as a Span ID and Parent ID.
+The edges indicate a causal relationship between services.
+We illustrate spans
+1u
+readable span name for each span, as well as a Span ID and Parent ID.
 To reconstruct the causal relationships between the individual spans in a single distributed trace, we need to follow the parent–child relationship between the spans (representing a service invocation).
 Spans created without a Parent ID are known as root spans.
 All spans associated with a specific trace also share a common identifier Trace ID.
@@ -247,8 +154,9 @@ All these IDs are probabilistically unique 64-bit integers [60].
 Figure 4 provides a more detailed view of the logged events in a typical trace span.
 Each span within the trace is described by its start and stop times, name of the host of the service, name of the service/project, HTTP endpoint, and list of its children spans/services.
 If application owners choose to augment the trace with their annotations, these are also recorded with the rest of the span data.
-4u
-The amount and descriptive power of the observability data sources are favourable for the use of artificial intelligence methods.
+2.3 artificial intelligence for it systems
+5u
+favourable for the use of artificial intelligence methods.
 In this context, the term AIOps was coined by Gartner [62] to address the DevOps challenges with AI.
 AIOps aims to achieve high service intelligence, customer satisfaction, and engineering productivity.
 However, numerous challenges still need to be overcome.
@@ -343,9 +251,7 @@ Second, the provision of accurate and representative labels, particularly for th
 2.4.2 Semi-supervised anomaly detection In numerous real-world applications including anomaly detection in distributed systems, the operators have access to some verified (i.e., labeled) normal or anomalous samples in addition to the unlabeled data.
 The inclusion of these samples together with the bulk of unlabeled data leads to a semi-supervised anomaly detection problem.
 Considering N (mostly normal but possibly containing some anomalous samples) unlabeled samples x1, .
-.
-.
-, xN and M labeled samples
+. . , xN and M labeled samples
 #$@FORMULA@$#:0
 samples, respectively, the task is to learn a model that compactly characterizes the normal class.
 The typical approach used in semi-supervised techniques is to develop a model for the class corresponding to the normal behavior and use the model to identify anomalies in the test data.
@@ -400,7 +306,7 @@ Formally, this framework can be represented by
 #$@FORMULA@$#:2
 ψ−φ(x; Θ); W· , sx = f(x, φΘ˚, ψW˚), (2)
 #$@FORMULA@$#:3
-xPX where φ maps the original data onto the representation space Z, ψ parameterized by W is a surrogate learning task that operates on the Z space and is dedicated to enforce the learning of underlying data regularities, ` is a loss function relative to the underlying modeling approach, and f is an anomaly scoring function that utilizes these two functions with the trained parameters Θ˚ and W˚ to calculate the anomaly score s. This approach includes methods driven by several perspectives, including data reconstruction, generative modeling, predictability modeling, and self-supervised classification.
+where φ maps the original data onto the representation space Z, ψ parameterized by W is a surrogate learning task that operates on the Z space and is dedicated to enforce the learning of underlying data regularities, ` is a loss function relative to the underlying modeling approach, and f is an anomaly scoring function that utilizes these two functions with the trained parameters Θ˚ and W˚ to calculate the anomaly score s. This approach includes methods driven by several perspectives, including data reconstruction, generative modeling, predictability modeling, and self-supervised classification.
 2.4.4.3 End-to-end anomaly score learning This approach aims to learn scalar anomaly scores in an end-to-end manner.
 Compared to anomaly measure-dependent feature learning, the anomaly scoring in this type of approach is not dependent on existing anomaly measures.
 It has a neural network that directly learns the anomaly scores.
@@ -408,14 +314,11 @@ Novel loss functions are often required to drive the anomaly scoring network.
 Formally, this category of methods aims to learn an end-to-end anomaly score learning network:
 τ(¨; Θ) :
 X ÞN R. The underlying framework can be represented as
-#$@FORMULA@$#:2
-`−τ(x; Θ)·, (3)
-#$@FORMULA@$#:3
 #$@FORMULA@$#:0
-sx = τ(x; Θ˚).
-(4)
+`−τ(x; Θ)·, (3)
 #$@FORMULA@$#:1
-2.4.4.4 Autoencoders Autoencoders are utilized as a neural architecture throughout this thesis.
+sx = τ(x; Θ˚).
+(4) 2.4.4.4 Autoencoders Autoencoders are utilized as a neural architecture throughout this thesis.
 This type of approach aims to learn some low-dimensional feature representation space on which the given data instances can be well reconstructed.
 This is a widely used technique for data compression or dimension reduction [25, 91, 92].
 The heuristic for using this technique in anomaly detection is that the learned feature representations are enforced to learn important regularities of the data to minimize reconstruction errors.
@@ -425,10 +328,9 @@ In autoencoders, the output (target) value is set equal to the input, i.e., yi =
 The autoencoder learns a function h(w, b(x)) » x.
 In other words, it aims to learn an approximation to the identity function, to output y similar to x.
 The identity function seems a trivial function to learn.
-However, by placing some constraints, e.g.,
-0u
-extract some valuable features from the data.
-Modern autoencoders have generalized the idea of encoder and decoder beyond deterministic functions to stochastic mapping.
+However, by placing some constraints, e.g., by limiting the number of hidden units or introducing regularization, we can
+1u
+eralized the idea of encoder and decoder beyond deterministic functions to stochastic mapping.
 One approach to obtain useful features, as mentioned, is to have a smaller h-dimension than x.
 This is referred to as under-complete autoencoder.
 Learning the under-complete representation forces the autoencoder to capture the most important features of the data.
@@ -466,29 +368,7 @@ The area under the ROC curve represents the fraction of detected anomalies, aver
 
 
 3.1 Anomaly detection challenges in distributed software systems 28 3.2 Conceptual overview .
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-. 35
-This chapter describes the main challenges, problems addressed, and assumptions made in this thesis related to anomaly detection in each of the system data sources.
+. . . . . . . . . . . . . . . . . . . . . . 35 This chapter describes the main challenges, problems addressed, and assumptions made in this thesis related to anomaly detection in each of the system data sources.
 We position the methods developed in this thesis in the more general AIOps platform and provide an overview of the solution.
 3.1 anomaly detection challenges in distributed software systems Several challenges that hinder the anomaly detection include training a model to capture every possible normal behavior, existence of anomalies from malicious adversaries, evolving normal behaviour, absence of labeled data, and high noise.
 The complex nature of the anomaly detection problem translates some of the detection challenges to the domain of distributed software systems.
@@ -540,10 +420,10 @@ Notifying an operator is costly.
 When the alerts occur too frequently, operators secondguess, skim, or even ignore incoming alerts as they classify them as false positives (alarms).
 Sometimes even real treats masked by the noise of alarms are ignored.
 Therefore, effective anomaly detection and alerting systems have good signals and low noise or low rates of false alarms.
-0u
+3.1.1 Metric data
 1u
-the lack of labeled data, concept drift, and concept evolution.
-Other major sources of difficulties emerge owing to the low signal-to-noise ratio, multiple frequencies and multiple distributions, large number of distinct time series generated by microservice applications, and concept drifts.
+2u
+sources of difficulties emerge owing to the low signal-to-noise ratio, multiple frequencies and multiple distributions, large number of distinct time series generated by microservice applications, and concept drifts.
 The signalto-noise ratio is typically low as numerous different components affect the response time of microservices such as switches, routers, memory capacity, CPU performance, programming languages, thread and process concurrency, bugs, and volume of user requests.
 Multiple frequencies are correlated with system and user behaviors as request patterns are different, e.g., from hour to hour due to business operation hours, from day to day due to system maintenance tasks, and from month to month due to cyclic patterns.
 Some of these challenges are illustrated in Figure 8.
@@ -554,8 +434,9 @@ Similar data points in the time series upon rearrangement represent different sy
 For example, a gradually increasing pattern, if flipped horizontally, will be a gradually decreasing pattern.
 The values of the data points used to form these patterns can be equal or similar; however, they reflect opposite system states.
 Therefore, models that aim to learn patterns from such time series need to consider the stochastic and sequential properties.
-0u
-Developers and operators with understanding of the system can detect a problem that can be observed in the logs based on semantic reasoning.
+3.1.2 Log data
+1u
+lem that can be observed in the logs based on semantic reasoning.
 However, as explained above, owing to the massive amounts of log data, manual inspection is often infeasible.
 In almost all live software systems, the log statements from their services evolve and are prone to processing noise over time.
 Developers may frequently modify source codes including logging statements, which in turn leads to changes to log data.
@@ -575,9 +456,10 @@ This contributes to the inability of log analysis methods (e.g., parsing and ano
 These problems suggest that any method developed for log analysis needs to discard the close-world assumption, where systems are not evolving [38, 103].
 The methods need to address the described challenges during the design of their models.
 This is particularly important for organizations that use the Continue Delivery/Deployment approaches, where the environment poses larger challenges [104].
-9u
+3.1.3 Distributed tracing data
 10u
-They are related to the existence of noise, arbitrary lengths of the traces, and lack of labels.
+11u
+lack of labels.
 From these challenges, the lack of labels is a lasting problem in the task of anomaly detection in general and was described in the previous chapter.
 Owing to the complex nature of the operations within a distributed environment and high noise, although the observed sequence of events may not be present in the set of observed traces, it may still be normal.
 Noise in the traces occurs because complex systems rely on software patterns, such as caching and load balancing, to increase the efficiency and reliability.
@@ -661,20 +543,15 @@ For the metric data, the aggregation is carried out per service where metrics su
 The logs from all services are aggregated in a database with a possible separation by the service/physical host.
 Finally, the tracing data involve multiple hosts and services traversed while executing a request
 #$@FORMULA@$#:0
-0u
+The data serve as a basis for the analytic and machine learning parts where
 1u
 2u
-In the anomaly detection module, we consider three anomaly detectors fm(xm), fl(xl), and ft(xt) for the metrics, logs, and traces, respectively.
+3u
+fm(xm), fl(xl), and ft(xt) for the metrics, logs, and traces, respectively.
 The input data in (1) fm(xm) are a time series representing a system metric xm = xwm m , xwm m , .
-.
-.
-, xwm m , where wm is a window size, in (2) fl(xl) are a system log message xl = x1 l , x2 l , .
-.
-.
-, xm l , where xi l are d´dimensional representations of the words in the log message and m is the number of words, and in (3) ft(xt) are a trace xt = x1 t , x2 t , .
-.
-.
-, xk t , where xi t is a span and k is the number of spans in the trace.
+. . , xwm m , where wm is a window size, in (2) fl(xl) are a system log message xl = x1 l , x2 l , .
+. . , xm l , where xi l are d´dimensional representations of the words in the log message and m is the number of words, and in (3) ft(xt) are a trace xt = x1 t , x2 t , .
+. . , xk t , where xi t is a span and k is the number of spans in the trace.
 Each of the separate methods for anomaly detection in metrics, logs, and traces presented in this thesis is designed to mitigate the previously described challenges.
 Below, we present main questions derived from the challenges and methods to address them on an abstract level.
 17u
@@ -748,92 +625,8 @@ Finally, the alerts from the anomaly detection, root cause analysis, and recover
 
 4.1 Metano:
 anomaly detection and classification in metrics .
-.
-. 40
-4.2 Evaluation .
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-. 50
-4.3 Related work .
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-. 56
-4.4 Chapter summary .
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-. 58
-Anomaly detection for metric data with various patterns and data quality has been a great challenge, especially without labels.
+. . 40 4.2 Evaluation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 50 4.3 Related work . . . . . . . . . . . . . . . . . . . . . . . . . . . . 56 4.4 Chapter summary .
+. . . . . . . . . . . . . . . . . . . . . . . . 58 Anomaly detection for metric data with various patterns and data quality has been a great challenge, especially without labels.
 Existing anomaly detection algorithms suffer from the hassle of algorithm picking/parameter tuning, heavy reliance on labels, which among other challenges results in large number of false alarms.
 Metric time series from distributed systems exhibit complex temporal relationships and stochasticity [44, 111].
 Accordingly, a possible solution should address both properties.
@@ -845,24 +638,17 @@ We summarize the contributions in this chapter, which form a part of a 1 metric 
 23u
 24u
 25u
-0u
-To formally define Metano, we consider historical observations of a part of a discrete time series representing metric data xt = xt´w, xt´w+1, .
-.
-.
-, xt, where w is the size of a defined sliding window over the time series and
+4.1 metano:
+anomaly detection and classification in metrics
+1u
+of a discrete time series representing metric data xt = xt´w, xt´w+1, .
+. . , xt, where w is the size of a defined sliding window over the time series and
 #$@FORMULA@$#:0
 a function represented by a neural network, which maps the input time series window xt to a latent representation in Rh, and then to an anomaly score.
 The method learns the parameters θ, and then, for each incoming instance in the prediction phase xtest 1 , xtest 2 , .
-.
-.
-, xtest i , .
-.
-.
-, predicts whether it is anomalous or normal based on the anomaly scores and threshold τ.
-If an anomaly is detected, the method classifies it into a finite set of predefined patterns yp P 0, .
-.
-.
-, k with a classifier network φ(xtest i , θˆ).
+. . , xtest i , .
+. . , predicts whether it is anomalous or normal based on the anomaly scores and threshold τ.
+If an anomaly is detected, the method classifies it into a finite set of predefined patterns yp P 0, . . . , k with a classifier network φ(xtest i , θˆ).
 The overall structure of Metano is shown in Figure 11, which consists of two parts, offline training and online (test-time) detection.
 The time series from the metric data is preprocessed.
 After the preprocessing, the transformed data are sent to the model training module to learn a model that captures the normal patterns of the time series and outputs an anomaly score for each observation.
@@ -876,10 +662,9 @@ Finally, Metano outputs a dictionary object containing the start timestamp of th
 4.1.1 Time series preprocessing This step involves two parts, preprocessing in model training and test-time prediction.
 The module starts by querying the N data points of a time series and forwards them into a three-stage pipeline consisting of data cleaning, normalization, and noise reduction.
 Figure 12 shows an overview of the pre-In the offline training phase, we perform data cleaning as the first step.
-Sam-
-6u
-removed from the training batch, according to the three-sigma rule [114].
-This is important for robustness and to remove possible anomalies in the training data, as labels are not available.
+Samples having values larger than three standard deviations from the mean are
+7u
+is important for robustness and to remove possible anomalies in the training data, as labels are not available.
 The values are then normalized using minmax scaling (0, 1).
 Normalization is required and makes the optimization function of the neural network well-conditioned, which is crucial for convergence [115].
 The min-max normalization is expressed by
@@ -902,26 +687,18 @@ Time series partitioning The next step in the pipeline is to transform the time 
 In contrast to methods that perform anomaly detection on finite time series data (already windowed, e.g., ECG signals [117]), here we formulate the anomaly detection on sliding windows of the time series, which enables test-time prediction in streaming fashion.
 Therefore, we define w, which is the size of the sliding window.
 The window is applied to the time series and leads to a training data shape of (N ´ w, w, 1),   x1 x2 .
-.
-.
-xw     x2 x3 .
-.
-.
-xw+1
+. . xw     x2 x3 .
+. . xw+1
 #$@FORMULA@$#:0
   Xtrain =   .
-.
-.
-    xN´w xN´w+1 .
-.
-.
-xN (N´w)ˆw.
+. .     xN´w xN´w+1 .
+. . xN (N´w)ˆw.
 In the test-time prediction, for each new collected value of the time series, a window of points xtest with a size of w is formed, preprocessed, and fed to the network for prediction.
 4.1.2 Network architecture To learn the patterns of the time series data representing the normal system behavior, we design an architecture based on a VAE [118], which maps observations (i.e.,input values) to stochastic (i.e., latent) variables, and then reconstructs the input (Figure 13.
 The dimensionality of the latent variables is lower than the dimensionality of the input.
-Therefore, the latent variables are
-0u
-To detect anomalies, the model uses a window of a time series as an input and performs reconstruction.
+Therefore, the latent variables are enforced to capture salient features of the normal patterns of the time series.
+1u
+and performs reconstruction.
 The reconstruction for normal time series data, similar to those used for model training, is expected to provide a small reconstruction error, as the model is trained by optimizing the error loss function.
 The reconstruction error for an anomaly sample is expected to be large, as the model is not trained to reconstruct such time series data [119].
 The decision for anomaly is then based on a threshold on the reconstruction error.
@@ -938,16 +715,14 @@ The computation requires marginalization over the latent variables z, which is i
 In variational methods, a distribution family is chosen over the latent variables with its variational parameters q(z1:m|ν).
 The parameters that lead to q as close as possible to the posterior of interest are estimated through optimization [120].
 However, the true posterior often is not in the search space of the distribution family and thus the variational inference provides only an approximation.
-The similarity between the two distributions is measured by the Kullback–Leibler (KL) divergence, a measure of the difference of one probability distribution from a reference probability distribution,
-#$@FORMULA@$#:0
-.
-(9)
-#$@FORMULA@$#:1
-Direct and exact minimization of the KL divergence is not possible.
+The similarity between the two distributions is measured by the Kullback–Leibler (KL) divergence, a measure of the difference of one probability distribution from a reference probability distribution, ≤  q(z) KL(q}p) = Eq .
+(9) log p(z|x) Direct and exact minimization of the KL divergence is not possible.
 Instead, as proposed in [120], a lower bound on the log-marginal likelihood is constructed, log pθ(x) ě log pθ(x) ´ KL(q(z|x)}pθ(z|x)) (10)
-#$@FORMULA@$#:6
-#$@FORMULA@$#:5
+#$@FORMULA@$#:1
+#$@FORMULA@$#:0
+#$@FORMULA@$#:2
 λ log pθ(x|z)* ´ βKL q(z|x), p(z)* (11)
+#$@FORMULA@$#:3
 #$@FORMULA@$#:4
 where λ and β are weights in the Evidence Lower Bound (ELBO).
 In practice, λ = 1 and β is slowly annealed to 1 to form a valid lower bound on the evidence [121].
@@ -964,13 +739,12 @@ Numerous solutions exist for this problem, which well perform in practice.
 The most used RNN types are LSTM [124] and GRU [125] cells, which are used in Metano.
 The GRU cell is a simpler version of the LSTM, which requires less computational resources.
 The GRU computes an update gate based on the current input vector and hidden state,
-#$@FORMULA@$#:2
+#$@FORMULA@$#:5
 zt = σ(W(z)xt + U(z)st´1), (12)
-#$@FORMULA@$#:3
-0u
+#$@FORMULA@$#:6
+and then computes the reset game similarly but with different weights,
 #$@FORMULA@$#:2
-rt = σ(W(r)xt + U(r)st´1).
-(13)
+1u
 #$@FORMULA@$#:3
 The new memory content is s˜t = tanh(Wxt + rt ˝ Ust´1).
 (14)
@@ -1119,9 +893,10 @@ Notably, the described approach in this chapter is comparable to or outperforms 
 Overall, the results in the table and figure indicate that the combination of generative models, such as the VAE with GRU units, that extract temporal information is effective.
 The method generalizes over different anomaly scenarios.
 The highest scores are observed in S5 and S6, where the anomalies are most reflected in the values.
-0u
+(a) (b)
 1u
-In Figure 18, scenarios 5 and 6 are illustrated, where the method successfully flags the majority of anomalous values.
+2u
+fully flags the majority of anomalous values.
 The method successfully flags almost all anomalous events.
 False positives are observed only around the 800-th and 1250-th data points of the time series, where the response time is increased owing to the considerable noise.
 Overall, the method performs comparably well, successfully handling variety of anomalies.
@@ -1136,15 +911,15 @@ The plots show that Metano produces more stable predictions, while Donut has a l
 Figure 20:
 Example of predefined patterns.
 750-th and 1500-th points in the time series.
-The analysis of the data points
-2u
+The analysis of the data points and method show that Metano leads to fewer FPs mainly owing to the noise
 3u
-increased model capacity.
+4u
 Owing to the small number of production-system errors in the data, we injected several types of anomalies to further test the described method.
 We defined seven types of common anomalies, samples from normal distributions with different means, additive outlier, mean shift, step and decrement, incremental, temporary change, and gradual.
 Some of the types of anomalies are shown in Figure 20.
-2u
-ent augmentations of the original patterns, including translation, increasing the response time (e.g., RT i = 0.2 implies setting the response time of the event to 0.2 of the maximum value), and change in the size of the anomaly (e.g., in gradual increase, size = 10 implies that the increase from amplitude A to amplitude B is gradual over 10 events/data points).
+To analyze the robustness of the algorithm, we evaluated it for several differ-
+3u
+the response time (e.g., RT i = 0.2 implies setting the response time of the event to 0.2 of the maximum value), and change in the size of the anomaly (e.g., in gradual increase, size = 10 implies that the increase from amplitude A to amplitude B is gradual over 10 events/data points).
 Table5 shows the aggregated results.
 It summarizes the different anomaly patterns and needed minimum values for the parameters size and RT i that lead to detection of the corresponding anomaly type.
 Sockshop microservice testbed.
@@ -1159,9 +934,9 @@ Our method achieve good performances in different services and faults, except fo
 This occurs because (1) orders is a computation-intensive service, (2) we heavily exhaust its resource memory in our fault injection, and (3) fault memory leak issues manifest as both high memory usage and high CPU usage.
 As our method targets the root cause, which manifests with a significant deviation in the causal metric, the accuracy decreases when the root cause manifests in multiple metrics.
 On average, our system achieves a precision of 94.75%.
-4u
-the rest of the solution, as data and predefined patterns as described.
-The dataset consists of 15 different types of patterns similar to those in Figure 20.
+Faulty pattern classification The module can be evaluated separately from
+5u
+dataset consists of 15 different types of patterns similar to those in Figure 20.
 In practice, the user can define patterns.
 We evaluated the algorithm to analyze the performance and its limits according to the level of noise in the signal and accuracy of classification.
 We achieved an accuracy of 100% in data without additional noise and accuracies of 80% and 48% when Gaussian noise was added with σ = 0.05 and σ = 0.1, respectively.
@@ -1175,10 +950,9 @@ The training time scales linearly with the size of the time series (in number of
 In the test-time prediction, we achieve a performance of 0.22 ms per predicted window of points (when w = 32).
 The prediction times can differ with the reduction or expansion of the window size, but are still reasonably small for production usage within the limit below 10ms [14].
 4.3 related work Anomaly detection for time series data has been extensively studied in academia and industry over the past years on different types of data.
-Ma-
-0u
-supervised [131–134] and unsupervised [97, 135–137].
-The supervised methods have a limited practical usage as obtaining labels in production systems is costly and often infeasible, as described in Section 2.4.1.
+Ma- chine learning approaches can be divided into two general categories [35],
+1u
+ods have a limited practical usage as obtaining labels in production systems is costly and often infeasible, as described in Section 2.4.1.
 In the literature, the unsupervised time series anomaly detection methods are categorized into two types, deterministic and stochastic.
 Deterministic models [44, 65, 138–142].
 Several algorithms have been developed in the industry.
@@ -1229,172 +1003,11 @@ Therefore, in the next chapters, to provide a complementary and unified anomaly 
 
 
 5.1 Log parsing .
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-. 61
-5.2 NuLog:
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . 61 5.2 NuLog:
 neural log parsing .
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-. 63
-5.3 From log representations to log anomaly detection .
-.
-.
-.
-.
-. 72
-5.4 Log anomaly detection .
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-. 75
-5.5 Logsy:
-Classification-based anomaly detection on logs .
-.
-.
-. 76
-5.6 Evaluation .
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-. 84
-5.7 Related work .
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-. 91
-5.8 Chapter summary .
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-. 95
+. . . . . . . . . . . . . . . . . . . . 63 5.3 From log representations to log anomaly detection . . . . . . 72 5.4 Log anomaly detection . . . . . . . . . . . . . . . . . . . . . . 75 5.5 Logsy:
+Classification-based anomaly detection on logs . . . . 76 5.6 Evaluation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 84 5.7 Related work . . . . . . . . . . . . . . . . . . . . . . . . . . . . 91 5.8 Chapter summary .
+. . . . . . . . . . . . . . . . . . . . . . . . 95
 0u
 1u
 2u
@@ -1426,9 +1039,9 @@ For example, the template "Attempting claim:
 memory x˚y MB, disk x˚y GB, vcpus x˚y CPU" is associated with the variable list ["2048", "20, "1"], where x˚y denotes the position of each variable and is connected with the positions of the values within the list.
 The variable list can be empty if the template does not contain variable parts.
 We illustrate the log parsing task in Figure 22.
-6u
-maintained by human experts.
-This manual task is difficult to achieve in large systems consisting of diverse software and hardware components.
+Traditional log parsing techniques rely on regular expressions designed and
+7u
+systems consisting of diverse software and hardware components.
 Additionally, frequent software updates necessitate constant checking and adjustment of these statements, which is a tedious error-prone task.
 Related log parsing methods [29, 48, 59, 109, 150] depend on manual human interventions, parse trees, heuristics, and domain knowledge.
 Analyses of the performances of existing log parsing methods on various systems reveal their lack of robustness to produce consistently good parsing results [21].
@@ -1465,8 +1078,9 @@ For a token wj, its context is defined by preceding and subsequent sequences of 
 ken is represented through an embedding vector in a d-dimensional space xj P Rd of either token or log message.
 Therefore, we define the log message
 #$@FORMULA@$#:0
-0u
-NuLog is composed of preprocessing (tokenization and masking), modeling, and template extraction.
+5.2.1 Parsing with Transformers
+1u
+and template extraction.
 The overall architecture based on an example log message input is depicted in Figure 23.
 The raw log messages are tokenized, where an EMBEDDING token is inserted at the first position.
 Using a dictionary, each token is then replaced with an index.
@@ -1481,8 +1095,10 @@ In contrast to related approaches [21] that utilize additional hand-crafted regu
 Such approaches are error-prone and require manual adjustments in different systems and updates within the same system.
 NuLog utilizes the appearance of the tokens within a context.
 These parameters (e.g., IP addresses) are assigned with a low probability as they are not constant within a particular context.
-0u
-general semantic representation of the log data by analyzing occurrences of tokens within their context.
+Masking.
+The concept behind the proposed parsing method is to learn a
+1u
+tokens within their context.
 We apply an approach referred to as masked language modeling (MLM).
 Our masking module uses the output of the tokenization step as an input, which is a token sequence of a log message.
 A percentage of tokens from the sequence are randomly chosen and replaced by the special xMASKy token.
@@ -1511,13 +1127,7 @@ These vectors are referred to as token embeddings and are a part of the training
 These numerical token embeddings are passed to the positional encoding block.
 In contrast to, e.g., recurrent architectures, attention-based models do not contain any notion of input order.
 Therefore, this information needs to be explicitly encoded and merged with the input vectors to consider their position within the log message.
-This block calculates a vector p P Rd representing the relative position of a token based on sine and cosine functions, where k = 0, 1, .
-.
-.
-, d ´ 1 is the index of each element in p and j = 1, 2, .
-.
-.
-, M is the positional index of each token.
+This block calculates a vector p P Rd representing the relative position of a token based on sine and cosine functions, where k = 0, 1, . . . , d ´ 1 is the index of each element in p and j = 1, 2, . . . , M is the positional index of each token.
 The parameter k describes the exponential relationship between each value of vector p. Additionally, sine and cosine functions are interchangeably applied.
 Both enable a better discrimination of the respective values within a specific vector of p. Furthermore, both functions approximately linearly depended on the position parameter j, which was hypothesized so that the model can easily attend at the respective positions.
 Finally, both vectors can be combined as x {{hn:1:nh}}= x + p. The values for the frequency of the sine and cosine functions were obtained empirically, as in [153].
@@ -1525,10 +1135,7 @@ The encoder block of our model starts with a multi-head attention element, where
 Intuitively, it describes the significance of each embedding vector for the prediction of the target masked token.
 We summarize all token embedding vectors as rows of a matrix X {{hn:1:nh}}and apply the following formula,
 #$@FORMULA@$#:0
-ˆ Vl, for l = 1, 2, .
-.
-.
-, L, (20)
+ˆ Vl, for l = 1, 2, . . . , L, (20)
 #$@FORMULA@$#:1
 where L denotes the number of attention heads, w = d L , and d mod L = 0.
 #$@FORMULA@$#:4
@@ -1586,9 +1193,9 @@ For example, if a log sequence [e1, e2, e2] is parsed to [e1, e4, e5], we obtain
 The parsing accuracy does not measure the string matching between the template and ground truth.
 Therefore, we enrich the evaluation with an additional metric, the edit distance.
 This can be used to quantify the dissimilarity between two log templates by counting the minimum number of operations required to transform one into the other.
-12u
-Parsing accuracy results are presented in Table 8.
-Each row contains the datasets while the compared methods are presented in the table columns.
+5.2.3.3 Parsing results
+13u
+datasets while the compared methods are presented in the table columns.
 The penultimate column contains the highest value of the first twelve columns, referred to as best of all, while the last column contains the results for NuLog.
 The values in bold indicate the best of the methods per dataset.
 HDFS and Apache datasets are most frequently parsed with a PA of 100%, because HDFS and Apache error logs have relatively unambiguous event templates, which are simple to identify.
@@ -1596,18 +1203,18 @@ For them, NuLog achieves comparable results.
 For the Spark, BGL, and Windows datasets, the existing methods already achieve high PA values above 96% (BGL) or above 99% (Spark and Windows).
 Our method can slightly outperform these methods.
 For the rather complex log data from OpenStack, HPC, and HealthApp, the baseline methods achieve a PA between 78% and 90%, which are significantly outperformed by NuLog by 4–13%.
-0u
-diverse log data types.
-Therefore, the robustness of NuLog is analyzed and compared to those of the related methods.
+With the proposed method, we explicitly aim to support a broad range of
+1u
+compared to those of the related methods.
 Figure 25 shows the accuracy distribution of each log parser across the log datasets within a boxplot.
 From left to right in the figure, the log parsers are arranged in ascending order of the median PA. LogSig has the lowest, while NuLog has the highest median PA.
 Although most log parsing methods achieve high PA values of 90% for specific log datasets, they have large variances when applied across all given log types.
 NuLog outperforms the other baseline methods in terms of PA robustness with a median of 0.99, which is even above the best of all medians of 0.94.
 Edit distance scores are listed in Table 9.
-The table structure is the same
-12u
-across all tested methods per dataset.
-In terms of edit distance, NuLog outperforms the existing methods on the HDFS, Windows, Android, HealthApp, and Mac datasets.
+The table structure is the same as that of the PA results.
+The value in bold indicates the best edit distance
+13u
+performs the existing methods on the HDFS, Windows, Android, HealthApp, and Mac datasets.
 Its performance is comparable on the BGL, HPC, Apache, and OpenStack datasets.
 It achieves a larger edit distance on the Spark log data.
 We verify the robustness in terms of edit distance across the different log datasets.
@@ -1637,10 +1244,9 @@ The provision of better log vector representations increases the performances in
 To show the importance of the log representations, we provide an example in Figure 28.
 We illustrate three log messages when they are represented with one-hot encoding.
 The vectors are orthogonal and do not have similarity in-between.
-Therefore, when a new log
-9u
-to the learned log messages.
-This scenario of imperfect representations occurs also when word vectors pretrained on other domain are used.
+Therefore, when a new log message is observed, the model will recognize it as an anomaly, not similar
+10u
+also when word vectors pretrained on other domain are used.
 In an ideal case, "VM create finished" and "VM create completed" should be represented closely in the space, while "VM fatal error" should be distant from them.
 The normal samples should have compact representations, i.e., close distances in the representational space, while anomalies should be distant.
 This, in the ultimate case, is shown with the supervised learning scenario of NuLog.
@@ -1648,15 +1254,15 @@ When each log message is labeled, the method can identify compositions of words 
 Furthermore, it utilizes the semantic meaning of the log message to create better log vectors that are robust and produce accurate predictions even on unseen log messages.
 However, the provision of labeled data from specific systems in production is often prohibitive costly.
 Supervised learning can be related to detection of anomalies in the log data by operators.
-They often analyze the semantic information from the logs
-5u
-This semantic information is narrow and domain-specific.
-For example, in Table 11, x2 and x3 contain similar semantic meanings when observed without domain-specific knowledge.
+They often analyze the semantic information from the logs and decide whether the message represents a severe system threat or failure.
+6u
+Table 11, x2 and x3 contain similar semantic meanings when observed without domain-specific knowledge.
 Therefore, both of them would be classified in the same class.
 However, if observed by a domain-expert knowing that a "floating point" interruption is considerably more severe than an "input" interruption, it would be able to recognize them correctly.
 In the following sections of this chapter, we present a method, which addresses these challenges, and bridges the gap in effectiveness from unsupervised to supervised log anomaly detection.
-0u
-The normal log messages ideally should have vector representations with small distances between each other, e.g., concentrated within a tight sphere [86].
+5.4 log anomaly detection
+1u
+small distances between each other, e.g., concentrated within a tight sphere [86].
 In this section, we present an anomaly detection method denoted as Logsy, which directly addresses the challenge of obtaining compact numerical log vectors.
 We train a neural network to learn log vectors to separate the normal log data from the system of interest (target system) and log messages from auxiliary log datasets from other systems, easily accessible through the internet.
 The concept of such a classification approach to anomaly detection is that the auxiliary dataset helps learn a more accurate representation of the normal data while regularizing against over-fitting.
@@ -1689,12 +1295,8 @@ Rdˆ|ri| N Rp N [0, a], a P R is a function represented by a neural network, whi
 The task is to learn the parameters θ, and then, for each incoming instance in the predic-
 #$@FORMULA@$#:1
 tion phase Dt = t(xt 1), (xt 2), .
-.
-.
-, (xt j), .
-.
-.
-u, predict whether it is anomalous or normal based on the anomaly scores, where t indicates the test sample.
+. . , (xt j), .
+. . u, predict whether it is anomalous or normal based on the anomaly scores, where t indicates the test sample.
 5.5.1 Logsy The method is composed of two main parts, the tokenization of the log messages and neural network model.
 Tokenization.
 The tokenization transforms the raw log messages into a sequence of tokens, as shown in Figure 30.
@@ -1709,10 +1311,7 @@ We remove every token that contains numerical characters, as they often represen
 Additionally, we remove the most commonly used English words that are in the stop word dictionary of NLTK (e.g., the and is).
 Similar to the case of NuLog, to the front of the tokenized log message, a special EMBEDDING token is added.
 In the model, the EMBEDDING token attends over all original tokens from the sample, which enables the model to summarize the context of the log message in the vector representation.
-All tokens from every log message form a dictionary V with a size of |V|, where each word is represented with an integer label i P 0, 1, .
-.
-.
-, |V| ´ 1.
+All tokens from every log message form a dictionary V with a size of |V|, where each word is represented with an integer label i P 0, 1, . . . , |V| ´ 1.
 An advantage of Logsy over previous log anomaly detection approaches is that it does not depend on log parsers as a preprocessing step (only cleaning).
 We consider the tokenized log message as a direct input to the model.
 As an advantage, no loss of information from the log message exists, owing to the imperfections in the log parsing methods.
@@ -1735,7 +1334,7 @@ It is designed to integrate the previously mentioned assumption that normal data
 This is carried out by employing a radial classification loss, which enforces a compact hyperspherical decision region for the normal samples.
 To derive the loss, we start with the standard binary cross entropy.
 D =
-#$@FORMULA@$#:4
+#$@FORMULA@$#:5
 system of interest and auxiliary data with xi P Rdˆ|ri|, where |ri| is the number of tokens in the log message and each token is a vector represented in d ´ dimensional space.
 yi P t0, 1u; yi = 0 denotes normal samples (target system), while yi = 1 denotes an anomaly (auxiliary data).
 φ(xi, θ) :
@@ -1743,15 +1342,16 @@ Rd N Rp is our encoder architecture, which maps the |xi| word embeddings form th
 l :
 Rp N [0, 1] is a function that maps the output to an anomaly score.
 Using φ(xi, θ) and l(¨), the standard binary cross-entropy loss can be expressed by
-#$@FORMULA@$#:2
+#$@FORMULA@$#:0
 (1 ´ yi) log l(φ(xi; θ)) + yi log(1 ´ l(φ(xi; θ))).
 (22)
-#$@FORMULA@$#:3
+#$@FORMULA@$#:1
 For the standard classifier function, the p ´ dimensional representation is transformed through a linear layer followed by the sigmoid activation function,
-#$@FORMULA@$#:0
+#$@FORMULA@$#:2
 .
 (23)
-#$@FORMULA@$#:1
+#$@FORMULA@$#:3
+#$@FORMULA@$#:4
 In the standard binary classifier with the sigmoid function, the decision boundary is half-space, as depicted in gray in Figure 31.
 The representation of the log messages is not guaranteed to be compact in this case.
 It is very likely that the normal samples are scattered throughout the space with varying potentially very large distances between them.
@@ -1862,11 +1462,11 @@ However, they will produce large numbers of FP predictions.
 Logsy preserves the high recall across the datasets and evaluation scenarios.
 In addition, it exhibits a large improvement in the precision scores, owing to the correct classification of new unseen log messages and reduction in the FP rate.
 For example, on the Blue Gene/L dataset, DeepLog and PCA exhibit 2–4 times lower precisions than that of Logsy.
-Overall, Logsy is the most accurate
-0u
+Overall, Logsy is the most accurate method with an average of 0.9.
+If a log anomaly detection method gener-
 1u
-and large amount of unnecessary work.
-Therefore, high-precision methods are favorable.
+2u
+are favorable.
 DeepLog leverages the indices of log templates, which ignore the meaning of the words in the log messages, to learn the anomalous and normal patterns.
 However, different templates having different indices can share common semantic information and both could be normal.
 Ignoring this information leads to the generation of FP for DeepLog compared to Logsy.
@@ -1878,11 +1478,11 @@ In Thunderbird, this difference is even more noticeable, where an F1-score of 0.
 This shows that even with a small amount of training data from the target system Logsy extracts the needed information on the reason responsible for the log message to be normal or anomalous.
 Logsy produces accurate predictions even in unseen samples.
 #$@FORMULA@$#:1
-0u
+5.6.4.1 Effect of the auxiliary data on the evaluation scores
 1u
 2u
-data split for all datasets.
-We evaluate the approach on the 20%–80% train/test split.
+3u
+split.
 The results are shown in Figure 37 for all datasets.
 The auxiliary data size increase from 1 to 250000 led to increases in all evaluation scores.
 With the increase in the size of the auxiliary data from 100000 to 250000, the scores do not change in both cases.
@@ -1904,11 +1504,13 @@ The labelled anomalies from the target system provide information utilized by Lo
 5.6.4.3 Utilization of the learned log embeddings in related approaches Representation learning is fundamental to obtain good performances of the machine learning methods [90].
 In this experiment, we extract the learned
 #$@FORMULA@$#:0
-0u
+log message vector representations from the already trained Logsy.
+To illus-
 1u
 2u
 3u
-vector representations are structured in a manner following the definition of our spherical loss function (see Section 5.5.5).
+4u
+our spherical loss function (see Section 5.5.5).
 The normal samples are concentrated around the centre of a hypersphere, which is a circle in two dimensions.
 Most of the anomalies are dispersed in the space outside the sphere.
 By assigning a threshold on the anomaly score A(xi), i.e., the distance from the centre of the sphere (circle), we can obtain a good performance.
@@ -1920,8 +1522,10 @@ The replacement of the log representation improves the performance of the PCA.
 Improvements in F1 score of 0.09, 0.11, and 0.01 were obtained for Blue Gene/L, Thunderbird, and Spirit, respectively.
 This demonstrates that the log representation learning has an impact, not only in Logsy, but also in previous approaches that could be adapted to use the new log embeddings.
 The relative improvement in F1 score, on average, is 28.2%.
-8u
-To show that Logsy can be used in production in near-real-time settings, we evaluate its speed performance.
+5.6.4.4 Logsy:
+speed performance analysis
+9u
+evaluate its speed performance.
 The experiments were performed on a GPU NVIDIA 1660Ti (6GB) and CPU Intel(R) Core(TM) i7-9750H CPU at 2.60 GHz.
 Figure 42 shows the times needed for training and testing as functions of the data size.
 The figures show linear dependencies on the size of the log data.
@@ -1931,9 +1535,9 @@ The prediction time is important in production settings, where less than 4µsper
 We provide an overview of the related studies on log parsing and log anomaly detection tasks.
 5.7.1 Log parsing Parsing techniques can be distinguished by various aspects, including technological, operation mode, and preprocessing.
 In Figure 43, we present an overview of the existing methods.
-4u
-coincide in similar groups.
-Various clustering methods with proper string matching distances have been used.
+Clustering The main assumption in these methods is that the message types
+5u
+matching distances have been used.
 Methods in this group include SHISO, LenMa, LogMine, LKE, LogSig [37, 59, 160–162].
 Other parsing methods such as POD-Discovery [29], are found in process mining, which utilize regular expressions and leverages the Levenshtein distance to separate variable and constant parts of the logs.
 Frequent pattern mining assumes that a message type is a frequent set of tokens that appear throughout the logs.
@@ -2032,99 +1636,9 @@ We hypothesize that future research on deep log anomaly detection should focus o
 :::: ANOMALYDETECTIONINDISTRIBUTEDTRACING ::::
 
 
-Contents 6.1 Sequence learning for trace anomaly detection .
-.
-.
-.
-.
-.
-.
-. 98
-6.2 Tracy:
-self-supervised anomaly detection in distributed traces 101 6.3 Evaluation .
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-. 106
-6.4 Related work .
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-. 113
-6.5 Chapter summary .
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-. 116
-Distributed traces contain information about the execution workflow and performance at a service level within the system.
+Contents 6.1 Sequence learning for trace anomaly detection . . . . . . . . 98 6.2 Tracy:
+self-supervised anomaly detection in distributed traces 101 6.3 Evaluation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 106 6.4 Related work . . . . . . . . . . . . . . . . . . . . . . . . . . . . 113 6.5 Chapter summary .
+. . . . . . . . . . . . . . . . . . . . . . . . 116 Distributed traces contain information about the execution workflow and performance at a service level within the system.
 The trace representation, noise, large number of services, complex service relationships between them, arbitrary lengths, and lack of labels pose difficulties for the anomaly detection methods [182].
 In this chapter, to address these challenges, we introduce a sequential representation of the trace.
 This helps utilize various methods for anomaly detection in sequential data.
@@ -2170,17 +1684,13 @@ We model the transition probability from a sequence of spans into the next in-se
 #$@FORMULA@$#:1
 #$@FORMULA@$#:0
 where P is the conditional probability of the next span for given input recent sequence of h spans within the trace and li P L = tl0, l1, .
-.
-.
-, lNlu is the index
-0u
-with an RNN, e.g, LSTM/GRU.
-We show the architecture of the approach in Figure 45.
+. . , lNlu is the index from the dictionary of spans.
+The conditional probability can be modeled
+1u
+Figure 45.
 The input to the model are the indices from the spans.
 Each xt is fed as an input in the corresponding timestep t. The output at t, for the current inputs txt´h, .
-.
-.
-, xt´2, xt´1u, is a probability distribution over the Nl unique labels from L. Every LSTM block at t is composed of H LSTM cells.
+. . , xt´2, xt´1u, is a probability distribution over the Nl unique labels from L. Every LSTM block at t is composed of H LSTM cells.
 It has a memory state that encodes all information from the previous timesteps together with the input fed at the same timestep.
 The vertical stacking of layers is a common practice to achieve better results by extracting highly-abstract features [142, 184].
 The model’s parameters are optimized by minimizing the categorical cross-entropy loss between the predicted span and ground truth.
@@ -2188,9 +1698,10 @@ During the prediction time, if we are unable to successfully predict a certain n
 6.1.3 Limitations of autoregressive approaches The LSTM-based method belongs to the autoregressive approaches.
 Thus, it has several inherit limitations including (1) forward context is not considered during the modeling phase [185].
 Thus, the model does not utilize the full trace information.
-(2) Lack of robustness to noise and trace length variability, owing to the inability of autoregressive models to preserve long interdependencies between the services (e.g., the span on the first position is related to
-0u
-the sequential representation of the trace is obtained using the initially graphlike trace structure.
+(2) Lack of robustness to noise and trace length variability, owing to the inability of autoregressive models to preserve long interdependencies between the services (e.g., the span on the first position is related to the span on the 100-th position of the trace).
+Moreover, as mentioned above,
+1u
+like trace structure.
 Therefore, this representation does not preserves all initial information.
 A desired behavior of the model would be to learn additional interdependencies between the spans in the trace, other than the sequential.
 The model, to preserve the graph information within the sequence, needs to extract dependencies between distant spans in the sequence.
@@ -2218,11 +1729,12 @@ Formulating the problem of trace anomaly detection as MSP enables to capture the
 The step after preprocessing is to perform masking.
 We illustrate the masking of an example trace in Figure 48.
 In the bottom line of the image, the POST /v3/auth/tokens/ span is replaced by the [MASK] span.
-A masked span in a trace can be any randomly chosen span that during the learning procedure
-0u
+A masked span in a trace can be any randomly chosen span that during the learning procedure is labeled with a special [MASK] span from the input.
+During the learning pro-
 1u
 2u
-the masked span to "score" the relevance of the spans from the context for its prediction.
+3u
+prediction.
 With the span masking procedure, we produce training samples for every masked span.
 For example, if we mask two spans of a trace T , the masking module will produce two traces, each having one masked span.
 This enables one trace to be replicated multiple times and different contexts for the spans of traces from different workloads to be learned.
@@ -2240,9 +1752,10 @@ It is an encoder–decoder structure that maps the input spans in a vector forma
 The encoder uses a multi-head self-attention mechanism as a basic building block.
 The processed inputs are fed into the network.
 To preserve the sequential information, each span is encoded with an additional position value.
-Formally, this block calculates a vector that maintains the relative position of a span
-0u
-the positional encoding block implements this by adding periodic functions (e.g., sine and cosine) to the vector representations of the spans in the trace.
+Formally, this block calculates a vector that maintains the relative position of a span within a trace.
+Similar to the positional encoding in the log data (Section 5.1),
+1u
+(e.g., sine and cosine) to the vector representations of the spans in the trace.
 The multi-head attention block is a neural network architecture, which implements the self-attention mechanism [153].
 It operates by projecting the input context for the masked span into various subspaces and aggregating them.
 Each projection is controlled by one of the L heads of the multi-head attention.
@@ -2297,8 +1810,9 @@ However, testing the approach on large-scale production cloud data is required t
 It covers traces from the creation of a VM upon request from the user.
 A characteristic property of production traces is their significantly larger length than those of the experimental testbed.
 The production data available in this experiment contained 200 traces with different lengths.
-8u
-To evaluate and compare the performances and robustness of the proposed attention method and state of the art in anomaly detection from tracing data, we consider three LSs (see Figure 50).
+6.3.2 Learning scenarios
+9u
+attention method and state of the art in anomaly detection from tracing data, we consider three LSs (see Figure 50).
 To test the ability of Tracy to preserve the global and local properties within the traces, we grouped our experiments into three groups (short, long, and combined (short and long) traces).
 The definition of these categories is data-driven, which implies that short traces are considered those that are concentrated around the lower values of the trace lengths (ď median).
 The remaining traces belong to the category of long traces.
@@ -2332,8 +1846,9 @@ It then learns the overall normal trace patterns for a service during offline tr
 Lastly, in online anomaly detection, for each new trace, an anomaly score is computed, and accordingly traces with small anomaly scores are considered anomalous.
 As TraceAnomaly largely outperforms other more traditional methods such as string matches or finite state machines, we discard direct comparisons to these methods in our evaluation.
 The parameters of the LSTM-based method and TraceAnomaly are tuned to produce their best F1 scores.
-0u
-We present the results of the three LSs, including the precision, recall, and F1 score.
+Figure 51:
+Results of the experiments for LS1.
+6.3.4 Results We present the results of the three LSs, including the precision, recall, and F1 score.
 Figure 51 shows the results of LS1 for the best-selected models from the optimization.
 When the long traces are considered, higher scores are obtained for the attention mechanism than those of the previous state-of-the-art methods, LSTM and TraceAnomaly, in all three cases.
 The attention mechanism can prioritize specific spans of the trace owing to the sparsity characteristic.
@@ -2351,23 +1866,23 @@ This implies that, in this scenario, the baselines tend to produce an increased 
 This can be explained as the anomalous trace differs from the normal only in its length, owing to the inability of the methods to extract global patterns from the trace.
 The methods exhibit good performances for short traces and lower performances for longer traces.
 Long traces are more common in large distributed systems as they contain hundreds of services [14].
-0u
+Executing one operation in a microservice architecture includes invoking mul-
 1u
-the services.
-Hence, the ability to handle long traces is imperative for applicability in tracing data from real-world systems.
+2u
+bility in tracing data from real-world systems.
 LS3 evaluates the generalization ability of the method.
 Figure 53 shows the results of LS3.
 As it is a one-class prediction scenario, only the accuracy of correctly predicting the normal iterations is presented.
 This LS can be interpreted as testing the ability of the method to correctly predict novel normal traces that occur owing to the noise.
 The attention method is more robust than TraceAnomaly and LSTM.
 The cases of wrong classification in Tracy are mostly due to swapping of one of the "core" spans in the trace.
-Thus,
-0u
+Thus, the attention method cannot correctly predict the masked span.
+Neverthe-
 1u
 2u
 3u
-ness.
-However, TraceAnomaly has a higher noise tolerance than that of LSTM, achieving higher scores.
+4u
+achieving higher scores.
 To further evaluate the robustness of Tracy, in Figure 54, we show the F1score with respect to the position of the injected anomaly.
 For the short traces (until 12 spans), the performances of the attention and LSTM-based methods are high and they are robust regarding the position of the inserted change.
 However, for long traces, a higher sensitivity of the LSTM-based method to small local changes within the trace is observed.
@@ -2390,11 +1905,12 @@ The distances between the normal and abnormal score matrices are larger.
 This suggests that observing the anomalous and normal self-attention scores can be utilized to indicate anomalous spans, which point out to anomalous services.
 Figure 56 shows the squared errors of the self-attention scores between normal and anomalous traces, where positions 2 and 4 are corrupted, respectively.
 An increased error at the particular position within the attention score matrix where the span was corrupted was observed.
-This indicates that the cross com-
-0u
+This indicates that the cross com- Table 15:
+Results of the correct localization of the inserted positional anomalies.
 1u
 2u
-parison between the normal and anomalous attention scores provides insights into the potential causes of the anomaly.
+3u
+into the potential causes of the anomaly.
 In these examples, the deviations in the attention scores from the normal traces are emphasised at positions 2 and 4 of the trace.
 This shows that these positions are very unlikely to be occupied by the corrupted span.
 The operator can track the properties of this span and relate them to a potential cause.
@@ -2411,9 +1927,9 @@ When a new trace [M, Q] needs to be tested, it is intuitive that it is an anomal
 Nonetheless, if we assume that the system under analysis can generate traces with noise, it is not obvious whether [M, Q] is an invalid trace or valid trace containing noise.
 The existing approaches, such as that in [39], use finite state machines (FSMs) to model the correct behaviors of systems.
 These approaches exhibit high performances when the traces do not contain noise.
-However, the introduction of noise scales the number of potential tran-
-11u
-not feasible as it will be possible to only model the already observed noise.
+However, the introduction of noise scales the number of potential transitions exponentially.
+Thus, modeling noise using FSM-based approaches is
+12u
 Approaches relying on LSTMs, e.g., those in our early study on an LSTMbased trace anomaly detection [14, 18], can process only traces up to a certain length of k. These approaches are referred to as autoregressive as they use previous symbols of a trace to predict the following symbol.
 For example, the developed techniques test the trace [M, N, P, Q, R, S] by predicting which symbol is after C according to a behavioural model, [M, N, P, Q, R].
 If the prediction is correct (Q), the trace is classified as normal.
@@ -2458,111 +1974,9 @@ Lastly, through the self-attention scores, we showed an approach to visualize an
 
 
 7.1 Complex anomalies in distributed systems .
-.
-.
-.
-.
-.
-.
-.
-.
-.
-. 118
-7.2 Triano:
-integration of the anomaly detectors .
-.
-.
-.
-.
-.
-.
-.
-.
-. 120
-7.3 Evaluation .
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-. 122
-7.4 Related work .
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-. 130
-7.5 Chapter summary .
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-. 132
-In the previous chapters, we presented methods for anomaly detection related to each of the observability components.
+. . . . . . . . . . 118 7.2 Triano:
+integration of the anomaly detectors . . . . . . . . . . 120 7.3 Evaluation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 122 7.4 Related work . . . . . . . . . . . . . . . . . . . . . . . . . . . . 130 7.5 Chapter summary .
+. . . . . . . . . . . . . . . . . . . . . . . . 132 In the previous chapters, we presented methods for anomaly detection related to each of the observability components.
 However, as standalone detectors from the corresponding data source, they have a limited view on the system.
 In this regard, insights gleaned from a combination of different observability signals are necessary to properly troubleshoot distributed systems [16].
 In this chapter, we analyze whether the full observability of the system, i.e., recording metrics, logs, and traces, provides exposure of the broader spectrum of anomalies.
@@ -2599,9 +2013,11 @@ Mainly the compute host is responsible for the creation of VMs.
 Depending on the severity of the problem of the networking infrastructure, the system will be in a degraded or failure state of operation, i.e, the compute service will have a decreased performance or will not be reachable.
 The right panel shows the metrics, logs, and traces.
 The top right image presents a model of a trace generated during the normal operation of the system and serves as a nominal value for comparison to the rest of the scenarios (degraded and failure).
-The plots in the center in gray show the normal distributions of the duration for performing the op-
-0u
-that the operator has trained anomaly detectors available for all system data sources.
+The plots in the center in gray show the normal distributions of the duration for performing the op- eration.
+The anomalous distribution times are presented in black.
+We assume
+1u
+sources.
 Over time, the client experiences a time of creation of VM longer than usual.
 However, the client files the first report stating "Longer time for performing an operation".
 The operator analyzes this report, consults the anomaly detector on the response time, and finds that the response time is larger.
@@ -2625,12 +2041,8 @@ We consider three trained anomaly detectors, presented in the previous chapters,
 The input data in (1) fm(xm) are a time series representing a system
 #$@FORMULA@$#:0
 are a system log message xl = x1 l , x2 l , .
-.
-.
-, xm l , where xi l are d´dimensional representations of the words in the log message and m is the number of words, and in (3) ft(xt) are a trace xt = x1 t , x2 t , .
-.
-.
-, xk t , where xi t is a span and k is the number of spans in the trace.
+. . , xm l , where xi l are d´dimensional representations of the words in the log message and m is the number of words, and in (3) ft(xt) are a trace xt = x1 t , x2 t , .
+. . , xk t , where xi t is a span and k is the number of spans in the trace.
 Each of the separate methods for anomaly detection in metrics, logs, and traces outputs its predictions, either 0 (normal) or 1 (anomaly), in the following format.
 7u
 8u
@@ -2684,8 +2096,9 @@ Anomalous log messages may appear outside the period of injection of anomalies.
 It is also important to label those instances.
 For the metrics, we perform the labeling in a similar manner.
 All models are trained by utilizing data from the time intervals when the system is in a normal state.
-20u
-To evaluate the combined approach against the single methods, we injected the anomalies described in Table 16.
+7.3.1.1 Anomaly scenarios
+21u
+the anomalies described in Table 16.
 The first considered anomaly is a network failure anomaly.
 This anomaly eliminates the access to a host, which leads to multiple failures.
 The second anomaly arises during deployment.
@@ -2697,10 +2110,10 @@ of the anomalous (orange) operations.
 During the normal state, the duration has a bimodal distribution, with one mode around 450 s and another mode around 500 s. We observe normal traces and logs.
 However, cross comparison of the durations during the small degradation (the second column for the metrics and first row for the traces) shows that the structures of the trace are similar, but the response times are different.
 Suspicious logs are not observed.
-0u
+This degradation is a problem reflected in the duration time, but not in other
 1u
-lems in the system.
-In this case, the metric method detects this anomaly, while the log and trace anomaly detectors are not able to detect this problem, as it is absent in the data.
+2u
+the log and trace anomaly detectors are not able to detect this problem, as it is absent in the data.
 The combined approach detects this degradation problem as it is reflected in the metric data.
 On the contrary, if the decision is based solely on the logs or traces, the degradation will be missed out.
 This could lead to potential failures.
@@ -2709,10 +2122,9 @@ In addition, the trace anomaly detector detects an anomalous trace and a structu
 Triano detects the anomaly in the traces and metrics simultaneously.
 Finally, when the network of the host has failed, the trace cannot be completed.
 In addition, the response time is very large and timeout log messages appear.
-Furthermore, the trace anomaly detector and analysis of the scores
-0u
-on the failed host.
-The Triano framework can detect all degraded and failed states.
+Furthermore, the trace anomaly detector and analysis of the scores per span show that the major issue is in nova-api (Figure 62), which is hosted
+1u
+states.
 Configuration change in service A leads to a failure in service A calls to service B.
 Another common type of anomaly appears when a change in the configuration file of one service A leads to failures in the service A call for service B.
 Different such cases exist.
@@ -2725,9 +2137,10 @@ Figure 63:
 Service failure due to an update, multi-source anomalies, and metric data.
 Normal metric distribution (left), two degraded states (middle), and failure
 #$@FORMULA@$#:0
-0u
+Severe cases of this anomaly lead to a failure.
+The duration in this case is
 1u
-anomalous log messages exist.
+2u
 Failure in MQ left several queues locked, blocking messages The results of the analysis of this scenario are presented in Figure 65, Figure 66, and Table 19.
 A limitation in the MQ, not exposed during testing, can bring it to a degraded state, for example, due to an increased traffic.
 During this period, the times needed for execution of an operation during the normal and abnormal periods may not differ significantly, as shown in Figure 65.
@@ -2740,7 +2153,9 @@ The duration in this case is very small for the failed operations and the traces
 In addition, anomalous log messages in the form of "timeouts" exist.
 The neutron cannot perform specific requests.
 The queues are locked and all messages are blocked.
-0u
+Figure 65:
+Anomaly in the MQ; metric data.
+Normal (left), degraded (middle), failure
 #$@FORMULA@$#:0
 #$@FORMULA@$#:4
 #$@FORMULA@$#:5
@@ -2748,8 +2163,9 @@ The queues are locked and all messages are blocked.
 #$@FORMULA@$#:1
 #$@FORMULA@$#:2
 #$@FORMULA@$#:3
-0u
-Table 20 shows the three scenarios of complex anomalies presented in the previous section.
+7.3.3 Results summary
+1u
+previous section.
 For each observability component, the two states (degradation D, failure F) are shown.
 Some of the anomalies are not reflected in all three modalities, while in some cases, they are reflected in all of them (mostly degraded-state anomalies).
 We denote the F1-scores of Metano (metrics), Logsy (logs), and Tracy (traces) with plus (+), if greater than 0.9, and minus (-) less than 0.1.
@@ -2870,9 +2286,9 @@ L(joint) = L(logs) + L(traces).
 (30)
 #$@FORMULA@$#:1
 #$@FORMULA@$#:0
-4u
-Table 21 summarizes the results of the experiments.
-The joint utilization of traces and logs produced comparable results to those of the single-modality anomaly detection methods.
+a. 2 results
+5u
+traces and logs produced comparable results to those of the single-modality anomaly detection methods.
 The F1-scores of the log data of the multimodal and single methods differed by 0.004, while those for the traces differed by 0.039.
 The multi-modal LSTM exhibited negligible differences, compared to the independent use of the methods.
 Therefore, we only evaluated the integration of independently trained detectors and compare to single data source methods.
