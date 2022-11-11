@@ -9,7 +9,6 @@
 
 import dataclasses
 import os
-import typing
 
 import configo
 import iamraw
@@ -33,7 +32,7 @@ class TextRequiredResources:
     lists: 'ListLookUp'
     fontstore: iamraw.FontStore
     headlines: iamraw.PagesHeadlineList
-    textnavigators: texmex.PageTextContentNavigators
+    textnavigators: texmex.PTCNs
     magics: words.lookup.PageLineLookup = None
     formulas: iamraw.PageContentRawFormulas = None
 
@@ -138,7 +137,7 @@ def load_extracted(
     extracted_text,
     headlines,
     pages=None,
-) -> typing.Tuple[typing.List, iamraw.Border]:
+) -> tuple[list, iamraw.Border]:
     headlines = serializeraw.load_headlines(headlines, pages=pages)
     extracted_text = serializeraw.load_text(
         extracted_text,

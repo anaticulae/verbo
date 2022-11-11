@@ -7,8 +7,6 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import typing
-
 import serializeraw
 
 import words.sentences.bounding
@@ -24,7 +22,7 @@ def work(
     sizeandborder: str,
     headerfooter: str,
     pages: tuple = None,
-) -> typing.Tuple[str, str]:
+) -> tuple[str, str]:
     headlines = serializeraw.load_headlines(
         headliner,
         pages=pages,

@@ -31,6 +31,6 @@ def test_validate_words_split_master72():
     extracted_pages = words.text.chapter.split(required)
     for page in extracted_pages:
         expected = MASTER72_EXPECTED[page.page]
-        sentences = utila.flatten(
+        sentences = utila.flat(
             [item[1] for item in words.text.sentence.find_sentences(page)])
         tests.assert_length(sentences, expected, msg=f'page: {page.page}')

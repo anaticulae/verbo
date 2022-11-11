@@ -9,19 +9,19 @@
 
 import collections
 import dataclasses
-import typing
 
 
 @dataclasses.dataclass
 class HeadlineWithContent:
     text: str = None
-    content: typing.List[str] = dataclasses.field(default_factory=list)
+    content: list[str] = dataclasses.field(default_factory=list)
 
 
 @dataclasses.dataclass
 class PageTextWithHeadlines:
     page: int = None
-    content: typing.List[HeadlineWithContent] = dataclasses.field(default_factory=list) # yapf:disable
+    content: list[HeadlineWithContent] = dataclasses.field(default_factory=list)
+
 
 PageAnalyzeResources = collections.namedtuple(
     'PageAnalyzeResources',
@@ -32,8 +32,8 @@ PageAnalyzeResources = collections.namedtuple(
 @dataclasses.dataclass
 class TextSection:
     headline: str = None
-    content: typing.List = dataclasses.field(default_factory=list)
-    pages: typing.List = dataclasses.field(default_factory=list)
+    content: list = dataclasses.field(default_factory=list)
+    pages: list = dataclasses.field(default_factory=list)
 
     def __getitem__(self, index):
         # TODO: support tuple unpacking, remove later
@@ -45,8 +45,11 @@ class TextSection:
         # TODO: support tuple unpacking, remove later
         return self[0] == value[0] and self[1] == value[1]
 
+    def __hash__(self):
+        return hash(str(self))
 
-TextSections = typing.List[TextSection]
+
+TextSections = list[TextSection]
 
 
 @dataclasses.dataclass
@@ -55,4 +58,4 @@ class PageContentPageTextDetected:
     content: list = None
 
 
-PageContentPageTextDetectedList = typing.List[PageContentPageTextDetected]
+PageContentPageTextDetectedList = list[PageContentPageTextDetected]

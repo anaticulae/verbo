@@ -26,11 +26,11 @@ class LookupEmpty:
 class PageLineLookup(LookupEmpty):
 
     def __init__(self):
-        self.data = dict()
+        self.data = {}
 
     def add(self, page, line, value):
         if page not in self.data:
-            self.data[page] = dict()
+            self.data[page] = {}
         self.data[page][line] = value
 
     @property

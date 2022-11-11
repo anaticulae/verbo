@@ -8,7 +8,6 @@
 # =============================================================================
 
 import pprint
-import typing
 
 import configo
 import iamraw
@@ -27,7 +26,7 @@ def load_resources(
     headlines,
     headerfooters,
     pages=None,
-) -> typing.Tuple[typing.List, iamraw.Border]:
+) -> tuple[list, iamraw.Border]:
     headlines = serializeraw.load_headlines(headlines, pages=pages)
     extracted_text = serializeraw.load_text(
         extracted_text,

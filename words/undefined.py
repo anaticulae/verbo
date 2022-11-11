@@ -17,7 +17,7 @@ import words.text
 
 def extract_undefined(
     pages: words.text.PageContentPageTextDetectedList,
-    ptcns: texmex.PageTextContentNavigators,
+    ptcns: texmex.PTCNs,
 ):
     """Fill `undefined items` with TextContent and BoundingBox.
     Returns replaced pages with grouped replaced undefined items

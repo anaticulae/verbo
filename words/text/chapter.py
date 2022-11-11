@@ -63,7 +63,7 @@ def extract_texts(
 
 
 def groupby_page(chapters) -> dict:
-    chapters = utila.flatten([split_textsection(item) for item in chapters])
+    chapters = utila.flat([split_textsection(item) for item in chapters])
 
     def getpage(item) -> int:
         if item.headline:
@@ -149,7 +149,7 @@ def split(loaded: words.feature.TextRequiredResources) -> words.text.PageTextWit
 def analyze_page(
     headlines: list,
     fontstore: iamraw.FontStore,
-    textnavigators: texmex.PageTextContentNavigators,
+    textnavigators: texmex.PTCNs,
     border: iamraw.Border,
     boxes: words.boxed.BoxedChecker,
     lists: 'ListLookUp',
@@ -269,7 +269,7 @@ def insert_empty_pages(
         filled headline list
     """
     assert headlines, 'require at least one headline'
-    flat = utila.flatten(headlines)
+    flat = utila.flat(headlines)
     # fill headlines
     heads = []
     for first, second in itertools.zip_longest(flat, flat[1:], fillvalue=None):

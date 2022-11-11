@@ -201,7 +201,7 @@ class BoxLookUp:
         for line in boxes:
             page, content = line
             for __, _, items in content:
-                chained = utila.flatten(items)  # support verschachtelte boxes
+                chained = utila.flat(items)  # support verschachtelte boxes
                 for _, (bindex, bcontent) in chained:
                     uindexs = [uindex for (_, uindex, _) in bcontent]
                     self.append(page, bindex, uindexs)

@@ -21,7 +21,7 @@ import words.lookup
 def collect_paragraph(
     first: iamraw.Headline,
     second: iamraw.Headline,
-    pcn: texmex.PageTextContentNavigator,
+    pcn: texmex.PTCN,
     boxes: words.boxed.BoxedChecker,
     lists: 'ListLookUp',
     magics: words.lookup.PageLineLookup = None,

@@ -24,8 +24,8 @@ def abbr(source, pages, td, mp, flat: bool = False):
     result = serializeraw.load_text_abbreviations(abbrpath)
     if flat:
         result = [[item.short for item in page.content] for page in result]
-        result = utila.flatten(result)
-        result = utila.make_unique(result)
+        result = utila.flat(result)
+        result = utila.unique(result)
     return result
 
 

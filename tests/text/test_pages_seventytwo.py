@@ -123,7 +123,7 @@ def test_text_seventytwo_extract_textsections():
     pages = words.text.chapter.split(required)
 
     chapters = wts.extract_textsections(pages)
-    minpage = min([headline.page for headline, _ in chapters])
+    minpage = min((headline.page for headline, _ in chapters))
     assert minpage == 3, minpage
     # '1.  Einleitung'
     # Headline(title=None, level=None, raw_level=None, page=4, container=-1)

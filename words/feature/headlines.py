@@ -22,15 +22,13 @@ Required resources:
 
 """
 
-import typing
-
 import utila
 
 # TODO: REMOVE LATER
 
 
 @utila.checkdatatype
-def work(result: str) -> typing.Tuple[str, str]:
+def work(result: str) -> tuple[str, str]:
     """Extract headlines out of data."""
     result: str = utila.file_read(result)
     # dump

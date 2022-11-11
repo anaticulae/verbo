@@ -9,7 +9,6 @@
 
 import collections
 import functools
-import typing
 
 import german
 import iamraw
@@ -24,7 +23,7 @@ HeadlinedSentence = collections.namedtuple(
     'HeadlinedSentence',
     'headline, page, sentence',
 )
-HeadlinedSentences = typing.List[HeadlinedSentence]
+HeadlinedSentences = list[HeadlinedSentence]
 
 
 def find_sentences(page: words.text.PageTextWithHeadlines) -> words.text.TextSections: # yapf:disable
@@ -89,7 +88,7 @@ def visit_sentences(
     skip_undefined: bool = False,
     merge_divis: bool = True,
     normalize_spaces: bool = True,
-) -> typing.List[typing.Tuple[iamraw.Headline, str]]:
+) -> list[tuple[iamraw.Headline, str]]:
     """Yield tuple of Headline and extracted sentence.
 
     Go trough sections and extract sentences, formulas etc. and group
