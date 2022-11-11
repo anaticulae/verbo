@@ -2,6 +2,17 @@
 
 Every noteable change is logged here.
 
+## v1.23.1 (2022-11-11)
+
+### Chore
+
+* convert nightly to all (21ddaf19b796)
+* upgrade environment (16e78f17247e)
+* upgrade requirements.txt (28f41b64f52c)
+* upgrade requirements.txt (a43cdcac8212)
+* running as root is not necessary (ae62f27bc28c)
+* upgrade pipe library (bd3b04cc7de2)
+
 ## v1.22.0
 
 ### Feature
