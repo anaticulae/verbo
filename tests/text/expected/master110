@@ -347,13 +347,12 @@ Lineare Filter Lineare Filter sind lineare homogene Funktionen und werden auch a
 Jeder lineare Filter besitzt eine inverse Transformation und benötigt wenig Rechenaufwand.
 Sie werden vor allem zur Glättung und Kantendetektion eingesetzt.
 Zu den linearen Glättungsfiltern gehören der Mittelwert- und der Gaussfilter.
-Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners Abbildung 4.4:
-Originaltiefenbild (a) mit Digitalisierungsfehlern und ein mit einer Önen-Schließen\ " Kombination geglättetes Tiefenbild (b), in dem nahezu alle Fehler entfernt sind Mittelwert-Filter:
-Der Mittelwert-Filter ersetzt jedes Pixel durch den Mittelwert seiner Umgebungspixel.
-Dabei wird jedes Umgebungspixel gleich gewichtet.
-Dies hat zur Folge, dass der Mittelwert-Filter nicht nur Rauschen glättet, sondern auch Kanten im Bild verwischt.
-Gauss-Filter:
-Der Gauss-Filter ersetzt jedes Pixel, indem die Umgebungspixel mit einer Gaussfunktion gewichtet werden.
+Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners Mittelwert-Filter:
+Der Mittelwert-Filter ersetzt jedes Pixel durch den Mittelwert seiner Um-
+1u
+2u
+3u
+tion gewichtet werden.
 Dadurch verwischen Kanten im Tiefenbild nicht so stark wie beim Mittelwert-Filter aber immer noch stärker als bei den im folgenden beschriebenen nichtlinearen Filtern.
 Nichtlineare Filter Es existieren verschiedene Arten von nichtlinearen Filtern.
 Hier sollen ausschließlich Filter aus der Gruppe der Rangordnungsoperatoren besprochen werden.
@@ -624,7 +623,7 @@ Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners
 :::: Parallele Projektion ::::
 
 
-Der erste Ansatz ist der, das Kameramodel zu ändern mit dem das Tiefenbild aufgenommen wird.
+1u
 Der virtuelle Beobachter, der sich in den 3D-Daten befindet, hat bis jetzt immer Tiefenbilder mit einem Lochkameramodell erzeugt.
 Wird das Kameramodell in eine Kamera mit Parallelprojektion geändert, bleiben die x- und y-Achse erhalten und die z-Achse wird direkt abgebildet.
 Das Projektionszentrum der Lochkamera wandert ins Unendliche, so dass eine Projektionsrichtung und kein Projektionszentrum erzeugt wird.
@@ -912,36 +911,43 @@ Es sind komplexe, orthogonale Polynome, die senkrecht auf dem Einheitskreis x2 +
 Die Zernike-Momente entstehen durch die Projektion der Bildfunktion B(x; y) auf diese orthogonalen Basisfunktionen.
 Dies geschieht analog zur Konstruktion der geometrischen Momente (vgl. 5.4) nur das die Bildfunktion nicht auf die nicht orthogonale Basis xpyq projiziert wird, sondern auf die Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners orthogonalen Zernike-Polynome.
 Mit Hilfe dieser Basisfunktionen ergeben sich folgende Zernike-Momente:
-#$@FORMULA@$#:0
-In Polarkoordinaten werden diese zu:
-#$@FORMULA@$#:1
-Zernike-Momente besitzen die Eigenschaft, dass sie ähnlich der in Abschnitt 5.5 beschriebene Curvature-Scale-Space-Repräsentation unter Rotation des Objektes einen Phasenshift vollführen.
+n + 1 B(x; y)V * Anm = nm(%; )dx dy .
+ß x2+ZyZ2≤1 In Polarkoordinaten werden diese zu:
+2ß 1 n + 1 B(%; )Rnm(%)e(−im)% d% d .
+Anm = ß Z0 Z0 Zernike-Momente besitzen die Eigenschaft, dass sie ähnlich der in Abschnitt 5.5 beschriebene Curvature-Scale-Space-Repräsentation unter Rotation des Objektes einen Phasenshift vollführen.
 In [29] wird die Rotationsinvarianz der Merkmale erreicht, indem nur jeweils der Betrag der Momente genommen wird, da dieser invariant gegenüber einer Phasenverschiebung ist (vgl. 5.5.3).
 Eine Invarianz gegenüber Skalierung und Translation wird erreicht, indem das Bild vor der Berechnung der Momente mit Hilfe seiner geometrischen Momente normiert wird.
 Einen alternativen Ansatz, aus den Zernike-Momenten einen kompletten Satz invarianter Merkmale zu erzeugen, wird in [64] vorgestellt.
 Dieser Ansatz beruht auf den beiden folgenden Aussagen:
-11u
-12u
-13u
-14u
-15u
-Auf diesen Grundaussagen aufbauend werden drei Regeln definiert, die folgende Invarianten liefern:
-17u
-18u
-19u
-20u
-21u
-22u
 23u
 24u
 25u
 26u
 27u
-28u
+Auf diesen Grundaussagen aufbauend werden drei Regeln definiert, die folgende Invarianten liefern:
 29u
 30u
-j A33j 2 I31 = j A31j 2 I32 = ’22) j A31j j A22j cos(2’31 − 2 P32 = ’22) j A31j j A22j sin(2’31 − I33 = 3’31) j A{{hn:33:nh}}jj A31j 3 cos(2’33 − P33 = ’22) .
-j A{{hn:33:nh}}jj A31j 3 sin(2’31 − Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners
+31u
+32u
+33u
+34u
+35u
+36u
+37u
+38u
+39u
+40u
+41u
+42u
+j A33j 2 I31 = j A31j 2 I32 =
+#$@FORMULA@$#:0
+j A31j j A22j cos(2’31 − 2 P32 =
+#$@FORMULA@$#:1
+j A31j j A22j sin(2’31 −
+#$@FORMULA@$#:2
+I33 = j A{{hn:33:nh}}jj A31j 3 cos(2’33 −
+#$@FORMULA@$#:3
+P33 = j A{{hn:33:nh}}jj A31j 3 sin(2’31 − Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners
 
 
 :::: Repräsentation durch den Curvature-Scale-Space (CSS) ::::
@@ -1667,12 +1673,13 @@ Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners geometri
 Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners geometrische Konturmerkmale
 1u
 2u
-Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners 1 Zernike Momente 1 ART−Konturmerkmale 0.9 0.9 0.8 0.8 0.7 0.7 0.6 0.6 tp Rate tp Rate 0.5 0.5 0.4 0.4 0.3 0.3 linearer Kernel linearer Kernel 0.2 0.2 radialer Kernel radialer Kernel 0.1 0.1 polynomialer Kernel polynomialer Kernel 0 0 0 0.2 0.4 0.6 0.8 1 0 0.2 0.4 0.6 0.8 1 fp Rate fp Rate (c) (d) Border Signature 1 ortho.
-ART−Konturmerkmale 1 0.9 0.9 0.8 0.8 0.7 0.7 0.6 tp Rate 0.6 tp Rate 0.5 0.5 0.4 0.4 0.3 0.3 linearer Kernel linearer Kernel 0.2 0.2 radialer Kernel radialer Kernel 0.1 0.1 polynomialer Kernel polynomialer Kernel 0 0 0 0.2 0.4 0.6 0.8 1 0 0.2 0.4 0.6 0.8 1 fp Rate fp Rate (e) (f ) Vergleich der Methoden Vergleich der Methoden 1 1 0.9 0.95 0.8 0.9 0.7 0.85 0.6 0.8 tp Rate tp Rate geometrische Merkmale (rad) 0.5 0.75 geometrische Merkmale (rad) CSS−Merkmale (poly) CSS−Merkmale (poly) 0.4 0.7 Zernike−Momente (poly) Zernike−Momente (poly) ART (rad) 0.3 0.65 ART (rad) ortho.
-ART (lin) ortho.
-ART (lin) 0.2 0.6 Border−Signature (rad) Border−Signature (rad) 0.1 0.55 kombinierte Methode kombinierte Methode 0 0.5 0 0.2 0.4 0.6 0.8 1 0 0.05 0.1 0.15 0.2 fp Rate fp Rate (g) (h) Abbildung 7.6:
-(a-f):
-ROC-Kurven der mit den verschiedenen Methoden trainierten SVMs (K8-K13) und der Vergleich (g)(h) dieser SVMs mit der aus ihnen kombinierten SVM (K14).
+Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners
+0u
+1u
+2u
+3u
+4u
+5u
 Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners
 0u
 1u

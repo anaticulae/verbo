@@ -796,8 +796,9 @@ Das Modell repräsentiert dabei den Controller.
 [Plu06, Seite 2] Extern (virtuell) Model Real-Time System Extern (real)
 #$@FORMULA@$#:0
 #$@FORMULA@$#:1
-Abbildung 3.12.:
-MiL-Prinzip nach [Plu06, Seite 3] Software in the loop Ein Software in the loop“-Test bezeichnet die Verifikation von Softwarekompo- ” nenten in einer simulierten Umgebung.
+Software in the loop
+24u
+” nenten in einer simulierten Umgebung.
 Dabei wird die implementierte Software auf einer virtuellen Maschine (z.B. PC) ausgeführt.
 Die Simulation muss dabei keinen Echtzeitanforderungen genügen.
 Mit SiL-Tests kann Software ohne vorhandene Hardware frühzeitig getestet werden.

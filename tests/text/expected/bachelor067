@@ -222,8 +222,6 @@ Im ersten Fall ergeben sich zwei weitere Möglichkeiten zum Ort der Ausführung 
 Die Lokalität eines Treibers (der mit den Executors auf den Workern kommunizieren muss) kann Einfluss auf Laufzeit und Latenzverhalten des Programms haben.
 Im Fall eines clusterfernen Gateway-Rechners kann also Treiberdeployment im Clustermodus sinnvoll sein, die Standardeinstellung ist jedoch der Clientmodus (siehe auch [Spa]).
 Abb. 2.9 zeigt das Sequenzdiagramm eines typischen Deploymentprozesses, wie er auch im praktischen Teil dieser Arbeit zum Einsatz kommt.
-Abbildung 2.9:
-Laufzeitdiagramm einer Spark-Anwendung im Client Modus (vereinfacht)
 
 
 :::: Scheduling und Shuffling ::::
@@ -259,11 +257,12 @@ Betrachtet man zusätzlich die Partitionierung und die Funktion mit der RDDs tra
 5u
 Wird eine Partition aus höchstens einer anderen erzeugt, lässt sich diese direkt auf dem selben Knoten berechnen.
 Werden jedoch verschiedene Partitionen benötigt um eine Folgepartition zu erzeugen, stellt sich die Frage auf welchen Knoten das am Besten geschieht.
-Spark unterteilt diese beiden Fälle in narrow dependencies (erster Fall) und wide dependencies Abbildung 2.11:
-Beispiel eines einfachen Abhängigkeitsbaums eines RDD
+Spark unterteilt diese beiden Fälle in narrow dependencies (erster Fall) und wide dependencies
 #$@FORMULA@$#:0
 Der Abhängigkeitsgraph eines RDD wird nun in sogenannte Stages zerlegt (Abb. 2.13).
-Eine Stage ist dabei ein Untergraph, dessen Elemente (von den Blättern in Richtung Wurzel betrachtet) auf eine gemeinsame wide dependency stoßen.
+Eine
+1u
+tet) auf eine gemeinsame wide dependency stoßen.
 Elemente innerhalb einer Stage können nach dieser Konstruktion unabhängig auf den Knoten berechnet werden, die die jeweilige Partition vorhalten.
 Ein Datenelement xi,j sei dabei Element eines RDD j und Element einer lokalen Partition Pi,j (d.h. es existiert auf einem Knoten i):
 xi,j ∈ P artitioni,j ⊆ RDDj Weil nach Definition der narrow dependencies innerhalb einer Stage die Elemente einer Partition Pi,j aus den Elementen genau einer Vorgängerpartition Pi,j−1 berechnet werden können, lässt sich jedes Element xi,j des Nachfolger-RDD über eine Komposition lokaler
@@ -580,7 +579,7 @@ IO Festplatte (Lesen, Schreiben) Swap (Benutzt, Frei)
 IO Netzwerk (Gesendet, Empfangen) 2.
 Sparkspezifische Größen (1 Messpunkt alle zwei Sekunden) genutzte Cores aktive Stages parallele Receiver (bei Streaming) u.a. 10 Als Konfigurationsparameter für die Testläufe werden verwendet
 #$@FORMULA@$#:3
-2. der Replikationsfaktor der Blöcke auf HDFS (1, 2, 3, 4)
+12u
 #$@FORMULA@$#:2
 Um eine Vergleichbarkeit der Testläufe untereinander zu erreichen, werden folgende Größen festgelegt:
 0u
@@ -650,8 +649,7 @@ Bei einem Zeitfenster von 5 Sekunden (Batch Interval) pro Batch gibt es also kei
 Dieser Verdacht erhärtet sich bei einem Blick auf die CPU-Last des verarbeitenden Workers
 1u
 Last des Master sogar nur bei 8,1%.
-Abbildung 3.12:
-CPU Last bei Betrieb mit einem Worker Auch die Netzwerklast ist minimal (Abb. 3.13).
+Auch die Netzwerklast ist minimal (Abb. 3.13).
 Ab Sekunde 51 liegt die Last des Workers bei durchschnittlich 77 KByte/s.
 Über den beobachteten Zeitraum von knapp 7 Minuten wurden damit 31.4 Megabyte empfangen.
 Die Last des Masters liegt noch darunter.

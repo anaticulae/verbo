@@ -1846,9 +1846,9 @@ It then learns the overall normal trace patterns for a service during offline tr
 Lastly, in online anomaly detection, for each new trace, an anomaly score is computed, and accordingly traces with small anomaly scores are considered anomalous.
 As TraceAnomaly largely outperforms other more traditional methods such as string matches or finite state machines, we discard direct comparisons to these methods in our evaluation.
 The parameters of the LSTM-based method and TraceAnomaly are tuned to produce their best F1 scores.
-Figure 51:
-Results of the experiments for LS1.
-6.3.4 Results We present the results of the three LSs, including the precision, recall, and F1 score.
+6.3.4 Results
+1u
+score.
 Figure 51 shows the results of LS1 for the best-selected models from the optimization.
 When the long traces are considered, higher scores are obtained for the attention mechanism than those of the previous state-of-the-art methods, LSTM and TraceAnomaly, in all three cases.
 The attention mechanism can prioritize specific spans of the trace owing to the sparsity characteristic.

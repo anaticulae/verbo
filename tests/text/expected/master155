@@ -1,15 +1,58 @@
 
 
+:::: Literaturüberblick ::::
+
+
+Obwohl es viele Untersuchungen zur experimentellen Ökonomie im Allgemeinen gibt, sind kaum Veröffentlichungen zu Marktexperimenten zu finden.
+Chamberlin führte 1948 als erster ein Marktexperiment durch.
+Diese fand an der Harvard University statt mit Doktoranden als Probanden.
+Seine Hypothese war, dass das Marktergebnis vom perfekten Marktgleichgewicht abweicht.
+Die eine Hälfte der Probanden erhielt eine Rolle als Käufer, die andere Hälfte war Verkäufer.
+Kosten und Nutzen waren vorgegeben.
+Jeder Teilnehmer erhielt eine Karte, auf der ihm sein Reservationspreis vorgegeben war, also für die Käufer der Preis, den sie maximal für eine Einheit eines Gutes auszugeben bereit sind, für die Verkäufer ist dies der Preis, zu dem sie minimal verkaufen.
+Die Teilnehmer konnten frei entscheiden, mit wem sie verhandeln wollen.
+Pro Transaktion durfte nur eine Einheit gehandelt werden.
+Die erhandelten Gewinne waren dabei hypothetisch, sie errechneten sich aus dem Reservationspreis und abzüglich des tatsächlich ausgehandelten Preises.
+Alle Transaktionen wurden dokumentiert.
+Der letzte Preis war auf einer Tafel angeschlagen, sodass diese Information den Teilnehmern zur Verfügung stand.
+Die Ergebnisse des Experiments wichen von Chamberlins Vorhersagen ab.
+Die gehandelte Menge mit einer durchschnittlichen Stückzahl von 19 pro Person war höher als die errechnete Gleichgewichtsmenge von 15 Stück.
+Der durchschnittliche Preis lag mit 52,63 unter dem Gleichgewichtspreis von 57.
+Zunächst erlangte das Experiment auf Grund der neuen Labormethodik keinerlei Bedeutung. 1962
+griff Vernon Smith, der selbst als Doktorand Teilnehmer an dem Marktexperiment von Chamberlin war, die Idee eines Marktexperiments auf.
+Smith führte das Experiment als eine zweiseitige Auktion durch.
+Dabei waren alle Angebote und die Preise der durchgeführten Transaktionen bekannt.
+Er zeigte, dass solche Märkte, auch ohne den Teilnehmern vorher viele Informationen zu liefern, einem effizienten Marktgleichgewicht nahe kommen.
+Ein weiteres Marktexperiment wurde 1970 von Selten veröffentlicht.
+Während bei Chamberlin jedes Spiel aus einer Periode bestand und bei Smith aus drei bis sechs, umfasste jedes Spiel von Selten zehn durchgeführten Versuchen kam es insgesamt zu zehn Koalitionsbildungen zwischen Käufern.
+Neben Terminverträgen kamen auch Verträge zwischen zwei Einkäufern oder zwei Produzenten zu Stande.
+Das Resultat von Seltens Marktexperiment war, dass Durchschnittspreise und Durchschnittsmengen aller zehn Perioden mit den Vorhersagen des vollkommenen Marktes übereinstimmten.
+Kachelmeier et al. (1991) designten ein Marktexperiment, dessen Ziel es war herauszufinden, wie Käufer auf unterschiedliche Informationen über die Kosten der Verkäufer reagieren.
+Der vorhergesagte Gleichgewichtspreis stellte sich schneller ein, wenn die Konsumenten wussten, dass die Preiserhöhung durch eine eingeführte Steuer verursacht wurde, und blieb länger auf dem ursprünglichen Preisniveau, wenn die Käufer vermuteten, dass mit der Preiserhöhung nur der Gewinn der Verkäufer erhöht wird.
+Kujal und Smith (2008) führten ein dem von Kachelmeier et al. sehr ähnliches Experiment durch.
+Dabei stellte sich ebenfalls das vorhergesagte Preisgleichgewicht ein.
+Auch wenn Fairnessaspekte auf Märkten eine Rolle spielen, dominiert für das Individuum auf lange Sicht doch die Eigennutzenmaximierung.
+Die Marktteilnehmer verhalten sich langfristig nutzenmaximierend.
+Neben diesen wenigen Marktexperimenten sind Experimente vermehrt zu experimentellen Arbeitsmärkten (zum Beispiel Fehr et al. 1993, Charness 1996, Fehr et al. 1998a, Fehr et al. 1998b, Hannan et al. 2002, Cooper et al. 1999, Charness 2000, Brandts/Charness 2000, Irlenbusch/Sliwka 2001, Irlenbusch/Sliwka 2006, Dürsch et al. 2008, Brandts et al. 2010) und zu experimentellen Finanzmärkten (zum Beispiel Gneezy et al. 2003, Anderson/Blue 2003, Allen/Evans 2005, Chen/Hsieh 2011, Fiedler 2011, Cheung/Palan 2011) zu finden.
+Eine Analyse von Leibbrandt (2012) verschiedener Daten von Labor- und Feldexperimenten ergibt, dass egoistische und weniger sozial eingestellte Verkäufer bei Produkthomogenität höhere Preise erzielen.
+Jedoch betrachtet Leibbrandt dabei nur die Verkäufer, also die Angebotsseite, und nicht die Nachfrageseite.
+Nach eingehender Literaturrecherche gibt es bisher noch kein
+
+
 :::: Mikroökonomische Grundlagen ::::
 
 
-Im zweiten Kapitel der Masterarbeit werden mikroökonomische Grundlagen dargelegt, vor deren Hintergrund in Kapitel vier die Hypothesen formuliert werden.
+dargelegt, vor deren Hintergrund in Kapitel vier die Hypothesen formuliert werden.
 Zunächst wird auf die Nachfragetheorie eingegangen.
 Anschließend werden zentrale Begriffe, die für die Produzenten des Experiments wichtig waren, beschrieben.
 Zuletzt wird ein vollkommener Markt erläutert und welche Abweichungen davon existieren können.
 Diese Kategorisierung wird auf das durchgeführte Experiment angewandt.
-2.1.
-Nachfragetheorie In der Nachfragetheorie wird versucht, das Verhalten von Nachfragern auf Märkten zu erklären.
+
+
+:::: Nachfragetheorie ::::
+
+
+In der Nachfragetheorie wird versucht, das Verhalten von Nachfragern auf Märkten zu erklären.
 Damit wird die Basis für die Schätzung und Vorhersage der eigentlichen Nachfrage geschaffen.
 In Zusammenhang mit dem Marktexperiment bezieht sich die Nachfrage auf die Konsumenten, die ihr Budget auf Fische und Brote aufteilen sollten.
 Individuen fragen Güter der Menge x von Gut i nach, also xi.
@@ -99,8 +142,13 @@ Abbildung 4 veranschaulicht diese Beziehung für das oben genannte Bespiel. 25
 #$@FORMULA@$#:1
 #$@FORMULA@$#:2
 Quelle:
-eigene Darstellung 2.2.
-Produktion und Kosten Eine Firma ist eine Institution, die Inputs zusammenführt, um Outputs zu generieren (Schöler 2011).
+eigene Darstellung
+
+
+:::: Produktion und Kosten ::::
+
+
+Eine Firma ist eine Institution, die Inputs zusammenführt, um Outputs zu generieren (Schöler 2011).
 In dem Fall des durchgeführten Marktexperiments mussten die Produzenten ihre Gesamtkosten beachten, um ihre Gewinne zu maximieren.
 Daher sind die Begriffe Kosten und Erlös für das Experiment von Bedeutung.
 In Abschnitt 2.2. werden diese Begriffe kurz dargestellt.
@@ -119,18 +167,31 @@ Nach den Vorgaben des Experiments sollte sich ein Gleichgewicht bei einem Preis 
 Optimal würde ein Käufer dann jeweils etwa 10 Fische und 10 Brote (zusammen exakt 19,51 Brote und Fische) nachfragen.
 Dieses Verhältnis ist in der unteren Grafik abgebildet.
 Dabei besteht die Annahme, dass der Preis pro Brot genauso hoch ist wie der Preis pro Fisch.
-Quelle:
-eigene Darstellung 2.3.
-Vollkommener Markt Ein Markt ist eine Gruppe von potenziellen Käufern und Verkäufern.
+
+
+:::: Vollkommener Markt ::::
+
+
+Ein Markt ist eine Gruppe von potenziellen Käufern und Verkäufern.
 Dabei bestimmen die potenziellen Käufer die Marktnachfrage und die Verkäufer bestimmen das Marktangebot.
 Ein Markt wird als Wettbewerbs- oder Angebotsmarkt bezeichnet, wenn es so viele Anbieter und Nachfrager gibt, dass der Einzelne nur einen sehr kleinen Einfluss auf den Marktpreis hat (Mankiw/Taylor 2012).
 Von einem vollkommenen Markt spricht man, wenn folgende Eigenschaften gegeben sind:
 9u
-10u
-11u
-0u
-1u
-2u
+
+
+:::: Es bestehen keine Vorteile durch persönliche Beziehungen zwischen den Marktteilnehmern. ::::
+
+
+
+
+:::: Es existiert vollständige Markttransparenz; alle Marktteilnehmer sind über marktrelevante Sachverhalte informiert (Schöler 2011). ::::
+
+
+
+
+:::: Abweichungen vom vollkommenen Markt ::::
+
+
 Ist eine dieser Eigenschaften verletzt, so spricht man von einem unvollkommenen Markt.
 Ist die fünfte Eigenschaft nicht erfüllt, so liegt ein temporär unvollkommener Markt vor, weil davon ausgegangen wird, dass die Diffusion von Information Zeit beansprucht (Schöler 2011).
 Für das Marktexperiment können folgende Eigenschaften an Hand der oben erläuterten Charakteristika eines vollkommenen Marktes angenommen werden:
@@ -166,8 +227,12 @@ Dazu wird zunächst das experimentelle Design detailliert erläutert.
 Im zweiten Abschnitt dieses Kapitels werden die Instruktionen, die die Probanden erhielten, vorgestellt.
 Anschließend wird erklärt, wie die Risikoeinstellung der Teilnehmer abgefragt wurde.
 Im vierten und letzten Abschnitt des dritten Kapitels wird abschließend beschrieben, wonach sich die Vergütung der Testpersonen richtete.
-3.1.
-Experimentelles Design Das Experiment wurde im Juni 2011 an der Georg-August-Universität Göttingen durchgeführt.
+
+
+:::: Experimentelles Design ::::
+
+
+Das Experiment wurde im Juni 2011 an der Georg-August-Universität Göttingen durchgeführt.
 Die Probanden waren Studenten, die per Aushang, per E-Mail oder durch Bekannte oder Freunde, die ebenfalls Teilnehmer an dem Experiment waren, auf die Möglichkeit zur Teilnahme an einem Marktexperiment aufmerksam wurden.
 Die Entwicklung des Experimentbogens war darauf ausgerichtet, dass die Produzenten möglichst identische Vorgaben haben, und dass es zwei Produkte gibt, damit die Konsumenten zwischen Fisch und Brot abwägen müssen.
 Der Pretest{{hn:3:nh}} für das Marktexperiment wurde mit 12 Personen durchgeführt.
@@ -233,8 +298,12 @@ Damit mussten die Produzenten 10 % ihrer Erlöse an ein fiktives Finanzamt abfü
 Sowohl Verkäufern als auch Käufern wurden zu Ende des Fragebogens Verständnisfragen vorgelegt.
 Diese dienten dazu, dass sich die Probanden mit ihren Experimentvorgaben vertraut machen, um anschließend optimal vorbereitet an dem Marktexperiment teilzunehmen.
 Die Verkäufer hatten sieben Vorbereitungsfragen zu beantworten, den Käufern wurden neun Fragen gestellt.
-3.3.
-Abfrage der Risikoeinstellung Neben dem finanziellen Anreiz war es auch wichtig, den Einfluss der Risikoeinstellung der Probanden festzustellen.
+
+
+:::: Abfrage der Risikoeinstellung ::::
+
+
+Neben dem finanziellen Anreiz war es auch wichtig, den Einfluss der Risikoeinstellung der Probanden festzustellen.
 Ob bei den Verhandlungen der Teilnehmer Risikoaversion für den Verhandlungserfolg eine Rolle spielt, wird in den Hypothesen getestet.
 Deshalb war es notwendig, im Rahmen des Experiments die Risikoeinstellung der Teilnehmer abzufragen.
 Dazu wurde eine Lotterie von Holt und Laury (2002) verwendet.
@@ -277,8 +346,12 @@ Auf den Grundlagen des zweiten und des dritten Kapitels werden in Kapitel vier d
 
 Im folgenden Kapitel werden die zu testenden Hypothesen auf Grundlage der aus dem Marktexperiment gewonnen Daten dargelegt und durch theoretische Überlegungen der Entscheidungstheorie und Verhandlungstheorie ergänzt und begründet.
 Anschließend wird das methodische Vorgehen vorgestellt.
-4.1.
-Hypothesen In Kapitel 4.1. werden 12 Hypothesen zu Geschlechterunterschieden, der Risikoeinstellung, zur Rationalität, Hypothesen in Bezug auf die Kapitel fünf werden daraufhin die Ergebnisse der getesteten Hypothesen dargestellt und im sechsten Kapitel diskutiert.
+
+
+:::: Hypothesen ::::
+
+
+Kapitel fünf werden daraufhin die Ergebnisse der getesteten Hypothesen dargestellt und im sechsten Kapitel diskutiert.
 Geschlecht In der Sozialpsychologie ist das Geschlecht die am häufigsten untersuchte Variable bei Verhandlungen (Neu et al. 1988).
 Die traditionelle stereotype Verteilung der Geschlechterrollen lässt vermuten, dass Männer im Vergleich zu Frauen eher beharrlicher verhandeln und kompetitiver agieren.
 Frauen hingegen wird unterstellt, dass sie kooperativer seien und sich eher anpassten als Männer (Matheson 1991, Pruitt et al. 1986, Stamato 1992, Watson 1994).
@@ -309,7 +382,13 @@ Harrison (2005) allerdings korrigierte die Lotterie von Holt und Laury um Order 
 Folgerichtig wird deshalb bei dem durchgeführten Marktexperiment getestet, ob es einen signifikanten Unterschied bei der Risikoeinstellung zwischen Männern und Frauen gibt.
 2.
 Hypothese:
-Das Geschlecht hat keinen Einfluss auf die Risikoeinstellung Entscheidung ist die Einstellung des Individuums zum Risiko entscheidend
+Das Geschlecht hat keinen Einfluss auf die Risikoeinstellung
+
+
+:::: Hypothese: Das Geschlecht hat keinen Einfluss auf die Risikoeinstellung ::::
+
+
+Entscheidung ist die Einstellung des Individuums zum Risiko entscheidend
 #$@FORMULA@$#:0
 Muss ein Individuum eine Entscheidung unter Risiko treffen, so ist die Erwartungsnutzentheorie die Grundlage des rationalen Handelns.
 Die Erwartungsnutzentheorie wurde 1947 von von Neumann und Morgenstern begründet.
@@ -393,9 +472,12 @@ Es könnte sein, dass der Käufer einen weniger geschickten Verkäufer gefunden 
 Der Grund kann aber auch sein, dass je öfter ein Käufer mit demselben Verkäufer um den Preis feilscht, dass er diesen umso besser kennt und seine Erfahrung nutzen kann.
 Daher könnte es ihm möglich sein, seinen Nutzen zu erhöhen.
 So wird die neunte Hypothese getestet:
-9.
-H0:
-Zwei oder mehr Transaktionen mit demselben Verkäufer in allen Nutzenmaximierung Bis in die 1960er Jahre wurde in der Mikroökonomik angenommen, dass die Marktteilnehmer vollständig über die Preise informiert sind (vergleiche das Modell von Arrow und Debreu 1954).
+
+
+:::: H0: Zwei oder mehr Transaktionen mit demselben Verkäufer in allen ::::
+
+
+Nutzenmaximierung Bis in die 1960er Jahre wurde in der Mikroökonomik angenommen, dass die Marktteilnehmer vollständig über die Preise informiert sind (vergleiche das Modell von Arrow und Debreu 1954).
 Diese Annahme impliziert auch, dass es eine vollständige Preistransparenz gibt und damit nur ein homogenes Gut und nur einen Preis (vergleiche Kapitel 2).
 Das bedeutet, dass der Kunde nur zu einem Preis kaufen kann und damit weder suchen noch vergleichen muss.
 Diese Annahme trifft jedoch auf das durchgeführte Experiment nicht zu.
@@ -501,12 +583,20 @@ Daher wird in der letzten Hypothese Folgendes getestet:
 12.
 H0:
 Es besteht kein Unterschied in der Varianz der Renten einzelner Runden der Produzenten beziehungsweise der Konsumenten.
-4.2.
-Methodisches Vorgehen Im zweiten Teil dieses Kapitels wird das methodische Vorgehen bei der Datenauswertung vorgestellt.
+
+
+:::: Methodisches Vorgehen ::::
+
+
+Im zweiten Teil dieses Kapitels wird das methodische Vorgehen bei der Datenauswertung vorgestellt.
 Dabei wird zunächst auf die Regressionsanalyse und die Stichprobenziehung eingegangen, anschließend werden die erhobenen Daten charakterisiert.
 Im Anschluss daran wird die Stichprobe des Marktexperiments deskriptiv beschrieben.
-4.2.1.
-Regressionsanalyse Die Regressionsanalyse gehört zu den multivariaten Analyseverfahren.
+
+
+:::: Regressionsanalyse ::::
+
+
+Die Regressionsanalyse gehört zu den multivariaten Analyseverfahren.
 Bei dieser Art der Dependenz-Analyse sollen unterschiedliche Werte einer abhängigen Variablen auf unabhängige Variablen zurückgeführt werden, um so einen möglichen Zusammenhang herauszustellen.
 Zunächst muss dazu das entsprechende Regressionsmodell formuliert werden.
 Anschließend folgt die Schätzung der Parameter des Regressionsmodells.
@@ -560,8 +650,12 @@ Es handelt sich hierbei um eine vollkommene willkürliche und damit keine zufäl
 Die Stichprobe kann somit nicht repräsentativ für eine bestimmte Population sein.
 Auch ist es schwer, Verallgemeinerungen anzustellen.
 Trotzdem ist das Verfahren eines der am häufigsten angewendeten und der Einsatz wird empfohlen, um exploratorisch vorzugehen oder Hypothesen zu testen (Malhotra 2007).
-4.2.3.
-Deskriptive Statistik der Stichprobe Die für das Experiment erhobenen Daten entsprechen Paneldaten.
+
+
+:::: Deskriptive Statistik der Stichprobe ::::
+
+
+Die für das Experiment erhobenen Daten entsprechen Paneldaten.
 Charakteristisch für Paneldaten ist die Wiederholung in regelmäßigen Abständen, dass die gleichen Probanden teilnehmen (Panel) und dass der Untersuchungsgegenstand, in diesem Fall das Experiment, Ziel der Datenerhebung ist (Hammann/Erichson 2000).
 Ein weiteres Charakteristikum ist die stete Verwendung der gleichen Erhebungsmethode (Günther et al. 2006).
 Im Folgenden wird die deskriptive Statistik der beiden Experimente vorgestellt.
@@ -619,25 +713,45 @@ Davon hatten 56 die Rolle eines Konsumenten, 14 waren Fischer und 14 Teilnehmer 
 :::: Ergebnisse des Marktexperiments ::::
 
 
-5.1.
-Vorgehensweise bei der Modellschätzung Für die Modellschätzungen wurden neun Regressionen, drei Korrelationstests und ein Test auf Varianzhomogenität durchgeführt.
+
+
+:::: Vorgehensweise bei der Modellschätzung ::::
+
+
+Für die Modellschätzungen wurden neun Regressionen, drei Korrelationstests und ein Test auf Varianzhomogenität durchgeführt.
 Diese werden im Folgenden in der eben genannten Reihenfolge dargestellt.
 Regressionen Für alle Regressionen wurde ein Test auf Homoskedastizität durchgeführt.
 Bei Vorliegen von Heteroskedastizität wurden die Standardfehler nach Breusch-Pagan geschätzt.
-Anschließend wurden durch iteratives Vorgehen solange nichtsignifikante Parameter aus dem Modell ausgeschlossen, bis der Likelihood-Ratio rent_kons = b0 + b1 sex + b2 age + b3 risk_total + b4 risikoavers + b5
+Anschließend wurden durch iteratives Vorgehen solange nichtsignifikante Parameter aus dem Modell ausgeschlossen, bis der Likelihood-Ratio
 #$@FORMULA@$#:0
 #$@FORMULA@$#:1
-dum11 + b18 dum12 Die Daten wurden in Form eines Paneldatensatzes in Stata zusammengefügt und gereinigt.
+
+
+:::: dum11 + b18   dum12 ::::
+
+
+Die Daten wurden in Form eines Paneldatensatzes in Stata zusammengefügt und gereinigt.
 Die abhängige Variable ist für die obige Gleichung die Gesamtrente der Konsumenten (rent_kons), analog wurde die Regression für die Gesamtrente der Produzenten (rent_prod) durchgeführt.
 Die Gesamtrente gibt die Renten aller 12 Runden des ersten Experiments beziehungsweise aller 13 Runden für das zweite Experiment an.
 Als unabhängige Variablen wurden das Geschlecht (sex), das Alter (age), die Risikoeinstellung ausgedrückt durch risk_total{{hn:11:nh}} und risikoavers{{hn:12:nh}}, die Anzahl richtig beantworteter Verständnisfragen (v_total_r{{hn:13:nh}}) und eine Dummyvariable für die Steuerrunden (taxfree{{hn:14:nh}}) in die Regressionsgleichung aufgenommen.
-Weiterhin stehen die Dummys dum1 bis dum12 für die jeweiligen Runden 1 bis 12.
-Analog enthält die Regressionsgleichung für das zweite Experiment auch den Dummy dum13.
+Weiterhin stehen die Dummys dum1 bis
+
+
+:::: dum12 ::::
+
+
+Regressionsgleichung für das zweite Experiment auch den Dummy dum13.
 Mit demselben Datensatz wurde ebenso folgende Regression analysiert:
 risikoavers_kons = b0 + b1 sex + b2 age + b3 v_total_r
-#$@FORMULA@$#:2
+#$@FORMULA@$#:0
 Die Risikoeinstellung ausgedrückt in risikoavers und risk_total wurde als Endogene verwendet, die Variablen sex, age und v_total_r als Exogene.
-Die endogenen Variablen wurden für Konsumenten (risikoavers_kons und risk_total_kons) und Produzenten (risikoavers_prod und risk_total_prod) getrennt getestet, um die Einflüsse der exogenen Variablen auf Konsumenten beziehungsweise Produzenten zu beschränken.
+Die endogenen Variablen wurden für Konsumenten (risikoavers_kons und risk_total_kons) und Produzenten (risikoavers_prod und risk_total_prod) getrennt
+
+
+:::: risk_total_kons) und Produzenten (risikoavers_prod und risk_total_prod) getrennt ::::
+
+
+getestet, um die Einflüsse der exogenen Variablen auf Konsumenten beziehungsweise Produzenten zu beschränken.
 Die beiden obigen Gleichungen wurden demnach analog für die Produzenten getestet.
 Ziel der zweiten Hypothese war es herauszufinden, ob das Geschlecht einen Einfluss auf die Risikoeinstellung hat.
 Als weitere Regressionsanalyse wurde mit dem erstellten Paneldatensatz folgende Gleichung getestet:
@@ -654,16 +768,30 @@ Für die nächsten Regressionen war eine andere Datenstruktur notwendig.
 Die Transaktionen der einzelnen Runden wurden in einen Datensatz integriert.
 Dieser Datensatz wurde für Produzenten und Konsumenten getrennt erstellt, um Variablen wie Alter und Geschlecht in die Regression mit aufnehmen zu können.
 Folgende Regressionsgleichungen wurden geschätzt:
-time_last = b0 + b1 risk_total + b2 risikoavers + b3 sex + b4 age + b5 v_total_r den Zeitpunkt des Abschluss der letzten Transaktion in einer Runde an{{hn:16:nh}}.
+time_last = b0 + b1 risk_total + b2 risikoavers + b3 sex + b4 age + b5
+
+
+:::: v_total_r ::::
+
+
+den Zeitpunkt des Abschluss der letzten Transaktion in einer Runde an{{hn:16:nh}}.
 Es soll getestet werden, ob diese Variable durch die Risikoeinstellung beeinflusst wird.
 #$@FORMULA@$#:0
-risk_total + b6 risikoavers Um den Einfluss der Anzahl der Transaktionen je Runde auf die Gesamtrente (rent_ges{{hn:17:nh}}) zu testen, wurde in der neunten Hypothese anz_tans_max als exogene Variable gewählt.
-anz_trans_max gibt die Anzahl der Transaktion in einer Runde an.
-Es wird getestet, ob die Anzahl der Transaktionen in einer Runde die Gesamtrente beeinflusst.
-Die folgende Regressionsgleichung enthält eine neu generierte Variable:
 #$@FORMULA@$#:1
-b6 risikoavers Für diese Modellschätzung wurde die Dummy Variable trans_d generiert und als exogene Variable aufgenommen.
-Die zehnte Hypothese soll überprüfen, ob sich ein Unterschied in der Gesamtrente ergibt, wenn zwei oder mehr Transaktionen mit demselben Käufer beziehungsweise Verkäufer getätigt wurden. 0 bedeutet, dass eine Transaktion nur einmal mit diesem Käufer/Verkäufer abgeschlossen wurde, 1 steht für zwei oder mehr Transaktionen mit derselben Person.
+
+
+:::: risk_total + b6   risikoavers ::::
+
+
+#$@FORMULA@$#:0
+
+
+:::: b6   risikoavers ::::
+
+
+Für diese Modellschätzung wurde die Dummy Variable trans_d generiert und als exogene Variable aufgenommen.
+Die zehnte Hypothese soll überprüfen, ob sich ein Unterschied in der Gesamtrente ergibt, wenn zwei oder mehr Transaktionen mit demselben Käufer beziehungsweise Verkäufer getätigt wurden. 0
+bedeutet, dass eine Transaktion nur einmal mit diesem Käufer/Verkäufer abgeschlossen wurde, 1 steht für zwei oder mehr Transaktionen mit derselben Person.
 Zuletzt wurde mit diesem Datensatz folgende Regression geschätzt:
 anz_trans = = b0 + b1 runr_ln + b2 taxfree + b3 ru_first Die Regression hat die Variable anz_trans, die die Anzahl der Transaktionen pro Runde angibt, als abhängige Variable und die Variablen runr_lr, taxfree und ru_first{{hn:18:nh}} als unabhängige Variablen.
 Die Variable runr gibt die Rundennummer an und wurde logarithmiert in die Gleichung aufgenommen (runr_lr), weil grafisch zu erkennen ist, dass die Anzahl der Transaktionen in beiden Experimenten nicht in jeder Runde abnimmt.
@@ -687,13 +815,17 @@ Zunächst wurden die Renten für jeden Produzenten getrennt nach Runden mit und 
 Diese Variablen rent_taxfree_prod und rent_tax_prod wurden dann auf paarweise Korrelation überprüft, um so die elfte Hypothese zu testen.
 Die Hypothesen b) und c) wurden mit Hilfe des Medians der Produzenten getestet.
 Zunächst wurden die Renten vor und nach der Steuer der Verkäufer mit unterdurchschnittlichen Ergebnissen vor Einführung der Steuer miteinander verglichen (rent_prod_med_taxfree und rent_prod_med_tax), anschließend die Produzenten mit überdurchschnittlich hohen Renten vor Einführung der Steuer
-#$@FORMULA@$#:1
+#$@FORMULA@$#:0
 Test auf Varianzhomogenität Hypothese 12 wurde durch einen Test auf Varianzhomogenität zwischen den Renten jeweils für Produzenten und Konsumenten zweier Runden überprüft.
 Für diese Hypothese wurde wieder der Paneldatensatz verwendet.
 Es wurden alle steuerfreien Runden ab Runde drei und alle Runden mit Steuer gegeneinander getestet.
 Die ersten beiden Runden wurden ausgelassen, weil den Teilnehmern bekannt war, dass die Renten dieser Runden auf die Auszahlung noch nicht angerechnet werden und als Übungsrunden galten.
-5.2.
-Ergebnisse der Modellschätzungen Die Nullhypothese besagt, dass der Parameter keinen Einfluss auf die endogene Variable hat, während bei der Alternativhypothese davon ausgegangen wird, dass der Parameter einen Einfluss besitzt.
+
+
+:::: Ergebnisse der Modellschätzungen ::::
+
+
+Die Nullhypothese besagt, dass der Parameter keinen Einfluss auf die endogene Variable hat, während bei der Alternativhypothese davon ausgegangen wird, dass der Parameter einen Einfluss besitzt.
 Wenn der Wert für die Signifikanz kleiner als 10 % ist, kann die Nullhypothese vorläufig abgelehnt werden, ist der Wert größer als 10 %, so kann die Nullhypothese nicht abgelehnt werden
 #$@FORMULA@$#:0
 Regressionen Die Regressionsanalysen enthalten auch Kontrollvariablen.
@@ -741,7 +873,7 @@ Quelle:
 eigene Berechnungen und Darstellung Quelle:
 eigene Berechnungen und Darstellung
 1u
-F-Wert 9.76 13.78 Prob > F 0.0000 0.0000 R-squared 0.0699 0.0694 FG 356 357 auch die Variable runr56 ist signifikant auf dem 1 % Niveau.
+auch die Variable runr56 ist signifikant auf dem 1 % Niveau.
 In den Runden 10 und 12 erzielten die Verkäufer ceteris paribus einen um 80,901 höheren Gewinn als in den Runden 5 und 6.
 Für die Verkäufer des ersten Experiments ist also ein Lerneffekt für die steuerfreien Runden zu erkennen.
 In den Steuerrunden hingegen sinkt ihr Gewinn im Laufe der Runden.
@@ -749,10 +881,10 @@ Sie schaffen es erwartungsgemäß nicht, ihre Preise so zu erhöhen, dass sie de
 In der späteren Steuerrunde 11 erzielten die Produzenten einen um 73,56 signifikant (10 % Niveau) geringeren Gewinn als in den früheren Steuerrunden 7 und 9 (vergleiche Tabelle 14).
 Tabellen 13 und 14 enthalten beispielhaft die Ergebnisse der Regressionsanalyse für die Produzenten des ersten Experiments der steuerfreien Runden und der Steuerrunden.
 Bei den analogen Regressionen für die Konsumenten konnte sowohl für die steuerfreien Runden als auch für die Steuerrunden kein signifikanter Einfluss festgestellt werden.
-F-Wert 1.49
+Quelle:
+eigene Berechnungen und Darstellung
 1u
-Prob > F 0.1820 0.0234 R-squared 0.138 0.1047 FG 356 87 Quelle:
-eigene Berechnungen und Darstellung Für die Konsumenten kann nur das Modell des Vergleichs der Renten der Steuerrunden des 2.
+Steuerrunden des 2.
 Experiments interpretiert werden, die anderen drei Modelle sind nicht signifikant.
 Konsumenten des zweiten Experiments gelang es ceteris paribus, in den Steuerrunden 11 und 13 einen um 9,632 Einheiten signifikant (p-Wert = 0,083) höhere Rente zu erzielen als in den ersten beiden Steuerrunden 7 und 9.
 (siehe Tabelle 37, S. 117).
@@ -766,12 +898,10 @@ Dass die Risikoaversion keinen Einfluss auf den Zeitpunkt des Abschlusses der ei
 Dieses Ergebnis hat ein Signifikanzniveau von 1 %.
 Das gesamte Modell ist signifikant auf dem 5 % Niveau.
 Die Modellschätzung für die Konsumenten des zweiten Termins konnte keinen Einfluss der Risikoeinstellung auf den Zeitpunkt des letzten Abschluss einer Transaktion in einer Runde feststellen (Tabelle 31, S. 113).
-F-Wert 1.45
+Quelle:
+eigene Berechnungen und Darstellung
 6u
 7u
-0.0142 R-squared 0.0094 0.0093 FG 719 735 Quelle:
-eigene Berechnungen und Darstellung Die achte Hypothese testete einen Einfluss der Anzahl der abgeschlossenen Transaktionen auf die Gesamtrente.
-Alle vier Modelle sind signifikant (Erstes
 #$@FORMULA@$#:0
 #$@FORMULA@$#:1
 [Tabellen 40 und 41 im Anhang]).
@@ -819,10 +949,7 @@ Außer bei den Produzenten des ersten Experiments hat diese exogene Variable ein
 Für die Konsumenten des ersten Experiments (Tabelle 20) steigt der Preis der ersten Transaktion einer Runde um 0,972 Taler, wenn der Preis der letzten Transaktion der vorherigen Runde um einen Taler höher war.
 Bei den Produzenten des zweiten Termins ist der Preis der ersten Transaktion ceteris paribus um 0,0755 Taler niedriger (Tabelle 38), bei der ersten Transaktion der Konsumenten ceteris paribus um 0,0122 Taler höher (Tabelle 39), wenn der Preis der vorherigen Runde um einen Taler höher war.
 #$@FORMULA@$#:0
-F-Wert 3.68
-1u
-2u
-0.0051 R-squared 0.0526 0.0035 FG 312 327 Quelle:
+Quelle:
 eigene Berechnungen und Darstellung
 #$@FORMULA@$#:1
 #$@FORMULA@$#:0
@@ -866,8 +993,8 @@ eigene Berechnungen und Darstellung
 Steuerrunden konnte kein statistischer Unterschied bei den Varianzen zweier Runden festgestellt werden.
 Abbildung 11 sind die Varianzen der Konsumentenrente der einzelnen Runden zu entnehmen.
 Beim ersten Termin sind die Varianzen deutlich höher als beim zweiten Termin.
-In beiden Fällen nehmen die Varianzen jedoch im Laufe der Runden tendenziell kleinere Werte an. 14000 12000 10000 8000 Varianz Termin 1 6000 Termin 2 4000 2000 0 1 2 3 4 5 6 7 8 9 10 11 12 13 Rundennummer Abbildung 11:
-Varianzen der Konsumentenrente der einzelnen Runden Abbildung 12 zeigt analog die Varianzen der Produzentenrente des ersten und zweiten Experiments im Vergleich.
+In beiden Fällen nehmen die Varianzen jedoch im Laufe der Runden tendenziell kleinere Werte an.
+Abbildung 12 zeigt analog die Varianzen der Produzentenrente des ersten und zweiten Experiments im Vergleich.
 Die Abweichungen sind zwischen beiden Terminen weniger groß.
 Auch hier ist tendenziell ein Abfall der Varianzen der Gesamtrente für die Produzenten im Laufe der Runden zu sehen.
 Quelle:
@@ -877,8 +1004,12 @@ Eigene Darstellung
 :::: Diskussion und Schlussfolgerungen ::::
 
 
-Im folgenden Abschnitt werden die Ergebnisse der verschiedenen Modellschätzungen diskutiert und interpretiert.
-Anschließend werden Vergleiche zu den anderen Marktexperimenten angestellt und abschließend ein Fazit gezogen.
+
+
+:::: Im folgenden  Abschnitt  werden  die  Ergebnisse  der  verschiedenen Modellschätzungen  diskutiert  und  interpretiert.  Anschließend  werden  Vergleiche ::::
+
+
+gezogen.
 Bei dem zweiten Experiment konnte ein Einfluss des Geschlechts auf die Höhe der Gesamtrente festgestellt werden.
 Männliche Verkäufer haben einen signifikant höheren Gewinn im zweiten Experiment erzielen können.
 Auch Watson (1994) kam zu dem Ergebnis, dass Männer bei Verhandlungen mit Frauen in der Konsumentenrolle vergleichen und einen günstigen Verkäufer aufsuchen, während Männer weniger die Preise vergleichen.

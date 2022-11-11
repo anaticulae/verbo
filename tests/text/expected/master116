@@ -115,16 +115,14 @@ Im Bereich der Höchstgeschwindigkeit muss die elektrische Fahrleistung direkt d
 Durch mechanische und elektrische Verluste im Antriebsstrang (aus Ladegruppe und elektrischem Fahrmotor) muss die Ladegruppe mehr Leistung als die maximale Fahrleistung zur Verfügung stellen.
 Aus der Auslesung nach der Höchstgeschwindigkeit folgt für geringe Geschwindigkeiten eine erhöhte Teillast, die zu einem schlechteren Wirkungsgrad führt.
 [Hof11, S.
-23f.] Abb. 2.1.:
-Topologie Serieller Hybrid - 1 Elektrischer Fahrmotor, 2 Kraftstofftank, 3 Leistungselektronik, 4 Batterie, 5 Generator, 6 Verbrennungsmotor nach [Tsc12, S. 4].
-Parallele Hybridstruktur Der parallele Hybridantrieb ermöglicht eine direkte Kopplung zwischen Verbrennungsmotor und den angetriebenen Rädern.
-Der Antrieb kann parallel durch den elektrischen Antrieb erfolgen.
+23f.] Parallele Hybridstruktur
+5u
+6u
+trieb erfolgen.
 Das Fahrzeug kann elektrisch, konventionell oder gemischt betrieben werden.
 Die Antriebsleistung kann durch Drehzahladdition (Planetengetriebe), Momentenaddition (direkte Kopplung) oder Zugkraftaddition (Verbrennungsmotor und Elektromotor wirken auf verschiedene Wellen) erfolgen.
 Die Entkopplung der Antriebssysteme wird durch einen Freilauf oder eine Kupplung realisiert.
-Die Auslegung der Komponenten kann freier Abb. 2.2.:
-Topologie Paralleler Hybrid - 1 Batterie, 2 Kraftstofftank, 3 Getriebe, 4 Generator/Fahrmotor, 5 Leistungselektronik, 6 Kupplung, 7 Verbrennungsmotor nach [Tsc12, S. 5].
-gestaltet werden.
+Die Auslegung der Komponenten kann freier gestaltet werden.
 Die Höchstgeschwindigkeit wird durch den mechanischen Pfad realisiert.
 Der Teillastbereich erfolgt durch den elektrischen Fahrmotor.
 [Hof11, S. 28-31] Leistungsverzweigte Hybridstruktur Die leistungsverzweigte Hybridstruktur überträgt die Fahrleistung über einen mechanischen und einen elektrischen Pfad.
@@ -558,13 +556,11 @@ Diese sind in Abbildung 3.2 bis 3.5 dargestellt.
 Bei der Auslegung des Getriebes sind diese zu beachten.
 Abbildung 3.2 Abb. 3.2.:
 Strecke Behala 1400 - Logarith­ Abb. 3.3.:
-Strecke Behala 1800 - Logarithmische Häufigkeitsverteilung der Traktionsleis­ mische Häufigkeitsverteilung der Traktionsleistung.
-tung.
-und 3.3 zeigen Strecken, die geringe Fahrgeschwindigkeiten aufweisen.
-Durch die Beladung Abb. 3.4.:
-Strecke Chemiepark - Logarith­ Abb. 3.5.:
-Strecke Referenzzyklus - Loga­
-10u
+Strecke Behala 1800 - Logarith­
+5u
+6u
+7u
+8u
 von 1400 bzw. 1800 t muss die Volllast von 1000 kW bei Geschwindigkeiten von 20 km/h zur Verfügung stehen.
 Abbildung A. 1 und A. 2 zeigen eine Strecke mit einer Beladung von 0 bzw. 560 t.
 Die Geschwindigkeiten sind erhöht.
@@ -1209,10 +1205,7 @@ Begonnen wird mit einem sehr groben Gitter, das mit jedem Schritt verfeinert wir
 Eine Verdopplung der Genauigkeit einer Dimension (𝑆𝑂𝐶𝑑𝑖𝑠𝑘 oder 𝐼𝐶𝐸𝑑𝑖𝑠𝑘) führt zu einer Verdopplung der Rechenzeit.
 Die Verdopplung beider Dimensionen führt zu einer Vervierfachung der Rechenzeit.
 Die Konvergenzanalyse beinhaltet die Betrachtung des relativen Simulationsfehlers (Gleichung 5.34), des relativen Kraftstoffdurchschnittsverbrauchs (Abbildung 5.9) und der relativen Durchschnittsleistung des Verbrennungsmotors (Abbildung 5.10).
-Der relative Simulationsfehler wird als Abweichung der diskreten, Abb. 5.9.:
-Konvergenzanalyse des relativen Kraftstoffverbrauchs in Abhängigkeit der Auflösung des Diskretisierungsgitters (Batterieauflösung 𝑆𝑂𝐶𝑑𝑖𝑠𝑘, Verbrennungsmotordrehzahl 𝐼𝐶𝐸𝑑𝑖𝑠𝑘).
-Das Minimum wird im Punkt der höchsten Diskretisierung erreicht.
-numerischen Lösung von der kontinuierlichen Lösung betrachtet:
+Der relative Simulationsfehler wird als Abweichung der diskreten, numerischen Lösung von der kontinuierlichen Lösung betrachtet:
 #$@FORMULA@$#:0
 #$@FORMULA@$#:1
 Zur Reduktion der Rechenzeit beträgt die Batteriespeicherfähigkeit während der Konvergenzanalyse des Gitters 5 kWh.
@@ -1554,9 +1547,10 @@ Im nächsten Abschnitt werden die Auswirkungen der Parametrisierung auf das Simu
 Dabei wird der Gradient des relativen Kraftstoffverbrauchs bei relativer Änderung eines Systemparameters betrachtet.
 Durch Betrachtung der Gradienten können Ungenauigkeiten in der Modellierung und Alterungsprozesse des Fahrzeugs abgeschätzt werden.
 In Abbildung 6.16 ist die Änderung des relativen Kraftstoffverbrauchs bei Änderung der relativen Verlustleistung des Generators dargestellt.
-Für das Systemverhalten ist Abb. 6.16.:
-Änderung der relativen elektrischen Verlustleistung des Generators die relative Änderung der Verlustleistung des Generators von geringer Bedeutung.
-Die relative Änderung der elektrischen Verlustleistung der Fahrmotoren (siehe Abbildung 6.17) hat einen großen Einfluss auf den relativen Kraftstoffverbrauch des Fahrzeugs.
+Für das Systemverhalten ist die relative Änderung der Verlustleistung des Generators von geringer Bedeutung.
+Die
+9u
+6.17) hat einen großen Einfluss auf den relativen Kraftstoffverbrauch des Fahrzeugs.
 Eine größere Batterie verbessert den relativen Kraftstoffverbrauch deutlich (siehe Abbildung 6.18).
 Aus einer größeren Batterie resultiert ein erhöhter Raum- und Kostenbedarf.
 Weiterhin vergrößert sich die Gesamtmasse des Fahrzeugs.
