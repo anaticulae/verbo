@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v1.23.2 (2022-12-03)
+
+### Chore
+
+* remove words dependency (b65c4873ad22)
+* use quick installer (b3a800cb04cf)
+* upgrade pipeline (3ffd742c91dc)
+* upgrade requirements.txt (a7ed0442f7aa)
+* upgrade pipe library (fbc3ec8bda01)
+
 ## v1.23.1 (2022-11-11)
 
 ### Chore
