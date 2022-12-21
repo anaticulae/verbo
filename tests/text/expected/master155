@@ -137,7 +137,7 @@ Die Kombinationen, die durch den Konsum von Fisch und Brot entstehen können, bi
 Diese werden Isoquanten genannt.
 Die Kombinationen zeigen hier für die Konsumenten den Nutzen an, der ihnen bei einer bestimmten Kombination von Fisch und Brot entsteht.
 Allgemein zeigt die Isoquante die Menge aller Faktoreinsatzkombinationen an, die den gleichen Output erzeigen (Schöler 2011).
-Abbildung 4 veranschaulicht diese Beziehung für das oben genannte Bespiel. 25
+Abbildung 4 veranschaulicht diese Beziehung für das oben genannte Bespiel.
 #$@FORMULA@$#:0
 #$@FORMULA@$#:1
 #$@FORMULA@$#:2
@@ -591,12 +591,8 @@ Es besteht kein Unterschied in der Varianz der Renten einzelner Runden der Produ
 Im zweiten Teil dieses Kapitels wird das methodische Vorgehen bei der Datenauswertung vorgestellt.
 Dabei wird zunächst auf die Regressionsanalyse und die Stichprobenziehung eingegangen, anschließend werden die erhobenen Daten charakterisiert.
 Im Anschluss daran wird die Stichprobe des Marktexperiments deskriptiv beschrieben.
-
-
-:::: Regressionsanalyse ::::
-
-
-Die Regressionsanalyse gehört zu den multivariaten Analyseverfahren.
+4.2.1.
+Regressionsanalyse Die Regressionsanalyse gehört zu den multivariaten Analyseverfahren.
 Bei dieser Art der Dependenz-Analyse sollen unterschiedliche Werte einer abhängigen Variablen auf unabhängige Variablen zurückgeführt werden, um so einen möglichen Zusammenhang herauszustellen.
 Zunächst muss dazu das entsprechende Regressionsmodell formuliert werden.
 Anschließend folgt die Schätzung der Parameter des Regressionsmodells.
@@ -635,13 +631,7 @@ Als Gütekriterium für die Modellschätzungen kommt das R{{hn:2:nh}}oder das ad
 R{{hn:2:nh}} kann Werte zwischen 0 und 1 annehmen.
 Je höher der Wert ist, desto besser ist die Anpassung des Modells an die Daten (Urban/Meyerl 2011).
 4.2.2.
-Stichprobenziehung
-
-
-:::: Stichprobenziehung ::::
-
-
-die Auswahl der Teilnehmer, gehört zu den Nicht-Wahrscheinlichkeits-Techniken.
+Stichprobenziehung die Auswahl der Teilnehmer, gehört zu den Nicht-Wahrscheinlichkeits-Techniken.
 Wie der Name schon ausdrückt, ist das Convenience Sampling bestimmt durch eine bequeme Erreichbarkeit:
 Es werden die Elemente ausgewählt, die am leichtesten verfügbar, motiviert oder am leichtesten erreichbar sind (Malhotra 2007).
 Die Vorteile dieser Stichprobentechnik liegen darin, dass es das kostengünstigste Verfahren ist, und es beansprucht von allen Techniken am wenigsten Zeit.
@@ -650,12 +640,8 @@ Es handelt sich hierbei um eine vollkommene willkürliche und damit keine zufäl
 Die Stichprobe kann somit nicht repräsentativ für eine bestimmte Population sein.
 Auch ist es schwer, Verallgemeinerungen anzustellen.
 Trotzdem ist das Verfahren eines der am häufigsten angewendeten und der Einsatz wird empfohlen, um exploratorisch vorzugehen oder Hypothesen zu testen (Malhotra 2007).
-
-
-:::: Deskriptive Statistik der Stichprobe ::::
-
-
-Die für das Experiment erhobenen Daten entsprechen Paneldaten.
+4.2.3.
+Deskriptive Statistik der Stichprobe Die für das Experiment erhobenen Daten entsprechen Paneldaten.
 Charakteristisch für Paneldaten ist die Wiederholung in regelmäßigen Abständen, dass die gleichen Probanden teilnehmen (Panel) und dass der Untersuchungsgegenstand, in diesem Fall das Experiment, Ziel der Datenerhebung ist (Hammann/Erichson 2000).
 Ein weiteres Charakteristikum ist die stete Verwendung der gleichen Erhebungsmethode (Günther et al. 2006).
 Im Folgenden wird die deskriptive Statistik der beiden Experimente vorgestellt.
@@ -722,36 +708,20 @@ Für die Modellschätzungen wurden neun Regressionen, drei Korrelationstests und
 Diese werden im Folgenden in der eben genannten Reihenfolge dargestellt.
 Regressionen Für alle Regressionen wurde ein Test auf Homoskedastizität durchgeführt.
 Bei Vorliegen von Heteroskedastizität wurden die Standardfehler nach Breusch-Pagan geschätzt.
-Anschließend wurden durch iteratives Vorgehen solange nichtsignifikante Parameter aus dem Modell ausgeschlossen, bis der Likelihood-Ratio
+Anschließend wurden durch iteratives Vorgehen solange nichtsignifikante Parameter aus dem Modell ausgeschlossen, bis der Likelihood-Ratio rent_kons = b0 + b1 sex + b2 age + b3 risk_total + b4 risikoavers + b5
 #$@FORMULA@$#:0
 #$@FORMULA@$#:1
-
-
-:::: dum11 + b18   dum12 ::::
-
-
-Die Daten wurden in Form eines Paneldatensatzes in Stata zusammengefügt und gereinigt.
+dum11 + b18 dum12 Die Daten wurden in Form eines Paneldatensatzes in Stata zusammengefügt und gereinigt.
 Die abhängige Variable ist für die obige Gleichung die Gesamtrente der Konsumenten (rent_kons), analog wurde die Regression für die Gesamtrente der Produzenten (rent_prod) durchgeführt.
 Die Gesamtrente gibt die Renten aller 12 Runden des ersten Experiments beziehungsweise aller 13 Runden für das zweite Experiment an.
 Als unabhängige Variablen wurden das Geschlecht (sex), das Alter (age), die Risikoeinstellung ausgedrückt durch risk_total{{hn:11:nh}} und risikoavers{{hn:12:nh}}, die Anzahl richtig beantworteter Verständnisfragen (v_total_r{{hn:13:nh}}) und eine Dummyvariable für die Steuerrunden (taxfree{{hn:14:nh}}) in die Regressionsgleichung aufgenommen.
-Weiterhin stehen die Dummys dum1 bis
-
-
-:::: dum12 ::::
-
-
-Regressionsgleichung für das zweite Experiment auch den Dummy dum13.
+Weiterhin stehen die Dummys dum1 bis dum12 für die jeweiligen Runden 1 bis 12.
+Analog enthält die Regressionsgleichung für das zweite Experiment auch den Dummy dum13.
 Mit demselben Datensatz wurde ebenso folgende Regression analysiert:
 risikoavers_kons = b0 + b1 sex + b2 age + b3 v_total_r
-#$@FORMULA@$#:0
+#$@FORMULA@$#:2
 Die Risikoeinstellung ausgedrückt in risikoavers und risk_total wurde als Endogene verwendet, die Variablen sex, age und v_total_r als Exogene.
-Die endogenen Variablen wurden für Konsumenten (risikoavers_kons und risk_total_kons) und Produzenten (risikoavers_prod und risk_total_prod) getrennt
-
-
-:::: risk_total_kons) und Produzenten (risikoavers_prod und risk_total_prod) getrennt ::::
-
-
-getestet, um die Einflüsse der exogenen Variablen auf Konsumenten beziehungsweise Produzenten zu beschränken.
+Die endogenen Variablen wurden für Konsumenten (risikoavers_kons und risk_total_kons) und Produzenten (risikoavers_prod und risk_total_prod) getrennt getestet, um die Einflüsse der exogenen Variablen auf Konsumenten beziehungsweise Produzenten zu beschränken.
 Die beiden obigen Gleichungen wurden demnach analog für die Produzenten getestet.
 Ziel der zweiten Hypothese war es herauszufinden, ob das Geschlecht einen Einfluss auf die Risikoeinstellung hat.
 Als weitere Regressionsanalyse wurde mit dem erstellten Paneldatensatz folgende Gleichung getestet:
@@ -768,30 +738,16 @@ Für die nächsten Regressionen war eine andere Datenstruktur notwendig.
 Die Transaktionen der einzelnen Runden wurden in einen Datensatz integriert.
 Dieser Datensatz wurde für Produzenten und Konsumenten getrennt erstellt, um Variablen wie Alter und Geschlecht in die Regression mit aufnehmen zu können.
 Folgende Regressionsgleichungen wurden geschätzt:
-time_last = b0 + b1 risk_total + b2 risikoavers + b3 sex + b4 age + b5
-
-
-:::: v_total_r ::::
-
-
-den Zeitpunkt des Abschluss der letzten Transaktion in einer Runde an{{hn:16:nh}}.
+time_last = b0 + b1 risk_total + b2 risikoavers + b3 sex + b4 age + b5 v_total_r den Zeitpunkt des Abschluss der letzten Transaktion in einer Runde an{{hn:16:nh}}.
 Es soll getestet werden, ob diese Variable durch die Risikoeinstellung beeinflusst wird.
 #$@FORMULA@$#:0
+risk_total + b6 risikoavers Um den Einfluss der Anzahl der Transaktionen je Runde auf die Gesamtrente (rent_ges{{hn:17:nh}}) zu testen, wurde in der neunten Hypothese anz_tans_max als exogene Variable gewählt.
+anz_trans_max gibt die Anzahl der Transaktion in einer Runde an.
+Es wird getestet, ob die Anzahl der Transaktionen in einer Runde die Gesamtrente beeinflusst.
+Die folgende Regressionsgleichung enthält eine neu generierte Variable:
 #$@FORMULA@$#:1
-
-
-:::: risk_total + b6   risikoavers ::::
-
-
-#$@FORMULA@$#:0
-
-
-:::: b6   risikoavers ::::
-
-
-Für diese Modellschätzung wurde die Dummy Variable trans_d generiert und als exogene Variable aufgenommen.
-Die zehnte Hypothese soll überprüfen, ob sich ein Unterschied in der Gesamtrente ergibt, wenn zwei oder mehr Transaktionen mit demselben Käufer beziehungsweise Verkäufer getätigt wurden. 0
-bedeutet, dass eine Transaktion nur einmal mit diesem Käufer/Verkäufer abgeschlossen wurde, 1 steht für zwei oder mehr Transaktionen mit derselben Person.
+b6 risikoavers Für diese Modellschätzung wurde die Dummy Variable trans_d generiert und als exogene Variable aufgenommen.
+Die zehnte Hypothese soll überprüfen, ob sich ein Unterschied in der Gesamtrente ergibt, wenn zwei oder mehr Transaktionen mit demselben Käufer beziehungsweise Verkäufer getätigt wurden. 0 bedeutet, dass eine Transaktion nur einmal mit diesem Käufer/Verkäufer abgeschlossen wurde, 1 steht für zwei oder mehr Transaktionen mit derselben Person.
 Zuletzt wurde mit diesem Datensatz folgende Regression geschätzt:
 anz_trans = = b0 + b1 runr_ln + b2 taxfree + b3 ru_first Die Regression hat die Variable anz_trans, die die Anzahl der Transaktionen pro Runde angibt, als abhängige Variable und die Variablen runr_lr, taxfree und ru_first{{hn:18:nh}} als unabhängige Variablen.
 Die Variable runr gibt die Rundennummer an und wurde logarithmiert in die Gleichung aufgenommen (runr_lr), weil grafisch zu erkennen ist, dass die Anzahl der Transaktionen in beiden Experimenten nicht in jeder Runde abnimmt.

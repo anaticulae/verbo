@@ -44,7 +44,6 @@
 019 12 bspw.
 019 14 SAP
 019 15 IP
-021 01 bspw.
 022 05 bspw.
 022 05 IT
 023 04 IDC
@@ -74,7 +73,7 @@
 033 00 IBM
 033 02 IAIS
 033 06 bspw.
-034 02 CIM
+034 01 CIM
 035 01 VR Virtual Reality
 035 01 AR
 035 03 AR
@@ -118,19 +117,19 @@
 056 02 PM
 056 03 PM
 056 05 PM
-057 02 bspw.
+057 01 bspw.
 058 06 bspw.
 058 09 bzw.
 058 11 bspw.
-058 13 PM
-058 14 d.h.
-059 18 bspw.
+058 12 PM
+058 13 d.h.
+059 15 bspw.
 060 02 XING
 060 05 bzw.
 060 08 bzw.
 060 13 d.h.
-062 06 bzw.
-062 06 bzw.
-062 08 IT
-062 08 BITKOM
-062 10 ZEW
+062 05 bzw.
+062 05 bzw.
+062 07 IT
+062 07 BITKOM
+062 09 ZEW
