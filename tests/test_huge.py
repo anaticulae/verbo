@@ -8,7 +8,6 @@
 # =============================================================================
 
 import contextlib
-import os
 
 import genex
 import power
@@ -127,7 +126,7 @@ def test_huge_running_words(source, td, request):  # pylint:disable=W0621
         cleanup=True,
     )
     filename = utila.file_name(power.link(source))
-    directory = os.path.join(td.tmpdir, filename)
+    directory = td.tmpdir.join(filename)
     headlines = serializeraw.load_headlines(directory)
     headlines: list = utila.flat(headlines)
     if expected_headlines:
