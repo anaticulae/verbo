@@ -72,6 +72,7 @@ def extract(resources):
         magic=True,
         pagenumber=True,
         sections=True,
+        sections_ref=True,
         tablero=True,
         words=True,
         worker=WORKER,
