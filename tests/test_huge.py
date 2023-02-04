@@ -68,7 +68,7 @@ def params():
     ignore = SKIP_DOCUMENTS | UNSUPPORTED_DOCUMENTS
     pdf = [
         item for item in pdf if all([
-            not utila.make_relative(item, power.REPOSITORY) in ignore,
+            not utila.make_relative(item, power.REPO) in ignore,
             # skip generated pdfs to avoid double work
             not 'notitle' in item,
         ])
@@ -79,7 +79,7 @@ def params():
     result = []
 
     def determine_mark(pdf):
-        relative = utila.make_relative(pdf, power.REPOSITORY)
+        relative = utila.make_relative(pdf, power.REPO)
         if relative in UNSUPPORTED_DOCUMENTS:
             return pytest.mark.xfail(
                 reason="unsupported font format with current impl",)

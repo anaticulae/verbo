@@ -56,7 +56,7 @@ def pytest_sessionstart():
 
 
 def extract(resources):
-    utila.log(f'root: {power.REPOSITORY}')
+    utila.log(f'root: {power.REPO}')
     genex.extract(
         files=resources,
         caption=True,
