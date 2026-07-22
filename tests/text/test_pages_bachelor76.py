@@ -7,9 +7,9 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import power
+import hoverpower
 import serializeraw
-import utilatest
+import utilotest
 
 import tests
 import words.path
@@ -23,9 +23,9 @@ zu einem zentralen Bestandteil für die Digitalisierung.{{hn:15:nh}}\
 """
 
 
-@utilatest.nightly
+@utilotest.nightly
 def test_text_extract_p7p8p9(td, mp):
-    source = power.link(power.BACHELOR076_PDF)
+    source = hoverpower.link(hoverpower.BACHELOR076_PDF)
     cmd = f'--text  --headlines -i={source} --pages=7,8,9'
     tests.run(cmd, mp=mp)
     text = words.path.text(td.tmpdir)

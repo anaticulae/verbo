@@ -10,13 +10,13 @@
 import dataclasses
 import os
 
-import configo
+import configos
 import iamraw
 import iamraw.path
 import magic.path
 import serializeraw
 import texmex
-import utila
+import utilo
 
 import words.boxed
 import words.feature.headlines
@@ -37,7 +37,7 @@ class TextRequiredResources:
     formulas: iamraw.PageContentRawFormulas = None
 
 
-@configo.cache_small
+@configos.cache_small
 def load_resources(  # pylint:disable=R0914,R0913
     text: str,
     textposition: str,
@@ -69,12 +69,12 @@ def load_resources(  # pylint:disable=R0914,R0913
     if os.path.exists(lists):
         lists = serializeraw.load_lists(lists, pages=pages)
     else:
-        utila.log(f'skip loading lists: {lists}')
+        utilo.log(f'skip loading lists: {lists}')
         lists = []
-    if utila.exists(formulas):
+    if utilo.exists(formulas):
         formulas = serializeraw.load_rawformulas(formulas, pages=pages)
     else:
-        utila.log(f'skip loading formulas: {formulas}')
+        utilo.log(f'skip loading formulas: {formulas}')
         formulas = []
     lists = words.feature.word.ListLookUp(lists)  # pylint:disable=R0204
     magics = words.lookup.magics_frompath(
@@ -96,7 +96,7 @@ def load_resources(  # pylint:disable=R0914,R0913
     return result
 
 
-@configo.cache_small
+@configos.cache_small
 def load_resources_frompath(  # pylint:disable=R0914
     path: str,
     pages: tuple = None,
@@ -132,7 +132,7 @@ def load_resources_frompath(  # pylint:disable=R0914
     return loaded
 
 
-@configo.cache_small
+@configos.cache_small
 def load_extracted(
     extracted_text,
     headlines,

@@ -27,7 +27,7 @@ reached in short lower-case words.
 """
 
 import iamraw
-import konrad
+import konradus
 import serializeraw
 
 import words.abbreviation.parser
@@ -36,7 +36,7 @@ import words.abbreviation.parser
 def work(sentencer: str, pages: tuple = None) -> str:
     sentences = serializeraw.load_text(sentencer, pages=pages)
     # TODO: Load parsed data from abbreviation table
-    other = [iamraw.AbbreviationList(data=konrad.ABBREVIATION_LOWER)]
+    other = [iamraw.AbbreviationList(data=konradus.ABBREVIATION_LOWER)]
     lookup = iamraw.AbbreviationListLookup.fromparsed(other=other)
     parsed = words.abbreviation.parser.parses(
         sentences,

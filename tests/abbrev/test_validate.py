@@ -9,25 +9,25 @@
 
 import functools
 
-import power
+import hoverpower
 import pytest
 import serializeraw
-import utila
-import utilatest
+import utilo
+import utilotest
 
 import tests
 import words
 
-ARCHIVE = utila.join(words.ROOT, 'tests/abbrev/expected', exist=True)
+ARCHIVE = utilo.join(words.ROOT, 'tests/abbrev/expected', exist=True)
 
 
 @pytest.mark.parametrize(
     'source',
-    utilatest.test_resources(tests.conftest.RESOURCES),
+    utilotest.test_resources(tests.conftest.RESOURCES),
 )
-@utilatest.nightly
+@utilotest.nightly
 def test_validate_abbrev(source, td, mp):
-    utilatest.fixture_requires(source)
+    utilotest.fixture_requires(source)
     Evaluate(
         source=source,
         workdir=td.tmpdir,
@@ -35,7 +35,7 @@ def test_validate_abbrev(source, td, mp):
     ).evaluate()
 
 
-class Evaluate(utilatest.BaseLiner):
+class Evaluate(utilotest.BaseLiner):
 
     def __init__(self, source, workdir, mp):
         super().__init__(
@@ -44,8 +44,8 @@ class Evaluate(utilatest.BaseLiner):
                 mp=mp,
             ),
             step='abbreviation',
-            pages=power.ctext(source, default=':'),
-            source=power.link(source),
+            pages=hoverpower.ctext(source, default=':'),
+            source=hoverpower.link(source),
             workdir=workdir,
             archive=ARCHIVE,
             loader=self.frompath,
@@ -53,12 +53,12 @@ class Evaluate(utilatest.BaseLiner):
         )
 
     def frompath(self, path):  # pylint:disable=R0201
-        path = utila.join(path, 'words__abbreviation_detected.yaml')
+        path = utilo.join(path, 'words__abbreviation_detected.yaml')
         abbrev = serializeraw.load_text_abbreviations(path)
         return abbrev
 
     def raw(self, value) -> str:
-        value = utila.flatten_content(value)
+        value = utilo.flatten_content(value)
         collected = []
         for item in value:
             line = str(item.position.page).zfill(3) + ' '
@@ -67,5 +67,5 @@ class Evaluate(utilatest.BaseLiner):
             if item.description:
                 line += ' ' + item.description
             collected.append(line)
-        result = utila.NEWLINE.join(collected)
+        result = utilo.NEWLINE.join(collected)
         return result

@@ -9,12 +9,12 @@
 
 import contextlib
 
-import genex
-import power
+import gennex
+import hoverpower
 import pytest
 import serializeraw
-import utila
-import utilatest
+import utilo
+import utilotest
 
 # TODO: Reduce list of unsupported documents
 # this documents does not passes the current implementation
@@ -63,23 +63,23 @@ HEADLINE_COUNT = {
 
 
 def params():
-    pdf = power.PDF
-    # skip documents cause of to few computing power
+    pdf = hoverpower.PDF
+    # skip documents cause of to few computing hoverpower
     ignore = SKIP_DOCUMENTS | UNSUPPORTED_DOCUMENTS
     pdf = [
         item for item in pdf if all([
-            not utila.make_relative(item, power.REPO) in ignore,
+            not utilo.make_relative(item, hoverpower.REPO) in ignore,
             # skip generated pdfs to avoid double work
             not 'notitle' in item,
         ])
     ]
-    # select 5 items to reduce required test power
+    # select 5 items to reduce required test hoverpower
     # random is not good when reproducing an error, may use it later.
     pdf = pdf[0:5]
     result = []
 
     def determine_mark(pdf):
-        relative = utila.make_relative(pdf, power.REPO)
+        relative = utilo.make_relative(pdf, hoverpower.REPO)
         if relative in UNSUPPORTED_DOCUMENTS:
             return pytest.mark.xfail(
                 reason="unsupported font format with current impl",)
@@ -94,25 +94,25 @@ def params():
                 '--char_margin 100.0 --boxes_flow 1.0',
                 '--char_margin 5.0 --boxes_flow 1.0 --line_margin 0.3',
             ),
-            id=utila.file_name(item),
+            id=utilo.file_name(item),
             marks=determine_mark(item),
         )
         result.append(double)
     return result
 
 
-@utilatest.monday
+@utilotest.monday
 @pytest.mark.parametrize('source', params())
 def test_huge_running_words(source, td, request):  # pylint:disable=W0621
     """Run rawmaker -> sections -> headlines -> words.
 
-    Ensure that this chain works for huge pdf example provided by power
+    Ensure that this chain works for huge pdf example provided by hoverpower
     tool.
     """
     testfile = request.node.name.split('[')[1].split(']')[0]
     expected_headlines = HEADLINE_COUNT.get(testfile, 0)
     source = source[0]
-    genex.extract(
+    gennex.extract(
         files=[source],
         dest=td.tmpdir,
         groupme=True,
@@ -125,9 +125,9 @@ def test_huge_running_words(source, td, request):  # pylint:disable=W0621
         pagenumber=True,
         cleanup=True,
     )
-    filename = utila.file_name(power.link(source))
+    filename = utilo.file_name(hoverpower.link(source))
     directory = td.tmpdir.join(filename)
     headlines = serializeraw.load_headlines(directory)
-    headlines: list = utila.flat(headlines)
+    headlines: list = utilo.flat(headlines)
     if expected_headlines:
         assert len(headlines) == expected_headlines, headlines

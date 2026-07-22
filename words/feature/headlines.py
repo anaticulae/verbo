@@ -22,15 +22,15 @@ Required resources:
 
 """
 
-import utila
+import utilo
 
 # TODO: REMOVE LATER
 
 
-@utila.checkdatatype
+@utilo.checkdatatype
 def work(result: str) -> tuple[str, str]:
     """Extract headlines out of data."""
-    result: str = utila.file_read(result)
+    result: str = utilo.file_read(result)
     # dump
     normal: str = result
     oneline: str = result

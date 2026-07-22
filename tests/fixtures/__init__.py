@@ -7,10 +7,10 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import configo
+import configos
+import hoverpower
 import iamraw
 import iamraw.sections
-import power
 
 
 def count_chapter(items):

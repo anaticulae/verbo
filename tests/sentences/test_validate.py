@@ -9,29 +9,29 @@
 
 import functools
 
+import hoverpower
 import iamraw
-import power
 import pytest
 import serializeraw
-import utila
-import utilatest
+import utilo
+import utilotest
 
 import tests
 import words
 
-ARCHIVE = utila.join(words.ROOT, 'tests/sentences/expected', exist=True)
+ARCHIVE = utilo.join(words.ROOT, 'tests/sentences/expected', exist=True)
 
 param = pytest.param
 
 
 @pytest.mark.parametrize('source, pages, expected', [
-    param(power.BOOK173_PDF, '13:30', 'book173', id='book173'),
-    param(power.MASTER072_PDF, '13:18', 'master072', id='master072'),
-    param(power.BACHELOR032A_PDF, '12', 'bachelor032a', id='bachelor032a'),
+    param(hoverpower.BOOK173_PDF, '13:30', 'book173', id='book173'),
+    param(hoverpower.MASTER072_PDF, '13:18', 'master072', id='master072'),
+    param(hoverpower.BACHELOR032A_PDF, '12', 'bachelor032a', id='bachelor032a'),
 ])
-@utilatest.nightly
+@utilotest.nightly
 def test_validate_sentence(source, pages, expected, td, mp):
-    utilatest.fixture_requires(source)
+    utilotest.fixture_requires(source)
     Evaluate(
         source=source,
         pages=pages,
@@ -42,7 +42,7 @@ def test_validate_sentence(source, pages, expected, td, mp):
     # TODO: USE SECTIONS TO SELECT PAGES
 
 
-class Evaluate(utilatest.BaseLiner):
+class Evaluate(utilotest.BaseLiner):
 
     def __init__(self, source, pages, expected, workdir, mp):
         super().__init__(
@@ -52,14 +52,14 @@ class Evaluate(utilatest.BaseLiner):
             ),
             step='sentence',
             pages=pages,
-            source=power.link(source),
+            source=hoverpower.link(source),
             workdir=workdir,
             archive=ARCHIVE,
             loader=self.frompath,
             convert_source=False,
             index=expected,
         )
-        self.headlines = power.link(source)
+        self.headlines = hoverpower.link(source)
 
     def frompath(self, _):  # pylint:disable=W0613
         headlines = serializeraw.load_headlines(self.headlines)
@@ -68,7 +68,7 @@ class Evaluate(utilatest.BaseLiner):
         return text
 
     def raw(self, value) -> str:
-        value = utila.flatten_content(value)
+        value = utilo.flatten_content(value)
         collected = []
         headline = None
         for item in value:
@@ -79,5 +79,5 @@ class Evaluate(utilatest.BaseLiner):
             if item.content:
                 # skip None-Sentence between two headlines without content
                 collected.extend(item.content)
-        result = utila.NEWLINE.join(collected)
+        result = utilo.NEWLINE.join(collected)
         return result

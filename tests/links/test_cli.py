@@ -7,10 +7,10 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import power
+import hoverpower
 import pytest
 import serializeraw
-import utilatest
+import utilotest
 
 import tests
 import words.path
@@ -18,16 +18,16 @@ import words.path
 
 # TODO: MOVE TO TEXMEX
 @pytest.mark.xfail(reason='hyperlink merger requires \n at line end')
-@utilatest.requires(power.MASTER075_PDF)
+@utilotest.requires(hoverpower.MASTER075_PDF)
 def test_links_master75(td, mp):
     # TODO: MASTER75 TEXT SECTION EXTRACTION IS BROKEN
-    loaded = hyperlinks(power.MASTER075_PDF, td, mp)
+    loaded = hyperlinks(hoverpower.MASTER075_PDF, td, mp)
     assert len(loaded) == 22
 
 
-@utilatest.requires(power.MASTER075_PDF)
+@utilotest.requires(hoverpower.MASTER075_PDF)
 def test_links_master75pages15(td, mp):
-    loaded = hyperlinks(power.MASTER075_PDF, td, mp, 15)
+    loaded = hyperlinks(hoverpower.MASTER075_PDF, td, mp, 15)
     assert len(loaded) == 1
     hyperlink = loaded[0].href
     assert hyperlink.startswith('https')
@@ -36,7 +36,7 @@ def test_links_master75pages15(td, mp):
 
 
 def hyperlinks(source, td, mp, pages=':'):
-    cmd = f'-i {power.link(source)} --links --pages={pages}'
+    cmd = f'-i {hoverpower.link(source)} --links --pages={pages}'
     tests.run(cmd, mp=mp)
     loaded = serializeraw.load_hyperlinks(words.path.links(td.tmpdir))  # pylint:disable=e1101
     return loaded

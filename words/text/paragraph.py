@@ -10,7 +10,7 @@
 import iamraw
 import texmex
 import texmex.navigator
-import utila
+import utilo
 
 import words.boxed
 import words.feature
@@ -87,7 +87,7 @@ def insert_formulas(
 
 
 def select_formulas(formulas, first, second, pcn):
-    formulas = utila.select_page(
+    formulas = utilo.select_page(
         formulas,
         page=pcn.page,
         default=[],
@@ -104,7 +104,7 @@ def select_formulas(formulas, first, second, pcn):
         end = pcn[inrange(second.container, pcn)].bounding[3]
     # select formulas between headlines "inside paragraph"
     formulas = [
-        item for item in formulas.content if utila.isinside(
+        item for item in formulas.content if utilo.isinside(
             value=(item.bounding[1] + item.bounding[3]) / 2,
             left=start,
             right=end,
@@ -117,14 +117,14 @@ def inrange(index, pcn, maxi: bool = True):
     # maxi: use start or end
     # TODO: REMOVE AFTER FIXING ONELINE NORMAL CONVERTING
     if isinstance(index, tuple):
-        utila.error(f'~oneline-normal tuple {index}')
+        utilo.error(f'~oneline-normal tuple {index}')
         if maxi:
             index = index[-1]
         else:
             index = index[0]
     if index >= len(pcn):
         error = (index, len(pcn), pcn.page)
-        utila.error(f'~oneline-normal headline problem: {error}')
+        utilo.error(f'~oneline-normal headline problem: {error}')
         index = len(pcn) - 1
     return index
 
@@ -137,7 +137,7 @@ def determine_chunktypes(pcn, start, end, magics, lists, boxes) -> list:
         except IndexError:
             # TODO: REMOVE LATER
             error = (start, end, len(pcn), pcn.page)
-            utila.error(f'oneline-normal headline problem: {error}')
+            utilo.error(f'oneline-normal headline problem: {error}')
             break
         chunktype = content_type(
             boxes,

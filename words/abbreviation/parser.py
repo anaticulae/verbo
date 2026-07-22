@@ -7,10 +7,10 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import german
+import germania
 import iamraw
 import texmex
-import utila
+import utilo
 
 
 def parses(
@@ -39,10 +39,10 @@ def parse_page(  # pylint:disable=R0914
         for sentence, pagenumber in zip(textsection.content, textsection.pages):
             if texmex.nosentence(sentence):
                 continue
-            wordx = german.word_tokenize(sentence, validate_sentences=False)
+            wordx = germania.word_tokenize(sentence, validate_sentences=False)
             if wordx is None:
                 # TODO: REMOVE LATER?
-                utila.info(f'incomplete sentence: {sentence}')
+                utilo.info(f'incomplete sentence: {sentence}')
                 continue
             for index, word in enumerate(wordx):
                 if not isabbreviation(word, lookup):
@@ -71,10 +71,10 @@ def look_around(number: int, words: list) -> str:
     abbrev = words[number].lower()
     length = len(abbrev)
     before = words[max(0, number - length - 3):number]
-    if detected := german.find_abbrev(abbrev, before):
+    if detected := germania.find_abbrev(abbrev, before):
         return detected
     after = words[number + 1:number + length + 3]
-    if detected := german.find_abbrev(abbrev, after):
+    if detected := germania.find_abbrev(abbrev, after):
         return detected
     return None
 
@@ -87,7 +87,7 @@ def isabbreviation(word: str, lookup) -> bool:
     return False
 
 
-@utila.cacheme
+@utilo.cacheme
 def isabbr(item: str):  # pylint:disable=R0911
     """\
     F( T( MB PM SD M= MDHF \u2212MD HF M) MD Z=
@@ -113,7 +113,7 @@ def isabbr(item: str):  # pylint:disable=R0911
     return False
 
 
-NOABBR = utila.splititems("""\
+NOABBR = utilo.splititems("""\
 I II III IV V
 """)
 INVALIDS = '.-=,;'
@@ -127,7 +127,7 @@ def chars_invalid(item):
     return False
 
 
-@utila.cacheme
+@utilo.cacheme
 def unbalanced(item):
     if item.count('(') != item.count(')'):
         return True

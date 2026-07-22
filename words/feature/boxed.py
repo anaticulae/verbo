@@ -16,13 +16,13 @@ import collections
 import functools
 
 import serializeraw
-import utila
+import utilo
 
 import words.boxed
 import words.loader
 
 
-@utila.checkdatatype
+@utilo.checkdatatype
 def work(
     extracted_text: str,
     textx: str,
@@ -54,7 +54,7 @@ def work(
     try:
         dumped = serializeraw.dump_boxedcontent(result)
     except (TypeError, ValueError):
-        utila.error('could not dump boxed content')
+        utilo.error('could not dump boxed content')
         dumped = '[]'
     return dumped
 

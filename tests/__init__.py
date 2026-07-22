@@ -17,22 +17,22 @@ Required resources:
   * page-size, to determine the distance from left border to text
 """
 
-import power
-import utila
-import utilatest
+import hoverpower
+import utilo
+import utilotest
 
 import words
 
-power.setup(words.ROOT)
+hoverpower.setup(words.ROOT)
 
-run, fail = utilatest.create_cli_runner(words)
+run, fail = utilotest.create_cli_runner(words)
 
-utilatest.register_marker('huge')
+utilotest.register_marker('huge')
 
 
 def assert_length(sentences, count, msg=''):
     if len(sentences) == count:
         return
     for sentence in sentences:
-        utila.log(sentence, end='\n\n')
+        utilo.log(sentence, end='\n\n')
     assert len(sentences) == count, f'{len(sentences)}=={count} {msg}'

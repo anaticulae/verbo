@@ -7,13 +7,13 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import utilatest
+import utilotest
 
 import tests.fixtures.master72.seventytwo as fseventytwo
 import words.text.sentence
 
 
-@utilatest.longrun
+@utilotest.longrun
 def test_chapter_word_tokenize():
     required = fseventytwo.textrequired(pages=(13, 14))
     pages = words.text.chapter.split(required)

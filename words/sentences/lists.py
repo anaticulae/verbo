@@ -9,11 +9,11 @@
 
 import contextlib
 
-import german
+import germania
 import iamraw
 import serializeraw
 import texmex.sentences
-import utila
+import utilo
 
 
 def prepare_lists(
@@ -31,7 +31,7 @@ def prepare_lists(
 
 def list_insert(textsection, lists) -> tuple:
     contents, pages = [], []
-    single = utila.Single()
+    single = utilo.Single()
     for item, page in zip(textsection.content, textsection.pages):
         listindexx = listindex(item)
         if listindexx is None:
@@ -51,7 +51,7 @@ def prepare_listitem(item, lists, page) -> tuple:
     listitem = lists[listnumber].data[position]
     list_text = listitem[1]
     # TODO: RUN IN --WORD-Step?
-    list_text = utila.normalize_text(
+    list_text = utilo.normalize_text(
         list_text,
         normalize_spaces=True,
     )
@@ -64,7 +64,7 @@ def prepare_listitem(item, lists, page) -> tuple:
 
 
 def sentence_split(item: str) -> list:
-    result = german.sentence_tokenize(item)
+    result = germania.sentence_tokenize(item)
     return result
 
 
@@ -85,10 +85,10 @@ def listindex(index: str) -> int:
 
 
 def load_lists(source: str, pages: tuple = None) -> dict:
-    if not utila.exists(source):
-        utila.error(f'list does not exists: {source}')
+    if not utilo.exists(source):
+        utilo.error(f'list does not exists: {source}')
         return []
     lists = serializeraw.load_lists(source, pages=pages)
-    lists = utila.flatten_content(lists)
+    lists = utilo.flatten_content(lists)
     result = {item.identifier: item for item in lists}
     return result

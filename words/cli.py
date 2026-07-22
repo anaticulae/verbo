@@ -7,11 +7,11 @@
 # be prosecuted under federal law. Its content is company confidential.
 #==============================================================================
 
-import utila
+import utilo
 
 import words
 
-ResultFile = utila.ResultFile
+ResultFile = utilo.ResultFile
 
 DESCRIPTION = 'TODO'
 
@@ -30,14 +30,14 @@ TEXTINPUT = [
 # TODO: USE ONELINE CONTENT FOR TEXT COMPUTATION?!
 
 WORKPLAN = [
-    utila.create_step(
+    utilo.create_step(
         'abbreviation',
         inputs=[
             ResultFile('words', 'sentences_sentences'),
         ],
         output=('detected',),
     ),
-    utila.create_step(
+    utilo.create_step(
         'boxed',
         inputs=[
             ResultFile('words', 'text_text'),
@@ -50,19 +50,19 @@ WORKPLAN = [
         ],
         output=('boxed',),
     ),
-    utila.create_step(
+    utilo.create_step(
         'footerlink',
         inputs=TEXTINPUT,
         output=('footerlink',),
     ),
-    utila.create_step(
+    utilo.create_step(
         'headlines',
         inputs=[
             ResultFile('headlines', 'result_result'),
         ],
         output=('headlines', 'oneline'),
     ),
-    utila.create_step(
+    utilo.create_step(
         'links',
         inputs=[
             ResultFile('words', 'text_text'),
@@ -70,7 +70,7 @@ WORKPLAN = [
         ],
         output=('links',),
     ),
-    utila.create_step(
+    utilo.create_step(
         'text',
         inputs=TEXTINPUT + [
             ResultFile('magic', 'content_content', optional=True),
@@ -79,7 +79,7 @@ WORKPLAN = [
         output=('text',),
     ),
     # TODO: IS THAT RIGHT?
-    utila.create_step(
+    utilo.create_step(
         'word',
         inputs=[
             ResultFile('words', 'text_text'),
@@ -89,7 +89,7 @@ WORKPLAN = [
         ],
         output=('result',),
     ),
-    utila.create_step(
+    utilo.create_step(
         'sentences',
         inputs=[
             ResultFile('words', 'word_result'),
@@ -106,11 +106,11 @@ WORKPLAN = [
 
 
 def main():
-    utila.featurepack(
+    utilo.featurepack(
         root=words.ROOT,
         workplan=WORKPLAN,
         featurepackage='words.feature',
-        config=utila.FeaturePackConfig(
+        config=utilo.FeaturePackConfig(
             description=DESCRIPTION,
             multiprocessed=True,
             name=words.PROCESS,

@@ -7,15 +7,15 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import configo
-import power
+import configos
+import hoverpower
 
 import words.feature
 
 
-@configo.cache_small
+@configos.cache_small
 def bachelor051_textrequired(pages=None):
     return words.feature.load_resources_frompath(
-        power.link(power.BACHELOR051_PDF),
+        hoverpower.link(hoverpower.BACHELOR051_PDF),
         pages=pages,
     )

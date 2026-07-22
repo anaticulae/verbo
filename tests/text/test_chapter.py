@@ -7,13 +7,13 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import utilatest
+import utilotest
 
 import tests.fixtures.master72.seventytwo as fseventytwo
 import words.text.chapter
 
 
-@utilatest.longrun
+@utilotest.longrun
 def test_text_chapter_split_page2():
     # ensure that empty headline is inserted at page start
     required = fseventytwo.textrequired(pages=(4))

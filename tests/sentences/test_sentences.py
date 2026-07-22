@@ -7,21 +7,21 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import power
+import hoverpower
 import texmex.sentences
-import utila
-import utilatest
+import utilo
+import utilotest
 
 import tests
 
 
-@utilatest.longrun
-@utilatest.requires(power.MASTER110_PDF)
+@utilotest.longrun
+@utilotest.requires(hoverpower.MASTER110_PDF)
 def test_sentences_master110pages67(td, mp):
-    source = power.link(power.MASTER110_PDF)
+    source = hoverpower.link(hoverpower.MASTER110_PDF)
     cmd = f'--sentences --page=67 -i {source} -o {td.tmpdir}'
     tests.run(cmd, mp=mp)
-    output = utila.file_read('words__sentences_sentences.yaml')
+    output = utilo.file_read('words__sentences_sentences.yaml')
     counted = output.count(texmex.sentences.LIST_SEPA)
     # 6 list items in generated sentences
     assert counted == 6

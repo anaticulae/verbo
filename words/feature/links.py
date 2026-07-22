@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import german
+import germania
 import iamraw
 import serializeraw
 
@@ -35,10 +35,10 @@ def process_text(texts):
 
 def process_chunk(sentence):
     result = []
-    hyperlinks = german.hyperlink(sentence, position=True)
+    hyperlinks = germania.hyperlink(sentence, position=True)
     if hyperlinks:
         hyperlinks = try_merge(sentence)
-    hyperlinks += german.locallink(sentence, position=True)
+    hyperlinks += germania.locallink(sentence, position=True)
     # sort links by position
     hyperlinks.sort(key=lambda x: x[1])
     for hyperlink, starting in hyperlinks:
@@ -46,7 +46,7 @@ def process_chunk(sentence):
             sentence,
             start=starting,
             end=starting + len(hyperlink),
-            collector=german.dates,
+            collector=germania.dates,
             after=30,
         )
         date = date[0] if date else None
@@ -83,7 +83,7 @@ def try_merge(sentence: str) -> list:
     """
     # TODO: SUPPORT MORE THAN ONE FORWARD MERGE
     result = []
-    hyperlinks = german.hyperlink(sentence, position=True)
+    hyperlinks = germania.hyperlink(sentence, position=True)
     for hyperlink, starting in hyperlinks:
         index = starting + len(hyperlink)
         raw_sentence = sentence[index:]
@@ -107,11 +107,11 @@ def merge_forward(before, text) -> list:
     current = None
     joined = before
     for item in splitted:
-        current = german.hyperlink(joined)
+        current = germania.hyperlink(joined)
         if item == '-':
             break
         joined = joined + item
-        parsed = german.hyperlink(joined)
+        parsed = germania.hyperlink(joined)
         if not parsed:
             break
         if parsed[0] != joined:

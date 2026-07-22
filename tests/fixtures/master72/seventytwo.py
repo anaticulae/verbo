@@ -7,17 +7,17 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import configo
-import power
-import utilatest
+import configos
+import hoverpower
+import utilotest
 
 import words.feature
 
 
-@configo.cache_small
+@configos.cache_small
 def textrequired(pages=None):
-    utilatest.fixture_requires(power.MASTER072_PDF)
+    utilotest.fixture_requires(hoverpower.MASTER072_PDF)
     return words.feature.load_resources_frompath(
-        power.link(power.MASTER072_PDF),
+        hoverpower.link(hoverpower.MASTER072_PDF),
         pages=pages,
     )

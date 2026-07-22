@@ -7,8 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import utila
-import utilatest
+import utilo
+import utilotest
 
 import tests
 import tests.fixtures.master72.seventytwo as fseventytwo
@@ -24,13 +24,13 @@ MASTER72_EXPECTED = {
 }
 
 
-@utilatest.nightly
+@utilotest.nightly
 def test_validate_words_split_master72():
     pages = tuple(MASTER72_EXPECTED.keys())
     required = fseventytwo.textrequired(pages=pages)
     extracted_pages = words.text.chapter.split(required)
     for page in extracted_pages:
         expected = MASTER72_EXPECTED[page.page]
-        sentences = utila.flat(
+        sentences = utilo.flat(
             [item[1] for item in words.text.sentence.find_sentences(page)])
         tests.assert_length(sentences, expected, msg=f'page: {page.page}')

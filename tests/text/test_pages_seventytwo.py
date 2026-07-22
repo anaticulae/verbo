@@ -8,8 +8,8 @@
 # =============================================================================
 
 import pytest
-import utila
-import utilatest
+import utilo
+import utilotest
 
 import tests
 import tests.fixtures.master72.seventytwo as fseventytwo
@@ -17,13 +17,13 @@ import words.text.chapter
 import words.text.sentence as wts
 
 
-@utilatest.longrun
+@utilotest.longrun
 def test_text_seventytwo_extract_texts_page3():
     required = fseventytwo.textrequired(pages=(3,))
     extracted = words.text.chapter.extract_texts(required)
     assert extracted
 
-    firstpage = utila.select_page(extracted, 3)
+    firstpage = utilo.select_page(extracted, 3)
     firstsection = firstpage.content[0]
     sectioncontent = firstsection.content
 
@@ -31,7 +31,7 @@ def test_text_seventytwo_extract_texts_page3():
 
 
 @pytest.mark.xfail(reason='check later')
-@utilatest.nightly
+@utilotest.nightly
 def test_text_seventytwo_visit_sentences():
     required = fseventytwo.textrequired(pages=(3,))
     firstpage = words.text.chapter.split(required)[0]
@@ -54,7 +54,7 @@ def test_text_seventytwo_visit_sentences():
                                'der Nutzer.')
 
 
-@utilatest.longrun
+@utilotest.longrun
 def test_text_visit_sentence_abbreviation_at_lineend():
     """Regression test to merge abbreviation at line end correctly.
 
@@ -71,7 +71,7 @@ def test_text_visit_sentence_abbreviation_at_lineend():
     assert 'von singulären bzw. typischen Merkmalen' in str(sentences)
 
 
-@utilatest.longrun
+@utilotest.longrun
 def test_text_seventytwo_visit_sentences_merge_page_endstart():
     """Merge the first two content pages to one sentence unit.
 
@@ -85,7 +85,7 @@ def test_text_seventytwo_visit_sentences_merge_page_endstart():
     tests.assert_length(merged, 30)
 
     merged_middle_sentence = merged[16].sentence
-    assert utila.normalize_whitespaces(merged_middle_sentence) == (
+    assert utilo.normalize_whitespaces(merged_middle_sentence) == (
         'Kritisch beurteilt wird das '
         'Nutzerverhalten vor allem in Bezug auf die Privatheitsthematik.')
 
@@ -97,7 +97,7 @@ def test_text_seventytwo_visit_sentences_merge_page_endstart():
 
 
 @pytest.mark.xfail(reason='improve headline parser')
-@utilatest.longrun
+@utilotest.longrun
 def test_text_seventytwo_visit_sentences_merge_page5_7():
     required = fseventytwo.textrequired(pages=(5, 6, 7))
     pages = words.text.chapter.split(required)
@@ -113,11 +113,11 @@ def test_text_seventytwo_visit_sentences_merge_page5_7():
         'Kommunikation, die für das Social Web von Bedeutung sind.')
     lastsentence = ('Es sind Anwendungen entstanden, welche die '
                     'soziale Komponente in den Vordergrund')
-    assert utila.normalize_whitespaces(merged[-1].sentence) == lastsentence
+    assert utilo.normalize_whitespaces(merged[-1].sentence) == lastsentence
 
 
 @pytest.mark.xfail(reason='merge headline on page 6')
-@utilatest.nightly
+@utilotest.nightly
 def test_text_seventytwo_extract_textsections():
     required = fseventytwo.textrequired(pages=tuple(range(0, 14)))
     pages = words.text.chapter.split(required)
@@ -144,7 +144,7 @@ def test_text_seventytwo_extract_textsections():
 
 
 @pytest.mark.xfail(reason='improve headline parser')
-@utilatest.longrun
+@utilotest.longrun
 def test_text_seventytwo_extract_textsections_page5_6_7():
     required = fseventytwo.textrequired(pages=(5, 6, 7))
     pages = words.text.chapter.split(required)
@@ -166,12 +166,12 @@ def test_text_seventytwo_extract_textsections_page5_6_7():
     assert count == [10, 2, 31], str(count)
 
     lastsentence = chapters[-1][1][-1]
-    assert utila.normalize_whitespaces(lastsentence) == (
+    assert utilo.normalize_whitespaces(lastsentence) == (
         'Es sind Anwendungen entstanden, '
         'welche die soziale Komponente in den Vordergrund')
 
 
-@utilatest.longrun
+@utilotest.longrun
 def test_text_doubleequal_fontdistance():
     """Regression test to solve problems with duplicated equal font
     distance on one page.

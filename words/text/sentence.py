@@ -10,10 +10,10 @@
 import collections
 import functools
 
-import german
+import germania
 import iamraw
 import texmex
-import utila
+import utilo
 
 import words.feature
 import words.text
@@ -34,8 +34,8 @@ def find_sentences(page: words.text.PageTextWithHeadlines) -> words.text.TextSec
         for seq in section.content:
             if not isinstance(seq, iamraw.Paragraph):
                 if current:
-                    current: str = utila.NEWLINE.join(current)
-                    lines.extend(german.sentence_tokenize(current))
+                    current: str = utilo.NEWLINE.join(current)
+                    lines.extend(germania.sentence_tokenize(current))
                     current = []
                 lines.append(undefined_tostr(seq))
                 continue
@@ -49,7 +49,8 @@ def find_sentences(page: words.text.PageTextWithHeadlines) -> words.text.TextSec
             )
             current.append(text)
         if current:
-            lines.extend(german.sentence_tokenize(utila.NEWLINE.join(current)))
+            lines.extend(germania.sentence_tokenize(
+                utilo.NEWLINE.join(current)))
             current = []
         result.append(
             words.text.TextSection(
@@ -95,7 +96,7 @@ def visit_sentences(
     them by headline.
     """
     sentence_tokenizer = functools.partial(
-        german.sentence_tokenize,
+        germania.sentence_tokenize,
         normalize_spaces=normalize_spaces,
         merge_divis=merge_divis,
     )
@@ -116,7 +117,7 @@ def visit_sentences(
         )
         result.extend(appends)
         if current:
-            current: str = utila.NEWLINE.join(current)
+            current: str = utilo.NEWLINE.join(current)
             for sentence in sentence_tokenizer(text=current):
                 result.append((section.headline, sentence))
     return result
@@ -140,7 +141,7 @@ def extract_section_content(
             continue
         # NoParagraph
         if current:
-            current: str = utila.NEWLINE.join(current)
+            current: str = utilo.NEWLINE.join(current)
             for sentence in sentence_tokenizer(text=current):
                 result.append((section.headline, sentence))
             current = []
@@ -234,7 +235,7 @@ class SentenceMerge:
             else:
                 isundefined = words.undefined.intindex(sentence) is not None
                 isformula = texmex.is_formula(sentence)
-                issentence = german.is_sentence_closed(sentence.split())
+                issentence = germania.is_sentence_closed(sentence.split())
                 if issentence or isundefined or isformula:
                     assert not self.lastsentence
                     self.result.append(

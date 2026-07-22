@@ -31,16 +31,16 @@ import collections
 import contextlib
 import re
 
-import configo
+import configos
 import serializeraw
-import utila
+import utilo
 
 import words.undefined
 
 PATTERN = re.compile(r'^[0-9]{1,3}u$')
 
 
-@utila.checkdatatype
+@utilo.checkdatatype
 def work(
     textx: str,
     headliner: str,
@@ -201,7 +201,7 @@ class BoxLookUp:
         for line in boxes:
             page, content = line
             for __, _, items in content:
-                chained = utila.flat(items)  # support verschachtelte boxes
+                chained = utilo.flat(items)  # support verschachtelte boxes
                 for _, (bindex, bcontent) in chained:
                     uindexs = [uindex for (_, uindex, _) in bcontent]
                     self.append(page, bindex, uindexs)
@@ -218,7 +218,7 @@ class BoxLookUp:
         return None
 
 
-@configo.cache_small
+@configos.cache_small
 def load_resources(
     headlines: str,
     text: str,

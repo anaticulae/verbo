@@ -7,27 +7,27 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import power
+import hoverpower
 import pytest
-import utila
-import utilatest
+import utilo
+import utilotest
 
 import tests
 
 
 @pytest.mark.parametrize('source, pages', [
-    pytest.param(power.DOCU009_PDF, None, id='docu009'),
-    pytest.param(power.DOCU027_PDF, '0:9', id='docu27pages'),
-    pytest.param(power.MASTER072_PDF, None, id='master72'),
+    pytest.param(hoverpower.DOCU009_PDF, None, id='docu009'),
+    pytest.param(hoverpower.DOCU027_PDF, '0:9', id='docu27pages'),
+    pytest.param(hoverpower.MASTER072_PDF, None, id='master72'),
 ])
 @pytest.mark.usefixtures('td')
-@utilatest.nightly
+@utilotest.nightly
 def test_run_words(source, pages, mp, capsys):
-    utilatest.fixture_requires(source)
+    utilotest.fixture_requires(source)
     pages = pages if pages else ':'
-    cmd = f'-i {power.link(source)} --pages {pages}'
+    cmd = f'-i {hoverpower.link(source)} --pages {pages}'
     tests.run(cmd, mp=mp)
-    utilatest.write_capsys(capsys)
+    utilotest.write_capsys(capsys)
 
 
 @pytest.mark.parametrize('command', [
@@ -40,12 +40,12 @@ def test_run_words_basic(command, mp):
 
 
 @pytest.mark.xfail(reason='software integration')
-@utilatest.nightly
-@utilatest.requires(power.MASTER072_PDF)
+@utilotest.nightly
+@utilotest.requires(hoverpower.MASTER072_PDF)
 def test_feature_words_work_pages0_10(td, mp):
     cmd = f'-i {td.tmpdir} -o {td.tmpdir} --pages=0:10'
-    utila.copy_content(
-        src=power.link(power.MASTER072_PDF),
+    utilo.copy_content(
+        src=hoverpower.link(hoverpower.MASTER072_PDF),
         dst=td.tmpdir,
         pattern='(rawmaker|sections|groupme|headlines|words)__*.yaml',
         unlock=True,

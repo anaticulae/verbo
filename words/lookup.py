@@ -9,7 +9,7 @@
 
 import iamraw
 import serializeraw
-import utila
+import utilo
 
 
 class LookupEmpty:
@@ -51,8 +51,8 @@ class PageLineLookup(LookupEmpty):
 
 
 def magics_frompath(path: str, pages: tuple = None) -> PageLineLookup:
-    if not utila.exists(path):
-        utila.log(f'skip loading magic: {path}')
+    if not utilo.exists(path):
+        utilo.log(f'skip loading magic: {path}')
         return LookupEmpty()
     loaded = serializeraw.load_magic_types(path, pages=pages)
     result = create_magics(loaded)

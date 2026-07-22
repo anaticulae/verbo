@@ -9,15 +9,15 @@
 
 import pprint
 
-import configo
+import configos
 import iamraw
 import serializeraw
-import utila
+import utilo
 
 import words.undefined
 
 
-@configo.cache_small
+@configos.cache_small
 def load_resources(
     extracted_text,
     text,
@@ -55,8 +55,8 @@ def process_input(extracted, worker):
         if not extracted and pagecontent:
             # TODO: REMOVE LATER
             page = pagecontent[0][0]
-            utila.info(f'skip on page: {page}')
-            utila.info(pprint.pformat(pagecontent))
+            utilo.info(f'skip on page: {page}')
+            utilo.info(pprint.pformat(pagecontent))
             continue
         result.append(extracted)
     return result

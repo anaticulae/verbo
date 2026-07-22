@@ -7,11 +7,11 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import utila
+import utilo
 
 
 def headlines(path: str, prefix: str = '') -> str:
-    return utila.pathconnector(
+    return utilo.pathconnector(
         path,
         'words',
         'headlines_headlines',
@@ -20,7 +20,7 @@ def headlines(path: str, prefix: str = '') -> str:
 
 
 def oneline_headlines(path: str, prefix: str = '') -> str:
-    return utila.pathconnector(
+    return utilo.pathconnector(
         path,
         'words',
         'headlines_oneline',
@@ -29,20 +29,20 @@ def oneline_headlines(path: str, prefix: str = '') -> str:
 
 
 def text(path: str, prefix: str = '') -> str:
-    return utila.pathconnector(path, 'words', 'text_text', prefix)
+    return utilo.pathconnector(path, 'words', 'text_text', prefix)
 
 
 def word(path: str, prefix: str = '') -> str:
-    return utila.pathconnector(path, 'words', 'word_result', prefix)
+    return utilo.pathconnector(path, 'words', 'word_result', prefix)
 
 
 def lists(path: str, prefix: str = '') -> str:
-    return utila.pathconnector(path, 'lists', 'result_result', prefix)
+    return utilo.pathconnector(path, 'lists', 'result_result', prefix)
 
 
 def links(path: str, prefix: str = '') -> str:
-    return utila.pathconnector(path, 'words', 'links_links', prefix)
+    return utilo.pathconnector(path, 'words', 'links_links', prefix)
 
 
 def abbr(path: str, prefix: str = '') -> str:
-    return utila.pathconnector(path, 'words', 'abbreviation_detected', prefix)
+    return utilo.pathconnector(path, 'words', 'abbreviation_detected', prefix)

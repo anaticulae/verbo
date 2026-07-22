@@ -7,56 +7,56 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import power
-import utila
-import utilatest
+import hoverpower
+import utilo
+import utilotest
 
 import tests.fixtures.master72.seventytwo as fseventytwo
 import tests.fixtures.text
 import words.text.sentence
 
 
-@utilatest.longrun
+@utilotest.longrun
 def test_merge_sentences_merge_divis():
     required = fseventytwo.textrequired(pages=(13, 14))
     pages = words.text.chapter.split(required)
     assert pages
 
     notmerged = words.text.sentence.merge_sentences(pages, merge_divis=False)
-    text = utila.NEWLINE.join([item.sentence for item in notmerged])
+    text = utilo.NEWLINE.join([item.sentence for item in notmerged])
     assert 'Kontrollmöglichkeiten' not in text
 
     merged = words.text.sentence.merge_sentences(pages)
     sentences = [item.sentence for item in merged]
-    text = utila.NEWLINE.join(sentences)
+    text = utilo.NEWLINE.join(sentences)
     # ensure that divis is replaced correctly
     assert 'Kontrollmöglichkeiten' in text
 
 
 def master72_text(pages: tuple) -> str:
-    utilatest.fixture_requires(power.MASTER072_PDF)
+    utilotest.fixture_requires(hoverpower.MASTER072_PDF)
     required = fseventytwo.textrequired(pages)
     pages = words.text.chapter.split(required)
     assert pages
     # merge sentences
     merged = words.text.sentence.merge_sentences(pages)
     sentences = [item.sentence for item in merged]
-    text = utila.NEWLINE.join(sentences)
+    text = utilo.NEWLINE.join(sentences)
     return text
 
 
 def bachelor51_text(pages: tuple = None) -> str:
-    utilatest.fixture_requires(power.BACHELOR051_PDF)
+    utilotest.fixture_requires(hoverpower.BACHELOR051_PDF)
     required = tests.fixtures.text.bachelor051_textrequired(pages=pages)
     pages = words.text.chapter.split(required)
     # merge sentences
     merged = words.text.sentence.merge_sentences(pages)
     sentences = [item.sentence for item in merged]
-    text = utila.NEWLINE.join(sentences)
+    text = utilo.NEWLINE.join(sentences)
     return text
 
 
-@utilatest.longrun
+@utilotest.longrun
 def test_merge_sentences_before_headline_regression():
     text = master72_text((14,))
     assert 'Ausgewählte Positionen hierzu werden im Folgenden dargestellt.' in text
@@ -64,7 +64,7 @@ def test_merge_sentences_before_headline_regression():
     tests.assert_length(sentences, 15)  # TODO: 10 is better
 
 
-@utilatest.longrun
+@utilotest.longrun
 def test_merge_sentences_list_detection_regression():
     text = master72_text((9,))
     # no list starter in text
@@ -75,7 +75,7 @@ def test_merge_sentences_list_detection_regression():
     assert '27u' in text
 
 
-@utilatest.longrun
+@utilotest.longrun
 def test_merge_sentences_footer_regression():
     text = master72_text((21,))
     # ensure that footer is not parsed as text
@@ -83,7 +83,7 @@ def test_merge_sentences_footer_regression():
     assert 'www.spiegel.de' not in text
 
 
-@utilatest.longrun
+@utilotest.longrun
 def test_merge_sentences_table_regression():
     text = bachelor51_text((21,))
     assert 'Tab. 2:' not in text
@@ -92,7 +92,7 @@ def test_merge_sentences_table_regression():
     assert 'Probandenstichprobe' not in text
 
 
-@utilatest.longrun
+@utilotest.longrun
 def test_merge_sentences_figure_regression():
     text = bachelor51_text((31,))
     # exclude figure from sentence detection

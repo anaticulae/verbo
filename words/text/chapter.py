@@ -13,7 +13,7 @@ import itertools
 
 import iamraw
 import texmex
-import utila
+import utilo
 
 import words.boxed
 import words.feature
@@ -47,7 +47,7 @@ def extract_texts(
     else:
         # in some cases it is not possible to load any content, cause a
         # document is to short or the headlines are not parsed correctly.
-        utila.error('could not merge empty pages')
+        utilo.error('could not merge empty pages')
         chapters = []
     grouped = groupby_page(chapters)
     # prepare result
@@ -63,7 +63,7 @@ def extract_texts(
 
 
 def groupby_page(chapters) -> dict:
-    chapters = utila.flat([split_textsection(item) for item in chapters])
+    chapters = utilo.flat([split_textsection(item) for item in chapters])
 
     def getpage(item) -> int:
         if item.headline:
@@ -216,10 +216,10 @@ def prepare_analyze_page(
     required to collect this content under the dummy headline.
     """
     page = headlines[0].page
-    contentborder = utila.select_page(borders, page=page)
+    contentborder = utilo.select_page(borders, page=page)
     if contentborder is None:
         return None
-    pcn = utila.select_page(textnavigators, page=page)
+    pcn = utilo.select_page(textnavigators, page=page)
     if pcn.offset == (None, None):
         # empty page
         return None
@@ -269,7 +269,7 @@ def insert_empty_pages(
         filled headline list
     """
     assert headlines, 'require at least one headline'
-    flat = utila.flat(headlines)
+    flat = utilo.flat(headlines)
     # fill headlines
     heads = []
     for first, second in itertools.zip_longest(flat, flat[1:], fillvalue=None):

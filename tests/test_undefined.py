@@ -7,10 +7,10 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import power
+import hoverpower
 import pytest
 import serializeraw
-import utilatest
+import utilotest
 
 # pylint:disable=W0611
 import tests.fixtures.docu27
@@ -21,13 +21,13 @@ RESTRUCTURED_NON_TEXTUAL_PAGE = 10
 
 
 @pytest.mark.xfail
-@utilatest.nightly
+@utilotest.nightly
 def test_extract_undefined():
     """Text replacing the undefined items with content"""
     # TODO: Move to hey
     textexample = tests.fixtures.docu27.textexample()
 
-    source = power.link(power.DOCU027_PDF)
+    source = hoverpower.link(hoverpower.DOCU027_PDF)
     ptcns = serializeraw.ptcn_frompath(source)
 
     extracted = words.undefined.extract_undefined(textexample, ptcns)

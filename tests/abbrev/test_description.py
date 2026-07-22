@@ -7,21 +7,21 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import power
+import hoverpower
 import serializeraw
-import utila
-import utilatest
+import utilo
+import utilotest
 
 import tests
 
 
-@utilatest.requires(power.BACHELOR028_PDF)
-@utilatest.longrun
+@utilotest.requires(hoverpower.BACHELOR028_PDF)
+@utilotest.longrun
 def test_description_bachelor028p3(td, mp):
-    source = power.link(power.BACHELOR028_PDF)
+    source = hoverpower.link(hoverpower.BACHELOR028_PDF)
     cmd = f'-i {source} -o {td.tmpdir} --abbreviation --pages=3'
     tests.run(cmd, mp=mp)
-    abbreviation = utila.flatten_content(
+    abbreviation = utilo.flatten_content(
         serializeraw.load_text_abbreviations(td.tmpdir))
     expected = {None, 'multinationaler Unternehmen'}
     descriptions = {item.description for item in abbreviation}

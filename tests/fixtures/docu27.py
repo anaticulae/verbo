@@ -7,23 +7,23 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import hoverpower
 import iamraw
-import power
-import utilatest
+import utilotest
 
 import words.feature
 import words.text.chapter
 
 
 def headlines() -> str:
-    source = power.link(power.DOCU027_PDF)
+    source = hoverpower.link(hoverpower.DOCU027_PDF)
     result = iamraw.path.words_headlines(source)
     return result
 
 
 def resources():
-    utilatest.fixture_requires(power.DOCU027_PDF)
-    source = power.link(power.DOCU027_PDF)
+    utilotest.fixture_requires(hoverpower.DOCU027_PDF)
+    source = hoverpower.link(hoverpower.DOCU027_PDF)
     loaded = words.feature.load_resources(
         text=iamraw.path.text(source),
         textposition=iamraw.path.textposition(source),

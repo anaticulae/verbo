@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import german
+import germania
 import iamraw
 import texmex.sentences
 
@@ -29,7 +29,7 @@ def find_quote(text: list) -> list:
 
 
 def contains_quote(text: str) -> bool:
-    splitted = german.word_tokenize(text, validate_sentences=False)
+    splitted = germania.word_tokenize(text, validate_sentences=False)
     for item in splitted:
         if isinstance(item, str):
             continue

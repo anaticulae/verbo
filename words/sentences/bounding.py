@@ -10,11 +10,11 @@
 import collections
 import math
 
-import configo
-import german
+import configos
+import germania
 import iamraw
-import konrad
-import utila
+import konradus
+import utilo
 
 
 def boundings(sentences, ptcns) -> iamraw.PageContent:
@@ -24,10 +24,10 @@ def boundings(sentences, ptcns) -> iamraw.PageContent:
             for line, page in zip(part.content, part.pages):
                 bounding = find_bounding(
                     line,
-                    utila.select_page(ptcns, page=page),
+                    utilo.select_page(ptcns, page=page),
                 )
                 if not bounding:
-                    utila.error(f'missing bounding on page: {page}; {line}')
+                    utilo.error(f'missing bounding on page: {page}; {line}')
                     bounding: tuple = tuple()
                 result[page].append(bounding)
     # convert to result data type
@@ -38,7 +38,7 @@ def boundings(sentences, ptcns) -> iamraw.PageContent:
     return result
 
 
-ERROR_IN_SENTENCE_MAX = configo.HV_INT_PLUS(default=3)
+ERROR_IN_SENTENCE_MAX = configos.HV_INT_PLUS(default=3)
 
 
 def find_bounding(sentence: str, content) -> tuple:
@@ -52,8 +52,8 @@ def find_bounding(sentence: str, content) -> tuple:
     lookup = lookup_create(content)
     page_content = [item[0] for item in lookup]
     pattern = {
-        konrad.mark2str(item)
-        for item in german.word_tokenize(sentence, validate_sentences=False)
+        konradus.mark2str(item)
+        for item in germania.word_tokenize(sentence, validate_sentences=False)
     }
     matches = [item in pattern for item in page_content]
     # TODO: MAKE ERROR LENGTH PATTERN LENGTH DEPENDENT
@@ -64,10 +64,10 @@ def find_bounding(sentence: str, content) -> tuple:
     if not done:
         return None
     if len(done) > 1:
-        utila.error(f'more than one matching sentence detected: {done}')
+        utilo.error(f'more than one matching sentence detected: {done}')
     rectangles = []
     for start, end in done:
-        for index in utila.rlist(start, end):
+        for index in utilo.rlist(start, end):
             rectangles.append(lookup[index][1])
     result = optimize_bounding(rectangles)
     return result
@@ -89,16 +89,16 @@ def select_longest_group(items, error: int = 0) -> tuple:
         if collected[-1]:
             collected.append([])
             gaps = error
-    longest = utila.longest(collected)
+    longest = utilo.longest(collected)
     if not longest:
         return None
     result = [(longest[0], longest[-1] + 1)]
     return result
 
 
-NEW_ITEM_DIFF_X_MAX = configo.HV_FLOAT_PLUS(default=25.0)
+NEW_ITEM_DIFF_X_MAX = configos.HV_FLOAT_PLUS(default=25.0)
 
-NEW_ITEM_DIFF_Y_MAX = configo.HV_FLOAT_PLUS(default=8.0)
+NEW_ITEM_DIFF_Y_MAX = configos.HV_FLOAT_PLUS(default=8.0)
 
 
 def optimize_bounding(rectangles: list) -> list:
@@ -122,11 +122,11 @@ def optimize_bounding(rectangles: list) -> list:
         # extend curret rectangle
         result[-1].append(rectangle)
     # merge subrectangle into bigger ones
-    result = [utila.rect_max(items) for items in result]
+    result = [utilo.rect_max(items) for items in result]
     return result
 
 
-@utila.cacheme
+@utilo.cacheme
 def lookup_create(content) -> list:
     """Split lines into token and there single word bounding."""
     result = []
@@ -134,17 +134,18 @@ def lookup_create(content) -> list:
         bbox = line.bounding
         current = line.text
         tokens = [
-            konrad.mark2str(item)
-            for item in german.word_tokenize(current, validate_sentences=False)
+            konradus.mark2str(item)
+            for item in germania.word_tokenize(current,
+                                               validate_sentences=False)
         ]
         for token in tokens:
-            cur_x = utila.findindex(current, token)
+            cur_x = utilo.findindex(current, token)
             if not cur_x:
-                utila.debug(f'could not find token: {token} in {current}')
+                utilo.debug(f'could not find token: {token} in {current}')
                 continue
             cur_x = cur_x[0]
             text = current[cur_x:cur_x + len(token)]
-            current = utila.ghost_replace(current, token)
+            current = utilo.ghost_replace(current, token)
             bounding = iamraw.split_x(
                 bbox,
                 part=cur_x,

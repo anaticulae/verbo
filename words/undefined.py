@@ -10,7 +10,7 @@
 import contextlib
 
 import texmex
-import utila
+import utilo
 
 import words.text
 
@@ -24,7 +24,7 @@ def extract_undefined(
     """
     result = []
     for pageitem in pages:
-        ptcn = utila.select_page(ptcns, pageitem.page)
+        ptcn = utilo.select_page(ptcns, pageitem.page)
         content = []
         for index, (_, paragraph) in enumerate(pageitem.content):
             # split the undefined groups
@@ -38,7 +38,7 @@ def extract_undefined(
                     for (uindex, undefineds) in enumerate(splitted_paragraph)
                 ]
             except IndexError:
-                utila.error('IndexError')
+                utilo.error('IndexError')
                 paragraph_items = []
 
             try:
@@ -46,7 +46,7 @@ def extract_undefined(
                     intindex(item) for item in undefineds
                 ] for (uindex, undefineds) in enumerate(splitted_paragraph)]
             except IndexError:
-                utila.error('IndexError X')
+                utilo.error('IndexError X')
                 paragraph_undefined = []
 
             if paragraph_items:
