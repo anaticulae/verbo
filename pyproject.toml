@@ -105,3 +105,13 @@ include = [
 exclude = [
     "tests*",
 ]
+
+[tool.hoverpower]
+packages = [
+    "BACHELOR",
+    "BOOK",
+    "DISS",
+    "DOCU",
+    "HOME",
+    "MASTER",
+]
