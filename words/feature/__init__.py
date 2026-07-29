@@ -13,7 +13,6 @@ import os
 import configos
 import iamraw
 import iamraw.path
-import magic.path
 import serializeraw
 import texmex
 import utilo
@@ -115,7 +114,7 @@ def load_resources_frompath(  # pylint:disable=R0914
     headerfooters = iamraw.path.headerfooters(path)
     lists = words.path.lists(path)
     headlines = words.path.headlines(path)
-    magics = magic.path.content_oneline(path)
+    magics = iamraw.path.magic_content_online(path)
     loaded = load_resources(
         text=text,
         textposition=textposition,
