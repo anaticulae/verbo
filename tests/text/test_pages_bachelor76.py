@@ -25,6 +25,7 @@ zu einem zentralen Bestandteil für die Digitalisierung.{{hn:15:nh}}\
 
 @utilotest.nightly
 def test_text_extract_p7p8p9(td, mp):
+    utilotest.fixture_requires(hoverpower.BACHELOR076_PDF)
     source = hoverpower.link(hoverpower.BACHELOR076_PDF)
     cmd = f'--text  --headlines -i={source} --pages=7,8,9'
     tests.run(cmd, mp=mp)
