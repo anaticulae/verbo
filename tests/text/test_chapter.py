@@ -16,7 +16,7 @@ import words.text.chapter
 @utilotest.longrun
 def test_text_chapter_split_page2():
     # ensure that empty headline is inserted at page start
-    required = fseventytwo.textrequired(pages=(4))
+    required = fseventytwo.textrequired(pages=4)
     splitted = words.text.chapter.split(required)
     assert len(splitted) == 1, str(splitted)  # ensure to have one page 4
     secondpage = splitted[0]
