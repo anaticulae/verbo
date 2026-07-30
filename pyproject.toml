@@ -1,6 +1,6 @@
 [project]
 name = "verbo"
-version = "1.23.3"
+version = "1.23.4"
 description = ""
 requires-python = ">=3.12"
 authors = [
