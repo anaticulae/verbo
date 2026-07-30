@@ -1,0 +1,35 @@
+# =============================================================================
+# C O P Y R I G H T
+# -----------------------------------------------------------------------------
+# Copyright (c) 2022-2023 by Helmut Konrad Schewe. All rights reserved.
+# This file is property of Helmut Konrad Schewe. Any unauthorized copy,
+# use or distribution is an offensive act against international law and may
+# be prosecuted under federal law. Its content is company confidential.
+# =============================================================================
+
+FROM ghcr.io/anaticulae/baw:696994f-python
+
+ENV SHARED_TMP=/tmp/figureo/
+ENV HOVERPOWER_STORE=/var/workdir/hoverpower/repo
+ENV BAW=/tmp/bar/
+
+RUN apt-get update && apt-get install -y \
+    ghostscript\
+    libgl1 \
+    libglib2.0-0 \
+ && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /var/install
+
+COPY pyproject.toml .
+
+RUN pip install .[dev]
+RUN pip install .
+
+COPY . /var/install
+
+RUN pip install .
+
+WORKDIR /var/workdir
+
+ENTRYPOINT ["sh", "-c"]
