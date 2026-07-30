@@ -67,7 +67,7 @@ def lookaround(
     before = text[start - before:start]
     after = text[end:end + after]
     result = []
-    for item in [before, after]:
+    for item in (before, after):
         parsed = collector(item)
         if not parsed:
             continue
