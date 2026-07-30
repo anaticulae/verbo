@@ -43,7 +43,7 @@ dev = [
     "ibidem==1.0.2",
     "rawmaker==2.40.5",
     "tablero==1.0.1",
-    "titulum==1.0.0",
+    "titulum==1.0.2",
     "utilotest==1.0.5",
 ]
 
