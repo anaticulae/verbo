@@ -34,11 +34,11 @@ class BoxedChecker:
             pagedata = self.data[page]
         except KeyError:
             return NO_BOX
-        else:  # TODO: DO WE NEED ELSE?
-            for index, bound in enumerate(pagedata):
-                _x0, _y0, _x1, _y1 = bound
-                if _y0 <= y0 <= y1 <= _y1 and _x0 <= x0 <= x1 <= _x1:
-                    return index
+        for index, bound in enumerate(pagedata):
+            # TODO: LINEAR EFFORT
+            _x0, _y0, _x1, _y1 = bound
+            if _y0 <= y0 <= y1 <= _y1 and _x0 <= x0 <= x1 <= _x1:
+                return index
         return NO_BOX
 
     def boundingbox(self, page, boxid: int) -> iamraw.BoundingBox:
