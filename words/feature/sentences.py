@@ -11,6 +11,7 @@ import serializeraw
 
 import words.sentences.bounding
 import words.sentences.determine
+import words.sentences.lists
 
 
 def work(
