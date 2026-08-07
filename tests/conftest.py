@@ -47,7 +47,7 @@ RESOURCES = [
     hoverpower.MASTER155_PDF,
 ]
 
-WORKER = utilotest.worker_count(4, onci=len(RESOURCES))
+WORKER = utilotest.worker_count(12, onci=len(RESOURCES))
 
 
 @pytest.mark.usefixtures('session')
@@ -68,7 +68,7 @@ def extract(resources):
         groupme=True,
         headlines=True,
         headnote=True,
-        # lists=True,
+        lists=True,
         magic=True,
         pagenumber=True,
         sections=True,

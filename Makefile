@@ -32,7 +32,7 @@ docker-doctest: docker-build
 docker-fasttest: docker-decrypt
 	$(DOCKER_RUN) \
 		$(IMAGE) \
-		"baw test fast --generate"
+		"baw test fast"
 
 docker-longtest: docker-decrypt
 	$(DOCKER_RUN) \
@@ -42,7 +42,7 @@ docker-longtest: docker-decrypt
 docker-alltest: docker-decrypt
 	$(DOCKER_RUN) \
 		$(IMAGE) \
-		"baw test all"
+		"baw test all --generate"
 
 docker-lint: docker-build
 	$(DOCKER_RUN) \
