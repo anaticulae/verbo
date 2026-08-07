@@ -47,7 +47,7 @@ RESOURCES = [
     hoverpower.MASTER155_PDF,
 ]
 
-WORKER = utilotest.worker_count(4, onci=len(RESOURCES))
+WORKER = utilotest.worker_count(12, onci=len(RESOURCES))
 
 
 @pytest.mark.usefixtures('session')
