@@ -68,7 +68,7 @@ def extract(resources):
         groupme=True,
         headlines=True,
         headnote=True,
-        # lists=True,
+        lists=True,
         magic=True,
         pagenumber=True,
         sections=True,
