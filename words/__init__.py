@@ -7,13 +7,12 @@
 # be prosecuted under federal law. Its content is company confidential.
 #==============================================================================
 
+import importlib.metadata
 import os
-
-import words.path
-
-__version__ = '1.23.3'
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
 PROCESS = 'words'
-PACKAGE = PROCESS
+PACKAGE = 'verbo'
+
+__version__ = importlib.metadata.version(PACKAGE)
