@@ -37,6 +37,7 @@ dev = [
     "captions==1.0.1",
     "codero==1.0.1",
     "figureo==1.0.1",
+    "formulero==1.0.0",
     "gennex==1.1.0",
     "groupmes>=1.1.0,<2.0.0",
     "headnote>=1.0.3,<2.0.0",

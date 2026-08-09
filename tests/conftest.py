@@ -64,7 +64,7 @@ def extract(resources):
         codero=True,
         figureo=True,
         footnote=True,
-        # formulero=True,
+        formulero=True,
         groupme=True,
         headlines=True,
         headnote=True,
