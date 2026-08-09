@@ -8,7 +8,6 @@
 # =============================================================================
 
 import hoverpower
-import pytest
 import serializeraw
 import utilo
 import utilotest
@@ -16,7 +15,6 @@ import utilotest
 import tests
 
 
-@pytest.mark.xfail(reason='software integration')
 @utilotest.requires(hoverpower.BACHELOR067_PDF)
 def test_sentences_bachelor067pages51(td, mp):
     source = hoverpower.link(hoverpower.BACHELOR067_PDF)
