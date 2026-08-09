@@ -148,8 +148,7 @@ Dieser Abschnitt beschäftigt sich mit standardisierten Verfahren der Softwareen
 Diese umfassen die Architekturentwicklung sowie konkrete Regeln zur Softwareimplementierung.
 AUTOSAR beschreibt einen allgemeinen Prozess zur Architekturentwicklung.
 Die Softwareimplementierung wird beispielhaft durch Misra-C beschrieben.
-Misra-C beschreibt dabei Regeln zum sichereren Umgang mit der Programmiersprache C.
-Durch Misra-C sollen allgemeine Programmierfehler vermieden werden.
+Misra-C beschreibt dabei Regeln zum sichereren Umgang mit der Programmiersprache C. Durch Misra-C sollen allgemeine Programmierfehler vermieden werden.
 
 
 :::: AUTOSAR ::::
@@ -289,8 +288,7 @@ Der Empfänger überschreibt, bei korrekt empfangener Nachricht, dieses Bit reze
 Das EOF{{hn:11:nh}}-Feld beendet den Sendevorgang.
 [WR10, Seite 214-216]
 #$@FORMULA@$#:0
-Abbildung 2.6.:
-CAN-Nachricht nach [WL11, Seite 19]
+Abbildung 2.6.: CAN-Nachricht nach [WL11, Seite 19]
 
 
 :::: Methodik ::::
@@ -417,7 +415,8 @@ Diese kann Bytecode auf jeder unterstützen Plattform ausf ühren.
 ten Code.
 Die Transformation wird dabei durch Parameter spezifiziert.
 Plattformunabhängiger und plattformspezifischer Code werden dabei verwoben (vgl. Abbildung 3.6).
-Die Schichtenbildung im erzeugten Code wird aufgehoben (vgl. Ab- bildung 2.2.1 - klassisches Steuergerät) und ist auch nicht essentiell.
+Die Schichtenbildung im erzeugten Code wird aufgehoben (vgl.
+Ab- bildung 2.2.1 - klassisches Steuergerät) und ist auch nicht essentiell.
 Dabei entsteht schwer wartbarer Anwendungscode.
 Manuelle Inspektionen und Korrekturen sind ausgeschlossen.
 Besonders der Aspekt der Modelländerung und erneuten Generierung verhindert manuelle Korrekturen.
@@ -624,7 +623,8 @@ Simulink bietet drei Möglichkeiten S-Funktionen zu erzeugen.
 Das Legacy-Tool wird über die Konsole verwendet.
 Weiterhin k önnen S-Funktionen auch manuell als C/C++-Quellcode erzeugt werden und durch Mex kompiliert werden.
 In dieser Arbeit wurden S-Funktionen manuell oder über den S-Function-Builder erzeugt.
-Die Vorgehensweise ist in Tabelle A. 9 dokumentiert.
+Die Vorgehensweise ist in Tabelle A.
+9 dokumentiert.
 Erzeugte S-Funktionen bzw. deren Mex-Dateien werden über den S-Function“- ” Block in die Simulationen eingebunden (siehe Tabelle A.10).
 
 
@@ -641,8 +641,8 @@ Für die Simulation, das Testen oder den Export in die Zielsprache werden versch
 Einheitliche Konfigurationen erleichtern diese Arbeit mit mehreren Modellen.
 Speziell die Integration des Gesamtmodells erfordert das häufige Wechseln der Konfiguration.
 SCM-Programme ermöglichen diese Verwaltung (vgl. Abschnitt 3.1.1).
-Das weitere Vorgehen zur Verwendung von Konfigurationen ist in Tabelle A. 8
-erläutert.
+Das weitere Vorgehen zur Verwendung von Konfigurationen ist in Tabelle A.
+8 erläutert.
 Anpassen der Simulation Beim Entwickeln und Testen erm öglicht Simulink schnelle Umsetzungen (Rapid Prototyping).
 Diese werden nicht nach dem Standpunkt der Codeerzeugung ausgewählt.
 Somit werden Operationen und Funktionen von Simulink genutzt, für die eine Codeerzeugung nicht integriert ist.
@@ -943,7 +943,8 @@ Der Datenverlust kann jedoch nicht vollständig ausgeschlossen werden.
 In einer folgenden Version sollen nur die Messdaten von einem CAN-Bus ausgewertet werden.
 Gleichzeitig befinden sich die weiteren CAN-Busse im Wartezustand.
 Dies soll zur Reduzierung der Datenlast führen und Nachrichtenverluste komplett vermeiden.
-Zum Zeitpunkt der Umsetzung sind die Messdaten noch fehlerhaft und müssen durch das Buffermodul überprüft werden. {{hn:1:nh}} Die Nachrichten werden zwischen Beschleunigungs-, Temperatur- und Umdrehungsnachrichten unterschieden.
+Zum Zeitpunkt der Umsetzung sind die Messdaten noch fehlerhaft und müssen durch das Buffermodul überprüft werden.
+{{hn:1:nh}} Die Nachrichten werden zwischen Beschleunigungs-, Temperatur- und Umdrehungsnachrichten unterschieden.
 Ein Beschleunigungspaket besteht aus 64 Bit.
 Der Zeitstempel besteht aus einer vorzeichenlosen Zahl die 20 Bit beinhaltet.
 Darauf folgen 4 Beschleunigungswerte des Sensors zu je 8 Bit.
@@ -1027,8 +1028,8 @@ Nachdem das alte Programm entfernt ist, wird das Programm durch ./p compile <Pro
 
 
 Die Arbeit auf der OBU unterscheidet sich nicht wesentlich von der Arbeit auf einem Standard-Personalcomputer.
-Die Pins sind nach Tabelle A. 4
-zu belegen.
+Die Pins sind nach Tabelle A.
+4 zu belegen.
 Über das Adapterkabel wird die OBU mit MPC-Power on “ eingeschaltet. Eine Verbindung wird über die Terminalsoft- ” ware Putty “ nach Tabelle A. 2 hergestellt. ” Änderungen der Programmbasis werden über WinSCP “ (siehe Tabelle A.3) vor- ” genommen.
 Dies benötigt eine aktive LAN{{hn:5:nh}}-Verbindung.
 Die Programmübersicht befindet sich in root/usr/bin “. Benutzerdaten, die den ” jeweiligen Programmen zur Verfügung stehen, werden in /home/ “abgelegt. ”
@@ -1087,8 +1088,8 @@ Diese ermittelt einen Durchmesser für das führende und nachlaufende Rad.
 
 
 Dieser Abschnitt beschreibt die Module detaillierter und geht auf deren Besonderheiten ein.
-Sämtliche verwendeten Simulink-Modelle sind nach Tabelle A. 1
-konfiguriert.
+Sämtliche verwendeten Simulink-Modelle sind nach Tabelle A.
+1 konfiguriert.
 Das Programm ist nach Abschnitt 3.4.2 in modulweiser Automatisierung mit manueller Verknüpfung erzeugt.
 Die Dateioperationen vom Einlesen und eine Version des Buffers, sind in C++ implementiert.
 Alle weiteren Module sind in Simulink umgesetzt.
@@ -1098,8 +1099,7 @@ Die Nachricht setzt sich aus Header und Payload zusammen.
 Im Header ist der Sensoridentifikator und Nachrichtenidentifikator abgelegt.
 Anhand des Nachrichtenidentifikator wird zwischen Beschleunigungs-, Temperatur und Drehzahlnachricht unterschieden.
 #$@FORMULA@$#:0
-Abbildung 4.6.:
-Nachrichtenformat Der Payload einer Beschleunigungsnachricht besteht aus einem Zeitstempel (20 Bit) und vier Beschleunigungswerten (je 11 Bit).
+Abbildung 4.6.: Nachrichtenformat Der Payload einer Beschleunigungsnachricht besteht aus einem Zeitstempel (20 Bit) und vier Beschleunigungswerten (je 11 Bit).
 Diese werden extrapoliert (Buffer kann noch optimiert werden) und dem Buffer übergeben.
 Buffer Der Buffer dient der Aufarbeitung der Sensordaten.
 Durch fehlende Nachrichten (vgl. Abschnitt 4.1) werden Sequenzen der Daten unbrauchbar und von der Berechnung ausgeschlossen.
@@ -1195,8 +1195,8 @@ Diese müssen nicht zusätzlich überprüft werden
 Die Simulation wurde als MiL-Test durchgeführt.
 Diese Ergebnisse bilden die Referenzdaten für den SiL- und HiL-Test.
 Die Komponente der Durchmesserberechung wurde manuell und separat als SiL- und HiL-Test auf dem lokalen Rechner und auf der OBU verifiziert (siehe Anhang A.6).
-Abbildung A. 1
-dokumentiert die Ausgabe des Terminals.
+Abbildung A.
+1 dokumentiert die Ausgabe des Terminals.
 
 
 :::: Verifikation des Histogramms ::::

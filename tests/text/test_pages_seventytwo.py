@@ -30,7 +30,6 @@ def test_text_seventytwo_extract_texts_page3():
     tests.assert_length(sectioncontent, 17)
 
 
-@pytest.mark.xfail(reason='check later')
 @utilotest.nightly
 def test_text_seventytwo_visit_sentences():
     required = fseventytwo.textrequired(pages=(3,))

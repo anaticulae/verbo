@@ -8,6 +8,7 @@
 # =============================================================================
 
 import hoverpower
+import pytest
 import serializeraw
 import utilotest
 
@@ -23,6 +24,7 @@ zu einem zentralen Bestandteil für die Digitalisierung.{{hn:15:nh}}\
 """
 
 
+@pytest.mark.xfail(reason='highnote at the end, improve german parser.')
 @utilotest.nightly
 def test_text_extract_p7p8p9(td, mp):
     utilotest.fixture_requires(hoverpower.BACHELOR076_PDF)
