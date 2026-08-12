@@ -81,7 +81,7 @@ def split_textsection(item: words.text.TextSection) -> words.text.TextSections:
     if not item.pages:
         return [item]
     result = [
-        words.text.TextSection(
+        iamraw.TextSection(
             headline=item.headline,
             content=[item.content[0]],
             pages=[item.pages[0]],
@@ -90,7 +90,7 @@ def split_textsection(item: words.text.TextSection) -> words.text.TextSections:
     for content, page in zip(item.content[1:], item.pages[1:]):
         if page != result[-1].pages[0]:  # pylint:disable=E1136
             result.append(
-                words.text.TextSection(
+                iamraw.TextSection(
                     headline=iamraw.Headline(
                         title=None,
                         level=None,  # TODO: REMOVE AFTER FIXING LOADER/DUMPER
@@ -182,7 +182,7 @@ def analyze_page(
     )
     # collect paragraphs
     sections = [
-        words.text.TextSection(
+        iamraw.TextSection(
             headline=first,
             content=call(
                 first=first,
