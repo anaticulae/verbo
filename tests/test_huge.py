@@ -102,6 +102,7 @@ def params():
 
 
 @utilotest.monday
+@utilotest.nightly
 @pytest.mark.parametrize('source', params())
 def test_huge_running_words(source, td, request):  # pylint:disable=W0621
     """Run rawmaker -> sections -> headlines -> words.
