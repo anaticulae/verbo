@@ -28,8 +28,6 @@ PageAnalyzeResources = collections.namedtuple(
     'number, headlines, pagetextcontentnavigator, fontcontentstore',
 )
 
-TextSections = list[TextSection]
-
 
 @dataclasses.dataclass
 class PageContentPageTextDetected:
