@@ -77,7 +77,7 @@ def groupby_page(chapters) -> dict:
     return dict(grouped)
 
 
-def split_textsection(item: words.text.TextSection) -> words.text.TextSections:
+def split_textsection(item: iamraw.TextSection) -> iamraw.TextSections:
     if not item.pages:
         return [item]
     result = [
