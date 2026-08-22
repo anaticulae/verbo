@@ -26,7 +26,7 @@ HeadlinedSentence = collections.namedtuple(
 HeadlinedSentences = list[HeadlinedSentence]
 
 
-def find_sentences(page: words.text.PageTextWithHeadlines) -> words.text.TextSections: # yapf:disable
+def find_sentences(page: words.text.PageTextWithHeadlines) -> iamraw.TextSections: # yapf:disable
     result = []
     for section in page.content:
         lines = []
@@ -53,7 +53,7 @@ def find_sentences(page: words.text.PageTextWithHeadlines) -> words.text.TextSec
                 utilo.NEWLINE.join(current)))
             current = []
         result.append(
-            words.text.TextSection(
+            iamraw.TextSection(
                 headline=section.headline,
                 content=lines,
             ))
@@ -306,7 +306,7 @@ def extract_textsections(
     *,
     merge_headlines: bool = True,
     require_headlinelevel: bool = True,
-) -> words.text.TextSections:
+) -> iamraw.TextSections:
     """Extract `TextSections out of chapters based on extracted headline
     definition.
 
@@ -333,7 +333,7 @@ def extract_textsections(
         merges = headline.title is not None if merge_headlines else True
         if headline != current and merges:  # and headline.title is not None:
             result.append(
-                words.text.TextSection(
+                iamraw.TextSection(
                     current,
                     collected,
                     pages=contentpages,
@@ -346,7 +346,7 @@ def extract_textsections(
         current = headline
     if collected:
         result.append(
-            words.text.TextSection(
+            iamraw.TextSection(
                 current,
                 collected,
                 pages=contentpages,

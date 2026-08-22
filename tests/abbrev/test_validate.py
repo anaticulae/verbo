@@ -16,6 +16,7 @@ import utilo
 import utilotest
 
 import tests
+import tests.conftest
 import words
 
 ARCHIVE = utilo.join(words.ROOT, 'tests/abbrev/expected', exist=True)

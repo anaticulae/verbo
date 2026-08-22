@@ -30,29 +30,6 @@ PageAnalyzeResources = collections.namedtuple(
 
 
 @dataclasses.dataclass
-class TextSection:
-    headline: str = None
-    content: list = dataclasses.field(default_factory=list)
-    pages: list = dataclasses.field(default_factory=list)
-
-    def __getitem__(self, index):
-        # TODO: support tuple unpacking, remove later
-        if index > 1:
-            raise IndexError
-        return self.headline if index == 0 else self.content  # pylint:disable=C2001
-
-    def __eq__(self, value):
-        # TODO: support tuple unpacking, remove later
-        return self[0] == value[0] and self[1] == value[1]
-
-    def __hash__(self):
-        return hash(str(self))
-
-
-TextSections = list[TextSection]
-
-
-@dataclasses.dataclass
 class PageContentPageTextDetected:
     page: int = None
     content: list = None

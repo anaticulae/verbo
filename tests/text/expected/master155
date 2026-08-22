@@ -18,8 +18,8 @@ Der letzte Preis war auf einer Tafel angeschlagen, sodass diese Information den 
 Die Ergebnisse des Experiments wichen von Chamberlins Vorhersagen ab.
 Die gehandelte Menge mit einer durchschnittlichen Stückzahl von 19 pro Person war höher als die errechnete Gleichgewichtsmenge von 15 Stück.
 Der durchschnittliche Preis lag mit 52,63 unter dem Gleichgewichtspreis von 57.
-Zunächst erlangte das Experiment auf Grund der neuen Labormethodik keinerlei Bedeutung. 1962
-griff Vernon Smith, der selbst als Doktorand Teilnehmer an dem Marktexperiment von Chamberlin war, die Idee eines Marktexperiments auf.
+Zunächst erlangte das Experiment auf Grund der neuen Labormethodik keinerlei Bedeutung.
+1962 griff Vernon Smith, der selbst als Doktorand Teilnehmer an dem Marktexperiment von Chamberlin war, die Idee eines Marktexperiments auf.
 Smith führte das Experiment als eine zweiseitige Auktion durch.
 Dabei waren alle Angebote und die Preise der durchgeführten Transaktionen bekannt.
 Er zeigte, dass solche Märkte, auch ohne den Teilnehmern vorher viele Informationen zu liefern, einem effizienten Marktgleichgewicht nahe kommen.
@@ -27,13 +27,23 @@ Ein weiteres Marktexperiment wurde 1970 von Selten veröffentlicht.
 Während bei Chamberlin jedes Spiel aus einer Periode bestand und bei Smith aus drei bis sechs, umfasste jedes Spiel von Selten zehn durchgeführten Versuchen kam es insgesamt zu zehn Koalitionsbildungen zwischen Käufern.
 Neben Terminverträgen kamen auch Verträge zwischen zwei Einkäufern oder zwei Produzenten zu Stande.
 Das Resultat von Seltens Marktexperiment war, dass Durchschnittspreise und Durchschnittsmengen aller zehn Perioden mit den Vorhersagen des vollkommenen Marktes übereinstimmten.
-Kachelmeier et al. (1991) designten ein Marktexperiment, dessen Ziel es war herauszufinden, wie Käufer auf unterschiedliche Informationen über die Kosten der Verkäufer reagieren.
+Kachelmeier et al.
+(1991) designten ein Marktexperiment, dessen Ziel es war herauszufinden, wie Käufer auf unterschiedliche Informationen über die Kosten der Verkäufer reagieren.
 Der vorhergesagte Gleichgewichtspreis stellte sich schneller ein, wenn die Konsumenten wussten, dass die Preiserhöhung durch eine eingeführte Steuer verursacht wurde, und blieb länger auf dem ursprünglichen Preisniveau, wenn die Käufer vermuteten, dass mit der Preiserhöhung nur der Gewinn der Verkäufer erhöht wird.
-Kujal und Smith (2008) führten ein dem von Kachelmeier et al. sehr ähnliches Experiment durch.
+Kujal und Smith (2008) führten ein dem von Kachelmeier et al.
+sehr ähnliches Experiment durch.
 Dabei stellte sich ebenfalls das vorhergesagte Preisgleichgewicht ein.
 Auch wenn Fairnessaspekte auf Märkten eine Rolle spielen, dominiert für das Individuum auf lange Sicht doch die Eigennutzenmaximierung.
 Die Marktteilnehmer verhalten sich langfristig nutzenmaximierend.
-Neben diesen wenigen Marktexperimenten sind Experimente vermehrt zu experimentellen Arbeitsmärkten (zum Beispiel Fehr et al. 1993, Charness 1996, Fehr et al. 1998a, Fehr et al. 1998b, Hannan et al. 2002, Cooper et al. 1999, Charness 2000, Brandts/Charness 2000, Irlenbusch/Sliwka 2001, Irlenbusch/Sliwka 2006, Dürsch et al. 2008, Brandts et al. 2010) und zu experimentellen Finanzmärkten (zum Beispiel Gneezy et al. 2003, Anderson/Blue 2003, Allen/Evans 2005, Chen/Hsieh 2011, Fiedler 2011, Cheung/Palan 2011) zu finden.
+Neben diesen wenigen Marktexperimenten sind Experimente vermehrt zu experimentellen Arbeitsmärkten (zum Beispiel Fehr et al.
+1993, Charness 1996, Fehr et al.
+1998a, Fehr et al.
+1998b, Hannan et al.
+2002, Cooper et al.
+1999, Charness 2000, Brandts/Charness 2000, Irlenbusch/Sliwka 2001, Irlenbusch/Sliwka 2006, Dürsch et al.
+2008, Brandts et al.
+2010) und zu experimentellen Finanzmärkten (zum Beispiel Gneezy et al.
+2003, Anderson/Blue 2003, Allen/Evans 2005, Chen/Hsieh 2011, Fiedler 2011, Cheung/Palan 2011) zu finden.
 Eine Analyse von Leibbrandt (2012) verschiedener Daten von Labor- und Feldexperimenten ergibt, dass egoistische und weniger sozial eingestellte Verkäufer bei Produkthomogenität höhere Preise erzielen.
 Jedoch betrachtet Leibbrandt dabei nur die Verkäufer, also die Angebotsseite, und nicht die Nachfrageseite.
 Nach eingehender Literaturrecherche gibt es bisher noch kein
@@ -57,8 +67,7 @@ Damit wird die Basis für die Schätzung und Vorhersage der eigentlichen Nachfra
 In Zusammenhang mit dem Marktexperiment bezieht sich die Nachfrage auf die Konsumenten, die ihr Budget auf Fische und Brote aufteilen sollten.
 Individuen fragen Güter der Menge x von Gut i nach, also xi.
 Es gibt I Güter, sodass i = 1,…, I.
-Der Konsument hat ein Budget von m.
-Der Preis für das ite Gut ist pi.
+Der Konsument hat ein Budget von m. Der Preis für das ite Gut ist pi.
 Folgende Nachfragefunktion bringt die Variablen in Zusammenhang
 #$@FORMULA@$#:3
 #$@FORMULA@$#:0
@@ -78,26 +87,22 @@ In Relation zu einem solchen Punkt seien die folgenden Teilmengen von x definier
 9u
 10u
 11u
-Axiom 1:
-Reflexivität.
+Axiom 1: Reflexivität.
 Für zwei Güterbündel kann gelten x' > x'' oder x' x''.
 Damit gilt x' ist mindestens so gut wie x''.
 Gilt x' x'' und x'' x', so sind die Güterbündel indifferent zueinander (Katzner 2006).
-Axiom 2:
-Vollständigkeit.
+Axiom 2: Vollständigkeit.
 Für zwei Güterbündel gilt entweder x' x'' und/oder x' x''.
 Axiom 2 sagt aus, dass der Konsument Güterbündel miteinander vergleichen kann.
 Entweder ist x' mindestens so gut wie x'' oder x'' ist mindestens so gut wie
 #$@FORMULA@$#:0
-Axiom 3:
-Transitivität.
+Axiom 3: Transitivität.
 Für alle Güterbündel x', x'' und x''' folgt aus x' x'' und x'' x''', dass x' x'''.
 Wenn x' x'' gilt, ist der Konsument gegenüber den Güterbündeln x' und x'' indifferent.
 Transitivität der Präferenzen ist von zentraler Bedeutung für die Konsistenz der Präferenzordnung.
 Damit ist gegeben, dass der Konsument rational entscheiden Das Axiom der Kontinuität garantiert die Existenz einer stetigen Dabei ist X = Nutzenfunktion.
 Lexikographische Ordnungen{{hn:1:nh}} zweier Güter sind somit ausgeschlossen.
-Axiom 5:
-Strenge Monotonie.
+Axiom 5: Strenge Monotonie.
 Für alle x0, x1 gilt, wenn x{{hn:0:nh}} x', dann x{{hn:0:nh}} x' und wenn x{{hn:0:nh}} x', dann x{{hn:0:nh}} x'.
 Axiom 5 besagt, dass wenn ein Bündel mindestens genauso viel von einem Gut enthält wie ein anderes Bündel, es mindestens so gut wie das andere ist.
 Zudem ist dieses Set besser, wenn es von mindestens einem Gut mehr enthält als das andere Bündel.
@@ -110,18 +115,15 @@ Daraus folgt das Prinzip der abnehmenden Grenzrate der Substitution (GdS) (Jehle
 Am Beispiel des Experiments bedeutet dies, dass die Bereitschaft, auf einen Fisch zu verzichten um eine weitere Einheit Brot konsumieren zu können, abnimmt.
 Dieser Zusammenhang kann grafisch durch eine Indifferenzkurve gezeigt werden.
 In Abbildung 1 ist eine solche am Beispiel Fisch und Brot zu sehen.
-Der Konsument ist indifferent zwischen den Güterbündeln A, B und C.
-Die Steigung der Indifferenzkurve entspricht in jedem Punkt der GdS.
+Der Konsument ist indifferent zwischen den Güterbündeln A, B und C. Die Steigung der Indifferenzkurve entspricht in jedem Punkt der GdS.
 Der Konsument wird jeden Punkt auf der Indifferenzkurve I2 einem Punkt auf I1 vorziehen, weil Güterbündel auf höheren Kurven mehr Güter enthalten als auf niedrigeren Kurven, also mehr Nutzen stiften.
-Quelle:
-Eigene Darstellung
+Quelle: Eigene Darstellung
 1u
 ist ein Mittel, um die in den Präferenzen gewonnenen Informationen zusammenzufassen und zu charakterisieren.
 Konsumbündeln werden Zahlen, die das Nutzenniveau darstellen, zugeordnet, dabei haben bevorzugte Güterbündel höhere Zahlen als weniger erwünschte Bündel (Jehle/Reny 2011).
 Abbildung 2 verdeutlicht den Zusammenhang zwischen Konsum und Nutzen, hier am Bespiel Fisch.
 Für Brot sieht die Nachfrage im Experiment genauso aus.
-Quelle:
-Eigene Darstellung Der GN eines Gutes wird gemessen als der Nutzenanstieg, den der Konsument durch den zusätzlichen Konsum einer weiteren Einheit hat (Mankiw/Taylor 2012).
+Quelle: Eigene Darstellung Der GN eines Gutes wird gemessen als der Nutzenanstieg, den der Konsument durch den zusätzlichen Konsum einer weiteren Einheit hat (Mankiw/Taylor 2012).
 Der GN kann formal aus der ersten Ableitung der Nutzenfunktion ermittelt werden (Jehle/Reny 2011).
 Abbildung 2 ist zu entnehmen, dass die Abstände auf der y-Achse nicht proportional zu den Abständen auf der x-Achse sind.
 Der GN nimmt mit jeder Einheit ab.
@@ -138,11 +140,11 @@ Diese werden Isoquanten genannt.
 Die Kombinationen zeigen hier für die Konsumenten den Nutzen an, der ihnen bei einer bestimmten Kombination von Fisch und Brot entsteht.
 Allgemein zeigt die Isoquante die Menge aller Faktoreinsatzkombinationen an, die den gleichen Output erzeigen (Schöler 2011).
 Abbildung 4 veranschaulicht diese Beziehung für das oben genannte Bespiel.
+25
 #$@FORMULA@$#:0
 #$@FORMULA@$#:1
 #$@FORMULA@$#:2
-Quelle:
-eigene Darstellung
+Quelle: eigene Darstellung
 
 
 :::: Produktion und Kosten ::::
@@ -154,15 +156,14 @@ Daher sind die Begriffe Kosten und Erlös für das Experiment von Bedeutung.
 In Abschnitt 2.2. werden diese Begriffe kurz dargestellt.
 Wie viele Firmen hatten die Produzenten im Experiment das Ziel{{hn:2:nh}} der zwischen der Produktionsmenge und den anfallenden Kosten dar (Schöler 2011).
 Diese Kosten können zum Bespiel beim Brot das verbackene Getreide, die eingesetzte Energie zum Anfeuern des Ofens, die Personalkosten oder auch die Kosten des Vertriebs sein.
-In Abbildung 5 ist dieser Zusammenhang beispielhaft am Produkt Brot im Experiment dargestellt. 1000 Quelle:
-eigene Darstellung Wie der Abbildung zu entnehmen ist, steigen die Gesamtkosten hier überproportional mit der verkauften Menge an.
+In Abbildung 5 ist dieser Zusammenhang beispielhaft am Produkt Brot im Experiment dargestellt.
+1000 Quelle: eigene Darstellung Wie der Abbildung zu entnehmen ist, steigen die Gesamtkosten hier überproportional mit der verkauften Menge an.
 Diese Kostenfunktion mussten die Produzenten bei ihren Verhandlungen beachten, um ihre Produkte gewinnbringend verkaufen zu können.
 Zusätzlich wurden den Verkäufern ihre Grenzkosten (GK) dargelegt.
 GK bezeichnen die Kosten, die durch den Verkauf eines weiteren Brotes entstehen.
 Mathematisch ergeben sich die GK durch die erste Ableitung der Kostenfunktion (Schöler 2011).
 Die Grenzkostenkurve ist wieder für das Beispiel Brot in Abbildung 6 abgebildet.
-Quelle:
-eigene Darstellung Am Ende der Verhandlungen einer Runde zwischen Verkäufern und Käufern wurden die Gewinne der Produzenten errechnet.
+Quelle: eigene Darstellung Am Ende der Verhandlungen einer Runde zwischen Verkäufern und Käufern wurden die Gewinne der Produzenten errechnet.
 Nach den Vorgaben des Experiments sollte sich ein Gleichgewicht bei einem Preis von etwa 20 Talern (exakt 20,5 Talern) je Brot oder Fisch einstellen.
 Optimal würde ein Käufer dann jeweils etwa 10 Fische und 10 Brote (zusammen exakt 19,51 Brote und Fische) nachfragen.
 Dieses Verhältnis ist in der unteren Grafik abgebildet.
@@ -238,16 +239,13 @@ Die Entwicklung des Experimentbogens war darauf ausgerichtet, dass die Produzent
 Der Pretest{{hn:3:nh}} für das Marktexperiment wurde mit 12 Personen durchgeführt.
 Diese waren die wissenschaftlichen Hilfskräfte, die später während des Experiments die Daten protokollierten.
 Der Pretest ergab einige Verständnisschwierigkeiten und technische Probleme.
-Nach deren Beseitigung entstanden drei Versionen von Anweisungen:
-für Bäcker, Fischer und Konsumenten.
+Nach deren Beseitigung entstanden drei Versionen von Anweisungen: für Bäcker, Fischer und Konsumenten.
 Denn den Probanden wurden im Rahmen des Experiments, wie bereits in der Einleitung erwähnt,
 #$@FORMULA@$#:0
 ihrer Rolle entsprechende Informationen gegeben.
 Die Rollen wurden in der Reihenfolge des Erscheinens der Teilnehmer vergeben.
-Der erste, fünfte, neunte usf.
-Teilnehmer war Bäcker.
-Dem zweiten, sechsten, zehnten usf.
-Teilnehmer wurde eine Rolle als Fischer zugewiesen.
+Der erste, fünfte, neunte usf. Teilnehmer war Bäcker.
+Dem zweiten, sechsten, zehnten usf. Teilnehmer wurde eine Rolle als Fischer zugewiesen.
 Die übrigen Probanden bekamen eine Rolle als Konsument.
 Im nächsten Abschnitt werden die Instruktionen erläutert und ausschnittsweise die Experimentanweisungen in Tabellenform vorgestellt.
 Die vollständigen Anweisungen für Konsumenten, Fischer und Bäcker sind in Anhang 1, 2 und 3 nachzulesen.
@@ -256,13 +254,11 @@ Instruktionen Das Ziel für die Produzenten war es, einen möglichst hohen Gewin
 Dabei wurden sie darauf hingewiesen, dass die Kosten des Fisch- beziehungsweise Brotverkaufs berücksichtig werden müssen, da diese vom erzielten Erlös abgezogen werden.
 Die Gesamtkosten für die Produzenten wurden so vorgelegt, wie sie in Tabelle 1 beispielhaft für die Bäcker zu sehen sind.
 Die Geldeinheit im Experiment wurde „Taler“ genannt.
-Quelle:
-Entnommen aus dem Fragebogen des Marktexperiments für die Produzenten,
+Quelle: Entnommen aus dem Fragebogen des Marktexperiments für die Produzenten,
 17u
 Um den Zusammenhang nochmals zu verdeutlichen, wurde den Probanden, denen eine Rolle als Produzent zugwiesen wurde, zudem noch eine Tabelle mit den zusätzlichen Kosten für ein verkauftes Brot zur Verfügung gestellt.
 Diese ist wieder bespielhaft für die Bäcker in Tabelle 2 zu sehen.
-Des Weiteren wurde den Produzenten zu dieser Tabelle folgende Hilfestellung gegeben:
-„Um die zusätzlichen Kosten für ein weiteres Brot auszurechnen, können Sie auch allgemein einfach die Hälfte der schon verkauften Brote nehmen und 0,5 Taler hinzuaddieren.
+Des Weiteren wurde den Produzenten zu dieser Tabelle folgende Hilfestellung gegeben: „Um die zusätzlichen Kosten für ein weiteres Brot auszurechnen, können Sie auch allgemein einfach die Hälfte der schon verkauften Brote nehmen und 0,5 Taler hinzuaddieren.
 Wenn Sie schon fünfzig Brote verkauft haben, kostet das nächste Brot (50 /2) + 0,5 = 25,5 Taler.
 Es macht also keinen Sinn für Sie, ein einundfünfzigstes Brot zu verkaufen, wenn Sie dafür nicht mindestens 26 Taler als Preis aushandeln können.
 Bedenken Sie aber auch, die ersten Brote nicht zu billig zu verkaufen, vielleicht hätten Sie sie später in der Runde zu einem höheren Preis verkaufen können.“
@@ -280,20 +276,16 @@ Ferner wurden den Produzenten folgende Informationen gegeben:
 21u
 Die Probanden, denen die Rolle der Konsumenten zugewiesen wurde, hatten das Ziel, möglichst viele Fische und Brot von ihrem Budget zu kaufen, um ihren Nutzen zu maximieren.
 Auch den Konsumenten wurden vor Beginn des eigentlichen Experiments verschiedene Instruktionen gegeben.
-Den Konsumenten wurde ihr Nutzen in Form in folgender Tabelle geliefert:
-Tabelle 3:
-Zusätzlicher Nutzen für einen Konsumenten durch den Erwerb eines In Tabelle 3 ist zu sehen, dass der Erwerb eines zwanzigsten Brotes keinen Sinn macht, da der zusätzliche Nutzen 0 ist.
+Den Konsumenten wurde ihr Nutzen in Form in folgender Tabelle geliefert: Tabelle 3: Zusätzlicher Nutzen für einen Konsumenten durch den Erwerb eines In Tabelle 3 ist zu sehen, dass der Erwerb eines zwanzigsten Brotes keinen Sinn macht, da der zusätzliche Nutzen 0 ist.
 Auch den Konsumenten wurden weitere Zahlenbeispiele zur Berechnung ihres Nutzens für die Verhandlungen geliefert.
 Nach den Vorgaben der obigen Tabelle war es für die Käufer optimal, eine in etwa gleiche Anzahl an Broten und Fischen zu erwerben.
 Zusätzlich erhielten sie noch eine Tabelle, die den Nutzen verschiedener Kombinationen von Fisch und Brot übersichtlich darstellt.
 Diese Information ist in Tabelle 4 zu sehen.
-Quelle:
-Fragebogen des Marktexperiments für die Konsumenten, S. 3
+Quelle: Fragebogen des Marktexperiments für die Konsumenten, S. 3
 8u
 9u
 hinterlegt.
-Auch die Konsumenten erhielten noch zusätzliche Informationen folgender Art:
- Taler des Budgets, die nicht ausgegeben wurden, werden am Ende einer in Form einer Steuer eingeführt.
+Auch die Konsumenten erhielten noch zusätzliche Informationen folgender Art:  Taler des Budgets, die nicht ausgegeben wurden, werden am Ende einer in Form einer Steuer eingeführt.
 Damit mussten die Produzenten 10 % ihrer Erlöse an ein fiktives Finanzamt abführen.
 Sowohl Verkäufern als auch Käufern wurden zu Ende des Fragebogens Verständnisfragen vorgelegt.
 Diese dienten dazu, dass sich die Probanden mit ihren Experimentvorgaben vertraut machen, um anschließend optimal vorbereitet an dem Marktexperiment teilzunehmen.
@@ -309,18 +301,15 @@ Deshalb war es notwendig, im Rahmen des Experiments die Risikoeinstellung der Te
 Dazu wurde eine Lotterie von Holt und Laury (2002) verwendet.
 Die Probanden mussten zwischen Lotterien mit unterschiedlich hohem Gewinn und unterschiedlich hohem Risiko wählen.
 Tabelle 5 zeigt die Lotterie, die den Teilnehmern vorgelegt wurde.
-Quelle:
-Holt/Laury 2002, S. 5
+Quelle: Holt/Laury 2002, S. 5
 1u
 von 2,00 € und zu 90 % zu einer Auszahlung von 1,60 €.
-Die Auszahlungen weichen weniger stark voneinander ab als in der risikoreicheren Lotterie 2:
-Hier
+Die Auszahlungen weichen weniger stark voneinander ab als in der risikoreicheren Lotterie 2: Hier
 #$@FORMULA@$#:0
 Wahrscheinlichkeit) ausgezahlt.
 Beispielhaft errechnet sich entsprechend für Option A bei Lotterie 1 ein Erwartungswert von 1,64 €, für Lotterie 2 ergibt sich ein Erwartungswert von 0,475 €.
 Steigt die Wahrscheinlichkeit für die Auszahlung eines höheren Gewinns, so wechselt ein weniger risiskofreudiger Proband zu Studien, die das Verhalten von Probanden bei keinem finanziellen Anreiz, einem hohen und einem niedrigen Anreiz untersuchten.
-Die Ergebnisse sind widersprüchlich:
-Zum Teil ergaben die Studien keinen Unterschied bei verschiedenen Anreizen, manche ergaben, dass finanzielle Anreize Irrationalität vollkommen beseitigen.
+Die Ergebnisse sind widersprüchlich: Zum Teil ergaben die Studien keinen Unterschied bei verschiedenen Anreizen, manche ergaben, dass finanzielle Anreize Irrationalität vollkommen beseitigen.
 Für die vorliegende Arbeit sind aber vor allem die Studien interessant, die sich mit ökonomischen Verhalten bei Handeln, Verhandeln und Glücksspiel beschäftigen.
 Diese Studien lassen den Schluss zu, dass sich das Verhalten im Allgemeinen nicht verändert.
 Bei einer dokumentierten Veränderung kann interpretiert werden, dass sich das Verhalten von einem sozial-akzeptierten hin zu einem realistischeren Verhalten verändert.
@@ -330,8 +319,7 @@ Daher wurde in dem durchgeführten Marktexperiment ein finanzieller Anreiz integ
 Die Auszahlungshöhe richtet sich bei den Produzenten nach dem Gewinn, bei den Konsumenten nach der Höhe der Nutzeneinheiten.
 Um weitere Anreize zu setzen, sich gewinn-/nutzenmaximierend zu verhalten, erhielten die vier Konsumenten mit dem niedrigsten Nutzen und die zwei Produzenten mit dem niedrigsten Gewinn nur die garantierte Vergütung von 20 €.
 Die relativen Unterschiede zwischen den Teilnehmern wurden zusätzlich dadurch vergrößert, dass die besseren Konsumenten ihre Auszahlung in Relation zum viertschlechtesten, die Produzenten analog zum zweitschlechtesten, erhielten.
-Diese Regelung wurde den Probanden folgenderweise in dem Fragebogen erläutert:
-Produzenten Konsumenten „Wenn Sie in einer Runde zu den vier Konsumenten mit dem niedrigsten Nutzen gehören, erhalten Sie für diese Runde keine zusätzlichen Euro Auszahlung.
+Diese Regelung wurde den Probanden folgenderweise in dem Fragebogen erläutert: Produzenten Konsumenten „Wenn Sie in einer Runde zu den vier Konsumenten mit dem niedrigsten Nutzen gehören, erhalten Sie für diese Runde keine zusätzlichen Euro Auszahlung.
 Wenn Sie aber in einer Runde 20 Nutzeneinheiten mehr erreicht haben als der Konsument mit dem viertniedrigsten Nutzen, werden Sie doppelt so viel Euro für diese Runde ausbezahlt bekommen als ein Konsument, der nur 10 Nutzeneinheiten besser ist.
 Kleine Unterschiede im Nutzen können also große Unterschiede im Verdienst bedeuten.“
 So sollte vermieden werden, dass Teilnehmer sich im Vorhinein auf eine niedrige Auszahlung einstellen und ihre Anstrengungen somit im Marktexperiment verringern.
@@ -352,14 +340,16 @@ Anschließend wird das methodische Vorgehen vorgestellt.
 
 
 Kapitel fünf werden daraufhin die Ergebnisse der getesteten Hypothesen dargestellt und im sechsten Kapitel diskutiert.
-Geschlecht In der Sozialpsychologie ist das Geschlecht die am häufigsten untersuchte Variable bei Verhandlungen (Neu et al. 1988).
+Geschlecht In der Sozialpsychologie ist das Geschlecht die am häufigsten untersuchte Variable bei Verhandlungen (Neu et al.
+1988).
 Die traditionelle stereotype Verteilung der Geschlechterrollen lässt vermuten, dass Männer im Vergleich zu Frauen eher beharrlicher verhandeln und kompetitiver agieren.
-Frauen hingegen wird unterstellt, dass sie kooperativer seien und sich eher anpassten als Männer (Matheson 1991, Pruitt et al. 1986, Stamato 1992, Watson 1994).
+Frauen hingegen wird unterstellt, dass sie kooperativer seien und sich eher anpassten als Männer (Matheson 1991, Pruitt et al.
+1986, Stamato 1992, Watson 1994).
 Watson argumentiert auch, dass dadurch, dass Frauen weniger kompetitiv in Verhandlungen sind, auch ihre Ergebnisse weniger erfolgreich sind (1994).
 Dies führt zu der Hypothese, dass Frauen in dem durchgeführten Experiment zu niedrigeren Gesamtrenten kommen als Männer.
 1.
-Hypothese:
-Das Geschlecht hat keinen Einfluss auf das Verhandlungsgeschick und damit auf die Gesamtrente Die Hypothese wird auch durch Untersuchungen gestützt, die ergaben, dass Frauen weniger argumentativ vorgehen, einfacher zu überreden oder zu überzeugen sind und Gegenleistungen ihrer Ansicht nach weniger verdient haben (Eagly/Carli 1981, Major et al. 1984, Rancer/Baukus 1987).
+Hypothese: Das Geschlecht hat keinen Einfluss auf das Verhandlungsgeschick und damit auf die Gesamtrente Die Hypothese wird auch durch Untersuchungen gestützt, die ergaben, dass Frauen weniger argumentativ vorgehen, einfacher zu überreden oder zu überzeugen sind und Gegenleistungen ihrer Ansicht nach weniger verdient haben (Eagly/Carli 1981, Major et al.
+1984, Rancer/Baukus 1987).
 Walters, Stuhlmacher und Meyer (1998) führten zu den oben benannten Geschlechterunterschieden bei Verhandlungen eine Meta-Analyse durch.
 Die Analyse der 62 einbezogenen Untersuchungen ergab, dass signifikante Unterschiede bestehen.
 Frauen agieren in Verhandlungen kooperativer als Männer.
@@ -374,15 +364,15 @@ Handeln auf dem Markt war risikoreich.
 Die Teilnehmer in dem Marktexperiment konnten ihr Risiko senken, indem sie den Markt, der am Computer simuliert wurde, verlassen.
 Damit konnten sie keine weiteren Gewinne erzielen, aber auch nichts von ihrem Geld verlieren.
 Das Ergebnis war, dass Frauen öfter Versicherungen abschlossen als Männer und sich in dem Marktexperiment risikoaverser verhielten.
-Schubert et al. (1999) gestalteten ihre Lotterie als eine Investitions- und Versicherungsentscheidung.
+Schubert et al.
+(1999) gestalteten ihre Lotterie als eine Investitions- und Versicherungsentscheidung.
 In diesem Kontext unter kontrollierten ökonomischen Bedingungen konnten die Wissenschaftler keinen Unterschied bei den Geschlechtern in der Wahl finanzieller Risiken aufweisen.
 Bei der im Experiment verwendeten Lotterie kamen Holt und Laury (2002) zu dem Ergebnis, dass Frauen bei niedrigeren Auszahlungen signifikant risikoaverser sind als Männer.
 Bei hohen Auszahlungen ließ sich jedoch kein Unterschied in der Risikoeinstellung aufweisen.
 Harrison (2005) allerdings korrigierte die Lotterie von Holt und Laury um Order Effects, also Verzerrungen der Ergebnisse, die durch eine vorgegebene Reihenfolge entstehen, und kam zu dem Ergebnis, dass es keinen signifikanten Unterschied bei der Risikoeinstellung von Männern und Frauen gibt.
 Folgerichtig wird deshalb bei dem durchgeführten Marktexperiment getestet, ob es einen signifikanten Unterschied bei der Risikoeinstellung zwischen Männern und Frauen gibt.
 2.
-Hypothese:
-Das Geschlecht hat keinen Einfluss auf die Risikoeinstellung
+Hypothese: Das Geschlecht hat keinen Einfluss auf die Risikoeinstellung
 
 
 :::: Hypothese: Das Geschlecht hat keinen Einfluss auf die Risikoeinstellung ::::
@@ -395,26 +385,20 @@ Die Erwartungsnutzentheorie wurde 1947 von von Neumann und Morgenstern begründe
 Der Erwartungswert (EW) einer unsicheren Alternative a lässt sich formal als die Summe ihrer Einzelkonsequenzen und deren Eintrittswahrscheinlichkeiten (pi) darstellen:
 #$@FORMULA@$#:1
 #$@FORMULA@$#:2
-Mit :
-EV = Expected Value (Erwartungswert) a = Nutzen einer unsicheren Alternative p = Wahrscheinlich des Eintretens von a Es existiert eine Nutzenfunktion u, wenn die Präferenzen der entscheidenden Person die Axiome der vollständigen Ordnung, der Stetigkeit und der Unabhängigkeit{{hn:6:nh}} erfüllen.
+Mit : EV = Expected Value (Erwartungswert) a = Nutzen einer unsicheren Alternative p = Wahrscheinlich des Eintretens von a Es existiert eine Nutzenfunktion u, wenn die Präferenzen der entscheidenden Person die Axiome der vollständigen Ordnung, der Stetigkeit und der Unabhängigkeit{{hn:6:nh}} erfüllen.
 Die Axiome garantieren, dass der Entscheider seine Wahl nicht willkürlich trifft.
-Der erwartete Nutzen (EU) einer unsicheren Alternative a ist definiert durch:
-( ) ∑ ( ) ( ) Mit :
-EU = Expected Utility (erwarteter Nutzen) p = Wahrscheinlich des Eintretens von a u = Nutzenfunktion von a a = Nutzen einer unsicheren Alternative Eine Lotterie a wird dann einer Lotterie b vorgezogen, wenn der erwartete Nutzen von a größer ist als der erwartete Nutzen von b.
+Der erwartete Nutzen (EU) einer unsicheren Alternative a ist definiert durch: ( ) ∑ ( ) ( ) Mit : EU = Expected Utility (erwarteter Nutzen) p = Wahrscheinlich des Eintretens von a u = Nutzenfunktion von a a = Nutzen einer unsicheren Alternative Eine Lotterie a wird dann einer Lotterie b vorgezogen, wenn der erwartete Nutzen von a größer ist als der erwartete Nutzen von b.
 Die Nutzenfunktion u ordnet jeder Konsequenz eine reelle Zahl zu; damit ist sowohl die Einstellung zum Wert der Konsequenz als auch das Risikoverhalten dargestellt (Eisenführ/Weber 2003).
 Optimal ist demnach für den Probanden eine Alternative genau dann, wenn sie den höchsten Erwartungsnutzen hat.
 Handelt der Proband also rational, so würde er sich in der im Fragebogen angeführten Lotterie anhand der Erwartungsnutzentheorie verhalten.
 In Abbildung 8 sind drei streng monoton steigende Nutzenfunktionen uRN, uRF, und uRS zu sehen, die über beliebige Konsequenzen definiert sein können.
 Die minimale Konsequenz ist mit xmin, die maximale Konsequenz mit xmax gekennzeichnet.
 Die Funktionen unterscheiden sich in ihrer Krümmung.
-Es gilt Quelle:
-Eisenführ/Weber (2003), S. 222 Die Krümmung der Nutzenfunktion kann allgemeine Aussagen über das Quelle:
-Eigene Darstellung in Anlehnung an Eisenführ/Weber 2003, S. 223
+Es gilt Quelle: Eisenführ/Weber (2003), S. 222 Die Krümmung der Nutzenfunktion kann allgemeine Aussagen über das Quelle: Eigene Darstellung in Anlehnung an Eisenführ/Weber 2003, S. 223
 1u
 keinen signifikanten Einfluss des Risikoverhaltens.
 Riley und Chow (1992) konnten in ihrer Untersuchung darlegen, dass das Risikoverhalten mit dem Alter abnimmt, dass ärmere Personen und sehr Wohlhabende risikoaverser sind als Personen mit einem durchschnittlichen Vermögen.
-Weitere Studien befassen sich mit dem Risikoverhalten auf Finanzmärkten:
-Ang und Schwarz (1985) verglichen Märkte mit risikoaverseren Anlegern (konservativ) und risikoaffinen Anlegern (spekulativ).
+Weitere Studien befassen sich mit dem Risikoverhalten auf Finanzmärkten: Ang und Schwarz (1985) verglichen Märkte mit risikoaverseren Anlegern (konservativ) und risikoaffinen Anlegern (spekulativ).
 Sie kamen zu dem Ergebnis, dass sich der risikoaversere Markt schneller an einen Gleichgewichtspreis anglich.
 Fellner und Maciejovsky (2002) beziehen die individuelle Risikoeinstellung von Sicherheitsäquivalenten und die Risikoeinstellung, die durch Lotterien ermittelt wurden, auf das Marktverhalten.
 Sie stellten heraus, dass nur das durch Lotterien ermittelte Risikoverhalten relevant ist.
@@ -425,10 +409,8 @@ Anders als in der oben beschriebenen Literatur waren die Probanden allerdings du
 Es ist zu vermuten, dass ein risikoaverser Käufer eher höhere Preise in Kauf nimmt als ein risikoneutraler Konsument.
 Denn wenn ein Käufer den Kauf hinauszögert oder noch mit weiteren Verkäufern verhandelt, kann es sein, dass er einen noch höheren Preis akzeptieren muss oder dass das Zeitfenster zu Ende geht, sodass er keinen Kauf mehr tätigen kann.
 weniger oder kein weiterer Kauf/Verkauf mehr unternommen werden kann.
-Daraus ergibt sich die vierte Hypothese:
-4.
-Hypothese:
-Risikoaversion hat keinen Einfluss auf den Zeitpunkt des Abschlusses der letzten Transaktion in einer Runde Rationalität Bei wirtschaftlichen Handlungen wird oft der Homo oeconomicus als fiktiver Akteur unterstellt.
+Daraus ergibt sich die vierte Hypothese: 4.
+Hypothese: Risikoaversion hat keinen Einfluss auf den Zeitpunkt des Abschlusses der letzten Transaktion in einer Runde Rationalität Bei wirtschaftlichen Handlungen wird oft der Homo oeconomicus als fiktiver Akteur unterstellt.
 Dieser handelt vollständig rational, das heißt er entscheidet nutzenmaximierend (vergleiche Kapitel 2), hat feste Präferenzen und verfügt über vollständige Information (Oberender/Zerth 2007).
 Vor Beginn des Marktexperiments wurden den Teilnehmern, wie in Kapitel drei beschrieben, möglichst viele Informationen zum Experiment geliefert.
 Damit sollte den Probanden die Möglichkeit gegeben werden, rational zu handeln.
@@ -437,12 +419,15 @@ Daraus folgt die Hypothese, dass ein Zusammenhang zwischen der Anzahl korrekt be
 Je mehr Fragen richtig gelöst wurden, desto besser wurde das Marktexperiment verstanden und somit konnten auch höhere Gesamtrenten durch rationales Handeln erzielt werden.
 Die Anzahl richtig beantworteter Verständnisfragen kann als Proxy für Rationalität verwendet werden.
 5.
-Hypothese:
-Die Anzahl richtig gelöster Verständnisfragen hat keinen Einfluss auf die Höhe der Gesamtrente Ein zentraler Bestandteil des Experiments sind die Verhandlungen zwischen Verkäufern und Käufern.
+Hypothese: Die Anzahl richtig gelöster Verständnisfragen hat keinen Einfluss auf die Höhe der Gesamtrente Ein zentraler Bestandteil des Experiments sind die Verhandlungen zwischen Verkäufern und Käufern.
 Eine Verhandlung kann definiert werden als ein Prozess, bei dem Individuen mit anfangs unterschiedlichen Interessen ihre Konflikte lösen und zu einer beiderseitigen Übereinstimmung kommen können.
-Alltagssituationen Erfahrung zu einer besseren Beurteilung führen kann, aber nicht muss; die Ergebnisse einer Studie von Ball et al. (1991) zeigten, dass das Verhandlungsverhalten unter Unsicherheit und asymmetrischer Information auch nicht durch Erfahrung so verändert wird, dass es notwendigerweise zu besserer Leistung führt.
-Eine andere Studie belegt, dass sich die Leistung verbessert, wenn mit dem Verhandlungspartner integrativ verhandelt wird (Bazerman et al. 1985).
-Die Experimentvorgaben haben offensichtlich entscheidenden Einfluss auf die Ergebnisse der Verhandlungen (Bazerman et al. 1985, Neale/Norhtcraft 1986, Neale et al. 1987).
+Alltagssituationen Erfahrung zu einer besseren Beurteilung führen kann, aber nicht muss; die Ergebnisse einer Studie von Ball et al.
+(1991) zeigten, dass das Verhandlungsverhalten unter Unsicherheit und asymmetrischer Information auch nicht durch Erfahrung so verändert wird, dass es notwendigerweise zu besserer Leistung führt.
+Eine andere Studie belegt, dass sich die Leistung verbessert, wenn mit dem Verhandlungspartner integrativ verhandelt wird (Bazerman et al.
+1985).
+Die Experimentvorgaben haben offensichtlich entscheidenden Einfluss auf die Ergebnisse der Verhandlungen (Bazerman et al.
+1985, Neale/Norhtcraft 1986, Neale et al.
+1987).
 Neale, Huber und Northcraft (1987) führten eine ökonomisch simulierte Verhandlung durch.
 Hatten Käufer Informationen zu der Rolle, die sie bei Verhandlungen hatten, erreichten diese deutlich bessere Ergebnisse als Verkäufer, denen nur ein Ziel vorgegeben war, aber keine Rolle zugewiesen worden war.
 Dabei hatte die Aufgabenstellung an sich keinen Einfluss.
@@ -454,20 +439,14 @@ Stigler (1961) widerspricht dieser Theorie, indem er anführt, dass unerfahrener
 Die eben vorgestellten Studien hatten dabei den Fokus auf dem Prinzip der beschränkten Rationalität, das zuerst von March und Simon (1958) beschrieben wurde.
 Ziel war es herauszufinden, warum die Ergebnisse solcher Verhandlungen von rationalem Handeln abweichen.
 Wenn Erfahrung und beschränkte Rationalität keine Rolle spielten, dann könnten die sechste, siebte, Teilnehmer sich von Runde zu Runde verbessert.
-Daraus wird die sechste Hypothese abgeleitet:
-6.
-H0:
-In späteren Runden ist die Rente nicht signifikant unterschiedlich zu der Rente in früheren Runden Ebenso kann die Vermutung angestellt werden, dass die Teilnehmer auf Grund des Preises der letzten Transaktion einer Runde beeinflusst werden, weil sie von dieser Erfahrung profitieren und so eine neue Vorstellung von dem Preis der ersten Transaktion der darauffolgenden Runde haben.
+Daraus wird die sechste Hypothese abgeleitet: 6.
+H0: In späteren Runden ist die Rente nicht signifikant unterschiedlich zu der Rente in früheren Runden Ebenso kann die Vermutung angestellt werden, dass die Teilnehmer auf Grund des Preises der letzten Transaktion einer Runde beeinflusst werden, weil sie von dieser Erfahrung profitieren und so eine neue Vorstellung von dem Preis der ersten Transaktion der darauffolgenden Runde haben.
 Dieser könnte deshalb durch den Preis der letzten Transaktion einer Runde beeinflusst werden.
-Daher wird in der siebten Hypothese folgende Nullhypothese formuliert:
-7.
-H0:
-Der Reservationspreis für die erste Transaktion einer Runde wird nicht beeinflusst durch vorangegangene Erfahrungen Es könnte auch ein Zusammenhang zwischen der Anzahl der insgesamt geführten Verhandlungen und der Höhe der Gesamtrente bestehen.
+Daher wird in der siebten Hypothese folgende Nullhypothese formuliert: 7.
+H0: Der Reservationspreis für die erste Transaktion einer Runde wird nicht beeinflusst durch vorangegangene Erfahrungen Es könnte auch ein Zusammenhang zwischen der Anzahl der insgesamt geführten Verhandlungen und der Höhe der Gesamtrente bestehen.
 Je mehr Verhandlungen geführt wurden, desto mehr Erfahrung konnte gesammelt werden und daher in weiteren Verhandlungen besser agiert werden.
-Daher wird zusätzlich folgende Hypothese getestet:
-8.
-H0:
-Die Anzahl der Transaktionen hat keinen Einfluss auf die Höhe der Gesamtrente Dieselbe Vermutung kann angestellt werden, wenn die Interaktionen der Käufer mit den Verkäufern getestet werden.
+Daher wird zusätzlich folgende Hypothese getestet: 8.
+H0: Die Anzahl der Transaktionen hat keinen Einfluss auf die Höhe der Gesamtrente Dieselbe Vermutung kann angestellt werden, wenn die Interaktionen der Käufer mit den Verkäufern getestet werden.
 Es könnte sein, dass der Käufer einen weniger geschickten Verkäufer gefunden hat.
 Der Grund kann aber auch sein, dass je öfter ein Käufer mit demselben Verkäufer um den Preis feilscht, dass er diesen umso besser kennt und seine Erfahrung nutzen kann.
 Daher könnte es ihm möglich sein, seinen Nutzen zu erhöhen.
@@ -513,8 +492,10 @@ Der Käufer hat also zu Beginn der Preissuche eine feste Vorstellung, wie viele 
 Diese Modelle basieren auf einem Ansatz von Stigler (1961), die Bezeichnung FSS ist zum Beispiel in einem Paper von Rothschild zu finden (1974).
 Rothschild zeigt, dass die Käufer während des Suchvorgangs Informationen über die Preisverteilung sammeln.
 Die erwartete Streuung der Preise ist der Fokus vieler Studien.
-Bezüglich Offline Märkten, also Märkte außerhalb des Internets, können zum Beispiel Studien von Sorensen (2000), Friberg et al. (2001) oder Eckard (2004) herangezogen werden.
-Für Studien zu Online Märkten, also Märkten, die im Internet lokalisiert sind, werden hier beispielhaft Studien von Gatti und Kattuman (2003), Baye et al. (2004) und Hong und Shum (2006) angeführt.
+Bezüglich Offline Märkten, also Märkte außerhalb des Internets, können zum Beispiel Studien von Sorensen (2000), Friberg et al.
+(2001) oder Eckard (2004) herangezogen werden.
+Für Studien zu Online Märkten, also Märkten, die im Internet lokalisiert sind, werden hier beispielhaft Studien von Gatti und Kattuman (2003), Baye et al.
+(2004) und Hong und Shum (2006) angeführt.
 Sorensen (2000) untersuchte in seiner Studie, die er 1998 durchführte, die Preisstreuung bei verschreibungspflichtigen Arzneimitteln.
 Er schlussfolgerte aus seinen Ergebnissen, dass die Preisstreuung abnimmt, wenn Kunden vermehrt Preise vergleichen.
 In Gebieten, wo dies mit höheren Suchkosten für die Käufer verbunden ist, wie in ländlichen Gegenden, nähert sich der Markt für Arzneimittel weniger schnell oder gar nicht einem einheitlichen Preis.
@@ -523,7 +504,8 @@ Eckard (2004) verglich die Preisstreuung für drei identische Produkte (Backpulv
 Auf Grund der modernen Technologie könnte vermutet werden, dass die Preisstreuung in ergaben, dass es sowohl Unterschiede in der Preisstreuung zwischen europäischen Ländern als auch innerhalb europäischer Länder gibt.
 Die Preisstreuung scheint für höherpreisige Produkte geringer zu sein.
 Des Weiteren ist auch die Produktart innerhalb der Produktkategorie Consumer Electronics verantwortlich für den Grad der Preisstreuung.
-Baye et al. (2004) schlussfolgerten, dass entsprechend der ökonomischen Theorie die Preisstreuung mit zunehmender Anzahl an Unternehmen im Internet abnimmt.
+Baye et al.
+(2004) schlussfolgerten, dass entsprechend der ökonomischen Theorie die Preisstreuung mit zunehmender Anzahl an Unternehmen im Internet abnimmt.
 Hong und Shum (2006) versuchten in ihrem Paper ein Modell zu entwickeln, das mit Hilfe der ermittelten Preisstreuung die Suchkosten zu schätzen vermag.
 Dabei betrachten sie sowohl sequenzielle aus auch nicht-sequenzielle Suchverfahren.
 Viele Arbeiten befassen sich mit dem Preissuchverhalten und der Streuung von Preisen, weil dies auch für Anbieter und die Festsetzung ihrer Preise wichtig ist (Stiglitz 1987, Bester 1994, Stahl 1996, Hong/Shum 2006).
@@ -542,10 +524,8 @@ Es kann aber vermutet werden, dass die Käufer sich in
 erwarten auf Grund ihrer Erfahrungen, dass die Preise weniger stark streuen.
 Die Anzahl der aufgesuchten Verkäufer ist im Experiment nicht dokumentiert.
 Deshalb wird die Anzahl der getätigten Käufe herangezogen.
-So wird folgende Hypothese abgeleitet:
-10.
-H0:
-Bei einer stärkeren erwarteten Streuung der Preise (frühere Runden) werden nicht mehr Käufe getätigt als bei einer weniger stark erwarteten Streuung der Preise (spätere Runden) Steuer Wie in Kapitel drei beschrieben, wurde in einer späteren Runde die Modifikation einer Steuer eingeführt.
+So wird folgende Hypothese abgeleitet: 10.
+H0: Bei einer stärkeren erwarteten Streuung der Preise (frühere Runden) werden nicht mehr Käufe getätigt als bei einer weniger stark erwarteten Streuung der Preise (spätere Runden) Steuer Wie in Kapitel drei beschrieben, wurde in einer späteren Runde die Modifikation einer Steuer eingeführt.
 Das bedeutet, dass die Produzenten eine Steuer an ein fiktives Finanzamt in Höhe von zehn Prozent ihrer Erlöse abführen mussten.
 Nach § 15 UStG kann ein Gewerbetreibender die Umsatzsteuer als Vorsteuerbetrag abziehen, wenn er an einen anderen Gewerbetreibenden verkauft (Bundesregierung der BRD 2012).
 Der Umsatzsteuerpflichtige muss zwar die Steuer abführen, allerdings kann er bei Ausschluss des Vorsteuerabzugs die Steuer als Kostenfaktor in seiner Kostenfunktion berücksichtigen, sodass er die Steuerlast an die Konsumenten weitergibt (Kußmaul 2010).
@@ -554,19 +534,17 @@ Der Gesetzgeber hat keinen Einfluss auf die Verteilung der Steuerlast zwischen P
 Da die Produzenten in dem durchgeführten Experiment nur an den Endverbraucher verkaufen, sie aber die Umsatzsteuer abführen müssen, werden sie versuchen, diese Steuer auf die Käufer zu überwälzen.
 Dazu können die Durchschnittspreise und Veränderungen in der Produzentenrente betrachtet werden.
 Weicht die Produzentenrente in einer Steuerrunde vor Abzug der Steuer weniger als 10 % im Vergleich zu der Rente vor Einführung der Steuer ab, so ist es den Produzenten nicht gelungen, die Steuer vollständig zu überwälzen.
-Durch einen Korrelationstest soll ermittelt werden, ob ein Zusammenhang Daraus kann die Überlegung abgeleitet werden, dass Verkäufer, die vor der Einführung der Steuer ein besseres Verhandlungsgeschick, also zu den 50 % Produzenten mit den höheren Renten gehören, auch in den Steuerrunden ähnlich hohe Renten haben. 11 b. H0:
-Die Produzentenrente der Produzenten, die vor Einführung der Steuer unterdurchschnittlich hohe Renten hatten, korreliert mit der Höhe der Produzentenrente nach Einführung der Steuer.
-Ebenso kann getestet werden, ob die Rente der Produzenten, die vor Einführung der Steuer unterdurchschnittliche Gewinne erzielten, mit der Rente in den Steuerrunden korrelieren. 11 c. H0:
-Die Produzentenrente der Produzenten, die vor Einführung der Steuer überdurchschnittlich hohe Renten hatten, korreliert mit der Höhe der Produzentenrente nach Einführung der Steuer.
+Durch einen Korrelationstest soll ermittelt werden, ob ein Zusammenhang Daraus kann die Überlegung abgeleitet werden, dass Verkäufer, die vor der Einführung der Steuer ein besseres Verhandlungsgeschick, also zu den 50 % Produzenten mit den höheren Renten gehören, auch in den Steuerrunden ähnlich hohe Renten haben.
+11 b. H0: Die Produzentenrente der Produzenten, die vor Einführung der Steuer unterdurchschnittlich hohe Renten hatten, korreliert mit der Höhe der Produzentenrente nach Einführung der Steuer.
+Ebenso kann getestet werden, ob die Rente der Produzenten, die vor Einführung der Steuer unterdurchschnittliche Gewinne erzielten, mit der Rente in den Steuerrunden korrelieren.
+11 c. H0: Die Produzentenrente der Produzenten, die vor Einführung der Steuer überdurchschnittlich hohe Renten hatten, korreliert mit der Höhe der Produzentenrente nach Einführung der Steuer.
 Marktgleichgewicht In der ökonomischen Theorie wird angenommen, dass sich bei vollkommenem Wettbewerb ein Gleichgewicht von Angebot und Nachfrage einstellt (Fisher 1970).
 Das Modell einer fallenden Nachfragekurve und einer steigenden Angebotskurve mit einem Schnittpunkt, der das Gleichgewicht darstellt, geht zurück auf Marshall (1890).
 Arrow und Debreu (1954) haben gezeigt, dass ein Gleichgewicht auf Wettbewerbsmärkten entsteht.
-Adam Smith (1776) beschrieb die effiziente Allokation von Ressourcen mit der Metapher der Unsichtbaren Hand:
-Es entsteht ein Gleichgewicht von Preis und Menge, auch wenn dies nicht in der Absicht jedes einzelnen Individuums liegen muss.
+Adam Smith (1776) beschrieb die effiziente Allokation von Ressourcen mit der Metapher der Unsichtbaren Hand: Es entsteht ein Gleichgewicht von Preis und Menge, auch wenn dies nicht in der Absicht jedes einzelnen Individuums liegen muss.
 In Abbildung 9 ist dieser Schnittpunkt G von Angebots- und Nachfragefunktion zu sehen.
 Ist dieser Punkt realisiert, so liegt ein Gleichgewicht vor.
-Quelle:
-Eigene Darstellung
+Quelle: Eigene Darstellung
 1u
 Arbeitsmarkt oder den Immobilienmarkt.
 Diamond (1971) stellt den Markt als Verhandlungen zwischen Individuen dar.
@@ -579,10 +557,8 @@ Burdett und Judd (1983) hingegen wiesen in ihrem Paper nach, dass die Möglichke
 In der experimentellen Ökonomie waren es Chamberlin (1948) und Smith (1962), die Studien zum Marktverhalten im Wettbewerbsmarkt durchführten.
 Chamberlin stellte fest, dass die gehandelte Menge über der vorhergesagten Gleichgewichtsmenge lag.
 Smith hingegen Varianzen der Renten Konsumenten im Vergleich zwischen einzelnen Runden besteht.
-Daher wird in der letzten Hypothese Folgendes getestet:
-12.
-H0:
-Es besteht kein Unterschied in der Varianz der Renten einzelner Runden der Produzenten beziehungsweise der Konsumenten.
+Daher wird in der letzten Hypothese Folgendes getestet: 12.
+H0: Es besteht kein Unterschied in der Varianz der Renten einzelner Runden der Produzenten beziehungsweise der Konsumenten.
 
 
 :::: Methodisches Vorgehen ::::
@@ -591,15 +567,18 @@ Es besteht kein Unterschied in der Varianz der Renten einzelner Runden der Produ
 Im zweiten Teil dieses Kapitels wird das methodische Vorgehen bei der Datenauswertung vorgestellt.
 Dabei wird zunächst auf die Regressionsanalyse und die Stichprobenziehung eingegangen, anschließend werden die erhobenen Daten charakterisiert.
 Im Anschluss daran wird die Stichprobe des Marktexperiments deskriptiv beschrieben.
-4.2.1.
-Regressionsanalyse Die Regressionsanalyse gehört zu den multivariaten Analyseverfahren.
+
+
+:::: Regressionsanalyse ::::
+
+
+Die Regressionsanalyse gehört zu den multivariaten Analyseverfahren.
 Bei dieser Art der Dependenz-Analyse sollen unterschiedliche Werte einer abhängigen Variablen auf unabhängige Variablen zurückgeführt werden, um so einen möglichen Zusammenhang herauszustellen.
 Zunächst muss dazu das entsprechende Regressionsmodell formuliert werden.
 Anschließend folgt die Schätzung der Parameter des Regressionsmodells.
 Im multivariaten Fall nimmt die Gleichung folgende Form an (Kuß/Eisend 2010):
 #$@FORMULA@$#:2
-ŷ = b0 + b1x1 + b2x2 + … + bmxm (4.1) Mit:
-ŷ = Schätzung der abhängigen Variable x1,…,xm = unabhängige Variable
+ŷ = b0 + b1x1 + b2x2 + … + bmxm (4.1) Mit: ŷ = Schätzung der abhängigen Variable x1,…,xm = unabhängige Variable
 #$@FORMULA@$#:1
 Für den beobachteten Wert sähe das Modell folgendermaßen aus:
 #$@FORMULA@$#:0
@@ -631,19 +610,28 @@ Als Gütekriterium für die Modellschätzungen kommt das R{{hn:2:nh}}oder das ad
 R{{hn:2:nh}} kann Werte zwischen 0 und 1 annehmen.
 Je höher der Wert ist, desto besser ist die Anpassung des Modells an die Daten (Urban/Meyerl 2011).
 4.2.2.
-Stichprobenziehung die Auswahl der Teilnehmer, gehört zu den Nicht-Wahrscheinlichkeits-Techniken.
-Wie der Name schon ausdrückt, ist das Convenience Sampling bestimmt durch eine bequeme Erreichbarkeit:
-Es werden die Elemente ausgewählt, die am leichtesten verfügbar, motiviert oder am leichtesten erreichbar sind (Malhotra 2007).
+Stichprobenziehung
+
+
+:::: Stichprobenziehung ::::
+
+
+die Auswahl der Teilnehmer, gehört zu den Nicht-Wahrscheinlichkeits-Techniken.
+Wie der Name schon ausdrückt, ist das Convenience Sampling bestimmt durch eine bequeme Erreichbarkeit: Es werden die Elemente ausgewählt, die am leichtesten verfügbar, motiviert oder am leichtesten erreichbar sind (Malhotra 2007).
 Die Vorteile dieser Stichprobentechnik liegen darin, dass es das kostengünstigste Verfahren ist, und es beansprucht von allen Techniken am wenigsten Zeit.
-Allerdings müssen auch die Nachteile betrachtet werden:
-Es handelt sich hierbei um eine vollkommene willkürliche und damit keine zufällige Auswahl (Hammann/Erichson 2000).
+Allerdings müssen auch die Nachteile betrachtet werden: Es handelt sich hierbei um eine vollkommene willkürliche und damit keine zufällige Auswahl (Hammann/Erichson 2000).
 Die Stichprobe kann somit nicht repräsentativ für eine bestimmte Population sein.
 Auch ist es schwer, Verallgemeinerungen anzustellen.
 Trotzdem ist das Verfahren eines der am häufigsten angewendeten und der Einsatz wird empfohlen, um exploratorisch vorzugehen oder Hypothesen zu testen (Malhotra 2007).
-4.2.3.
-Deskriptive Statistik der Stichprobe Die für das Experiment erhobenen Daten entsprechen Paneldaten.
+
+
+:::: Deskriptive Statistik der Stichprobe ::::
+
+
+Die für das Experiment erhobenen Daten entsprechen Paneldaten.
 Charakteristisch für Paneldaten ist die Wiederholung in regelmäßigen Abständen, dass die gleichen Probanden teilnehmen (Panel) und dass der Untersuchungsgegenstand, in diesem Fall das Experiment, Ziel der Datenerhebung ist (Hammann/Erichson 2000).
-Ein weiteres Charakteristikum ist die stete Verwendung der gleichen Erhebungsmethode (Günther et al. 2006).
+Ein weiteres Charakteristikum ist die stete Verwendung der gleichen Erhebungsmethode (Günther et al.
+2006).
 Im Folgenden wird die deskriptive Statistik der beiden Experimente vorgestellt.
 Die Auswertung des Experiments wurde mit dem Statistikprogramm Stata, Version 12, durchgeführt.
 Die entsprechenden Log-Dateien sind dem Anhang ab Seite 97 zu entnehmen.
@@ -717,28 +705,24 @@ Die Gesamtrente gibt die Renten aller 12 Runden des ersten Experiments beziehung
 Als unabhängige Variablen wurden das Geschlecht (sex), das Alter (age), die Risikoeinstellung ausgedrückt durch risk_total{{hn:11:nh}} und risikoavers{{hn:12:nh}}, die Anzahl richtig beantworteter Verständnisfragen (v_total_r{{hn:13:nh}}) und eine Dummyvariable für die Steuerrunden (taxfree{{hn:14:nh}}) in die Regressionsgleichung aufgenommen.
 Weiterhin stehen die Dummys dum1 bis dum12 für die jeweiligen Runden 1 bis 12.
 Analog enthält die Regressionsgleichung für das zweite Experiment auch den Dummy dum13.
-Mit demselben Datensatz wurde ebenso folgende Regression analysiert:
-risikoavers_kons = b0 + b1 sex + b2 age + b3 v_total_r
+Mit demselben Datensatz wurde ebenso folgende Regression analysiert: risikoavers_kons = b0 + b1 sex + b2 age + b3 v_total_r
 #$@FORMULA@$#:2
 Die Risikoeinstellung ausgedrückt in risikoavers und risk_total wurde als Endogene verwendet, die Variablen sex, age und v_total_r als Exogene.
 Die endogenen Variablen wurden für Konsumenten (risikoavers_kons und risk_total_kons) und Produzenten (risikoavers_prod und risk_total_prod) getrennt getestet, um die Einflüsse der exogenen Variablen auf Konsumenten beziehungsweise Produzenten zu beschränken.
 Die beiden obigen Gleichungen wurden demnach analog für die Produzenten getestet.
 Ziel der zweiten Hypothese war es herauszufinden, ob das Geschlecht einen Einfluss auf die Risikoeinstellung hat.
-Als weitere Regressionsanalyse wurde mit dem erstellten Paneldatensatz folgende Gleichung getestet:
-rent_kons = b0 + b1 sex + b2 age + b3 risk_total + b4 risikoavers + b5
+Als weitere Regressionsanalyse wurde mit dem erstellten Paneldatensatz folgende Gleichung getestet: rent_kons = b0 + b1 sex + b2 age + b3 risk_total + b4 risikoavers + b5
 #$@FORMULA@$#:0
 rent_kons = b0 + b1 sex + b2 age + b3 risk_total + b4 risikoavers + b5
 #$@FORMULA@$#:1
-Für diese Regressionsgleichung wurden zwei neue Dummys berechnet:
-runr56{{hn:15:nh}} drückt die Einflüsse der Runden 5 und 6 im Vergleich zu den Runden 10 und 12 aus.
+Für diese Regressionsgleichung wurden zwei neue Dummys berechnet: runr56{{hn:15:nh}} drückt die Einflüsse der Runden 5 und 6 im Vergleich zu den Runden 10 und 12 aus.
 runr79 vergleicht die Einflüsse der Steuerrunden 7 und 9 mit der späteren Steuerrunde 11 beziehungsweise den späteren Steuerrunden 11 und 13 für das zweite Experiment.
 So kann mit der sechsten Hypothese überprüft werden, ob die Steuerregelung einen Einfluss auf die Höhe der Gesamtrenten hat.
 Neben den Konsumentenrenten wurde ebenfalls die Produzentenrente (rent_prod) in analogen Regressionen als endogene Variable gewählt.
 Für die nächsten Regressionen war eine andere Datenstruktur notwendig.
 Die Transaktionen der einzelnen Runden wurden in einen Datensatz integriert.
 Dieser Datensatz wurde für Produzenten und Konsumenten getrennt erstellt, um Variablen wie Alter und Geschlecht in die Regression mit aufnehmen zu können.
-Folgende Regressionsgleichungen wurden geschätzt:
-time_last = b0 + b1 risk_total + b2 risikoavers + b3 sex + b4 age + b5 v_total_r den Zeitpunkt des Abschluss der letzten Transaktion in einer Runde an{{hn:16:nh}}.
+Folgende Regressionsgleichungen wurden geschätzt: time_last = b0 + b1 risk_total + b2 risikoavers + b3 sex + b4 age + b5 v_total_r den Zeitpunkt des Abschluss der letzten Transaktion in einer Runde an{{hn:16:nh}}.
 Es soll getestet werden, ob diese Variable durch die Risikoeinstellung beeinflusst wird.
 #$@FORMULA@$#:0
 risk_total + b6 risikoavers Um den Einfluss der Anzahl der Transaktionen je Runde auf die Gesamtrente (rent_ges{{hn:17:nh}}) zu testen, wurde in der neunten Hypothese anz_tans_max als exogene Variable gewählt.
@@ -747,17 +731,15 @@ Es wird getestet, ob die Anzahl der Transaktionen in einer Runde die Gesamtrente
 Die folgende Regressionsgleichung enthält eine neu generierte Variable:
 #$@FORMULA@$#:1
 b6 risikoavers Für diese Modellschätzung wurde die Dummy Variable trans_d generiert und als exogene Variable aufgenommen.
-Die zehnte Hypothese soll überprüfen, ob sich ein Unterschied in der Gesamtrente ergibt, wenn zwei oder mehr Transaktionen mit demselben Käufer beziehungsweise Verkäufer getätigt wurden. 0 bedeutet, dass eine Transaktion nur einmal mit diesem Käufer/Verkäufer abgeschlossen wurde, 1 steht für zwei oder mehr Transaktionen mit derselben Person.
-Zuletzt wurde mit diesem Datensatz folgende Regression geschätzt:
-anz_trans = = b0 + b1 runr_ln + b2 taxfree + b3 ru_first Die Regression hat die Variable anz_trans, die die Anzahl der Transaktionen pro Runde angibt, als abhängige Variable und die Variablen runr_lr, taxfree und ru_first{{hn:18:nh}} als unabhängige Variablen.
+Die zehnte Hypothese soll überprüfen, ob sich ein Unterschied in der Gesamtrente ergibt, wenn zwei oder mehr Transaktionen mit demselben Käufer beziehungsweise Verkäufer getätigt wurden.
+0 bedeutet, dass eine Transaktion nur einmal mit diesem Käufer/Verkäufer abgeschlossen wurde, 1 steht für zwei oder mehr Transaktionen mit derselben Person.
+Zuletzt wurde mit diesem Datensatz folgende Regression geschätzt: anz_trans = = b0 + b1 runr_ln + b2 taxfree + b3 ru_first Die Regression hat die Variable anz_trans, die die Anzahl der Transaktionen pro Runde angibt, als abhängige Variable und die Variablen runr_lr, taxfree und ru_first{{hn:18:nh}} als unabhängige Variablen.
 Die Variable runr gibt die Rundennummer an und wurde logarithmiert in die Gleichung aufgenommen (runr_lr), weil grafisch zu erkennen ist, dass die Anzahl der Transaktionen in beiden Experimenten nicht in jeder Runde abnimmt.
 Die Regression testet die zehnte Hypothese, deren Ziel obige Regression wurde jeweils für die Experimente 1 und 2 durchgeführt.
-Zusätzlich wurde folgende Regression, die die Transaktion beider Termine zusammenfasst, durchgeführt:
-anz_trans = = b0 + b1 runr_ln + b2 taxfree + b3 ru_first + b4 exp Dazu wurden die Transaktionen beider Experimente in einem neuen Datensatz zusammengeführt.
+Zusätzlich wurde folgende Regression, die die Transaktion beider Termine zusammenfasst, durchgeführt: anz_trans = = b0 + b1 runr_ln + b2 taxfree + b3 ru_first + b4 exp Dazu wurden die Transaktionen beider Experimente in einem neuen Datensatz zusammengeführt.
 Außerdem wurde ein Dummy exp{{hn:19:nh}} aufgenommen, der testen soll, ob Experiment 1 im Vergleich zu Experiment 2 einen signifikanten Einfluss ausübt.
 Für die siebte Hypothese war eine andere Datenstruktur notwendig, sodass ein weiterer Datensatz erstellt wurde.
-Damit wurde folgende Regression getestet:
-pr_first = b0 + b1 pr_last + b2 risk_total + b3 risikoavers + b4 sex + b5 age +
+Damit wurde folgende Regression getestet: pr_first = b0 + b1 pr_last + b2 risk_total + b3 risikoavers + b4 sex + b5 age +
 #$@FORMULA@$#:0
 #$@FORMULA@$#:1
 b18 dum11 + b19 dum12 In dieser Regression ist pr_first die abhängige Variable.
@@ -791,10 +773,8 @@ Der F-Test der Regressionsanalyse für die Modelle der Konsumenten- und Produzen
 Somit sind alle vier Modell signifikant.
 Das Bestimmtheitsmaß R{{hn:2:nh}}für die restringierten Modelle der Konsumentenrente nimmt beim ersten Experiment einen Wert von 12,82 %, beim zweiten Termin (siehe Anhang 5, Tabelle 23, S. 102) 15,65 % an.
 #$@FORMULA@$#:0
-Quelle:
-eigene Berechnungen und Darstellung Für die Produzentenrente (Tabelle 8) liegt der erklärte Anteil der Gesamtrente durch das Modell für die restringierten Modelle bei 25,86 %, für den zweiten Termin (siehe Anhang 5, Tabelle 24, S. 103) bei 17,94 %.
-Quelle:
-eigene Berechnungen und Darstellung Die Nullhypothese bezüglich des Einflusses des Geschlechts auf die Für das zweite Experiment ist bei den Produzenten ein signifikanter Einfluss des Geschlechts auf die Gesamtrente festzustellen.
+Quelle: eigene Berechnungen und Darstellung Für die Produzentenrente (Tabelle 8) liegt der erklärte Anteil der Gesamtrente durch das Modell für die restringierten Modelle bei 25,86 %, für den zweiten Termin (siehe Anhang 5, Tabelle 24, S. 103) bei 17,94 %.
+Quelle: eigene Berechnungen und Darstellung Die Nullhypothese bezüglich des Einflusses des Geschlechts auf die Für das zweite Experiment ist bei den Produzenten ein signifikanter Einfluss des Geschlechts auf die Gesamtrente festzustellen.
 Männliche Verkäufer haben eine um 84,725 Einheiten höhere Gesamtrente erzielen können als weibliche Verkäufer.
 Das Signifikanzniveau liegt bei < 1 %.
 Bei den Konsumenten verhält es sich anders.
@@ -807,8 +787,7 @@ Steigt die Risikoeinstufung um eine Einheit, so steigt die Konsumentenrente um 1
 Hat sich ein Konsument bei der Lotterieauswahl immer für die risikoaversere Variante entschieden, so erzielte er ceteris paribus im Experiment eine um 29,583 (signifikant auf dem 1 % Niveau) niedrigere Gesamtrente als nicht-risikoaverse Konsumenten.
 Dieses Ergebnis erscheint widersprüchlich und wird in der Diskussion besprochen.
 Bei den Produzenten des ersten Experiments ist kein signifikanter Einfluss nachzuweisen.
-Anders beim zweiten Termin:
-Sowohl die Ergebnisse der Konsumenten aus auch die der Produzenten sind signifikant (vergleiche Tabellen 23 und 24, S. 102 f.).
+Anders beim zweiten Termin: Sowohl die Ergebnisse der Konsumenten aus auch die der Produzenten sind signifikant (vergleiche Tabellen 23 und 24, S. 102 f.).
 Steigt die Einstufung auf der Risikoskala um eine Einheit, so steigt die Gesamtrente bei den Konsumenten ceteris paribus um 5,416 Einheiten, bei den Produzenten sogar um 10,525 Einheiten.
 Ist der Teilnehmer als strikt risikoavers eingestuft, so ist seine Gesamtrente bei den Produzenten um 66,917 Taler niedriger, bei den Konsumenten 12,789 Taler niedriger im Vergleich zu den nicht-risikoaversen Teilnehmern.
 Alle Koeffizienten sind signifikant auf dem 1 % Niveau.
@@ -823,11 +802,8 @@ Die Risikoeinstellung gemessen auf einer Skala von 0 bis 10 (0 = wenig risikoave
 Beim zweiten Experiment hat das Geschlecht nur bei den Konsumenten auf die Variable risikoavers (vergleiche Tabelle 25, S. X) einen signifikanten Einfluss (5 % Niveau).
 Hier ist bei den Frauen eine um 0,0717 Einheiten höhere Affinität zur Risikoaversion im Vergleich zu den männlichen Probanden zu erkennen, wenn alle anderen Parameter konstant sind.
 Insgesamt haben die Modelle zur Risikoeinstellung einen relativ geringen Erklärungsgehalt mit Werten von 0,99 % bis 13,03 % für R{{hn:2:nh}}.
-Alle Modelle zur Risikoeinstellung haben ein Signifikanzniveau von < 1 %, mit Ausnahme des Modells zur Risikoaversion der Produzenten des ersten Termins (Tabelle 10):
-das unrestringierte Modell ist insignifikant, das restringierte Modell ist auf dem 10 % Niveau signifikant.
-Quelle:
-eigene Berechnungen und Darstellung Quelle:
-eigene Berechnungen und Darstellung
+Alle Modelle zur Risikoeinstellung haben ein Signifikanzniveau von < 1 %, mit Ausnahme des Modells zur Risikoaversion der Produzenten des ersten Termins (Tabelle 10): das unrestringierte Modell ist insignifikant, das restringierte Modell ist auf dem 10 % Niveau signifikant.
+Quelle: eigene Berechnungen und Darstellung Quelle: eigene Berechnungen und Darstellung
 1u
 auch die Variable runr56 ist signifikant auf dem 1 % Niveau.
 In den Runden 10 und 12 erzielten die Verkäufer ceteris paribus einen um 80,901 höheren Gewinn als in den Runden 5 und 6.
@@ -837,8 +813,7 @@ Sie schaffen es erwartungsgemäß nicht, ihre Preise so zu erhöhen, dass sie de
 In der späteren Steuerrunde 11 erzielten die Produzenten einen um 73,56 signifikant (10 % Niveau) geringeren Gewinn als in den früheren Steuerrunden 7 und 9 (vergleiche Tabelle 14).
 Tabellen 13 und 14 enthalten beispielhaft die Ergebnisse der Regressionsanalyse für die Produzenten des ersten Experiments der steuerfreien Runden und der Steuerrunden.
 Bei den analogen Regressionen für die Konsumenten konnte sowohl für die steuerfreien Runden als auch für die Steuerrunden kein signifikanter Einfluss festgestellt werden.
-Quelle:
-eigene Berechnungen und Darstellung
+Quelle: eigene Berechnungen und Darstellung
 1u
 Steuerrunden des 2.
 Experiments interpretiert werden, die anderen drei Modelle sind nicht signifikant.
@@ -854,8 +829,7 @@ Dass die Risikoaversion keinen Einfluss auf den Zeitpunkt des Abschlusses der ei
 Dieses Ergebnis hat ein Signifikanzniveau von 1 %.
 Das gesamte Modell ist signifikant auf dem 5 % Niveau.
 Die Modellschätzung für die Konsumenten des zweiten Termins konnte keinen Einfluss der Risikoeinstellung auf den Zeitpunkt des letzten Abschluss einer Transaktion in einer Runde feststellen (Tabelle 31, S. 113).
-Quelle:
-eigene Berechnungen und Darstellung
+Quelle: eigene Berechnungen und Darstellung
 6u
 7u
 #$@FORMULA@$#:0
@@ -863,8 +837,7 @@ eigene Berechnungen und Darstellung
 [Tabellen 40 und 41 im Anhang]).
 Das Bestimmtheitsmaß nimmt Werte zwischen
 #$@FORMULA@$#:2
-Quelle:
-eigene Berechnungen und Darstellung
+Quelle: eigene Berechnungen und Darstellung
 1u
 Einfluss auf die Gesamtrente hat, kann bei drei von vier Modellen abgelehnt werden.
 Nur bei der Regressionsanalyse der Konsumentenrente des zweiten Termins ist die Variable anz_trans_max mit einem p-Wert von 0,121 nicht signifikant (vergleiche Tabellen 40 und 41).
@@ -888,15 +861,13 @@ Auch in den anderen beiden Regressionsanalysen hat die Variable ru_ln beziehungs
 Damit ist die Vermutung bestätigt, dass die Zahl der Transaktionen im Laufe der Runden abnimmt, weil die Käufer realisieren, dass die Preise weniger stark streuen und sie die Preise beim Verhandeln besser einschätzen können.
 Dabei kann kein signifikanter Unterschied zwischen dem ersten und zweiten Termin festgestellt werden (Variable exp).
 In den ersten beiden Runden des zweiten Termins werden jeweils etwa 20 Transaktionen mehr abgeschlossen (ru_first, Irrtumswahrscheinlichkeit < 5 %) als in den darauffolgenden Runden, was auf den Lerneffekt durch die ersten beiden Runden zurückgeführt werden kann.
-Quelle:
-eigene Berechnungen und Darstellung
+Quelle: eigene Berechnungen und Darstellung
 1u
 Abbildung 10 zu sehen.
 Auf der x-Achse sind die Rundennummern abgetragen, auf der y-Achse sind die Transaktionen je Runde zu sehen.
 Die Streuung und die Anzahl der Transaktion je Runde nehmen nach rechts mit zunehmender Runde ab.
 Die Regressionslinie verdeutlicht diesen Zusammenhang.
-Quelle:
-eigene Darstellung mittels Stata 12 In diesem Absatz werden die Ergebnisse des Einflusses des Preises der letzten Transaktion einer Runde auf den Preis der ersten Transaktion der darauffolgenden Runde erläutert.
+Quelle: eigene Darstellung mittels Stata 12 In diesem Absatz werden die Ergebnisse des Einflusses des Preises der letzten Transaktion einer Runde auf den Preis der ersten Transaktion der darauffolgenden Runde erläutert.
 Alle vier getesteten Modelle sind signifikant auf dem 1 % Niveau.
 Bei den Produzenten beider Experimente und bei den Konsumenten des zweiten Experiments hat nur der Dummy für Runde 1 (dum1) einen signifikanten Einfluss.
 Die unteren Tabellen 19 und 20 geben die Ergebnisse des ersten Experiments an, die Tabellen 38 und 39 des zweiten Experiments sind auf Seite 123 f. zu finden.
@@ -905,12 +876,10 @@ Außer bei den Produzenten des ersten Experiments hat diese exogene Variable ein
 Für die Konsumenten des ersten Experiments (Tabelle 20) steigt der Preis der ersten Transaktion einer Runde um 0,972 Taler, wenn der Preis der letzten Transaktion der vorherigen Runde um einen Taler höher war.
 Bei den Produzenten des zweiten Termins ist der Preis der ersten Transaktion ceteris paribus um 0,0755 Taler niedriger (Tabelle 38), bei der ersten Transaktion der Konsumenten ceteris paribus um 0,0122 Taler höher (Tabelle 39), wenn der Preis der vorherigen Runde um einen Taler höher war.
 #$@FORMULA@$#:0
-Quelle:
-eigene Berechnungen und Darstellung
+Quelle: eigene Berechnungen und Darstellung
 #$@FORMULA@$#:1
 #$@FORMULA@$#:0
-Quelle:
-eigene Berechnungen und Darstellung
+Quelle: eigene Berechnungen und Darstellung
 1u
 2u
 136 ersichtlich.
@@ -918,32 +887,27 @@ Verglichen wurden für das erste Experiment die Summe der Produzentenrenten der 
 Für das zweite Experiment wurden die Produzentenrenten der Runden 6, 8, 10 und 12 mit denen der Runden 7, 9, 11 und 13 miteinander verglichen.
 Die Höhe der Gesamtrenten der Produzenten vor und nach Einführung der Die Höhe der Renten von Produzenten, die vor Einführung der Steuer unterdurchschnittliche hoch waren, also zu den 15 schlechteren Verkäufern zählten, korrelierten zu 70,25 % mit der Produzentenrente nach Einführung der Steuer.
 Das Signifikanzniveau lag hier bei 1 % (p-Wert = 0,0035).
-Beim zweiten Experiment ist auch dieser Zusammenhang noch deutlicher:
-Die Korrelation beträgt 83,32 %, der p-Wert liegt bei 0,0001.
+Beim zweiten Experiment ist auch dieser Zusammenhang noch deutlicher: Die Korrelation beträgt 83,32 %, der p-Wert liegt bei 0,0001.
 Für die Verkäufer, die in den Runden vor den Steuerrunden überdurchschnittliche Gewinne erzielten, konnte nur für das erste Experiment eine Korrelation gefunden werden.
 Die Summe der Renten in den drei steuerfreien Runden 6, 8 und 10 korreliert mit der Summe der Renten der drei Steuerrunden zu 47,3 %.
 Dieses Ergebnis ist signifikant auf dem 10 % Niveau (p-
 #$@FORMULA@$#:0
-Bei Betrachtung des Durchschnittpreises einer Steuerrunde und des Durchschnittpreises der vorherigen steuerfreien Runde kann Folgendes beobachtet werden:
-In der Runde 9 des zweiten Experiments lag der Durchschnittspreis um knapp 18 % höher als in der Vorrunde.
+Bei Betrachtung des Durchschnittpreises einer Steuerrunde und des Durchschnittpreises der vorherigen steuerfreien Runde kann Folgendes beobachtet werden: In der Runde 9 des zweiten Experiments lag der Durchschnittspreis um knapp 18 % höher als in der Vorrunde.
 In allen anderen Steuerrunden war der durchschnittliche Preis weniger als 10 % höher als in der Vorrunde.
 In den ersten beiden Steuerrunden (7. und 9.
 Runde) beider Experimente lag der Durchschnittspreis um 7 bis 8 % höher als in der jeweiligen steuerfreien Vorrunde (6. bzw. 8.
 Runde).
 In der Runde 11 des ersten Termins beziehungsweise in den Runden 11 und 13 des zweiten Termins waren die erzielten Preise sogar geringer als in der vorherigen steuerfreien Runde.
 Betrachtet man die Produzentenrente{{hn:25:nh}}, so ist zu sehen, dass die durchschnittliche Rente in den Steuerrunden nie die Höhe der Rente der vorherigen steuerfreien Runde erreicht.
-In der Runde 13 des zweiten Termins erreichten die Produzenten mit durchschnittlich 80,82 % der Rente der vorherigen Runde den geringsten Wert, der beste Durchschnittwert kann in der Runde 9 des zweiten Termins beobachtet werden:
-Hier erreicht der Durchschnittswert der Produzentenrente mit 97,73 % am ehesten die Höhe der Rente der steuerfreien Vorrunde.
+In der Runde 13 des zweiten Termins erreichten die Produzenten mit durchschnittlich 80,82 % der Rente der vorherigen Runde den geringsten Wert, der beste Durchschnittwert kann in der Runde 9 des zweiten Termins beobachtet werden: Hier erreicht der Durchschnittswert der Produzentenrente mit 97,73 % am ehesten die Höhe der Rente der steuerfreien Vorrunde.
 Test auf Varianzhomogenität Die Hypothese, dass Varianzhomogenität zwischen den Renten zweier Runden besteht, kann für die in Tabelle 21 angeführten, miteinander verglichenen Runden abgelehnt werden.
-Quelle:
-eigene Berechnungen und Darstellung
+Quelle: eigene Berechnungen und Darstellung
 5u
 6u
 davon (acht Vergleiche) für die Konsumentenrente der steuerfreien Runden.
 Die entsprechenden Ergebnisse des zweiten Experiments ähneln denen des ersten.
 In Tabelle 22 sind die Rundenvergleiche tabellarisch gelistet, für die die Nullhypothese der Varianzgleichheit abgelehnt werden kann.
-Quelle:
-eigene Berechnungen und Darstellung
+Quelle: eigene Berechnungen und Darstellung
 1u
 2u
 Steuerrunden konnte kein statistischer Unterschied bei den Varianzen zweier Runden festgestellt werden.
@@ -953,8 +917,7 @@ In beiden Fällen nehmen die Varianzen jedoch im Laufe der Runden tendenziell kl
 Abbildung 12 zeigt analog die Varianzen der Produzentenrente des ersten und zweiten Experiments im Vergleich.
 Die Abweichungen sind zwischen beiden Terminen weniger groß.
 Auch hier ist tendenziell ein Abfall der Varianzen der Gesamtrente für die Produzenten im Laufe der Runden zu sehen.
-Quelle:
-Eigene Darstellung
+Quelle: Eigene Darstellung
 
 
 :::: Diskussion und Schlussfolgerungen ::::
@@ -977,26 +940,23 @@ Möglich ist, dass Verkäufer am Ende einer Runde zu wenig verkauft haben oder K
 Sie hätten höhere Gesamtrenten erzielen können, wenn sie zu Preisen gekauft/verkauft hätten, die sie zunächst als nicht akzeptabel einstuften.
 Wurde ein Teilnehmer an Hand der Lotterie als strikt risikoavers eingestuft, erzielte er im Experiment hingegen eine niedrigere Gesamtrente als Teilnehmer, die sich mindestens einmal gegen die risikoaverse Variante entschieden.
 Laut dieses Ergebnisses war also ein risikoaverses Verhalten von Nachteil.
-Insgesamt weicht die Verteilung der Risikoeinstufung der Experimenteilnehmer von denen von Holt und Laury ab:
-Nur jeweils knapp 20 % der Teilnehmer des ersten Termins und 18 % der Teilnehmer des zweiten Termins entschieden sich immer für die risikoaversere Variante.
+Insgesamt weicht die Verteilung der Risikoeinstufung der Experimenteilnehmer von denen von Holt und Laury ab: Nur jeweils knapp 20 % der Teilnehmer des ersten Termins und 18 % der Teilnehmer des zweiten Termins entschieden sich immer für die risikoaversere Variante.
 Holt und Laury stellten bei ihren Ergebnissen einen Anteil von 26 % heraus.
 Damit waren die hiesigen Probanden im Durchschnitt weniger risikoavers eingestuft als die Teilnehmer von Holt und Laury.
 Diese Ergebnisse der Variable risikoavers widersprechen den Ergebnissen der Risikoeinstufung, die mittels der Skala vorgenommen wurde (risk_total).
 Möglich ist, dass es auf Grund der vorgelegten geordneten Lotterie zu Order Effects gekommen sein könnte.
 Eine erneute, ungeordnete Wahl der Lotterien könnte zu eindeutigeren Ergebnissen führen.
-Diese Vermutung wird bestätigt durch Harrison et al. (2005), die die Lotterie von Risikoaversion auf den Abschluss der letzten Transaktion einer Runde festgestellt werden.
+Diese Vermutung wird bestätigt durch Harrison et al.
+(2005), die die Lotterie von Risikoaversion auf den Abschluss der letzten Transaktion einer Runde festgestellt werden.
 Risikoaverse Konsumenten schlossen ihre letzte Transaktion früher ab als nicht-risikoavers eingestufte Konsumenten.
 Dieses Ergebnis entspricht den Erwartungen.
-Der Einfluss der Anzahl richtig beantworteter Verständnisfragen führte bei den Konsumenten zu einer logischen Schlussfolgerung:
-Je mehr Verständnisfragen korrekt beantwortet wurden, desto besser wurde das Experiment verstanden.
+Der Einfluss der Anzahl richtig beantworteter Verständnisfragen führte bei den Konsumenten zu einer logischen Schlussfolgerung: Je mehr Verständnisfragen korrekt beantwortet wurden, desto besser wurde das Experiment verstanden.
 So können bessere Ergebnisse in Form von höheren Gesamtrenten erzielt werden.
-Bei den Produzenten verhält es sich allerdings gegenläufig:
-Mehr korrekte Verständnisfragen führen zu schlechteren Ergebnissen in der Gesamtrente.
+Bei den Produzenten verhält es sich allerdings gegenläufig: Mehr korrekte Verständnisfragen führen zu schlechteren Ergebnissen in der Gesamtrente.
 Eine mögliche Erklärung für dieses widersprüchliche Ergebnis kann sein, dass die Produzenten, die viele Verständnisfragen richtig beantwortet haben, genaue Vorstellungen über ihre Verhandlungen hatten.
 Es kann sein, dass sie weniger von ihren Preisvorstellungen abweichen und Kunden ganz verlieren, statt eine Transaktion mit niedrigeren Gewinnen als ihrer Vorstellung entsprechend abzuschließen.
 Das kann dazu führen, dass sie eventuell insgesamt zu wenig verkauft haben und so einen niedrigeren Gewinn erlangen konnten als Verkäufer, die flexibler in Transaktionsverhandlungen agieren, weil sie eher von ihren Preisvorstellungen abweichen, es so aber schaffen, trotzdem gute Gewinne zu erzielen.
-Vielleicht ist das Verhalten aber auch durch die Experimentsituation beeinflusst, sodass ein Hawthorne Effect{{hn:26:nh}} entsteht:
-Teilnehmer wissen, dass sie beobachtet werden und dies kann ihr Verhalten beeinflussen.
+Vielleicht ist das Verhalten aber auch durch die Experimentsituation beeinflusst, sodass ein Hawthorne Effect{{hn:26:nh}} entsteht: Teilnehmer wissen, dass sie beobachtet werden und dies kann ihr Verhalten beeinflussen.
 Eventuell haben die Verkäufer deswegen versucht, die Experimentbedingungen bestmöglich zu verfolgen.
 Hätten sie sich nicht unter Beobachtung gefühlt, wären sie in ihrem Verhalten vielleicht flexibler gewesen.
 Es ist auch möglich, dass sich die Probanden, die eine Rolle als Verkäufer erhielten, sich im Gegensatz zu den Käufern weniger mit dieser Rolle identifizieren konnten, weil die studentischen Teilnehmer im Alltag die Rolle des Konsumenten und nicht die des Verkäufers einnehmen.
@@ -1025,12 +985,10 @@ Das Ergebnis kann daraufhin weisen, dass die Vorgaben für die Konsumenten wenig
 Das hier betrachtete Marktexperiment unterscheidet sich in einigen Punkten durch das von Chamberlin (1948) durchgeführte Marktexperiment.
 Chamberlin führte mit den Probanden jeweils nur eine Periode durch, während das in dieser Arbeit beschriebene Marktexperiment mehrere Runden beinhaltet, wodurch ein Lerneffekt möglich wird.
 Chamberlins Experiment resultieret in einem niedrigeren als dem prognostizierten Durchschnittpreis.
-Ebenso hier:
-Im ersten Experiment lag der durchschnittliche Preis bei 18,87 Talern, während der Preis laut Experimentvorgaben bei durchschnittlich 20,50 Talern liegen sollte.
+Ebenso hier: Im ersten Experiment lag der durchschnittliche Preis bei 18,87 Talern, während der Preis laut Experimentvorgaben bei durchschnittlich 20,50 Talern liegen sollte.
 Im zweiten Experiment lag der Durchschnittspreis mit 19,33 Talern näher bei den Experimentvorgaben.
 Jedoch liegen die Werte hier näher beieinander als bei Chamberlin.
-Ein weiterer Unterschied zwischen Chamberlins und dem hier dargestellten Marktexperiment liegt in den Instruktionen für die Teilnehmer:
-Während Chamberlin jedem Teilnehmer einen individuellen Reservationspreis vorlegte, bekamen hier wie oben beschrieben jeweils alle Konsumenten und alle war.
+Ein weiterer Unterschied zwischen Chamberlins und dem hier dargestellten Marktexperiment liegt in den Instruktionen für die Teilnehmer: Während Chamberlin jedem Teilnehmer einen individuellen Reservationspreis vorlegte, bekamen hier wie oben beschrieben jeweils alle Konsumenten und alle war.
 Die Experimentvorgaben in Göttingen waren so gestaltet, dass sich Lerneffekte einstellen konnten.
 Incentives sollten sicherstellen, dass Anstrengungen von den Experimentteilnehmern unternommen wurden, ihr bestmögliches Ergebnis zu erzielen.
 Chamberlins Marktexperiment enthielt nur hypothetische Auszahlungen für die Probanden, was die Anstrengungen eventuell vermindert haben könnte.

@@ -20,35 +20,27 @@ In dieser Phase wird die betrachtete Szene anhand der erkannten Objekte interpre
 :::: Aufbau der Arbeit ::::
 
 
-Kapitel 1:
-Im ersten (diesem) Kapitel wird der generelle Aufbau eines Bildverarbeitungssystems sowie der Aufbau dieser Arbeit beschrieben.
+Kapitel 1: Im ersten (diesem) Kapitel wird der generelle Aufbau eines Bildverarbeitungssystems sowie der Aufbau dieser Arbeit beschrieben.
 Des Weiteren wird auf den wissenschaftlichen Beitrag eingegangen, den diese Arbeit liefert.
-Kapitel 2:
-In diesem Kapitel wird ein Überblick über den Stand der Forschung gegeben.
+Kapitel 2: In diesem Kapitel wird ein Überblick über den Stand der Forschung gegeben.
 Es werden unterschiedliche Techniken beschrieben, um ein Tiefenbild zu segmentieren.
 Ferner werden unterschiedliche Herangehensweisen bei der Objekterkennung aufgezeigt und für die hier verwendete Objekterkennungsstrategie werden weitere in dieser Arbeit nicht verwendete Verfahren dargestellt.
-Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners Kapitel 3:
-Im dritten Kapitel werden Tiefenbilder als Ausgangsdaten der Objekterkennung eingeführt.
+Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners Kapitel 3: Im dritten Kapitel werden Tiefenbilder als Ausgangsdaten der Objekterkennung eingeführt.
 Dabei wird insbesondere auf deren Erzeugung mit Hilfe eines 3D-Laserscanners eingegangen und darauf, welche Eigenschaften die erzeugten Bilder besitzen.
-Kapitel 4:
-Kapitel 4 beschreibt den Bereich der Konturextraktion, der aus Bildvorverarbeitung und Bildsegmentierung besteht.
+Kapitel 4: Kapitel 4 beschreibt den Bereich der Konturextraktion, der aus Bildvorverarbeitung und Bildsegmentierung besteht.
 Es werden verschiedene Techniken vorgestellt, um Objektkonturen aus dem Tiefenbild zu extrahieren.
 Außerdem werden der Konturextraktion vorgeschaltete Interpretationen des Tiefenbildes beschrieben, die es ermöglichen, den Boden und Grauwertsprünge im Tiefenbild zu erkennen.
-Kapitel 5:
-Im fünften Kapitel werden verschiedene Kontur-Repräsentationstechniken und konturbeschreibende Merkmale vorgestellt.
+Kapitel 5: Im fünften Kapitel werden verschiedene Kontur-Repräsentationstechniken und konturbeschreibende Merkmale vorgestellt.
 Es werden einfache geometrische Merkmale, Hu- und Zernike-Momente, die Curvature-Scale-Space-Repräsentation, die Angular-Radial-Transformation, Fourier-Deskriptoren und das Border-Signature-Verfahren beschrieben.
-Kapitel 6:
-Die in Kapitel 5 ermittelten Merkmale werden zu Vektoren zusammengefasst.
+Kapitel 6: Die in Kapitel 5 ermittelten Merkmale werden zu Vektoren zusammengefasst.
 In diesem Kapitel wird beschrieben, welche Verfahren die Klassifikation dieser Merkmalsvektoren ermöglicht.
 Es wird auf die Reduktion des Merkmalsvektorraums eingegangen.
 Die Klassifikationsstrategien der überwachten und unüberwachten Klassifikation werden erläutert.
 Insbesondere wird auf das in dieser Arbeit verwendete überwachte Klassifikationsverfahren der Support-Vektor-Maschine (SVM) eingegangen.
-Kapitel 7:
-Dieses Kapitel befasst sich mit der Performanz-Analyse des Klassifikators.
+Kapitel 7: Dieses Kapitel befasst sich mit der Performanz-Analyse des Klassifikators.
 Es werden die verschiedenen Merkmalsextraktionsmethoden miteinander verglichen und bestimmt mit welchem Kernel die SVMs die jeweils beste Performanz liefern.
 Dazu wird die Reciever-Operating-Characteristics-Analyse eingesetzt.
-Kapitel 8:
-Das letzte Kapitel liefert die Zusammenfassung der Arbeit.
+Kapitel 8: Das letzte Kapitel liefert die Zusammenfassung der Arbeit.
 Es wird beschrieben, welche Methoden in wie weit in der Lage sind, Objekterkennung zu ermöglichen, wo Grenzen und Probleme des verwendeten Ansatzes liegen und welche Verbesserungen in weiterführenden Arbeiten vorgenommen werden können.
 
 
@@ -77,11 +69,11 @@ Da in dieser Arbeit das gesamte Bildverarbeitungssystem von der Bildgewinnung bi
 Es gibt eine Vielzahl von Tiefenbild-Segmentierungstechniken, die teilweise f ür Grauwertbilder entwickelt wurden und dann für Tiefenbilder übernommen worden sind.
 Es existieren aber auch Segmentierungsverfahren, die direkt für Tiefenbilder entwickelt wurden.
 Sie kombinieren unter anderem das Tiefenbild mit dem Intensitätsbild, das auch mit dem Laserscanner aufgenommen wird.
-Hier sollen kurz einige der in dieser Arbeit nicht verwendeten Verfahren zur Tiefenbildsegmentierung vorgestellt werden:
-Aktive Konturen:
-Aktive Konturen (auch Schlangen engl.: snakes) ist ein 1987 von M. Kass, A. Witkin und D. Terzopoulos entwickeltes Verfahren zur Extraktion von Konturen aus einem Grauwertbild [28].
+Hier sollen kurz einige der in dieser Arbeit nicht verwendeten Verfahren zur Tiefenbildsegmentierung vorgestellt werden: Aktive Konturen: Aktive Konturen (auch Schlangen engl.
+: snakes) ist ein 1987 von M. Kass, A. Witkin und D. Terzopoulos entwickeltes Verfahren zur Extraktion von Konturen aus einem Grauwertbild [28].
 In den folgenden Jahren wurden viele auf dieser Technik basierende Verfahren entwickelt, die es ermöglichen, Konturen auch aus Farbbildern und dreidimensionalen Daten zu extrahieren [60, 23, 36].
-Das Verfahren minimiert iterativ, ausgehend von einem definiertem interessanten Bildausschnitt (engl.: region of interest) eine Energiefunktion.
+Das Verfahren minimiert iterativ, ausgehend von einem definiertem interessanten Bildausschnitt (engl.
+: region of interest) eine Energiefunktion.
 Diese ist so definiert, dass die Kontur sich in jedem Iterationsschritt immer mehr dem zu segentierenden Objekt annähert.
 Sie ist zusammengesetzt aus äusserer und innerer Energie.
 Die äussere Energie wird minimiert, wenn die Kontur sich an Kanten im Bild anschmiegt, anstatt diese zu schneiden.
@@ -89,8 +81,7 @@ Die innere Energie wird in Dehnungs- und Bindungsenergie unterteilt.
 Die Dehnungsenergie wird minimiert, indem sich die Kontur zusammenzieht, und die Bindungsenergie wird umso geringer, je glätter die Kontur ist.
 In jedem Iterationsschritt wird für jede Energieform ein Vektor bestimmt, der in die energieminimierende Richtung zeigt.
 Ein Problem stellt nun dar, diese unterschiedlichen Richtungsvektoren so zu gewichten, dass die Gesamtbewegungsrichtung die Kontur dichter an das Objekt heranfürt.
-Wasserscheiden-Transformation:
-Die Wasserscheiden-Transformation arbeitet nicht direkt auf dem Grauwertbild, sondern auf dem Gradientenbild des Grauwertbildes.
+Wasserscheiden-Transformation: Die Wasserscheiden-Transformation arbeitet nicht direkt auf dem Grauwertbild, sondern auf dem Gradientenbild des Grauwertbildes.
 Dieses kann als Relief des Grauwertbildes verstanden werden, wenn die Stärke des Gradienten als Höhenwert interpretiert wird.
 Je stärker der Grauwertgradient im Originalbild ist, desto höher ist die Erhebung im Relief.
 In dieses wird nun bildlich gesehen in jedes lokale Minimum ein Loch gebohrt.
@@ -101,15 +92,14 @@ Somit wird das Bild, in Abhängigkeit von der Wasserhöhe, in voneinander getren
 Es gibt spezielle Erweiterungen des Verfahrens, um Tiefenbilder zu segmentieren.
 So wird in [71] das Relief aus dem Gradientenbild des Tiefenbildes, dem Gradientenbild der Oberflächennormalen und dem Gradientenbild des Intensitätsbildes kombiniert.
 In [2] wird das Verfahren mit den in Abschnitt 4.1.3 beschriebenen morphologischen Operatoren kombiniert.
-USF:
-Dieser und die folgenden drei Segmentierungsalgorithmen sind 1996 im Rahmen eines Projektes zum Vergleich von Tiefenbild-Segmentierungsalgorithmen von vier Universitäten entwickelt worden [19].
+USF: Dieser und die folgenden drei Segmentierungsalgorithmen sind 1996 im Rahmen eines Projektes zum Vergleich von Tiefenbild-Segmentierungsalgorithmen von vier Universitäten entwickelt worden [19].
 Es wird zum ersten Mal eine Vergleichsmetrik für Segmentierungsverfahren entwickelt und auf die vier Algorithmen angewendet, so dass diese auch bei aktuellen Segmentierungsalgorithmen immer noch als Vergleichsstandart dienen [25, 65].
-Der USF-Algorithmus (University of South Florida) basiert auf einem Regionen-Wachstumsalgorithmus (engl.: region merging) ähnlich der oben beschriebenen Wasserscheiden-Transformation.
+Der USF-Algorithmus (University of South Florida) basiert auf einem Regionen-Wachstumsalgorithmus (engl.
+: region merging) ähnlich der oben beschriebenen Wasserscheiden-Transformation.
 Zunächst wird an jedes Pixel des Tiefenbildes unter Berücksichtigung einer definierten Anzahl von Umgebungspixeln eine Fläche angepasst.
 Dabei werden Ausreißer, deren Entfernungen sich stark von denen ihrer Umgebungspixel unterscheiden, ignoriert.
 Anschließend werden Pixel, die eine ähnliche Flächenanpassung besitzen, vereinigt.
-WSU:
-Der WSU-Algorithmus (Washington State University) bestimmt zunächst Kanten im Tiefenbild, indem die Tiefenkoordinate des aktuellen Pixels mit der seiner Umgebungspixel verglichen wird.
+WSU: Der WSU-Algorithmus (Washington State University) bestimmt zunächst Kanten im Tiefenbild, indem die Tiefenkoordinate des aktuellen Pixels mit der seiner Umgebungspixel verglichen wird.
 Anschließend wird für jedes Pixel, in dessen Umgebung definierter Größe keine Kantenpixel liegen, dessen Oberflächennormale berechnet.
 Die Richtungskomponenten der Normalen zusammen mit den Koordinaten des Pixels bilden einen Vektor im 6-dimensionalen Raum.
 Dort wird ein Clustering-Algorithmus angewendet, der die Vektoren in eine vorgegebene Anzahl von Cluster aufteilt.
@@ -117,16 +107,14 @@ Das Tiefenbild wird segmentiert, indem jedes Pixel dem nächstgelegenen Clusterm
 Anschließend werden Segmente zusammengefasst, deren gemeinsame Grenzpixel Oberflächennormalen besitzen, deren Dierenz unter einem definierten Schwellwert liegt.
 Des Weiteren darf der Tiefenunterschied einen definierten Schwellwert nicht überschreiten.
 Zum Schluss werden die als Kantenpixel markierten Pixel demjenigen an sie angrenzenden Segment zugeordnet, mit dem die Kantenpixelparameter am besten übereinstimmen.
-UB:
-Der UB-Algorithmus (Universität Bern) basiert darauf, dass ebene Flächen in der gescannten Szene gerade Linien in einer Scanebene bilden.
+UB: Der UB-Algorithmus (Universität Bern) basiert darauf, dass ebene Flächen in der gescannten Szene gerade Linien in einer Scanebene bilden.
 Aus diesem Grund werden die Scanebenen (Zeilen des Tiefenbildes) zerteilt und durch gerade Linien approximiert.
 Anschließend wird ein Regionen-Wachstumsalgorithmus verwendet, der Liniensegmente zu Flächen gruppiert.
 Als Ausgangspunkte des Verfahrens werden solche verwendet, an denen sich mindestens drei benachbarte Linien in der selben Tiefe befinden und sich zu einem definierten Prozentsatz Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners überlappen.
 Die längste der drei Linien wird als Startpunkt gewählt.
 Diese wird solange um ihre benachbarten Linien erweitert, bis diese eine definierte, von der Größe der Region abhängige, Bedingung nicht mehr erfüllen.
 Danach wird zur nächst besten Startlinie übergegangen.
-UE:
-Der UE-Algorithmus (University of Edinburgh) geht zunächst analog zum USF-Algorithmus vor und erstellt für jedes Pixel seine Flächennormale.
+UE: Der UE-Algorithmus (University of Edinburgh) geht zunächst analog zum USF-Algorithmus vor und erstellt für jedes Pixel seine Flächennormale.
 Es werden Tiefen- und Normalendiskontinuitäten einzelner Pixel ermittelt und durch Filter ausgeglichen.
 Anschließend wird f ür jedes Pixel die gaußsche und die mittlere Krümmung bestimmt.
 Abhängig von diesen beiden Werten wird jedem Pixel ein Flächentyp (eben, eliptisch,...) zugeordnet.
@@ -161,7 +149,8 @@ Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners
 1u
 2u
 das Bild zu segmentieren und die erhaltenen Objekte Klassen zuzuordnen.
-Beim Template Matching wird eine Schablone (engl.: template)des zu erkennenden Objekts über das Bild geschoben, und es wird bestimmt, in wie weit das unter der Schablone befindliche Gebiet mit dem zu suchenden Objekt übereinstimmt.
+Beim Template Matching wird eine Schablone (engl.
+: template)des zu erkennenden Objekts über das Bild geschoben, und es wird bestimmt, in wie weit das unter der Schablone befindliche Gebiet mit dem zu suchenden Objekt übereinstimmt.
 Dies wird so lange wiederholt, bis die Schablone über allen Positionen des Bildes in allen möglichen Orientierungen gelegen hat.
 Da dieses Verfahren aufwendig ist, kann es nur für eine geringe Anzahl von zu erkennenden Objekten durchgeführt werden [56].
 Das Verfahren wird vor allem zur Materialprüfung eingesetzt, da dort Bedingungen geschaen werden können, die eine effzieinte Objektklassifikation über Template Matching ermöglichen.
@@ -190,22 +179,26 @@ Der in dieser Arbeit verwendete Ansatz ist die Objekterkennung durch Vergleich v
 Diese Merkmale können je nach verwendetem Sensor aus der Form, Farbe oder Textur der Objekte gewonnen werden.
 In dieser Arbeit werden eine Auswahl von Formmerkmalen verwendet, da in einem Tiefenbild die Farbe (bzw. Grauwert) keine Information über ein Objekt enthält und die Textur der Objekte nicht erfasst wird.
 Da die Objekterkennung über die Form der Objekte schon seit Mitte des letzten Jahrhunderts ein intensives Forschungsgebiet ist, existieren eine Vielzahl von Möglichkeiten, die Form der Objekte zu repräsentieren und Objekterkennung ermöglichende Merkmale zu extrahieren.
-Hier sollen kurz einige, der in dieser Arbeit nicht verwendeten Verfahren, vorgestellt werden [3]:
-Shape-Context.
+Hier sollen kurz einige, der in dieser Arbeit nicht verwendeten Verfahren, vorgestellt werden [3]: Shape-Context.
 Das Shape-Kontext-Verfahren geht davon aus, dass das Objekt in Form von Randpunkten vorliegt.
 Über diese Randpunkte wird ein logarithmisch polares Gitter gelegt.
 In diesem Gitter wird bestimmt, wie viele Randpunkte in welcher Zelle liegen.
 Der Anzahl der Randpunkte wird ein Grauwert zugewiesen (viele Punkte pro Zelle = dunkel, wenig Punkte = hell).
 Die Grauwerte werden in ein  - log r Histogramm eingetragen.
-Objekte werden nun klassifiziert, indem der Abstand zwischen verschiedenen Histogrammen mit einem zweiteiligen Vergleichsverfahren (engl.: bipartite matching) bestimmt wird [4].
+Objekte werden nun klassifiziert, indem der Abstand zwischen verschiedenen Histogrammen mit einem zweiteiligen Vergleichsverfahren (engl.
+: bipartite matching) bestimmt wird [4].
 Zu diesem Verfahren existieren verschiedene verwandte Verfahren wie Grid-method\ und " Shape-Matrix\ .
 Grid-method\ verwendet im Gegensatz zum Shape-Context\ ein recht- " " " eckiges Gitter und weist den einzelnen Zellen binäre Werte zu.
 Die Shape-Matrix\ verwendet " als festen Ursprung des Gitters den Schwerpunkt des Objekts.
 1D-Konturrepräsentationen von 2D-Konturen.
 Es gibt verschiedene Möglichkeiten, die zweidimensionale Kontur auf eine reale oder komplexe eindimensionale Funktion abzubilden.
-Eine eindimensionale Möglichkeit, die Kontur zu repräsentieren, ist es, die Tangente der Kontur in jedem Punkt zu berechnen und diese über der Bogenlänge der Kontur aufzutragen (engl.: angle vs. arc length function).
-Analog wird beim Ansatz der intrinsischen Gleichung (engl.: intrinsic equation) anstant der Tangente die Krümmung jedes Konturpunktes über der Bogenlänge aufzutragen.
-Eine weitere Möglichkeit besteht darin, den Schwerpunkt der Kontur zu berechnen und jeden Punkt der Kontur durch den Abstand zu repräsentieren, den dieser zum Schwerpunkt besitzt (engl.: centroid-to-bondary distance approach).
+Eine eindimensionale Möglichkeit, die Kontur zu repräsentieren, ist es, die Tangente der Kontur in jedem Punkt zu berechnen und diese über der Bogenlänge der Kontur aufzutragen (engl.
+: angle vs.
+arc length function).
+Analog wird beim Ansatz der intrinsischen Gleichung (engl.
+: intrinsic equation) anstant der Tangente die Krümmung jedes Konturpunktes über der Bogenlänge aufzutragen.
+Eine weitere Möglichkeit besteht darin, den Schwerpunkt der Kontur zu berechnen und jeden Punkt der Kontur durch den Abstand zu repräsentieren, den dieser zum Schwerpunkt besitzt (engl.
+: centroid-to-bondary distance approach).
 Ein weiterer, mit der Schwerpunktsmethode verwandter Ansatz bestimmt nicht den Abstand jedes Konturpunktes zum Schwerpunkt, sondern nur den von ausgezeichneten Merkmalspunkten, die sich durch eine starke Krümmung der Kontur auszeichenen [30].
 Des Weiteren wird in [33] ein merkmalsbasierter Ansatz zur Objekterkennung in bereits segmentierten Tiefenbildern vorgestellt.
 In jedem Tiefenbild ist jeweils nur ein Objekt vor einem schwarzen Hintergrund zu sehen.
@@ -293,8 +286,7 @@ Bei lokalen Operationen werden zusätzlich noch Umgebungspixel des gerade verarb
 Werden lokale Operationen iterativ auf jedes Pixel angewendet, spricht man von Filtern.
 Diese werden überwiegend zur Glättung und Kantenextraktion eingesetzt.
 Neben Bildpunkt- und lokalen Operationen findet noch eine Unterteilung in lineare und nichtlineare Operationen statt.
-(a) (b) Abbildung 4.1:
-Unterschied zwischen einer (a) Bildpunkt- und einer (b) lokalen Operationen.
+(a) (b) Abbildung 4.1: Unterschied zwischen einer (a) Bildpunkt- und einer (b) lokalen Operationen.
 
 
 :::: Bildvorverarbeitung ::::
@@ -304,7 +296,8 @@ Vor der Segmentierung des Bildes wird dieses oft mehrfach vorverarbeitet.
 Mit dem Ziel, das Segmentieren des Bildes zu erleichtern, ohne dabei relevante Informationen des Bildes zu verändern.
 Es gibt keine Methoden, die für die Bildvorverarbeitung generell optimal sind.
 Alle Maßnahmen müssen entsprechend den Anforderungen an das verarbeitete Bild und den experimentellen Gegebenheiten zur Bildgewinnung gewählt werden.
-Die hier vorgenommenen Bildvorverarbeitungsmaßnahmen sind Kontrastverbesserung und Rauschunterdrückung bzw. Ausgleichen von Digitalisierungsfehlern durch Glättung des Tiefenbildes.
+Die hier vorgenommenen Bildvorverarbeitungsmaßnahmen sind Kontrastverbesserung und Rauschunterdrückung bzw.
+Ausgleichen von Digitalisierungsfehlern durch Glättung des Tiefenbildes.
 
 
 :::: Kontrastverbesserung ::::
@@ -318,16 +311,14 @@ In dieser Arbeit wird das Verfahren der linearen Grauwertdehnung angewendet.
 Es gehört zur Gruppe der linearen Bildpunktoperationen.
 Diese modifizieren mittels Look-Up-Tables (LUT) die Grauwertskala eines Bildes.
 Der Kontrast eines Grauwertbildes B(x; y) kann mit diesem Verfahren verbessert werden, wenn die im Bild vorkommenden minimalen und maximalen Grauwerte Bmin und Bmax nicht den gesamten zur Verfügung stehenden Grauwertbereich Amin bis Amax abdecken.
-In diesem Fall lässt sich nach Gleichung 4.1 das Bild B(x; y) in ein Bild A(x; y) mit höherem Kontrast transformieren [1]:
-Amax −
+In diesem Fall lässt sich nach Gleichung 4.1 das Bild B(x; y) in ein Bild A(x; y) mit höherem Kontrast transformieren [1]: Amax −
 #$@FORMULA@$#:0
 A(x; y) = Bmax − Die Transformation von B(x; y) nach A(x; y) ist eine lineare, ortsunabhängige und globale Grauwerttransformation [56].
 Es sind jedoch auch nichtlineare Transformationen vorstellbar.
 Eine nichtlineare Transformation ermöglicht es, den Kontrast zwischen Objekten, die sich zu nah am Scanner befinden oder zu weit entfernt sind, herabzusenken.
 Dadurch steht im relevanten Entfernungsbereich ein größerer Grauwertbereich zur Verfügung, so dass der Kontrast dort noch stärker erhöht werden kann.
 Abbildung 4.2 stellt die LUT-Kennlinien einer linearen bzw. nichtlinearen Transformation dar.
-Clipping:
-Das Clipping ist neben den nicht linearen Kennlinien ein weiteres Verfahren, um den Kontrast im relevanten Bereich zu verstärken.
+Clipping: Das Clipping ist neben den nicht linearen Kennlinien ein weiteres Verfahren, um den Kontrast im relevanten Bereich zu verstärken.
 Dabei wird anstatt des Intervalls [Bmin; Bmax] ein
 #$@FORMULA@$#:1
 macht deutlich, dass insbesondere für Tiefenbilder nach der Entfernung von Bodenpunkten (deren Erzeugung in 4.4.2 beschrieben ist) das Abschneiden der hellsten Grauwerte durch Clipping Sinn macht, da diese meist nur von wenigen falsch klassifizierten Bodenpunkten besetzt sind.
@@ -347,8 +338,7 @@ Lineare Filter Lineare Filter sind lineare homogene Funktionen und werden auch a
 Jeder lineare Filter besitzt eine inverse Transformation und benötigt wenig Rechenaufwand.
 Sie werden vor allem zur Glättung und Kantendetektion eingesetzt.
 Zu den linearen Glättungsfiltern gehören der Mittelwert- und der Gaussfilter.
-Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners Mittelwert-Filter:
-Der Mittelwert-Filter ersetzt jedes Pixel durch den Mittelwert seiner Um-
+Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners Mittelwert-Filter: Der Mittelwert-Filter ersetzt jedes Pixel durch den Mittelwert seiner Um-
 1u
 2u
 3u
@@ -360,8 +350,7 @@ Nichtlineare Filter besitzen keine inverse Operation wie die linearen Filter und
 Der bekannteste Rangordnungsoperator ist der Median-Filter.
 Neben diesem Operator werden die morphologischen Rangordnungsoperatoren Erosion und Dilatation besprochen.
 Sie erhalten aufgrund ihrer Komplexität ein eigenes Unterkapitel.
-Median-Filter:
-Der Medianfilter wurde Anfang der 70er Jahre zur nichtlinearen Glättung von Signalen vorgeschlagen [56].
+Median-Filter: Der Medianfilter wurde Anfang der 70er Jahre zur nichtlinearen Glättung von Signalen vorgeschlagen [56].
 Bei der Medianfilterung wird der Grauwert eines Pixels durch den Median aller Grauwerte der Umgebungspixel ersetzt.
 Dieser ergibt sich, indem alle Pixel der herangezogenen Umgebung in eine sortierte Folge gebracht werden und das aktuelle Pixel durch den mittleren Wert der Folge (den Median) ersetzt wird.
 Der Medianfilter unterdrückt Rauschen und ist gleichzeitig ein kantenerhaltener Operator.
@@ -390,9 +379,7 @@ Meist wird der Schwellwert auf die Gesamtgröße des Strukturelementes gesetzt, 
 Die Wirkungsweise der Erosionsoperation ist in Abbildung4.6 zu sehen.
 Formal lässt sich die Erosion einer Menge X mit einem Strukturelement B als Schnitt negativer Translationen des Strukturelementes darstellen [68]:
 #$@FORMULA@$#:0
-Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners Abbildung 4.7:
-Wirkungsweise der Dilatationsoperation:
-es ist zu sehen, dass die Dilatation die Lücke
+Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners Abbildung 4.7: Wirkungsweise der Dilatationsoperation: es ist zu sehen, dass die Dilatation die Lücke
 1u
 2u
 3u
@@ -420,8 +407,7 @@ Schließung Der duale Operator zur morphologischen Önung ist die morphologisch
 Sie ist analog zur Önung definiert, nur werden Reihenfolge von Erosion und Dilatation vertauscht:
 #$@FORMULA@$#:2
 Die veränderte Reihenfolge führt dazu, dass die Operation das Objekt nicht verkleinert, sondern kleine Lücken im und zwischen Objekten schließt.
-Die algebraische Formulierung lautet:
-Passt das Strukturelement ganz in den Hintergrund X c der zu schließenden Menge, gehören alle Punkte des Strukturelementes zum Komplement der Schließung der Menge [54]:
+Die algebraische Formulierung lautet: Passt das Strukturelement ganz in den Hintergrund X c der zu schließenden Menge, gehören alle Punkte des Strukturelementes zum Komplement der Schließung der Menge [54]:
 #$@FORMULA@$#:3
 Die Schließungsoperation besitzt ebenso wie die Önungsoperation die Idempotenzeigenschaft.
 Sie erzeugt aber im Gegensatz zur Önungsoperation keine Untermenge der Originalmenge, sondern eine Obermenge (Extensivitätseigenschaft).
@@ -458,29 +444,24 @@ Wie in Kapitel 5 zu sehen ist, wird Konturbasierte Objekterkennung aus Tiefenbil
 Eine zuverlässige Segmentierung ist von zentraler Bedeutung, da sich Fehler in der Segmentierungsphase auf alle folgenden Verarbeitungsschritte auswirken.
 Selbst ein optimaler Klassifizierer ist nicht in der Lage, ein falsch segmentiertes Bild richtig zu klassifizieren.
 Ein gutes Segmentierungsverfahren besitzt die Eigenschaft, dass es möglichst große, disjunkte Segmente von zusammenhängenden Bereichen erzeugt, deren Vereinigung wieder das gesamte Bild ergibt.
-Segmentierungsalgorithmen lassen sich in folgende vier Klassen unterteilen:
-punktorientierte Verfahren:
-Die punktorientierten Verfahren (auch elementare Verfahren) verwenden zur Entscheidung, ob ein Pixel zu einem Segment gehört, nur die Eigenschaften des Pixels wie dessen Grauwert.
+Segmentierungsalgorithmen lassen sich in folgende vier Klassen unterteilen: punktorientierte Verfahren: Die punktorientierten Verfahren (auch elementare Verfahren) verwenden zur Entscheidung, ob ein Pixel zu einem Segment gehört, nur die Eigenschaften des Pixels wie dessen Grauwert.
 Zu den punktorientierten Verfahren gehört das in 4.2.3 beschriebene Schwellwertverfahren.
-kantenorientierte Verfahren:
-Kantenorientierte Verfahren versuchen zunächst mittels lokaler Operationen, Kanten im Bild zu finden.
+kantenorientierte Verfahren: Kantenorientierte Verfahren versuchen zunächst mittels lokaler Operationen, Kanten im Bild zu finden.
 Anschließend extrahiert ein Konturverfolgungsalgorithmus (vgl. Abschnitt 4.3) die Konturen aus dem Kantenbild.
 Zu den am häufigsten verwendeten Kantendetektionsoperatoren gehören der Sobel-, Laplace- und der Canny-Operator.
-Bei Tiefenbilder wird zwischen sogenannten Sprungkanten\ (engl.:
-jump edges) und Faltenkanten\ " " (engl.:
-crease edges) unterschieden [26].
+Bei Tiefenbilder wird zwischen sogenannten Sprungkanten\ (engl.
+: jump edges) und Faltenkanten\ " " (engl.
+: crease edges) unterschieden [26].
 Sprungkanten zeichnen sich durch eine Diskontinuität der Tiefenkoordinate aus.
 Während Faltenkanten entstehen, wenn zwei Flächen unter einem Winkel aufeinander treen.
 Oben genannte Kantendetektionsoperatoren sind nur in der Lage Sprungkanten im Tiefenbild zu entdecken, da bei Faltenkanten ein fließender Grauwert übergang gegeben ist.
 Faltenkanten werden durch den Vergleich der Oberflächennormalen der aneinanderstoßenden Flächen detektiert.
 Überschreitet der Winkel zwischen den Normalen einen definierten Wert, muss zwischen den Flächen eine Faltenkante liegen.
-regionenbasierte Verfahren:
-Regionenbasierte Verfahren verwenden im Gegensatz zu punktorientierten Verfahren auch Umgebungspixel um zu entscheiden, ob ein Pixel zu einem Segment gehört oder nicht.
+regionenbasierte Verfahren: Regionenbasierte Verfahren verwenden im Gegensatz zu punktorientierten Verfahren auch Umgebungspixel um zu entscheiden, ob ein Pixel zu einem Segment gehört oder nicht.
 Diese Verfahren werden in regionenwachstums- und baumorientierte Verfahren unterteilt.
 Regionenwachstumsverfahren setzen sukzessiv Regionenkeime in das Bild und weiten die Region auf die Nachbarpixel der Regionenkeime aus, wenn diese ein bestimmtes Homogenitätskriterium erfüllen.
 Baumorientierte Verfahren repräsentatieren das Bild durch eine Baumstruktur (Pyramiden, Quad Trees), wobei ein Knoten im Baum einen homogenen Bereich repräsentiert.
-regelbasierte Verfahren:
-Regelbasierte Verfahren (auch Segmentierung durch Klassifikation) besitzen im Gegensatz zu den bisher vorgestellten Verfahren einen mehrdimensionalen Merkmalsraum.
+regelbasierte Verfahren: Regelbasierte Verfahren (auch Segmentierung durch Klassifikation) besitzen im Gegensatz zu den bisher vorgestellten Verfahren einen mehrdimensionalen Merkmalsraum.
 Es ist somit möglich, neben der Grauwertskala weitere Merkmale wie Textureigenschaft oder Grauwertgradient zu verwenden.
 Mit Hilfe von Lernverfahren werden diese Merkmalsvektoren der Pixel geclustert und somit das Bild segmentiert.
 
@@ -504,8 +485,7 @@ Die Orientierung wird nach Gleichung 4.3 ermittelt und durch das in Abbildung 4.
 #$@FORMULA@$#:0
 Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners
 0u
-Abbildung 4.12:
-(b) stellt das mittels k-Means Verfahren mit neun Clustern segmentiertes Tiefenbild aus
+Abbildung 4.12: (b) stellt das mittels k-Means Verfahren mit neun Clustern segmentiertes Tiefenbild aus
 2u
 Zur Kantendetektion wird jedes Pixel entlang der durch die Orientierung vorgegebene Richtung mit seinen Nachbarn verglichen.
 Besitzt das Pixel einen größeren Gradienten als seine Nachbarn, wird dieses als Kantenpixel markiert, andernfalls wird es unterdrückt (Non-Maxima Suppression).
@@ -531,8 +511,7 @@ Nach der Aufteilung wird der Mittelwert der Datenpunkte für jeden Cluster berec
 Diesen Mittelwerten werden die einzelnen Datenpunkte so zugeordnet, dass jeder Datenpunkt seinem naheliegensten Mittelwert angehört.
 Dadurch entsteht eine neue Partitionierung der Daten.
 Es werden neue Mittelwerte berechnet und die Daten werden den neuen Mittelwerten zugeordnent.
-Diese Prozedur wird so lange angewendet, bis die Summe der Distan-Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners (a) (b) (c) Abbildung 4.13:
-Ein globales Schwellwertverfahren erzeugt definierte Schnitte durch das Tiefenbild bei variierendem Schwellwert.
+Diese Prozedur wird so lange angewendet, bis die Summe der Distan-Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners (a) (b) (c) Abbildung 4.13: Ein globales Schwellwertverfahren erzeugt definierte Schnitte durch das Tiefenbild bei variierendem Schwellwert.
 zen der Datenpunkte zu ihren Mittelwerten sich nicht mehr maßgeblich ändert.
 Die Summe der Distanzen ist eine mit den Iterationsschritten monoton fallende Funktion.
 In dieser Arbeit wird das k-means Verfahren eingesetzt, um die Tiefenbilder zu segmentieren.
@@ -570,14 +549,12 @@ Wird der Schwellwert zwischen die beiden Maxima gelegt, entsteht ein binäres Bi
 Das Verfahren des optimalen Schwellwertes ist nur für Grauwertbilder geeignet, bei denen eine klare Trennung zwischen Objekten und Hintergrund gegeben ist.
 Eine mögliche Anwendung wäre die Segmentierung von hell reflektierenden Gegenständen auf einem nicht reflektierenden Lieferband.
 Adaptiver Schwellwert Bei dem adaptiven Schwellwertverfahren gibt es keinen globalen Schwellwert, sondern viele lokale Schwellwerte.
-Es werden hauptsächlich zwei unterschiedliche Strategien verwendet:
-der Chow und Kanenko-Ansatz und der lokale Schwellwerte-Ansatz.
+Es werden hauptsächlich zwei unterschiedliche Strategien verwendet: der Chow und Kanenko-Ansatz und der lokale Schwellwerte-Ansatz.
 Der Ansatz nach Chow und Kanenko unterteilt das Bild in sich überlappende Unterbilder.
 Für jedes dieser Unterbilder wird ein Grauwerthistogramm erstellt, mit dessen Hilfe ein optimaler Schwellwert berechnet wird.
 Die Schwellwerte der Unterbilder werden interpoliert, so dass man f ür jedes Pixel einen lokalen Schwellwert erhält.
 Dieser Ansatz liefert zwar gute Resultate, ist für Echtzeitanwendungen aber zu rechenintensiv [38].
-Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners (a) (b) (c) Abbildung 4.15:
-Wirkungsweise eines kombinierten Verfahrens aus adaptivem und lokalem Schwellwert.
+Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners (a) (b) (c) Abbildung 4.15: Wirkungsweise eines kombinierten Verfahrens aus adaptivem und lokalem Schwellwert.
 In (a) ist das Originalbild zu sehen, dass nach einem adaptiven Schwellwert in homogenen Regionen zu Rauschen führt (b).
 Kombiniert mit einem globalen Schwellwert wird dieses Rauschen eleminiert [38].
 Der Ansatz der lokalen Schwellwerte betrachtet jedes Pixel einzeln und berechnet dessen Schwell-
@@ -585,8 +562,7 @@ Der Ansatz der lokalen Schwellwerte betrachtet jedes Pixel einzeln und berechnet
 6u
 7u
 Zum ersten Problem ist zu sagen, dass es keine einheitlich richtige Methode gibt, sondern die Wahl der richtigen Gewichte von der Natur des Bildes abhängt.
-Häufig verwendete Gewichtungen sind:
-Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners Der durchschnittliche Grauwert, der Median oder eine Gaußverteilung.
+Häufig verwendete Gewichtungen sind: Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners Der durchschnittliche Grauwert, der Median oder eine Gaußverteilung.
 Bei der Wahl der Umgebungsgröße ist zu beachten, dass eine große Umgebung zu einem Ergebnis führt, dass gröbere Segmente erzeugt und kleinere Regionen mit zur Umgebung verschiedenem Grauwert unterdrückt.
 Dies kann bei der Segmentierung von relativ großen Objekten ein durchaus gewünschter Eekt sein.
 Ein Nachteil großer Umgebungen ist die höhere Rechenintensität im Vergleich zu kleinen Umgebungen.
@@ -607,8 +583,7 @@ Abbildung 4.16 zeigt das Ergebnis eines auf diese Weise binarisierten Tiefenbild
 
 
 Aus dem binarisierten Bild werden die Konturen mit einem Konturverfolgungsalgorithmus nach [58] extrahiert.
-Dieser geht das Bild zeilenweise durch und beginnt eine Konturverfolgungsprozedur, sobald er auf einen noch nicht markierten Konturpunkt trit.
-Die Konturverfolgungsprozedur verfolgt, wie der Name schon sagt, die Kontur und markiert jeden Konturpunkt dabei eindeutig.
+Dieser geht das Bild zeilenweise durch und beginnt eine Konturverfolgungsprozedur, sobald er auf einen noch nicht markierten Konturpunkt trit. Die Konturverfolgungsprozedur verfolgt, wie der Name schon sagt, die Kontur und markiert jeden Konturpunkt dabei eindeutig.
 Der Algorithmus geht das Bild so lange durch, bis keine neuen Konturpunkte gefunden werden.
 
 
@@ -709,8 +684,7 @@ Kleine Strukturen werden komplett unterdrückt.
 
 In diesem Kapitel werden zunächst die Begrie Repräsentation und Merkmal einer Kontur geklärt.
 Anschließend werden alle in dieser Arbeit zur Klassifikation einer Kontur verwendeten Repräsentationen und Merkmale vorgestellt.
-Es gibt zwei verschiedene Herangehensweisen, die Form von Objekten zu repräsentieren:
-konturund regionorientiert.
+Es gibt zwei verschiedene Herangehensweisen, die Form von Objekten zu repräsentieren: konturund regionorientiert.
 Die erste Kategorie repräsentiert die Form, wie der Name schon sagt, durch ihre Kontur, während die zweite Kategorie die Form als Komposition von zweidimensionalen Regionen auasst.
 Abbildung 5.1 zeigt, welche Objekte einander in den unterschiedlichen Beschreibungstechniken ähneln.
 Techniken in beiden Kategorien werden in räumliche (spatial domain) bzw. transformierte Domänen unterteilt.
@@ -740,21 +714,15 @@ korreliert sind.
 
 Damit eine Konturrepräsentation Objekterkennung ermöglichen kann, muss sie eine Anzahl von Kriterien erfüllen [42].
 In den folgenden Definitionen werden zwei Konturen als gleich bezeichnet, wenn die eine Kontur durch eine Kombination aus Rotation, Translation und Skalierung auf die zweite abgebildet werden kann.
-Invarianz:
-Wenn zwei Konturen die gleiche Form besitzen, sollten die Repräsentationen identisch sein.
-Eindeutigkeit:
-Wenn zwei Konturen unterschiedliche Formen besitzen, sollten die Repräsentationen unterschiedlich sein.
-Stabilität:
-Wenn zwei Konturen sich nur geringfügig unterscheiden, sollte das auch für ihre Repräsentationen gelten.
+Invarianz: Wenn zwei Konturen die gleiche Form besitzen, sollten die Repräsentationen identisch sein.
+Eindeutigkeit: Wenn zwei Konturen unterschiedliche Formen besitzen, sollten die Repräsentationen unterschiedlich sein.
+Stabilität: Wenn zwei Konturen sich nur geringfügig unterscheiden, sollte das auch für ihre Repräsentationen gelten.
 Ebenso sollten zwei einander ähnelnde Repräsentationen zu sich ähnelnden Konturen gehören.
 Neben diesen notwendigen Bedingungen gibt es eine Reihe von weiteren Bedingungen, die beim Einsatz einer Konturrepräsentation in einer praktischen Anwendung ebenfalls gewährleistet sein sollten.
-Lokale Information:
-Eine Konturrepräsentation sollte lokale Informationen einer Kontur verwenden, so dass es möglich ist, die Repräsentationen von Teilen einer Kontur zu vergleichen.
-Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners Eektivität:
-Die Repräsentation sollte effzieint zu berechnen und zu speichern sein, da Objekter-
+Lokale Information: Eine Konturrepräsentation sollte lokale Informationen einer Kontur verwenden, so dass es möglich ist, die Repräsentationen von Teilen einer Kontur zu vergleichen.
+Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners Eektivität: Die Repräsentation sollte effzieint zu berechnen und zu speichern sein, da Objekter-
 1u
-Formeigenschaften:
-Falls die Kontur symmetrisch ist, sollte auch die Repräsentation symmetrisch sein (Symmetrie-Kriterium).
+Formeigenschaften: Falls die Kontur symmetrisch ist, sollte auch die Repräsentation symmetrisch sein (Symmetrie-Kriterium).
 Wenn die Kontur Teil einer anderen zweiten Kontur ist, sollte sich auch in der Repräsentation der zweiten Kontur die Repräsentation der ersten Kontur wieder finden lassen (Teil-Ganzes-Kriterium).
 
 
@@ -762,16 +730,11 @@ Wenn die Kontur Teil einer anderen zweiten Kontur ist, sollte sich auch in der R
 
 
 An die aus einer Konturrepräsentation extrahierten Merkmale werden, wie an die Repräsentation selbst, gewisse Anforderungen gestellt [7].
-Robustheit:
-Die Merkmale müssen robust gegenüber Rauschen und Rechenungenauigkeiten sein.
-Rechenkomplexität:
-Es muss die Möglichkeit gegeben sein, die Merkmale effzieint zu berechnen.
-Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners Diskriminanz:
-Die zu untersuchenden Konturen müssen sich durch die Merkmale beschreiben, klar trennen und klassifizieren lassen.
-Generalität:
-Die Datenbank der zu klassifizierenden Objekte muss für einen Merkmalssatz erweiterbar sein, ohne dass die Diskriminanzbedingung aufgehoben wird.
-Flexibilität:
-Das System muss sich einfach an sich ändernde Randbedingungen anpassen, ohne einen neuen Merkmalssatz extrahieren zu müssen.
+Robustheit: Die Merkmale müssen robust gegenüber Rauschen und Rechenungenauigkeiten sein.
+Rechenkomplexität: Es muss die Möglichkeit gegeben sein, die Merkmale effzieint zu berechnen.
+Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners Diskriminanz: Die zu untersuchenden Konturen müssen sich durch die Merkmale beschreiben, klar trennen und klassifizieren lassen.
+Generalität: Die Datenbank der zu klassifizierenden Objekte muss für einen Merkmalssatz erweiterbar sein, ohne dass die Diskriminanzbedingung aufgehoben wird.
+Flexibilität: Das System muss sich einfach an sich ändernde Randbedingungen anpassen, ohne einen neuen Merkmalssatz extrahieren zu müssen.
 
 
 :::: Einfache geometrische Merkmale ::::
@@ -796,13 +759,15 @@ Es stellt ein Verhältnis aus Fläche A und Umfang U einer Kontur dar.
 #$@FORMULA@$#:2
 Die Kreisförmigkeit reicht von 0 für eine Linie, bis 1 für einen Kreis.
 Es gibt keine größeren Werte, da der Kreis die maximale Fläche bei gegebenem Umfang besitzt.
-Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners Seitenverhältnis Das Merkmal Seitenverhältnis\ (engl.: aspect ratio) beschreibt das Seitenverhältnis eines die Kon- " tur umschreiben Rechtecks.
-Es gibt zwei verschiedene Rechtecke:
-das kleinste, umschreibende, achsenparallele Rechteck (engl.: Ferret box ).
+Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners Seitenverhältnis Das Merkmal Seitenverhältnis\ (engl.
+: aspect ratio) beschreibt das Seitenverhältnis eines die Kon- " tur umschreiben Rechtecks.
+Es gibt zwei verschiedene Rechtecke: das kleinste, umschreibende, achsenparallele Rechteck (engl.
+: Ferret box ).
 Dieses überdeckt die Kontur komplett, besitzt minimalen Flächeninhalt und ist parallel zu den Koordinatenachsen ausgerichtet.
 Das Verhältnis der Seitenlängen ist skalierungs- und translationsinvariant.
 Die Rotationsinvarianz lässt sich erreichen, indem die Bedingung der Parallelität des Rechtecks zu den Koordinatenachsen aufgehoben wird.
-Dieses Rechteck wird umschreibendes Rechteck minimaler Fläche (engl.: minimum bounding rectangle-MBR) genannt.
+Dieses Rechteck wird umschreibendes Rechteck minimaler Fläche (engl.
+: minimum bounding rectangle-MBR) genannt.
 Bei diesem Rechteck wird das Seitenverhältnis der längeren zur kürzeren Seite berechnet.
 Der Winkel, um den das achsenparallele Rechteck gedreht werden muss, um das umschreibende Rechteck minimaler Fläche zu erhalten, lässt sich durch das Merkmal Orientierung bestimmen.
 Meist wird das Verhältnis der Seitenlängen logarithmisch angegeben, da gilt H B log = log , B H fi fi fi fi fi fi fi fi fi fi fi fi wobei H die Höhe und B die Breite des Rechtecks ist.
@@ -911,43 +876,36 @@ Es sind komplexe, orthogonale Polynome, die senkrecht auf dem Einheitskreis x2 +
 Die Zernike-Momente entstehen durch die Projektion der Bildfunktion B(x; y) auf diese orthogonalen Basisfunktionen.
 Dies geschieht analog zur Konstruktion der geometrischen Momente (vgl. 5.4) nur das die Bildfunktion nicht auf die nicht orthogonale Basis xpyq projiziert wird, sondern auf die Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners orthogonalen Zernike-Polynome.
 Mit Hilfe dieser Basisfunktionen ergeben sich folgende Zernike-Momente:
-n + 1 B(x; y)V * Anm = nm(%; )dx dy .
-ß x2+ZyZ2≤1 In Polarkoordinaten werden diese zu:
-2ß 1 n + 1 B(%; )Rnm(%)e(−im)% d% d .
-Anm = ß Z0 Z0 Zernike-Momente besitzen die Eigenschaft, dass sie ähnlich der in Abschnitt 5.5 beschriebene Curvature-Scale-Space-Repräsentation unter Rotation des Objektes einen Phasenshift vollführen.
+#$@FORMULA@$#:0
+In Polarkoordinaten werden diese zu:
+#$@FORMULA@$#:1
+Zernike-Momente besitzen die Eigenschaft, dass sie ähnlich der in Abschnitt 5.5 beschriebene Curvature-Scale-Space-Repräsentation unter Rotation des Objektes einen Phasenshift vollführen.
 In [29] wird die Rotationsinvarianz der Merkmale erreicht, indem nur jeweils der Betrag der Momente genommen wird, da dieser invariant gegenüber einer Phasenverschiebung ist (vgl. 5.5.3).
 Eine Invarianz gegenüber Skalierung und Translation wird erreicht, indem das Bild vor der Berechnung der Momente mit Hilfe seiner geometrischen Momente normiert wird.
 Einen alternativen Ansatz, aus den Zernike-Momenten einen kompletten Satz invarianter Merkmale zu erzeugen, wird in [64] vorgestellt.
 Dieser Ansatz beruht auf den beiden folgenden Aussagen:
+11u
+12u
+13u
+14u
+15u
+Auf diesen Grundaussagen aufbauend werden drei Regeln definiert, die folgende Invarianten liefern:
+17u
+18u
+19u
+20u
+21u
+22u
 23u
 24u
 25u
 26u
 27u
-Auf diesen Grundaussagen aufbauend werden drei Regeln definiert, die folgende Invarianten liefern:
+28u
 29u
 30u
-31u
-32u
-33u
-34u
-35u
-36u
-37u
-38u
-39u
-40u
-41u
-42u
-j A33j 2 I31 = j A31j 2 I32 =
-#$@FORMULA@$#:0
-j A31j j A22j cos(2’31 − 2 P32 =
-#$@FORMULA@$#:1
-j A31j j A22j sin(2’31 −
-#$@FORMULA@$#:2
-I33 = j A{{hn:33:nh}}jj A31j 3 cos(2’33 −
-#$@FORMULA@$#:3
-P33 = j A{{hn:33:nh}}jj A31j 3 sin(2’31 − Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners
+j A33j 2 I31 = j A31j 2 I32 = ’22) j A31j j A22j cos(2’31 − 2 P32 = ’22) j A31j j A22j sin(2’31 − I33 = 3’31) j A{{hn:33:nh}}jj A31j 3 cos(2’33 − P33 = ’22) .
+j A{{hn:33:nh}}jj A31j 3 sin(2’31 − Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners
 
 
 :::: Repräsentation durch den Curvature-Scale-Space (CSS) ::::
@@ -1034,8 +992,7 @@ Die Eigenschaft der CSS-Repräsentation, dass aus einer Rotationsbewegung eine T
 Drew, Lee und Rova schlagen ein Verfahren vor, dieses Translationsproblem durch eine Kombination aus drei einfachen, im Bereich des maschinellen Sehens (engl.
 :computer vision) etablierten Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners
 #$@FORMULA@$#:6
-Methoden zu erreichen:
-Marginale-Summen, Phasenkorrelation und Single-Value-Decomposition [11].
+Methoden zu erreichen: Marginale-Summen, Phasenkorrelation und Single-Value-Decomposition [11].
 Durch Marginale-Summen und Phasenkorrelation wird das Translationsproblem gelöst und Single-Value-Decomposition überführt die rotationsinvariante Darstellung in ihren Eigenraum.
 Drew, Lee und Rova definieren diese Repräsentation als Eigen-CSS Darstellung.
 Diese Eigenraumdarstellung kann direkt als Merkmalsvektor genutzt werden.
@@ -1063,7 +1020,8 @@ F2(u; v)F1(u; v)
 2u
 dessen Koordinaten der Verschiebung des Bildes in x- bzw. y-Richtung entsprechen.
 Es ist möglich, durch Erweiterungen dieses Ansatzes neben der Translation auch Rotation und Skalierung zu bestimmen, die zwei Bilder ineinander überführt.
-In dieser Applikation wird jedoch nur die Translation in x-Richtung benötigt, und es sind nicht zwei Bildfunktionen f1 und f2 zu korrelieren, sondern nur der Spaltenvektor r. Die beschriebene Phasenkorrelation kann aus dem Grund nicht angewendet werden.
+In dieser Applikation wird jedoch nur die Translation in x-Richtung benötigt, und es sind nicht zwei Bildfunktionen f1 und f2 zu korrelieren, sondern nur der Spaltenvektor r.
+Die beschriebene Phasenkorrelation kann aus dem Grund nicht angewendet werden.
 Um den gewünschten Eekt der Rotationsinvarianz zu erzielen, reicht es aus, das Verschiebungstheorem der Fouriertransformation anzuwenden.
 Dieses besagt, dass die Magnitudenspektren zweier translatierter Bildfunktionen identisch sind.
 Somit ergibt sich folgende Vorgehensweise:
@@ -1076,16 +1034,14 @@ Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners
 Single-Value-Decomposition
 1u
 2u
-Die algebraisch formulierte Problemstellung lautet:
-Es gibt N Vektoren in einem M -dimensionalen Vektorraum mit N M .
+Die algebraisch formulierte Problemstellung lautet: Es gibt N Vektoren in einem M -dimensionalen Vektorraum mit N M .
 Nun soll ein ortho-
 #$@FORMULA@$#:0
 normaler Satz von N Vektoren gefunden werden, der den selben Vektorraum aufspannt wie die ursprünglichen N Vektoren.
 Dieses Problem kann mit Hilfe der Single-Value-Decomposition (SVD) M dimensionale Matrix X aus den N Vektoren erstellt.
 Diese gelöst werden.
 Dazu wird eine N  Matrix lässt sich als Multiplikation einer spaltenorthonormalen N M Matrix U, einer N N   Diagonalmatrix W (Singular Values) und der Transponierten einer N N orthogonalen Matrix V  Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners schreiben [49].
-Wenn der Rang der X-Matrix nicht ihrer Dimensionalität entspricht, wird der durch X aufgespannte Vektorraum in zwei Unterräume geteilt:
-In Nullspace und Range.
+Wenn der Rang der X-Matrix nicht ihrer Dimensionalität entspricht, wird der durch X aufgespannte Vektorraum in zwei Unterräume geteilt: In Nullspace und Range.
 Der Nullspace bildet einen Vektor immer auf Null ab.
 Range besitzt die Dimension des Ranges von X und beschreibt den durch Multiplikation mit X erreichbaren, von Null verschiedenen, Vektorraum.
 Mit Hilfe der SVD-Operation kann eine orthonormale Basis für beide Vektorräume gefunden werden.
@@ -1125,7 +1081,8 @@ Es ist somit möglich, die verdeckte Kontur als Teil der
 1u
 2u
 Ansatz verfolgen, die Maxima der Größe nach jeweils paarweise zu vergleichen, wie es bei nicht verdeckten Objekten möglich ist.
-Diese Vorgehensweise ist nicht möglich, da zum Beispiel das größte Maximum der nicht verdeckten Kontur in der verdeckten Kontur evtl. nicht vorhanden ist.
+Diese Vorgehensweise ist nicht möglich, da zum Beispiel das größte Maximum der nicht verdeckten Kontur in der verdeckten Kontur evtl.
+nicht vorhanden ist.
 Nach dem Matching-Verfahren für nicht verdeckte Objekte würde das größte Maximum der verdeckten Kontur mit dem größten Maximum der nicht verdeckten Kontur verglichen.
 Entsprechendes gilt Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners für die folgenden kleineren Maxima.
 Es ergibt sich somit ein großer Matchingfehler, obwohl die
@@ -1177,15 +1134,11 @@ Da die Repräsentation globalen Charakter besitzt, verfügt jeder Fourierkoeffzi
 Geschlossenen Konturen sind stetig und beschränkt.
 Die Fourierkoeffzieinten ei- 1 ner solchen Kontur streben n2 gegen Null.
 Zur Repräsentation der Kontur müssen daher keine  unendlichen Summen ausgeführt werden, da sich die Kontur schon durch wenige (niederfrequente) Koeffzieinten approximieren lässt.
-Eigenschaften der Fourierkoeffzieinten bezüglich Konturtransformationen:
-Rotation:
-Eine rotierte Kontur im Ortsraum führt nur zu einer Phasenveränderung im Frequenzraum (vgl. 5.5.3).
+Eigenschaften der Fourierkoeffzieinten bezüglich Konturtransformationen: Rotation: Eine rotierte Kontur im Ortsraum führt nur zu einer Phasenveränderung im Frequenzraum (vgl. 5.5.3).
 Das Magnitudenspektrum bleibt konstant.
-Translation:
-Eine translatierte Kontur besitzt andere Fourierkoeffzieinten als die Originalkontur.
+Translation: Eine translatierte Kontur besitzt andere Fourierkoeffzieinten als die Originalkontur.
 Aus diesem Grund wird der Ursprung der Komplexen Ebene häufig in den Schwerpunkt der Kontur gelegt bzw. die Kontur wird mit dem ersten Fourierkoeffzieinten normiert, der die Lage des Schwerpunktes angibt.
-Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners Skalierung:
-Eine Skalierung der Kontur im Ortsraum führt zu einer Skalierung der Fourierko-
+Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners Skalierung: Eine Skalierung der Kontur im Ortsraum führt zu einer Skalierung der Fourierko-
 1u
 2u
 Die normierten Fourierkoeffzieinten werden Fourier-Deskriptoren genannt.
@@ -1275,13 +1228,12 @@ Diese Vorgehensweise wird auch Karhunen-Loeve-Transformation genannt.
 
 
 Es gibt zwei unterschiedliche Herangehensweisen, einen Klassifikator zu trainieren.
-Unüberwachtes Lernen:
-Unüberwachtes Lernen bezeichnet die Klassifikation von Daten ohne im vorraus bekannte Zielwerte.
+Unüberwachtes Lernen: Unüberwachtes Lernen bezeichnet die Klassifikation von Daten ohne im vorraus bekannte Zielwerte.
 Zu den unüberwachten Lernverfahren gehören Clustering-Verfahren.
 Bei unüberwachtem Lernen werden keine Aussagen darüber gemacht, zu welcher Klasse ein Merkmalsvektor gehört, sondern nur, welche Merkmalsvektoren zur selben Klasse gehören.
-Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners Ein Beispiel für ein Clustering-Verfahren ist die k-Nächste-Nachbarn (engl.: k-Nearest-Neighbor ) Technik.
-Überwachtes Lernen:
-Bei überwachtem Lernen sind für eine definierte Menge von Merkmalsvektoren (Trainingsmenge) die Klasse bekannt, zu der die durch die Merkmalsvektoren repräsentierten Objekte gehören.
+Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners Ein Beispiel für ein Clustering-Verfahren ist die k-Nächste-Nachbarn (engl.
+: k-Nearest-Neighbor ) Technik.
+Überwachtes Lernen: Bei überwachtem Lernen sind für eine definierte Menge von Merkmalsvektoren (Trainingsmenge) die Klasse bekannt, zu der die durch die Merkmalsvektoren repräsentierten Objekte gehören.
 Mit diesen Merkmalsvektoren wird der Klassifikator trainiert.
 Bei der Auswahl der Testbeispiele der Trainingsmenge ist darauf zu achten, dass diese homogen über die Klasse verteilt sind und diese gut repräsentieren.
 Nach dem Training soll der Klassifikator in der Lage sein, unbekannte Eingaben anhand der Merkmalsvektoren richtig zu klassifizieren.
@@ -1326,8 +1278,7 @@ minimiere wT w
 #$@FORMULA@$#:0
 unter der Nebenbedingung yi gibt an, ob der jeweilige Punkt zu der positiven (yi = 1) bzw. negativen (yi = 1) Klasse gehört.
 Der Index i läuft über alle Beispiele der Trainingsmenge.
-Die zu dem Optimierungsproblem gehörige Lagrangefunktion besitzt die Form:
-p 1 L(w; b; ) =
+Die zu dem Optimierungsproblem gehörige Lagrangefunktion besitzt die Form: p 1 L(w; b; ) =
 #$@FORMULA@$#:1
 w 1) .
 (6.3) 2 j j − Xi=1 In dieser Gleichung wird die zu minimierende Funktion mit {{hn:1:nh}}2 erweitert.
@@ -1372,8 +1323,7 @@ Radial exp  2 −  
 #$@FORMULA@$#:1
 Sigmoidal tanh(≤(xT xj) + ) ≤ und 
 #$@FORMULA@$#:2
-Tabelle 6.1:
-Häufig verwendete Kernel für Support-Vector-Machines Die Entscheidungsfunktion 6.1 lässt sich mit Gleichung 6.4 und unter Berücksichtigung der Kernelfunktion folgendermaßen umformen.
+Tabelle 6.1: Häufig verwendete Kernel für Support-Vector-Machines Die Entscheidungsfunktion 6.1 lässt sich mit Gleichung 6.4 und unter Berücksichtigung der Kernelfunktion folgendermaßen umformen.
 #$@FORMULA@$#:0
 6.3.3 SVM zur Klassifikation von mehreren Objekten Da die SVM als binärer Klassifikator entwickelt wurde, müssen für eine Klassifikation von mehreren
 
@@ -1382,15 +1332,12 @@ Häufig verwendete Kernel für Support-Vector-Machines Die Entscheidungsfunktion
 
 
 verschiedene Techniken vorgestellt.
-Hier werden die drei am häufigsten verwendeten Methoden beschrieben [66]:
-Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners Einer gegen den Rest Klassifikation:
-Für jedes der zu klassifizierenden Objekte wird eine binäre
+Hier werden die drei am häufigsten verwendeten Methoden beschrieben [66]: Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners Einer gegen den Rest Klassifikation: Für jedes der zu klassifizierenden Objekte wird eine binäre
 1u
 2u
 der Klasse zugeordnet, dessen SVM die höchste Ausgabe erzeugt (winner-takes-all).
 Dies ist auch der größte Kritikpunkt an diesem Verfahren, da es sich um unterschiedliche binäre Klassifikationsprobleme handelt und nicht sichergestellt ist, dass die Ausgaben der SVMs vergleichbar sind.
-Paarweise Klassifikation:
-Bei der paarweisen Klassifikation werden bei M Klassen f ür jede mögliche Paarung zweier Klassen eine binäre SVM trainiert.
+Paarweise Klassifikation: Bei der paarweisen Klassifikation werden bei M Klassen f ür jede mögliche Paarung zweier Klassen eine binäre SVM trainiert.
 Es entstehen somit (M
 #$@FORMULA@$#:0
 und nicht M , wie es beim Einer gegen den Rest Klassifikation\ der Fall ist [53].
@@ -1406,7 +1353,8 @@ Um das Ausführen von redundanten SVMs zu vermeiden, werden die SVMs in einem DA
 Abbildung 6.3 zeigt einen solchen Graphen für ein Vier-Klassen-Problem.
 Da jede SVM eine Klasse ausschließen kann, müssen nur die SVMs entlang eines Pfades im Graphen ausgeführt werden.
 Das erreichte Blatt des Graphen gibt die Klasse an, der das Objekt zugeordnet wird.
-Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners Vielklassen-Zielfunktion (engl.: Multi-Class Objective Functions:) Im Gegensatz zu den beiden ersten Verfahren, werden in diesem Ansatz nicht mehrere binäre SVMs kombiniert, sondern die Entscheidungsfunktion der SVM wird so modifiziert, dass sie mit mehreren Klassen arbeiten kann.
+Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners Vielklassen-Zielfunktion (engl.
+: Multi-Class Objective Functions:) Im Gegensatz zu den beiden ersten Verfahren, werden in diesem Ansatz nicht mehrere binäre SVMs kombiniert, sondern die Entscheidungsfunktion der SVM wird so modifiziert, dass sie mit mehreren Klassen arbeiten kann.
 In dieser Arbeit wird die Einer gegen den Rest Klassifikation\ mit einer Art Voting \ der SVMs " "
 7u
 8u
@@ -1464,15 +1412,10 @@ Sie ermöglicht es, das Verhalten von Diagnose-Systemen zu analysieren und zu vi
 Das Verfahren wurde bereits in den 60er Jahren des letzten Jahrhunderts in der Medizin eingesetzt und etablierte sich dort als Analyse-Verfahren in der Krankheitsdiagnostik.
 In den letzten Jahren hat sich das Verfahren auch im Bereich des maschinellen Lernens durchgesetzt [62].
 Um die Performance eines Klassifikators beurteilen zu können, muss zunächst betrachtet werden, welche Ergebnisse ein Klassifikator liefern kann.
-Ein binärer Klassifikator erzeugt für eine Testinstanz nur vier diskrete Ausgaben:
-True Positiv (tp):
-die Testinstanz ist ein positives Beispiel und wird auch als solches klassifiziert.
-False Positiv (f p):
-die Testinstanz ist ein positives Beispiel und wird als negatives Beispiel klassifiziert.
-True Negativ (tn):
-die Testinstanz ist ein negatives Beispiel und wird als solches klassifiziert.
-False Negative (f n):
-die Testinstanz ist ein negatives Beispiel und wird als positives klassifiziert.
+Ein binärer Klassifikator erzeugt für eine Testinstanz nur vier diskrete Ausgaben: True Positiv (tp): die Testinstanz ist ein positives Beispiel und wird auch als solches klassifiziert.
+False Positiv (f p): die Testinstanz ist ein positives Beispiel und wird als negatives Beispiel klassifiziert.
+True Negativ (tn): die Testinstanz ist ein negatives Beispiel und wird als solches klassifiziert.
+False Negative (f n): die Testinstanz ist ein negatives Beispiel und wird als positives klassifiziert.
 Aus diesen Größen können Performanz Metriken hergeleitet werden.
 Zur Erstellung der ROC-Analyse werden die Metriken f p-Rate und tp-Rate wie folgt definiert:
 #$@FORMULA@$#:0
@@ -1496,10 +1439,9 @@ Ein Vorteil der ROC-Graphen ist der, dass die Beurteilung eines Klassifikators u
 Verändert sich die Anzahl von positiven bzw. negativen Instanzen im Testdatensatz, verändert sich nur das Verhältnis von linker zur rechter Spalte der ?confusion?
 Matrix.
 Da sowohl tp-Rate als auch f p-Rate nur ein Verhältnis in einer Spalte bilden, bleiben diese Metriken konstant.
-Metriken wie Exaktheit (engl.:
-accuracy),Präzision (engl.:
-precision), lift, F-score,... sind hingegen sensitiv gegenüber Veränderungen des Verhältnisses der Testklasseninstanzen, da diese Metriken durch Werte aus unterschiedlichen Spalten gebildet werden [12], wie in folgenden Gleichungen ersichtlich ist:
-tp + tn
+Metriken wie Exaktheit (engl.
+: accuracy),Präzision (engl.
+: precision), lift, F-score,... sind hingegen sensitiv gegenüber Veränderungen des Verhältnisses der Testklasseninstanzen, da diese Metriken durch Werte aus unterschiedlichen Spalten gebildet werden [12], wie in folgenden Gleichungen ersichtlich ist: tp + tn
 #$@FORMULA@$#:1
 tp + tn + f p + f n tp
 #$@FORMULA@$#:0
@@ -1513,8 +1455,8 @@ tp + f p Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners
 ROC-Kurven können mit nicht diskreten Klassifikatoren erstellt werden.
 Sie beruhen darauf, dass der Klassifikator einer Testinstanz nicht nur ein Klassenlabel zuordnet, sondern auch einen Wert, wie wahrscheinlich die Testinstanz der Klasse entspricht.
 Dadurch ist es möglich, die tp- bzw. f p-Rate in Abhängigkeit eines Schwellwertes  zu definieren.
-Dazu werden in dieser Arbeit die Klassen p und n auf das Intervall [0,1] abgebildet. 100
-% n entspricht 0, 0 % n ebenso wie 0 % p entspricht 0; 5 und 100 % p wird auf 1 abgebildet.
+Dazu werden in dieser Arbeit die Klassen p und n auf das Intervall [0,1] abgebildet.
+100 % n entspricht 0, 0 % n ebenso wie 0 % p entspricht 0; 5 und 100 % p wird auf 1 abgebildet.
 In der ROC-Analyse wird eine Testinstanz nur dann als positiv gezählt, wenn der Klassenzugehörigkeitswert über dem Schwellwert liegt.
 Jeder Schwellwert  erzeugt somit einen unterschiedlichen Punkt im ROC-Graphen.
 Der Schwellwert wird von 0:1 bis 1:1 hochgezählt.
@@ -1532,7 +1474,8 @@ Die ROC-Kurve besitzt aus oben genannten Gründen die Endpunkte
 
 
 Um die Performanz eines Klassifikators auf einen Wert abzubilden, wird die Fläche unter der ROC-Kurve berechnet.
-Diese wird als AUC-Wert (AUC = engl.: area under curve) der ROC-Kurve bezeichnet.
+Diese wird als AUC-Wert (AUC = engl.
+: area under curve) der ROC-Kurve bezeichnet.
 Der AUC-Wert besitzt einen Wertebereich von [0,1].
 Da eine Fläche von 0,5 einfachem Raten entspricht, sollte der AUC-Wert eines Klassifikators (analog zur Erläuterung über die Lage diskreter Klassifikatoren) einen größeren Wert besitzen.
 Der AUC-Wert sagt etwas über die durchschnittliche Performanz eines Klassifikators aus.
@@ -1545,7 +1488,8 @@ Der AUC-Wert entspricht der Wahrscheinlichkeit, dass der Klassifikator einer zuf
 
 Die bisherigen Erläuterungen gehen von einem Klassifikator aus, der zwischen zwei Klassen entscheidet.
 Diese Situation ist zwar in den meisten ursprünglichen Anwendungen (Signalverarbeitung, medizinische Anwendungen) der ROC-Analyse gegeben.
-Im Bereich des maschinellen Sehens (engl.: computer vision) sollen aber oft mehrere Objekte erkannt werden.
+Im Bereich des maschinellen Sehens (engl.
+: computer vision) sollen aber oft mehrere Objekte erkannt werden.
 Somit muss die ROC-Analyse auf n Klassen erweitert werden.
 Die n Klassen ?confusion?
 Matrix besitzt neben den n richtig klassifizierten Elementen der Hauptdiagonalen n2 n verschiedene Falschklassifikationen.
@@ -1554,8 +1498,7 @@ Dabei werden alle von der aktuellen Klasse verschiedenen Klassen als negative In
 Durch diese Vorgehensweise verliert die Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners
 0u
 #$@FORMULA@$#:0
-Abbildung 7.2:
-ROC-Kurven für zwei Klassifikatoren A und B und für den aus diesen kombinierten Klassifikator.
+Abbildung 7.2: ROC-Kurven für zwei Klassifikatoren A und B und für den aus diesen kombinierten Klassifikator.
 ROC-Analyse jedoch ihre Insenitivität gegenüber Veränderungen des Klassenverhältnisses im Testdatensatz, da sich die negativen Beispiele aus n 1 Klassen bzw. Spalten der ?confusion?
 Matrix − zusammensetzen.
 Durch n ROC-Graphen werden für einen Klassifikator auch n AUC-Werte berechnet, die zu einem AUC-Wert kombiniert werden müssen.
@@ -1597,8 +1540,7 @@ ROC-Kurven lassen sich auf andere Performanz Metriken wie Exaktheit oder Präzis
 Dabei werden Punkte im ROC-Graphen, die für eine bestimmte Metrik den selben Wert besitzen, als Isometrik bezeichnet.
 In dieser Arbeit wird die ROC-Kurve auf das Performanz Maß Exaktheit abgebildet, um zu bestimmen, welcher Schwellwert optimalerweise gewählt werden sollte:
 #$@FORMULA@$#:0
-wobei c die Klassenzusammensetzung des Testdatensatzes beschreibt:
-Anzahl der negativen Beispiele c = .
+wobei c die Klassenzusammensetzung des Testdatensatzes beschreibt: Anzahl der negativen Beispiele c = .
 Anzahl der positiven Beispiele In Abbildung 7.3 sind die Isometriken für Exaktheit mit c = 1 und c = 0; 5 abgebildet.
 Es ist zu sehen, dass die Isometriken für eine Klassenzusammensetzung von 0; 5 flacher verlaufen als die einer Klassenzusammensetzung, welche aus gleich vielen positiven wie negativen Beispielen besteht.
 Da in der Objekterkennung typischerweise die Anzahl der negativen Beispiele sehr viel größer ist als die Anzahl der positiven Beispiele, verlaufen die Isometriken für Exaktheit nahezu vertikal.
@@ -1619,7 +1561,8 @@ Es zeigt zwar f ür das Kurt 2D\ - " Objekt ein schlechteres Ergebnis als die Ze
 Außerdem benötigt das Verfahren die geringste Rechenzeit von nur ?0,4 ms?
 pro Kontur.
 Die Zernike-Momente sind sehr rechenintensiv.
-So werden pro Kontur ca. 200 ms benötigt (Pentium4 3 GHz 1 GB Arbeitsspeicher).
+So werden pro Kontur ca.
+200 ms benötigt (Pentium4 3 GHz 1 GB Arbeitsspeicher).
 Bei durchschnittlich 20 extrahierten Konturen pro Tiefenbild wird eine Klassifikationszeit von etwa 4 s erreicht.
 Das zweit schnellste und nächstbeste Verfahren mit 4 ms pro Kontur ist das CSS-Verfahren.
 Dieses Verfahren ist interessant, da die in dieser Arbeit verwendete Eigenraum-Darstellung der CSS-Repräsentation noch nie auf realen Daten angewendet wurde.
@@ -1691,8 +1634,7 @@ Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners
 4u
 5u
 Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners tp f p geometrische Merkmale 22 1 CSS 27 11 Zernike-Momente 23 2 ART 28 3 ortho.
-ART 29 0 Border-Signature 26 1 Viola Jones kombiniert 22 1 Viola Jones Reflektionsbild 23 56 Viola Jones Tiefenbild 30 1 Tabelle 7.4:
-Vergleich des Viola Jones Klassifikators mit den in dieser Arbeit entwickelten Klassifikatoren.
+ART 29 0 Border-Signature 26 1 Viola Jones kombiniert 22 1 Viola Jones Reflektionsbild 23 56 Viola Jones Tiefenbild 30 1 Tabelle 7.4: Vergleich des Viola Jones Klassifikators mit den in dieser Arbeit entwickelten Klassifikatoren.
 Die klassifizierten Bilder enthalten insgesamt 30 positive Beispiele.
 7.2.1 Vergleich mit dem Viola Jones AdaBoost Klassifikator In diesem Abschnitt wird die Performanz der in dieser Arbeit entwickelten Klassifikatoren mit dem in der bestehenden Softwarearchitektur vorhandenen Viola Jones AdaBoost Klassifikator verglichen.
 Dazu wurden zehn Testscans aufgenommen aus denen jeweils drei Ansichten klassifiziert werden.
@@ -1721,8 +1663,7 @@ Beim CSS-Verfahren fällt auf, dass es mit Abstand am meisten f p-Klassifikation
 Dies kann an dem relativ geringen optimalen Schwellwert von 0,76 liegen.
 Zu den f p-Klassifikationen der ART-Repräsentation ist zu sagen, dass diese ausschließlich durch nahezu kreisrunde Konturen erzeugt werden.
 Zum Auswertungsverfahren muss betont werden, dass die zur Klassifikation herangezogenen Ansichten unter der Voraussetzung der richtigen Segmentierung ausgewählt werden.
-Wird diese Voraussetzung nicht berücksichtigt besitzt der Viola Jones Klassifikator ein deutlich besseres Ergebnis Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners (a) (b) Abbildung 7.8:
-Vergleich der Robustheit der Klassifikatoren gegenüber Verdeckung von unten (a) bzw.
+Wird diese Voraussetzung nicht berücksichtigt besitzt der Viola Jones Klassifikator ein deutlich besseres Ergebnis Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners (a) (b) Abbildung 7.8: Vergleich der Robustheit der Klassifikatoren gegenüber Verdeckung von unten (a) bzw.
 #$@FORMULA@$#:0
 als die in dieser Arbeit entwickelten Klassifikatoren.
 So erkennt der Viola Jones Klassifikator sehr kleine weit entfernte Objekte, deren feine Strukturen durch den Segmentierungsalgorithmus der konturorientierten Klassifikatoren zerstört wird.
@@ -1789,8 +1730,8 @@ Konturbasierte Objekterkennung aus Tiefenbildern eines 3D-Laserscanners
 
 Eine einfache, eindimensionale Konturrepräsentation ist der Freeman-Kettencode (auch Chain-Code).
 Er verwendet zur Repräsentation der Kontur die Richtungsvektoren zwischen den Randpixeln der Kontur.
-Hierbei wird jeder Richtung nach dem Schema in Abbildung A. 1
-ein Wert zwischen Null und Sieben zugeordnet.
+Hierbei wird jeder Richtung nach dem Schema in Abbildung A.
+1 ein Wert zwischen Null und Sieben zugeordnet.
 Der Kettencode entsteht, indem von einem definierten Anfangspunkt aus die Kontur Pixel für Pixel durchlaufen und die entsprechende Richtungszahl an den Kettencode angehängt wird.
 Neben der Datenreduktion besitzt der Kettencode den Vorteil, dass einfache Merkmale der Form wie Konkavität bzw. Konvexität, Fläche und Umfang leicht bestimmbar sind [32].
 Der Kettencode besitzt den Nachteil, dass er sensitiv gegenüber Rauschen, Skalierung und Rotation ist.

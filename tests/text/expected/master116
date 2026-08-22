@@ -10,8 +10,8 @@ Aufgrund des steigenden Volumens und der starken Konkurrenz durch den Straßentr
 Elektrische Lokomotiven zeichnen sich durch ihren umweltfreundlichen und kostengünstigen Betrieb aus.
 Dieser Vorteil wird sich durch steigende Erdölpreise und strengere Umweltvorschriften vergrößern.
 [Mü13] Elektrisch angetriebene Lokomotiven sind in der Lage, enorme Traktionsleistungen zu erbringen.
-Für den Betrieb werden jedoch teure Oberleitungen benötigt. 33
-000 km der öffentlichen Gleise in Deutschland sind elektrifiziert.
+Für den Betrieb werden jedoch teure Oberleitungen benötigt.
+33 000 km der öffentlichen Gleise in Deutschland sind elektrifiziert.
 Der Elektrifizierungsgrad beträgt 60 %.
 Insgesamt werden 90 % aller Transportleistungen durch elektrische Lokomotiven erbracht.
 Kostenbedingt können gering befahrene Nebengleise nicht elektrifiziert werden.
@@ -148,7 +148,8 @@ Um möglichst wenig Kraftstoffzu verbrauchen und trotzdem die Leistungsanforderu
 Das Energiemanagement koordiniert die Antriebskomponenten und ist während der Entwicklung zu optimieren.
 Die Betriebsstrategie muss dabei alle am Vorgang beteiligten Komponenten berücksichtigen.
 Zusätzliche Anforderungen an die Betriebsstrategie ergeben sich aus den Abgas- und Geräuschemissionen und dem Schwingungskomfort.
-[RNB12, S. 62ff] Start-Stopp-Funktion Im Stillstand und bei geringen Fahrgeschwindigkeiten ermöglicht die Start-Stopp-Funktion das Abschalten und das erneute Starten des Verbrennungsmotors.
+[RNB12, S.
+62ff] Start-Stopp-Funktion Im Stillstand und bei geringen Fahrgeschwindigkeiten ermöglicht die Start-Stopp-Funktion das Abschalten und das erneute Starten des Verbrennungsmotors.
 Dies führt zur Reduktion des Leerlaufverbrauchs und vermindert den Teillastbereichsanteil, der einen schlechten Verbrennungsmotorwirkungsgrad aufweist.
 Zur Umsetzung dieser Funktion benötigt das Fahrzeug eine Komponente zum schnellen Starten des Fahrzeugs.
 Die Start-Stopp-Funktion wird durch einen optimierten Starter oder einen Kurbelwellen-Starter-Generator ausgeführt.
@@ -156,7 +157,8 @@ Das vermehrte Starten des Verbrennungsmotors erfordert zusätzliche Energie, die
 Zur Überwachung des Batterieladezustandes ist ein Energiemanagement notwendig.
 Bei geringer Batterieladung wird der Verbrennungsmotor nicht ausgeschaltet.
 Fahrzeuge mit Start-Stopp-Funktion werden als Mikro-Hybrid bezeichnet.
-[Bor13, S. 39f] Voll-Hybrid-Fahrzeuge ermöglichen den Start über eine elektrische Maschine.
+[Bor13, S.
+39f] Voll-Hybrid-Fahrzeuge ermöglichen den Start über eine elektrische Maschine.
 Im Voll-Hybrid-Fahrzeug ist eine Abschaltung während der Fahrt möglich.
 Bei ausgeschaltetem Verbrennungsmotor wird die Antriebsleistung rein elektrisch bereitgestellt.
 [Hof11, S. 307] Elektrisches Boosten Beim elektrischen Boosten wird der Verbrennungsmotor durch den elektrischen Antrieb unterstützt.
@@ -173,7 +175,8 @@ Elektrisches Fahren erfolgt hauptsächlich bei geringen Geschwindigkeiten, bei d
 Das elektrische Fahren ermöglicht ein kurzzeitiges schadstofffreies Fahren.
 Durch Begrenzung der Energiespeicher ist elektrisches Fahren nur für wenige Kilometer möglich.
 Das rein elektrische Fahren führt zu einer Reduktion der Lärmemissionen.
-[Hof11, S. 314f] Lastpunktanhebung und Lastpunktverlagerung Beim konventionellen Fahren im Teillastbereich weist der Verbrennungsmotor einen geringen Wirkungsgrad auf.
+[Hof11, S.
+314f] Lastpunktanhebung und Lastpunktverlagerung Beim konventionellen Fahren im Teillastbereich weist der Verbrennungsmotor einen geringen Wirkungsgrad auf.
 Durch Lastpunktverschiebung wird ein optimaler, spezifischer Wirkungsgrad erreicht.
 Dabei erzeugt der Verbrennungsmotor mehr mechanische Leistung als zum Aufrechterhalten des Fahrzustandes notwendig ist.
 Durch den Generator wird die überschüssige mechanische Energie in elektrische Energie umgewandelt und in der Batterie zwischengespeichert.
@@ -228,11 +231,12 @@ Für die leichteren Lokomotiven folgt aus dem geringeren Traktionsgewicht eine g
 
 Zur Untersuchung und Bewertung von Schienenfahrzeugen existieren zwei verschiedene Testmethoden.
 Es wird zwischen statischen und dynamischen Tests unterschieden.
-Abb. 2.8.:
-Dynamischer Verlauf der Drehzahl Abb. 2.9.:
-Dynamischer Verlauf des Drehmo-Beim dynamischen Test wird die Last dynamisch nach einem vorgegebenen Muster variiert (siehe Abbildung 2.8 und 2.9).
+Abb.
+2.8.: Dynamischer Verlauf der Drehzahl Abb.
+2.9.: Dynamischer Verlauf des Drehmo-Beim dynamischen Test wird die Last dynamisch nach einem vorgegebenen Muster variiert (siehe Abbildung 2.8 und 2.9).
 Dabei werden die Emissionen und der Verbrauch während der gesamten Laufzeit gemessen.
-Die Schrittweite der zeitlichen Variation beträgt ca. eine Sekunde.
+Die Schrittweite der zeitlichen Variation beträgt ca.
+eine Sekunde.
 [Sko11] Der statische Test ist durch stationäre Lastpunkte charakterisiert.
 Diese werden separat angefahren und vermessen (siehe Abbildung 2.10).
 Prüfzyklen von Schienenfahrzeugen
@@ -255,8 +259,10 @@ Grundlage für den EPA-Zyklus bilden Messungen (siehe Abbildung 2.12) der EPA, d
 Anforderungen an Referenzzyklen für Hybridfahrzeuge Die Verläufe der Lastprofile von Rangierlokomotiven sind zufällig und weisen eine hohe Anzahl an Lastwechseln auf.
 Dadurch erreicht das System keinen konstanten Betriebspunkt.
 Somit kann der Verbrennungsmotor nicht im optimalen spezifischen Betriebspunkt betrieben werden (siehe Abbildung 2.12).
-Die Nutzung der vollen diesel-hydraulischen Leistung erfolgt in ca. 10 bis 20 % der Betriebszeit.
-[Pac12] Die Stillstandszeit einer Rangierlokomotive beträgt ca. 50 %[Tom12].
+Die Nutzung der vollen diesel-hydraulischen Leistung erfolgt in ca.
+10 bis 20 % der Betriebszeit.
+[Pac12] Die Stillstandszeit einer Rangierlokomotive beträgt ca.
+50 %[Tom12].
 Für die Entwicklung hybrider Rangierlokomotiven sind die statischen Zyklen ISO-8178-F und EPA eher ungeeignet.
 [Jaa13] Es stehen keine genormten Zyklen für die Entwicklung von Hybrid-Schienenfahrzeugen zur Verfügung.
 Zur Lösung dieses Problems werden in [Sko11], [Pac12] und [Jaa13] aus aufgezeichneten Geschwindigkeitsprofilen und physikalischen Modellen Referenzzyklen erzeugt.
@@ -279,11 +285,9 @@ In Abhängigkeit der Witterungsverhältnisse beträgt der Haftreibungskoeffziein
 Das maximale Traktionsmoment 𝑇𝑇,𝑚𝑎𝑥 berechnet sich nach dem Modell in Abbildung 2.13.
 Die Gewichtskraft der Lokomotive wirkt mit:
 #$@FORMULA@$#:0
-mit der Gravitationskonstante 𝑔 = 9,81 m/s2 und dem Traktionsgewicht 𝑚𝑣 = 70 t.
-Die maximal übertragbare Reibkraft ergibt sich mit dem Coulombschen-Reibgesetz zu:
+mit der Gravitationskonstante 𝑔 = 9,81 m/s2 und dem Traktionsgewicht 𝑚𝑣 = 70 t. Die maximal übertragbare Reibkraft ergibt sich mit dem Coulombschen-Reibgesetz zu:
 #$@FORMULA@$#:1
-Der Raddurchmesser beträgt 𝑟𝑅𝑎𝑑 = 0,5 m.
-Der Zusammenhang zwischen Traktionsmoment 𝑇𝑇 und Zugkraft 𝐹𝑍 am Rad beträgt:
+Der Raddurchmesser beträgt 𝑟𝑅𝑎𝑑 = 0,5 m. Der Zusammenhang zwischen Traktionsmoment 𝑇𝑇 und Zugkraft 𝐹𝑍 am Rad beträgt:
 #$@FORMULA@$#:2
 Um das Durchdrehen der Räder zu verhindern gilt:
 #$@FORMULA@$#:3
@@ -474,8 +478,8 @@ Das
 2u
 drei Planetenrädern abgebildet.
 Die Kinematik einer einfachen Planetenstufe wird durch das Verhältnis der Zähnezahlen von Sonnenrad (𝑧𝐻 ) und Hohlrad (𝑧𝑆) bestimmt.
-[Fis12, S. 109ff] Das Verhältnis wird als Standgetriebeübersetzung:
-𝑖0 = 𝑧𝐻 , (2.39)
+[Fis12, S.
+109ff] Das Verhältnis wird als Standgetriebeübersetzung: 𝑖0 = 𝑧𝐻 , (2.39)
 #$@FORMULA@$#:2
 𝑧𝑆 bezeichnet.
 Die Zähnezahl für Hohlräder ist negativ definiert.
@@ -484,8 +488,7 @@ Zur analytischen Darstellung der Drehzahlverhältnisse dient die Willis-Gleichun
 #$@FORMULA@$#:4
 𝑛S − 𝑖0 · 𝑛H − (1 − 𝑖0) · 𝑛C = 0.
 (2.40) Dabei bezeichnet 𝑛𝑆 die Drehzahl des Sonnenrades, 𝑛𝑅 des Hohlrades und 𝑛𝐶 des Stegs.
-Zur gleichmäßigen Verteilung der 𝑛𝑃 Planetenräder über den Umfang muss das Verhältnis:
-𝑧S + |𝑧H| , (2.41)
+Zur gleichmäßigen Verteilung der 𝑛𝑃 Planetenräder über den Umfang muss das Verhältnis: 𝑧S + |𝑧H| , (2.41)
 #$@FORMULA@$#:3
 𝑛𝑃 ganzzahlig sein.
 Unter Vernachlässigung der Verluste ergibt sich für die äußeren Momente der einfachen Planetenstufe die Momentenbilanz:
@@ -505,7 +508,8 @@ Im komplexen Fall folgt aus zwei gegebenen Drehzahlen die dritte Drehzahl.
 Das Planetengetriebe wird als Summiergetriebe realisiert.
 Damit wird es möglich, den Leistungsfluss zu variieren.
 Durch Variation der an den Wellen anliegenden Leistungen werden dynamische Übersetzungen realisiert.
-[Fis12, S. 116ff] Nach Gleichung 2.43 folgt unter Vernachlässigung der Verluste:
+[Fis12, S.
+116ff] Nach Gleichung 2.43 folgt unter Vernachlässigung der Verluste:
 #$@FORMULA@$#:0
 Zugeführte Leistungen besitzen ein positives Vorzeichen, abgeführte Leistungen erhalten ein negatives Vorzeichen.
 Abbildung 2.20 zeigt das Prinzip der Leistungsverteilung am einfachen Planetengetriebe.
@@ -533,8 +537,8 @@ Die Teilstrecken sind in Form von Geschwindigkeits- und Beladungsprofilen vorgeg
 Zusätzlich ist ein Referenzzyklus als Abfolge der Teilstrecken in [IAV15] vorgegeben.
 Die Grenzwerte für die Streckenanforderungen sind in Tabelle 3.1 dargestellt.
 Eine detaillierte Darstellung folgt in Abschnitt 3.1.3.
-Die Gesamtanforderung ergibt sich durch Auswertung der Teilstrecken, die in Abschnitt A. 3
-abgebildet sind.
+Die Gesamtanforderung ergibt sich durch Auswertung der Teilstrecken, die in Abschnitt A.
+3 abgebildet sind.
 
 
 :::: Abfolge des Referenzzyklus ::::
@@ -542,10 +546,10 @@ abgebildet sind.
 
 Der Referenzzyklus setzt sich aus den in Tabelle 3.2 angegebenen Teilstrecken zusammen.
 Das resultierende Geschwindigkeitsprofil ist in Abbildung 3.1 dargestellt.
-Die wechselnde Beladung ist in Abbildung A. 5
-dargestellt.
-Aus dem Fahrprofil, dem Beladungsprofil und dem Längsdynamikmodell berechnet sich die benötigte Traktionsleistung, die in Abbildung A. 6
-dargestellt ist.
+Die wechselnde Beladung ist in Abbildung A.
+5 dargestellt.
+Aus dem Fahrprofil, dem Beladungsprofil und dem Längsdynamikmodell berechnet sich die benötigte Traktionsleistung, die in Abbildung A.
+6 dargestellt ist.
 
 
 :::: Häufigkeitsanalyse ::::
@@ -554,16 +558,17 @@ dargestellt ist.
 Zum optimalen Abfahren der Fahrzyklen durch das Hybridfahrzeug werden Traktionsleistungen in Abhängigkeit der Radsatzgeschwindigkeit benötigt.
 Diese sind in Abbildung 3.2 bis 3.5 dargestellt.
 Bei der Auslegung des Getriebes sind diese zu beachten.
-Abbildung 3.2 Abb. 3.2.:
-Strecke Behala 1400 - Logarith­ Abb. 3.3.:
-Strecke Behala 1800 - Logarith­
+Abbildung 3.2 Abb.
+3.2.: Strecke Behala 1400 - Logarith­ Abb.
+3.3.: Strecke Behala 1800 - Logarith­
 5u
 6u
 7u
 8u
 von 1400 bzw. 1800 t muss die Volllast von 1000 kW bei Geschwindigkeiten von 20 km/h zur Verfügung stehen.
-Abbildung A. 1 und A. 2 zeigen eine Strecke mit einer Beladung von 0 bzw. 560 t.
-Die Geschwindigkeiten sind erhöht.
+Abbildung A.
+1 und A.
+2 zeigen eine Strecke mit einer Beladung von 0 bzw. 560 t. Die Geschwindigkeiten sind erhöht.
 Die Volllast wird ab 35 km/h benötigt.
 Der Fahrzyklus in Abbildung 3.4 enthält nur geringe Geschwindigkeiten.
 Zusätzlich weist das Fahrzeug keine Anhängelast auf.
@@ -583,10 +588,11 @@ Für die Anforderungen
 (Leistung, Moment, Beschleunigung) werden sowohl das Maximum und das Minimum bestimmt.
 Dabei findet diese Betrachtung in Abhängigkeit des Beladungszustands des Fahrzeugs statt.
 Dies ist nötig, da die Komponenten deutlich von der Beladung des Fahrzeugs abhängen.
-In Abbildung 3.7 bis 3.10 und A. 4 ist diese Abhängigkeit für die Strecke Behala 1400 dargestellt.
-Abb. 3.9.:
-Geforderte Traktionsleistung, An­ Abb. 3.10.:
-Geforderte Traktionsleistung, An­
+In Abbildung 3.7 bis 3.10 und A.
+4 ist diese Abhängigkeit für die Strecke Behala 1400 dargestellt.
+Abb.
+3.9.: Geforderte Traktionsleistung, An­ Abb.
+3.10.: Geforderte Traktionsleistung, An­
 6u
 7u
 8u
@@ -607,8 +613,7 @@ Die Spanne der Leistungsabgabe muss im Rahmen der vorgegebenen Maschinenkennfeld
 
 Die folgenden Anforderungen leiten sich aus der vorliegenden Ausschreibung ab.
 Grundlage der Modernisierungsmaße ist die diesel-hydraulische Rangierlokomotive der Baureihe 290 (siehe Abbildung 3.11).
-Diese besitzt eine Dauerleistung von 1000 kW und eine Dienstmasse von 70 t.
-Die maximale Anfahrzugkraft beträgt 236 kN.
+Diese besitzt eine Dauerleistung von 1000 kW und eine Dienstmasse von 70 t. Die maximale Anfahrzugkraft beträgt 236 kN.
 Die Höchstgeschwindigkeit im Rangierbetrieb beträgt 80 km/h.
 Im Schleppbetrieb sind bis zu 100 km/h möglich.
 Die Lokomotive ermöglicht eine minimale Dauerfahrgeschwindigkeit von 3 km/h.
@@ -648,9 +653,7 @@ Das Achsgetriebe ist ebenfalls über eine Kardanwelle (17) fest mit dem Getriebe
 
 
 10u
-Radscheibendurchmesser beträgt im Neuzustand 1,1 m.
-Im verschlissenen Zustand redu­ ziert sich dieser auf bis zu 1 m.
-Der Umfang der Radscheibe ergibt sich zu:
+Radscheibendurchmesser beträgt im Neuzustand 1,1 m. Im verschlissenen Zustand redu­ ziert sich dieser auf bis zu 1 m. Der Umfang der Radscheibe ergibt sich zu:
 #$@FORMULA@$#:0
 Die Maximaldrehzahl des Radsatzes ergibt sich aus der Höchstgeschwindigkeit zu:
 #$@FORMULA@$#:1
@@ -901,8 +904,7 @@ Beim rein mechanischen Fahren wird die Leistung vom Verbrennungsmotor erzeugt.
 Die Leistung fließt durch das Getriebe über eine Kardanwelle, eine Stirnradstufe, das Planetengetriebe, über zwei Stirnradstufen und eine Kardanwelle schließlich ins Achsgetriebe.
 Jede Stufe beinhaltet individuelle Verluste.
 Tabelle 4.1 enthält die verwendeten Wirkungsgradannahmen aus der Literatur.
-Für die rein mechanische Leistungsübertrag ergibt sich ein Getriebewirkungsgrad 𝜂𝐺𝑒𝑡𝑟𝑖𝑒𝑏𝑒 von:
-𝜂𝐺𝑒𝑡𝑟𝑖𝑒𝑏𝑒 = 𝜂𝐾𝑎𝑟𝑑𝑎𝑛𝜂𝑆𝑡𝑖𝑟𝑛𝑟𝑎𝑑𝜂𝑃 𝑙𝑎𝑛𝑒𝑡𝜂𝑆𝑡𝑖𝑟𝑛𝑟𝑎𝑑𝜂𝑆𝑡𝑖𝑟𝑛𝑟𝑎𝑑𝜂𝐾𝑎𝑟𝑑𝑎𝑛𝜂𝐴𝑐ℎ𝑠 (4.43)
+Für die rein mechanische Leistungsübertrag ergibt sich ein Getriebewirkungsgrad 𝜂𝐺𝑒𝑡𝑟𝑖𝑒𝑏𝑒 von: 𝜂𝐺𝑒𝑡𝑟𝑖𝑒𝑏𝑒 = 𝜂𝐾𝑎𝑟𝑑𝑎𝑛𝜂𝑆𝑡𝑖𝑟𝑛𝑟𝑎𝑑𝜂𝑃 𝑙𝑎𝑛𝑒𝑡𝜂𝑆𝑡𝑖𝑟𝑛𝑟𝑎𝑑𝜂𝑆𝑡𝑖𝑟𝑛𝑟𝑎𝑑𝜂𝐾𝑎𝑟𝑑𝑎𝑛𝜂𝐴𝑐ℎ𝑠 (4.43)
 #$@FORMULA@$#:0
 Der Gesamtwirkungsgrad am Achsgetriebe ergibt sich aus der Kombination des Wirkungsgrades des Verbrennungsmotors und dem Getriebe.
 Der maximale Wirkungsgrad eines Dieselmotors beträgt 𝜂𝐼𝐶𝐸 = 0.45 [Bas14, S.20] .
@@ -984,14 +986,9 @@ Der Zeithorizont ist endlich und endet nach N Entscheidungen.
 Das System wird als deterministisch betrachtet.
 Die Beschreibung des Systemverhalten folgt nach [Rie11] durch:
 #$@FORMULA@$#:0
-endliche Zustandsmenge:
-𝑠𝑡 ∈ 𝑆 = {1,2,...,𝑛} , endliche Aktionsmenge:
-𝑢𝑡 ∈ 𝑈 = {𝑢1,...,𝑢𝑚} , direkte Kosten:
-𝑐 :
-𝑆 × 𝑈 → R,
+endliche Zustandsmenge: 𝑠𝑡 ∈ 𝑆 = {1,2,...,𝑛} , endliche Aktionsmenge: 𝑢𝑡 ∈ 𝑈 = {𝑢1,...,𝑢𝑚} , direkte Kosten: 𝑐 : 𝑆 × 𝑈 → R,
 #$@FORMULA@$#:1
-Übergangsfunktion:
-𝑠𝑡+1 = 𝑓 (𝑠𝑡, 𝑢𝑡).
+Übergangsfunktion: 𝑠𝑡+1 = 𝑓 (𝑠𝑡, 𝑢𝑡).
 5.1.2.
 Kosten Jede Entscheidung erzeugt Kosten.
 Diese fallen als direkte Kosten
@@ -1001,8 +998,7 @@ Diese fallen als direkte Kosten
 
 
 an.
-Die verfeinerten Kosten sind von Zustand und Aktion 𝑐 :
-𝑆 × 𝑈 → R, (5.2) abhängig.
+Die verfeinerten Kosten sind von Zustand und Aktion 𝑐 : 𝑆 × 𝑈 → R, (5.2) abhängig.
 Die die Gesamtkosten des Optimierungsproblems ergeben sich zu:
 #$@FORMULA@$#:0
 
@@ -1019,8 +1015,7 @@ Für die Pfadkosten 𝐾, folgt für einen gegebenen Zustand s bei nicht station
 #$@FORMULA@$#:0
 𝑡∈𝑇 Für die optimale Strategie 𝜋* folgt:
 #$@FORMULA@$#:1
-mit der Nebenbedingung für den Zustandsübergang:
-𝑠𝑡+1 = 𝑓 (𝑠𝑡, 𝑢𝑡).
+mit der Nebenbedingung für den Zustandsübergang: 𝑠𝑡+1 = 𝑓 (𝑠𝑡, 𝑢𝑡).
 
 
 :::: Backward-Dynamic-Programming ::::
@@ -1102,7 +1097,8 @@ Ein Beispiel für einen Gesamtaktionsraum ist in Abbildung 5.6 dargestellt.
 :::: Simulation ::::
 
 
-Die Simulationsschrittweite für das diskrete Simulationsmodell beträgt 1 s. Dies ermöglicht die Fahrzeugdynamik bei begrenzter Rechenzeit ausreichend genau abzubilden [Les15].
+Die Simulationsschrittweite für das diskrete Simulationsmodell beträgt 1 s.
+Dies ermöglicht die Fahrzeugdynamik bei begrenzter Rechenzeit ausreichend genau abzubilden [Les15].
 In Abbildung 5.7 ist die Schnittstellendefinition der dynamischen Programmierung dargestellt.
 Zur Simulation sind die Fahrzeugdaten Radsatzbeschleunigung, Traktionsmoment und Beladung während des Durchlaufs des Fahrzyklus nötig.
 Weiterhin werden der erzeugte Aktionsraum und die Bauteilgrenzen benötigt.
@@ -1131,8 +1127,7 @@ Ein Vorgängerzustand ergibt sich allgemein durch Subtrahieren der Aktion 𝑢�
 #$@FORMULA@$#:10
 Die Drehzahl des Motors im Zustand ergibt sich durch Subtraktion der Motorbeschleunigung des Zustands von der Motordrehzahl der Folgezustands.
 Durch Kenntnis der Motordrehzahl und der gegeben Radsatzdrehzahl aus dem Fahrzyklus sind alle Drehzahlen für den Vorgängerzustand bestimmt.
-Die Momente der Antriebsstrangkomponenten (𝑇𝐼𝐶𝐸, 𝑇𝐺𝐸𝑁 , 𝑇𝐸𝑀 1,2, 𝑇𝐵𝑅) werden als konstant über den Rechenschritt angenommen:
-𝑠𝑇,𝐼𝐶𝐸(𝑛 − 1) = 𝑢𝑇,𝐼𝐶𝐸(𝑛 − 1) 𝑠𝑇,𝐺𝐸𝑁 (𝑛 − 1) = 𝑢𝑇,𝐺𝐸𝑁 (𝑛 − 1), (5.18)
+Die Momente der Antriebsstrangkomponenten (𝑇𝐼𝐶𝐸, 𝑇𝐺𝐸𝑁 , 𝑇𝐸𝑀 1,2, 𝑇𝐵𝑅) werden als konstant über den Rechenschritt angenommen: 𝑠𝑇,𝐼𝐶𝐸(𝑛 − 1) = 𝑢𝑇,𝐼𝐶𝐸(𝑛 − 1) 𝑠𝑇,𝐺𝐸𝑁 (𝑛 − 1) = 𝑢𝑇,𝐺𝐸𝑁 (𝑛 − 1), (5.18)
 #$@FORMULA@$#:5
 𝑠𝑇,𝐸𝑀 1(𝑛 − 1) = 𝑢𝑇,𝐸𝑀 (𝑛 − 1) 𝑠𝑇,𝐸𝑀 2(𝑛 − 1) = 𝑢𝑇,𝐸𝑀 (𝑛 − 1).
 (5.19) Nun wird über die Aktionen des Aktionsraum iteriert.
@@ -1167,8 +1162,7 @@ Die Rechenzeit und Rechengenauigkeit wird durch die Diskretisierung bestimmt:
 3u
 4u
 𝐼𝐶𝐸𝑑𝑖𝑠𝑘 In jedem Gitterpunkt wird die Liste der möglichen Aktionen 𝑢𝑡(𝜔˙W,i,𝑇𝑇,𝑖,𝑚𝐿,𝑖) durchgerechnet.
-Der Zielgitterpunkt der Aktion wird mit:
-bestimmt.
+Der Zielgitterpunkt der Aktion wird mit: bestimmt.
 Die Rückwärtsrechnung endet mit dem Erreichen des Zustands 𝑠0:
 #$@FORMULA@$#:1
 #$@FORMULA@$#:2
@@ -1179,8 +1173,7 @@ Die Rückwärtsrechnung endet mit dem Erreichen des Zustands 𝑠0:
 #$@FORMULA@$#:7
 #$@FORMULA@$#:8
 #$@FORMULA@$#:9
-Der Zielgitterpunkt ergibt sich zu:
-𝑆𝑂𝐶𝑆𝑡𝑎𝑟𝑡 𝑛𝐼𝐶𝐸 𝐺𝑖𝑡𝑡𝑒𝑟,𝑑𝑖𝑠𝑘𝑟𝑒𝑡(0) = 1, 𝑆𝑂𝐶𝐺𝑖𝑡𝑡𝑒𝑟,𝑑𝑖𝑠𝑘𝑟𝑒𝑡(0) = ⌈ ⌉.
+Der Zielgitterpunkt ergibt sich zu: 𝑆𝑂𝐶𝑆𝑡𝑎𝑟𝑡 𝑛𝐼𝐶𝐸 𝐺𝑖𝑡𝑡𝑒𝑟,𝑑𝑖𝑠𝑘𝑟𝑒𝑡(0) = 1, 𝑆𝑂𝐶𝐺𝑖𝑡𝑡𝑒𝑟,𝑑𝑖𝑠𝑘𝑟𝑒𝑡(0) = ⌈ ⌉.
 (5.33) Δ𝑆𝑂𝐶𝑑𝑖𝑠𝑘𝑟𝑒𝑡 Vorwärtsrechnung Die Vorwärtsrechnung beginnt mit dem Laden der Teilergebnisse der Rückwärtsrechnung.
 Als erstes wird Zustand 𝑠0 ausgelesen.
 Vom Zustand werden 𝑠𝜔𝐼𝐶𝐸 (0), 𝑠𝑇𝐼𝐶𝐸 (0), 𝑠𝑇𝐺𝐸𝑁
@@ -1209,7 +1202,8 @@ Der relative Simulationsfehler wird als Abweichung der diskreten, numerischen L�
 #$@FORMULA@$#:0
 #$@FORMULA@$#:1
 Zur Reduktion der Rechenzeit beträgt die Batteriespeicherfähigkeit während der Konvergenzanalyse des Gitters 5 kWh.
-Die Simulationsdauer der Strecke beträgt 170 s. In Abbildung 5.9 ist der relative Kraftstoffverbrauch in Abhängigkeit der Gitterdiskretisierung dargestellt.
+Die Simulationsdauer der Strecke beträgt 170 s.
+In Abbildung 5.9 ist der relative Kraftstoffverbrauch in Abhängigkeit der Gitterdiskretisierung dargestellt.
 Der minimale relative Kraftstoffverbrauch wird bei der feinsten Diskretisierung (𝐼𝐶𝐸𝑑𝑖𝑠𝑘 = 150, 𝑆𝑂𝐶𝑑𝑖𝑠𝑘 = 350) erreicht.
 In Abbildung 5.10 ist die relativ geleistete Arbeit des Verbrennungsmotor in Abhängigkeit der Auflösung des Gitters dargestellt.
 Das Optimum wird im Bereich der genausten Auflösung erreicht.
@@ -1297,9 +1291,9 @@ In Abbildung 5.14 und 5.15 sind zwei erzeugte Betriebsstrategiekennfelder abgebi
 Diese werden in Abhängigkeit der Fahrzeugbeladung eingesetzt.
 Das Bremsen entspricht der negativen Fahranforderung.
 Nach den Daten der dynamischen Programmierung wird beim Bremsen die Verbrennungsmotorleistung 0 kW.
-Abb. 5.14.:
-Erzeugtes Strategiekennfeld Bela­ Abb. 5.15.:
-Erzeugtes Strategiekennfeld Bela­
+Abb.
+5.14.: Erzeugtes Strategiekennfeld Bela­ Abb.
+5.15.: Erzeugtes Strategiekennfeld Bela­
 6u
 7u
 8u
@@ -1337,8 +1331,7 @@ Die konventionelle Lokomotive (siehe Abbildung 6.1) wird durch einen Dieselmotor
 Zur Leistungsübertragung wird zwischen Dieselmotor und Endgetriebe ein hydrodynamisches Getriebe verwendet.
 Das hydrodynamische Getriebe enthält drei Fahrstufen.
 Das Endgetriebe ist als Radsatzgetriebe mit einer Übersetzung von 5,49 im Drehgestell ausgeführt [Pfe14].
-Die Dienstmasse der Lokomotive beträgt 70 t.
-Aus der maximalen Antriebsleistung und der Dienstmasse folgt das maximale Traktionsmoment:
+Die Dienstmasse der Lokomotive beträgt 70 t. Aus der maximalen Antriebsleistung und der Dienstmasse folgt das maximale Traktionsmoment:
 #$@FORMULA@$#:0
 
 
@@ -1532,9 +1525,9 @@ Die erzeugte Betriebsstrategie weicht um 0,037 l vom lokalen Optimum ab.
 In Abbildung 6.13 und 6.14 ist die durchschnittliche Traktionsleistung und Geschwindigkeit bei Variation des Kennfeldes der Referenzstrecke
 18u
 eine geringere Geschwindigkeit oder eine verminderte Traktionsleistung erreicht.
-Zur Abb. 6.13.:
-Durchschnittliche Antriebsleistung Abb. 6.14.:
-Durchschnittliche Geschwindigkeit
+Zur Abb.
+6.13.: Durchschnittliche Antriebsleistung Abb.
+6.14.: Durchschnittliche Geschwindigkeit
 1u
 2u
 3u
@@ -1592,8 +1585,10 @@ Diese benötigt auf demselben Referenzzyklus 315 L/100 km.
 Dies entspricht einer Verbrauchsverbesserung von 64 % und übertrifft die Anforderung der Ausschreibung von 10 bis 15 % deutlich.
 Die Ergebnisse können durch bestehende Konzepte GG20B Greengoat mit 40 bis 60 % und Alstom H3 mit 45 bis 50 % bestätigt werden.
 Beim Rangieren kann durch das neue Konzept 203 L Kraftstoffeingespart werden.
-Dieselkraftstofffür Schienenfahrzeuge kostet ca. 1 e[Vö15].
-Die Dauer des Referenzzyklus beträgt ca. 6 h und es werden 87 km gefahren.
+Dieselkraftstofffür Schienenfahrzeuge kostet ca.
+1 e[Vö15].
+Die Dauer des Referenzzyklus beträgt ca.
+6 h und es werden 87 km gefahren.
 Bei einer Nutzung von 20 h pro Tag werden 290 km gefahren.
 Es können 588 l Dieselkraftstoffeingespart werden.
 Dies entspricht einer Kostenreduzierung von 588 eje Arbeitstag.

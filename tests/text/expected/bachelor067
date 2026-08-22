@@ -13,8 +13,7 @@ Verschiedene Programme und Paradigmen konkurrieren um die schnellste, bequemste 
 Mit dem Begriff„große Datenmengen“ oder „Big Data“ werden in dieser Arbeit solche Datenmengen zusammengefasst, die die Kriterien Volume, Velocity und Variety [Lan01] erfüllen oder „Datenmengen, die nicht mehr unter Auflage bestimmter Service Level Agreements auf einzelnen Maschinen verarbeitet werden können“ (Vgl. [SW14]).
 Als Unternehmen, das früh mit zeitkritischen Aufgaben (u.a. Indizierung von Webseiten und PageRank [Pag01]) auf solchen Datenmengen konfrontiert war, implementierte Google das Map-Reduce Paradigma [DG04] als Framework zur Ausnutzung vieler kostengünstiger Rechner für verschiedene Aufgaben.
 In Folge der Veröffentlichung dieser Idee im Jahr 2004 wurde Map-Reduce in Form der OpenSource Implementation Hadoop (gemeinsam mit einer Implementation des Google File Systems GFS, u.a.) [GGL03] zum De-facto-Standard für Big-Data-Analyseaufgaben.
-Reines Map-Reduce (in der ursprünglichen Implemenation von Hadoop) als Berechnungsparadigma zur Verarbeitung großer Datenmengen zeigt jedoch in vielen Anwendungsfällen Schwächen:
-• Daten, die in hoher Frequenz entstehen und schnell verarbeitet werden sollen, erfordern
+Reines Map-Reduce (in der ursprünglichen Implemenation von Hadoop) als Berechnungsparadigma zur Verarbeitung großer Datenmengen zeigt jedoch in vielen Anwendungsfällen Schwächen: • Daten, die in hoher Frequenz entstehen und schnell verarbeitet werden sollen, erfordern
 21u
 22u
 • Algorithmen die während ihrer Ausführung iterativ Zwischenergebnisse erzeugen und
@@ -97,9 +96,7 @@ Für Spark kann daher von einer vergleichbaren Hardwarekonfiguration ausgegangen
 Der Vergleich von drei aktuellen Rack Servern der 2000-Euro-Klasse in der Grundausstattung
 1u
 Schnittstellen zueinander (Siehe Anhang 3.1).
-Netzwerk Festspeicher Arbeitsspeicher 0,125 GB/s 1 GB/s 17 GB/s Tabelle 2.1:
-Theoretische Spitzenleistungen bei Mittelklasse-Servern Bei den folgenden Bewertungen der Kernkonzepte ist es wichtig, sich die aus Tabelle 2.1 abgeleiteten Größenordnungen des Durchsatzes (D) der verschiedenen Datenkanäle zu vergegenwärtigen:
-DN etzwerk < DF estspeicher < DArbeitsspeicher Für eine effzieinte Verarbeitung von Daten ist es - ganz allgemein - also wünschenswert, den größten Anteil des Datentransfers im Arbeitsspeicher zu haben, einen kleineren Anteil auf der Festplatte und einen noch kleineren Anteil auf Netzwerkverbindungen.
+Netzwerk Festspeicher Arbeitsspeicher 0,125 GB/s 1 GB/s 17 GB/s Tabelle 2.1: Theoretische Spitzenleistungen bei Mittelklasse-Servern Bei den folgenden Bewertungen der Kernkonzepte ist es wichtig, sich die aus Tabelle 2.1 abgeleiteten Größenordnungen des Durchsatzes (D) der verschiedenen Datenkanäle zu vergegenwärtigen: DN etzwerk < DF estspeicher < DArbeitsspeicher Für eine effzieinte Verarbeitung von Daten ist es - ganz allgemein - also wünschenswert, den größten Anteil des Datentransfers im Arbeitsspeicher zu haben, einen kleineren Anteil auf der Festplatte und einen noch kleineren Anteil auf Netzwerkverbindungen.
 Es ist das wichtigste Ziel der folgenden Kernkonzepte von Apache Spark unter diesen Bedingungen, die effzieinte und stabile Verarbeitung großer Datenmengen ([SW14]) zu gewährleisten.
 
 
@@ -121,7 +118,8 @@ Insbesondere sind auch die in den Standardbibliotheken verfügbaren „höheren�
 Sie sind damit die wichtigste Abstraktion des Applikationskerns.
 In erster Näherung können RDDs als eine Variante von Distributed Shared Memory (DSM) ([NL91], [ZC+12]) verstanden werden.
 Sie haben allerdings sehr charakteristische Einschränkungen und Erweiterungen, die in diesem Kapitel erläutert werden.
-Verteilungssicht Aus Verteilungssicht ist ein RDD ein Datensatz, der über den Arbeitsspeicher mehrerer Maschinen partitioniert ist (Abb. 2.2).
+Verteilungssicht Aus Verteilungssicht ist ein RDD ein Datensatz, der über den Arbeitsspeicher mehrerer Maschinen partitioniert ist (Abb.
+2.2).
 Laufzeitsicht RDDs sind nicht veränderbar.
 Es ist nicht möglich, Operationen gezielt auf
 1u
@@ -130,20 +128,15 @@ Solche globalen - auf sämtlichen Partitionen des RDD durchgeführten - Operatio
 Eine Folge von Operationen op1op2op3... wird als Lineage eines RDD bezeichnet.
 Die Lineage kann als das „Rezept“ zur Erstellung eines Datensatzes verstanden werden.
 Dabei gibt es zwei grundsätzlich verschiedene Operationen, nämlich Transformationen und Aktionen.
-Transformationen sind Operationen, die ein RDD auf ein anderes abbilden:
-T ransf ormation :
-RDD × RDD −→ RDD oder T ransf ormation :
-RDD −→ RDD Es wird also - grob gesagt - nur die abstrakte Repräsentation des Datensatzes geändert, ohne tatsächlich dessen Datenelemente für den Programmfluss im Treiberprogramm abzurufen.
-Beispiele für solche Operationen sind:
-• filter
+Transformationen sind Operationen, die ein RDD auf ein anderes abbilden: T ransf ormation : RDD × RDD −→ RDD oder T ransf ormation : RDD −→ RDD Es wird also - grob gesagt - nur die abstrakte Repräsentation des Datensatzes geändert, ohne tatsächlich dessen Datenelemente für den Programmfluss im Treiberprogramm abzurufen.
+Beispiele für solche Operationen sind: • filter
 18u
 19u
 • join
 1u
 Aktionen sind Operationen, die RDDs in eine andere Domäne abbilden:
 #$@FORMULA@$#:0
-Beispiele für Aktionen sind die Methoden:
-• reduce
+Beispiele für Aktionen sind die Methoden: • reduce
 5u
 6u
 7u
@@ -157,13 +150,11 @@ Beispiele für Aktionen sind die Methoden:
 15u
 Den meisten dieser Operationen wird im Sinne des Command-Patterns ([BL13]) eine Funktion bzw. ein Funktionsobjekt übergeben, das die gewählte Operation spezifiziert.
 Solange nur Transformationen auf einem RDD ausgeführt werden, ist dieses noch ein bloßes „Rezept“ zur Erstellung eines Datensatzes.
-Tatsächlich wurde noch kein Speicher reserviert und der Cluster wurde noch nicht aktiv ([ZC+12]):
-Sobald die erste Aktion aufgerufen wird, werden die Transformationen nach der vorgegebenen Reihenfolge ausgeführt und schließlich die geforderte Aktion.
-Die Initialisierung des RDD erfolgt also „lazy“:
-Wie in Abb. 2.4 dargestellt ist, werden während der Transformationsvorgänge keine Zwi-
+Tatsächlich wurde noch kein Speicher reserviert und der Cluster wurde noch nicht aktiv ([ZC+12]): Sobald die erste Aktion aufgerufen wird, werden die Transformationen nach der vorgegebenen Reihenfolge ausgeführt und schließlich die geforderte Aktion.
+Die Initialisierung des RDD erfolgt also „lazy“: Wie in Abb.
+2.4 dargestellt ist, werden während der Transformationsvorgänge keine Zwi-
 2u
-oder in anderem Zusammenhang wiederverwenden, kann man dies explizit über das Kommando persist() oder cache() anweisen:
-Realisiert ist das Konzept der Lineage und der „Lazy Initialization“ von RDDs durch Transformations-Methoden, die eine Variante des Factory-Pattern ([BL13]) implementieren.
+oder in anderem Zusammenhang wiederverwenden, kann man dies explizit über das Kommando persist() oder cache() anweisen: Realisiert ist das Konzept der Lineage und der „Lazy Initialization“ von RDDs durch Transformations-Methoden, die eine Variante des Factory-Pattern ([BL13]) implementieren.
 Die erzeugten Ob-
 7u
 Jedes RDD-Objekt führt eine Liste von Vorgängern mit.
@@ -181,8 +172,7 @@ Beispiel hierfür sei die Methode foreach In Zeile 6 wird auf dem Spark-Context 
 Dort werden dann die rekursiven Abhängigkeiten des aktuellen RDD aufgelöst und - je nach Konfiguration - die Tasks verteilt.
 #$@FORMULA@$#:3
 #$@FORMULA@$#:0
-Das Konzept der Lineage ist zentral für die Fehlertoleranz der RDDs:
-Geht eine Partition verloren - beispielsweise durch Defekt eines Knotens - ist das „Rezept“ zur Erstellung des Datensatzes in der Lineage des RDD-Objektes weiterhin vorhanden und die Partition kann gezielt wiederhergestellt werden.
+Das Konzept der Lineage ist zentral für die Fehlertoleranz der RDDs: Geht eine Partition verloren - beispielsweise durch Defekt eines Knotens - ist das „Rezept“ zur Erstellung des Datensatzes in der Lineage des RDD-Objektes weiterhin vorhanden und die Partition kann gezielt wiederhergestellt werden.
 10u
 11u
 erreichbar (z.B. auf dem lokalen Festspeicher) und gleichmäßig auf diesen Kanälen partitioniert
@@ -194,7 +184,8 @@ Kommen in einem Anwendungsfall RDDs zum Einsatz, deren Elemente einzeln über ei
 Cluster sind hierbei Teilmengen des RDD, die mit besonders hoher Wahrscheinlichkeit oder besonders häufig untereinander verknüpft werden.
 Dadurch kann ein größerer Teil der Operationen auf den einzelnen Datensätzen bereits lokal auf dem Knoten der jeweiligen Partition durchgeführt werden.
 Die Netzwerklast bei dem anschließenden Shuffe dler Daten (siehe Abschnitt 2.2.3) fällt dann geringer aus.
-Solch eine Partitionierung kann - entsprechende Erwartung über das Verhalten der Verarbeitung vorausgesetzt - mit einem maßgeschneiderten Partitionierer erreicht werden (Abb. 2.4), der dann dem betroffenen RDD übergeben wird.
+Solch eine Partitionierung kann - entsprechende Erwartung über das Verhalten der Verarbeitung vorausgesetzt - mit einem maßgeschneiderten Partitionierer erreicht werden (Abb.
+2.4), der dann dem betroffenen RDD übergeben wird.
 
 
 :::: Anwendungsdeployment ::::
@@ -221,7 +212,8 @@ Im ersten Fall ergeben sich zwei weitere Möglichkeiten zum Ort der Ausführung 
 1u
 Die Lokalität eines Treibers (der mit den Executors auf den Workern kommunizieren muss) kann Einfluss auf Laufzeit und Latenzverhalten des Programms haben.
 Im Fall eines clusterfernen Gateway-Rechners kann also Treiberdeployment im Clustermodus sinnvoll sein, die Standardeinstellung ist jedoch der Clientmodus (siehe auch [Spa]).
-Abb. 2.9 zeigt das Sequenzdiagramm eines typischen Deploymentprozesses, wie er auch im praktischen Teil dieser Arbeit zum Einsatz kommt.
+Abb.
+2.9 zeigt das Sequenzdiagramm eines typischen Deploymentprozesses, wie er auch im praktischen Teil dieser Arbeit zum Einsatz kommt.
 
 
 :::: Scheduling und Shuffling ::::
@@ -259,13 +251,13 @@ Wird eine Partition aus höchstens einer anderen erzeugt, lässt sich diese dire
 Werden jedoch verschiedene Partitionen benötigt um eine Folgepartition zu erzeugen, stellt sich die Frage auf welchen Knoten das am Besten geschieht.
 Spark unterteilt diese beiden Fälle in narrow dependencies (erster Fall) und wide dependencies
 #$@FORMULA@$#:0
-Der Abhängigkeitsgraph eines RDD wird nun in sogenannte Stages zerlegt (Abb. 2.13).
+Der Abhängigkeitsgraph eines RDD wird nun in sogenannte Stages zerlegt (Abb.
+2.13).
 Eine
 1u
 tet) auf eine gemeinsame wide dependency stoßen.
 Elemente innerhalb einer Stage können nach dieser Konstruktion unabhängig auf den Knoten berechnet werden, die die jeweilige Partition vorhalten.
-Ein Datenelement xi,j sei dabei Element eines RDD j und Element einer lokalen Partition Pi,j (d.h. es existiert auf einem Knoten i):
-xi,j ∈ P artitioni,j ⊆ RDDj Weil nach Definition der narrow dependencies innerhalb einer Stage die Elemente einer Partition Pi,j aus den Elementen genau einer Vorgängerpartition Pi,j−1 berechnet werden können, lässt sich jedes Element xi,j des Nachfolger-RDD über eine Komposition lokaler
+Ein Datenelement xi,j sei dabei Element eines RDD j und Element einer lokalen Partition Pi,j (d.h. es existiert auf einem Knoten i): xi,j ∈ P artitioni,j ⊆ RDDj Weil nach Definition der narrow dependencies innerhalb einer Stage die Elemente einer Partition Pi,j aus den Elementen genau einer Vorgängerpartition Pi,j−1 berechnet werden können, lässt sich jedes Element xi,j des Nachfolger-RDD über eine Komposition lokaler
 #$@FORMULA@$#:0
 #$@FORMULA@$#:1
 Für den Übergang zwischen Stages ist die Berechnung der Nachfolger etwas aufwändiger.
@@ -364,7 +356,8 @@ Seit Februar 2014 ([apa]) ist Spark ein Top-Level Projekt der Apache Software Fo
 Eine Übersicht der verantwortlichen Entwickler kann unter [Com] eingesehen werden.
 Zum Zeitpunkt dieser Arbeit gehören u.a. Entwickler von Intel, Yahoo!
 und Alibaba zu den Stammentwicklern.
-Die Kommunikation innerhalb der Entwickler- und Anwendergemeinschaft findet wesentlich in den offzieillen Mailinglisten (Abb. 2.14) und dem Issue-Tracker ([Iss]) der Apache Software Foundation statt.
+Die Kommunikation innerhalb der Entwickler- und Anwendergemeinschaft findet wesentlich in den offzieillen Mailinglisten (Abb.
+2.14) und dem Issue-Tracker ([Iss]) der Apache Software Foundation statt.
 
 
 :::: Übersicht verwandter Produkte ::::
@@ -445,8 +438,7 @@ Als Versuchsumgebung dient ein Rechnercluster aus vier identischen Workern und e
 Dieser Cluster besteht aus ausschließlich aus leistungsschwacher Hardware.
 Mit leistungsschwach sind Geräte gemeint, deren Leistungsfähigkeit noch deutlich unter aktueller soge-
 4u
-Konkret kommen die folgenden Geräte zum Einsatz:
-Worker Rasperry Pi 2
+Konkret kommen die folgenden Geräte zum Einsatz: Worker Rasperry Pi 2
 7u
 8u
 9u
@@ -460,8 +452,7 @@ Master Dell d420
 #$@FORMULA@$#:0
 Die Rechner sind mit RJ45 über einen TP-Link TL-SF1008D Switch mit theoretischem maximalem Durchsatz von 100MBit/s vernetzt.
 Als Basisdaten für die Leistungsfähigkeit der eingesetzten Hardware werden zusätzliche Tests durchgeführt, deren Ergebnisse in Tabelle 3.1, Tabelle 3.2 und Tabelle 3.2 aufgeführt sind.
-Worker → Worker Worker → Master 94,4 MBit/s 94,4 MBit/s Tabelle 3.1:
-Maximaler Netzwerkdurchsatz4
+Worker → Worker Worker → Master 94,4 MBit/s 94,4 MBit/s Tabelle 3.1: Maximaler Netzwerkdurchsatz4
 
 
 :::: Lösungsskizze ::::
@@ -517,8 +508,7 @@ Die Prozedur beginnt mit dem Definieren eines RDDs aus der Textdatei aller Email
 #$@FORMULA@$#:0
 Diese Textdatei wird durch ModelBuilder regelmäßig ergänzt, sofern der IMAP-Client neue Nachrichten aus der Mailingliste empfangen hat.
 Anschließend werden die Elemente des RDD documents von einer Sequenz von Wörtern auf einen Vektor der Worthäufigkeiten abgebildet:
-1 val tf:
-RDD[Vector] = hashingTF.transform(documents) Mit diesem RDD von Vektoren der Worthäufigkeiten wird nun ein Modell (IDF, Inverse Document Frequency) gebildet, dass die inversen Worthäufigkeiten berechnet.
+1 val tf: RDD[Vector] = hashingTF.transform(documents) Mit diesem RDD von Vektoren der Worthäufigkeiten wird nun ein Modell (IDF, Inverse Document Frequency) gebildet, dass die inversen Worthäufigkeiten berechnet.
 Dazu wird für jedes vorkommende Wort die Anzahl aller Dokumente ermittelt in denen es vorkommt.
 Dieses Modell wird dann genutzt um die bereits berechneten Wortvorkommen pro Dokument anzupassen (idf.transform(tf)).
 Es entstehen die TF-IDF Vektoren:
@@ -533,10 +523,10 @@ Die Fenstergröße entspricht dem Bereich, dessen spezifische Wörter in der Str
 
 
 Twitter-Endpunkt aufgebaut9.
-Über diese Verbindung werden - bei unpriveligiertem Zugriffetwa 40 Tweets pro Sekunde über einen dauerhaften Datenstrom zur Verfügung gestellt (siehe Abb. 3.11).
+Über diese Verbindung werden - bei unpriveligiertem Zugriffetwa 40 Tweets pro Sekunde über einen dauerhaften Datenstrom zur Verfügung gestellt (siehe Abb.
+3.11).
 In der Komponente RealtimeAnalyzer wurden vor dem Start des Datenstroms Funktionen zur Bewertung einzelner Tweets registriert.
-Die Funktion ScoreTweets zur Bewertung einzelner Tweets ScoreTweets :
-T weets −→ IR × Tweets
+Die Funktion ScoreTweets zur Bewertung einzelner Tweets ScoreTweets : T weets −→ IR × Tweets
 #$@FORMULA@$#:2
 wird dabei wie in Listing 3.1 dargestellt implementiert:
 #$@FORMULA@$#:0
@@ -560,7 +550,8 @@ Anschließend werden die erzeugten Tupel nach der Größe des erreichten Scores 
 
 
 Die Komponenten werden in jeweils eigenen Projekten entwickelt, die sich einzeln auf dem Cluster deployen lassen.
-Das hat den Vorteil, dass eine einfache Continuous Deployment Pipeline (Abb. 3.7) eingesetzt werden kann, die Änderungen an den jeweiligen Projekten automatisiert auf dem Cluster deployt und so schnellstmögliches Feedback ermöglicht, sowie eine stets lauffähige Codebasis begünstigt.
+Das hat den Vorteil, dass eine einfache Continuous Deployment Pipeline (Abb.
+3.7) eingesetzt werden kann, die Änderungen an den jeweiligen Projekten automatisiert auf dem Cluster deployt und so schnellstmögliches Feedback ermöglicht, sowie eine stets lauffähige Codebasis begünstigt.
 Diese Pipeline ist durch ein post-receive-Skript in den jeweiligen Repositories der Komponenten auf dem Gateway-Rechner realisiert (Beispiel im Anhang 1.3).
 
 
@@ -617,8 +608,7 @@ Tabelle 3.4 zeigt die Laufzeiten der Modelbuilderkomponente bei verschiedenen Ko
 #$@FORMULA@$#:0
 Einen besonderen Einfluss auf die Laufzeit hat offenbar die Blockgröße.
 Bei gleicher Anzahl von Workern und Replikaten verschlechtert sich die Laufzeit in jedem Versuch bei zunehmender Größe.
-Diese Beobachtung deckt sich mit den in Tabelle 3.3 dargestellten Eigenschaften des Festspeichers auf den Workern:
-Im Gegensatz zu den Durchsatzraten der mechanischen Festplatte des Masters verschlechtert sich auf den SD-Karten des Workers der Durchsatz bei zunehmender Blockgröße.
+Diese Beobachtung deckt sich mit den in Tabelle 3.3 dargestellten Eigenschaften des Festspeichers auf den Workern: Im Gegensatz zu den Durchsatzraten der mechanischen Festplatte des Masters verschlechtert sich auf den SD-Karten des Workers der Durchsatz bei zunehmender Blockgröße.
 Ab einer Blockgröße von 128MB ist es zusätzlich nicht mehr möglich, vier Blöcke parallel im Arbeitsspeicher des Executor zu halten (384MB) und diese getrennt auf den 4 verfügbaren Cores verarbeiten zu lassen.
 Ein Hinweis auf den Flaschenhals bei der Verarbeitung auf einem einzigen Knoten ist in Abbildung 3.9 zu erkennen.
 Die CPU steht unter Volllast, während die Leistung beim Lesen von der SD-Karte mit durchschnittlich 4,3 MB/s deutlich unter dem möglichen Durchsatz bleibt
@@ -640,7 +630,8 @@ Aus dieser Implementation ergibt sich die Netzwerk-Lastspitze ab Sekunde 251
 1u
 Treibers.
 Jede Spark-Applikation startet gemäß der Standardeinstellungen auf dem Host des Treibers einen HTTP-Server, über den verschiedene Daten verfolgt werden können.
-In Abb. 3.11 sind die Statistiken einer laufenden Realtime-Komponente dargestellt.
+In Abb.
+3.11 sind die Statistiken einer laufenden Realtime-Komponente dargestellt.
 In dem betrachteten Fall läuft die Realtime-Komponente mit einem einzelnen Worker, der den Empfänger für den Datenstrom von Twitter startet und das Scoring und Filtern der eingehenden Nachrichten ausführt.
 Um den Worker nicht für die Modellerzeugung der Batch-Komponente zu blockieren, wurde nur ein Executor mit 2 Cores gewährt.
 Zum Zeitpunkt des Schnappschusses wurden 6260 Tweets empfangen und verarbeitet.
@@ -649,11 +640,13 @@ Bei einem Zeitfenster von 5 Sekunden (Batch Interval) pro Batch gibt es also kei
 Dieser Verdacht erhärtet sich bei einem Blick auf die CPU-Last des verarbeitenden Workers
 1u
 Last des Master sogar nur bei 8,1%.
-Auch die Netzwerklast ist minimal (Abb. 3.13).
+Auch die Netzwerklast ist minimal (Abb.
+3.13).
 Ab Sekunde 51 liegt die Last des Workers bei durchschnittlich 77 KByte/s.
 Über den beobachteten Zeitraum von knapp 7 Minuten wurden damit 31.4 Megabyte empfangen.
 Die Last des Masters liegt noch darunter.
-Betrachtet man den Speicherverbrauch (Abb. 3.14), sieht man, dass sich dieser nach wenigen
+Betrachtet man den Speicherverbrauch (Abb.
+3.14), sieht man, dass sich dieser nach wenigen
 4u
 
 
